@@ -1,0 +1,12 @@
+[submodule "app/src/main/cpp/tc_client_sdk"]
+	path = app/src/main/cpp/tc_client_sdk
+	url = git@github.com:RGAA-Software/tc_client_sdk.git
+[submodule "app/src/main/cpp/tc_common"]
+	path = app/src/main/cpp/tc_common
+	url = git@github.com:RGAA-Software/tc_common.git
+[submodule "app/src/main/cpp/tc_3rdparty"]
+	path = app/src/main/cpp/tc_3rdparty
+	url = git@github.com:RGAA-Software/tc_3rdparty.git
+[submodule "app/src/main/cpp/tc_message"]
+	path = app/src/main/cpp/tc_message
+	url = git@github.com:RGAA-Software/tc_message.git

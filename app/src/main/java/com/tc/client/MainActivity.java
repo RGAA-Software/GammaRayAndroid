@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.tc.client.impl.ThunderSdk;
+
 public class MainActivity extends Activity {
 
     static {
@@ -17,10 +19,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView tv = findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());
-    }
+        findViewById(R.id.id_start).setOnClickListener(v -> {
+            ThunderSdk sdk = new ThunderSdk();
+            sdk.init();
+            sdk.start();
+        });
 
-    public native String stringFromJNI();
+    }
 
 }
