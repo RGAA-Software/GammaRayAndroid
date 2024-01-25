@@ -15,6 +15,7 @@ namespace tc
 
     class EnvWrapper;
     class FrameRender;
+    class AppContext;
 
     class Application {
     public:
@@ -39,6 +40,7 @@ namespace tc
         JavaVM* vm_ = nullptr;
         std::shared_ptr<ThunderSdk> thunder_sdk_ = nullptr;
         std::shared_ptr<FrameRender> frame_render_ = nullptr;
+        std::shared_ptr<AppContext> app_context_ = nullptr;
     };
 
 }

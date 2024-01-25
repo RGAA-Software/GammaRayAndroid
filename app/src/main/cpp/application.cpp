@@ -5,6 +5,7 @@
 #include "application.h"
 #include "env_wrapper.h"
 #include "frame_render.h"
+#include "app_context.h"
 
 namespace tc
 {
@@ -22,9 +23,10 @@ namespace tc
     }
 
     void Application::Init(const ThunderSdkParams& params) {
-        frame_render_ = FrameRender::Make();
+        app_context_ = AppContext::Make();
+        frame_render_ = FrameRender::Make(app_context_);
 
-        thunder_sdk_ = ThunderSdk::Make();
+        thunder_sdk_ = ThunderSdk::Make(app_context_->GetMessageNotifier());
         thunder_sdk_->Init(params);
         thunder_sdk_->RegisterOnVideoFrameDecodedCallback([=](const std::shared_ptr<RawImage>& image) {
             frame_render_->UpdateImage(image);

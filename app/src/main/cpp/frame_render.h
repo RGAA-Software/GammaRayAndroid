@@ -17,13 +17,15 @@ namespace tc
 {
 
     class RawImage;
+    class AppContext;
+    class MessageListener;
 
     class FrameRender {
     public:
 
-        static std::shared_ptr<FrameRender> Make();
+        static std::shared_ptr<FrameRender> Make(const std::shared_ptr<AppContext>& ctx);
 
-        explicit FrameRender();
+        explicit FrameRender(const std::shared_ptr<AppContext>& ctx);
 
         void Init(JNIEnv* env, jobject surface);
         void UpdateImage(const std::shared_ptr<RawImage>& image);
@@ -37,12 +39,21 @@ namespace tc
 
     private:
 
+        void RegisterListeners();
+
+    private:
+
+        std::shared_ptr<AppContext> app_context_ = nullptr;
+        std::shared_ptr<MessageListener> bus_listener_ = nullptr;
+
         GLuint texts[3] = {0};
         EGLDisplay display;
         EGLSurface winSurface;
 
         std::mutex raw_image_mtx_;
         std::shared_ptr<RawImage> raw_image_ = nullptr;
+
+        bool need_init_texture_ = false;
     };
 
 }

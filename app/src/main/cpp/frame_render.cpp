@@ -5,9 +5,11 @@
 #include "frame_render.h"
 
 #include "tc_common/log.h"
+#include "tc_common/message_notifier.h"
 #include "tc_client_sdk/raw_image.h"
+#include "app_context.h"
+#include "sdk_messages.h"
 
-//顶点着色器，每个顶点执行一次，可以并行执行
 static const char *vertexShader = R"(
         attribute vec4 aPosition;
         attribute vec2 aTextCoord;
@@ -15,24 +17,21 @@ static const char *vertexShader = R"(
         void main() {
             //这里其实是将上下翻转过来（因为安卓图片会自动上下翻转，所以转回来）
             vTextCoord = vec2(aTextCoord.x, 1.0 - aTextCoord.y);
-            //直接把传入的坐标值作为传入渲染管线。gl_Position是OpenGL内置的
             gl_Position = aPosition;
         }
 )";
 
-//图元被光栅化为多少片段，就被调用多少次
 static const char *fragYUV420P = R"(
         precision mediump float;
         varying vec2 vTextCoord;
-        //输入的yuv三个纹理
-        uniform sampler2D yTexture;//采样器
-        uniform sampler2D uTexture;//采样器
-        uniform sampler2D vTexture;//采样器
+
+        uniform sampler2D yTexture;
+        uniform sampler2D uTexture;
+        uniform sampler2D vTexture;
         void main() {
             vec3 yuv;
             vec3 rgb;
-            //分别取yuv各个分量的采样纹理（r表示？）
-            //
+
             yuv.x = texture2D(yTexture, vTextCoord).g;
             yuv.y = texture2D(uTexture, vTextCoord).g - 0.5;
             yuv.z = texture2D(vTexture, vTextCoord).g - 0.5;
@@ -41,49 +40,43 @@ static const char *fragYUV420P = R"(
                     0.0, -0.39465, 2.03211,
                     1.13983, -0.5806, 0.0
             ) * yuv;
-            //gl_FragColor是OpenGL内置的
+
             gl_FragColor = vec4(rgb, 1.0);
-            //gl_FragColor = vec4(0.2, 0.3, 0.4, 1.0);
         }
 )";
 
-GLint initShader(const char *source, GLenum type) {
-    //创建shader
+GLuint init_shader(const char *source, GLenum type) {
     GLuint sh = glCreateShader(type);
     if (sh == 0) {
         LOGI("glCreateShader %d failed", type);
         return 0;
     }
-    //加载shader
-    glShaderSource(sh,
-                   1,//shader数量
-                   &source,
-                   0);//代码长度，传0则读到字符串结尾
 
-    //编译shader
+    glShaderSource(sh,
+                   1,
+                   &source,
+                   0);
     glCompileShader(sh);
 
     GLint status;
     glGetShaderiv(sh, GL_COMPILE_STATUS, &status);
     if (status == 0) {
-        LOGI("glCompileShader %d failed", type);
-        LOGI("source %s", source);
+        LOGI("glCompileShader {} failed", type);
         return 0;
     }
-
-    LOGI("glCompileShader %d success", type);
     return sh;
 }
 
 namespace tc
 {
 
-    std::shared_ptr<FrameRender> FrameRender::Make() {
-        return std::make_shared<FrameRender>();
+    std::shared_ptr<FrameRender> FrameRender::Make(const std::shared_ptr<AppContext>& ctx) {
+        return std::make_shared<FrameRender>(ctx);
     }
 
-    FrameRender::FrameRender() {
-
+    FrameRender::FrameRender(const std::shared_ptr<AppContext>& ctx) {
+        app_context_ = ctx;
+        RegisterListeners();
     }
 
     void FrameRender::Init(JNIEnv* env, jobject surface) {
@@ -152,22 +145,19 @@ namespace tc
 //            return;
 //        }
 
-        GLint vsh = initShader(vertexShader, GL_VERTEX_SHADER);
-        GLint fsh = initShader(fragYUV420P, GL_FRAGMENT_SHADER);
+        GLuint vsh = init_shader(vertexShader, GL_VERTEX_SHADER);
+        GLuint fsh = init_shader(fragYUV420P, GL_FRAGMENT_SHADER);
 
-        //创建渲染程序
-        GLint program = glCreateProgram();
+        GLuint program = glCreateProgram();
         LOGI("program id: {}", program);
         if (program == 0) {
             LOGI("glCreateProgram failed");
             return;
         }
 
-        //向渲染程序中加入着色器
         glAttachShader(program, vsh);
         glAttachShader(program, fsh);
 
-        //链接程序
         glLinkProgram(program);
         GLint status = 0;
         glGetProgramiv(program, GL_LINK_STATUS, &status);
@@ -175,11 +165,10 @@ namespace tc
             LOGI("glLinkProgram failed");
             return;
         }
-        LOGI("glLinkProgram success");
-        //激活渲染程序
         glUseProgram(program);
 
-        //加入三维顶点数据
+        LOGI("glLinkProgram success");
+
         static float ver[] = {
                 1.0f, -1.0f, 0.0f,
                 -1.0f, -1.0f, 0.0f,
@@ -187,25 +176,20 @@ namespace tc
                 -1.0f, 1.0f, 0.0f
         };
 
-        GLuint apos = static_cast<GLuint>(glGetAttribLocation(program, "aPosition"));
+        auto apos = static_cast<GLuint>(glGetAttribLocation(program, "aPosition"));
         glEnableVertexAttribArray(apos);
         glVertexAttribPointer(apos, 3, GL_FLOAT, GL_FALSE, 0, ver);
 
-        //加入纹理坐标数据
         static float fragment[] = {
                 1.0f, 0.0f,
                 0.0f, 0.0f,
                 1.0f, 1.0f,
                 0.0f, 1.0f
         };
-        GLuint aTex = static_cast<GLuint>(glGetAttribLocation(program, "aTextCoord"));
+        auto aTex = static_cast<GLuint>(glGetAttribLocation(program, "aTextCoord"));
         glEnableVertexAttribArray(aTex);
         glVertexAttribPointer(aTex, 2, GL_FLOAT, GL_FALSE, 0, fragment);
 
-        int width = 1920;
-        int height = 1080;
-
-        //对sampler变量，使用函数glUniform1i和glUniform1iv进行设置
         glUniform1i(glGetUniformLocation(program, "yTexture"), 0);
         glUniform1i(glGetUniformLocation(program, "uTexture"), 1);
         glUniform1i(glGetUniformLocation(program, "vTexture"), 2);
@@ -214,100 +198,14 @@ namespace tc
         glBindTexture(GL_TEXTURE_2D, texts[0]);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexImage2D(GL_TEXTURE_2D,
-                     0,//细节基本 默认0
-                     GL_LUMINANCE,//gpu内部格式 亮度，灰度图（这里就是只取一个亮度的颜色通道的意思）
-                     width,//加载的纹理宽度。最好为2的次幂(这里对y分量数据当做指定尺寸算，但显示尺寸会拉伸到全屏？)
-                     height,//加载的纹理高度。最好为2的次幂
-                     0,//纹理边框
-                     GL_LUMINANCE,//数据的像素格式 亮度，灰度图
-                     GL_UNSIGNED_BYTE,//像素点存储的数据类型
-                     NULL //纹理的数据（先不传）
-        );
 
-        //绑定纹理
         glBindTexture(GL_TEXTURE_2D, texts[1]);
-        //缩小的过滤器
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        //设置纹理的格式和大小
-        glTexImage2D(GL_TEXTURE_2D,
-                     0,//细节基本 默认0
-                     GL_LUMINANCE,//gpu内部格式 亮度，灰度图（这里就是只取一个颜色通道的意思）
-                     width / 2,//u数据数量为屏幕的4分之1
-                     height / 2,
-                     0,//边框
-                     GL_LUMINANCE,//数据的像素格式 亮度，灰度图
-                     GL_UNSIGNED_BYTE,//像素点存储的数据类型
-                     NULL //纹理的数据（先不传）
-        );
 
-        //绑定纹理
         glBindTexture(GL_TEXTURE_2D, texts[2]);
-        //缩小的过滤器
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        //设置纹理的格式和大小
-        glTexImage2D(GL_TEXTURE_2D,
-                     0,//细节基本 默认0
-                     GL_LUMINANCE,//gpu内部格式 亮度，灰度图（这里就是只取一个颜色通道的意思）
-                     width / 2,
-                     height / 2,//v数据数量为屏幕的4分之1
-                     0,//边框
-                     GL_LUMINANCE,//数据的像素格式 亮度，灰度图
-                     GL_UNSIGNED_BYTE,//像素点存储的数据类型
-                     NULL //纹理的数据（先不传）
-        );
-
-//        unsigned char *buf[3] = {0};
-//        buf[0] = new unsigned char[width * height];//y
-//        buf[1] = new unsigned char[width * height / 4];//u
-//        buf[2] = new unsigned char[width * height / 4];//v
-
-//        for (int i = 0; i < 10000; ++i) {
-//
-//
-//            //读一帧yuv420p数据
-//            if (feof(fp) == 0) {
-//                fread(buf[0], 1, width * height, fp);
-//                fread(buf[1], 1, width * height / 4, fp);
-//                fread(buf[2], 1, width * height / 4, fp);
-//            }
-//
-//            //激活第一层纹理，绑定到创建的纹理
-//            //下面的width,height主要是显示尺寸？
-//            glActiveTexture(GL_TEXTURE0);
-//            //绑定y对应的纹理
-//            glBindTexture(GL_TEXTURE_2D, texts[0]);
-//            //替换纹理，比重新使用glTexImage2D性能高多
-//            glTexSubImage2D(GL_TEXTURE_2D, 0,
-//                            0, 0,//相对原来的纹理的offset
-//                            width, height,//加载的纹理宽度、高度。最好为2的次幂
-//                            GL_LUMINANCE, GL_UNSIGNED_BYTE,
-//                            buf[0]);
-//
-//            //激活第二层纹理，绑定到创建的纹理
-//            glActiveTexture(GL_TEXTURE1);
-//            //绑定u对应的纹理
-//            glBindTexture(GL_TEXTURE_2D, texts[1]);
-//            //替换纹理，比重新使用glTexImage2D性能高
-//            glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width / 2, height / 2, GL_LUMINANCE,
-//                            GL_UNSIGNED_BYTE,
-//                            buf[1]);
-//
-//            //激活第三层纹理，绑定到创建的纹理
-//            glActiveTexture(GL_TEXTURE2);
-//            //绑定v对应的纹理
-//            glBindTexture(GL_TEXTURE_2D, texts[2]);
-//            //替换纹理，比重新使用glTexImage2D性能高
-//            glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width / 2, height / 2, GL_LUMINANCE,
-//                            GL_UNSIGNED_BYTE,
-//                            buf[2]);
-//
-//            glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-//            //窗口显示，交换双缓冲区
-//            eglSwapBuffers(display, winSurface);
-//        }
     }
 
     void FrameRender::UpdateImage(const std::shared_ptr<RawImage>& image) {
@@ -316,6 +214,7 @@ namespace tc
     }
 
     void FrameRender::TickRefresh() {
+        std::lock_guard<std::mutex> guard(raw_image_mtx_);
         if (!raw_image_) {
             return;
         }
@@ -329,39 +228,46 @@ namespace tc
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.2, 0.3, 0.4, 1.0);
 
-        //激活第一层纹理，绑定到创建的纹理
-        //下面的width,height主要是显示尺寸？
         glActiveTexture(GL_TEXTURE0);
-        //绑定y对应的纹理
         glBindTexture(GL_TEXTURE_2D, texts[0]);
-        //替换纹理，比重新使用glTexImage2D性能高多
-        glTexSubImage2D(GL_TEXTURE_2D, 0,
-                        0, 0,//相对原来的纹理的offset
-                        width, height,//加载的纹理宽度、高度。最好为2的次幂
-                        GL_LUMINANCE, GL_UNSIGNED_BYTE,
-                        y);
+        if (need_init_texture_) {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width, height, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, y);
+        }
+        else {
+            glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_LUMINANCE, GL_UNSIGNED_BYTE, y);
+        }
 
-        //激活第二层纹理，绑定到创建的纹理
         glActiveTexture(GL_TEXTURE1);
-        //绑定u对应的纹理
         glBindTexture(GL_TEXTURE_2D, texts[1]);
-        //替换纹理，比重新使用glTexImage2D性能高
-        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width / 2, height / 2, GL_LUMINANCE,
-                        GL_UNSIGNED_BYTE,
-                        u);
+        if (need_init_texture_) {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width/2, height/2, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, u);
+        }
+        else {
+            glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width/2, height/2, GL_LUMINANCE, GL_UNSIGNED_BYTE, u);
+        }
 
-        //激活第三层纹理，绑定到创建的纹理
         glActiveTexture(GL_TEXTURE2);
-        //绑定v对应的纹理
         glBindTexture(GL_TEXTURE_2D, texts[2]);
-        //替换纹理，比重新使用glTexImage2D性能高
-        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width / 2, height / 2, GL_LUMINANCE,
-                        GL_UNSIGNED_BYTE,
-                        v);
+        if (need_init_texture_) {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width/2, height/2, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, v);
+        }
+        else {
+            glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width/2, height/2, GL_LUMINANCE, GL_UNSIGNED_BYTE, v);
+        }
 
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-        //窗口显示，交换双缓冲区
-        //eglSwapBuffers(display, winSurface);
+
+        if (need_init_texture_) {
+            need_init_texture_ = false;
+        }
+    }
+
+    void FrameRender::RegisterListeners() {
+        bus_listener_ = app_context_->ObtainMessageListener();
+        bus_listener_->Listen<MsgFirstFrameDecoded>([=](const auto& msg) {
+            this->need_init_texture_ = true;
+            LOGI("Need to init texture...");
+        });
     }
 
     void FrameRender::OnCreate() {
@@ -377,8 +283,7 @@ namespace tc
     }
 
     void FrameRender::OnDestroy() {
-//        eglDestroySurface(display, winSurface);
-//        eglMakeCurrent(display, EGL_NO_SURFACE,EGL_NO_SURFACE, EGL_NO_CONTEXT);
+
     }
 
 }
