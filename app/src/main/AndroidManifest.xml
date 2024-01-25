@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Tc_client_android"
         tools:targetApi="31">
         <activity
+            android:name=".FrameRenderActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -1,6 +1,7 @@
 package com.tc.client;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -20,9 +21,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.id_start).setOnClickListener(v -> {
-            ThunderSdk sdk = new ThunderSdk();
-            sdk.init();
-            sdk.start();
+
+            startActivity(new Intent(this, FrameRenderActivity.class));
+
         });
 
     }
