@@ -22,7 +22,7 @@ namespace tc
         return EnvWrapper::Make(vm_);
     }
 
-    void Application::Init(const ThunderSdkParams& params) {
+    void Application::Init(const ThunderSdkParams& params, bool hw_codec) {
         app_context_ = AppContext::Make();
         frame_render_ = FrameRender::Make(app_context_);
 
@@ -71,6 +71,9 @@ namespace tc
     }
 
     void Application::OnDestroy() {
+        if (thunder_sdk_) {
+            thunder_sdk_->Exit();
+        }
         if (frame_render_) {
             frame_render_->OnDestroy();
         }

@@ -27,7 +27,7 @@ namespace tc
 
         explicit FrameRender(const std::shared_ptr<AppContext>& ctx);
 
-        void Init(JNIEnv* env, jobject surface);
+        void Init(JNIEnv* env, jobject surface, bool hw_codec);
         void UpdateImage(const std::shared_ptr<RawImage>& image);
 
         void TickRefresh();
@@ -46,12 +46,13 @@ namespace tc
         std::shared_ptr<AppContext> app_context_ = nullptr;
         std::shared_ptr<MessageListener> bus_listener_ = nullptr;
 
-        GLuint texts[3] = {0};
-        EGLDisplay display;
-        EGLSurface winSurface;
+        GLuint img_textures_[3] = {0};
+        EGLDisplay display_;
+        EGLSurface win_surface_;
+        ANativeWindow* native_win_ = nullptr;
 
         std::mutex raw_image_mtx_;
-        std::shared_ptr<RawImage> raw_image_ = nullptr;
+        std::shared_ptr<RawImage> current_raw_image_ = nullptr;
 
         bool need_init_texture_ = false;
     };

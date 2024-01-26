@@ -24,7 +24,7 @@ namespace tc
         Application(const JavaVM* vm);
         std::shared_ptr<EnvWrapper> ObtainEnvWrapper();
 
-        void Init(const ThunderSdkParams& params);
+        void Init(const ThunderSdkParams& params, bool hw_codec);
         void Start();
         void Exit();
 

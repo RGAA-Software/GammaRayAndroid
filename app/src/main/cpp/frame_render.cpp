@@ -79,12 +79,10 @@ namespace tc
         RegisterListeners();
     }
 
-    void FrameRender::Init(JNIEnv* env, jobject surface) {
-        //1.获取原始窗口
-        //be sure to use ANativeWindow_release()
+    void FrameRender::Init(JNIEnv* env, jobject surface, bool hw_codec) {
+        // be sure to use ANativeWindow_release()
         // * when done with it so that it doesn't leak.
-        //ANativeWindow *nwin = ANativeWindow_fromSurface(env, surface);
-//        ANativeWindow *nwin = ANativeWindow_fromSurface(env, reinterpret_cast<jobject>(surface));
+        native_win_ = ANativeWindow_fromSurface(env, reinterpret_cast<jobject>(surface));
 //        //获取Display
 //        //EGLDisplay
 //        display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
@@ -194,34 +192,43 @@ namespace tc
         glUniform1i(glGetUniformLocation(program, "uTexture"), 1);
         glUniform1i(glGetUniformLocation(program, "vTexture"), 2);
 
-        glGenTextures(3, texts);
-        glBindTexture(GL_TEXTURE_2D, texts[0]);
+        glGenTextures(3, img_textures_);
+        glBindTexture(GL_TEXTURE_2D, img_textures_[0]);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-        glBindTexture(GL_TEXTURE_2D, texts[1]);
+        glBindTexture(GL_TEXTURE_2D, img_textures_[1]);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-        glBindTexture(GL_TEXTURE_2D, texts[2]);
+        glBindTexture(GL_TEXTURE_2D, img_textures_[2]);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     }
 
-    void FrameRender::UpdateImage(const std::shared_ptr<RawImage>& image) {
+    void FrameRender::UpdateImage(const std::shared_ptr<RawImage>& image_incoming) {
         std::lock_guard<std::mutex> guard(raw_image_mtx_);
-        raw_image_ = image->Clone();
+        if (!current_raw_image_) {
+            current_raw_image_ = image_incoming->Clone();
+        }
+        else {
+            if (current_raw_image_->Size() != image_incoming->Size()) {
+                current_raw_image_ = image_incoming->Clone();
+            } else {
+                image_incoming->CopyTo(current_raw_image_);
+            }
+        }
     }
 
     void FrameRender::TickRefresh() {
         std::lock_guard<std::mutex> guard(raw_image_mtx_);
-        if (!raw_image_) {
+        if (!current_raw_image_) {
             return;
         }
-        int width = raw_image_->img_width;
-        int height = raw_image_->img_height;
+        int width = current_raw_image_->img_width;
+        int height = current_raw_image_->img_height;
 
-        auto y = raw_image_->Data();
+        auto y = current_raw_image_->Data();
         auto u = y + width*height;
         auto v = u + width*height/4;
 
@@ -229,7 +236,7 @@ namespace tc
         glClearColor(0.2, 0.3, 0.4, 1.0);
 
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texts[0]);
+        glBindTexture(GL_TEXTURE_2D, img_textures_[0]);
         if (need_init_texture_) {
             glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width, height, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, y);
         }
@@ -238,7 +245,7 @@ namespace tc
         }
 
         glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, texts[1]);
+        glBindTexture(GL_TEXTURE_2D, img_textures_[1]);
         if (need_init_texture_) {
             glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width/2, height/2, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, u);
         }
@@ -247,7 +254,7 @@ namespace tc
         }
 
         glActiveTexture(GL_TEXTURE2);
-        glBindTexture(GL_TEXTURE_2D, texts[2]);
+        glBindTexture(GL_TEXTURE_2D, img_textures_[2]);
         if (need_init_texture_) {
             glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width/2, height/2, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, v);
         }
@@ -283,7 +290,9 @@ namespace tc
     }
 
     void FrameRender::OnDestroy() {
-
+        if (native_win_) {
+            ANativeWindow_release(native_win_);
+        }
     }
 
 }

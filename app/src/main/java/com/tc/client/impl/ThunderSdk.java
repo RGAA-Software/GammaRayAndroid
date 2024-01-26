@@ -8,7 +8,7 @@ public class ThunderSdk {
 
     }
 
-    public native int init(boolean ssl, String ip, int port, String path, Surface surface);
+    public native int init(boolean ssl, String ip, int port, String path, Surface surface, boolean hwCodec);
     public native int start();
     public native int stop();
 
