@@ -27,7 +27,7 @@ namespace tc
         frame_render_ = FrameRender::Make(app_context_);
 
         thunder_sdk_ = ThunderSdk::Make(app_context_->GetMessageNotifier());
-        thunder_sdk_->Init(params);
+        thunder_sdk_->Init(params, hw_codec);
         thunder_sdk_->RegisterOnVideoFrameDecodedCallback([=](const std::shared_ptr<RawImage>& image) {
             frame_render_->UpdateImage(image);
         });

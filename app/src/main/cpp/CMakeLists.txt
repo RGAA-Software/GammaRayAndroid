@@ -49,6 +49,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
         EGL
         android
         log
+        mediandk
         tc_message
         tc_common
         tc_sdk)

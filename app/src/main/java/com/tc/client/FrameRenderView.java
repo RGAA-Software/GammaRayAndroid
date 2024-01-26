@@ -36,7 +36,7 @@ public class FrameRenderView extends GLSurfaceView implements SurfaceHolder.Call
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        mThunderSdk.init(false, "10.0.0.16", 9002, "/media", getHolder().getSurface(), false);
+        mThunderSdk.init(false, "10.0.0.16", 9002, "/media", getHolder().getSurface(), true);
         mThunderSdk.start();
         Log.i(TAG, "onSurfaceCreated.");
     }
