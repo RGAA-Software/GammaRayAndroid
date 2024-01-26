@@ -45,6 +45,57 @@ static const char *fragYUV420P = R"(
         }
 )";
 
+static const char * fs_egl_ext = "#extension GL_OES_EGL_image_external : require\n"
+                                 "precision mediump float;\n"
+                                 "uniform mat4 tx_matrix;\n"
+                                 "uniform samplerExternalOES tex_y;\n"
+                                 "varying vec2 tx;\n"
+                                 "void main(){\n"
+                                 "    vec2 tx_transformed = (tx_matrix * vec4(tx, 0, 1.0)).xy;\n"
+                                 "    gl_FragColor = texture2D(tex_y, tx_transformed);\n"
+                                 "}\n";
+
+static const char* kNV12FragmentShader = R"(
+
+    #version 330 core
+
+    in vec3 outColor;
+    in vec2 outTex;
+
+    uniform sampler2D image1;
+    uniform sampler2D image2;
+
+    const vec3 delyuv = vec3(-16.0/255.0,-128.0/255.0,-128.0/255.0);
+    const vec3 matYUVRGB1 = vec3(1.164, 0.0, 1.596);
+    const vec3 matYUVRGB2 = vec3(1.164, -0.391, -0.813);
+    const vec3 matYUVRGB3 = vec3(1.164, 2.018, 0.0);
+
+    out vec4 FragColor;
+
+    void main()
+    {
+        vec4 yColor = texture(image1, outTex);
+        vec4 uvColor = texture(image2, outTex);
+
+        highp vec3 yuv;
+        vec3 CurResult;
+
+        yuv.x = yColor.r;
+        yuv.y = uvColor.r;
+        yuv.z = uvColor.a;
+
+        yuv += delyuv;
+
+        CurResult.x = dot(yuv,matYUVRGB1);
+        CurResult.y = dot(yuv,matYUVRGB2);
+        CurResult.z = dot(yuv,matYUVRGB3);
+
+        FragColor = vec4(CurResult.rgb, 1);
+        //FragColor = vec4(0.2, 0.3, 0.1, 1.0);
+    }
+
+)";
+
 GLuint init_shader(const char *source, GLenum type) {
     GLuint sh = glCreateShader(type);
     if (sh == 0) {
@@ -80,68 +131,62 @@ namespace tc
     }
 
     void FrameRender::Init(JNIEnv* env, jobject surface, bool hw_codec) {
-        // be sure to use ANativeWindow_release()
-        // * when done with it so that it doesn't leak.
+        if (native_win_) {
+            ANativeWindow_release(native_win_);
+            native_win_ = nullptr;
+        }
         native_win_ = ANativeWindow_fromSurface(env, reinterpret_cast<jobject>(surface));
-//        //获取Display
-//        //EGLDisplay
-//        display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
-//        if (display == EGL_NO_DISPLAY) {
-//            LOGI("egl display failed");
-//            return;
-//        }
-//        //2.初始化egl，后两个参数为主次版本号
-//        if (EGL_TRUE != eglInitialize(display, 0, 0)) {
-//            LOGI("eglInitialize failed");
-//            return;
-//        }
-//
-//        //3.1 surface配置，可以理解为窗口
-//        EGLConfig eglConfig;
-//        EGLint configNum;
-//        const EGLint confAttr[] =
-//        {
-//        EGL_SURFACE_TYPE,EGL_PBUFFER_BIT,//EGL_WINDOW_BIT EGL_PBUFFER_BIT we will create a pixelbuffer surface
-//        EGL_RED_SIZE,   8,
-//        EGL_GREEN_SIZE, 8,
-//        EGL_BLUE_SIZE,  8,
-//        EGL_ALPHA_SIZE, 8,// if you need the alpha channel
-//        EGL_DEPTH_SIZE, 16,// if you need the depth buffer
-//        EGL_STENCIL_SIZE,8,
-//        EGL_NONE
-//        };
-//
-//        EGLint attribList[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE };
-//
-//        if (EGL_TRUE != eglChooseConfig(display, confAttr, &eglConfig, 1, &configNum)) {
-//            LOGI("eglChooseConfig failed");
-//            return;
-//        }
-//
-//        //3.2创建surface(egl和NativeWindow进行关联。最后一个参数为属性信息，0表示默认版本)
-//        //EGLSurface
-//        winSurface = eglCreateWindowSurface(display, eglConfig, nwin, attribList);
-//        if (winSurface == EGL_NO_SURFACE) {
-//            LOGI("eglCreateWindowSurface failed {:x}", eglGetError());
-//            return;
-//        }
-//
-//        //4 创建关联上下文
-//        const EGLint ctxAttr[] = {
-//                EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE
-//        };
-//        //EGL_NO_CONTEXT表示不需要多个设备共享上下文
-//        EGLContext context = eglCreateContext(display, eglConfig, EGL_NO_CONTEXT, ctxAttr);
-//        if (context == EGL_NO_CONTEXT) {
-//            LOGI("eglCreateContext failed");
-//            return;
-//        }
-//        //将egl和opengl关联
-//        //两个surface一个读一个写。第二个一般用来离线渲染？
-//        if (EGL_TRUE != eglMakeCurrent(display, winSurface, winSurface, context)) {
-//            LOGI("eglMakeCurrent failed");
-//            return;
-//        }
+        LOGI("native win: {}", (void*)native_win_);
+
+        display_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+        if (display_ == EGL_NO_DISPLAY) {
+            LOGI("egl display failed");
+            return;
+        }
+        //2.初始化egl，后两个参数为主次版本号
+        if (EGL_TRUE != eglInitialize(display_, 0, 0)) {
+            LOGI("eglInitialize failed");
+            return;
+        }
+
+        //3.1 surface配置，可以理解为窗口
+        EGLConfig eglConfig;
+        EGLint configNum;
+        const EGLint attribs[] = {EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
+                                  EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+                                  EGL_BLUE_SIZE, 8, EGL_GREEN_SIZE, 8,
+                                  EGL_RED_SIZE, 8, EGL_ALPHA_SIZE, 8,
+                                  EGL_DEPTH_SIZE, 0, EGL_STENCIL_SIZE, 0,
+                                  EGL_NONE};
+
+        if (EGL_TRUE != eglChooseConfig(display_, attribs, &eglConfig, 1, &configNum)) {
+            LOGI("eglChooseConfig failed");
+            return;
+        }
+
+        //3.2创建surface(egl和NativeWindow进行关联。最后一个参数为属性信息，0表示默认版本)
+        win_surface_ = eglCreateWindowSurface(display_, eglConfig, native_win_, nullptr);
+        if (win_surface_ == EGL_NO_SURFACE) {
+            LOGI("eglCreateWindowSurface failed {:x}", eglGetError());
+            return;
+        }
+
+        //4 创建关联上下文
+        const EGLint ctxAttr[] = {
+                EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE
+        };
+
+        egl_context_ = eglCreateContext(display_, eglConfig, EGL_NO_CONTEXT, ctxAttr);
+        if (egl_context_ == EGL_NO_CONTEXT) {
+            LOGI("eglCreateContext failed");
+            return;
+        }
+        //将egl和opengl关联
+        //两个surface一个读一个写。第二个一般用来离线渲染？
+        if (EGL_TRUE != eglMakeCurrent(display_, win_surface_, win_surface_, egl_context_)) {
+            LOGI("eglMakeCurrent failed");
+            return;
+        }
 
         GLuint vsh = init_shader(vertexShader, GL_VERTEX_SHADER);
         GLuint fsh = init_shader(fragYUV420P, GL_FRAGMENT_SHADER);
@@ -206,16 +251,16 @@ namespace tc
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     }
 
-    void FrameRender::UpdateImage(const std::shared_ptr<RawImage>& image_incoming) {
+    void FrameRender::UpdateYUVImage(const std::shared_ptr<RawImage>& image) {
         std::lock_guard<std::mutex> guard(raw_image_mtx_);
         if (!current_raw_image_) {
-            current_raw_image_ = image_incoming->Clone();
+            current_raw_image_ = image->Clone();
         }
         else {
-            if (current_raw_image_->Size() != image_incoming->Size()) {
-                current_raw_image_ = image_incoming->Clone();
+            if (current_raw_image_->Size() != image->Size()) {
+                current_raw_image_ = image->Clone();
             } else {
-                image_incoming->CopyTo(current_raw_image_);
+                image->CopyTo(current_raw_image_);
             }
         }
     }
@@ -267,6 +312,10 @@ namespace tc
         if (need_init_texture_) {
             need_init_texture_ = false;
         }
+
+        if (win_surface_) {
+            eglSwapBuffers(display_, win_surface_);
+        }
     }
 
     void FrameRender::RegisterListeners() {
@@ -275,6 +324,10 @@ namespace tc
             this->need_init_texture_ = true;
             LOGI("Need to init texture...");
         });
+    }
+
+    ANativeWindow* FrameRender::GetNativeWindow() {
+        return native_win_;
     }
 
     void FrameRender::OnCreate() {
@@ -293,6 +346,9 @@ namespace tc
         if (native_win_) {
             ANativeWindow_release(native_win_);
         }
+        eglDestroySurface(display_, win_surface_);
+        eglDestroyContext(display_, egl_context_);
+        eglTerminate(display_);
     }
 
 }

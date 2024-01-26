@@ -1,21 +1,32 @@
 package com.tc.client;
 
 import android.content.Context;
+import android.graphics.PixelFormat;
+import android.graphics.SurfaceTexture;
+import android.media.MediaCodecInfo;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Surface;
 import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+
+import androidx.annotation.NonNull;
 
 import com.tc.client.impl.ThunderSdk;
 
+import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 import javax.microedition.khronos.opengles.GL10;
 
-public class FrameRenderView extends GLSurfaceView implements SurfaceHolder.Callback, GLSurfaceView.Renderer {
+public class FrameRenderView extends SurfaceView implements SurfaceHolder.Callback {
 
     private static final String TAG = "FrameRenderView";
 
     private ThunderSdk mThunderSdk;
+
+    private Surface mSurface;
 
     public FrameRenderView(Context context) {
         this(context, null);
@@ -27,28 +38,27 @@ public class FrameRenderView extends GLSurfaceView implements SurfaceHolder.Call
     }
 
     private void init() {
-        setEGLContextClientVersion(2);//设置openGLES的版本号
         mThunderSdk = new ThunderSdk();
-        Log.i(TAG, "FrameRenderView.");
-
-        setRenderer(this);
+        getHolder().addCallback(this);
+//        getHolder().setFormat(PixelFormat.RGBA_8888);
     }
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        mThunderSdk.init(false, "10.0.0.16", 9002, "/media", getHolder().getSurface(), true);
+    public void surfaceCreated(SurfaceHolder holder) {
+
+    }
+
+    @Override
+    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
+        mSurface = holder.getSurface();
+        mThunderSdk.init(false, "10.0.0.16", 9002, "/media", mSurface, true, false);
         mThunderSdk.start();
-        Log.i(TAG, "onSurfaceCreated.");
+        Log.i(TAG, "surfaceCreated, width: " + width + " height: " + height + " format: " + format);
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
+    public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
 
-    }
-
-    @Override
-    public void onDrawFrame(GL10 gl) {
-        nativeRenderTick();
     }
 
     public void onCreate() {
@@ -65,6 +75,10 @@ public class FrameRenderView extends GLSurfaceView implements SurfaceHolder.Call
 
     public void onDestroy() {
         nativeDestroy();
+    }
+
+    public void onRenderTick() {
+        nativeRenderTick();
     }
 
     private native void nativeCreate();

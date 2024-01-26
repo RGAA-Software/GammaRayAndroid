@@ -22,14 +22,15 @@ namespace tc
         return EnvWrapper::Make(vm_);
     }
 
-    void Application::Init(const ThunderSdkParams& params, bool hw_codec) {
+    void Application::Init(const ThunderSdkParams& params, JNIEnv* env, jobject surface, bool hw_codec, bool use_oes) {
         app_context_ = AppContext::Make();
         frame_render_ = FrameRender::Make(app_context_);
+        frame_render_->Init(env, surface, hw_codec);
 
         thunder_sdk_ = ThunderSdk::Make(app_context_->GetMessageNotifier());
-        thunder_sdk_->Init(params, hw_codec);
+        thunder_sdk_->Init(params, use_oes ? frame_render_->GetNativeWindow() : nullptr, hw_codec);
         thunder_sdk_->RegisterOnVideoFrameDecodedCallback([=](const std::shared_ptr<RawImage>& image) {
-            frame_render_->UpdateImage(image);
+            frame_render_->UpdateYUVImage(image);
         });
 
     }

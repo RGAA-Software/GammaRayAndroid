@@ -28,15 +28,15 @@ public class FrameRenderActivity extends Activity {
 
         mHandler = new Handler(getMainLooper());
 
-//        mTickThread = new Thread(() -> {
-//            while(!mExitTickThread) {
-//                mHandler.postAtFrontOfQueue(() -> {
-//                    mFrameRenderView.onRenderTick();
-//                });
-//                SystemClock.sleep(17);
-//            }
-//        });
-//        mTickThread.start();
+        mTickThread = new Thread(() -> {
+            while(!mExitTickThread) {
+                mHandler.postAtFrontOfQueue(() -> {
+                    mFrameRenderView.onRenderTick();
+                });
+                SystemClock.sleep(17);
+            }
+        });
+        mTickThread.start();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class FrameRenderActivity extends Activity {
 
     @Override
     protected void onPause() {
-        mFrameRenderView.setVisibility(View.GONE);
+        //mFrameRenderView.setVisibility(View.GONE);
         super.onPause();
         mFrameRenderView.onPause();
     }
@@ -71,7 +71,7 @@ public class FrameRenderActivity extends Activity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus && mFrameRenderView.getVisibility() == View.GONE) {
-            mFrameRenderView.setVisibility(View.VISIBLE);
+            //mFrameRenderView.setVisibility(View.VISIBLE);
         }
     }
 }

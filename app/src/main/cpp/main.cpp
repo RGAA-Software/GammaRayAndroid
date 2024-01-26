@@ -16,7 +16,7 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved) {
 
 extern "C" JNIEXPORT jint JNICALL
 Java_com_tc_client_impl_ThunderSdk_init(JNIEnv *env, jobject thiz, jboolean ssl, jstring ip, jint port,
-                                        jstring path, jobject surface, jboolean hw_codec) {
+                                        jstring path, jobject surface, jboolean hw_codec, jboolean use_oes) {
     const char* ip_str = env->GetStringUTFChars(ip, nullptr);
     const char* path_str = env->GetStringUTFChars(path, nullptr);
 
@@ -25,10 +25,7 @@ Java_com_tc_client_impl_ThunderSdk_init(JNIEnv *env, jobject thiz, jboolean ssl,
             .ip_ = ip_str,
             .port_ = port,
             .req_path_ = path_str,
-    }, (bool)hw_codec);
-
-    auto frame_render = g_app->GetFrameRender();
-    frame_render->Init(env, surface, (bool)hw_codec);
+    }, env, surface, (bool)hw_codec, (bool)use_oes);
 
     env->ReleaseStringUTFChars(ip, ip_str);
     env->ReleaseStringUTFChars(path, path_str);

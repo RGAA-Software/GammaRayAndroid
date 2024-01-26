@@ -3,6 +3,7 @@ package com.tc.client;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -25,6 +26,10 @@ public class MainActivity extends Activity {
             startActivity(new Intent(this, FrameRenderActivity.class));
 
         });
+
+        new Handler().postDelayed(() -> {
+            startActivity(new Intent(this, FrameRenderActivity.class));
+        }, 300);
 
     }
 
