@@ -51,7 +51,7 @@ public class FrameRenderView extends SurfaceView implements SurfaceHolder.Callba
     @Override
     public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
         mSurface = holder.getSurface();
-        mThunderSdk.init(false, "10.0.0.16", 9002, "/media", mSurface, true, false);
+        mThunderSdk.init(false, "10.0.0.16", 9002, "/media", mSurface, true, true);
         mThunderSdk.start();
         Log.i(TAG, "surfaceCreated, width: " + width + " height: " + height + " format: " + format);
     }

@@ -13,10 +13,11 @@
 #include <GLES2/gl2.h>
 #include <jni.h>
 
+#include "raw_image.h"
+
 namespace tc
 {
 
-    class RawImage;
     class AppContext;
     class MessageListener;
 
@@ -46,6 +47,12 @@ namespace tc
         std::shared_ptr<AppContext> app_context_ = nullptr;
         std::shared_ptr<MessageListener> bus_listener_ = nullptr;
 
+        RawImageFormat raw_image_format_;
+
+        // another texture for decoder
+        GLuint decode_texture_ = 0;
+        ANativeWindow* decode_win_surface_ = nullptr;
+
         // I420
         GLuint img_textures_[3] = {0};
 
@@ -62,6 +69,11 @@ namespace tc
         std::shared_ptr<RawImage> current_raw_image_ = nullptr;
 
         bool need_init_texture_ = false;
+
+        jobject mSurfaceTextureObj = nullptr;
+        jmethodID mSurfaceTextureUpdateTexImageMID = nullptr;
+        jmethodID mSurfaceGetTransformMatrixMID = nullptr;
+        jmethodID mSurfaceTextureReleaseMID = nullptr;
     };
 
 }
