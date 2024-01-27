@@ -49,9 +49,12 @@ namespace tc
 
         RawImageFormat raw_image_format_;
 
+        GLuint program_;
+
         // another texture for decoder
         GLuint decode_texture_ = 0;
         ANativeWindow* decode_win_surface_ = nullptr;
+        bool use_oes_ = false;
 
         // I420
         GLuint img_textures_[3] = {0};
