@@ -75,6 +75,6 @@ Java_com_tc_client_FrameRenderView_nativeDestroy(JNIEnv *env, jobject thiz) {
 extern "C" JNIEXPORT void JNICALL
 Java_com_tc_client_FrameRenderView_nativeRenderTick(JNIEnv *env, jobject thiz) {
     if (g_app) {
-        g_app->OnRenderTick();
+        g_app->OnRenderTick(env);
     }
 }

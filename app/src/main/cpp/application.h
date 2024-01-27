@@ -29,7 +29,7 @@ namespace tc
         void Exit();
 
         std::shared_ptr<FrameRender> GetFrameRender();
-        void OnRenderTick();
+        void OnRenderTick(JNIEnv* env);
 
         void OnCreate();
         void OnResume();

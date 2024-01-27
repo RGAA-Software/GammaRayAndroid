@@ -118,62 +118,66 @@ namespace tc
 
     void FrameRender::Init(JNIEnv* env, jobject surface, bool hw_codec) {
         raw_image_format_ = hw_codec ? RawImageFormat::kNV12 : RawImageFormat::kI420;
-        if (native_win_) {
-            ANativeWindow_release(native_win_);
-            native_win_ = nullptr;
-        }
-        native_win_ = ANativeWindow_fromSurface(env, reinterpret_cast<jobject>(surface));
-        LOGI("native win: {}", (void*)native_win_);
 
-        display_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
-        if (display_ == EGL_NO_DISPLAY) {
-            LOGI("egl display failed");
-            return;
-        }
-        //2.初始化egl，后两个参数为主次版本号
-        if (EGL_TRUE != eglInitialize(display_, 0, 0)) {
-            LOGI("eglInitialize failed");
-            return;
-        }
+        decode_win_surface_ = ANativeWindow_fromSurface(env, surface);
 
-        //3.1 surface配置，可以理解为窗口
-        EGLConfig eglConfig;
-        EGLint configNum;
-        const EGLint attribs[] = {EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
-                                  EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
-                                  EGL_BLUE_SIZE, 8, EGL_GREEN_SIZE, 8,
-                                  EGL_RED_SIZE, 8, EGL_ALPHA_SIZE, 8,
-                                  EGL_DEPTH_SIZE, 0, EGL_STENCIL_SIZE, 0,
-                                  EGL_NONE};
-
-        if (EGL_TRUE != eglChooseConfig(display_, attribs, &eglConfig, 1, &configNum)) {
-            LOGI("eglChooseConfig failed");
-            return;
-        }
-
-        //3.2创建surface(egl和NativeWindow进行关联。最后一个参数为属性信息，0表示默认版本)
-        win_surface_ = eglCreateWindowSurface(display_, eglConfig, native_win_, nullptr);
-        if (win_surface_ == EGL_NO_SURFACE) {
-            LOGI("eglCreateWindowSurface failed {:x}", eglGetError());
-            return;
-        }
-
-        //4 创建关联上下文
-        const EGLint ctxAttr[] = {
-                EGL_CONTEXT_CLIENT_VERSION, 3, EGL_NONE
-        };
-
-        egl_context_ = eglCreateContext(display_, eglConfig, EGL_NO_CONTEXT, ctxAttr);
-        if (egl_context_ == EGL_NO_CONTEXT) {
-            LOGI("eglCreateContext failed");
-            return;
-        }
-        //将egl和opengl关联
-        //两个surface一个读一个写。第二个一般用来离线渲染？
-        if (EGL_TRUE != eglMakeCurrent(display_, win_surface_, win_surface_, egl_context_)) {
-            LOGI("eglMakeCurrent failed");
-            return;
-        }
+#if 0
+//        if (native_win_) {
+//            ANativeWindow_release(native_win_);
+//            native_win_ = nullptr;
+//        }
+//        native_win_ = ANativeWindow_fromSurface(env, reinterpret_cast<jobject>(surface));
+//        LOGI("native win: {}", (void*)native_win_);
+//
+//        display_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+//        if (display_ == EGL_NO_DISPLAY) {
+//            LOGI("egl display failed");
+//            return;
+//        }
+//        //2.初始化egl，后两个参数为主次版本号
+//        if (EGL_TRUE != eglInitialize(display_, 0, 0)) {
+//            LOGI("eglInitialize failed");
+//            return;
+//        }
+//
+//        //3.1 surface配置，可以理解为窗口
+//        EGLConfig eglConfig;
+//        EGLint configNum;
+//        const EGLint attribs[] = {EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
+//                                  EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+//                                  EGL_BLUE_SIZE, 8, EGL_GREEN_SIZE, 8,
+//                                  EGL_RED_SIZE, 8, EGL_ALPHA_SIZE, 8,
+//                                  EGL_DEPTH_SIZE, 0, EGL_STENCIL_SIZE, 0,
+//                                  EGL_NONE};
+//
+//        if (EGL_TRUE != eglChooseConfig(display_, attribs, &eglConfig, 1, &configNum)) {
+//            LOGI("eglChooseConfig failed");
+//            return;
+//        }
+//
+//        //3.2创建surface(egl和NativeWindow进行关联。最后一个参数为属性信息，0表示默认版本)
+//        win_surface_ = eglCreateWindowSurface(display_, eglConfig, native_win_, nullptr);
+//        if (win_surface_ == EGL_NO_SURFACE) {
+//            LOGI("eglCreateWindowSurface failed {:x}", eglGetError());
+//            return;
+//        }
+//
+//        //4 创建关联上下文
+//        const EGLint ctxAttr[] = {
+//                EGL_CONTEXT_CLIENT_VERSION, 3, EGL_NONE
+//        };
+//
+//        egl_context_ = eglCreateContext(display_, eglConfig, EGL_NO_CONTEXT, ctxAttr);
+//        if (egl_context_ == EGL_NO_CONTEXT) {
+//            LOGI("eglCreateContext failed");
+//            return;
+//        }
+//        //将egl和opengl关联
+//        //两个surface一个读一个写。第二个一般用来离线渲染？
+//        if (EGL_TRUE != eglMakeCurrent(display_, win_surface_, win_surface_, egl_context_)) {
+//            LOGI("eglMakeCurrent failed");
+//            return;
+//        }
 
         GLuint vsh = init_shader(kVertexShader, GL_VERTEX_SHADER);
         GLuint fsh = 0;
@@ -243,54 +247,54 @@ namespace tc
         }
         else {
             /// Another texture beg
-            glGenTextures(1, &decode_texture_);
-            glBindTexture(GL_TEXTURE_EXTERNAL_OES, decode_texture_);
-            glTexParameterf(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexParameterf(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-            jclass clazzIdSurfaceTexture = env->FindClass("android/graphics/SurfaceTexture");
-            if(!clazzIdSurfaceTexture)
-                return;
-            jmethodID surfaceTextureConstructionId = env->GetMethodID(clazzIdSurfaceTexture,"<init>","(I)V");
-            if(!surfaceTextureConstructionId)
-                return;
-            mSurfaceTextureUpdateTexImageMID = env->GetMethodID(clazzIdSurfaceTexture, "updateTexImage", "()V");
-            if(!mSurfaceTextureUpdateTexImageMID)
-                return;
-            mSurfaceGetTransformMatrixMID = env->GetMethodID(clazzIdSurfaceTexture,"getTransformMatrix", "([F)V");
-            if(!mSurfaceGetTransformMatrixMID)
-                return;
-            jobject surfaceTextureObj = env->NewObject(clazzIdSurfaceTexture,surfaceTextureConstructionId,(jint)decode_texture_);
-            if(!surfaceTextureObj)
-                return;
-            mSurfaceTextureObj = env->NewGlobalRef(surfaceTextureObj);
-            if(!mSurfaceTextureObj)
-                return;
-            mSurfaceTextureReleaseMID = env->GetMethodID(clazzIdSurfaceTexture, "release", "()V");
-            if (mSurfaceTextureReleaseMID == nullptr){
-                return;
-            }
-            jclass clazzIdSurface = env->FindClass("android/view/Surface");
-            if(!clazzIdSurface)
-                return;
-            jmethodID surfaceConstructionId = env->GetMethodID(clazzIdSurface,"<init>", "(Landroid/graphics/SurfaceTexture;)V");
-            if(!surfaceConstructionId)
-                return;
-            jobject surfaceObj = env->NewObject(clazzIdSurface,surfaceConstructionId,mSurfaceTextureObj);
-            if(!surfaceObj)
-                return;
-            decode_win_surface_ = ANativeWindow_fromSurface(env, surfaceObj);
-            if (decode_win_surface_) {
-                use_oes_ = true;
-                LOGI("frame render ,use ose...");
-            }
+//            glGenTextures(1, &decode_texture_);
+//            glBindTexture(GL_TEXTURE_EXTERNAL_OES, decode_texture_);
+//            glTexParameterf(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+//            glTexParameterf(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//            glTexParameteri(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+//            glTexParameteri(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+//
+//            jclass clazzIdSurfaceTexture = env->FindClass("android/graphics/SurfaceTexture");
+//            if(!clazzIdSurfaceTexture)
+//                return;
+//            jmethodID surfaceTextureConstructionId = env->GetMethodID(clazzIdSurfaceTexture,"<init>","(I)V");
+//            if(!surfaceTextureConstructionId)
+//                return;
+//            mSurfaceTextureUpdateTexImageMID = env->GetMethodID(clazzIdSurfaceTexture, "updateTexImage", "()V");
+//            if(!mSurfaceTextureUpdateTexImageMID)
+//                return;
+//            mSurfaceGetTransformMatrixMID = env->GetMethodID(clazzIdSurfaceTexture,"getTransformMatrix", "([F)V");
+//            if(!mSurfaceGetTransformMatrixMID)
+//                return;
+//            jobject surfaceTextureObj = env->NewObject(clazzIdSurfaceTexture,surfaceTextureConstructionId,(jint)decode_texture_);
+//            if(!surfaceTextureObj)
+//                return;
+//            mSurfaceTextureObj = env->NewGlobalRef(surfaceTextureObj);
+//            if(!mSurfaceTextureObj)
+//                return;
+//            mSurfaceTextureReleaseMID = env->GetMethodID(clazzIdSurfaceTexture, "release", "()V");
+//            if (mSurfaceTextureReleaseMID == nullptr){
+//                return;
+//            }
+//            jclass clazzIdSurface = env->FindClass("android/view/Surface");
+//            if(!clazzIdSurface)
+//                return;
+//            jmethodID surfaceConstructionId = env->GetMethodID(clazzIdSurface,"<init>", "(Landroid/graphics/SurfaceTexture;)V");
+//            if(!surfaceConstructionId)
+//                return;
+//            jobject surfaceObj = env->NewObject(clazzIdSurface,surfaceConstructionId,mSurfaceTextureObj);
+//            if(!surfaceObj)
+//                return;
+//            decode_win_surface_ = ANativeWindow_fromSurface(env, surfaceObj);
+//            if (decode_win_surface_) {
+//                use_oes_ = true;
+//                LOGI("frame render ,use ose...");
+//            }
 
             /// another texture end
         }
 
-
+#endif
     }
 
     void FrameRender::UpdateYUVImage(const std::shared_ptr<RawImage>& image) {
@@ -307,9 +311,9 @@ namespace tc
         }
     }
 
-    void FrameRender::TickRefresh() {
+    void FrameRender::TickRefresh(JNIEnv* env) {
         std::lock_guard<std::mutex> guard(raw_image_mtx_);
-
+#if 0
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);
         glClearColor(0.2, 0.3, 0.4, 1.0);
 
@@ -379,11 +383,11 @@ namespace tc
             }
         }
         else {
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_EXTERNAL_OES, decode_texture_);
-            glUniform1i(glGetUniformLocation(program_, "image"), 0);
+//            glActiveTexture(GL_TEXTURE0);
+//            glBindTexture(GL_TEXTURE_EXTERNAL_OES, decode_texture_);
+//            glUniform1i(glGetUniformLocation(program_, "image"), 0);
             //LOGI("Program image location: {} texture id: {}", glGetUniformLocation(program_, "image"), decode_texture_);
-
+//            env->CallVoidMethod(mSurfaceTextureObj, mSurfaceTextureUpdateTexImageMID);
         }
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
@@ -394,6 +398,7 @@ namespace tc
         if (win_surface_) {
             eglSwapBuffers(display_, win_surface_);
         }
+#endif
     }
 
     void FrameRender::RegisterListeners() {
@@ -421,6 +426,7 @@ namespace tc
     }
 
     void FrameRender::OnDestroy() {
+#if 0
         if (native_win_) {
             ANativeWindow_release(native_win_);
         }
@@ -430,6 +436,7 @@ namespace tc
         eglDestroySurface(display_, win_surface_);
         eglDestroyContext(display_, egl_context_);
         eglTerminate(display_);
+#endif
     }
 
 }

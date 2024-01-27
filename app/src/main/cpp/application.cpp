@@ -47,9 +47,9 @@ namespace tc
         return frame_render_;
     }
 
-    void Application::OnRenderTick() {
+    void Application::OnRenderTick(JNIEnv* env) {
         if (frame_render_) {
-            frame_render_->TickRefresh();
+            frame_render_->TickRefresh(env);
         }
     }
 

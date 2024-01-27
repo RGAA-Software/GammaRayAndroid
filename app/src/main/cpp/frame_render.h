@@ -30,7 +30,7 @@ namespace tc
 
         void Init(JNIEnv* env, jobject surface, bool hw_codec);
         void UpdateYUVImage(const std::shared_ptr<RawImage>& image);
-        void TickRefresh();
+        void TickRefresh(JNIEnv* env);
         ANativeWindow* GetNativeWindow();
 
         void OnCreate();
@@ -73,10 +73,10 @@ namespace tc
 
         bool need_init_texture_ = false;
 
-        jobject mSurfaceTextureObj = nullptr;
-        jmethodID mSurfaceTextureUpdateTexImageMID = nullptr;
-        jmethodID mSurfaceGetTransformMatrixMID = nullptr;
-        jmethodID mSurfaceTextureReleaseMID = nullptr;
+//        jobject mSurfaceTextureObj = nullptr;
+//        jmethodID mSurfaceTextureUpdateTexImageMID = nullptr;
+//        jmethodID mSurfaceGetTransformMatrixMID = nullptr;
+//        jmethodID mSurfaceTextureReleaseMID = nullptr;
     };
 
 }
