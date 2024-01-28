@@ -50,7 +50,7 @@ public class FrameRenderView extends GLSurfaceView {
                         EGL10.EGL_BLUE_SIZE, 8,
                         EGL10.EGL_DEPTH_SIZE, 24,
                         EGL10.EGL_SAMPLE_BUFFERS, 1,
-                        EGL10.EGL_SAMPLES, 4,
+//                        EGL10.EGL_SAMPLES, 4,
                         EGL10.EGL_NONE
                 };
                 EGLConfig[] configs = new EGLConfig[1];
@@ -70,24 +70,24 @@ public class FrameRenderView extends GLSurfaceView {
         setRenderer(mRender);
         setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
     }
+
     public void onCreate() {
-        nativeCreate();
+        mRender.onCreate();
     }
+
     public void onResume() {
-        nativeResume();
+        mRender.onResume();
     }
+
     public void onPause() {
-        nativePause();
+        mRender.onPause();
     }
+
     public void onDestroy() {
-        nativeDestroy();
+        mRender.onDestroy();
     }
+
     public void onRenderTick() {
-        nativeRenderTick();
+        mRender.onRenderTick();
     }
-    private native void nativeCreate();
-    private native void nativeResume();
-    private native void nativePause();
-    private native void nativeDestroy();
-    private native void nativeRenderTick();
 }

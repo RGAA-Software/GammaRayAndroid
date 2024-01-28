@@ -6,6 +6,7 @@
 #include "env_wrapper.h"
 #include "frame_render.h"
 #include "app_context.h"
+#include "tc_client_sdk/video_decoder_factory.h"
 
 namespace tc
 {
@@ -25,10 +26,26 @@ namespace tc
     void Application::Init(const ThunderSdkParams& params, JNIEnv* env, jobject surface, bool hw_codec, bool use_oes) {
         app_context_ = AppContext::Make();
         frame_render_ = FrameRender::Make(app_context_);
-        frame_render_->Init(env, surface, hw_codec);
+        auto drt = [&]() -> DecoderRenderType {
+            if (!hw_codec) {
+                return DecoderRenderType::kFFmpegI420;
+            }
+            else if (hw_codec) {
+                if (use_oes) {
+                    return DecoderRenderType::kMediaCodecSurface;
+                }
+                else {
+                    return DecoderRenderType::kMediaCodecNv21;
+                }
+            }
+            else {
+                return DecoderRenderType::kMediaCodecSurface;
+            }
+        }();
+        frame_render_->Init(env, surface, drt);
 
         thunder_sdk_ = ThunderSdk::Make(app_context_->GetMessageNotifier());
-        thunder_sdk_->Init(params, use_oes ? frame_render_->GetNativeWindow() : nullptr, hw_codec);
+        thunder_sdk_->Init(params, use_oes ? frame_render_->GetNativeWindow() : nullptr, drt);
         thunder_sdk_->RegisterOnVideoFrameDecodedCallback([=](const std::shared_ptr<RawImage>& image) {
             frame_render_->UpdateYUVImage(image);
         });

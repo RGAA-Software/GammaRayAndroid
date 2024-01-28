@@ -31,7 +31,7 @@ public class FrameRenderActivity extends Activity {
         mTickThread = new Thread(() -> {
             while(!mExitTickThread) {
                 mHandler.postAtFrontOfQueue(() -> {
-                    mFrameRenderView.onRenderTick();
+                    //mFrameRenderView.onRenderTick();
                 });
                 SystemClock.sleep(17);
             }

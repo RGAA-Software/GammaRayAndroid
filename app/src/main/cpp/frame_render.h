@@ -9,11 +9,11 @@
 #include <mutex>
 
 #include <android/native_window_jni.h>
-#include <EGL/egl.h>
-#include <GLES2/gl2.h>
 #include <jni.h>
 
-#include "raw_image.h"
+#include "tc_client_sdk/gl/raw_image.h"
+#include "tc_client_sdk/decoder_render_type.h"
+#include "gl/shader_program.h"
 
 namespace tc
 {
@@ -28,7 +28,7 @@ namespace tc
 
         explicit FrameRender(const std::shared_ptr<AppContext>& ctx);
 
-        void Init(JNIEnv* env, jobject surface, bool hw_codec);
+        void Init(JNIEnv* env, jobject surface, const DecoderRenderType& drt);
         void UpdateYUVImage(const std::shared_ptr<RawImage>& image);
         void TickRefresh(JNIEnv* env);
         ANativeWindow* GetNativeWindow();
@@ -47,11 +47,12 @@ namespace tc
         std::shared_ptr<AppContext> app_context_ = nullptr;
         std::shared_ptr<MessageListener> bus_listener_ = nullptr;
 
-        RawImageFormat raw_image_format_;
+        DecoderRenderType decoder_render_type_;
 
         GLuint program_;
 
         // another texture for decoder
+        GLuint video_vao_ = 0;
         GLuint decode_texture_ = 0;
         ANativeWindow* decode_win_surface_ = nullptr;
         bool use_oes_ = false;
@@ -63,20 +64,11 @@ namespace tc
         GLuint y_texture_id_ = 0;
         GLuint uv_texture_id_ = 0;
 
-        EGLDisplay display_{};
-        EGLSurface win_surface_{};
-        EGLContext egl_context_{};
-        ANativeWindow* native_win_ = nullptr;
-
         std::mutex raw_image_mtx_;
         std::shared_ptr<RawImage> current_raw_image_ = nullptr;
 
         bool need_init_texture_ = false;
-
-//        jobject mSurfaceTextureObj = nullptr;
-//        jmethodID mSurfaceTextureUpdateTexImageMID = nullptr;
-//        jmethodID mSurfaceGetTransformMatrixMID = nullptr;
-//        jmethodID mSurfaceTextureReleaseMID = nullptr;
+        bool is_gl_inited_ = false;
     };
 
 }

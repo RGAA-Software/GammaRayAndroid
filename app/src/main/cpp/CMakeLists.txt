@@ -45,7 +45,8 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME}
-        GLESv2
+        #GLESv2
+        GLESv3
         EGL
         android
         log

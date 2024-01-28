@@ -6,7 +6,8 @@
 
 #include "tc_common/log.h"
 #include "tc_common/message_notifier.h"
-#include "tc_client_sdk/raw_image.h"
+#include "tc_common/time_ext.h"
+#include "tc_client_sdk/gl/raw_image.h"
 #include "app_context.h"
 #include "sdk_messages.h"
 
@@ -19,9 +20,10 @@
 #include <GLES2/gl2ext.h>
 
 static const char *kVertexShader = R"(
-        attribute vec4 aPosition;
-        attribute vec2 aTextCoord;
-        varying vec2 vTextCoord;
+        #version 320 es
+        in vec4 aPosition;
+        in vec2 aTextCoord;
+        out vec2 vTextCoord;
         void main() {
             //这里其实是将上下翻转过来（因为安卓图片会自动上下翻转，所以转回来）
             vTextCoord = vec2(aTextCoord.x, 1.0 - aTextCoord.y);
@@ -30,54 +32,46 @@ static const char *kVertexShader = R"(
 )";
 
 static const char *kFragYUV420P = R"(
+        #version 320 es
         precision mediump float;
-        varying vec2 vTextCoord;
+        in vec2 vTextCoord;
 
         uniform sampler2D yTexture;
         uniform sampler2D uTexture;
         uniform sampler2D vTexture;
+
+        out vec4 FragColor;
         void main() {
             vec3 yuv;
             vec3 rgb;
 
-            yuv.x = texture2D(yTexture, vTextCoord).g;
-            yuv.y = texture2D(uTexture, vTextCoord).g - 0.5;
-            yuv.z = texture2D(vTexture, vTextCoord).g - 0.5;
+            yuv.x = texture(yTexture, vTextCoord).g;
+            yuv.y = texture(uTexture, vTextCoord).g - 0.5;
+            yuv.z = texture(vTexture, vTextCoord).g - 0.5;
             rgb = mat3(
                     1.0, 1.0, 1.0,
                     0.0, -0.39465, 2.03211,
                     1.13983, -0.5806, 0.0
             ) * yuv;
 
-            gl_FragColor = vec4(rgb, 1.0);
+            FragColor = vec4(rgb, 1.0);
         }
 )";
 
-static const char* kFragRGB = "#extension GL_OES_EGL_image_external : require\n"
-                                 "precision mediump float;\n"
-                                 "uniform mat4 tx_matrix;\n"
-                                 "uniform samplerExternalOES tex_y;\n"
-                                 "varying vec2 tx;\n"
-                                 "void main(){\n"
-                                 "    vec2 tx_transformed = (tx_matrix * vec4(tx, 0, 1.0)).xy;\n"
-                                 "    gl_FragColor = texture2D(tex_y, tx_transformed);\n"
-                                 "}\n";
+static const char* kFragOES = R"(
+    #version 320 es
+    #extension GL_OES_EGL_image_external_essl3 : require
 
-static const char* kFragNV12 = R"(
+    precision mediump float;
+    in vec2 vTextCoord;
+    uniform samplerExternalOES sTexture;
 
-    #extension GL_OES_EGL_image_external : require
-    precision highp float;
-    uniform samplerExternalOES image;
+    out vec4 FragColor;
 
-    varying vec2 vTextCoord;
-
-    void main()
-    {
-        vec3 frame_rgb = texture2D(image, vTextCoord).rgb;
-        gl_FragColor = vec4(frame_rgb, 1);
-        //gl_FragColor = vec4(0.2, 0.3, 0.4, 1);
+    void main() {
+        FragColor = texture(sTexture, vTextCoord);
+        //FragColor = vec4(1.0, 0.0, 1.0, 1.0);
     }
-
 )";
 
 GLuint init_shader(const char *source, GLenum type) {
@@ -116,76 +110,22 @@ namespace tc
         RegisterListeners();
     }
 
-    void FrameRender::Init(JNIEnv* env, jobject surface, bool hw_codec) {
-        raw_image_format_ = hw_codec ? RawImageFormat::kNV12 : RawImageFormat::kI420;
+    void FrameRender::Init(JNIEnv* env, jobject surface, const DecoderRenderType& drt) {
+        decoder_render_type_ = drt;
+        if (surface) {
+            decode_win_surface_ = ANativeWindow_fromSurface(env, surface);
+        }
 
-        decode_win_surface_ = ANativeWindow_fromSurface(env, surface);
-
-#if 0
-//        if (native_win_) {
-//            ANativeWindow_release(native_win_);
-//            native_win_ = nullptr;
-//        }
-//        native_win_ = ANativeWindow_fromSurface(env, reinterpret_cast<jobject>(surface));
-//        LOGI("native win: {}", (void*)native_win_);
-//
-//        display_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
-//        if (display_ == EGL_NO_DISPLAY) {
-//            LOGI("egl display failed");
-//            return;
-//        }
-//        //2.初始化egl，后两个参数为主次版本号
-//        if (EGL_TRUE != eglInitialize(display_, 0, 0)) {
-//            LOGI("eglInitialize failed");
-//            return;
-//        }
-//
-//        //3.1 surface配置，可以理解为窗口
-//        EGLConfig eglConfig;
-//        EGLint configNum;
-//        const EGLint attribs[] = {EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
-//                                  EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
-//                                  EGL_BLUE_SIZE, 8, EGL_GREEN_SIZE, 8,
-//                                  EGL_RED_SIZE, 8, EGL_ALPHA_SIZE, 8,
-//                                  EGL_DEPTH_SIZE, 0, EGL_STENCIL_SIZE, 0,
-//                                  EGL_NONE};
-//
-//        if (EGL_TRUE != eglChooseConfig(display_, attribs, &eglConfig, 1, &configNum)) {
-//            LOGI("eglChooseConfig failed");
-//            return;
-//        }
-//
-//        //3.2创建surface(egl和NativeWindow进行关联。最后一个参数为属性信息，0表示默认版本)
-//        win_surface_ = eglCreateWindowSurface(display_, eglConfig, native_win_, nullptr);
-//        if (win_surface_ == EGL_NO_SURFACE) {
-//            LOGI("eglCreateWindowSurface failed {:x}", eglGetError());
-//            return;
-//        }
-//
-//        //4 创建关联上下文
-//        const EGLint ctxAttr[] = {
-//                EGL_CONTEXT_CLIENT_VERSION, 3, EGL_NONE
-//        };
-//
-//        egl_context_ = eglCreateContext(display_, eglConfig, EGL_NO_CONTEXT, ctxAttr);
-//        if (egl_context_ == EGL_NO_CONTEXT) {
-//            LOGI("eglCreateContext failed");
-//            return;
-//        }
-//        //将egl和opengl关联
-//        //两个surface一个读一个写。第二个一般用来离线渲染？
-//        if (EGL_TRUE != eglMakeCurrent(display_, win_surface_, win_surface_, egl_context_)) {
-//            LOGI("eglMakeCurrent failed");
-//            return;
-//        }
+        GL_FUNC glGenVertexArrays(1, &video_vao_);
+        GL_FUNC glBindVertexArray(video_vao_);
 
         GLuint vsh = init_shader(kVertexShader, GL_VERTEX_SHADER);
         GLuint fsh = 0;
-        if (raw_image_format_ == RawImageFormat::kI420) {
+        if (drt == DecoderRenderType::kFFmpegI420) {
             fsh = init_shader(kFragYUV420P, GL_FRAGMENT_SHADER);
         }
-        else {
-            fsh = init_shader(kFragNV12, GL_FRAGMENT_SHADER);
+        else if (drt == DecoderRenderType::kMediaCodecSurface) {
+            fsh = init_shader(kFragOES, GL_FRAGMENT_SHADER);
         }
 
         program_ = glCreateProgram();
@@ -206,28 +146,43 @@ namespace tc
         glUseProgram(program_);
         LOGI("glLinkProgram success");
 
-        static float ver[] = {
-                1.0f, -1.0f, 0.0f,
-                -1.0f, -1.0f, 0.0f,
-                1.0f, 1.0f, 0.0f,
-                -1.0f, 1.0f, 0.0f
-        };
+        {
+            static float ver[] = {
+                    1.0f, -1.0f, 0.0f,
+                    -1.0f, -1.0f, 0.0f,
+                    1.0f, 1.0f, 0.0f,
+                    -1.0f, 1.0f, 0.0f
+            };
 
-        auto apos = static_cast<GLuint>(glGetAttribLocation(program_, "aPosition"));
-        glEnableVertexAttribArray(apos);
-        glVertexAttribPointer(apos, 3, GL_FLOAT, GL_FALSE, 0, ver);
+            GLuint vbo;
+            glGenBuffers(1, &vbo);
+            glBindBuffer(GL_ARRAY_BUFFER, vbo);
+            glBufferData(GL_ARRAY_BUFFER, sizeof(ver), ver, GL_DYNAMIC_DRAW);
 
-        static float fragment[] = {
-                1.0f, 0.0f,
-                0.0f, 0.0f,
-                1.0f, 1.0f,
-                0.0f, 1.0f
-        };
-        auto aTex = static_cast<GLuint>(glGetAttribLocation(program_, "aTextCoord"));
-        glEnableVertexAttribArray(aTex);
-        glVertexAttribPointer(aTex, 2, GL_FLOAT, GL_FALSE, 0, fragment);
+            int posLoc = glGetAttribLocation(program_, "aPosition");
+            GL_FUNC glVertexAttribPointer(posLoc, 3, GL_FLOAT, false, 0, 0);
+            GL_FUNC glEnableVertexAttribArray(posLoc);
+        }
 
-        if (raw_image_format_ == RawImageFormat::kI420) {
+        {
+            static float fragment[] = {
+                    1.0f, 0.0f,
+                    0.0f, 0.0f,
+                    1.0f, 1.0f,
+                    0.0f, 1.0f
+            };
+
+            GLuint vbo_tex_coord;
+            glGenBuffers(1, &vbo_tex_coord);
+            glBindBuffer(GL_ARRAY_BUFFER, vbo_tex_coord);
+            glBufferData(GL_ARRAY_BUFFER, sizeof(fragment), fragment, GL_DYNAMIC_DRAW);
+
+            int tex_coord_loc = glGetAttribLocation(program_, "aTextCoord");
+            GL_FUNC glVertexAttribPointer(tex_coord_loc, 2, GL_FLOAT, false, 0, 0);
+            GL_FUNC glEnableVertexAttribArray(tex_coord_loc);
+        }
+
+        if (decoder_render_type_ == DecoderRenderType::kFFmpegI420) {
             glUniform1i(glGetUniformLocation(program_, "yTexture"), 0);
             glUniform1i(glGetUniformLocation(program_, "uTexture"), 1);
             glUniform1i(glGetUniformLocation(program_, "vTexture"), 2);
@@ -245,7 +200,7 @@ namespace tc
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         }
-        else {
+        else if (drt == DecoderRenderType::kMediaCodecSurface) {
             /// Another texture beg
 //            glGenTextures(1, &decode_texture_);
 //            glBindTexture(GL_TEXTURE_EXTERNAL_OES, decode_texture_);
@@ -253,48 +208,10 @@ namespace tc
 //            glTexParameterf(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 //            glTexParameteri(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 //            glTexParameteri(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-//
-//            jclass clazzIdSurfaceTexture = env->FindClass("android/graphics/SurfaceTexture");
-//            if(!clazzIdSurfaceTexture)
-//                return;
-//            jmethodID surfaceTextureConstructionId = env->GetMethodID(clazzIdSurfaceTexture,"<init>","(I)V");
-//            if(!surfaceTextureConstructionId)
-//                return;
-//            mSurfaceTextureUpdateTexImageMID = env->GetMethodID(clazzIdSurfaceTexture, "updateTexImage", "()V");
-//            if(!mSurfaceTextureUpdateTexImageMID)
-//                return;
-//            mSurfaceGetTransformMatrixMID = env->GetMethodID(clazzIdSurfaceTexture,"getTransformMatrix", "([F)V");
-//            if(!mSurfaceGetTransformMatrixMID)
-//                return;
-//            jobject surfaceTextureObj = env->NewObject(clazzIdSurfaceTexture,surfaceTextureConstructionId,(jint)decode_texture_);
-//            if(!surfaceTextureObj)
-//                return;
-//            mSurfaceTextureObj = env->NewGlobalRef(surfaceTextureObj);
-//            if(!mSurfaceTextureObj)
-//                return;
-//            mSurfaceTextureReleaseMID = env->GetMethodID(clazzIdSurfaceTexture, "release", "()V");
-//            if (mSurfaceTextureReleaseMID == nullptr){
-//                return;
-//            }
-//            jclass clazzIdSurface = env->FindClass("android/view/Surface");
-//            if(!clazzIdSurface)
-//                return;
-//            jmethodID surfaceConstructionId = env->GetMethodID(clazzIdSurface,"<init>", "(Landroid/graphics/SurfaceTexture;)V");
-//            if(!surfaceConstructionId)
-//                return;
-//            jobject surfaceObj = env->NewObject(clazzIdSurface,surfaceConstructionId,mSurfaceTextureObj);
-//            if(!surfaceObj)
-//                return;
-//            decode_win_surface_ = ANativeWindow_fromSurface(env, surfaceObj);
-//            if (decode_win_surface_) {
-//                use_oes_ = true;
-//                LOGI("frame render ,use ose...");
-//            }
-
-            /// another texture end
         }
 
-#endif
+        GL_FUNC glBindVertexArray(0);
+        is_gl_inited_ = true;
     }
 
     void FrameRender::UpdateYUVImage(const std::shared_ptr<RawImage>& image) {
@@ -313,92 +230,73 @@ namespace tc
 
     void FrameRender::TickRefresh(JNIEnv* env) {
         std::lock_guard<std::mutex> guard(raw_image_mtx_);
-#if 0
-        glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);
-        glClearColor(0.2, 0.3, 0.4, 1.0);
+        if (!is_gl_inited_) {
+            return;
+        }
 
-        if (current_raw_image_) {
+        glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
+        glUseProgram(program_);
+        glBindVertexArray(video_vao_);
+
+        if (decoder_render_type_ == DecoderRenderType::kFFmpegI420 && current_raw_image_) {
             int width = current_raw_image_->img_width;
             int height = current_raw_image_->img_height;
-            LOGI("Update texture ....");
-            if (raw_image_format_ == RawImageFormat::kI420) {
-                auto y = current_raw_image_->Data();
-                auto u = y + width * height;
-                auto v = u + width * height / 4;
-
-                glActiveTexture(GL_TEXTURE0);
-                glBindTexture(GL_TEXTURE_2D, img_textures_[0]);
-                if (need_init_texture_) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width, height, 0, GL_LUMINANCE,
-                                 GL_UNSIGNED_BYTE, y);
-                } else {
-                    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_LUMINANCE,
-                                    GL_UNSIGNED_BYTE, y);
-                }
-
-                glActiveTexture(GL_TEXTURE1);
-                glBindTexture(GL_TEXTURE_2D, img_textures_[1]);
-                if (need_init_texture_) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width / 2, height / 2, 0,
-                                 GL_LUMINANCE,
-                                 GL_UNSIGNED_BYTE, u);
-                } else {
-                    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width / 2, height / 2, GL_LUMINANCE,
-                                    GL_UNSIGNED_BYTE, u);
-                }
-
-                glActiveTexture(GL_TEXTURE2);
-                glBindTexture(GL_TEXTURE_2D, img_textures_[2]);
-                if (need_init_texture_) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width / 2, height / 2, 0,
-                                 GL_LUMINANCE,
-                                 GL_UNSIGNED_BYTE, v);
-                } else {
-                    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width / 2, height / 2, GL_LUMINANCE,
-                                    GL_UNSIGNED_BYTE, v);
-                }
-            } else if (raw_image_format_ == RawImageFormat::kNV12) {
-                auto y = current_raw_image_->Data();
-                auto uv = y + width * height;
-
-                glActiveTexture(GL_TEXTURE0);
-                glBindTexture(GL_TEXTURE_2D, y_texture_id_);
-                if (need_init_texture_) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width, height, 0, GL_LUMINANCE,
-                                 GL_UNSIGNED_BYTE, y);
-                } else {
-                    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_LUMINANCE,
-                                    GL_UNSIGNED_BYTE, y);
-                }
-
-                glActiveTexture(GL_TEXTURE1);
-                glBindTexture(GL_TEXTURE_2D, uv_texture_id_);
-                if (need_init_texture_) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA, height / 2, height / 2, 0,
-                                 GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, uv);
-                } else {
-                    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width / 2, height / 2, GL_LUMINANCE,
-                                    GL_UNSIGNED_BYTE, uv);
-                }
+            auto y = current_raw_image_->Data();
+            auto u = y + width * height;
+            auto v = u + width * height / 4;
+            auto beg = TimeExt::GetCurrentTimestamp();
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, img_textures_[0]);
+            if (need_init_texture_) {
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width, height, 0, GL_LUMINANCE,
+                             GL_UNSIGNED_BYTE, y);
+            } else {
+                glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_LUMINANCE,
+                                GL_UNSIGNED_BYTE, y);
             }
+
+            glActiveTexture(GL_TEXTURE1);
+            glBindTexture(GL_TEXTURE_2D, img_textures_[1]);
+            if (need_init_texture_) {
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width / 2, height / 2, 0,
+                             GL_LUMINANCE,
+                             GL_UNSIGNED_BYTE, u);
+            } else {
+                glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width / 2, height / 2, GL_LUMINANCE,
+                                GL_UNSIGNED_BYTE, u);
+            }
+
+            glActiveTexture(GL_TEXTURE2);
+            glBindTexture(GL_TEXTURE_2D, img_textures_[2]);
+            if (need_init_texture_) {
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width / 2, height / 2, 0,
+                             GL_LUMINANCE,
+                             GL_UNSIGNED_BYTE, v);
+            } else {
+                glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width / 2, height / 2, GL_LUMINANCE,
+                                GL_UNSIGNED_BYTE, v);
+            }
+
+            auto end = TimeExt::GetCurrentTimestamp();
+            LOGI("upload to gpu used: {}ms", (end-beg));
         }
-        else {
-//            glActiveTexture(GL_TEXTURE0);
-//            glBindTexture(GL_TEXTURE_EXTERNAL_OES, decode_texture_);
-//            glUniform1i(glGetUniformLocation(program_, "image"), 0);
-            //LOGI("Program image location: {} texture id: {}", glGetUniformLocation(program_, "image"), decode_texture_);
-//            env->CallVoidMethod(mSurfaceTextureObj, mSurfaceTextureUpdateTexImageMID);
+        else if (decoder_render_type_ == DecoderRenderType::kMediaCodecSurface) {
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_EXTERNAL_OES, 1/*decode_texture_*/);
+            glUniform1i(glGetUniformLocation(program_, "sTexture"), 0);
+            LOGI("Program image location: {} texture id: {}", glGetUniformLocation(program_, "sTexture"), decode_texture_);
         }
+
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
         if (need_init_texture_) {
             need_init_texture_ = false;
         }
 
-        if (win_surface_) {
-            eglSwapBuffers(display_, win_surface_);
-        }
-#endif
+        glUseProgram(0);
+        glBindVertexArray(0);
+
     }
 
     void FrameRender::RegisterListeners() {
@@ -426,17 +324,7 @@ namespace tc
     }
 
     void FrameRender::OnDestroy() {
-#if 0
-        if (native_win_) {
-            ANativeWindow_release(native_win_);
-        }
-        if (decode_win_surface_) {
-            ANativeWindow_release(decode_win_surface_);
-        }
-        eglDestroySurface(display_, win_surface_);
-        eglDestroyContext(display_, egl_context_);
-        eglTerminate(display_);
-#endif
+
     }
 
 }
