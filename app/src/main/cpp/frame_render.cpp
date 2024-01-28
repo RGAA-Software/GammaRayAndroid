@@ -110,8 +110,9 @@ namespace tc
         RegisterListeners();
     }
 
-    void FrameRender::Init(JNIEnv* env, jobject surface, const DecoderRenderType& drt) {
+    void FrameRender::Init(JNIEnv* env, jobject surface, const DecoderRenderType& drt, int oes_tex_id) {
         decoder_render_type_ = drt;
+        oes_tex_id_ = oes_tex_id;
         if (surface) {
             decode_win_surface_ = ANativeWindow_fromSurface(env, surface);
         }
@@ -211,7 +212,7 @@ namespace tc
         }
 
         GL_FUNC glBindVertexArray(0);
-        is_gl_inited_ = true;
+        is_gl_initted_ = true;
     }
 
     void FrameRender::UpdateYUVImage(const std::shared_ptr<RawImage>& image) {
@@ -230,7 +231,7 @@ namespace tc
 
     void FrameRender::TickRefresh(JNIEnv* env) {
         std::lock_guard<std::mutex> guard(raw_image_mtx_);
-        if (!is_gl_inited_) {
+        if (!is_gl_initted_) {
             return;
         }
 
@@ -283,9 +284,9 @@ namespace tc
         }
         else if (decoder_render_type_ == DecoderRenderType::kMediaCodecSurface) {
             glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_EXTERNAL_OES, 1/*decode_texture_*/);
+            glBindTexture(GL_TEXTURE_EXTERNAL_OES, oes_tex_id_);
             glUniform1i(glGetUniformLocation(program_, "sTexture"), 0);
-            LOGI("Program image location: {} texture id: {}", glGetUniformLocation(program_, "sTexture"), decode_texture_);
+            LOGI("Program image location: {} texture id: {}", glGetUniformLocation(program_, "sTexture"), oes_tex_id_);
         }
 
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);

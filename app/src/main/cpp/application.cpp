@@ -23,7 +23,7 @@ namespace tc
         return EnvWrapper::Make(vm_);
     }
 
-    void Application::Init(const ThunderSdkParams& params, JNIEnv* env, jobject surface, bool hw_codec, bool use_oes) {
+    void Application::Init(const ThunderSdkParams& params, JNIEnv* env, jobject surface, bool hw_codec, bool use_oes, int oes_tex_id) {
         app_context_ = AppContext::Make();
         frame_render_ = FrameRender::Make(app_context_);
         auto drt = [&]() -> DecoderRenderType {
@@ -42,7 +42,7 @@ namespace tc
                 return DecoderRenderType::kMediaCodecSurface;
             }
         }();
-        frame_render_->Init(env, surface, drt);
+        frame_render_->Init(env, surface, drt, oes_tex_id);
 
         thunder_sdk_ = ThunderSdk::Make(app_context_->GetMessageNotifier());
         thunder_sdk_->Init(params, use_oes ? frame_render_->GetNativeWindow() : nullptr, drt);

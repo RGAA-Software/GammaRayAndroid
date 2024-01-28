@@ -28,7 +28,7 @@ namespace tc
 
         explicit FrameRender(const std::shared_ptr<AppContext>& ctx);
 
-        void Init(JNIEnv* env, jobject surface, const DecoderRenderType& drt);
+        void Init(JNIEnv* env, jobject surface, const DecoderRenderType& drt, int oes_tex_id);
         void UpdateYUVImage(const std::shared_ptr<RawImage>& image);
         void TickRefresh(JNIEnv* env);
         ANativeWindow* GetNativeWindow();
@@ -53,7 +53,7 @@ namespace tc
 
         // another texture for decoder
         GLuint video_vao_ = 0;
-        GLuint decode_texture_ = 0;
+        GLuint oes_tex_id_ = 0;
         ANativeWindow* decode_win_surface_ = nullptr;
         bool use_oes_ = false;
 
@@ -68,7 +68,7 @@ namespace tc
         std::shared_ptr<RawImage> current_raw_image_ = nullptr;
 
         bool need_init_texture_ = false;
-        bool is_gl_inited_ = false;
+        bool is_gl_initted_ = false;
     };
 
 }
