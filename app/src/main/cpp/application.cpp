@@ -50,6 +50,7 @@ namespace tc
             frame_render_->UpdateYUVImage(image);
         });
 
+        LOGI("hw codec:{}, use oes: {}, oes tex id: {}", hw_codec, use_oes, oes_tex_id);
     }
 
     void Application::Start() {

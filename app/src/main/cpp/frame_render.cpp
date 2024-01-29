@@ -19,8 +19,7 @@
 #include <android/window.h>
 #include <GLES2/gl2ext.h>
 
-static const char *kVertexShader = R"(
-        #version 320 es
+static const char *kVertexShader = R"(#version 320 es
         in vec4 aPosition;
         in vec2 aTextCoord;
         out vec2 vTextCoord;
@@ -31,8 +30,7 @@ static const char *kVertexShader = R"(
         }
 )";
 
-static const char *kFragYUV420P = R"(
-        #version 320 es
+static const char *kFragYUV420P = R"(#version 320 es
         precision mediump float;
         in vec2 vTextCoord;
 
@@ -58,8 +56,7 @@ static const char *kFragYUV420P = R"(
         }
 )";
 
-static const char* kFragOES = R"(
-    #version 320 es
+static const char* kFragOES = R"(#version 320 es
     #extension GL_OES_EGL_image_external_essl3 : require
 
     precision mediump float;
@@ -286,7 +283,7 @@ namespace tc
             glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_EXTERNAL_OES, oes_tex_id_);
             glUniform1i(glGetUniformLocation(program_, "sTexture"), 0);
-            LOGI("Program image location: {} texture id: {}", glGetUniformLocation(program_, "sTexture"), oes_tex_id_);
+            //LOGI("Program image location: {} texture id: {}", glGetUniformLocation(program_, "sTexture"), oes_tex_id_);
         }
 
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);

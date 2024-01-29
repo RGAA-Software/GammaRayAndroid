@@ -12,7 +12,7 @@ android {
         minSdk 23
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
@@ -26,12 +26,38 @@ android {
         ndkVersion "26.1.10909125"
     }
 
-    buildTypes {
+    signingConfigs {
+        debug {
+            storeFile file("./tc_key.jks")
+            storePassword "Shark@3210%!"
+            keyAlias "tc_key_android"
+            keyPassword "Shark@3210%!"
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            storeFile file("./tc_key.jks")
+            storePassword "Shark@3210%!"
+            keyAlias "tc_key_android"
+            keyPassword "Shark@3210%!"
         }
     }
+
+    buildTypes {
+        debug {
+            ndk {
+                abiFilters "arm64-v8a"
+            }
+            signingConfig signingConfigs.release
+        }
+        release {
+            ndk {
+                abiFilters "arm64-v8a"
+            }
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -48,15 +74,126 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "TC_" + productFlavors[0].manifestPlaceholders.get("apk_name") + "_" + variant.versionName + ".apk"
+        }
+    }
+
+    sourceSets {
+        official {
+            manifest.srcFile 'main/AndroidManifest.xml'
+        }
+        steam {
+            manifest.srcFile 'main/AndroidManifest.xml'
+        }
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        official {
+            dimension "version"
+            //applicationIdSuffix ".offical"
+            manifestPlaceholders = [
+                    app_icon: "@drawable/ic_launcher",
+                    app_name: "Thunder Cloud",
+                    //src_package: "cn.dolit.vr.demo",
+                    apk_name: "Official"
+            ]
+        }
+        steam {
+            dimension "version"
+            //applicationIdSuffix ".yifeng"
+            manifestPlaceholders = [
+                    app_icon: "@drawable/ic_launcher",
+                    app_name: "Thunder Cloud",
+                    //src_package: "cn.dolit.vr.demo",
+                    apk_name: "Steam"
+            ]
+        }
+    }
+
+    this.project.afterEvaluate { project ->
+        project.tasks.each { task ->
+            if (task.toString().contains("assemble") && task.toString().contains("Release") && !task.toString().contains("Test")) {
+                task.doLast {
+                    android.applicationVariants.all { variant ->
+                        variant.outputs.all {
+                            println("FLAVOR : ${productFlavors[0].name}")
+                            def currentName = outputFileName
+                            println("==> current output file name : ${currentName}")
+
+                            def workFolder = "${project.getProjectDir().path}/build/outputs/apk/${productFlavors[0].name}/${variant.buildType.name}"
+                            def destFolder = new File("${project.getProjectDir().path}/apk/${variant.buildType.name}")
+
+                            println("==>name: ${currentName}")
+                            println("==>workfolder: ${workFolder}")
+                            println("==>dst: ${destFolder}")
+
+                            try {
+                                if (!destFolder.exists()) {
+                                    destFolder.mkdirs()
+                                }
+                                copy {
+                                    from "${workFolder}/${currentName}"
+                                    into "${destFolder}/"
+//                                    rename {
+//                                        "property_v${versionName}_${versionCode}_${variant.buildType.name}.apk"
+//                                    }
+                                }
+                            } catch (Exception e) {
+                                print e
+                            }
+
+                        }
+                    }
+                }
+            } else if (task.toString().contains("assemble") && task.toString().contains("Debug") && !task.toString().contains("Test")) {
+                task.doLast {
+                    android.applicationVariants.all { variant ->
+                        variant.outputs.all {
+                            println("FLAVOR : ${productFlavors[0].name}")
+                            def currentName = outputFileName
+                            println("==> current output file name : ${currentName}")
+
+                            def workFolder = "${project.getProjectDir().path}/build/outputs/apk/${productFlavors[0].name}/${variant.buildType.name}"
+                            def destFolder = new File("${project.getProjectDir().path}/apk/${variant.buildType.name}")
+
+                            println("==>name: ${currentName}")
+                            println("==>workfolder: ${workFolder}")
+                            println("==>dst: ${destFolder}")
+
+                            try {
+                                if (!destFolder.exists()) {
+                                    destFolder.mkdirs()
+                                }
+                                copy {
+                                    from "${workFolder}/${currentName}"
+                                    into "${destFolder}/"
+//                                    rename {
+//                                        "property_v${versionName}_${versionCode}_${variant.buildType.name}.apk"
+//                                    }
+                                }
+                            } catch (Exception e) {
+                                print e
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation files('libs\\joml-1.10.5.jar')
+    implementation files('libs/joml-1.10.5.jar')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
