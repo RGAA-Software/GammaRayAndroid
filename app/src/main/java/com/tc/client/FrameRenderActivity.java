@@ -1,17 +1,16 @@
 package com.tc.client;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
 
-import com.tc.client.impl.ThunderSdk;
-
 public class FrameRenderActivity extends Activity {
+
+    static {
+        System.loadLibrary("client");
+    }
 
     private FrameRenderView mFrameRenderView;
     private Thread mTickThread;
