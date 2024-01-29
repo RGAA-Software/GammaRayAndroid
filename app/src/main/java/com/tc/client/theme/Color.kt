@@ -1,4 +1,4 @@
-package com.tc.test_jetpack_compose.ui.theme
+package com.tc.client.theme
 
 import androidx.compose.ui.graphics.Color
 

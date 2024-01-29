@@ -14,13 +14,6 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-import com.tc.test_jetpack_compose.ui.theme.Pink40
-import com.tc.test_jetpack_compose.ui.theme.Pink80
-import com.tc.test_jetpack_compose.ui.theme.Purple40
-import com.tc.test_jetpack_compose.ui.theme.Purple80
-import com.tc.test_jetpack_compose.ui.theme.PurpleGrey40
-import com.tc.test_jetpack_compose.ui.theme.PurpleGrey80
-import com.tc.test_jetpack_compose.ui.theme.Typography
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
