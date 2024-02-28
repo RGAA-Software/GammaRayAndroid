@@ -6,6 +6,7 @@
 #include "env_wrapper.h"
 #include "frame_render.h"
 #include "app_context.h"
+#include "audio_player.h"
 #include "tc_client_sdk/video_decoder_factory.h"
 
 namespace tc
@@ -48,6 +49,13 @@ namespace tc
         thunder_sdk_->Init(params, use_oes ? frame_render_->GetNativeWindow() : nullptr, drt);
         thunder_sdk_->RegisterOnVideoFrameDecodedCallback([=](const std::shared_ptr<RawImage>& image) {
             frame_render_->UpdateYUVImage(image);
+        });
+
+        thunder_sdk_->RegisterOnAudioFrameDecodedCallback([=](const std::shared_ptr<Data>& data, int samples, int channels, int bits) {
+            if (!audio_player_) {
+                audio_player_ = AudioPlayer::Make();
+            }
+
         });
 
         LOGI("hw codec:{}, use oes: {}, oes tex id: {}", hw_codec, use_oes, oes_tex_id);

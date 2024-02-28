@@ -10,3 +10,6 @@
 [submodule "app/src/main/cpp/tc_message"]
 	path = app/src/main/cpp/tc_message
 	url = git@github.com:RGAA-Software/tc_message.git
+[submodule "app/src/main/cpp/tc_opus_codec"]
+	path = app/src/main/cpp/tc_opus_codec
+	url = git@github.com:RGAA-Software/tc_opus_codec.git

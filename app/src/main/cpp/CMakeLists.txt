@@ -19,17 +19,6 @@ message("======" ${CMAKE_ANDROID_NDK})
 
 project("client")
 
-#include(${VCPKG_ROOT}/installed/arm64-android/share/leveldb/leveldbConfig.cmake)
-#message("======" ${VCPKG_ROOT}/installed/arm64-android/share/leveldb/leveldbConfig.cmake)
-#include(${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake)
-#link_directories(${VCPKG_ROOT}/installed/arm64-android/lib)
-#include_directories(${VCPKG_ROOT}/installed/arm64-android/include)
-
-add_subdirectory(tc_3rdparty)
-add_subdirectory(tc_common)
-add_subdirectory(tc_client_sdk)
-add_subdirectory(tc_message)
-
 include_directories(${CMAKE_SOURCE_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/tc_3rdparty)
 include_directories(${CMAKE_SOURCE_DIR}/tc_3rdparty/eventbus/src)
@@ -38,11 +27,20 @@ include_directories(${CMAKE_SOURCE_DIR}/tc_common)
 include_directories(${CMAKE_SOURCE_DIR}/tc_client_sdk)
 include_directories(${CMAKE_SOURCE_DIR}/tc_message)
 
+add_subdirectory(tc_3rdparty)
+add_subdirectory(tc_common)
+add_subdirectory(tc_client_sdk)
+add_subdirectory(tc_message)
+add_subdirectory(tc_opus_codec)
+
+find_package(oboe REQUIRED CONFIG)
+
 add_library(${CMAKE_PROJECT_NAME} SHARED
         main.cpp
         application.cpp
         frame_render.cpp
         app_context.cpp
+        audio_player.cpp
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME}
@@ -52,6 +50,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
         android
         log
         mediandk
+        oboe::oboe
         tc_message
         tc_common
         tc_sdk)
