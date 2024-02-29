@@ -54,8 +54,9 @@ namespace tc
         thunder_sdk_->RegisterOnAudioFrameDecodedCallback([=](const std::shared_ptr<Data>& data, int samples, int channels, int bits) {
             if (!audio_player_) {
                 audio_player_ = AudioPlayer::Make();
+                audio_player_->Init(samples, channels);
             }
-
+            audio_player_->Write(data);
         });
 
         LOGI("hw codec:{}, use oes: {}, oes tex id: {}", hw_codec, use_oes, oes_tex_id);
