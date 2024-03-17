@@ -13,3 +13,6 @@
 [submodule "app/src/main/cpp/tc_opus_codec"]
 	path = app/src/main/cpp/tc_opus_codec
 	url = git@github.com:RGAA-Software/tc_opus_codec.git
+[submodule "app/src/main/cpp/tc_webrtc_client"]
+	path = app/src/main/cpp/tc_webrtc_client
+	url = git@github.com:RGAA-Software/tc_webrtc_client.git
