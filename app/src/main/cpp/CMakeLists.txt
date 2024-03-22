@@ -15,7 +15,7 @@ endif()
 
 
 string(REPLACE "\\" "/" CMAKE_ANDROID_NDK "${CMAKE_ANDROID_NDK}")
-message("======" ${CMAKE_ANDROID_NDK})
+message("=== ===" ${CMAKE_ANDROID_NDK})
 
 project("client")
 
