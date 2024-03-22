@@ -23,15 +23,15 @@ include_directories(${CMAKE_SOURCE_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/tc_3rdparty)
 include_directories(${CMAKE_SOURCE_DIR}/tc_3rdparty/eventbus/src)
 include_directories(${CMAKE_SOURCE_DIR}/tc_3rdparty/spdlog)
-include_directories(${CMAKE_SOURCE_DIR}/tc_common)
-include_directories(${CMAKE_SOURCE_DIR}/tc_client_sdk)
-include_directories(${CMAKE_SOURCE_DIR}/tc_message)
+include_directories(${CMAKE_SOURCE_DIR}/tc_common_new)
+include_directories(${CMAKE_SOURCE_DIR}/tc_client_sdk_new)
+include_directories(${CMAKE_SOURCE_DIR}/tc_message_new)
 
 add_subdirectory(tc_3rdparty)
-add_subdirectory(tc_common)
-add_subdirectory(tc_client_sdk)
-add_subdirectory(tc_message)
-add_subdirectory(tc_opus_codec)
+add_subdirectory(tc_common_new)
+add_subdirectory(tc_client_sdk_new)
+add_subdirectory(tc_message_new)
+add_subdirectory(tc_opus_codec_new)
 
 find_package(oboe REQUIRED CONFIG)
 
@@ -52,5 +52,5 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
         mediandk
         oboe::oboe
         tc_message
-        tc_common
+        tc_common_new
         tc_sdk)

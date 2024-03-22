@@ -3,7 +3,7 @@
 //
 
 #include "app_context.h"
-#include "tc_common/message_notifier.h"
+#include "tc_common_new/message_notifier.h"
 
 namespace tc
 {

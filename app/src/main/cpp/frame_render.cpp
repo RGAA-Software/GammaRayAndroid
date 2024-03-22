@@ -4,10 +4,10 @@
 
 #include "frame_render.h"
 
-#include "tc_common/log.h"
-#include "tc_common/message_notifier.h"
-#include "tc_common/time_ext.h"
-#include "tc_client_sdk/gl/raw_image.h"
+#include "tc_common_new/log.h"
+#include "tc_common_new/message_notifier.h"
+#include "tc_common_new/time_ext.h"
+#include "tc_client_sdk_new/gl/raw_image.h"
 #include "app_context.h"
 #include "sdk_messages.h"
 

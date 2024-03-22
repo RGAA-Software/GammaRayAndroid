@@ -7,7 +7,7 @@
 #include "frame_render.h"
 #include "app_context.h"
 #include "audio_player.h"
-#include "tc_client_sdk/video_decoder_factory.h"
+#include "tc_client_sdk_new/video_decoder_factory.h"
 
 namespace tc
 {
