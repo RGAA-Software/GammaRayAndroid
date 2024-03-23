@@ -1,30 +1,20 @@
 package com.tc.client;
 
 import android.content.Context;
-import android.graphics.PixelFormat;
-import android.graphics.SurfaceTexture;
-import android.media.MediaCodecInfo;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 
-import androidx.annotation.NonNull;
-
-import com.tc.client.impl.ThunderSdk;
+import com.tc.client.impl.ThunderApp;
 
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.opengles.GL10;
 
 public class FrameRenderView extends GLSurfaceView {
 
     private static final String TAG = "FrameRenderView";
 
-    private ThunderSdk mThunderSdk;
+    private ThunderApp mThunderApp;
     private FrameRender mRender;
 
     public FrameRenderView(Context context) {
@@ -65,8 +55,8 @@ public class FrameRenderView extends GLSurfaceView {
             }
         });
 
-        mThunderSdk = new ThunderSdk();
-        mRender = new FrameRender(getContext(), mThunderSdk);
+        mThunderApp = new ThunderApp();
+        mRender = new FrameRender(getContext(), mThunderApp);
         setRenderer(mRender);
         setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
     }

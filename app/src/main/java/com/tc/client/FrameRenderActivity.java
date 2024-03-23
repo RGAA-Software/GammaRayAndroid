@@ -9,11 +9,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class FrameRenderActivity extends Activity {
-
     static {
         System.loadLibrary("client");
     }
-
     private FrameRenderView mFrameRenderView;
     private Thread mTickThread;
     private boolean mExitTickThread;

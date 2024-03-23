@@ -37,6 +37,9 @@ namespace tc
         void OnPause();
         void OnDestroy();
 
+        void SendGamepadState(int32_t buttons, int32_t left_trigger, int32_t right_trigger, int32_t thumb_lx,
+                              int32_t thumb_ly, int32_t thumb_rx, int32_t thumb_ry);
+
     private:
         JavaVM* vm_ = nullptr;
         std::shared_ptr<ThunderSdk> thunder_sdk_ = nullptr;

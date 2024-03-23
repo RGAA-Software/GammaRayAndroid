@@ -10,7 +10,7 @@ import android.opengl.GLSurfaceView;
 import android.util.Log;
 import android.view.Surface;
 
-import com.tc.client.impl.ThunderSdk;
+import com.tc.client.impl.ThunderApp;
 
 import java.nio.FloatBuffer;
 
@@ -21,8 +21,7 @@ public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFra
 
     private static final String TAG = "FrameRender";
 
-    private ThunderSdk mThunderSdk;
-
+    private ThunderApp mThunderApp;
 
     private Context mContext;
 
@@ -46,9 +45,9 @@ public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFra
     private Director mDirector;
     private Sprite mCursor;
 
-    public FrameRender(Context ctx, ThunderSdk sdk) {
+    public FrameRender(Context ctx, ThunderApp sdk) {
         mContext = ctx;
-        mThunderSdk = sdk;
+        mThunderApp = sdk;
     }
 
     @Override
@@ -65,9 +64,9 @@ public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFra
 
         initRenderMediacodec();
 
-//        mThunderSdk.init(false, "10.0.0.16", 9002, "/media", mOESSurface, true, true, mOESTexId);
-        mThunderSdk.init(false, "192.168.31.5", 9002, "/media",  mOESSurface, true, true, mOESTexId);
-        mThunderSdk.start();
+        mThunderApp.init(false, "10.0.0.16", 9002, "/media", mOESSurface, true, true, mOESTexId);
+        //mThunderApp.init(false, "192.168.31.5", 9002, "/media",  mOESSurface, true, true, mOESTexId);
+        mThunderApp.start();
     }
 
     @Override

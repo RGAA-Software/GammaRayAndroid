@@ -15,7 +15,7 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved) {
 }
 
 extern "C" JNIEXPORT jint JNICALL
-Java_com_tc_client_impl_ThunderSdk_init(JNIEnv *env, jobject thiz, jboolean ssl, jstring ip, jint port,
+Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl, jstring ip, jint port,
                                         jstring path, jobject surface, jboolean hw_codec, jboolean use_oes,
                                         jint oes_tex_id) {
     const char* ip_str = env->GetStringUTFChars(ip, nullptr);
@@ -34,13 +34,13 @@ Java_com_tc_client_impl_ThunderSdk_init(JNIEnv *env, jobject thiz, jboolean ssl,
 }
 
 extern "C" JNIEXPORT jint JNICALL
-Java_com_tc_client_impl_ThunderSdk_start(JNIEnv *env, jobject thiz) {
+Java_com_tc_client_impl_ThunderApp_start(JNIEnv *env, jobject thiz) {
     g_app->Start();
     return 0;
 }
 
 extern "C" JNIEXPORT jint JNICALL
-Java_com_tc_client_impl_ThunderSdk_stop(JNIEnv *env, jobject thiz) {
+Java_com_tc_client_impl_ThunderApp_stop(JNIEnv *env, jobject thiz) {
     g_app->Exit();
     return 0;
 }
@@ -77,5 +77,14 @@ extern "C" JNIEXPORT void JNICALL
 Java_com_tc_client_FrameRender_nativeRenderTick(JNIEnv *env, jobject thiz) {
     if (g_app) {
         g_app->OnRenderTick(env);
+    }
+}
+extern "C" JNIEXPORT void JNICALL
+Java_com_tc_client_impl_ThunderApp_sendGamepadState(JNIEnv *env, jobject thiz, jint buttons,
+                                                    jint left_trigger, jint right_trigger,
+                                                    jint thumb_lx, jint thumb_ly, jint thumb_rx,
+                                                    jint thumb_ry) {
+    if (g_app) {
+        g_app->SendGamepadState(buttons, left_trigger, right_trigger, thumb_lx, thumb_ly, thumb_rx, thumb_ry);
     }
 }

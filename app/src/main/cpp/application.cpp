@@ -8,6 +8,7 @@
 #include "app_context.h"
 #include "audio_player.h"
 #include "tc_client_sdk_new/video_decoder_factory.h"
+#include "tc_message_new/proto_message_maker.h"
 
 namespace tc
 {
@@ -104,6 +105,14 @@ namespace tc
         }
         if (frame_render_) {
             frame_render_->OnDestroy();
+        }
+    }
+
+    void Application::SendGamepadState(int32_t buttons, int32_t left_trigger,int32_t right_trigger,
+                                       int32_t thumb_lx, int32_t thumb_ly, int32_t thumb_rx, int32_t thumb_ry) {
+        auto msg = ProtoMessageMaker::MakeGamepadState(buttons, left_trigger, right_trigger, thumb_lx, thumb_ly, thumb_rx, thumb_ry);
+        if (thunder_sdk_) {
+            thunder_sdk_->PostBinaryMessage(msg);
         }
     }
 
