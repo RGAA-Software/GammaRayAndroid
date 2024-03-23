@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.tc.client.impl.ThunderApp;
+
 public class FrameRenderActivity extends Activity {
     static {
         System.loadLibrary("client");
@@ -16,6 +18,8 @@ public class FrameRenderActivity extends Activity {
     private Thread mTickThread;
     private boolean mExitTickThread;
     private Handler mHandler;
+    private ControlLayer mControlLayer;
+    private ThunderApp mThunderApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +30,23 @@ public class FrameRenderActivity extends Activity {
 
         setContentView(R.layout.activity_frame_render);
 
+        mThunderApp = new ThunderApp();
+
         mFrameRenderView = findViewById(R.id.id_frame_render_view);
+        mFrameRenderView.init(mThunderApp);
         mFrameRenderView.onCreate();
+
+        mControlLayer = findViewById(R.id.id_control_layer);
+        mControlLayer.setThunderApp(mThunderApp);
 
         mHandler = new Handler(getMainLooper());
 
         mTickThread = new Thread(() -> {
             while(!mExitTickThread) {
-                mHandler.postAtFrontOfQueue(() -> {
-                    //mFrameRenderView.onRenderTick();
-                });
+                 mHandler.post(() -> {
+                     mControlLayer.onEventTick();
+                     mFrameRenderView.onEventTick();
+                 });
                 SystemClock.sleep(17);
             }
         });
