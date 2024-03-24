@@ -19,7 +19,7 @@ public class ControlLayerParamLoader {
 
         // left
         int marginLeftDp = 20;
-        int thumbSizeDp = 180;
+        int thumbSizeDp = 160;
 
         ControlLayerParam param = new ControlLayerParam();
         param.leftThumbLeft = marginLeftDp;
@@ -27,7 +27,7 @@ public class ControlLayerParamLoader {
         param.leftThumbSize = thumbSizeDp;
 
         // right
-        int marginRightDp = 90;
+        int marginRightDp = 110;
         int marginBottomDp = marginLeftDp;
         param.rightThumbLeft = screenWidthDp - thumbSizeDp - marginRightDp;
         param.rightThumbTop = screenHeightDp - thumbSizeDp - marginBottomDp;
@@ -42,6 +42,19 @@ public class ControlLayerParamLoader {
 
         param.dpadGroupLeft = marginRightDp;
         param.dpadGroupTop = screenHeightDp - param.buttonGroupSize - marginBottomDp;
+
+        // function button size
+        param.funcButtonWidth = 60;
+        param.funcButtonHeight = 60;
+
+        // ls
+        param.lsLeft = marginLeftDp;
+        param.lsTop = marginLeftDp + thumbSizeDp + 10;
+
+        // rs
+        param.rsLeft = param.rightThumbLeft + param.leftThumbSize + 20;
+        param.rsTop = param.rightThumbTop + param.rightThumbSize/2 - param.funcButtonHeight/2;
+
 
         return  param;
     }

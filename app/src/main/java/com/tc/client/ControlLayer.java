@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.tc.client.impl.ThunderApp;
 import com.tc.client.widgets.DPadButton;
+import com.tc.client.widgets.FunctionButton;
 import com.tc.client.widgets.RockerView;
 
 public class ControlLayer extends FrameLayout {
@@ -45,6 +46,8 @@ public class ControlLayer extends FrameLayout {
     private RockerView mRightThumb;
     private DpadButtonGroup mAbxyButtonGroup;
     private DpadButtonGroup mDpadButtonGroup;
+    private FunctionButton mLs;
+    private FunctionButton mRs;
 
     private ThunderApp mThunderApp;
 
@@ -93,6 +96,9 @@ public class ControlLayer extends FrameLayout {
         mAbxyButtonGroup = findViewById(R.id.id_abxy_parent);
         mDpadButtonGroup = findViewById(R.id.id_dpad_parent);
 
+        mLs = findViewById(R.id.id_ls);
+        mRs = findViewById(R.id.id_rs);
+
         mInit = true;
     }
 
@@ -129,7 +135,12 @@ public class ControlLayer extends FrameLayout {
         setViewSize(mDpadDown, dpadButtonSize, dpadButtonSize);
         setViewSize(mDpadRight, dpadButtonSize, dpadButtonSize);
 
-        Log.i(TAG, "density: " + density + ", thumbSize: " + mControlParam.leftThumbSize*density + ", width: " + screenWidth + ", height: " + screenHeight);
+        float funcButtonWidth = mControlParam.funcButtonWidth * density;
+        float funcButtonHeight = mControlParam.funcButtonHeight * density;
+        setViewSize(mLs, funcButtonWidth, funcButtonHeight);
+        setViewSize(mRs, funcButtonWidth, funcButtonHeight);
+
+        Log.i(TAG, "func button width: " + funcButtonWidth + ", func button height: " + funcButtonHeight);
 
         setMeasuredDimension(screenWidth, screenHeight);
     }
@@ -145,16 +156,17 @@ public class ControlLayer extends FrameLayout {
         setTranslation(mRightThumb, mControlParam.rightThumbLeft * density, mControlParam.rightThumbTop * density);
         setTranslation(mAbxyButtonGroup, mControlParam.abxyGroupLeft * density, mControlParam.abxyGroupTop * density);
         setTranslation(mDpadButtonGroup, mControlParam.dpadGroupLeft * density, mControlParam.dpadGroupTop * density);
-        Log.i(TAG, "RightThumb margin top: " + mControlParam.rightThumbTop * density + ", dp: " + mControlParam.rightThumbTop);
+        setTranslation(mLs, mControlParam.lsLeft*density, mControlParam.lsTop*density);
+        setTranslation(mRs, mControlParam.rsLeft*density, mControlParam.rsTop*density);
     }
 
-    private void setViewSize(View view, int width, int height) {
+    private void setViewSize(View view, float width, float height) {
         if (view == null || view.getLayoutParams() == null) {
             Log.e(TAG, "view is null...");
             return;
         }
-        view.getLayoutParams().width = width;
-        view.getLayoutParams().height = height;
+        view.getLayoutParams().width = (int) width;
+        view.getLayoutParams().height = (int) height;
     }
 
     private void setTranslation(View view, float x, float y) {
@@ -179,8 +191,7 @@ public class ControlLayer extends FrameLayout {
         int rightThumbX = mRightThumb.getCurrentThumbX();
         int rightThumbY = mRightThumb.getCurrentThumbY();
         int buttons = 0;
-        buttons |= GP_XINPUT_GAMEPAD_LEFT_THUMB;
-        buttons |= GP_XINPUT_GAMEPAD_RIGHT_THUMB;
+
         if (mDpadX.isButtonPressed()) {
             buttons |= GP_XINPUT_GAMEPAD_X;
         }
@@ -192,6 +203,26 @@ public class ControlLayer extends FrameLayout {
         }
         if (mDpadB.isButtonPressed()) {
             buttons |= GP_XINPUT_GAMEPAD_B;
+        }
+
+        if (mDpadLeft.isButtonPressed()) {
+            buttons |= GP_XINPUT_GAMEPAD_DPAD_LEFT;
+        }
+        if (mDpadRight.isButtonPressed()) {
+            buttons |= GP_XINPUT_GAMEPAD_DPAD_RIGHT;
+        }
+        if (mDpadUp.isButtonPressed()) {
+            buttons |= GP_XINPUT_GAMEPAD_DPAD_UP;
+        }
+        if (mDpadDown.isButtonPressed()) {
+            buttons |= GP_XINPUT_GAMEPAD_DPAD_DOWN;
+        }
+
+        if (mLs.isButtonPressed()) {
+            buttons |= GP_XINPUT_GAMEPAD_LEFT_THUMB;
+        }
+        if (mRs.isButtonPressed()) {
+            buttons |= GP_XINPUT_GAMEPAD_RIGHT_THUMB;
         }
 
         int leftTrigger = 0;

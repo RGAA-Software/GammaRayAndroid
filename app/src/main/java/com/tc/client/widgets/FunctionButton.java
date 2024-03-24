@@ -7,17 +7,15 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
 import com.tc.client.R;
 
-public class DPadButton extends ImageView {
+public class FunctionButton extends ImageView {
 
     private String mText = "";
     private Paint mPaint;
@@ -25,15 +23,15 @@ public class DPadButton extends ImageView {
     private boolean mPressed;
     private int mBackgroundColor;
 
-    public DPadButton(Context context) {
+    public FunctionButton(Context context) {
         this(context, null);
     }
 
-    public DPadButton(Context context, @Nullable AttributeSet attrs) {
+    public FunctionButton(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public DPadButton(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public FunctionButton(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
 
@@ -55,23 +53,22 @@ public class DPadButton extends ImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
+
         mPaint.setTextAlign(Paint.Align.CENTER);
+
         mPaint.setColor(mBackgroundColor);
-        int borderWidthDp = 2;
-        int borderWidthPixel = (int) (Resources.getSystem().getDisplayMetrics().density * borderWidthDp);
         if (isButtonPressed()) {
             mPaint.setAlpha(255);
-            canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, mPaint);
+            canvas.drawRoundRect(0, 0, getWidth(), getHeight(), getHeight()/2, getHeight()/2, mPaint);
         }
         mPaint.setAlpha(128);
-        canvas.drawCircle(getWidth()/2, getHeight()/2, getWidth()/2 - borderWidthPixel, mPaint);
+        canvas.drawRoundRect(0, 0, getWidth(), getHeight(), getHeight()/2, getHeight()/2, mPaint);
 
         mPaint.setColor(Color.WHITE);
         int xPos = (canvas.getWidth() / 2);
         int yPos = (int) ((canvas.getHeight() / 2) - ((mPaint.descent() + mPaint.ascent()) / 2)) ;
 
         canvas.drawText(mText, xPos, yPos, mPaint);
-
         super.onDraw(canvas);
     }
 

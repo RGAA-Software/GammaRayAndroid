@@ -50,6 +50,7 @@ public class RockerView extends View {
     private int mCurrentThumbX;
     private int mCurrentThumbY;
     private int mCurrentAngle;
+    private boolean isPressed;
 
     // 角度
     private static final double ANGLE_0 = 0;
@@ -260,6 +261,11 @@ public class RockerView extends View {
         } else if (ROCKER_BACKGROUND_MODE_COLOR == mRockerBackgroundMode) {
             // 色值
             mRockerPaint.setColor(mRockerColor);
+            if (isPressed) {
+                mRockerPaint.setAlpha(255);
+            } else {
+                mRockerPaint.setAlpha(128);
+            }
             canvas.drawCircle(mRockerPosition.x, mRockerPosition.y, mRockerRadius, mRockerPaint);
             Log.i(TAG, "x: " + mRockerPosition.x + ", y: " + mRockerPosition.y + ", radius: " + mRockerRadius);
         } else {
@@ -280,6 +286,8 @@ public class RockerView extends View {
                 float moveY = event.getY();
                 mRockerPosition = getRockerPositionPoint(mCenterPoint, new Point((int) moveX, (int) moveY), mAreaRadius, mRockerRadius);
                 moveRocker(mRockerPosition.x, mRockerPosition.y);
+                isPressed = true;
+                invalidate();
                 break;
             case MotionEvent.ACTION_UP:// 抬起
             case MotionEvent.ACTION_CANCEL:// 移出区域
@@ -293,6 +301,8 @@ public class RockerView extends View {
                 // todo: 过渡到中心，而不是直接跳到0
                 callBack(0, 0, 0);
 
+                isPressed = false;
+                invalidate();
                 break;
         }
         return true;
