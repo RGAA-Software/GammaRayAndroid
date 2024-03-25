@@ -15,6 +15,44 @@
         android:id="@+id/id_control_layer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#9020"/>
+        android:background="#0000">
+
+        <com.tc.client.widgets.RockerView
+            android:id="@+id/id_rocker_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:areaBackground="#66333333"
+            app:rockerBackground="@color/joystick_button_background"
+            app:rockerRadius="30dp" />
+
+        <com.tc.client.widgets.RockerView
+            android:id="@+id/id_rocker_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:areaBackground="#66333333"
+            app:rockerBackground="@color/joystick_button_background"
+            app:rockerRadius="30dp" />
+
+        <include layout="@layout/abxy_button_group" />
+        <include layout="@layout/dpad_button_group" />
+
+        <com.tc.client.widgets.FunctionButton
+            android:id="@+id/id_ls"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:padding="13dp"
+            android:src="@drawable/ic_pressed"
+            app:circleColor="@color/joystick_button_background"/>
+
+        <com.tc.client.widgets.FunctionButton
+            android:id="@+id/id_rs"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:padding="13dp"
+            android:src="@drawable/ic_pressed"
+            app:circleColor="@color/joystick_button_background"/>
+
+    </com.tc.client.ControlLayer>
 
 </FrameLayout>

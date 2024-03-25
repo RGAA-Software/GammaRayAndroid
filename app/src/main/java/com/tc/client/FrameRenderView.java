@@ -22,11 +22,9 @@ public class FrameRenderView extends GLSurfaceView {
     }
     public FrameRenderView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-
+    public void init(ThunderApp app) {
         setEGLContextClientVersion(3);
         setEGLConfigChooser(new EGLConfigChooser() {
             @Override
@@ -55,10 +53,14 @@ public class FrameRenderView extends GLSurfaceView {
             }
         });
 
-        mThunderApp = new ThunderApp();
+        mThunderApp = app;
         mRender = new FrameRender(getContext(), mThunderApp);
         setRenderer(mRender);
         setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
+    }
+
+    public ThunderApp getThunderApp() {
+        return mThunderApp;
     }
 
     public void onCreate() {
@@ -77,7 +79,7 @@ public class FrameRenderView extends GLSurfaceView {
         mRender.onDestroy();
     }
 
-    public void onRenderTick() {
-        mRender.onRenderTick();
+    public void onEventTick() {
+        //mRender.onRenderTick();
     }
 }

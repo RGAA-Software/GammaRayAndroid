@@ -64,8 +64,8 @@ public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFra
 
         initRenderMediacodec();
 
-        mThunderApp.init(false, "10.0.0.16", 9002, "/media", mOESSurface, true, true, mOESTexId);
-        //mThunderApp.init(false, "192.168.31.5", 9002, "/media",  mOESSurface, true, true, mOESTexId);
+//        mThunderApp.init(false, "10.0.0.16", 9002, "/media", mOESSurface, true, true, mOESTexId);
+        mThunderApp.init(false, "192.168.31.5", 9002, "/media",  mOESSurface, true, true, mOESTexId);
         mThunderApp.start();
     }
 
