@@ -27,4 +27,26 @@ public class ControlLayerParam {
     public int rsLeft;
     public int rsTop;
 
+    public int backStartWidth;
+    public int backStartHeight;
+    public int startLeft;
+    public int startTop;
+
+    public int backLeft;
+    public int backTop;
+
+    public int xboxWidth;
+    public int xboxHeight;
+    public int xboxLeft;
+    public int xboxTop;
+
+    public int ltLeft;
+    public int ltTop;
+    public int lbLeft;
+    public int lbTop;
+
+    public int rtLeft;
+    public int rtTop;
+    public int rbLeft;
+    public int rbTop;
 }

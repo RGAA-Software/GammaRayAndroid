@@ -22,6 +22,7 @@ public class FunctionButton extends ImageView {
     private int mCurrentEvent;
     private boolean mPressed;
     private int mBackgroundColor;
+    private int mFontPixelSize;
 
     public FunctionButton(Context context) {
         this(context, null);
@@ -33,15 +34,15 @@ public class FunctionButton extends ImageView {
 
     public FunctionButton(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
-
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DpadButton);
         mBackgroundColor = ((ColorDrawable)typedArray.getDrawable(R.styleable.DpadButton_circleColor)).getColor();
+        mFontPixelSize = typedArray.getDimensionPixelSize(R.styleable.DpadButton_fontSize, 60);
+        init();
     }
 
     private void init() {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPaint.setTextSize(Resources.getSystem().getDisplayMetrics().density * 25);
+        mPaint.setTextSize(mFontPixelSize);
         setOnClickListener(v -> {
 
         });

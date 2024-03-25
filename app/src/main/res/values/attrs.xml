@@ -9,6 +9,7 @@
 
     <declare-styleable name="DpadButton">
         <attr name="circleColor" format="color|reference" />
+        <attr name="fontSize" format="dimension" />
     </declare-styleable>
 
 </resources>

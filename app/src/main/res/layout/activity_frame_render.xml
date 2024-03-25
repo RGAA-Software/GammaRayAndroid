@@ -42,7 +42,7 @@
             android:layout_width="70dp"
             android:layout_height="30dp"
             android:padding="13dp"
-            android:src="@drawable/ic_pressed"
+            app:fontSize="17sp"
             app:circleColor="@color/joystick_button_background"/>
 
         <com.tc.client.widgets.FunctionButton
@@ -50,7 +50,63 @@
             android:layout_width="70dp"
             android:layout_height="30dp"
             android:padding="13dp"
-            android:src="@drawable/ic_pressed"
+            app:fontSize="17sp"
+            app:circleColor="@color/joystick_button_background"/>
+
+        <com.tc.client.widgets.FunctionButton
+            android:id="@+id/id_start"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:padding="13dp"
+            app:fontSize="14sp"
+            app:circleColor="@color/joystick_button_background"/>
+
+        <com.tc.client.widgets.FunctionButton
+            android:id="@+id/id_back"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:padding="13dp"
+            app:fontSize="14sp"
+            app:circleColor="@color/joystick_button_background"/>
+
+        <com.tc.client.widgets.FunctionButton
+            android:id="@+id/id_xbox"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="0dp"
+            android:src="@drawable/ic_xbox"
+            app:circleColor="#22000000"/>
+
+        <com.tc.client.widgets.FunctionButton
+            android:id="@+id/id_lt"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:padding="13dp"
+            app:fontSize="18sp"
+            app:circleColor="@color/joystick_button_background"/>
+
+        <com.tc.client.widgets.FunctionButton
+            android:id="@+id/id_lb"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:padding="13dp"
+            app:fontSize="18sp"
+            app:circleColor="@color/joystick_button_background"/>
+
+        <com.tc.client.widgets.FunctionButton
+            android:id="@+id/id_rt"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:padding="13dp"
+            app:fontSize="18sp"
+            app:circleColor="@color/joystick_button_background"/>
+
+        <com.tc.client.widgets.FunctionButton
+            android:id="@+id/id_rb"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:padding="13dp"
+            app:fontSize="18sp"
             app:circleColor="@color/joystick_button_background"/>
 
     </com.tc.client.ControlLayer>

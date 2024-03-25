@@ -28,6 +28,7 @@ public class ControlLayer extends FrameLayout {
     private static final int GP_XINPUT_GAMEPAD_RIGHT_THUMB =	0x0080;
     private static final int GP_XINPUT_GAMEPAD_LEFT_SHOULDER =	0x0100;
     private static final int GP_XINPUT_GAMEPAD_RIGHT_SHOULDER =	0x0200;
+    private static final int GP_XINPUT_GAMEPAT_XBOX = 0x0400;
     private static final int GP_XINPUT_GAMEPAD_A =	0x1000;
     private static final int GP_XINPUT_GAMEPAD_B =	0x2000;
     private static final int GP_XINPUT_GAMEPAD_X =	0x4000;
@@ -48,6 +49,13 @@ public class ControlLayer extends FrameLayout {
     private DpadButtonGroup mDpadButtonGroup;
     private FunctionButton mLs;
     private FunctionButton mRs;
+    private FunctionButton mStart;
+    private FunctionButton mBack;
+    private FunctionButton mXbox;
+    private FunctionButton mLT;
+    private FunctionButton mLB;
+    private FunctionButton mRT;
+    private FunctionButton mRB;
 
     private ThunderApp mThunderApp;
 
@@ -98,6 +106,25 @@ public class ControlLayer extends FrameLayout {
 
         mLs = findViewById(R.id.id_ls);
         mRs = findViewById(R.id.id_rs);
+        mLs.setText("LS");
+        mRs.setText("RS");
+
+        mStart = findViewById(R.id.id_start);
+        mBack = findViewById(R.id.id_back);
+        mStart.setText("START");
+        mBack.setText("BACK");
+
+        mXbox = findViewById(R.id.id_xbox);
+
+        mLT = findViewById(R.id.id_lt);
+        mLB = findViewById(R.id.id_lb);
+        mLT.setText("LT");
+        mLB.setText("LB");
+
+        mRT = findViewById(R.id.id_rt);
+        mRB = findViewById(R.id.id_rb);
+        mRT.setText("RT");
+        mRB.setText("RB");
 
         mInit = true;
     }
@@ -140,6 +167,19 @@ public class ControlLayer extends FrameLayout {
         setViewSize(mLs, funcButtonWidth, funcButtonHeight);
         setViewSize(mRs, funcButtonWidth, funcButtonHeight);
 
+        float backStartWidth = mControlParam.backStartWidth * density;
+        float backStartHeight = mControlParam.backStartHeight * density;
+        setViewSize(mStart, backStartWidth, backStartHeight);
+        setViewSize(mBack, backStartWidth, backStartHeight);
+
+        setViewSize(mXbox, mControlParam.xboxWidth*density, mControlParam.xboxHeight*density);
+
+        setViewSize(mLT, dpadButtonSize, dpadButtonSize);
+        setViewSize(mLB, dpadButtonSize, dpadButtonSize);
+
+        setViewSize(mRT, dpadButtonSize, dpadButtonSize);
+        setViewSize(mRB, dpadButtonSize, dpadButtonSize);
+
         Log.i(TAG, "func button width: " + funcButtonWidth + ", func button height: " + funcButtonHeight);
 
         setMeasuredDimension(screenWidth, screenHeight);
@@ -158,6 +198,13 @@ public class ControlLayer extends FrameLayout {
         setTranslation(mDpadButtonGroup, mControlParam.dpadGroupLeft * density, mControlParam.dpadGroupTop * density);
         setTranslation(mLs, mControlParam.lsLeft*density, mControlParam.lsTop*density);
         setTranslation(mRs, mControlParam.rsLeft*density, mControlParam.rsTop*density);
+        setTranslation(mStart, mControlParam.startLeft*density, mControlParam.startTop*density);
+        setTranslation(mBack, mControlParam.backLeft* density, mControlParam.backTop*density);
+        setTranslation(mXbox, mControlParam.xboxLeft*density, mControlParam.xboxTop*density);
+        setTranslation(mLT, mControlParam.ltLeft*density, mControlParam.ltTop*density);
+        setTranslation(mLB, mControlParam.lbLeft*density, mControlParam.lbTop*density);
+        setTranslation(mRT, mControlParam.rtLeft*density, mControlParam.rtTop*density);
+        setTranslation(mRB, mControlParam.rbLeft*density, mControlParam.rbTop*density);
     }
 
     private void setViewSize(View view, float width, float height) {
@@ -225,9 +272,33 @@ public class ControlLayer extends FrameLayout {
             buttons |= GP_XINPUT_GAMEPAD_RIGHT_THUMB;
         }
 
+        if (mStart.isButtonPressed()) {
+            buttons |= GP_XINPUT_GAMEPAD_START;
+        }
+        if (mBack.isButtonPressed()) {
+            buttons |= GP_XINPUT_GAMEPAD_BACK;
+        }
+
+        if (mXbox.isButtonPressed()) {
+            buttons |= GP_XINPUT_GAMEPAT_XBOX;
+        }
+
+        if (mLB.isButtonPressed()) {
+            buttons |= GP_XINPUT_GAMEPAD_LEFT_SHOULDER;
+        }
+        if (mRB.isButtonPressed()) {
+            buttons |= GP_XINPUT_GAMEPAD_RIGHT_SHOULDER;
+        }
+
         int leftTrigger = 0;
+        if (mLT.isButtonPressed()) {
+            leftTrigger = 255;
+        }
         int rightTrigger = 0;
+        if (mRT.isButtonPressed()) {
+            rightTrigger = 255;
+        }
         //Log.i(TAG, "x: " + mDpadX.isButtonPressed() + ", y: " + mDpadY.isButtonPressed() + ", a: " + mDpadA.isButtonPressed() + ", b: " + mDpadB.isButtonPressed());
-        mThunderApp.sendGamepadState(buttons, 0, 0, leftThumbX, leftThumbY, rightThumbX, rightThumbY);
+        mThunderApp.sendGamepadState(buttons, leftTrigger, rightTrigger, leftThumbX, leftThumbY, rightThumbX, rightThumbY);
     }
 }
