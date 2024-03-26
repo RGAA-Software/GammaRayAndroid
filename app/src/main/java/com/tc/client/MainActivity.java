@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,8 +25,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        EditText ipEt = findViewById(R.id.id_ip);
+        EditText portEt = findViewById(R.id.id_port);
+
         findViewById(R.id.id_start_stream).setOnClickListener(v -> {
-            startActivity(new Intent(this, FrameRenderActivity.class));
+            try {
+                Intent intent = new Intent(this, FrameRenderActivity.class);
+                intent.putExtra("ip", ipEt.getText().toString());
+                intent.putExtra("port", Integer.parseInt(portEt.getText().toString()));
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Err: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

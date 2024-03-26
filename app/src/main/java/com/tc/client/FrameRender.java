@@ -57,15 +57,9 @@ public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFra
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
-
-        Log.i(TAG, "onSurfaceCreated from render.......");
-
         mDirector = new Director(mContext);
-
         initRenderMediacodec();
-
-//        mThunderApp.init(false, "10.0.0.16", 9002, "/media", mOESSurface, true, true, mOESTexId);
-        mThunderApp.init(false, "192.168.31.5", 9002, "/media",  mOESSurface, true, true, mOESTexId);
+        mThunderApp.init(false,  mOESSurface, true, true, mOESTexId);
         mThunderApp.start();
     }
 

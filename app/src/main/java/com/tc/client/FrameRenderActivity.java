@@ -20,6 +20,8 @@ public class FrameRenderActivity extends Activity {
     private Handler mHandler;
     private ControlLayer mControlLayer;
     private ThunderApp mThunderApp;
+    private String mIp;
+    private int mPort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,10 @@ public class FrameRenderActivity extends Activity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE);
 
         setContentView(R.layout.activity_frame_render);
+        mIp = getIntent().getStringExtra("ip");
+        mPort = getIntent().getIntExtra("port", 9002);
 
-        mThunderApp = new ThunderApp();
+        mThunderApp = new ThunderApp(mIp, mPort);
 
         mFrameRenderView = findViewById(R.id.id_frame_render_view);
         mFrameRenderView.init(mThunderApp);
