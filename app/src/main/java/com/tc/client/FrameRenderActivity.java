@@ -1,19 +1,23 @@
 package com.tc.client;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.tc.client.impl.ThunderApp;
+import com.tc.client.util.ViewUtil;
 
 public class FrameRenderActivity extends Activity {
     static {
         System.loadLibrary("client");
     }
+    private static final String TAG = "Main";
     private FrameRenderView mFrameRenderView;
     private Thread mTickThread;
     private boolean mExitTickThread;
@@ -55,6 +59,12 @@ public class FrameRenderActivity extends Activity {
             }
         });
         mTickThread.start();
+
+        mThunderApp.registerFrameChangedCallback(((width, height) -> {
+            runOnUiThread(() -> {
+                resizeFrameView(width, height);
+            });
+        }));
     }
 
     @Override
@@ -85,11 +95,23 @@ public class FrameRenderActivity extends Activity {
         mFrameRenderView.onDestroy();
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus && mFrameRenderView.getVisibility() == View.GONE) {
-            //mFrameRenderView.setVisibility(View.VISIBLE);
+    private void resizeFrameView(int width, int height) {
+        int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+        int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
+
+        if (ViewUtil.checkDeviceHasNavigationBar(this)) {
+            screenWidth += ViewUtil.getNavigationBarHeight(this);
         }
+
+        float scale = screenHeight*1.0f / height;
+        int targetWidth = (int) (scale * width);
+        int offsetX = (int) ((screenWidth - targetWidth)/2);
+        mFrameRenderView.getLayoutParams().width = (int) targetWidth;
+        mFrameRenderView.getLayoutParams().height = screenHeight;
+        mFrameRenderView.layout(offsetX, 0, (int) (offsetX+targetWidth), screenHeight);
+        mFrameRenderView.postInvalidate();
+        //mFrameRenderView.getHolder().setFixedSize(targetWidth, screenHeight);
+        Log.i(TAG, "After resize view, width: " + targetWidth + ", height: " + screenHeight);
     }
+
 }

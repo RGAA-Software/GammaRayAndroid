@@ -1,10 +1,12 @@
-package com.tc.client;
+package com.tc.client.util;
 
 import static android.opengl.GLES20.glGenBuffers;
 import static android.opengl.GLES20.glGenFramebuffers;
 import static android.opengl.GLES20.glGenRenderbuffers;
 import static android.opengl.GLES20.glGenTextures;
 import static android.opengl.GLES30.glGenVertexArrays;
+
+import com.tc.client.util.BufferUtil;
 
 import java.nio.IntBuffer;
 

@@ -2,6 +2,8 @@ package com.tc.client;
 
 import android.content.Context;
 
+import com.tc.client.util.AssetsUtil;
+
 import org.joml.Matrix4f;
 
 import java.nio.ByteBuffer;

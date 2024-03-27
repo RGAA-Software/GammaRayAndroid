@@ -9,6 +9,7 @@
 #include "audio_player.h"
 #include "tc_client_sdk_new/video_decoder_factory.h"
 #include "tc_message_new/proto_message_maker.h"
+#include "native_msg_maker.h"
 
 namespace tc
 {
@@ -48,8 +49,19 @@ namespace tc
 
         thunder_sdk_ = ThunderSdk::Make(app_context_->GetMessageNotifier());
         thunder_sdk_->Init(params, use_oes ? frame_render_->GetNativeWindow() : nullptr, drt);
-        thunder_sdk_->RegisterOnVideoFrameDecodedCallback([=](const std::shared_ptr<RawImage>& image) {
-            frame_render_->UpdateYUVImage(image);
+        thunder_sdk_->RegisterOnVideoFrameDecodedCallback([=, this](const std::shared_ptr<RawImage>& image) {
+            if (drt != DecoderRenderType::kMediaCodecSurface && image->img_buf) {
+                frame_render_->UpdateYUVImage(image);
+            }
+
+            if (frame_width_ != image->img_width || frame_height_ != image->img_height) {
+                if (native_msg_cbk_) {
+                    auto frame_change_msg = NativeMsgMaker::MakeFrameInfoMessage(image->img_width, image->img_height, image->img_format);
+                    native_msg_cbk_(frame_change_msg);
+                }
+                frame_width_ = image->img_width;
+                frame_height_ = image->img_height;
+            }
         });
 
         thunder_sdk_->RegisterOnAudioFrameDecodedCallback([=](const std::shared_ptr<Data>& data, int samples, int channels, int bits) {

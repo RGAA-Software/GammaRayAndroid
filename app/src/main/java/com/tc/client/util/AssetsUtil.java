@@ -1,7 +1,9 @@
-package com.tc.client;
+package com.tc.client.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+
+import com.tc.client.Closer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;

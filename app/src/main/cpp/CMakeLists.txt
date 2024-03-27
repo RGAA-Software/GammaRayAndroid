@@ -41,6 +41,7 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
         frame_render.cpp
         app_context.cpp
         audio_player.cpp
+        native_msg_maker.cpp
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME}

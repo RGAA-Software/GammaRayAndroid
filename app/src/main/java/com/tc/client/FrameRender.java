@@ -66,6 +66,7 @@ public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFra
     @Override
     public void onSurfaceChanged(GL10 gl10, int width, int height) {
         mDirector.init(width, height);
+        GLES32.glViewport(0, 0, width, height);
     }
 
     @Override

@@ -36,6 +36,10 @@ import static javax.microedition.khronos.opengles.GL10.GL_SRC_ALPHA;
 import android.content.Context;
 import android.opengl.GLES32;
 
+import com.tc.client.util.AssetsUtil;
+import com.tc.client.util.BufferUtil;
+import com.tc.client.util.GLUtil;
+
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 

@@ -7,6 +7,7 @@
 
 #include <jni.h>
 #include <memory>
+#include <functional>
 
 #include "thunder_sdk.h"
 
@@ -17,6 +18,8 @@ namespace tc
     class FrameRender;
     class AppContext;
     class AudioPlayer;
+
+    using OnNativeMessageCallback = std::function<void(const std::string&)>;
 
     class Application {
     public:
@@ -40,12 +43,18 @@ namespace tc
         void SendGamepadState(int32_t buttons, int32_t left_trigger, int32_t right_trigger, int32_t thumb_lx,
                               int32_t thumb_ly, int32_t thumb_rx, int32_t thumb_ry);
 
+        void RegisterNativeMessageCallback(OnNativeMessageCallback&& cbk) { native_msg_cbk_ = cbk; }
+
     private:
         JavaVM* vm_ = nullptr;
         std::shared_ptr<ThunderSdk> thunder_sdk_ = nullptr;
         std::shared_ptr<FrameRender> frame_render_ = nullptr;
         std::shared_ptr<AppContext> app_context_ = nullptr;
         std::shared_ptr<AudioPlayer> audio_player_ = nullptr;
+        OnNativeMessageCallback native_msg_cbk_ = nullptr;
+
+        int frame_width_ = 0;
+        int frame_height_ = 0;
     };
 
 }
