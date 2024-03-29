@@ -11,7 +11,7 @@ import com.tc.client.ui.video.VideoFragment
 import com.tc.client.ui.book.SteamAppFragment
 import com.tc.client.ui.me.AboutMeFragment
 import com.tc.client.ui.day.DayFragment
-import com.tc.reading.util.ScreenUtil
+import com.tc.client.util.ScreenUtil
 
 class MainActivity : AppCompatActivity() {
 

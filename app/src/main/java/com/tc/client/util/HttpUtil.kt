@@ -1,4 +1,4 @@
-package com.tc.reading.util
+package com.tc.client.util
 
 import okhttp3.OkHttpClient
 import okhttp3.Request

@@ -3,9 +3,7 @@ package com.tc.client.ui.book
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
-import com.tc.client.R
-import com.tc.reading.util.ScreenUtil
+import com.tc.client.util.ScreenUtil
 
 class BookContentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

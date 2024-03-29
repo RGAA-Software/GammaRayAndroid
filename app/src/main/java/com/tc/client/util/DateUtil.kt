@@ -1,4 +1,4 @@
-package com.tc.reading.util
+package com.tc.client.util
 
 import java.text.SimpleDateFormat
 import java.util.Date

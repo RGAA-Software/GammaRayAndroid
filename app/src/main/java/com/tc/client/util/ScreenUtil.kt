@@ -1,4 +1,4 @@
-package com.tc.reading.util
+package com.tc.client.util
 
 import android.app.Activity
 import android.content.Context

@@ -21,6 +21,7 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
     class BookViewHolder(itemView: View) : ViewHolder(itemView) {
         val cover: ImageView = itemView.findViewById(R.id.book_cover);
         val appName: TextView = itemView.findViewById(R.id.id_app_name);
+        val engineIndicator: ImageView = itemView.findViewById(R.id.id_engine);
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -41,6 +42,17 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
         Glide.with(context).load(coverUrl).into(holder.cover);
 
         holder.appName.text = app.appName
+
+        holder.engineIndicator.visibility = View.VISIBLE;
+        if (app.engine == "UNITY") {
+            holder.engineIndicator.setImageDrawable(context.getDrawable(R.drawable.ic_unity))
+        }
+        else if (app.engine == "UE") {
+            holder.engineIndicator.setImageDrawable(context.getDrawable(R.drawable.ic_ue))
+        }
+        else {
+            holder.engineIndicator.visibility = View.GONE;
+        }
     }
 
 }

@@ -4,8 +4,8 @@ import android.text.TextUtils
 import android.util.Log
 import com.tc.client.AppContext
 import com.tc.reading.ui.day.DaySentence
-import com.tc.reading.util.DateUtil
-import com.tc.reading.util.HttpUtil
+import com.tc.client.util.DateUtil
+import com.tc.client.util.HttpUtil
 import org.json.JSONObject
 
 class DaySentenceManager(private var appContext: AppContext) {

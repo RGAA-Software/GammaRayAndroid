@@ -6,8 +6,7 @@ import android.util.Log
 import com.tc.client.Result
 import com.tc.client.ServerApi
 import com.tc.client.Settings
-import com.tc.reading.util.HttpUtil
-import okhttp3.OkHttpClient
+import com.tc.client.util.HttpUtil
 import org.json.JSONObject
 
 class SteamAppManager(val context: Context) {
@@ -27,12 +26,13 @@ class SteamAppManager(val context: Context) {
             val msg = obj.getString("message");
             if (obj.has("data")) {
                 val data = obj.getJSONArray("data");
-                for (i in 0..data.length()) {
+                for (i in 0 until data.length()) {
                     val app = SteamApp();
                     val item = data.getJSONObject(i);
                     app.appId = item.getInt("app_id");
                     app.coverName = item.getString("cover_name");
                     app.appName = item.getString("name");
+                    app.engine = item.getString("engine");
                     result.add(app)
                 }
             }
