@@ -12,22 +12,23 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
 import com.tc.client.AppContext
-import com.tc.client.databinding.FragmentBookBinding
+import com.tc.client.databinding.FragmentSteamAppBinding
+import com.tc.client.steam.SteamApp
 import com.tc.client.ui.BaseFragment
 
-class BookFragment(appContext: AppContext) : BaseFragment(appContext) {
+class SteamAppFragment(appContext: AppContext) : BaseFragment(appContext) {
 
-    private var _binding: FragmentBookBinding? = null
+    private var _binding: FragmentSteamAppBinding? = null
     private var _handler: Handler? = null;
     private val binding get() = _binding!!
     private val handler get() = _handler!!;
-
-    private var books = mutableListOf<BookInfo>();
+    private lateinit var steamAppAdapter: SteamAppAdapter
+    private var steamApps = mutableListOf<SteamApp>();
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        _binding = FragmentBookBinding.inflate(inflater, container, false)
+        _binding = FragmentSteamAppBinding.inflate(inflater, container, false)
         _handler = Handler(Looper.getMainLooper());
         val root: View = binding.root
 
@@ -39,9 +40,6 @@ class BookFragment(appContext: AppContext) : BaseFragment(appContext) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        for (i in 1..120) {
-            books.add(BookInfo());
-        }
 
         binding.refreshLayout.apply {
             setRepeatMode(SSPullToRefreshLayout.RepeatMode.REPEAT);
@@ -57,7 +55,8 @@ class BookFragment(appContext: AppContext) : BaseFragment(appContext) {
 
         binding.bookList.apply {
             layoutManager = GridLayoutManager(activity, 2);
-            adapter = BookAdapter(context, books);
+            steamAppAdapter = SteamAppAdapter(context, steamApps);
+            adapter = steamAppAdapter;
             addItemDecoration(ItemDecoration(90));
             addOnScrollListener(object: RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -69,17 +68,38 @@ class BookFragment(appContext: AppContext) : BaseFragment(appContext) {
                     val manager = recyclerView.layoutManager as GridLayoutManager;
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         val lastVisibleItem = manager.findLastCompletelyVisibleItemPosition();
-                        if (lastVisibleItem == (books.size - 1)) {
+                        if (lastVisibleItem == (steamApps.size - 1)) {
                             Toast.makeText(activity, "Last...", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
             });
         }
+
+        //
+        requestSteamApps()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun requestSteamApps() {
+        appContext.postTask {
+            val result = appContext.steamManager.requestSteamApps();
+            if (!result.ok()) {
+                appContext.postUITask {
+                    Toast.makeText(activity, "error", Toast.LENGTH_SHORT).show()
+                }
+                return@postTask
+            }
+
+            steamApps.removeAll(result.value)
+            steamApps.addAll(result.value)
+            appContext.postUITask{
+                steamAppAdapter.notifyDataSetChanged()
+            }
+        }
     }
 }

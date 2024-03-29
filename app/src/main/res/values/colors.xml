@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dpag_button_background">#7799ccff</color>
     <color name="joystick_button_background">#ffcc99</color>
-    <color name="colorPrimary">#518242</color>
-    <color name="colorPrimaryDark">#39682a</color>
-    <color name="colorAccent">#518242</color>
+    <color name="colorPrimary">#9adfff</color>
+    <color name="colorPrimaryDark">#69f0ff</color>
+    <color name="colorAccent">#9adfff</color>
 </resources>

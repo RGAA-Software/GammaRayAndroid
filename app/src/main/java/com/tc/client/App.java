@@ -12,10 +12,12 @@ import java.util.Map;
 
 public class App extends Application {
     private static final String TAG = "Main";
-
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Settings.Companion.getInstance().loadConfig(this);
+        Settings.Companion.getInstance().dump();
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override

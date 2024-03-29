@@ -36,16 +36,17 @@
 <!--            app:realtimeOverlayColor="#5000" />-->
 
         <TextView
+            android:id="@+id/id_app_name"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:text="RAZ Full"
             android:gravity="center_vertical"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:paddingLeft="10dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:ellipsize="end"
-            android:background="#000"
-            android:textStyle="bold"
+            android:background="#c000"
+
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

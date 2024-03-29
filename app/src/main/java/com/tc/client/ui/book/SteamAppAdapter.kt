@@ -1,20 +1,26 @@
 package com.tc.client.ui.book
 
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.tc.client.R
+import com.tc.client.Settings
+import com.tc.client.steam.SteamApp
 
-class BookAdapter(private var context: Context, private var books: MutableList<BookInfo>) :
-    RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
+class SteamAppAdapter(private var context: Context, private var apps: MutableList<SteamApp>) :
+    RecyclerView.Adapter<SteamAppAdapter.BookViewHolder>() {
+    private val TAG = "Steam";
 
     class BookViewHolder(itemView: View) : ViewHolder(itemView) {
-        var btn = itemView.findViewById<ImageView>(R.id.book_cover);
+        val cover: ImageView = itemView.findViewById(R.id.book_cover);
+        val appName: TextView = itemView.findViewById(R.id.id_app_name);
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -23,20 +29,18 @@ class BookAdapter(private var context: Context, private var books: MutableList<B
     }
 
     override fun getItemCount(): Int {
-        return books.size;
+        return apps.size;
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
+        val app = apps[position];
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, "index:" + position, Toast.LENGTH_SHORT).show();
-
-//            context.startActivity(Intent(context, BookContentActivity::class.java));
-
-
-
+            Toast.makeText(context, "index:$position", Toast.LENGTH_SHORT).show();
         }
+        val coverUrl = Settings.getInstance().apiBaseUrl + "/cache/" + app.coverName;
+        Glide.with(context).load(coverUrl).into(holder.cover);
 
-        Glide.with(context).load("http://192.168.31.5:20368/cache/570_library_600x900.jpg").into(holder.btn);
+        holder.appName.text = app.appName
     }
 
 }

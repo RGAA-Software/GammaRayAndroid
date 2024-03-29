@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.tc.client.databinding.ActivityMainBinding
 import com.tc.client.ui.video.VideoFragment
-import com.tc.client.ui.book.BookFragment
+import com.tc.client.ui.book.SteamAppFragment
 import com.tc.client.ui.me.AboutMeFragment
 import com.tc.client.ui.day.DayFragment
 import com.tc.reading.util.ScreenUtil
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         private const val ID_ME = 4
     }
 
-    private lateinit var bookFragment: BookFragment
+    private lateinit var steamAppFragment: SteamAppFragment
     private lateinit var videoFragment: VideoFragment
     private lateinit var dayFragment: DayFragment
     private lateinit var aboutMeFragment: AboutMeFragment
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         appContext = AppContext(this);
 
-        bookFragment = BookFragment(appContext);
+        steamAppFragment = SteamAppFragment(appContext);
         videoFragment = VideoFragment(appContext);
         dayFragment = DayFragment(appContext);
         aboutMeFragment = AboutMeFragment(appContext);
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             setOnShowListener {
                 when (it.id) {
                     ID_BOOK -> {
-                        switchFragment(bookFragment);
+                        switchFragment(steamAppFragment);
                         setActionBarTitle("Books");
                     }
                     ID_MOVIE -> {
