@@ -12,12 +12,15 @@ class HttpUtil {
             val request = Request.Builder()
                 .url(url)
                 .build();
-
-            val resp = client.newCall(request).execute();
-            if (resp.code != 200) {
+            try {
+                val resp = client.newCall(request).execute();
+                if (resp.code != 200) {
+                    return null;
+                }
+                return resp.body?.string();
+            } catch (e: Exception) {
                 return null;
             }
-            return resp.body?.string();
         }
 
     }
