@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.tc.client.databinding.ActivityMainBinding
+import com.tc.client.steam.JavaWSClient
+import com.tc.client.steam.UdpBroadcastReceiver
 import com.tc.client.ui.video.VideoFragment
 import com.tc.client.ui.book.SteamAppFragment
 import com.tc.client.ui.me.AboutMeFragment
@@ -32,6 +34,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appContext: AppContext;
 
+    private lateinit var wsClient: JavaWSClient;
+    private lateinit var udpReceiver: UdpBroadcastReceiver;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ScreenUtil.makeActivityFullScreen(this);
@@ -41,10 +46,14 @@ class MainActivity : AppCompatActivity() {
 
         appContext = AppContext(this);
 
-        steamAppFragment = SteamAppFragment(appContext);
-        videoFragment = VideoFragment(appContext);
-        dayFragment = DayFragment(appContext);
-        aboutMeFragment = AboutMeFragment(appContext);
+        steamAppFragment = SteamAppFragment();
+        steamAppFragment.appContext = appContext
+        videoFragment = VideoFragment();
+        videoFragment.appContext = appContext
+        dayFragment = DayFragment();
+        dayFragment.appContext = appContext
+        aboutMeFragment = AboutMeFragment();
+        aboutMeFragment.appContext = appContext
 
         supportActionBar?.title = "Books";
         val fragmentHost = binding.root.findViewById<RelativeLayout>(R.id.fragment_host);
@@ -62,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 when (it.id) {
                     ID_BOOK -> {
                         switchFragment(steamAppFragment);
-                        setActionBarTitle("Books");
+                        setActionBarTitle("Games");
                     }
                     ID_MOVIE -> {
                         switchFragment(videoFragment);
@@ -92,6 +101,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         //switchFragment(bookFragment)
+        wsClient = JavaWSClient("192.168.31.5", 20369);
+        wsClient.start();
+        appContext.register1STimer("ws") {
+            wsClient.sendMessage("..xx...");
+        };
+
+        udpReceiver = UdpBroadcastReceiver();
+        udpReceiver.start();
     }
 
     private fun switchFragment(to: Fragment) {

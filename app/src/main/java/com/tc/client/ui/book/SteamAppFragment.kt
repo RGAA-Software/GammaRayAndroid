@@ -16,7 +16,7 @@ import com.tc.client.databinding.FragmentSteamAppBinding
 import com.tc.client.steam.SteamApp
 import com.tc.client.ui.BaseFragment
 
-class SteamAppFragment(appContext: AppContext) : BaseFragment(appContext) {
+class SteamAppFragment() : BaseFragment() {
 
     private var _binding: FragmentSteamAppBinding? = null
     private var _handler: Handler? = null;
@@ -47,6 +47,7 @@ class SteamAppFragment(appContext: AppContext) : BaseFragment(appContext) {
             setRefreshStyle(SSPullToRefreshLayout.RefreshStyle.NORMAL);
             setLottieAnimation("lottie_clock.json");
             setOnRefreshListener {
+                requestSteamApps();
                 handler.postDelayed({
                     setRefreshing(false);
                 }, 2000)
@@ -86,10 +87,13 @@ class SteamAppFragment(appContext: AppContext) : BaseFragment(appContext) {
     }
 
     private fun requestSteamApps() {
-        appContext.postTask {
-            val result = appContext.steamManager.requestSteamApps();
+        if (appContext == null) {
+            return;
+        }
+        appContext!!.postTask {
+            val result = appContext!!.steamManager.requestSteamApps();
             if (!result.ok()) {
-                appContext.postUITask {
+                appContext!!.postUITask {
                     Toast.makeText(activity, "error", Toast.LENGTH_SHORT).show()
                 }
                 return@postTask
@@ -97,7 +101,7 @@ class SteamAppFragment(appContext: AppContext) : BaseFragment(appContext) {
 
             steamApps.removeAll(result.value)
             steamApps.addAll(result.value)
-            appContext.postUITask{
+            appContext!!.postUITask{
                 steamAppAdapter.notifyDataSetChanged()
             }
         }
