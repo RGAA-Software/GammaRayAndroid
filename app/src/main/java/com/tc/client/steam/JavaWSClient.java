@@ -32,7 +32,7 @@ public class JavaWSClient {
 
             @Override
             public void onMessage(String message) {
-                Log.i(TAG, "recv message: " + message);
+                //Log.i(TAG, "recv message: " + message);
             }
 
             @Override

@@ -1,6 +1,7 @@
 package com.tc.client.ui.book
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.tc.client.FrameRenderActivity
 import com.tc.client.R
 import com.tc.client.Settings
 import com.tc.client.steam.SteamApp
@@ -37,6 +39,10 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
         val app = apps[position];
         holder.itemView.setOnClickListener {
             Toast.makeText(context, "index:$position", Toast.LENGTH_SHORT).show();
+            val intent = Intent(context, FrameRenderActivity::class.java);
+            intent.putExtra("ip", "192.168.31.5");
+            intent.putExtra("port", 9002);
+            context.startActivity(intent)
         }
         val coverUrl = Settings.getInstance().apiBaseUrl + "/cache/" + app.coverName;
         Glide.with(context).load(coverUrl).into(holder.cover);

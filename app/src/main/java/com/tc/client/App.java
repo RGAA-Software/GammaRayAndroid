@@ -12,12 +12,17 @@ import java.util.Map;
 
 public class App extends Application {
     private static final String TAG = "Main";
+
+    private AppContext appContext;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         Settings.Companion.getInstance().loadConfig(this);
         Settings.Companion.getInstance().dump();
+
+        appContext = new AppContext(this);
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -29,5 +34,9 @@ public class App extends Application {
                 }
             }
         });
+    }
+
+    public AppContext getAppContext() {
+        return appContext;
     }
 }

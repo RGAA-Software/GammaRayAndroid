@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        appContext = AppContext(this);
+        appContext = (application as App).appContext;
 
         steamAppFragment = SteamAppFragment();
         steamAppFragment.appContext = appContext

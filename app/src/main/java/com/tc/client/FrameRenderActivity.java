@@ -26,6 +26,7 @@ public class FrameRenderActivity extends Activity {
     private ThunderApp mThunderApp;
     private String mIp;
     private int mPort;
+    private AppContext appContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class FrameRenderActivity extends Activity {
         setContentView(R.layout.activity_frame_render);
         mIp = getIntent().getStringExtra("ip");
         mPort = getIntent().getIntExtra("port", 9002);
+
+        appContext = ((App)getApplication()).getAppContext();
 
         mThunderApp = new ThunderApp(mIp, mPort);
 
@@ -65,6 +68,9 @@ public class FrameRenderActivity extends Activity {
                 resizeFrameView(width, height);
             });
         }));
+
+        startRemoteApplication();
+
     }
 
     @Override
@@ -112,6 +118,13 @@ public class FrameRenderActivity extends Activity {
         mFrameRenderView.postInvalidate();
         //mFrameRenderView.getHolder().setFixedSize(targetWidth, screenHeight);
         Log.i(TAG, "After resize view, width: " + targetWidth + ", height: " + screenHeight);
+    }
+
+    private void startRemoteApplication() {
+        appContext.postTask(() -> {
+            Result<String> res = appContext.getSteamManager().startRemoteApplication();
+            Log.i(TAG, "result: " + res.getValue());
+        });
     }
 
 }

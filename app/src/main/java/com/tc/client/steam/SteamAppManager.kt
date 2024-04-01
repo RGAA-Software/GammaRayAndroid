@@ -44,4 +44,14 @@ class SteamAppManager(val context: Context) {
         return Result(Result.OK, result);
     }
 
+    fun startRemoteApplication(): Result<String> {
+        val url = Settings.getInstance().apiBaseUrl + ServerApi.startApp
+        val resp = HttpUtil.reqUrl(url)
+        if (TextUtils.isEmpty(resp)) {
+            return Result(Result.ERR, "start failed");
+        }
+
+        return Result(Result.OK, "OK")
+    }
+
 }
