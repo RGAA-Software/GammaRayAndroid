@@ -6,6 +6,15 @@ class SteamApp {
     var coverName: String = "";
     var engine: String = "";
 
+     companion object {
+         fun create(appId: Int, appName: String): SteamApp {
+             val app = SteamApp();
+             app.appId = appId;
+             app.appName = appName;
+             return app;
+         }
+     }
+
     override fun equals(other: Any?): Boolean {
         if (other != null) {
             return appId == (other as SteamApp).appId;

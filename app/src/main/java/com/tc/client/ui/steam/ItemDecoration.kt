@@ -1,6 +1,5 @@
-package com.tc.client.ui.book
+package com.tc.client.ui.steam
 
-import android.content.Context
 import android.content.res.Resources
 import android.graphics.Rect
 import android.view.View

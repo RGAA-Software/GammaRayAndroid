@@ -1,4 +1,4 @@
-package com.tc.client.ui.book
+package com.tc.client.ui.steam
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

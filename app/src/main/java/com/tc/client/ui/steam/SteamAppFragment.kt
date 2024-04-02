@@ -1,4 +1,4 @@
-package com.tc.client.ui.book
+package com.tc.client.ui.steam
 
 import android.os.Bundle
 import android.os.Handler
@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
-import com.tc.client.AppContext
 import com.tc.client.databinding.FragmentSteamAppBinding
 import com.tc.client.steam.SteamApp
 import com.tc.client.ui.BaseFragment
@@ -24,6 +23,12 @@ class SteamAppFragment() : BaseFragment() {
     private val handler get() = _handler!!;
     private lateinit var steamAppAdapter: SteamAppAdapter
     private var steamApps = mutableListOf<SteamApp>();
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        steamApps.add(SteamApp.create(1, "Desktop"));
+        steamApps.add(SteamApp.create(2, "Steam"));
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)

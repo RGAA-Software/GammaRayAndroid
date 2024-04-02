@@ -10,7 +10,7 @@ import com.tc.client.databinding.ActivityMainBinding
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.steam.UdpBroadcastReceiver
 import com.tc.client.ui.video.VideoFragment
-import com.tc.client.ui.book.SteamAppFragment
+import com.tc.client.ui.steam.SteamAppFragment
 import com.tc.client.ui.me.AboutMeFragment
 import com.tc.client.ui.day.DayFragment
 import com.tc.client.util.ScreenUtil
