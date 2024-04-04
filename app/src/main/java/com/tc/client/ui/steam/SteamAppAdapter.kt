@@ -42,8 +42,8 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
 
 
             val intent = Intent(context, FrameRenderActivity::class.java);
-            //intent.putExtra("ip", "192.168.31.5");
-            intent.putExtra("ip", "10.0.0.16");
+            intent.putExtra("ip", "192.168.31.5");
+//            intent.putExtra("ip", "10.0.0.16");
             intent.putExtra("port", 9002);
             context.startActivity(intent)
         }
