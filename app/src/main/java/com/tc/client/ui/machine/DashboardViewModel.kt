@@ -1,4 +1,4 @@
-package com.tc.client.ui.video
+package com.tc.client.ui.machine
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

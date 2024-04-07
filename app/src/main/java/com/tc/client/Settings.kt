@@ -23,8 +23,8 @@ class Settings {
     }
 
     fun loadConfig(ctx: Context) {
-        serverIp = SpUtils.getInstance(ctx).getString(KEY_IP, "10.0.0.16");
-//        serverIp = SpUtils.getInstance(ctx).getString(KEY_IP, "192.168.31.5");
+//        serverIp = SpUtils.getInstance(ctx).getString(KEY_IP, "10.0.0.16");
+        serverIp = SpUtils.getInstance(ctx).getString(KEY_IP, "192.168.31.5");
         serverPort = SpUtils.getInstance(ctx).getInt(KEY_PORT, 20368);
 
         apiBaseUrl = "http://$serverIp:$serverPort";

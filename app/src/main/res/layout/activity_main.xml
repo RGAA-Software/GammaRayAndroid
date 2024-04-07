@@ -6,27 +6,55 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/id_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:translationZ="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/id_title_bar_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:text="title"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
     <RelativeLayout
         android:id="@+id/fragment_host"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="25dp"
         android:layout_above="@id/bottom_bar"
-        />
+        android:layout_below="@id/id_action_bar" />
 
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:mbn_circleColor="#ffffff"
+        android:layout_alignParentBottom="true"
         app:mbn_backgroundBottomColor="#ffffff"
+        app:mbn_circleColor="#ffffff"
         app:mbn_countBackgroundColor="#ff6f00"
         app:mbn_countTextColor="#ffffff"
         app:mbn_defaultIconColor="#90a4ae"
         app:mbn_rippleColor="#cccccc"
         app:mbn_selectedIconColor="@color/colorPrimary"
-        app:mbn_shadowColor="#1f212121"
-
-        android:layout_alignParentBottom="true"/>
+        app:mbn_shadowColor="#1f212121" />
 
 </RelativeLayout>

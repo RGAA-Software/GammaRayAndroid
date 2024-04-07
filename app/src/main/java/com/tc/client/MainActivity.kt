@@ -1,6 +1,7 @@
 package com.tc.client
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,7 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.tc.client.databinding.ActivityMainBinding
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.steam.UdpBroadcastReceiver
-import com.tc.client.ui.video.VideoFragment
+import com.tc.client.ui.machine.MachineFragment
 import com.tc.client.ui.steam.SteamAppFragment
 import com.tc.client.ui.me.AboutMeFragment
 import com.tc.client.ui.day.DayFragment
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     companion object {
+        private const val TAG = "Main";
+
         private const val ID_BOOK = 1
         private const val ID_MOVIE = 2
         private const val ID_DAY = 3
@@ -27,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var steamAppFragment: SteamAppFragment
-    private lateinit var videoFragment: VideoFragment
+    private lateinit var machineFragment: MachineFragment
     private lateinit var dayFragment: DayFragment
     private lateinit var aboutMeFragment: AboutMeFragment
     private var currentFragment: Fragment? = null
@@ -48,34 +51,38 @@ class MainActivity : AppCompatActivity() {
 
         steamAppFragment = SteamAppFragment();
         steamAppFragment.appContext = appContext
-        videoFragment = VideoFragment();
-        videoFragment.appContext = appContext
+        machineFragment = MachineFragment();
+        machineFragment.appContext = appContext
         dayFragment = DayFragment();
         dayFragment.appContext = appContext
         aboutMeFragment = AboutMeFragment();
         aboutMeFragment.appContext = appContext
 
-        supportActionBar?.title = "Books";
         val fragmentHost = binding.root.findViewById<RelativeLayout>(R.id.fragment_host);
 
 
         binding.bottomBar.apply {
-            add(MeowBottomNavigation.Model(ID_BOOK, R.drawable.ic_book))
-            add(MeowBottomNavigation.Model(ID_MOVIE, R.drawable.ic_movie))
+            add(MeowBottomNavigation.Model(ID_BOOK, R.drawable.ic_controller))
+            add(MeowBottomNavigation.Model(ID_MOVIE, R.drawable.ic_laptop))
             add(MeowBottomNavigation.Model(ID_DAY, R.drawable.ic_sun))
             add(MeowBottomNavigation.Model(ID_ME, R.drawable.ic_account))
 
             //setCount(ID_NOTIFICATION, "15")
 
             setOnShowListener {
+
+            }
+
+            setOnClickMenuListener {
+                Log.i(TAG, "id: ${it.id}")
                 when (it.id) {
                     ID_BOOK -> {
                         switchFragment(steamAppFragment);
                         setActionBarTitle("Games");
                     }
                     ID_MOVIE -> {
-                        switchFragment(videoFragment);
-                        setActionBarTitle("Videos");
+                        switchFragment(machineFragment);
+                        setActionBarTitle("Machines");
                     }
                     ID_DAY -> {
                         switchFragment(dayFragment)
@@ -88,16 +95,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            setOnClickMenuListener {
-
-            }
-
             setOnReselectListener {
                 Toast.makeText(context, "item ${it.id} is reselected.", Toast.LENGTH_LONG).show()
             }
 
             show(ID_BOOK)
-
+            switchFragment(steamAppFragment);
+            setActionBarTitle("Games");
         }
 
         //switchFragment(bookFragment)
@@ -139,7 +143,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setActionBarTitle(title: String) {
-        supportActionBar?.title = title
+        binding.idTitleBarText.text = title;
     }
 
 }
