@@ -27,7 +27,7 @@ class SteamAppFragment() : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         steamApps.add(SteamApp.create(1, "Desktop"));
-        steamApps.add(SteamApp.create(2, "Steam"));
+        steamApps.add(SteamApp.create(2, "Steam Big Picture"));
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
