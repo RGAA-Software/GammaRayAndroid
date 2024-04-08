@@ -38,12 +38,14 @@
             android:name=".FrameRenderActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
+        <activity android:name=".activity.QRCodeScanActivity"
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

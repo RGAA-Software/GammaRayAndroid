@@ -6,16 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.tc.client.FrameRenderActivity
 import com.tc.client.R
-import com.tc.client.Settings
+import com.tc.client.activity.QRCodeScanActivity
 import com.tc.client.steam.Machine
-import com.tc.client.steam.SteamApp
 
 class MachineAdapter(private var context: Context, private var apps: MutableList<Machine>) :
     RecyclerView.Adapter<MachineAdapter.BookViewHolder>() {
@@ -41,12 +37,7 @@ class MachineAdapter(private var context: Context, private var apps: MutableList
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         val app = apps[position];
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, "index:$position", Toast.LENGTH_SHORT).show();
-            val intent = Intent(context, FrameRenderActivity::class.java);
-//            intent.putExtra("ip", "192.168.31.5");
-            intent.putExtra("ip", "10.0.0.16");
-            intent.putExtra("port", 9002);
-            context.startActivity(intent)
+            context.startActivity(Intent(context, QRCodeScanActivity::class.java))
         }
 
         holder.appName.text = app.name;

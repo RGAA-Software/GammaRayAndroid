@@ -33,6 +33,17 @@
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
+            <ImageView
+                android:id="@+id/id_option"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_vert_3dots"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:padding="12.5dp"
+                android:layout_alignParentRight="true"
+                app:tint="@color/white"/>
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

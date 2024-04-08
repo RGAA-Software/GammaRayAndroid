@@ -10,6 +10,7 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.tc.client.databinding.ActivityMainBinding
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.steam.UdpBroadcastReceiver
+import com.tc.client.ui.MainTopRightMenu
 import com.tc.client.ui.machine.MachineFragment
 import com.tc.client.ui.steam.SteamAppFragment
 import com.tc.client.ui.me.AboutMeFragment
@@ -49,6 +50,11 @@ class MainActivity : AppCompatActivity() {
 
         appContext = (application as App).appContext;
 
+        binding.idOption.setOnClickListener {
+            val menu = MainTopRightMenu(this);
+            menu.show(binding.idOption);
+        }
+
         steamAppFragment = SteamAppFragment();
         steamAppFragment.appContext = appContext
         machineFragment = MachineFragment();
@@ -59,7 +65,6 @@ class MainActivity : AppCompatActivity() {
         aboutMeFragment.appContext = appContext
 
         val fragmentHost = binding.root.findViewById<RelativeLayout>(R.id.fragment_host);
-
 
         binding.bottomBar.apply {
             add(MeowBottomNavigation.Model(ID_BOOK, R.drawable.ic_controller))
