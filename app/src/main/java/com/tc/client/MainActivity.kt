@@ -105,7 +105,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //switchFragment(bookFragment)
-        wsClient = JavaWSClient("192.168.31.5", 20369);
+        //wsClient = JavaWSClient("192.168.31.5", 20369);
+        wsClient = JavaWSClient("10.0.0.16", 20369);
         wsClient.start();
         appContext.register1STimer("ws") {
             wsClient.sendMessage("..xx...");

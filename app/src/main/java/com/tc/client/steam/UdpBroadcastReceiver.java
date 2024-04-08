@@ -12,7 +12,7 @@ public class UdpBroadcastReceiver extends Thread {
 
     private boolean running;
     private DatagramSocket socket;
-    private byte[] buf = new byte[256]; // 调整缓冲区大小根据需要
+    private byte[] buf = new byte[2048]; // 调整缓冲区大小根据需要
     private int port = 21034; // 定义监听的端口号
 
     public UdpBroadcastReceiver() {

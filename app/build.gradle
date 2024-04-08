@@ -232,7 +232,7 @@ dependencies {
     implementation "com.github.SimformSolutionsPvtLtd:SSPullToRefresh:1.5.2"
 
     // blur
-    implementation "com.github.mmin18:realtimeblurview:1.2.1"
+    //implementation "com.github.mmin18:realtimeblurview:1.2.1"
 
     // okhttp
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
@@ -242,6 +242,8 @@ dependencies {
 
     implementation "org.java-websocket:Java-WebSocket:1.5.3"
     //implementation 'io.crossbar.autobahn:autobahn-android:21.7.1'
+
+    implementation 'com.airbnb.android:lottie:6.4.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

@@ -24,7 +24,8 @@ class MachineFragment() : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         machines.add(Machine.create("1", "Desktop"));
-        machines.add(Machine.create("1", "Steam Big Picture"));
+        machines.add(Machine.create("2", "Steam Big Picture"));
+        machines.add(Machine.create("3", "Searching..."));
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

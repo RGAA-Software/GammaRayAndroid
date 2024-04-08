@@ -25,6 +25,8 @@ class MachineAdapter(private var context: Context, private var apps: MutableList
         val cover: ImageView = itemView.findViewById(R.id.book_cover);
         val appName: TextView = itemView.findViewById(R.id.id_app_name);
         val presetIcon: ImageView = itemView.findViewById(R.id.id_preset_icon);
+        val connectScreen: ImageView = itemView.findViewById(R.id.connect_screen);
+        val searching: ImageView = itemView.findViewById(R.id.searching);
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -48,18 +50,16 @@ class MachineAdapter(private var context: Context, private var apps: MutableList
         }
 
         holder.appName.text = app.name;
+        Glide.with(context).load("").into(holder.cover);
 
-        if (position == 0) {
-            holder.presetIcon.visibility = View.VISIBLE;
-            holder.presetIcon.setImageDrawable(context.getDrawable(R.drawable.ic_windows));
-            Glide.with(context).load("").into(holder.cover);
-        } else if (position == 1) {
-            holder.presetIcon.visibility = View.VISIBLE;
-            holder.presetIcon.setImageDrawable(context.getDrawable(R.drawable.ic_steam));
-            Glide.with(context).load("").into(holder.cover);
-        } else {
+        if (position == apps.size - 1) {
             holder.presetIcon.visibility = View.GONE;
-            Glide.with(context).load("").into(holder.cover);
+            holder.connectScreen.visibility = View.GONE;
+            holder.searching.visibility = View.VISIBLE;
+        } else {
+            holder.presetIcon.visibility = View.VISIBLE;
+            holder.connectScreen.visibility = View.VISIBLE;
+            holder.searching.visibility = View.GONE;
         }
     }
 

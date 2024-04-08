@@ -42,6 +42,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageView
+            android:id="@+id/connect_screen"
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:tint="@color/colorPrimary"
@@ -64,6 +65,19 @@
             android:layout_marginTop="65dp"
             android:alpha="1.0"
             android:src="@drawable/ic_windows"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/searching"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:lottie_fileName="anim_searching.lottie"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="25dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
