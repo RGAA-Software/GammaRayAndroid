@@ -1,5 +1,6 @@
 package com.tc.client
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.RelativeLayout
@@ -7,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
+import com.king.camera.scan.CameraScan
 import com.tc.client.databinding.ActivityMainBinding
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.steam.UdpBroadcastReceiver
@@ -150,6 +152,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun setActionBarTitle(title: String) {
         binding.idTitleBarText.text = title;
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100) {
+            val message = data?.getStringExtra(CameraScan.SCAN_RESULT)
+            Toast.makeText(this, "msg: $message", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

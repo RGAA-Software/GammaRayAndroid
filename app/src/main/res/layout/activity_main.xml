@@ -37,12 +37,13 @@
                 android:id="@+id/id_option"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_vert_3dots"
+                android:src="@drawable/ic_add"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
-                android:padding="12.5dp"
+                android:padding="9dp"
                 android:layout_alignParentRight="true"
-                app:tint="@color/white"/>
+                app:tint="@color/white"
+                android:background="?android:attr/selectableItemBackground"/>
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

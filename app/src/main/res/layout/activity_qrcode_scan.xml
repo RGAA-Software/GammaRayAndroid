@@ -28,7 +28,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:padding="12.5dp"
-                app:tint="@color/white"/>
+                app:tint="@color/white"
+                android:background="?android:attr/selectableItemBackground"/>
 
             <TextView
                 android:id="@+id/id_title_bar_text"

@@ -13,8 +13,10 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/id_scan_server"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:background="?android:attr/selectableItemBackground">
 
             <ImageView
                 android:id="@+id/id_scan_icon"
@@ -36,8 +38,10 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/id_manual_input"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:background="?android:attr/selectableItemBackground">
 
             <ImageView
                 android:id="@+id/id_input_icon"

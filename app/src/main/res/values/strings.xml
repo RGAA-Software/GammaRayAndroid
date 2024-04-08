@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GammaRay</string>
+    <string name="manual_input_server">Manual Input Server</string>
+    <string name="please_input_server_ip">Please input Server IP</string>
 </resources>

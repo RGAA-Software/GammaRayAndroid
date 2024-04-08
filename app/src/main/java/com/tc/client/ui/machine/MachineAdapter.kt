@@ -37,7 +37,7 @@ class MachineAdapter(private var context: Context, private var apps: MutableList
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         val app = apps[position];
         holder.itemView.setOnClickListener {
-            context.startActivity(Intent(context, QRCodeScanActivity::class.java))
+
         }
 
         holder.appName.text = app.name;
