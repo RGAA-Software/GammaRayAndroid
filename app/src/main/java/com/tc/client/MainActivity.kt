@@ -69,8 +69,8 @@ class MainActivity : AppCompatActivity() {
         val fragmentHost = binding.root.findViewById<RelativeLayout>(R.id.fragment_host);
 
         binding.bottomBar.apply {
-            add(MeowBottomNavigation.Model(ID_BOOK, R.drawable.ic_controller))
             add(MeowBottomNavigation.Model(ID_MOVIE, R.drawable.ic_laptop))
+            add(MeowBottomNavigation.Model(ID_BOOK, R.drawable.ic_controller))
             add(MeowBottomNavigation.Model(ID_DAY, R.drawable.ic_sun))
             add(MeowBottomNavigation.Model(ID_ME, R.drawable.ic_account))
 
@@ -106,9 +106,9 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(context, "item ${it.id} is reselected.", Toast.LENGTH_LONG).show()
             }
 
-            show(ID_BOOK)
-            switchFragment(steamAppFragment);
-            setActionBarTitle("Games");
+            show(ID_MOVIE)
+            switchFragment(machineFragment);
+            setActionBarTitle("Machines");
         }
 
         //switchFragment(bookFragment)
@@ -152,6 +152,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setActionBarTitle(title: String) {
         binding.idTitleBarText.text = title;
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        udpReceiver.stopReceiving()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
