@@ -163,7 +163,18 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 100) {
             val message = data?.getStringExtra(CameraScan.SCAN_RESULT)
-            Toast.makeText(this, "msg: $message", Toast.LENGTH_SHORT).show();
+            if (message != null) {
+                val scanInfo = Settings.getInstance().parseScanInfo(message)
+                if (!scanInfo.valid()) {
+                    Toast.makeText(this, "Invalid message: $message", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                NetworkChecker(appContext).checkAvailableServer(scanInfo, object: NetworkChecker.OnCheckAvailableCallback{
+                    override fun onCheck(scanInfo: ScanInfo) {
+                        Log.i(TAG, "target ip: ${scanInfo.targetIp}")
+                    }
+                })
+            }
         }
     }
 
