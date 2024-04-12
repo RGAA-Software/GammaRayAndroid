@@ -1,5 +1,7 @@
 package com.tc.client
 
+import com.tc.client.db.DBServer
+
 public class ScanInfo {
 
     class IpInfo {
@@ -28,8 +30,21 @@ public class ScanInfo {
         return sysUniqueId.isNotEmpty() && httpServerPort > 0 && wsServerPort > 0 && udpServerPort > 0;
     }
 
-    fun validIp(): Boolean {
+    fun canConnect(): Boolean {
         return targetIp.isNotEmpty();
+    }
+
+    fun asDBServer(): DBServer {
+        val s = DBServer();
+        s.serverId = this.sysUniqueId
+        s.serverName = ""
+        s.serverIp = this.targetIp
+        s.serverVersion = ""
+        s.httpServerPort = this.httpServerPort
+        s.wsServerPort = this.wsServerPort
+        s.udpCastServerPort = this.udpServerPort
+        s.coverUrl = ""
+        return s;
     }
 
     override fun toString(): String {

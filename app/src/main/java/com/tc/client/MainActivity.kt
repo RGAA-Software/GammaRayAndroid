@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.king.camera.scan.CameraScan
 import com.tc.client.databinding.ActivityMainBinding
+import com.tc.client.events.OnServerScanned
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.steam.UdpBroadcastReceiver
 import com.tc.client.ui.MainTopRightMenu
@@ -18,6 +19,7 @@ import com.tc.client.ui.steam.SteamAppFragment
 import com.tc.client.ui.me.AboutMeFragment
 import com.tc.client.ui.day.DayFragment
 import com.tc.client.util.ScreenUtil
+import org.greenrobot.eventbus.EventBus
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,14 +59,10 @@ class MainActivity : AppCompatActivity() {
             menu.show(binding.idOption);
         }
 
-        steamAppFragment = SteamAppFragment();
-        steamAppFragment.appContext = appContext
-        machineFragment = MachineFragment();
-        machineFragment.appContext = appContext
-        dayFragment = DayFragment();
-        dayFragment.appContext = appContext
-        aboutMeFragment = AboutMeFragment();
-        aboutMeFragment.appContext = appContext
+        steamAppFragment = SteamAppFragment(this);
+        machineFragment = MachineFragment(this);
+        dayFragment = DayFragment(this);
+        aboutMeFragment = AboutMeFragment(this);
 
         val fragmentHost = binding.root.findViewById<RelativeLayout>(R.id.fragment_host);
 
@@ -172,6 +170,17 @@ class MainActivity : AppCompatActivity() {
                 NetworkChecker(appContext).checkAvailableServer(scanInfo, object: NetworkChecker.OnCheckAvailableCallback{
                     override fun onCheck(scanInfo: ScanInfo) {
                         Log.i(TAG, "target ip: ${scanInfo.targetIp}")
+                        if (scanInfo.canConnect()) {
+                            appContext.postTask {
+                                val dbServer = scanInfo.asDBServer();
+                                //todo: request url for more information, cover url , etc
+                                appContext.dbManager.insertOrUpdateServer(dbServer)
+
+                                val msg = OnServerScanned()
+                                msg.server = dbServer
+                                EventBus.getDefault().post(msg)
+                            }
+                        }
                     }
                 })
             }

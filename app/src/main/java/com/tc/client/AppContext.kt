@@ -3,6 +3,7 @@ package com.tc.client
 import android.content.Context
 import android.os.Handler
 import android.os.HandlerThread
+import com.tc.client.db.DBManager
 import com.tc.client.steam.SteamAppManager
 import java.util.Timer
 import java.util.TimerTask
@@ -16,6 +17,8 @@ class AppContext(private var context: Context) {
 
     private var timer = Timer()
     private var timer1SCallbacks = mutableMapOf<String, Runnable>()
+
+    public val dbManager: DBManager = DBManager(context)
 
     init {
         handlerThread.start();

@@ -1,5 +1,6 @@
 package com.tc.client.ui.steam
 
+import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -15,7 +16,7 @@ import com.tc.client.databinding.FragmentSteamAppBinding
 import com.tc.client.steam.SteamApp
 import com.tc.client.ui.BaseFragment
 
-class SteamAppFragment() : BaseFragment() {
+class SteamAppFragment(private val hostActivity: Activity) : BaseFragment(hostActivity) {
 
     private var _binding: FragmentSteamAppBinding? = null
     private var _handler: Handler? = null;
@@ -95,10 +96,10 @@ class SteamAppFragment() : BaseFragment() {
         if (appContext == null) {
             return;
         }
-        appContext!!.postTask {
-            val result = appContext!!.steamManager.requestSteamApps();
+        appContext.postTask {
+            val result = appContext.steamManager.requestSteamApps();
             if (!result.ok()) {
-                appContext!!.postUITask {
+                appContext.postUITask {
                     Toast.makeText(activity, "error", Toast.LENGTH_SHORT).show()
                 }
                 return@postTask
@@ -106,7 +107,7 @@ class SteamAppFragment() : BaseFragment() {
 
             steamApps.removeAll(result.value)
             steamApps.addAll(result.value)
-            appContext!!.postUITask{
+            appContext.postUITask{
                 steamAppAdapter.notifyDataSetChanged()
             }
         }

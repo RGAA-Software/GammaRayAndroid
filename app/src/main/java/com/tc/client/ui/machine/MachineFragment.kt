@@ -1,5 +1,6 @@
 package com.tc.client.ui.machine
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,20 +11,26 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
 import com.tc.client.databinding.FragmentMachineBinding
-import com.tc.client.steam.Machine
+import com.tc.client.db.DBServer
+import com.tc.client.events.OnServerScanned
 import com.tc.client.ui.BaseFragment
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
-class MachineFragment() : BaseFragment() {
+
+class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostActivity) {
 
     private var _binding: FragmentMachineBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var machineAdapter: MachineAdapter
-    private var machines = mutableListOf<Machine>();
+    private var machines = mutableListOf<DBServer>();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        machines.add(Machine.create("1", "Searching..."));
+        machines.add(DBServer.create("Searching..."));
+        loadServers();
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -79,18 +86,40 @@ class MachineFragment() : BaseFragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this);
     }
 
-    override fun onPause() {
-        super.onPause()
-
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this);
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onMessageEvent(event: OnServerScanned) {
+        if (machines.contains(event.server)) {
+            return;
+        }
+        machines.add(event.server)
+        activity?.runOnUiThread {
+            machineAdapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun loadServers() {
+        appContext.postTask{
+            val servers = appContext.dbManager.queryServers()
+            machines.removeAll(servers)
+            machines.addAll(servers)
+            appContext.postUITask{
+                machineAdapter.notifyDataSetChanged()
+            }
+        }
     }
 }

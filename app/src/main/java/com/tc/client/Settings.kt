@@ -32,8 +32,6 @@ class Settings {
         apiBaseUrl = "http://$serverIp:$serverPort";
     }
 
-
-
     fun parseScanInfo(info: String): ScanInfo {
         val scanInfo = ScanInfo();
         try {

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.greenrobot.greendao'
 }
 
 android {
@@ -199,6 +200,21 @@ android {
     }
 }
 
+// GreenDAO
+greendao {
+    schemaVersion 1
+    daoPackage 'com.tc.client.db'
+    targetGenDir 'src/main/java'
+}
+
+//编译GreenDAO使用，对应错误
+//Gradle detected a problem with the following location
+tasks.whenTaskAdded { task ->
+    if (task.name.matches("compile\\w*Kotlin")) {
+        task.dependsOn('greendao')
+    }
+}
+
 dependencies {
     implementation files('libs/joml-1.10.5.jar')
     implementation("io.coil-kt:coil-compose:2.4.0")
@@ -243,10 +259,17 @@ dependencies {
     implementation "org.java-websocket:Java-WebSocket:1.5.3"
     //implementation 'io.crossbar.autobahn:autobahn-android:21.7.1'
 
-    // AndroidX 版本
+    // AndroidX
     implementation 'com.github.jenly1314:zxing-lite:3.1.0'
 
+    // Lottie
     implementation 'com.airbnb.android:lottie:6.4.0'
+
+    // GreenDao
+    implementation 'org.greenrobot:greendao:3.3.0' // add library
+
+    // EventBus
+    implementation "org.greenrobot:eventbus:3.3.1"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

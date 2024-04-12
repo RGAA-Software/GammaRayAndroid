@@ -1,5 +1,6 @@
 package com.tc.client.ui.me
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,7 @@ import com.tc.client.AppContext
 import com.tc.client.databinding.FragmentAboutmeBinding
 import com.tc.client.ui.BaseFragment
 
-class AboutMeFragment() : BaseFragment() {
+class AboutMeFragment(private val hostActivity: Activity) : BaseFragment(hostActivity) {
 
     private lateinit var binding: FragmentAboutmeBinding;
 

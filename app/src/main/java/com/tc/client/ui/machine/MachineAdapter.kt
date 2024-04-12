@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.tc.client.R
 import com.tc.client.activity.QRCodeScanActivity
-import com.tc.client.steam.Machine
+import com.tc.client.db.DBServer
 
-class MachineAdapter(private var context: Context, private var apps: MutableList<Machine>) :
+class MachineAdapter(private var context: Context, private var apps: MutableList<DBServer>) :
     RecyclerView.Adapter<MachineAdapter.BookViewHolder>() {
     private val TAG = "Steam";
 
@@ -40,10 +40,10 @@ class MachineAdapter(private var context: Context, private var apps: MutableList
 
         }
 
-        holder.appName.text = app.name;
+        holder.appName.text = app.serverId;
         Glide.with(context).load("").into(holder.cover);
 
-        if (position == apps.size - 1) {
+        if (position == 0) {
             holder.presetIcon.visibility = View.GONE;
             holder.connectScreen.visibility = View.GONE;
             holder.searching.visibility = View.VISIBLE;

@@ -1,5 +1,6 @@
 package com.tc.client.ui.day
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,7 @@ import com.tc.client.databinding.FragmentDayBinding
 import com.tc.client.ui.BaseFragment
 import com.tc.reading.ui.day.DaySentence
 
-class DayFragment() : BaseFragment() {
+class DayFragment(private val hostActivity: Activity) : BaseFragment(hostActivity) {
 
     private var _binding: FragmentDayBinding? = null
     private val binding get() = _binding!!
@@ -19,7 +20,7 @@ class DayFragment() : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val notificationsViewModel = ViewModelProvider(this).get(NotificationsViewModel::class.java)
-        daySentence = DaySentenceManager(appContext!!);
+        daySentence = DaySentenceManager(appContext);
         _binding = FragmentDayBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -32,7 +33,7 @@ class DayFragment() : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         daySentence.requestTodaySentence{ sentence ->
-            appContext!!.postUITask{
+            appContext.postUITask{
                 if (sentence.type == "shanbay") {
                     binding.shanbayAuthor.text = "--" + sentence.author;
                     binding.shanbayContent.text = sentence.content;
