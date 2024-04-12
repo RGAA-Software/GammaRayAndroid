@@ -11,7 +11,7 @@ class MachineItemDecoration(private var dpSize: Int) : RecyclerView.ItemDecorati
     //private val pixSize = (density * dpSize).toInt();
     private var itemFactor = 1.66;
     private var itemWidth = 100;
-    private var itemHeight = 110;
+    private var itemHeight = 120;
 
     override fun getItemOffsets(
         outRect: Rect,

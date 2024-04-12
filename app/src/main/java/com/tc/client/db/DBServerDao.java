@@ -22,15 +22,16 @@ public class DBServerDao extends AbstractDao<DBServer, Long> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, long.class, "id", true, "_id");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property ServerId = new Property(1, String.class, "serverId", false, "SERVER_ID");
-        public final static Property ServerName = new Property(2, String.class, "serverName", false, "SERVER_NAME");
-        public final static Property ServerIp = new Property(3, String.class, "serverIp", false, "SERVER_IP");
-        public final static Property ServerVersion = new Property(4, String.class, "serverVersion", false, "SERVER_VERSION");
-        public final static Property HttpServerPort = new Property(5, int.class, "httpServerPort", false, "HTTP_SERVER_PORT");
-        public final static Property WsServerPort = new Property(6, int.class, "wsServerPort", false, "WS_SERVER_PORT");
-        public final static Property UdpCastServerPort = new Property(7, int.class, "udpCastServerPort", false, "UDP_CAST_SERVER_PORT");
-        public final static Property CoverUrl = new Property(8, String.class, "coverUrl", false, "COVER_URL");
+        public final static Property IconIndex = new Property(2, int.class, "iconIndex", false, "ICON_INDEX");
+        public final static Property ServerName = new Property(3, String.class, "serverName", false, "SERVER_NAME");
+        public final static Property ServerIp = new Property(4, String.class, "serverIp", false, "SERVER_IP");
+        public final static Property ServerVersion = new Property(5, String.class, "serverVersion", false, "SERVER_VERSION");
+        public final static Property HttpServerPort = new Property(6, int.class, "httpServerPort", false, "HTTP_SERVER_PORT");
+        public final static Property WsServerPort = new Property(7, int.class, "wsServerPort", false, "WS_SERVER_PORT");
+        public final static Property UdpCastServerPort = new Property(8, int.class, "udpCastServerPort", false, "UDP_CAST_SERVER_PORT");
+        public final static Property CoverUrl = new Property(9, String.class, "coverUrl", false, "COVER_URL");
     }
 
 
@@ -46,15 +47,16 @@ public class DBServerDao extends AbstractDao<DBServer, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"DBSERVER\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: id
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"SERVER_ID\" TEXT UNIQUE ," + // 1: serverId
-                "\"SERVER_NAME\" TEXT," + // 2: serverName
-                "\"SERVER_IP\" TEXT," + // 3: serverIp
-                "\"SERVER_VERSION\" TEXT," + // 4: serverVersion
-                "\"HTTP_SERVER_PORT\" INTEGER NOT NULL ," + // 5: httpServerPort
-                "\"WS_SERVER_PORT\" INTEGER NOT NULL ," + // 6: wsServerPort
-                "\"UDP_CAST_SERVER_PORT\" INTEGER NOT NULL ," + // 7: udpCastServerPort
-                "\"COVER_URL\" TEXT);"); // 8: coverUrl
+                "\"ICON_INDEX\" INTEGER NOT NULL ," + // 2: iconIndex
+                "\"SERVER_NAME\" TEXT," + // 3: serverName
+                "\"SERVER_IP\" TEXT," + // 4: serverIp
+                "\"SERVER_VERSION\" TEXT," + // 5: serverVersion
+                "\"HTTP_SERVER_PORT\" INTEGER NOT NULL ," + // 6: httpServerPort
+                "\"WS_SERVER_PORT\" INTEGER NOT NULL ," + // 7: wsServerPort
+                "\"UDP_CAST_SERVER_PORT\" INTEGER NOT NULL ," + // 8: udpCastServerPort
+                "\"COVER_URL\" TEXT);"); // 9: coverUrl
     }
 
     /** Drops the underlying database table. */
@@ -66,103 +68,115 @@ public class DBServerDao extends AbstractDao<DBServer, Long> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, DBServer entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getId());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String serverId = entity.getServerId();
         if (serverId != null) {
             stmt.bindString(2, serverId);
         }
+        stmt.bindLong(3, entity.getIconIndex());
  
         String serverName = entity.getServerName();
         if (serverName != null) {
-            stmt.bindString(3, serverName);
+            stmt.bindString(4, serverName);
         }
  
         String serverIp = entity.getServerIp();
         if (serverIp != null) {
-            stmt.bindString(4, serverIp);
+            stmt.bindString(5, serverIp);
         }
  
         String serverVersion = entity.getServerVersion();
         if (serverVersion != null) {
-            stmt.bindString(5, serverVersion);
+            stmt.bindString(6, serverVersion);
         }
-        stmt.bindLong(6, entity.getHttpServerPort());
-        stmt.bindLong(7, entity.getWsServerPort());
-        stmt.bindLong(8, entity.getUdpCastServerPort());
+        stmt.bindLong(7, entity.getHttpServerPort());
+        stmt.bindLong(8, entity.getWsServerPort());
+        stmt.bindLong(9, entity.getUdpCastServerPort());
  
         String coverUrl = entity.getCoverUrl();
         if (coverUrl != null) {
-            stmt.bindString(9, coverUrl);
+            stmt.bindString(10, coverUrl);
         }
     }
 
     @Override
     protected final void bindValues(SQLiteStatement stmt, DBServer entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getId());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String serverId = entity.getServerId();
         if (serverId != null) {
             stmt.bindString(2, serverId);
         }
+        stmt.bindLong(3, entity.getIconIndex());
  
         String serverName = entity.getServerName();
         if (serverName != null) {
-            stmt.bindString(3, serverName);
+            stmt.bindString(4, serverName);
         }
  
         String serverIp = entity.getServerIp();
         if (serverIp != null) {
-            stmt.bindString(4, serverIp);
+            stmt.bindString(5, serverIp);
         }
  
         String serverVersion = entity.getServerVersion();
         if (serverVersion != null) {
-            stmt.bindString(5, serverVersion);
+            stmt.bindString(6, serverVersion);
         }
-        stmt.bindLong(6, entity.getHttpServerPort());
-        stmt.bindLong(7, entity.getWsServerPort());
-        stmt.bindLong(8, entity.getUdpCastServerPort());
+        stmt.bindLong(7, entity.getHttpServerPort());
+        stmt.bindLong(8, entity.getWsServerPort());
+        stmt.bindLong(9, entity.getUdpCastServerPort());
  
         String coverUrl = entity.getCoverUrl();
         if (coverUrl != null) {
-            stmt.bindString(9, coverUrl);
+            stmt.bindString(10, coverUrl);
         }
     }
 
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     @Override
     public DBServer readEntity(Cursor cursor, int offset) {
         DBServer entity = new DBServer( //
-            cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // serverId
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // serverName
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // serverIp
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // serverVersion
-            cursor.getInt(offset + 5), // httpServerPort
-            cursor.getInt(offset + 6), // wsServerPort
-            cursor.getInt(offset + 7), // udpCastServerPort
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8) // coverUrl
+            cursor.getInt(offset + 2), // iconIndex
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // serverName
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // serverIp
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // serverVersion
+            cursor.getInt(offset + 6), // httpServerPort
+            cursor.getInt(offset + 7), // wsServerPort
+            cursor.getInt(offset + 8), // udpCastServerPort
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9) // coverUrl
         );
         return entity;
     }
      
     @Override
     public void readEntity(Cursor cursor, DBServer entity, int offset) {
-        entity.setId(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setServerId(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setServerName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setServerIp(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setServerVersion(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setHttpServerPort(cursor.getInt(offset + 5));
-        entity.setWsServerPort(cursor.getInt(offset + 6));
-        entity.setUdpCastServerPort(cursor.getInt(offset + 7));
-        entity.setCoverUrl(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setIconIndex(cursor.getInt(offset + 2));
+        entity.setServerName(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setServerIp(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setServerVersion(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setHttpServerPort(cursor.getInt(offset + 6));
+        entity.setWsServerPort(cursor.getInt(offset + 7));
+        entity.setUdpCastServerPort(cursor.getInt(offset + 8));
+        entity.setCoverUrl(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
      }
     
     @Override
@@ -182,7 +196,7 @@ public class DBServerDao extends AbstractDao<DBServer, Long> {
 
     @Override
     public boolean hasKey(DBServer entity) {
-        throw new UnsupportedOperationException("Unsupported for entities with a non-null key");
+        return entity.getId() != null;
     }
 
     @Override

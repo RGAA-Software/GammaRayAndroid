@@ -37,6 +37,7 @@ class Settings {
         try {
             val obj = JSONObject(info);
             scanInfo.sysUniqueId = obj.getString("sys_unique_id");
+            scanInfo.iconIndex = obj.getInt("icon_idx");
             scanInfo.httpServerPort = obj.getInt("http_server_port");
             scanInfo.wsServerPort = obj.getInt("ws_server_port");
             scanInfo.udpServerPort = obj.getInt("udp_server_port");

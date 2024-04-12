@@ -10,9 +10,10 @@ import java.util.Objects;
 @Entity
 public class DBServer {
     @Id(autoincrement = true)
-    public long id;
+    public Long id;
     @Unique
     public String serverId;
+    public int iconIndex;
     public String serverName;
     public String serverIp;
     public String serverVersion;
@@ -21,12 +22,13 @@ public class DBServer {
     public int udpCastServerPort;
     public String coverUrl;
 
-    @Generated(hash = 249968845)
-    public DBServer(long id, String serverId, String serverName, String serverIp,
-            String serverVersion, int httpServerPort, int wsServerPort,
-            int udpCastServerPort, String coverUrl) {
+    @Generated(hash = 1438757952)
+    public DBServer(Long id, String serverId, int iconIndex, String serverName,
+            String serverIp, String serverVersion, int httpServerPort,
+            int wsServerPort, int udpCastServerPort, String coverUrl) {
         this.id = id;
         this.serverId = serverId;
+        this.iconIndex = iconIndex;
         this.serverName = serverName;
         this.serverIp = serverIp;
         this.serverVersion = serverVersion;
@@ -59,11 +61,11 @@ public class DBServer {
         return Objects.hash(serverId);
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -131,5 +133,11 @@ public class DBServer {
         this.coverUrl = coverUrl;
     }
 
-     
+    public int getIconIndex() {
+        return this.iconIndex;
+    }
+
+    public void setIconIndex(int iconIndex) {
+        this.iconIndex = iconIndex;
+    }
 }

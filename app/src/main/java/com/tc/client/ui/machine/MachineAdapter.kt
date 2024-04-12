@@ -2,6 +2,8 @@ package com.tc.client.ui.machine
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -27,6 +29,10 @@ class MachineAdapter(private var context: Context, private var apps: MutableList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val view = View.inflate(context, R.layout.item_machine, null);
+        val mgr = context.assets;
+        val tf = Typeface.createFromAsset(mgr, "fonts/matrix.ttf");
+        view.findViewById<TextView>(R.id.id_app_name).typeface = tf;
+
         return BookViewHolder(view);
     }
 
@@ -40,18 +46,22 @@ class MachineAdapter(private var context: Context, private var apps: MutableList
 
         }
 
-        holder.appName.text = app.serverId;
-        Glide.with(context).load("").into(holder.cover);
+        holder.appName.text = "PC:${app.serverId}";
+        val iconUrl = "http://${app.serverIp}:${app.httpServerPort}/res/${app.iconIndex}.png"
+        Log.i(TAG, "icon url: $iconUrl")
+        Glide.with(context).load(iconUrl).into(holder.connectScreen);
 
-        if (position == 0) {
-            holder.presetIcon.visibility = View.GONE;
-            holder.connectScreen.visibility = View.GONE;
-            holder.searching.visibility = View.VISIBLE;
-        } else {
-            holder.presetIcon.visibility = View.VISIBLE;
-            holder.connectScreen.visibility = View.VISIBLE;
-            holder.searching.visibility = View.GONE;
-        }
+//        if (position == 0) {
+//            holder.presetIcon.visibility = View.GONE;
+//            holder.connectScreen.visibility = View.GONE;
+//            holder.searching.visibility = View.VISIBLE;
+//        } else {
+//
+//        }
+
+        holder.presetIcon.visibility = View.VISIBLE;
+        holder.connectScreen.visibility = View.VISIBLE;
+        holder.searching.visibility = View.GONE;
     }
 
 }

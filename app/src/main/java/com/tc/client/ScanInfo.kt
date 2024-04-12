@@ -15,6 +15,8 @@ public class ScanInfo {
 
     var sysUniqueId: String = ""
 
+    var iconIndex: Int = 0
+
     var httpServerPort: Int = 0
 
     var wsServerPort: Int = 0
@@ -37,6 +39,7 @@ public class ScanInfo {
     fun asDBServer(): DBServer {
         val s = DBServer();
         s.serverId = this.sysUniqueId
+        s.iconIndex = this.iconIndex
         s.serverName = ""
         s.serverIp = this.targetIp
         s.serverVersion = ""

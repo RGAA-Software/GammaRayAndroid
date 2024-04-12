@@ -117,8 +117,8 @@ class MainActivity : AppCompatActivity() {
             wsClient.sendMessage("..xx...");
         };
 
-        udpReceiver = UdpBroadcastReceiver();
-        udpReceiver.start();
+        //udpReceiver = UdpBroadcastReceiver();
+        //udpReceiver.start();
     }
 
     private fun switchFragment(to: Fragment) {

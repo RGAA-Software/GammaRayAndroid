@@ -29,7 +29,7 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        machines.add(DBServer.create("Searching..."));
+        //machines.add(DBServer.create("Searching..."));
         loadServers();
     }
 
