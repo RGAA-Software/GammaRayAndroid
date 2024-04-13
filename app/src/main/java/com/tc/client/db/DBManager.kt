@@ -20,6 +20,7 @@ class DBManager(val context: Context) {
             .where(DBServerDao.Properties.ServerId.eq(s.serverId)).list()
         if (servers.isNotEmpty()) {
             // update
+            s.id = servers[0].id;
             daoSession.dbServerDao.update(s)
         } else {
             // insert
