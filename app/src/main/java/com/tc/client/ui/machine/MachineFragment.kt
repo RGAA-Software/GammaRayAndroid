@@ -18,12 +18,13 @@ import com.tc.client.events.OnServerAvailable
 import com.tc.client.events.OnServerOffline
 import com.tc.client.events.OnServerScanned
 import com.tc.client.ui.BaseFragment
+import com.tc.client.ui.base.OnListItemListener
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 
-class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostActivity) {
+class MachineFragment() : BaseFragment() {
 
     private var _binding: FragmentMachineBinding? = null
     private val binding get() = _binding!!
@@ -93,6 +94,13 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
                 }
             });
         }
+
+        machineAdapter.setOnItemClickListener(object: OnListItemListener<DBServer> {
+            override fun onItemClicked(pos: Int, value: DBServer) {
+                val dialog = MachineOpDialog(activity!!)
+                dialog.show()
+            }
+        })
     }
 
     override fun onStart() {

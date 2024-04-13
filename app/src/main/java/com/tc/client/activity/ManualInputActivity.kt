@@ -16,6 +16,7 @@ import com.tc.client.R
 import com.tc.client.Settings
 import com.tc.client.databinding.ActivityManualInputBinding
 import com.tc.client.events.OnAddScanInfo
+import com.tc.client.ui.base.ErrorDialog
 import com.tc.client.util.HttpUtil
 import org.greenrobot.eventbus.EventBus
 import org.json.JSONObject
@@ -77,14 +78,17 @@ class ManualInputActivity : AppCompatActivity() {
         val url = "http://${ip}:20368/v1/simple/info"
         (application as App).appContext.postTask {
             val resp = HttpUtil.reqUrl(url)
+            val errorMsg = "Connect IP failed, please input the correct IP address.";
             if (resp == null) {
                 tip("failed to request /v1/simple/info")
+                errorDialog(errorMsg)
                 return@postTask
             }
             try {
                 val obj = JSONObject(resp)
                 if (obj.getInt("code") != 200) {
                     tip("json error code")
+                    errorDialog(errorMsg)
                     return@postTask
                 }
 
@@ -93,6 +97,7 @@ class ManualInputActivity : AppCompatActivity() {
                 Log.i(TAG, "scan info after request: ${scanInfo}")
                 if (!scanInfo.valid()) {
                     tip("not a valid scaninfo")
+                    errorDialog(errorMsg)
                     return@postTask
                 }
 
@@ -112,6 +117,12 @@ class ManualInputActivity : AppCompatActivity() {
     private fun tip(m: String) {
         this.runOnUiThread {
             Toast.makeText(this, m, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun errorDialog(m: String) {
+        this.runOnUiThread {
+            ErrorDialog.createDialog(this, "ERROR", m).show()
         }
     }
 

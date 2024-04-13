@@ -12,10 +12,14 @@ import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.tc.client.R
 import com.tc.client.db.DBServer
+import com.tc.client.ui.base.OnListItemListener
 
 class MachineAdapter(private var context: Context, private var apps: MutableList<DBServer>) :
     RecyclerView.Adapter<MachineAdapter.BookViewHolder>() {
+
     private val TAG = "Steam";
+
+    private var itemClickListener: OnListItemListener<DBServer>? = null
 
     class BookViewHolder(itemView: View) : ViewHolder(itemView) {
         val cover: ImageView = itemView.findViewById(R.id.book_cover);
@@ -42,7 +46,7 @@ class MachineAdapter(private var context: Context, private var apps: MutableList
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         val app = apps[position];
         holder.itemView.setOnClickListener {
-
+            itemClickListener?.onItemClicked(position, app)
         }
 
         holder.connectScreen.visibility = View.VISIBLE;
@@ -60,6 +64,10 @@ class MachineAdapter(private var context: Context, private var apps: MutableList
             holder.statusOffIcon.visibility = View.VISIBLE
             holder.appName.setTextColor(context.getColor(R.color.dark));
         }
+    }
+
+    fun setOnItemClickListener(listener: OnListItemListener<DBServer>) {
+        itemClickListener = listener
     }
 
 }

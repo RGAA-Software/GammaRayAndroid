@@ -24,7 +24,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
-class SteamAppFragment(private val hostActivity: Activity) : BaseFragment(hostActivity) {
+class SteamAppFragment() : BaseFragment() {
 
     companion object {
         const val TAG = "Main";

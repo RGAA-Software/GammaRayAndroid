@@ -74,10 +74,10 @@ class MainActivity : AppCompatActivity() {
         val tf = Typeface.createFromAsset(mgr, "fonts/matrix.ttf");
         binding.idTitleMsg.typeface = tf;
 
-        steamAppFragment = SteamAppFragment(this);
-        machineFragment = MachineFragment(this);
-        dayFragment = DayFragment(this);
-        aboutMeFragment = AboutMeFragment(this);
+        steamAppFragment = SteamAppFragment();
+        machineFragment = MachineFragment();
+        dayFragment = DayFragment();
+        aboutMeFragment = AboutMeFragment();
 
         val fragmentHost = binding.root.findViewById<RelativeLayout>(R.id.fragment_host);
 

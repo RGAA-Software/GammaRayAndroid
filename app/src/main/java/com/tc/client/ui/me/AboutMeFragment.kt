@@ -9,7 +9,7 @@ import com.tc.client.AppContext
 import com.tc.client.databinding.FragmentAboutmeBinding
 import com.tc.client.ui.BaseFragment
 
-class AboutMeFragment(private val hostActivity: Activity) : BaseFragment(hostActivity) {
+class AboutMeFragment() : BaseFragment() {
 
     private lateinit var binding: FragmentAboutmeBinding;
 

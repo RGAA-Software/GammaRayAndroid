@@ -69,7 +69,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
-            app:lottie_fileName="anim_working.lottie"
+            app:lottie_fileName="anim_loading.lottie"
             app:lottie_loop="true" />
 
         <com.airbnb.lottie.LottieAnimationView

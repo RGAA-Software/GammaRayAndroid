@@ -12,7 +12,7 @@ import com.tc.client.databinding.FragmentDayBinding
 import com.tc.client.ui.BaseFragment
 import com.tc.reading.ui.day.DaySentence
 
-class DayFragment(private val hostActivity: Activity) : BaseFragment(hostActivity) {
+class DayFragment() : BaseFragment() {
 
     private var _binding: FragmentDayBinding? = null
     private val binding get() = _binding!!
