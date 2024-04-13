@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
+import com.tc.client.events.OnServerOffline
 import com.tc.client.ui.steam.SteamAppFragment
 import com.tc.client.util.SpUtils
 import okhttp3.internal.wait
@@ -33,6 +34,11 @@ class Settings {
     fun onServerAvailableEvent(event: OnServerAvailable) {
         Log.i(SteamAppFragment.TAG, "onServerAvailableEvent in Settings.");
         currentServer = event.server
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onServerOfflineEvent(event: OnServerOffline) {
+        currentServer = DBServer()
     }
 
     fun getServerIp(): String {

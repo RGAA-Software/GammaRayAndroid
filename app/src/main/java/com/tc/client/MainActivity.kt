@@ -3,16 +3,20 @@ package com.tc.client
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.text.font.FontVariation
+import androidx.compose.ui.unit.TextUnit
 import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.king.camera.scan.CameraScan
 import com.tc.client.databinding.ActivityMainBinding
 import com.tc.client.events.OnAddScanInfo
+import com.tc.client.events.OnServerAvailable
 import com.tc.client.events.OnServerScanned
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.steam.UdpBroadcastReceiver
@@ -47,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appContext: AppContext;
 
-    private lateinit var wsClient: JavaWSClient;
+    private var wsClient: JavaWSClient? = null;
     private lateinit var udpReceiver: UdpBroadcastReceiver;
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -120,12 +124,8 @@ class MainActivity : AppCompatActivity() {
             setActionBarTitle("Machines");
         }
 
-        //switchFragment(bookFragment)
-        //wsClient = JavaWSClient("192.168.31.5", 20369);
-        wsClient = JavaWSClient("10.0.0.16", 20369);
-        wsClient.start();
         appContext.register1STimer("ws") {
-            wsClient.sendMessage("..xx...");
+            wsClient?.sendMessage("..xx...");
         };
 
         //udpReceiver = UdpBroadcastReceiver();
@@ -208,6 +208,18 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onServerAvailableEvent(event: OnServerAvailable) {
+        if (wsClient == null || !wsClient!!.isOpen) {
+            val cs = Settings.getInstance().currentServer
+            if (TextUtils.isEmpty(cs.serverIp)) {
+                return;
+            }
+            wsClient = JavaWSClient(cs.serverIp, cs.wsServerPort);
+            wsClient!!.start();
+        }
     }
 
     fun updateTitleMessage(m: String) {

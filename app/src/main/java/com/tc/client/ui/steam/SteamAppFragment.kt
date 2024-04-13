@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
 import com.tc.client.databinding.FragmentSteamAppBinding
+import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
+import com.tc.client.events.OnServerOffline
 import com.tc.client.events.OnServerScanned
 import com.tc.client.steam.SteamApp
 import com.tc.client.ui.BaseFragment
@@ -34,11 +36,12 @@ class SteamAppFragment(private val hostActivity: Activity) : BaseFragment(hostAc
     private val handler get() = _handler!!;
     private lateinit var steamAppAdapter: SteamAppAdapter
     private var steamApps = mutableListOf<SteamApp>();
+    private var lastAvailableServer: DBServer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        steamApps.add(SteamApp.create(1, "Desktop"));
-        steamApps.add(SteamApp.create(2, "Steam Big Picture"));
+        addPresetItems();
+        EventBus.getDefault().register(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -101,7 +104,6 @@ class SteamAppFragment(private val hostActivity: Activity) : BaseFragment(hostAc
 
     override fun onStart() {
         super.onStart()
-        EventBus.getDefault().register(this)
     }
 
     override fun onResume() {
@@ -113,15 +115,35 @@ class SteamAppFragment(private val hostActivity: Activity) : BaseFragment(hostAc
         super.onPause()
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
         EventBus.getDefault().unregister(this)
+    }
+
+    fun addPresetItems() {
+        steamApps.add(SteamApp.create(1, "Desktop"));
+        steamApps.add(SteamApp.create(2, "Steam Big Picture"));
     }
 
     @Subscribe(threadMode = ThreadMode.POSTING)
     fun onServerAvailableEvent(event: OnServerAvailable) {
-        //Log.i(TAG, "onServerAvailableEvent in SteamAppFragment.");
-        //requestSteamApps();
+        if (lastAvailableServer == null || lastAvailableServer?.serverId != event.server.serverId) {
+            requestSteamApps();
+        }
+        lastAvailableServer = event.server
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onServerOfflineEvent(event: OnServerOffline) {
+        if (event.server.serverId != lastAvailableServer?.serverId) {
+            return
+        }
+        lastAvailableServer = null
+        activity?.runOnUiThread {
+            steamApps.clear()
+            addPresetItems()
+            steamAppAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun requestSteamApps() {

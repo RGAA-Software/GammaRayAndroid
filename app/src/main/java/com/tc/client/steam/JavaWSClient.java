@@ -23,7 +23,6 @@ public class JavaWSClient {
     }
 
     public void start() throws Exception {
-
         mWebSocketClient = new WebSocketClient(URI.create(mUrl)) {
             @Override
             public void onOpen(ServerHandshake serverHandshake) {
@@ -81,5 +80,9 @@ public class JavaWSClient {
         if (mWebSocketClient != null) {
             mWebSocketClient.close();
         }
+    }
+
+    public boolean isOpen() {
+        return mWebSocketClient != null && mWebSocketClient.isOpen();
     }
 }

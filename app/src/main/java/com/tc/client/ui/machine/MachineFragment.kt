@@ -15,6 +15,7 @@ import com.tc.client.NetworkChecker
 import com.tc.client.databinding.FragmentMachineBinding
 import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
+import com.tc.client.events.OnServerOffline
 import com.tc.client.events.OnServerScanned
 import com.tc.client.ui.BaseFragment
 import org.greenrobot.eventbus.EventBus
@@ -151,16 +152,31 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
         val nc = NetworkChecker(appContext);
         machines.forEach {
             nc.checkDBServerAvailable(it, object: NetworkChecker.OnDBServerCheckAvailableCallback {
-                override fun onCheck(s: DBServer) {
+                override fun onCheck(s: DBServer, originAvailable: Boolean) {
                     if (s.available) {
                         val msg = OnServerAvailable()
                         msg.server = s
                         EventBus.getDefault().post(msg)
-                    }
-                    appContext.postUITask {
-                        machineAdapter.notifyDataSetChanged()
-                        if (s.serverIp != null) {
-                            (activity as MainActivity).updateTitleMessage(s.serverId)
+
+                        appContext.postUITask {
+                            if (s.available != originAvailable) {
+                                machineAdapter.notifyDataSetChanged()
+                            }
+                            if (s.serverIp != null) {
+                                (activity as MainActivity).updateTitleMessage(s.serverId)
+                            }
+                        }
+                    } else {
+                        val msg = OnServerOffline()
+                        msg.server = s
+                        EventBus.getDefault().post(msg)
+                        appContext.postUITask {
+                            if (s.available != originAvailable) {
+                                machineAdapter.notifyDataSetChanged()
+                            }
+                            if (s.serverIp != null) {
+                                (activity as MainActivity).updateTitleMessage("")
+                            }
                         }
                     }
                 }

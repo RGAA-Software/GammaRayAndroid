@@ -16,7 +16,7 @@ class NetworkChecker(val appContext: AppContext) {
     }
 
     interface OnDBServerCheckAvailableCallback {
-        fun onCheck(s: DBServer);
+        fun onCheck(s: DBServer, originAvailable: Boolean);
     }
 
     fun checkScanInfoAvailable(scanInfo: ScanInfo, cbk: OnScanInfoCheckAvailableCallback) {
@@ -41,14 +41,15 @@ class NetworkChecker(val appContext: AppContext) {
         appContext.postTask{
             val url = "http://" + srv.serverIp + ":" + srv.httpServerPort + ServerApi.ping;
             val resp = HttpUtil.reqUrl(url)
+            val originAvailable = srv.available
             if (!TextUtils.isEmpty(resp) && resp == "Pong") {
                 Log.i(TAG, "find the ip: ${srv.serverIp}")
                 srv.available = true
-                cbk.onCheck(srv);
+                cbk.onCheck(srv, originAvailable);
                 return@postTask;
             }
             srv.available = false
-            cbk.onCheck(srv)
+            cbk.onCheck(srv, originAvailable)
         }
     }
 
