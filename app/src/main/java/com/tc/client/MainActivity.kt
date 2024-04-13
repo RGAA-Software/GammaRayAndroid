@@ -1,6 +1,7 @@
 package com.tc.client
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.king.camera.scan.CameraScan
 import com.tc.client.databinding.ActivityMainBinding
+import com.tc.client.events.OnAddScanInfo
 import com.tc.client.events.OnServerScanned
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.steam.UdpBroadcastReceiver
@@ -21,6 +23,8 @@ import com.tc.client.ui.me.AboutMeFragment
 import com.tc.client.ui.day.DayFragment
 import com.tc.client.util.ScreenUtil
 import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,6 +54,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         ScreenUtil.makeActivityFullScreen(this);
 
+        EventBus.getDefault().register(this)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -59,6 +65,10 @@ class MainActivity : AppCompatActivity() {
             val menu = MainTopRightMenu(this);
             menu.show(binding.idOption);
         }
+
+        val mgr = this.assets;
+        val tf = Typeface.createFromAsset(mgr, "fonts/matrix.ttf");
+        binding.idTitleMsg.typeface = tf;
 
         steamAppFragment = SteamAppFragment(this);
         machineFragment = MachineFragment(this);
@@ -161,6 +171,7 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         udpReceiver.stopReceiving()
+        EventBus.getDefault().unregister(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -169,27 +180,39 @@ class MainActivity : AppCompatActivity() {
             val message = data?.getStringExtra(CameraScan.SCAN_RESULT)
             if (message != null) {
                 val scanInfo = Settings.getInstance().parseScanInfo(message)
-                if (!scanInfo.valid()) {
-                    Toast.makeText(this, "Invalid message: $message", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                NetworkChecker(appContext).checkScanInfoAvailable(scanInfo, object: NetworkChecker.OnScanInfoCheckAvailableCallback{
-                    override fun onCheck(scanInfo: ScanInfo) {
-                        Log.i(TAG, "target ip: ${scanInfo.targetIp}")
-                        if (scanInfo.canConnect()) {
-                            appContext.postTask {
-                                val dbServer = scanInfo.asDBServer();
-                                //todo: request url for more information, cover url , etc
-                                appContext.dbManager.insertOrUpdateServer(dbServer)
-
-                                val msg = OnServerScanned()
-                                msg.server = dbServer
-                                EventBus.getDefault().post(msg)
-                            }
-                        }
-                    }
-                })
+                val msg = OnAddScanInfo()
+                msg.scanInfo = scanInfo
+                onAddScanInfoEvent(msg)
             }
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onAddScanInfoEvent(event: OnAddScanInfo) {
+        if (!event.scanInfo.valid()) {
+            return;
+        }
+        NetworkChecker(appContext).checkScanInfoAvailable(event.scanInfo, object: NetworkChecker.OnScanInfoCheckAvailableCallback{
+            override fun onCheck(scanInfo: ScanInfo) {
+                Log.i(TAG, "target ip: ${scanInfo.targetIp}")
+                if (scanInfo.canConnect()) {
+                    appContext.postTask {
+                        val dbServer = scanInfo.asDBServer();
+                        //todo: request url for more information, cover url , etc
+                        appContext.dbManager.insertOrUpdateServer(dbServer)
+
+                        val msg = OnServerScanned()
+                        msg.server = dbServer
+                        EventBus.getDefault().post(msg)
+                    }
+                }
+            }
+        })
+    }
+
+    fun updateTitleMessage(m: String) {
+        runOnUiThread {
+            binding.idTitleMsg.text = m
         }
     }
 

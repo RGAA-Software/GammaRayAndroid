@@ -4,17 +4,31 @@ import android.R.attr
 import android.os.Bundle
 import android.text.InputFilter
 import android.text.Spanned
+import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
+import com.tc.client.App
 import com.tc.client.R
+import com.tc.client.Settings
 import com.tc.client.databinding.ActivityManualInputBinding
+import com.tc.client.events.OnAddScanInfo
+import com.tc.client.util.HttpUtil
+import org.greenrobot.eventbus.EventBus
+import org.json.JSONObject
 
 
 class ManualInputActivity : AppCompatActivity() {
 
+    companion object {
+        const val TAG = "Main"
+    }
+
     private lateinit var binding: ActivityManualInputBinding
+    private lateinit var ipInputText: TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +40,11 @@ class ManualInputActivity : AppCompatActivity() {
         binding.root.findViewById<ImageView>(R.id.id_back).setOnClickListener {
             finish()
         }
+        binding.root.findViewById<Button>(R.id.id_add_server).setOnClickListener {
+            addServer()
+        }
 
-        val ipInputText = binding.root.findViewById<TextInputEditText>(R.id.id_ip_input)
+        ipInputText = binding.root.findViewById<TextInputEditText>(R.id.id_ip_input)
         ipInputText.filters = arrayOf(object : InputFilter {
             override fun filter(
                 source: CharSequence?,
@@ -53,6 +70,49 @@ class ManualInputActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun addServer() {
+        val ip = ipInputText.text.toString()
+        val url = "http://${ip}:20368/v1/simple/info"
+        (application as App).appContext.postTask {
+            val resp = HttpUtil.reqUrl(url)
+            if (resp == null) {
+                tip("failed to request /v1/simple/info")
+                return@postTask
+            }
+            try {
+                val obj = JSONObject(resp)
+                if (obj.getInt("code") != 200) {
+                    tip("json error code")
+                    return@postTask
+                }
+
+                val info = obj.getJSONObject("data");
+                val scanInfo = Settings.getInstance().parseScanInfo(info.toString())
+                Log.i(TAG, "scan info after request: ${scanInfo}")
+                if (!scanInfo.valid()) {
+                    tip("not a valid scaninfo")
+                    return@postTask
+                }
+
+                val msg = OnAddScanInfo();
+                msg.scanInfo = scanInfo
+                EventBus.getDefault().post(msg)
+
+                finish()
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Log.e(TAG, "parse failed: ${e.message}")
+            }
+        }
+    }
+
+    private fun tip(m: String) {
+        this.runOnUiThread {
+            Toast.makeText(this, m, Toast.LENGTH_SHORT).show()
+        }
     }
 
 }

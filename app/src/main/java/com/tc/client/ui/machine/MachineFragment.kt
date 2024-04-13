@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
+import com.tc.client.MainActivity
 import com.tc.client.NetworkChecker
 import com.tc.client.databinding.FragmentMachineBinding
 import com.tc.client.db.DBServer
@@ -35,6 +36,7 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
         preset.available = true;
         machines.add(preset);
         loadServers();
+        EventBus.getDefault().register(this);
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -94,7 +96,6 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
 
     override fun onStart() {
         super.onStart()
-        EventBus.getDefault().register(this);
         appContext.register1STimer("machine") {
             checkServerInfo()
         }
@@ -102,13 +103,17 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
 
     override fun onStop() {
         super.onStop()
-        EventBus.getDefault().unregister(this);
         appContext.remove1STimer("machine")
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this);
     }
 
     @Subscribe(threadMode = ThreadMode.POSTING)
@@ -154,6 +159,9 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
                     }
                     appContext.postUITask {
                         machineAdapter.notifyDataSetChanged()
+                        if (s.serverIp != null) {
+                            (activity as MainActivity).updateTitleMessage(s.serverId)
+                        }
                     }
                 }
             })
