@@ -16,13 +16,25 @@
         android:layout_width="0dp"
         android:layout_height="150dp" />
 
-    <ImageView
-        android:id="@+id/book_cover"
+<!--    <ImageView-->
+<!--        android:id="@+id/book_cover"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:contentDescription="book cover"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="#555555"/>-->
+
+    <com.lid.lib.LabelImageView
+        android:id="@+id/game_cover"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="book cover"
         android:scaleType="centerCrop"
-        android:src="#555555"/>
+        app:label_backgroundColor="#C2185B"
+        app:label_orientation="LEFT_TOP"
+        app:label_distance="35dp"
+        app:label_height="20dp"
+        app:label_strokeWidth="2dp"
+        app:label_text="CHINA" />
 
     <RelativeLayout
         android:id="@+id/id_root_cover"
@@ -70,6 +82,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
+            android:visibility="gone"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

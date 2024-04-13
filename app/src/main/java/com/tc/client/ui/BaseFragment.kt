@@ -8,4 +8,5 @@ import com.tc.client.AppContext
 
 open class BaseFragment(private val hostActivity: Activity): Fragment() {
     public var appContext: AppContext = (hostActivity.application as App).appContext
+
 }

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
 import com.tc.client.databinding.FragmentSteamAppBinding
 import com.tc.client.events.OnServerAvailable
+import com.tc.client.events.OnServerScanned
 import com.tc.client.steam.SteamApp
 import com.tc.client.ui.BaseFragment
 import org.greenrobot.eventbus.EventBus
@@ -91,9 +92,6 @@ class SteamAppFragment(private val hostActivity: Activity) : BaseFragment(hostAc
                 }
             });
         }
-
-        //
-        requestSteamApps()
     }
 
     override fun onDestroyView() {
@@ -106,6 +104,15 @@ class SteamAppFragment(private val hostActivity: Activity) : BaseFragment(hostAc
         EventBus.getDefault().register(this)
     }
 
+    override fun onResume() {
+        super.onResume()
+        requestSteamApps()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
     override fun onStop() {
         super.onStop()
         EventBus.getDefault().unregister(this)
@@ -116,7 +123,6 @@ class SteamAppFragment(private val hostActivity: Activity) : BaseFragment(hostAc
         //Log.i(TAG, "onServerAvailableEvent in SteamAppFragment.");
         //requestSteamApps();
     }
-
 
     private fun requestSteamApps() {
         if (appContext == null) {

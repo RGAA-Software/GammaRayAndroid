@@ -3,6 +3,7 @@ package com.tc.client
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -122,6 +123,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun switchFragment(to: Fragment) {
+        if (to is MachineFragment) {
+            binding.idOption.visibility = View.VISIBLE
+        } else {
+            binding.idOption.visibility = View.GONE
+        }
         val transaction = supportFragmentManager.beginTransaction();
         if (currentFragment == null) {
             if (!to.isAdded) {

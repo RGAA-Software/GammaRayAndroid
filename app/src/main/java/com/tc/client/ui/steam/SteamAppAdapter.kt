@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.lid.lib.LabelImageView
 import com.tc.client.FrameRenderActivity
 import com.tc.client.R
 import com.tc.client.Settings
@@ -20,7 +21,7 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
     private val TAG = "Steam";
 
     class BookViewHolder(itemView: View) : ViewHolder(itemView) {
-        val cover: ImageView = itemView.findViewById(R.id.book_cover);
+        val cover: LabelImageView = itemView.findViewById(R.id.game_cover);
         val appName: TextView = itemView.findViewById(R.id.id_app_name);
         val engineIndicator: ImageView = itemView.findViewById(R.id.id_engine);
         val presetIcon: ImageView = itemView.findViewById(R.id.id_status_on_icon);
@@ -46,6 +47,8 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
         }
 
         holder.appName.text = app.appName
+        holder.engineIndicator.visibility = View.GONE;
+        holder.cover.isLabelVisual = false
 
         if (position == 0) {
             holder.presetIcon.visibility = View.VISIBLE;
@@ -62,13 +65,17 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
             val coverUrl = Settings.getInstance().getApiBaseUrl() + "/cache/" + app.coverName;
             Glide.with(context).load(coverUrl).into(holder.cover);
 
-            holder.engineIndicator.visibility = View.VISIBLE;
             if (app.engine == "UNITY") {
-                holder.engineIndicator.setImageDrawable(context.getDrawable(R.drawable.ic_unity))
+                holder.cover.isLabelVisual = true
+                holder.cover.labelText = app.engine
+                //holder.engineIndicator.setImageDrawable(context.getDrawable(R.drawable.ic_unity))
             } else if (app.engine == "UE") {
-                holder.engineIndicator.setImageDrawable(context.getDrawable(R.drawable.ic_ue))
+                holder.cover.isLabelVisual = true
+                holder.cover.labelText = app.engine
+                //holder.engineIndicator.setImageDrawable(context.getDrawable(R.drawable.ic_ue))
             } else {
-                holder.engineIndicator.visibility = View.GONE;
+                //holder.cover.isLabelVisual = false
+                //holder.engineIndicator.visibility = View.GONE;
             }
         }
     }

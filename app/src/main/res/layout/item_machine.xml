@@ -69,7 +69,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
-            app:lottie_speed="1.0"
             app:lottie_fileName="anim_working.lottie"
             app:lottie_loop="true" />
 
