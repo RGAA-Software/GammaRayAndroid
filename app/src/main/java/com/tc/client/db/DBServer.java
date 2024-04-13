@@ -2,6 +2,7 @@ package com.tc.client.db;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Transient;
 import org.greenrobot.greendao.annotation.Unique;
 import org.greenrobot.greendao.annotation.Generated;
 
@@ -21,6 +22,9 @@ public class DBServer {
     public int wsServerPort;
     public int udpCastServerPort;
     public String coverUrl;
+
+    @Transient
+    public boolean available;
 
     @Generated(hash = 1438757952)
     public DBServer(Long id, String serverId, int iconIndex, String serverName,

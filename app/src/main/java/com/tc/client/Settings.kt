@@ -2,20 +2,21 @@ package com.tc.client
 
 import android.content.Context
 import android.util.Log
+import com.tc.client.db.DBServer
+import com.tc.client.events.OnServerAvailable
+import com.tc.client.ui.steam.SteamAppFragment
 import com.tc.client.util.SpUtils
 import okhttp3.internal.wait
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import org.json.JSONObject
 
 class Settings {
+
     private val TAG = "Main";
 
-    private val KEY_IP = "key_ip";
-    private val KEY_PORT = "key_port";
-
-    public var serverIp = "";
-    public var serverPort = 0;
-
-    public var apiBaseUrl = "";
+    public var currentServer: DBServer = DBServer()
 
     companion object {
         private val settings = Settings()
@@ -25,11 +26,33 @@ class Settings {
     }
 
     fun loadConfig(ctx: Context) {
-//        serverIp = SpUtils.getInstance(ctx).getString(KEY_IP, "10.0.0.16");
-        serverIp = SpUtils.getInstance(ctx).getString(KEY_IP, "192.168.31.5");
-        serverPort = SpUtils.getInstance(ctx).getInt(KEY_PORT, 20368);
+        EventBus.getDefault().register(this);
+    }
 
-        apiBaseUrl = "http://$serverIp:$serverPort";
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onServerAvailableEvent(event: OnServerAvailable) {
+        Log.i(SteamAppFragment.TAG, "onServerAvailableEvent in Settings.");
+        currentServer = event.server
+    }
+
+    fun getServerIp(): String {
+        return currentServer.serverIp
+    }
+
+    fun getHttpServerPort(): Int {
+        return currentServer.httpServerPort
+    }
+
+    fun getWsServerPort(): Int {
+        return currentServer.wsServerPort
+    }
+
+    fun getUdpCastServerPort(): Int {
+        return currentServer.udpCastServerPort
+    }
+
+    fun getApiBaseUrl(): String {
+        return "http://${currentServer.serverIp}:${currentServer.httpServerPort}";
     }
 
     fun parseScanInfo(info: String): ScanInfo {
@@ -59,8 +82,6 @@ class Settings {
 
     fun dump() {
         Log.i(TAG, "Settings------------------------")
-        Log.i(TAG, "Server ip: $serverIp")
-        Log.i(TAG, "Server port: $serverPort")
         Log.i(TAG, "Settings------------------------")
     }
 }

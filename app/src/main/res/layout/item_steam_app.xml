@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
         <ImageView
-            android:id="@+id/id_preset_icon"
+            android:id="@+id/id_status_on_icon"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"

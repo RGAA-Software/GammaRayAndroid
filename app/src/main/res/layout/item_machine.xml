@@ -60,9 +60,23 @@
         </androidx.cardview.widget.CardView>
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/id_preset_icon"
+            android:id="@+id/id_status_on_icon"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:layout_marginTop="62dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_speed="1.0"
+            app:lottie_fileName="anim_working.lottie"
+            app:lottie_loop="true" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/id_status_off_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginTop="62dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

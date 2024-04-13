@@ -2,6 +2,7 @@ package com.tc.client
 
 import android.text.TextUtils
 import android.util.Log
+import com.tc.client.db.DBServer
 import com.tc.client.util.HttpUtil
 
 class NetworkChecker(val appContext: AppContext) {
@@ -10,11 +11,15 @@ class NetworkChecker(val appContext: AppContext) {
         const val TAG = "Main"
     }
 
-    interface OnCheckAvailableCallback {
+    interface OnScanInfoCheckAvailableCallback {
         fun onCheck(scanInfo: ScanInfo);
     }
 
-    fun checkAvailableServer(scanInfo: ScanInfo, cbk: OnCheckAvailableCallback) {
+    interface OnDBServerCheckAvailableCallback {
+        fun onCheck(s: DBServer);
+    }
+
+    fun checkScanInfoAvailable(scanInfo: ScanInfo, cbk: OnScanInfoCheckAvailableCallback) {
         appContext.postTask{
             scanInfo.ipInfo.forEach {
                 val url = "http://" + it.ip + ":" + scanInfo.httpServerPort + ServerApi.ping;
@@ -29,6 +34,21 @@ class NetworkChecker(val appContext: AppContext) {
                 scanInfo.targetIp = ""
                 cbk.onCheck(scanInfo)
             }
+        }
+    }
+
+    fun checkDBServerAvailable(srv: DBServer, cbk: OnDBServerCheckAvailableCallback) {
+        appContext.postTask{
+            val url = "http://" + srv.serverIp + ":" + srv.httpServerPort + ServerApi.ping;
+            val resp = HttpUtil.reqUrl(url)
+            if (!TextUtils.isEmpty(resp) && resp == "Pong") {
+                Log.i(TAG, "find the ip: ${srv.serverIp}")
+                srv.available = true
+                cbk.onCheck(srv);
+                return@postTask;
+            }
+            srv.available = false
+            cbk.onCheck(srv)
         }
     }
 

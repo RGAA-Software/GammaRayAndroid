@@ -23,7 +23,7 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
         val cover: ImageView = itemView.findViewById(R.id.book_cover);
         val appName: TextView = itemView.findViewById(R.id.id_app_name);
         val engineIndicator: ImageView = itemView.findViewById(R.id.id_engine);
-        val presetIcon: ImageView = itemView.findViewById(R.id.id_preset_icon);
+        val presetIcon: ImageView = itemView.findViewById(R.id.id_status_on_icon);
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -40,7 +40,6 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
         holder.itemView.setOnClickListener {
             Toast.makeText(context, "index:$position", Toast.LENGTH_SHORT).show();
             val intent = Intent(context, FrameRenderActivity::class.java);
-//            intent.putExtra("ip", "192.168.31.5");
             intent.putExtra("ip", "10.0.0.16");
             intent.putExtra("port", 9002);
             context.startActivity(intent)
@@ -60,7 +59,7 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
             Glide.with(context).load("").into(holder.cover);
         } else {
             holder.presetIcon.visibility = View.GONE;
-            val coverUrl = Settings.getInstance().apiBaseUrl + "/cache/" + app.coverName;
+            val coverUrl = Settings.getInstance().getApiBaseUrl() + "/cache/" + app.coverName;
             Glide.with(context).load(coverUrl).into(holder.cover);
 
             holder.engineIndicator.visibility = View.VISIBLE;

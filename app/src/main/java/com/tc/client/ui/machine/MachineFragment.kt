@@ -10,8 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
+import com.tc.client.NetworkChecker
 import com.tc.client.databinding.FragmentMachineBinding
 import com.tc.client.db.DBServer
+import com.tc.client.events.OnServerAvailable
 import com.tc.client.events.OnServerScanned
 import com.tc.client.ui.BaseFragment
 import org.greenrobot.eventbus.EventBus
@@ -29,7 +31,9 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //machines.add(DBServer.create("Searching..."));
+        val preset = DBServer.create("MOCKING");
+        preset.available = true;
+        machines.add(preset);
         loadServers();
     }
 
@@ -48,6 +52,8 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setEmptyTipVisibility(true)
 
         binding.refreshLayout.apply {
             setRepeatMode(SSPullToRefreshLayout.RepeatMode.REPEAT);
@@ -89,11 +95,15 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this);
+        appContext.register1STimer("machine") {
+            checkServerInfo()
+        }
     }
 
     override fun onStop() {
         super.onStop()
         EventBus.getDefault().unregister(this);
+        appContext.remove1STimer("machine")
     }
 
     override fun onDestroyView() {
@@ -108,7 +118,9 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
         }
         machines.add(event.server)
         activity?.runOnUiThread {
+            setEmptyTipVisibility(machines.isEmpty())
             machineAdapter.notifyDataSetChanged()
+            checkServerInfo()
         }
     }
 
@@ -118,8 +130,34 @@ class MachineFragment(private val hostActivity: Activity) : BaseFragment(hostAct
             machines.removeAll(servers)
             machines.addAll(servers)
             appContext.postUITask{
+                setEmptyTipVisibility(machines.isEmpty())
                 machineAdapter.notifyDataSetChanged()
+                checkServerInfo()
             }
         }
+    }
+
+    private fun setEmptyTipVisibility(visible: Boolean) {
+        binding.idEmptyIcon.visibility = if (visible) View.VISIBLE else View.GONE
+        binding.idEmptyTip.visibility = if (visible) View.VISIBLE else View.GONE
+    }
+
+    private fun checkServerInfo() {
+        val nc = NetworkChecker(appContext);
+        machines.forEach {
+            nc.checkDBServerAvailable(it, object: NetworkChecker.OnDBServerCheckAvailableCallback {
+                override fun onCheck(s: DBServer) {
+                    if (s.available) {
+                        val msg = OnServerAvailable()
+                        msg.server = s
+                        EventBus.getDefault().post(msg)
+                    }
+                    appContext.postUITask {
+                        machineAdapter.notifyDataSetChanged()
+                    }
+                }
+            })
+        }
+
     }
 }

@@ -9,10 +9,11 @@ class HttpUtil {
 
         fun reqUrl(url: String): String? {
             val client = OkHttpClient();
-            val request = Request.Builder()
-                .url(url)
-                .build();
             try {
+                val request = Request.Builder()
+                    .url(url)
+                    .build();
+
                 val resp = client.newCall(request).execute();
                 if (resp.code != 200) {
                     return null;

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +14,18 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
 import com.tc.client.databinding.FragmentSteamAppBinding
+import com.tc.client.events.OnServerAvailable
 import com.tc.client.steam.SteamApp
 import com.tc.client.ui.BaseFragment
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class SteamAppFragment(private val hostActivity: Activity) : BaseFragment(hostActivity) {
+
+    companion object {
+        const val TAG = "Main";
+    }
 
     private var _binding: FragmentSteamAppBinding? = null
     private var _handler: Handler? = null;
@@ -91,6 +100,23 @@ class SteamAppFragment(private val hostActivity: Activity) : BaseFragment(hostAc
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onServerAvailableEvent(event: OnServerAvailable) {
+        //Log.i(TAG, "onServerAvailableEvent in SteamAppFragment.");
+        //requestSteamApps();
+    }
+
 
     private fun requestSteamApps() {
         if (appContext == null) {

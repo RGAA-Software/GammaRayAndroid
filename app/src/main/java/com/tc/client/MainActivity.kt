@@ -167,7 +167,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Invalid message: $message", Toast.LENGTH_LONG).show();
                     return;
                 }
-                NetworkChecker(appContext).checkAvailableServer(scanInfo, object: NetworkChecker.OnCheckAvailableCallback{
+                NetworkChecker(appContext).checkScanInfoAvailable(scanInfo, object: NetworkChecker.OnScanInfoCheckAvailableCallback{
                     override fun onCheck(scanInfo: ScanInfo) {
                         Log.i(TAG, "target ip: ${scanInfo.targetIp}")
                         if (scanInfo.canConnect()) {
