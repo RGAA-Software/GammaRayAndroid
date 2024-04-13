@@ -2,6 +2,7 @@ package com.tc.client.ui.steam
 
 import android.content.Context
 import android.content.Intent
+import android.text.TextUtils
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -41,7 +42,13 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
         holder.itemView.setOnClickListener {
             Toast.makeText(context, "index:$position", Toast.LENGTH_SHORT).show();
             val intent = Intent(context, FrameRenderActivity::class.java);
-            intent.putExtra("ip", "10.0.0.16");
+            val server = Settings.getInstance().currentServer
+            if (!server.available || TextUtils.isEmpty(server.serverIp)) {
+                Toast.makeText(context, "Server has not connected", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener;
+            }
+
+            intent.putExtra("ip", server.serverIp);
             intent.putExtra("port", 9002);
             context.startActivity(intent)
         }
