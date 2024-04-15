@@ -106,7 +106,8 @@ class MachineFragment() : BaseFragment() {
     override fun onStart() {
         super.onStart()
         appContext.register1STimer("machine") {
-            checkServerInfo()
+            // todo: to use a Refresh button
+            //checkServerInfo()
         }
     }
 
@@ -125,7 +126,7 @@ class MachineFragment() : BaseFragment() {
         EventBus.getDefault().unregister(this);
     }
 
-    @Subscribe(threadMode = ThreadMode.POSTING)
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
     fun onMessageEvent(event: OnServerScanned) {
         if (machines.contains(event.server)) {
             return;

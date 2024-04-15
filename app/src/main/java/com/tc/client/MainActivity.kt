@@ -187,18 +187,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @Subscribe(threadMode = ThreadMode.POSTING)
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
     fun onAddScanInfoEvent(event: OnAddScanInfo) {
         if (!event.scanInfo.valid()) {
             return;
         }
+        Log.i(TAG, "will check scan info : ${event.scanInfo}")
         NetworkChecker(appContext).checkScanInfoAvailable(event.scanInfo, object: NetworkChecker.OnScanInfoCheckAvailableCallback{
             override fun onCheck(scanInfo: ScanInfo) {
-                Log.i(TAG, "target ip: ${scanInfo.targetIp}")
+                Log.i(TAG, "target ip: ${scanInfo.targetIp}, can connect: ${scanInfo.canConnect()}")
                 if (scanInfo.canConnect()) {
                     appContext.postTask {
                         val dbServer = scanInfo.asDBServer();
-                        //todo: request url for more information, cover url , etc
                         appContext.dbManager.insertOrUpdateServer(dbServer)
 
                         val msg = OnServerScanned()

@@ -15,6 +15,9 @@ class AppContext(private var context: Context) {
     private var mainHandler = Handler(context.mainLooper);
     public var steamManager = SteamAppManager(context)
 
+    private var networkThread: HandlerThread = HandlerThread("network")
+    private var networkHandler: Handler
+
     private var timer = Timer()
     private var timer1SCallbacks = mutableMapOf<String, Runnable>()
 
@@ -23,6 +26,9 @@ class AppContext(private var context: Context) {
     init {
         handlerThread.start();
         handler = Handler(handlerThread.looper);
+
+        networkThread.start()
+        networkHandler = Handler(networkThread.looper)
 
         timer.schedule(object: TimerTask() {
             override fun run() {
@@ -35,6 +41,14 @@ class AppContext(private var context: Context) {
 
     public fun postTask(task: Runnable) {
         handler.post(task);
+    }
+
+    fun postNetworkTask(task: Runnable) {
+        networkHandler.post(task)
+    }
+
+    fun spawnInNewThread(task: Runnable) {
+        Thread(task).start()
     }
 
     public fun postDelayTask(task: Runnable, time: Long) {
