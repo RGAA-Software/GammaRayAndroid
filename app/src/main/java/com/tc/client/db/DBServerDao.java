@@ -31,7 +31,8 @@ public class DBServerDao extends AbstractDao<DBServer, Long> {
         public final static Property HttpServerPort = new Property(6, int.class, "httpServerPort", false, "HTTP_SERVER_PORT");
         public final static Property WsServerPort = new Property(7, int.class, "wsServerPort", false, "WS_SERVER_PORT");
         public final static Property UdpCastServerPort = new Property(8, int.class, "udpCastServerPort", false, "UDP_CAST_SERVER_PORT");
-        public final static Property CoverUrl = new Property(9, String.class, "coverUrl", false, "COVER_URL");
+        public final static Property StreamWsPort = new Property(9, int.class, "streamWsPort", false, "STREAM_WS_PORT");
+        public final static Property CoverUrl = new Property(10, String.class, "coverUrl", false, "COVER_URL");
     }
 
 
@@ -56,7 +57,8 @@ public class DBServerDao extends AbstractDao<DBServer, Long> {
                 "\"HTTP_SERVER_PORT\" INTEGER NOT NULL ," + // 6: httpServerPort
                 "\"WS_SERVER_PORT\" INTEGER NOT NULL ," + // 7: wsServerPort
                 "\"UDP_CAST_SERVER_PORT\" INTEGER NOT NULL ," + // 8: udpCastServerPort
-                "\"COVER_URL\" TEXT);"); // 9: coverUrl
+                "\"STREAM_WS_PORT\" INTEGER NOT NULL ," + // 9: streamWsPort
+                "\"COVER_URL\" TEXT);"); // 10: coverUrl
     }
 
     /** Drops the underlying database table. */
@@ -97,10 +99,11 @@ public class DBServerDao extends AbstractDao<DBServer, Long> {
         stmt.bindLong(7, entity.getHttpServerPort());
         stmt.bindLong(8, entity.getWsServerPort());
         stmt.bindLong(9, entity.getUdpCastServerPort());
+        stmt.bindLong(10, entity.getStreamWsPort());
  
         String coverUrl = entity.getCoverUrl();
         if (coverUrl != null) {
-            stmt.bindString(10, coverUrl);
+            stmt.bindString(11, coverUrl);
         }
     }
 
@@ -136,10 +139,11 @@ public class DBServerDao extends AbstractDao<DBServer, Long> {
         stmt.bindLong(7, entity.getHttpServerPort());
         stmt.bindLong(8, entity.getWsServerPort());
         stmt.bindLong(9, entity.getUdpCastServerPort());
+        stmt.bindLong(10, entity.getStreamWsPort());
  
         String coverUrl = entity.getCoverUrl();
         if (coverUrl != null) {
-            stmt.bindString(10, coverUrl);
+            stmt.bindString(11, coverUrl);
         }
     }
 
@@ -160,7 +164,8 @@ public class DBServerDao extends AbstractDao<DBServer, Long> {
             cursor.getInt(offset + 6), // httpServerPort
             cursor.getInt(offset + 7), // wsServerPort
             cursor.getInt(offset + 8), // udpCastServerPort
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9) // coverUrl
+            cursor.getInt(offset + 9), // streamWsPort
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10) // coverUrl
         );
         return entity;
     }
@@ -176,7 +181,8 @@ public class DBServerDao extends AbstractDao<DBServer, Long> {
         entity.setHttpServerPort(cursor.getInt(offset + 6));
         entity.setWsServerPort(cursor.getInt(offset + 7));
         entity.setUdpCastServerPort(cursor.getInt(offset + 8));
-        entity.setCoverUrl(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setStreamWsPort(cursor.getInt(offset + 9));
+        entity.setCoverUrl(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
      }
     
     @Override

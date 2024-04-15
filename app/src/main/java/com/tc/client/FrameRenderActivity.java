@@ -37,7 +37,7 @@ public class FrameRenderActivity extends Activity {
 
         setContentView(R.layout.activity_frame_render);
         mIp = getIntent().getStringExtra("ip");
-        mPort = getIntent().getIntExtra("port", 9002);
+        mPort = getIntent().getIntExtra("port", 20371);
 
         appContext = ((App)getApplication()).getAppContext();
 

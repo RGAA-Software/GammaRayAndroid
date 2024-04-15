@@ -23,6 +23,8 @@ public class ScanInfo {
 
     var udpServerPort: Int = 0
 
+    var streamWsPort: Int = 0
+
     var ipInfo: MutableList<IpInfo> = mutableListOf<IpInfo>()
 
     var targetIp: String = ""
@@ -46,6 +48,7 @@ public class ScanInfo {
         s.httpServerPort = this.httpServerPort
         s.wsServerPort = this.wsServerPort
         s.udpCastServerPort = this.udpServerPort
+        s.streamWsPort = this.streamWsPort
         s.coverUrl = ""
         return s;
     }

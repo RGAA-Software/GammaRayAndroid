@@ -49,7 +49,7 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
             }
 
             intent.putExtra("ip", server.serverIp);
-            intent.putExtra("port", 9002);
+            intent.putExtra("port", server.streamWsPort);
             context.startActivity(intent)
         }
 

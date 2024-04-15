@@ -21,15 +21,17 @@ public class DBServer {
     public int httpServerPort;
     public int wsServerPort;
     public int udpCastServerPort;
+    public int streamWsPort;
     public String coverUrl;
 
     @Transient
     public boolean available;
 
-    @Generated(hash = 1438757952)
+    @Generated(hash = 566177990)
     public DBServer(Long id, String serverId, int iconIndex, String serverName,
             String serverIp, String serverVersion, int httpServerPort,
-            int wsServerPort, int udpCastServerPort, String coverUrl) {
+            int wsServerPort, int udpCastServerPort, int streamWsPort,
+            String coverUrl) {
         this.id = id;
         this.serverId = serverId;
         this.iconIndex = iconIndex;
@@ -39,6 +41,7 @@ public class DBServer {
         this.httpServerPort = httpServerPort;
         this.wsServerPort = wsServerPort;
         this.udpCastServerPort = udpCastServerPort;
+        this.streamWsPort = streamWsPort;
         this.coverUrl = coverUrl;
     }
 
@@ -143,5 +146,13 @@ public class DBServer {
 
     public void setIconIndex(int iconIndex) {
         this.iconIndex = iconIndex;
+    }
+
+    public int getStreamWsPort() {
+        return this.streamWsPort;
+    }
+
+    public void setStreamWsPort(int streamWsPort) {
+        this.streamWsPort = streamWsPort;
     }
 }
