@@ -1,12 +1,12 @@
 package com.tc.client
 
 class Result<T>(c: Int, t: T) {
-    var code = 0;
+    var code = c;
     var value = t
 
     companion object {
-        val OK = 0
-        val ERR = -1;
+        const val OK = 0
+        const val ERR = -1;
 
         fun error(): Result<Int> {
             return Result(ERR, -1);

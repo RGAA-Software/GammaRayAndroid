@@ -1,5 +1,6 @@
 package com.tc.client.util
 
+import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.util.concurrent.TimeUnit
@@ -7,10 +8,11 @@ import java.util.concurrent.TimeUnit
 class HttpUtil {
 
     companion object {
+        const val TAG = "http"
 
         fun reqUrl(url: String): String? {
             val client = OkHttpClient.Builder()
-                .connectTimeout(5, TimeUnit.SECONDS)
+                .connectTimeout(3, TimeUnit.SECONDS)
                 .readTimeout(5, TimeUnit.SECONDS).build()
             try {
                 val request = Request.Builder()
@@ -20,8 +22,10 @@ class HttpUtil {
                 if (resp.code != 200) {
                     return null;
                 }
-                return resp.body?.string();
+                val value = resp.body?.string();
+                return value
             } catch (e: Exception) {
+                Log.i(TAG, "reqUrl failed: ${e.message}")
                 return null;
             }
         }

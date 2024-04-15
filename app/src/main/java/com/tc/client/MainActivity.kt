@@ -20,6 +20,7 @@ import com.tc.client.events.OnServerAvailable
 import com.tc.client.events.OnServerScanned
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.steam.UdpBroadcastReceiver
+import com.tc.client.ui.BaseFragment
 import com.tc.client.ui.MainTopRightMenu
 import com.tc.client.ui.machine.MachineFragment
 import com.tc.client.ui.steam.SteamAppFragment
@@ -68,6 +69,12 @@ class MainActivity : AppCompatActivity() {
         binding.idOption.setOnClickListener {
             val menu = MainTopRightMenu(this);
             menu.show(binding.idOption);
+        }
+
+        binding.idRefresh.setOnClickListener {
+            if (currentFragment != null && currentFragment is BaseFragment) {
+                (currentFragment as BaseFragment).onRefresh()
+            }
         }
 
         val mgr = this.assets;

@@ -16,4 +16,8 @@ open class BaseFragment(): Fragment() {
         appContext = (activity?.application as App).appContext
     }
 
+    open fun onRefresh() {
+
+    }
+
 }

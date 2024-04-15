@@ -40,7 +40,6 @@ class SteamAppFragment() : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addPresetItems();
         EventBus.getDefault().register(this)
     }
 
@@ -120,7 +119,12 @@ class SteamAppFragment() : BaseFragment() {
         EventBus.getDefault().unregister(this)
     }
 
-    fun addPresetItems() {
+    override fun onRefresh() {
+        super.onRefresh()
+        requestSteamApps()
+    }
+
+    private fun addPresetItems() {
         steamApps.add(SteamApp.create(1, "Desktop"));
         steamApps.add(SteamApp.create(2, "Steam Big Picture"));
     }
@@ -141,7 +145,6 @@ class SteamAppFragment() : BaseFragment() {
         lastAvailableServer = null
         activity?.runOnUiThread {
             steamApps.clear()
-            addPresetItems()
             steamAppAdapter.notifyDataSetChanged()
         }
     }
@@ -157,6 +160,9 @@ class SteamAppFragment() : BaseFragment() {
                     Toast.makeText(activity, "error", Toast.LENGTH_SHORT).show()
                 }
                 return@postTask
+            }
+            if (steamApps.isEmpty()) {
+                addPresetItems();
             }
 
             steamApps.removeAll(result.value)

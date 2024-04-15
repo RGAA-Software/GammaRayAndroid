@@ -2,6 +2,7 @@ package com.tc.client.ui.machine
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,11 +28,16 @@ import org.greenrobot.eventbus.ThreadMode
 
 class MachineFragment() : BaseFragment() {
 
+    companion object {
+        const val TAG = "Main"
+    }
+
     private var _binding: FragmentMachineBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var machineAdapter: MachineAdapter
     private var machines = mutableListOf<DBServer>();
+    private var timerCounter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,7 +114,10 @@ class MachineFragment() : BaseFragment() {
         super.onStart()
         appContext.register1STimer("machine") {
             // todo: to use a Refresh button
-            //checkServerInfo()
+            if (++timerCounter % 5 == 0) {
+                checkServerInfo()
+                Log.i(TAG, "check the server info: $timerCounter")
+            }
         }
     }
 
@@ -125,6 +134,11 @@ class MachineFragment() : BaseFragment() {
     override fun onDestroy() {
         super.onDestroy()
         EventBus.getDefault().unregister(this);
+    }
+
+    override fun onRefresh() {
+        super.onRefresh()
+        loadServers();
     }
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
@@ -177,6 +191,7 @@ class MachineFragment() : BaseFragment() {
                             }
                         }
                     } else {
+                        val originServerIp = Settings.getInstance().currentServer.serverIp;
                         val msg = OnServerOffline()
                         msg.server = s
                         EventBus.getDefault().post(msg)
@@ -185,7 +200,7 @@ class MachineFragment() : BaseFragment() {
                                 machineAdapter.notifyDataSetChanged()
                             }
                             // the offline server is current server
-                            if (s.serverIp != null && s.serverIp == Settings.getInstance().currentServer.serverIp) {
+                            if (s.serverIp != null && s.serverIp == originServerIp) {
                                 (activity as MainActivity).updateTitleMessage("")
                             }
                         }
