@@ -38,7 +38,9 @@ class Settings {
 
     @Subscribe(threadMode = ThreadMode.POSTING)
     fun onServerOfflineEvent(event: OnServerOffline) {
-        currentServer = DBServer()
+        if (currentServer.serverIp == event.server.serverIp) {
+            currentServer = DBServer()
+        }
     }
 
     fun getServerIp(): String {

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
 import com.tc.client.MainActivity
 import com.tc.client.NetworkChecker
+import com.tc.client.Settings
 import com.tc.client.databinding.FragmentMachineBinding
 import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
@@ -183,7 +184,8 @@ class MachineFragment() : BaseFragment() {
                             if (s.available != originAvailable) {
                                 machineAdapter.notifyDataSetChanged()
                             }
-                            if (s.serverIp != null) {
+                            // the offline server is current server
+                            if (s.serverIp != null && s.serverIp == Settings.getInstance().currentServer.serverIp) {
                                 (activity as MainActivity).updateTitleMessage("")
                             }
                         }
