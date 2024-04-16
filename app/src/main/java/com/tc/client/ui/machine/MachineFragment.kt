@@ -17,9 +17,11 @@ import com.tc.client.Settings
 import com.tc.client.databinding.FragmentMachineBinding
 import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
+import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
 import com.tc.client.events.OnServerScanned
 import com.tc.client.ui.BaseFragment
+import com.tc.client.ui.base.CustomAlertDialog
 import com.tc.client.ui.base.OnListItemListener
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -103,8 +105,24 @@ class MachineFragment() : BaseFragment() {
         }
 
         machineAdapter.setOnItemClickListener(object: OnListItemListener<DBServer> {
-            override fun onItemClicked(pos: Int, value: DBServer) {
+            override fun onItemClicked(pos: Int, srv: DBServer) {
                 val dialog = MachineOpDialog(activity!!)
+                dialog.onAllAppClicked = View.OnClickListener {
+                    dialog.dismiss()
+                }
+                dialog.onDeleteAppClicked = View.OnClickListener {
+                    dialog.dismiss()
+                    activity?.runOnUiThread {
+                        val delDialog = CustomAlertDialog.createDialog(activity!!, "DELETE", "Do you want to delete this server ?")
+                        delDialog.onSureClicked = View.OnClickListener {
+                            deleteServer(srv)
+                        }
+                        delDialog.onCancelClicked = View.OnClickListener {
+
+                        }
+                        delDialog.show()
+                    }
+                }
                 dialog.show()
             }
         })
@@ -157,7 +175,11 @@ class MachineFragment() : BaseFragment() {
     private fun loadServers() {
         appContext.postTask{
             val servers = appContext.dbManager.queryServers()
-            machines.removeAll(servers)
+            if (servers.isEmpty()) {
+                EventBus.getDefault().post(OnServerEmpty())
+            }
+
+            machines.clear()
             machines.addAll(servers)
             appContext.postUITask{
                 setEmptyTipVisibility(machines.isEmpty())
@@ -208,6 +230,13 @@ class MachineFragment() : BaseFragment() {
                 }
             })
         }
-
     }
+
+    private fun deleteServer(srv: DBServer) {
+        appContext.postTask {
+            appContext.dbManager.deleteServer(srv)
+            loadServers()
+        }
+    }
+
 }

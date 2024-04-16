@@ -17,6 +17,7 @@ import com.king.camera.scan.CameraScan
 import com.tc.client.databinding.ActivityMainBinding
 import com.tc.client.events.OnAddScanInfo
 import com.tc.client.events.OnServerAvailable
+import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerScanned
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.steam.UdpBroadcastReceiver
@@ -227,6 +228,11 @@ class MainActivity : AppCompatActivity() {
             wsClient = JavaWSClient(cs.serverIp, cs.wsServerPort);
             wsClient!!.start();
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onServerEmptyEvent(event: OnServerEmpty) {
+        updateTitleMessage("")
     }
 
     fun updateTitleMessage(m: String) {

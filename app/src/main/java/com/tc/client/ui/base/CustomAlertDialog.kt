@@ -9,11 +9,14 @@ import android.widget.Button
 import android.widget.TextView
 import com.tc.client.R
 
-class ErrorDialog(val ctx: Context) : AlertDialog(ctx) {
+class CustomAlertDialog(val ctx: Context) : AlertDialog(ctx) {
+
+    lateinit var onSureClicked: View.OnClickListener
+    lateinit var onCancelClicked: View.OnClickListener
 
     companion object {
-        fun createDialog(c: Context, title: String, msg: String) : ErrorDialog {
-            val dialog = ErrorDialog(c)
+        fun createDialog(c: Context, title: String, msg: String) : CustomAlertDialog {
+            val dialog = CustomAlertDialog(c)
             dialog.title = title
             dialog.msg = msg
             return dialog
@@ -32,10 +35,12 @@ class ErrorDialog(val ctx: Context) : AlertDialog(ctx) {
 
         view.findViewById<Button>(R.id.id_sure).setOnClickListener {
             dismiss()
+            onSureClicked.onClick(it)
         }
 
         view.findViewById<Button>(R.id.id_cancel).setOnClickListener {
             dismiss()
+            onCancelClicked.onClick(it)
         }
 
     }
@@ -45,7 +50,7 @@ class ErrorDialog(val ctx: Context) : AlertDialog(ctx) {
         view.findViewById<TextView>(R.id.id_title).text = title
         view.findViewById<TextView>(R.id.id_message).text = msg
         val density = Resources.getSystem().displayMetrics.density
-        window?.setLayout((density*350).toInt(), (density* 280).toInt());
+        window?.setLayout((density*350).toInt(), (density* 236).toInt());
     }
 
 }

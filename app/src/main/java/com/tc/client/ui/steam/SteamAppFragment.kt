@@ -16,6 +16,7 @@ import com.simform.refresh.SSPullToRefreshLayout
 import com.tc.client.databinding.FragmentSteamAppBinding
 import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
+import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
 import com.tc.client.events.OnServerScanned
 import com.tc.client.steam.SteamApp
@@ -142,10 +143,21 @@ class SteamAppFragment() : BaseFragment() {
         if (event.server.serverId != lastAvailableServer?.serverId) {
             return
         }
-        lastAvailableServer = null
-        activity?.runOnUiThread {
-            steamApps.clear()
-            steamAppAdapter.notifyDataSetChanged()
+        clearApp()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onServerEmptyEvent(event: OnServerEmpty) {
+        clearApp()
+    }
+
+    private fun clearApp() {
+        appContext.postUITask {
+            lastAvailableServer = null
+            activity?.runOnUiThread {
+                steamApps.clear()
+                steamAppAdapter.notifyDataSetChanged()
+            }
         }
     }
 

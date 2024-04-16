@@ -16,7 +16,7 @@ import com.tc.client.R
 import com.tc.client.Settings
 import com.tc.client.databinding.ActivityManualInputBinding
 import com.tc.client.events.OnAddScanInfo
-import com.tc.client.ui.base.ErrorDialog
+import com.tc.client.ui.base.CustomAlertDialog
 import com.tc.client.util.HttpUtil
 import org.greenrobot.eventbus.EventBus
 import org.json.JSONObject
@@ -122,7 +122,7 @@ class ManualInputActivity : AppCompatActivity() {
 
     private fun errorDialog(m: String) {
         this.runOnUiThread {
-            ErrorDialog.createDialog(this, "ERROR", m).show()
+            CustomAlertDialog.createDialog(this, "ERROR", m).show()
         }
     }
 

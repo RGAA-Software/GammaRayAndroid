@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
+import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
 import com.tc.client.ui.steam.SteamAppFragment
 import com.tc.client.util.SpUtils
@@ -41,6 +42,11 @@ class Settings {
         if (currentServer.serverIp == event.server.serverIp) {
             currentServer = DBServer()
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onServerEmptyEvent(event: OnServerEmpty) {
+        currentServer = DBServer()
     }
 
     fun getServerIp(): String {
