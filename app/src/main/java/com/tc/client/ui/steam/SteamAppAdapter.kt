@@ -61,11 +61,13 @@ class SteamAppAdapter(private var context: Context, private var apps: MutableLis
             holder.presetIcon.visibility = View.VISIBLE;
             holder.engineIndicator.visibility = View.GONE;
             holder.presetIcon.setImageDrawable(context.getDrawable(R.drawable.ic_windows));
+            holder.cover.background = context.getDrawable(R.drawable.bg_item_gradient)
             Glide.with(context).load("").into(holder.cover);
         } else if (position == 1) {
             holder.presetIcon.visibility = View.VISIBLE;
             holder.engineIndicator.visibility = View.GONE;
             holder.presetIcon.setImageDrawable(context.getDrawable(R.drawable.ic_steam));
+            holder.cover.background = context.getDrawable(R.drawable.bg_item_gradient)
             Glide.with(context).load("").into(holder.cover);
         } else {
             holder.presetIcon.visibility = View.GONE;
