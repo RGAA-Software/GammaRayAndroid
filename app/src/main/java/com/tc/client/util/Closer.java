@@ -1,4 +1,4 @@
-package com.tc.client;
+package com.tc.client.util;
 
 import java.io.Closeable;
 import java.io.IOException;

@@ -15,5 +15,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "tc_client_android"
+rootProject.name = "GammaRayAndroid"
 include ':app'

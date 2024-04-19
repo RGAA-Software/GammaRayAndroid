@@ -3,7 +3,7 @@ package com.tc.client.steam
 import android.content.Context
 import android.text.TextUtils
 import android.util.Log
-import com.tc.client.Result
+import com.tc.client.util.Result
 import com.tc.client.ServerApi
 import com.tc.client.Settings
 import com.tc.client.util.HttpUtil

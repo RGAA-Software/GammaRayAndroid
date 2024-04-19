@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.tc.client.impl.ThunderApp;
+import com.tc.client.util.Result;
 import com.tc.client.util.ViewUtil;
 
 public class FrameRenderActivity extends Activity {

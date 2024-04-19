@@ -1,4 +1,4 @@
-package com.tc.client
+package com.tc.client.util
 
 class Result<T>(c: Int, t: T) {
     var code = c;
