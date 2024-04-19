@@ -6,6 +6,7 @@ import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
 import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
+import com.tc.client.events.OnServerScanned
 import com.tc.client.ui.steam.SteamAppFragment
 import com.tc.client.util.SpUtils
 import okhttp3.internal.wait
@@ -47,6 +48,16 @@ class Settings {
     @Subscribe(threadMode = ThreadMode.POSTING)
     fun onServerEmptyEvent(event: OnServerEmpty) {
         currentServer = DBServer()
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onMessageEvent(event: OnServerScanned) {
+       if (currentServer.serverId == event.server.serverId) {
+           currentServer.serverIp = event.server.serverIp
+           currentServer.httpServerPort = event.server.httpServerPort
+           currentServer.wsServerPort = event.server.wsServerPort
+           currentServer.streamWsPort = event.server.streamWsPort
+       }
     }
 
     fun getServerIp(): String {

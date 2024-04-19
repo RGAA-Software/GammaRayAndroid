@@ -1,10 +1,8 @@
 package com.tc.client.ui.steam
 
-import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +16,6 @@ import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
 import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
-import com.tc.client.events.OnServerScanned
 import com.tc.client.steam.SteamApp
 import com.tc.client.ui.BaseFragment
 import org.greenrobot.eventbus.EventBus
