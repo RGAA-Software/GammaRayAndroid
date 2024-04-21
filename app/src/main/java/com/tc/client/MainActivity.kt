@@ -9,8 +9,6 @@ import android.view.View
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.text.font.FontVariation
-import androidx.compose.ui.unit.TextUnit
 import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.king.camera.scan.CameraScan
@@ -138,6 +136,9 @@ class MainActivity : AppCompatActivity() {
 
         //udpReceiver = UdpBroadcastReceiver();
         //udpReceiver.start();
+
+        //val client = TestMediaClient("192.168.31.5", "20371");
+        //client.start()
     }
 
     private fun switchFragment(to: Fragment) {
