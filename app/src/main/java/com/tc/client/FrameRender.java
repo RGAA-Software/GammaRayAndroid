@@ -20,11 +20,8 @@ import javax.microedition.khronos.opengles.GL10;
 public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFrameAvailableListener {
 
     private static final String TAG = "FrameRender";
-
     private ThunderApp mThunderApp;
-
     private Context mContext;
-
     private final float[] vertexData = {
             -1f, -1f, 0f, 1f,
             1f, -1f,  1f, 1f,
