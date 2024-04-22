@@ -14,9 +14,10 @@ public class TestMediaClient {
     private static final String TAG = "Main";
 
     private final String mUrl;
-    WebSocketClient mWebSocketClient;
+    private WebSocketClient mWebSocketClient;
+    private long lastMessageTime;
 
-    public TestMediaClient(String ip, String port) {
+    public TestMediaClient(String ip, int port) {
         mUrl = "ws://" + ip + ":" + port + "/media";
         Log.i(TAG, "url: " + mUrl);
     }
@@ -36,8 +37,13 @@ public class TestMediaClient {
 
             @Override
             public void onMessage(ByteBuffer bytes) {
-                Log.i(TAG, "onMessage: " + bytes.toString().length());
-
+                long currentTime = System.currentTimeMillis();
+                if (lastMessageTime == 0) {
+                    lastMessageTime = currentTime;
+                }
+                long diff = currentTime - lastMessageTime;
+                lastMessageTime = currentTime;
+                Log.i(TAG, "onMessage: " + diff);
             }
             @Override
             public void onClose(int i, String s, boolean b) {
