@@ -138,7 +138,8 @@ class MainActivity : AppCompatActivity() {
         //udpReceiver.start();
 
         // test
-        val testIp = "10.0.0.16";
+        //val testIp = "10.0.0.16";
+        val testIp = "192.168.31.5";
         val testPort = 20371;
         //val client = TestMediaClient(testIp, testPort);
         //client.start()

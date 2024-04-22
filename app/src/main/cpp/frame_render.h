@@ -68,7 +68,8 @@ namespace tc
         std::shared_ptr<RawImage> current_raw_image_ = nullptr;
 
         bool need_init_texture_ = false;
-        bool is_gl_initted_ = false;
+        bool is_gl_inited_ = false;
+        bool exit_ = false;
     };
 
 }

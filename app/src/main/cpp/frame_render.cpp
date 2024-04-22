@@ -209,7 +209,7 @@ namespace tc
         }
 
         GL_FUNC glBindVertexArray(0);
-        is_gl_initted_ = true;
+        is_gl_inited_ = true;
     }
 
     void FrameRender::UpdateYUVImage(const std::shared_ptr<RawImage>& image) {
@@ -228,7 +228,7 @@ namespace tc
 
     void FrameRender::TickRefresh(JNIEnv* env) {
         std::lock_guard<std::mutex> guard(raw_image_mtx_);
-        if (!is_gl_initted_) {
+        if (!is_gl_inited_ || exit_) {
             return;
         }
 
@@ -322,7 +322,7 @@ namespace tc
     }
 
     void FrameRender::OnDestroy() {
-
+        exit_ = true;
     }
 
 }

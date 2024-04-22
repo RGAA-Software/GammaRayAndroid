@@ -30,9 +30,11 @@ namespace tc
         void onErrorAfterClose(oboe::AudioStream*, oboe::Result) override;
 
         void Write(const std::shared_ptr<Data>& data);
+        void Exit();
 
     private:
         std::shared_ptr<oboe::AudioStream> audio_stream_ = nullptr;
+        bool exit_ = false;
     };
 
 }

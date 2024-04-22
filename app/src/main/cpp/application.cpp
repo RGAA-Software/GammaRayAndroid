@@ -77,11 +77,17 @@ namespace tc
         LOGI("hw codec:{}, use oes: {}, oes tex id: {}", hw_codec, use_oes, oes_tex_id);
     }
 
-    void Application::Start() {
+    void Application::Start(){
         thunder_sdk_->Start();
     }
 
     void Application::Exit() {
+        if (frame_render_) {
+            frame_render_->OnDestroy();
+        }
+        if (audio_player_) {
+            audio_player_->Exit();
+        }
         thunder_sdk_->Exit();
     }
 

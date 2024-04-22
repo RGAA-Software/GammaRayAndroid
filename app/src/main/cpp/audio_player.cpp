@@ -48,6 +48,9 @@ namespace tc
     }
 
     void AudioPlayer::Write(const std::shared_ptr<Data>& data) {
+        if (exit_) {
+            return;
+        }
         if (audio_stream_) {
             int frames = data->Size() / 2 / 2;
             audio_stream_->write(data->CStr(), frames, 10000000); // 10ms
@@ -70,5 +73,11 @@ namespace tc
 
     void AudioPlayer::onErrorAfterClose(oboe::AudioStream*, oboe::Result result) {
         LOGI("AudioPlayer onErrorAfterClose: {}", (int)result);
+    }
+
+    void AudioPlayer::Exit() {
+        exit_ = true;
+        audio_stream_->stop();
+        audio_stream_->release();
     }
 }
