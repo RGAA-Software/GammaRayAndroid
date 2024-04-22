@@ -18,6 +18,7 @@ namespace tc
     class FrameRender;
     class AppContext;
     class AudioPlayer;
+    class Statistics;
 
     using OnNativeMessageCallback = std::function<void(const std::string&)>;
 
@@ -55,6 +56,9 @@ namespace tc
 
         int frame_width_ = 0;
         int frame_height_ = 0;
+
+        Statistics* statistics_ = nullptr;
+
     };
 
 }

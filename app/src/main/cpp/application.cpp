@@ -8,6 +8,7 @@
 #include "app_context.h"
 #include "audio_player.h"
 #include "tc_client_sdk_new/video_decoder_factory.h"
+#include "tc_client_sdk_new/statistics.h"
 #include "tc_message_new/proto_message_maker.h"
 #include "native_msg_maker.h"
 
@@ -29,6 +30,7 @@ namespace tc
     void Application::Init(const ThunderSdkParams& params, JNIEnv* env, jobject surface, bool hw_codec, bool use_oes, int oes_tex_id) {
         app_context_ = AppContext::Make();
         frame_render_ = FrameRender::Make(app_context_);
+        statistics_ = Statistics::Instance();
         auto drt = [&]() -> DecoderRenderType {
             if (!hw_codec) {
                 return DecoderRenderType::kFFmpegI420;
@@ -90,6 +92,9 @@ namespace tc
     void Application::OnRenderTick(JNIEnv* env) {
         if (frame_render_) {
             frame_render_->TickRefresh(env);
+        }
+        if (statistics_) {
+            statistics_->fps_render_->Tick();
         }
     }
 
