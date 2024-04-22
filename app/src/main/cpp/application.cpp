@@ -64,7 +64,7 @@ namespace tc
             }
         });
 
-        thunder_sdk_->RegisterOnAudioFrameDecodedCallback([=](const std::shared_ptr<Data>& data, int samples, int channels, int bits) {
+        thunder_sdk_->RegisterOnAudioFrameDecodedCallback([=, this](const std::shared_ptr<Data>& data, int samples, int channels, int bits) {
             if (!audio_player_) {
                 audio_player_ = AudioPlayer::Make();
                 audio_player_->Init(samples, channels);
