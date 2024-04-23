@@ -100,7 +100,7 @@ class MachineFragment() : BaseFragment() {
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         val lastVisibleItem = manager.findLastCompletelyVisibleItemPosition();
                         if (lastVisibleItem == (machines.size - 1)) {
-                            Toast.makeText(activity, "Last...", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(activity, "Last...", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -216,7 +216,9 @@ class MachineFragment() : BaseFragment() {
                                 machineAdapter.notifyDataSetChanged()
                             }
                             if (s.serverIp != null) {
-                                (activity as MainActivity).updateTitleMessage(s.serverId)
+                                if (activity != null) {
+                                    (activity as MainActivity).updateTitleMessage(s.serverId)
+                                }
                             }
                         }
                     } else {
@@ -229,7 +231,7 @@ class MachineFragment() : BaseFragment() {
                                 machineAdapter.notifyDataSetChanged()
                             }
                             // the offline server is current server
-                            if (s.serverIp != null && s.serverIp == originServerIp) {
+                            if (s.serverIp != null && s.serverIp == originServerIp && activity != null) {
                                 (activity as MainActivity).updateTitleMessage("")
                             }
                         }
@@ -246,14 +248,18 @@ class MachineFragment() : BaseFragment() {
                 val msg = OnServerDeleted()
                 msg.server = srv
                 EventBus.getDefault().post(msg)
-                (activity as MainActivity).updateTitleMessage("")
+                if (activity != null) {
+                    (activity as MainActivity).updateTitleMessage("")
+                }
             }
             loadServers()
         }
     }
 
     private fun changeToGamesTab() {
-        (activity as MainActivity).changeToTab(MainActivity.Companion.ID_GAMES)
+        if (activity != null) {
+            (activity as MainActivity).changeToTab(MainActivity.Companion.ID_GAMES)
+        }
     }
 
 }
