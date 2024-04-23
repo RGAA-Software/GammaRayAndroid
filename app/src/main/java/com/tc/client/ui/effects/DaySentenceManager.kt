@@ -1,4 +1,4 @@
-package com.tc.client.ui.day
+package com.tc.client.ui.effects
 
 import android.text.TextUtils
 import android.util.Log

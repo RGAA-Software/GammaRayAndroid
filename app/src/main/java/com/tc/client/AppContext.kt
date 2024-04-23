@@ -59,6 +59,10 @@ class AppContext(private var context: Context) {
         mainHandler.post(task);
     }
 
+    public fun postUIDelayTask(task: Runnable, time: Long) {
+        mainHandler.postDelayed(task, time)
+    }
+
     public fun register1STimer(name: String, t: Runnable) {
         timer1SCallbacks[name] = t;
     }

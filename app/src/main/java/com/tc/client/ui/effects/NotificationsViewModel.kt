@@ -1,4 +1,4 @@
-package com.tc.client.ui.day
+package com.tc.client.ui.effects
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

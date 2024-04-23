@@ -24,7 +24,7 @@ import com.tc.client.ui.MainTopRightMenu
 import com.tc.client.ui.machine.MachineFragment
 import com.tc.client.ui.steam.SteamAppFragment
 import com.tc.client.ui.me.AboutMeFragment
-import com.tc.client.ui.day.DayFragment
+import com.tc.client.ui.effects.MusicEffectsFragment
 import com.tc.client.util.ScreenUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var steamAppFragment: SteamAppFragment
     private lateinit var machineFragment: MachineFragment
-    private lateinit var dayFragment: DayFragment
+    private lateinit var musicEffectsFragment: MusicEffectsFragment
     private lateinit var aboutMeFragment: AboutMeFragment
     private var currentFragment: Fragment? = null
 
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
         steamAppFragment = SteamAppFragment();
         machineFragment = MachineFragment();
-        dayFragment = DayFragment();
+        musicEffectsFragment = MusicEffectsFragment();
         aboutMeFragment = AboutMeFragment();
 
         val fragmentHost = binding.root.findViewById<RelativeLayout>(R.id.fragment_host);
@@ -247,7 +247,7 @@ class MainActivity : AppCompatActivity() {
             }
             ID_MUSIC_EFFECTS -> {
                 binding.bottomBar.show(ID_MUSIC_EFFECTS)
-                switchFragment(dayFragment)
+                switchFragment(musicEffectsFragment)
                 setActionBarTitle("Music Effects");
             }
             ID_ME -> {

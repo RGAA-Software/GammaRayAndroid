@@ -1,18 +1,15 @@
-package com.tc.client.ui.day
+package com.tc.client.ui.effects
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.tc.client.AppContext
 import com.tc.client.databinding.FragmentDayBinding
 import com.tc.client.ui.BaseFragment
-import com.tc.reading.ui.day.DaySentence
 
-class DayFragment() : BaseFragment() {
+class MusicEffectsFragment() : BaseFragment() {
 
     private var _binding: FragmentDayBinding? = null
     private val binding get() = _binding!!

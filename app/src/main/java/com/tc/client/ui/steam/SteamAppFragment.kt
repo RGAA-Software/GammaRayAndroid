@@ -3,6 +3,7 @@ package com.tc.client.ui.steam
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.simform.refresh.SSPullToRefreshLayout
 import com.tc.client.databinding.FragmentSteamAppBinding
 import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
+import com.tc.client.events.OnServerDeleted
 import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
 import com.tc.client.steam.SteamApp
@@ -47,7 +49,7 @@ class SteamAppFragment() : BaseFragment() {
         _binding = FragmentSteamAppBinding.inflate(inflater, container, false)
         _handler = Handler(Looper.getMainLooper());
         val root: View = binding.root
-
+        binding.idEmptyIcon.visibility = View.GONE
         homeViewModel.text.observe(viewLifecycleOwner) {
 
         }
@@ -148,12 +150,20 @@ class SteamAppFragment() : BaseFragment() {
         clearApp()
     }
 
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onServerDeletedEvent(event: OnServerDeleted) {
+        appContext.postDelayTask({
+            requestSteamApps()
+        }, 100)
+    }
+
     private fun clearApp() {
         appContext.postUITask {
             lastAvailableServer = null
             activity?.runOnUiThread {
                 steamApps.clear()
                 steamAppAdapter.notifyDataSetChanged()
+                setEmptyVisibility(true)
             }
         }
     }
@@ -165,9 +175,8 @@ class SteamAppFragment() : BaseFragment() {
         appContext.postTask {
             val result = appContext.steamManager.requestSteamApps();
             if (!result.ok()) {
-                appContext.postUITask {
-                    Toast.makeText(activity, "error", Toast.LENGTH_SHORT).show()
-                }
+                Log.i(TAG, "requestSteamApps failed.");
+                clearApp();
                 return@postTask
             }
             if (steamApps.isEmpty()) {
@@ -177,8 +186,21 @@ class SteamAppFragment() : BaseFragment() {
             steamApps.removeAll(result.value)
             steamApps.addAll(result.value)
             appContext.postUITask{
+                if (steamApps.isNotEmpty()) {
+                    setEmptyVisibility(false)
+                }
                 steamAppAdapter.notifyDataSetChanged()
             }
+        }
+    }
+
+    private fun setEmptyVisibility(visible: Boolean) {
+        if (visible) {
+            binding.idEmptyIcon.visibility = View.VISIBLE
+            binding.idEmptyTip.visibility = View.VISIBLE
+        } else {
+            binding.idEmptyIcon.visibility = View.GONE
+            binding.idEmptyTip.visibility = View.GONE
         }
     }
 }

@@ -13,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
 import com.tc.client.MainActivity
 import com.tc.client.NetworkChecker
+import com.tc.client.R
 import com.tc.client.Settings
 import com.tc.client.databinding.FragmentMachineBinding
 import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
+import com.tc.client.events.OnServerDeleted
 import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
 import com.tc.client.events.OnServerScanned
@@ -114,7 +116,9 @@ class MachineFragment() : BaseFragment() {
                 dialog.onDeleteAppClicked = View.OnClickListener {
                     dialog.dismiss()
                     activity?.runOnUiThread {
-                        val delDialog = CustomAlertDialog.createDialog(activity!!, "DELETE", "Do you want to delete this server ?")
+                        val delDialog = CustomAlertDialog.createDialog(activity!!,
+                            getString(R.string.delete),
+                            getString(R.string.do_you_want_to_delete_this_server))
                         delDialog.onSureClicked = View.OnClickListener {
                             deleteServer(srv)
                         }
@@ -236,6 +240,12 @@ class MachineFragment() : BaseFragment() {
     private fun deleteServer(srv: DBServer) {
         appContext.postTask {
             appContext.dbManager.deleteServer(srv)
+            appContext.postUITask {
+                val msg = OnServerDeleted()
+                msg.server = srv
+                EventBus.getDefault().post(msg)
+                (activity as MainActivity).updateTitleMessage("")
+            }
             loadServers()
         }
     }

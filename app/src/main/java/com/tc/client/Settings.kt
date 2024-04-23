@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
+import com.tc.client.events.OnServerDeleted
 import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
 import com.tc.client.events.OnServerScanned
@@ -40,6 +41,13 @@ class Settings {
 
     @Subscribe(threadMode = ThreadMode.POSTING)
     fun onServerOfflineEvent(event: OnServerOffline) {
+        if (currentServer.serverIp == event.server.serverIp) {
+            currentServer = DBServer()
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onServerDeletedEvent(event: OnServerDeleted) {
         if (currentServer.serverIp == event.server.serverIp) {
             currentServer = DBServer()
         }
