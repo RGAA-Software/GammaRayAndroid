@@ -48,6 +48,7 @@ class MachineFragment() : BaseFragment() {
         val preset = DBServer.create("MOCKING");
         preset.available = true;
         machines.add(preset);
+        Log.i(TAG, "MachineFragment onCreate, will loadServers")
         loadServers();
         EventBus.getDefault().register(this);
     }
@@ -189,6 +190,7 @@ class MachineFragment() : BaseFragment() {
             appContext.postUITask{
                 setEmptyTipVisibility(machines.isEmpty())
                 machineAdapter.notifyDataSetChanged()
+                Log.i(TAG, "Machine fragment checkServer info")
                 checkServerInfo()
             }
         }

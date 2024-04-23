@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "Main";
 
-        const val ID_GAMES = 1
-        const val ID_MACHINE = 2
+        const val ID_MACHINE = 1
+        const val ID_GAMES = 2
         const val ID_MUSIC_EFFECTS = 3
         const val ID_ME = 4
     }
@@ -48,11 +48,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var musicEffectsFragment: MusicEffectsFragment
     private lateinit var aboutMeFragment: AboutMeFragment
     private var currentFragment: Fragment? = null
+    private val fragments = mutableListOf<BaseFragment>()
 
     private lateinit var appContext: AppContext;
 
     private var wsClient: JavaWSClient? = null;
-    private lateinit var udpReceiver: UdpBroadcastReceiver;
+    //private lateinit var udpReceiver: UdpBroadcastReceiver;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,10 +81,16 @@ class MainActivity : AppCompatActivity() {
         val tf = Typeface.createFromAsset(mgr, "fonts/matrix.ttf");
         binding.idTitleMsg.typeface = tf;
 
-        steamAppFragment = SteamAppFragment();
-        machineFragment = MachineFragment();
-        musicEffectsFragment = MusicEffectsFragment();
-        aboutMeFragment = AboutMeFragment();
+        Log.i(TAG, "MainActivity onCreate, will create fragments")
+
+        machineFragment = getFragment(ID_MACHINE) as MachineFragment
+        steamAppFragment = getFragment(ID_GAMES) as SteamAppFragment;
+        musicEffectsFragment = getFragment(ID_MUSIC_EFFECTS) as MusicEffectsFragment;
+        aboutMeFragment = getFragment(ID_ME) as AboutMeFragment;
+        fragments.add(machineFragment)
+        fragments.add(steamAppFragment)
+        fragments.add(musicEffectsFragment)
+        fragments.add(aboutMeFragment)
 
         val fragmentHost = binding.root.findViewById<RelativeLayout>(R.id.fragment_host);
 
@@ -132,7 +139,7 @@ class MainActivity : AppCompatActivity() {
         //this.startActivity(intent)
     }
 
-    private fun switchFragment(to: Fragment) {
+    private fun switchFragment(to: Fragment, tab: String) {
         if (to is MachineFragment) {
             binding.idOption.visibility = View.VISIBLE
         } else {
@@ -140,8 +147,14 @@ class MainActivity : AppCompatActivity() {
         }
         val transaction = supportFragmentManager.beginTransaction();
         if (currentFragment == null) {
+            fragments.forEach {
+                if (it != to) {
+                    transaction.hide(it)
+                }
+            }
+
             if (!to.isAdded) {
-                transaction.add(R.id.fragment_host, to).commit();
+                transaction.add(R.id.fragment_host, to, tab).commit();
             } else {
                 transaction.show(to).commit();
             }
@@ -149,13 +162,15 @@ class MainActivity : AppCompatActivity() {
         } else {
             if (currentFragment == to) {
                 if (!to.isAdded) {
-                    transaction.add(R.id.fragment_host, to).commit();
+                    transaction.add(R.id.fragment_host, to, tab)
+                    transaction.show(to).commit()
                 } else {
                     transaction.show(to).commit();
                 }
             } else {
                 if (!to.isAdded) {
-                    transaction.hide(currentFragment!!).add(R.id.fragment_host, to).commit();
+                    transaction.hide(currentFragment!!).add(R.id.fragment_host, to, tab)
+                    transaction.show(to).commit()
                 } else {
                     transaction.hide(currentFragment!!).show(to).commit();
                 }
@@ -168,10 +183,23 @@ class MainActivity : AppCompatActivity() {
         binding.idTitleBarText.text = title;
     }
 
+    override fun onPause() {
+        super.onPause()
+        fragments.forEach {
+            it.onPause()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        udpReceiver.stopReceiving()
+        //udpReceiver.stopReceiving()
+
         EventBus.getDefault().unregister(this)
+        Log.i(TAG, "MainActivity onDestroy")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -237,25 +265,47 @@ class MainActivity : AppCompatActivity() {
         when (tab) {
             ID_MACHINE -> {
                 binding.bottomBar.show(ID_MACHINE)
-                switchFragment(machineFragment);
+                switchFragment(machineFragment, tab.toString());
                 setActionBarTitle("Machines");
             }
             ID_GAMES -> {
                 binding.bottomBar.show(ID_GAMES)
-                switchFragment(steamAppFragment);
+                switchFragment(steamAppFragment, tab.toString());
                 setActionBarTitle("Games");
             }
             ID_MUSIC_EFFECTS -> {
                 binding.bottomBar.show(ID_MUSIC_EFFECTS)
-                switchFragment(musicEffectsFragment)
+                switchFragment(musicEffectsFragment, tab.toString())
                 setActionBarTitle("Music Effects");
             }
             ID_ME -> {
                 binding.bottomBar.show(ID_ME)
-                switchFragment(aboutMeFragment)
+                switchFragment(aboutMeFragment, tab.toString())
                 setActionBarTitle("About Me");
             }
         }
+    }
+
+    private fun getFragment(id: Int): BaseFragment {
+        val fragment = supportFragmentManager.findFragmentByTag(id.toString());
+        if (fragment != null) {
+            return fragment as BaseFragment;
+        }
+        when (id) {
+            ID_MACHINE -> {
+                return MachineFragment()
+            }
+            ID_GAMES -> {
+                return SteamAppFragment()
+            }
+            ID_MUSIC_EFFECTS -> {
+                return MusicEffectsFragment()
+            }
+            ID_ME -> {
+                return AboutMeFragment()
+            }
+        }
+        return MachineFragment()
     }
 
 }
