@@ -109,6 +109,7 @@ class MachineFragment() : BaseFragment() {
                 val dialog = MachineOpDialog(activity!!)
                 dialog.onAllAppClicked = View.OnClickListener {
                     dialog.dismiss()
+                    changeToGamesTab()
                 }
                 dialog.onDeleteAppClicked = View.OnClickListener {
                     dialog.dismiss()
@@ -237,6 +238,10 @@ class MachineFragment() : BaseFragment() {
             appContext.dbManager.deleteServer(srv)
             loadServers()
         }
+    }
+
+    private fun changeToGamesTab() {
+        (activity as MainActivity).changeToTab(MainActivity.Companion.ID_GAMES)
     }
 
 }

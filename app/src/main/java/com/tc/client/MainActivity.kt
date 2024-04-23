@@ -37,10 +37,10 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "Main";
 
-        private const val ID_BOOK = 1
-        private const val ID_MOVIE = 2
-        private const val ID_DAY = 3
-        private const val ID_ME = 4
+        const val ID_GAMES = 1
+        const val ID_MACHINE = 2
+        const val ID_MUSIC_EFFECTS = 3
+        const val ID_ME = 4
     }
 
     private lateinit var steamAppFragment: SteamAppFragment
@@ -88,9 +88,9 @@ class MainActivity : AppCompatActivity() {
         val fragmentHost = binding.root.findViewById<RelativeLayout>(R.id.fragment_host);
 
         binding.bottomBar.apply {
-            add(MeowBottomNavigation.Model(ID_MOVIE, R.drawable.ic_laptop))
-            add(MeowBottomNavigation.Model(ID_BOOK, R.drawable.ic_controller))
-            add(MeowBottomNavigation.Model(ID_DAY, R.drawable.ic_sun))
+            add(MeowBottomNavigation.Model(ID_MACHINE, R.drawable.ic_laptop))
+            add(MeowBottomNavigation.Model(ID_GAMES, R.drawable.ic_controller))
+            add(MeowBottomNavigation.Model(ID_MUSIC_EFFECTS, R.drawable.ic_sun))
             add(MeowBottomNavigation.Model(ID_ME, R.drawable.ic_account))
 
             //setCount(ID_NOTIFICATION, "15")
@@ -101,45 +101,26 @@ class MainActivity : AppCompatActivity() {
 
             setOnClickMenuListener {
                 Log.i(TAG, "id: ${it.id}")
-                when (it.id) {
-                    ID_BOOK -> {
-                        switchFragment(steamAppFragment);
-                        setActionBarTitle("Games");
-                    }
-                    ID_MOVIE -> {
-                        switchFragment(machineFragment);
-                        setActionBarTitle("Machines");
-                    }
-                    ID_DAY -> {
-                        switchFragment(dayFragment)
-                        setActionBarTitle("Everyday");
-                    }
-                    ID_ME -> {
-                        switchFragment(aboutMeFragment)
-                        setActionBarTitle("About Me");
-                    }
-                }
+                changeToTab(it.id)
             }
 
             setOnReselectListener {
                 Toast.makeText(context, "item ${it.id} is reselected.", Toast.LENGTH_LONG).show()
             }
 
-            show(ID_MOVIE)
-            switchFragment(machineFragment);
-            setActionBarTitle("Machines");
+            changeToTab(ID_MACHINE)
         }
 
         appContext.register1STimer("ws") {
-            wsClient?.sendMessage("..xx...");
+            //wsClient?.sendMessage("..xx...");
         };
 
         //udpReceiver = UdpBroadcastReceiver();
         //udpReceiver.start();
 
         // test
-        //val testIp = "10.0.0.16";
-        val testIp = "192.168.31.5";
+        val testIp = "10.0.0.16";
+//        val testIp = "192.168.31.5";
         val testPort = 20371;
         //val client = TestMediaClient(testIp, testPort);
         //client.start()
@@ -148,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, FrameRenderActivity::class.java);
         intent.putExtra("ip", testIp);
         intent.putExtra("port", testPort);
-        this.startActivity(intent)
+        //this.startActivity(intent)
     }
 
     private fun switchFragment(to: Fragment) {
@@ -249,6 +230,31 @@ class MainActivity : AppCompatActivity() {
     fun updateTitleMessage(m: String) {
         runOnUiThread {
             binding.idTitleMsg.text = m
+        }
+    }
+
+    fun changeToTab(tab: Int) {
+        when (tab) {
+            ID_MACHINE -> {
+                binding.bottomBar.show(ID_MACHINE)
+                switchFragment(machineFragment);
+                setActionBarTitle("Machines");
+            }
+            ID_GAMES -> {
+                binding.bottomBar.show(ID_GAMES)
+                switchFragment(steamAppFragment);
+                setActionBarTitle("Games");
+            }
+            ID_MUSIC_EFFECTS -> {
+                binding.bottomBar.show(ID_MUSIC_EFFECTS)
+                switchFragment(dayFragment)
+                setActionBarTitle("Music Effects");
+            }
+            ID_ME -> {
+                binding.bottomBar.show(ID_ME)
+                switchFragment(aboutMeFragment)
+                setActionBarTitle("About Me");
+            }
         }
     }
 
