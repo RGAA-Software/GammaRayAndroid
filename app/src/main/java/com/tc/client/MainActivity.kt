@@ -1,5 +1,6 @@
 package com.tc.client
 
+import android.Manifest
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
@@ -121,6 +122,8 @@ class MainActivity : AppCompatActivity() {
         appContext.register1STimer("ws") {
             //wsClient?.sendMessage("..xx...");
         };
+
+        requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE), 100)
 
         //udpReceiver = UdpBroadcastReceiver();
         //udpReceiver.start();
