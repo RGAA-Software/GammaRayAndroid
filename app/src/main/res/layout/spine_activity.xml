@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/container"
+                android:background="@color/dark" >
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="5dp"
+		android:gravity="center"
+		android:orientation="horizontal"
+		android:padding="10dp"
+	>
+		
+		<Button
+			android:id="@+id/walk"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="6dp"
+			android:layout_weight="1"
+			android:padding="6dp"
+			android:text="Walk"
+			android:textSize="12dp"
+		/>
+		
+		<Button
+			android:id="@+id/run"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="6dp"
+			android:layout_weight="1"
+			android:padding="6dp"
+			android:text="Run"
+			android:textSize="12dp"
+		/>
+		
+		<Button
+			android:id="@+id/jump"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="6dp"
+			android:layout_weight="1"
+			android:padding="6dp"
+			android:text="Jump"
+			android:textSize="12dp"
+		/>
+	</LinearLayout>
+	
+	<fragment
+		android:id="@+id/libgdxFrag"
+		android:name="com.tc.client.effects.spine.LibgdxSpineFragment"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginBottom="70dp"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		/>
+
+</RelativeLayout>

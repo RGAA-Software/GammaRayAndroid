@@ -1,12 +1,18 @@
 package com.tc.client.ui.effects
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.tc.client.R
 import com.tc.client.databinding.FragmentDayBinding
+import com.tc.client.effects.box2d.Box2dActivity
+import com.tc.client.effects.spine.SpineActivity
 import com.tc.client.ui.BaseFragment
 
 class MusicEffectsFragment() : BaseFragment() {
@@ -20,6 +26,13 @@ class MusicEffectsFragment() : BaseFragment() {
         daySentence = DaySentenceManager(appContext);
         _binding = FragmentDayBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        root.findViewById<CardView>(R.id.day_youdao).setOnClickListener {
+            startActivity(Intent(activity, Box2dActivity::class.java));
+        }
+        root.findViewById<CardView>(R.id.day_shanbei).setOnClickListener {
+            startActivity(Intent(activity, SpineActivity::class.java));
+        }
 
         notificationsViewModel.text.observe(viewLifecycleOwner) {
 

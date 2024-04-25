@@ -1,6 +1,9 @@
 package com.tc.client;
 
 import android.app.Application;
+import android.content.Context;
+import android.hardware.SensorManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 import com.google.android.gms.ads.MobileAds;
@@ -12,9 +15,15 @@ import java.util.Map;
 
 public class App extends Application {
     private static final String TAG = "Main";
-
     private AppContext appContext;
+    public static SensorManager sm;
+    private static App instance;
 
+    private static int sDens = 0;
+
+    public static App getInstance(){
+        return instance;
+    }
     @Override
     public void onCreate() {
         super.onCreate();
@@ -22,21 +31,22 @@ public class App extends Application {
         Settings.Companion.getInstance().loadConfig(this);
         Settings.Companion.getInstance().dump();
 
+        instance = this;
         appContext = new AppContext(this);
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-                Log.i(TAG, "onInitializationComplete");
-                Map<String, AdapterStatus> status = initializationStatus.getAdapterStatusMap();
-                for (String key: status.keySet()) {
-                    Log.i(TAG, "==> Ad init status: " + key + ", " + status.get(key).getInitializationState().name());
-                }
-            }
-        });
+        sm = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        sDens = dm.densityDpi;
+        Log.d(TAG, "dens:" + sDens);
+
     }
 
     public AppContext getAppContext() {
         return appContext;
+    }
+
+    public static int getDens(){
+        return sDens;
     }
 }
