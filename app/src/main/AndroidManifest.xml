@@ -23,6 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.XRay"
         android:usesCleartextTraffic="true"
+        android:allowNativeHeapPointerTagging="false"
         tools:targetApi="31">
         <activity
             android:name=".activity.ManualInputActivity"
