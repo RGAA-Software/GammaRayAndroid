@@ -63,8 +63,13 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:name=".effects.spine.SpineActivity"
             android:screenOrientation="portrait"
-            android:label="@string/app_name"
-            >
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:name=".effects.fireworks.FireWorksActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name">
         </activity>
     </application>
 

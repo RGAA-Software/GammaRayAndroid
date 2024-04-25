@@ -24,7 +24,7 @@ import java.util.List;
 @SuppressWarnings("All")
 public class GiftParticleEffectView implements ApplicationListener {
 
-	private static final String TAG = "giftParticleEffectView";
+	private static final String TAG = "GDX";
 
 	//基础绘制资源
 	SpriteBatch mBatch;
@@ -249,13 +249,17 @@ public class GiftParticleEffectView implements ApplicationListener {
 			particleFileName = "particle/waterfall.p";
 		}
 
-		//创建粒子系统
-
+		Log.i(TAG, "particle file name: " + particleFileName + ", extern path: " + extentPath);
 		if (Gdx.files.internal(particleFileName).exists()) {
-			if (Gdx.files.external(extentPath).exists())
-				mParticle.load(Gdx.files.internal(particleFileName), Gdx.files.external(extentPath));
-		} else
+			if (Gdx.files.absolute(extentPath).exists()) {
+				//mParticle.load(Gdx.files.internal(particleFileName), Gdx.files.absolute("/data/user/0/com.tc.client/cache/libgdxDemo/particle.gifts"/*extentPath*/));
+				mParticle.load(Gdx.files.internal("particle/aaa.p"), Gdx.files.internal("particle"));
+			} else {
+				Log.i(TAG, extentPath + " not exist");
+			}
+		} else {
 			Log.e(TAG, "storePath is not exists:" + extentPath);
+		}
 
 		createAnimation(animationType);
 
@@ -622,7 +626,8 @@ public class GiftParticleEffectView implements ApplicationListener {
 //        String externalPath = "Crazy Together/Gifts" + File.separator + Gifts.GIFT_BASE + id;
 		boolean bres = true;
 		try {
-			bres = Gdx.files.external(abs).exists();
+			//bres = Gdx.files.external(abs).exists();
+			bres = Gdx.files.absolute(abs).exists();
 		}
 		catch(Exception e){
 			e.printStackTrace();

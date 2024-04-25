@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.tc.client.R
 import com.tc.client.databinding.FragmentDayBinding
 import com.tc.client.effects.box2d.Box2dActivity
+import com.tc.client.effects.fireworks.FireWorksActivity
 import com.tc.client.effects.spine.SpineActivity
 import com.tc.client.ui.BaseFragment
 
@@ -33,7 +35,9 @@ class MusicEffectsFragment() : BaseFragment() {
         root.findViewById<CardView>(R.id.day_shanbei).setOnClickListener {
             startActivity(Intent(activity, SpineActivity::class.java));
         }
-
+        root.findViewById<TextView>(R.id.date_day).setOnClickListener {
+            startActivity(Intent(activity, FireWorksActivity::class.java));
+        }
         notificationsViewModel.text.observe(viewLifecycleOwner) {
 
         }
