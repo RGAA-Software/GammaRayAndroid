@@ -4,11 +4,10 @@ class ServerApi {
 
     companion object {
         const val ping = "/v1/ping";
-        const val apis = "/v1/apis";
-        const val apps = "/v1/apps";
-        const val startApp = "/v1/start/app";
-        const val stopApp = "/v1/stop/app";
-        const val queryApp = "/v1/query/app"
+        const val supportedApis = "/v1/apis";
+        const val games = "/v1/games";
+        const val gameStart = "/v1/game/start";
+        const val gameStop = "/v1/game/stop";
     }
 
 }

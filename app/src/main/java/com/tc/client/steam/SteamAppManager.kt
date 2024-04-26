@@ -14,7 +14,7 @@ class SteamAppManager(val context: Context) {
     val TAG = "Steam";
 
     fun requestSteamApps(): Result<List<SteamApp>> {
-        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.apps
+        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.games
         val resp = HttpUtil.reqUrl(url)
         var result = mutableListOf<SteamApp>();
         if (TextUtils.isEmpty(resp)) {
@@ -45,7 +45,7 @@ class SteamAppManager(val context: Context) {
     }
 
     fun startRemoteApplication(): Result<String> {
-        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.startApp
+        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.gameStart
         val resp = HttpUtil.reqUrl(url)
         if (TextUtils.isEmpty(resp)) {
             return Result(Result.ERR, "start failed");
