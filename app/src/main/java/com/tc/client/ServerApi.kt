@@ -8,6 +8,7 @@ class ServerApi {
         const val games = "/v1/games";
         const val gameStart = "/v1/game/start";
         const val gameStop = "/v1/game/stop";
+        const val runningGames = "/v1/running/games";
     }
 
 }

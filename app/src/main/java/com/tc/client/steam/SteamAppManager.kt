@@ -13,10 +13,10 @@ class SteamAppManager(val context: Context) {
 
     val TAG = "Steam";
 
-    fun requestSteamApps(): Result<List<SteamApp>> {
+    fun requestSteamGames(): Result<List<SteamGame>> {
         val url = Settings.getInstance().getApiBaseUrl() + ServerApi.games
         val resp = HttpUtil.reqUrl(url)
-        var result = mutableListOf<SteamApp>();
+        val result = mutableListOf<SteamGame>();
         if (TextUtils.isEmpty(resp)) {
             return Result(Result.ERR, result);
         }
@@ -27,11 +27,11 @@ class SteamAppManager(val context: Context) {
             if (obj.has("data")) {
                 val data = obj.getJSONArray("data");
                 for (i in 0 until data.length()) {
-                    val app = SteamApp();
+                    val app = SteamGame();
                     val item = data.getJSONObject(i);
-                    app.appId = item.getInt("app_id");
+                    app.gameId = item.getInt("app_id");
                     app.coverName = item.getString("cover_name");
-                    app.appName = item.getString("name");
+                    app.gameName = item.getString("name");
                     app.engine = item.getString("engine");
                     result.add(app)
                 }
@@ -44,14 +44,45 @@ class SteamAppManager(val context: Context) {
         return Result(Result.OK, result);
     }
 
-    fun startRemoteApplication(): Result<String> {
+    fun startGame(gamePath: String): Result<String> {
         val url = Settings.getInstance().getApiBaseUrl() + ServerApi.gameStart
-        val resp = HttpUtil.reqUrl(url)
+        val params = mutableMapOf<String, String>()
+        params["game_path"] = gamePath;
+        val resp = HttpUtil.postUrl(url, params)
         if (TextUtils.isEmpty(resp)) {
             return Result(Result.ERR, "start failed");
         }
 
         return Result(Result.OK, "OK")
+    }
+
+    fun requestRunningGames(): Result<List<RunningGame>> {
+        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.runningGames
+        val resp = HttpUtil.reqUrl(url)
+        val result = mutableListOf<RunningGame>();
+        if (TextUtils.isEmpty(resp)) {
+            return Result(Result.ERR, result);
+        }
+
+        try {
+            val obj = JSONObject(resp);
+            val code = obj.getInt("code");
+            val msg = obj.getString("message");
+            if (obj.has("data")) {
+                val data = obj.getJSONArray("data");
+                for (i in 0 until data.length()) {
+                    val rg = RunningGame();
+                    val item = data.getJSONObject(i);
+                    rg.gameId = item.getInt("game_id");
+                    rg.gameExes = item.getString("game_exes")
+                    result.add(rg)
+                }
+            }
+        } catch (e: Exception) {
+            Log.i(TAG, "requestRunningGame failed: ${e.message} ")
+            return Result(Result.ERR, result);
+        }
+        return Result(Result.OK, result);
     }
 
 }

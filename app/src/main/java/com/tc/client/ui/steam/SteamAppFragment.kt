@@ -1,8 +1,10 @@
 package com.tc.client.ui.steam
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,13 +14,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
+import com.tc.client.FrameRenderActivity
+import com.tc.client.Settings
 import com.tc.client.databinding.FragmentSteamAppBinding
 import com.tc.client.db.DBServer
 import com.tc.client.events.OnServerAvailable
 import com.tc.client.events.OnServerDeleted
 import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
-import com.tc.client.steam.SteamApp
+import com.tc.client.steam.SteamGame
 import com.tc.client.ui.BaseFragment
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -35,7 +39,7 @@ class SteamAppFragment() : BaseFragment() {
     private val binding get() = _binding!!
     private val handler get() = _handler!!;
     private lateinit var steamAppAdapter: SteamAppAdapter
-    private var steamApps = mutableListOf<SteamApp>();
+    private var steamGames = mutableListOf<SteamGame>();
     private var lastAvailableServer: DBServer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +70,7 @@ class SteamAppFragment() : BaseFragment() {
             setRefreshStyle(SSPullToRefreshLayout.RefreshStyle.NORMAL);
             setLottieAnimation("lottie_clock.json");
             setOnRefreshListener {
-                requestSteamApps();
+                requestSteamGames();
                 handler.postDelayed({
                     setRefreshing(false);
                 }, 2000)
@@ -75,7 +79,13 @@ class SteamAppFragment() : BaseFragment() {
 
         binding.bookList.apply {
             layoutManager = GridLayoutManager(activity, 2);
-            steamAppAdapter = SteamAppAdapter(context, steamApps);
+            steamAppAdapter = SteamAppAdapter(context, steamGames);
+            steamAppAdapter.itemClickListener = object : SteamAppAdapter.OnItemClickListener {
+                override fun onItemClicked(game: SteamGame) {
+                    processGameClicked(game);
+                }
+            }
+
             adapter = steamAppAdapter;
             addItemDecoration(ItemDecoration(90));
             addOnScrollListener(object: RecyclerView.OnScrollListener() {
@@ -88,7 +98,7 @@ class SteamAppFragment() : BaseFragment() {
                     val manager = recyclerView.layoutManager as GridLayoutManager;
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         val lastVisibleItem = manager.findLastCompletelyVisibleItemPosition();
-                        if (lastVisibleItem == (steamApps.size - 1)) {
+                        if (lastVisibleItem == (steamGames.size - 1)) {
                             Toast.makeText(activity, "Last...", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -108,11 +118,11 @@ class SteamAppFragment() : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        requestSteamApps()
+        requestSteamGames()
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onStop() {
+        super.onStop()
     }
 
     override fun onDestroy() {
@@ -122,18 +132,18 @@ class SteamAppFragment() : BaseFragment() {
 
     override fun onRefresh() {
         super.onRefresh()
-        requestSteamApps()
+        requestSteamGames()
     }
 
     private fun addPresetItems() {
-        steamApps.add(SteamApp.create(1, "Desktop"));
-        steamApps.add(SteamApp.create(2, "Steam Big Picture"));
+        steamGames.add(SteamGame.create(1, "Desktop"));
+        steamGames.add(SteamGame.create(2, "Steam Big Picture"));
     }
 
     @Subscribe(threadMode = ThreadMode.POSTING)
     fun onServerAvailableEvent(event: OnServerAvailable) {
         if (lastAvailableServer == null || lastAvailableServer?.serverId != event.server.serverId) {
-            requestSteamApps();
+            requestSteamGames();
         }
         lastAvailableServer = event.server
     }
@@ -154,7 +164,7 @@ class SteamAppFragment() : BaseFragment() {
     @Subscribe(threadMode = ThreadMode.POSTING)
     fun onServerDeletedEvent(event: OnServerDeleted) {
         appContext.postDelayTask({
-            requestSteamApps()
+            requestSteamGames()
         }, 100)
     }
 
@@ -162,35 +172,49 @@ class SteamAppFragment() : BaseFragment() {
         appContext.postUITask {
             lastAvailableServer = null
             activity?.runOnUiThread {
-                steamApps.clear()
+                steamGames.clear()
                 steamAppAdapter.notifyDataSetChanged()
                 setEmptyVisibility(true)
             }
         }
     }
 
-    private fun requestSteamApps() {
+    private fun requestSteamGames() {
         if (appContext == null) {
             return;
         }
         appContext.postTask {
-            val result = appContext.steamManager.requestSteamApps();
+            val result = appContext.steamManager.requestSteamGames();
             if (!result.ok()) {
                 Log.i(TAG, "requestSteamApps failed.");
                 clearApp();
                 return@postTask
             }
-            if (steamApps.isEmpty()) {
+            if (steamGames.isEmpty()) {
                 addPresetItems();
             }
 
-            steamApps.removeAll(result.value)
-            steamApps.addAll(result.value)
+            steamGames.removeAll(result.value)
+            steamGames.addAll(result.value)
             appContext.postUITask{
-                if (steamApps.isNotEmpty()) {
+                if (steamGames.isNotEmpty()) {
                     setEmptyVisibility(false)
                 }
                 steamAppAdapter.notifyDataSetChanged()
+            }
+        }
+    }
+
+    private fun requestRunningGames() {
+        appContext.postTask {
+            val result = appContext.steamManager.requestRunningGames();
+            if (!result.ok()) {
+                Log.i(TAG, "request running games failed");
+                return@postTask
+            }
+
+            result.value.forEach {
+                Log.i(TAG, "running game: $it")
             }
         }
     }
@@ -204,4 +228,27 @@ class SteamAppFragment() : BaseFragment() {
             binding.idEmptyTip.visibility = View.GONE
         }
     }
+
+    fun processGameClicked(game: SteamGame) {
+        appContext.postTask {
+            val gamePath = game.getGamePath()
+            if (TextUtils.isEmpty(gamePath)) {
+                return@postTask;
+            }
+            appContext.steamManager.startGame(gamePath)
+        }
+
+        return ;
+
+        val intent = Intent(context, FrameRenderActivity::class.java);
+        val server = Settings.getInstance().currentServer
+        if (!server.available || TextUtils.isEmpty(server.serverIp)) {
+            Toast.makeText(context, "Server has not connected", Toast.LENGTH_SHORT).show()
+            return;
+        }
+        intent.putExtra("ip", server.serverIp);
+        intent.putExtra("port", server.streamWsPort);
+        context?.startActivity(intent)
+    }
+
 }

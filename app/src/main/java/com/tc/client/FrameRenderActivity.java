@@ -69,9 +69,6 @@ public class FrameRenderActivity extends Activity {
                 resizeFrameView(width, height);
             });
         }));
-
-        startRemoteApplication();
-
     }
 
     @Override
@@ -119,13 +116,6 @@ public class FrameRenderActivity extends Activity {
         mFrameRenderView.postInvalidate();
         //mFrameRenderView.getHolder().setFixedSize(targetWidth, screenHeight);
         Log.i(TAG, "After resize view, width: " + targetWidth + ", height: " + screenHeight);
-    }
-
-    private void startRemoteApplication() {
-        appContext.postTask(() -> {
-            Result<String> res = appContext.getSteamManager().startRemoteApplication();
-            Log.i(TAG, "result: " + res.getValue());
-        });
     }
 
 }

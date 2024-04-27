@@ -18,8 +18,11 @@ class AppContext(private var context: Context) {
     private var networkThread: HandlerThread = HandlerThread("network")
     private var networkHandler: Handler
 
-    private var timer = Timer()
+    private var timer1S = Timer()
     private var timer1SCallbacks = mutableMapOf<String, Runnable>()
+
+    private var timer2S = Timer()
+    private var timer2SCallback = mutableMapOf<String, Runnable>()
 
     public val dbManager: DBManager = DBManager(context)
 
@@ -30,13 +33,21 @@ class AppContext(private var context: Context) {
         networkThread.start()
         networkHandler = Handler(networkThread.looper)
 
-        timer.schedule(object: TimerTask() {
+        timer1S.schedule(object: TimerTask() {
             override fun run() {
                 timer1SCallbacks.forEach {
                     it.value.run()
                 }
             }
         }, 100, 1000);
+
+        timer2S.schedule(object: TimerTask() {
+            override fun run() {
+                timer2SCallback.forEach { (k, v) ->
+                    v.run()
+                }
+            }
+        }, 100, 2000)
     }
 
     public fun postTask(task: Runnable) {
@@ -69,6 +80,14 @@ class AppContext(private var context: Context) {
 
     public fun remove1STimer(name: String) {
         timer1SCallbacks.remove(name)
+    }
+
+    fun register2STimer(name: String, t: Runnable) {
+        timer2SCallback[name] = t
+    }
+
+    fun remove2STimer(name: String) {
+        timer2SCallback.remove(name)
     }
 
 }
