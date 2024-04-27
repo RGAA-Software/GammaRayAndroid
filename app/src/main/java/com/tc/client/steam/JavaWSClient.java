@@ -8,43 +8,45 @@ import org.java_websocket.handshake.ServerHandshake;
 import java.net.URI;
 import java.nio.ByteBuffer;
 
+import tc.TcMessage;
+
 
 public class JavaWSClient {
-
     private static final String TAG = "Main";
 
     private final String mUrl;
-    //private final ProtoMessageProcessor mMsgProcessor;
     WebSocketClient mWebSocketClient;
 
     public JavaWSClient(String ip, int port) {
         mUrl = "ws://" + ip + ":" + port;
-        //mMsgProcessor = new ProtoMessageProcessor(renderer);
     }
 
     public void start() throws Exception {
         mWebSocketClient = new WebSocketClient(URI.create(mUrl)) {
             @Override
             public void onOpen(ServerHandshake serverHandshake) {
-                Log.i(TAG, "onOpen: ");
+                Log.i(TAG, "onOpen: " + serverHandshake.getHttpStatus());
             }
 
             @Override
             public void onMessage(String message) {
-                //Log.i(TAG, "recv message: " + message);
+
             }
 
             @Override
             public void onMessage(ByteBuffer bytes) {
-                //Log.i(TAG, "onMessage: " + payload.length());
+                Log.i(TAG, "onMessage binary");
+                processMessage(bytes);
             }
+
             @Override
             public void onClose(int i, String s, boolean b) {
-                Log.i(TAG, "onClose: ");
+                Log.i(TAG, "ws close: " + s);
             }
+
             @Override
             public void onError(Exception e) {
-                Log.i(TAG, "onError: ");
+                Log.i(TAG, "Java WS Error: " + e.getMessage());
             }
         };
         mWebSocketClient.connect();
@@ -85,4 +87,13 @@ public class JavaWSClient {
     public boolean isOpen() {
         return mWebSocketClient != null && mWebSocketClient.isOpen();
     }
+
+    private void processMessage(ByteBuffer message) {
+        try {
+            TcMessage.Message tcMsg = TcMessage.Message.parseFrom(message);
+        } catch (Exception e) {
+            Log.e(TAG, "parse message failed." + e.getMessage());
+        }
+    }
+
 }

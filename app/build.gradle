@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.greenrobot.greendao'
+    id 'com.google.protobuf'
 }
 
 android {
@@ -99,14 +100,20 @@ android {
         official {
             manifest.srcFile 'main/AndroidManifest.xml'
             jniLibs.srcDirs = ['libs']
+            java {
+                srcDir 'src/main/java'
+            }
+            proto {
+                srcDir 'src/main/cpp/tc_message_new' //指定.proto文件路径
+            }
         }
-        steam {
-            manifest.srcFile 'main/AndroidManifest.xml'
-            jniLibs.srcDirs = ['libs']
-        }
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
+//        steam {
+//            manifest.srcFile 'main/AndroidManifest.xml'
+//            jniLibs.srcDirs = ['libs']
+//        }
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//        }
     }
 
     flavorDimensions "version"
@@ -116,20 +123,20 @@ android {
             //applicationIdSuffix ".offical"
             manifestPlaceholders = [
                     app_icon: "@drawable/ic_launcher",
-                    app_name: "Thunder Cloud",
+                    app_name: "GammaRay",
                     //src_package: "cn.dolit.vr.demo",
                     apk_name: "Official"
             ]
         }
-        steam {
-            dimension "version"
-            manifestPlaceholders = [
-                    app_icon: "@drawable/ic_launcher",
-                    app_name: "Thunder Cloud",
-                    //src_package: "cn.dolit.vr.demo",
-                    apk_name: "Steam"
-            ]
-        }
+//        steam {
+//            dimension "version"
+//            manifestPlaceholders = [
+//                    app_icon: "@drawable/ic_launcher",
+//                    app_name: "Thunder Cloud",
+//                    //src_package: "cn.dolit.vr.demo",
+//                    apk_name: "Steam"
+//            ]
+//        }
     }
 
     this.project.afterEvaluate { project ->
@@ -282,6 +289,11 @@ dependencies {
     // websocket
     implementation "org.java-websocket:Java-WebSocket:1.5.3"
 
+    // protobuf
+    implementation 'com.google.protobuf:protobuf-javalite:3.8.0'
+    //implementation 'com.google.protobuf:protobuf-java:3.8.0'
+    implementation 'com.google.protobuf:protoc:3.8.0'
+
     def gdxVersion = '1.12.1'
     def box2dVersion = '1.12.1'
     configurations { natives }
@@ -304,6 +316,22 @@ dependencies {
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.8.0'
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option "lite"
+                }
+            }
+        }
+    }
+    generatedFilesBaseDir = "$projectDir/src/generated/proto"
 }
 
 task copyAndroidNatives() {
