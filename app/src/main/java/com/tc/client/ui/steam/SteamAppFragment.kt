@@ -18,6 +18,7 @@ import com.tc.client.FrameRenderActivity
 import com.tc.client.Settings
 import com.tc.client.databinding.FragmentSteamAppBinding
 import com.tc.client.db.DBServer
+import com.tc.client.events.OnRunningGames
 import com.tc.client.events.OnServerAvailable
 import com.tc.client.events.OnServerDeleted
 import com.tc.client.events.OnServerEmpty
@@ -27,6 +28,7 @@ import com.tc.client.ui.BaseFragment
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.util.Collections
 
 class SteamAppFragment() : BaseFragment() {
 
@@ -136,8 +138,8 @@ class SteamAppFragment() : BaseFragment() {
     }
 
     private fun addPresetItems() {
-        steamGames.add(SteamGame.create(1, "Desktop"));
-        steamGames.add(SteamGame.create(2, "Steam Big Picture"));
+        steamGames.add(SteamGame.create(1, "Desktop", SteamGame.TAG_PRESET));
+        steamGames.add(SteamGame.create(2, "Steam Big Picture", SteamGame.TAG_PRESET));
     }
 
     @Subscribe(threadMode = ThreadMode.POSTING)
@@ -168,6 +170,43 @@ class SteamAppFragment() : BaseFragment() {
         }, 100)
     }
 
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onRunningGames(event: OnRunningGames) {
+        appContext.postUITask {
+            synchronized(SteamAppFragment::class.java) {
+
+                val notifyIndices = mutableListOf<Int>()
+                for (i in 0 until steamGames.size) {
+                    val steamGame = steamGames[i]
+                    var findInRunningGames = false;
+                    event.runningGames.forEach { runningGame ->
+                        if (steamGame.gameId == runningGame.gameId) {
+                            if (steamGame.gameTag != SteamGame.TAG_RUNNING) {
+                                steamGame.gameTag = SteamGame.TAG_RUNNING
+                            }
+                            findInRunningGames = true
+                            notifyIndices.add(i)
+                            return@forEach
+                        }
+                    }
+
+                    if (!findInRunningGames) {
+                        if (steamGame.gameTag == SteamGame.TAG_RUNNING) {
+                            steamGame.gameTag = SteamGame.TAG_IDLE;
+                            notifyIndices.add(i)
+                        }
+                    }
+                }
+
+                notifyIndices.forEach {
+                    steamAppAdapter.notifyItemChanged(it, 0)
+                }
+
+                steamAppAdapter.notifyDataSetChanged()
+            }
+        }
+    }
+
     private fun clearApp() {
         appContext.postUITask {
             lastAvailableServer = null
@@ -180,6 +219,7 @@ class SteamAppFragment() : BaseFragment() {
     }
 
     private fun requestSteamGames() {
+        Log.i(TAG, "will refresh steam games")
         if (appContext == null) {
             return;
         }
@@ -194,8 +234,12 @@ class SteamAppFragment() : BaseFragment() {
                 addPresetItems();
             }
 
-            steamGames.removeAll(result.value)
-            steamGames.addAll(result.value)
+            synchronized(SteamAppFragment::class.java) {
+                steamGames.removeAll(result.value)
+                steamGames.addAll(result.value)
+                steamGames.sort()
+            }
+
             appContext.postUITask{
                 if (steamGames.isNotEmpty()) {
                     setEmptyVisibility(false)

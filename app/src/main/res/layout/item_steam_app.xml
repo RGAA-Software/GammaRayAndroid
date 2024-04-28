@@ -73,6 +73,16 @@
             android:background="#c000"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/id_running_game"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#c000"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="anim_working.lottie"
+            app:layout_constraintBottom_toTopOf="@id/id_app_name"
+            app:lottie_loop="true" />
+
         <ImageView
             android:id="@+id/id_engine"
             android:layout_width="35dp"

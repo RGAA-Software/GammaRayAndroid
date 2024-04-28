@@ -2,6 +2,9 @@ package com.tc.client.steam;
 
 import android.util.Log;
 
+import com.tc.client.events.OnRunningGames;
+
+import org.greenrobot.eventbus.EventBus;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -97,6 +100,10 @@ public class JavaWSClient {
                 for (TcMessage.OnlineGame rg : onlineGames) {
                     Log.i(TAG, "run: " + rg.getGameId() + " " + rg.getGameExes());
                 }
+
+                OnRunningGames runningGames = new OnRunningGames();
+                runningGames.runningGames = onlineGames;
+                EventBus.getDefault().post(runningGames);
             }
         } catch (Exception e) {
             Log.e(TAG, "parse message failed." + e.getMessage());

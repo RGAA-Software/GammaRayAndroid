@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.lid.lib.LabelImageView
 import com.tc.client.R
@@ -28,6 +29,7 @@ class SteamAppAdapter(private var context: Context, private var steamGames: Muta
         val appName: TextView = itemView.findViewById(R.id.id_app_name);
         val engineIndicator: ImageView = itemView.findViewById(R.id.id_engine);
         val presetIcon: ImageView = itemView.findViewById(R.id.id_status_on_icon);
+        val gameRunningIndicator: LottieAnimationView = itemView.findViewById(R.id.id_running_game)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -48,6 +50,8 @@ class SteamAppAdapter(private var context: Context, private var steamGames: Muta
         holder.appName.text = steamGame.gameName
         holder.engineIndicator.visibility = View.GONE;
         holder.cover.isLabelVisual = false
+
+        holder.gameRunningIndicator.visibility = if (steamGame.gameTag == SteamGame.TAG_RUNNING) { View.VISIBLE } else{ View.GONE};
 
         if (position == 0) {
             holder.presetIcon.visibility = View.VISIBLE;
