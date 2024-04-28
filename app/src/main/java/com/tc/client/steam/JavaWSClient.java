@@ -7,6 +7,7 @@ import org.java_websocket.handshake.ServerHandshake;
 
 import java.net.URI;
 import java.nio.ByteBuffer;
+import java.util.List;
 
 import tc.TcMessage;
 
@@ -91,6 +92,12 @@ public class JavaWSClient {
     private void processMessage(ByteBuffer message) {
         try {
             TcMessage.Message tcMsg = TcMessage.Message.parseFrom(message);
+            if (tcMsg.getType() == TcMessage.MessageType.kOnlineGames) {
+                List<TcMessage.OnlineGame> onlineGames = tcMsg.getOnlineGamesList();
+                for (TcMessage.OnlineGame rg : onlineGames) {
+                    Log.i(TAG, "run: " + rg.getGameId() + " " + rg.getGameExes());
+                }
+            }
         } catch (Exception e) {
             Log.e(TAG, "parse message failed." + e.getMessage());
         }
