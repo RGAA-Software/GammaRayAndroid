@@ -72,7 +72,7 @@ class SteamAppFragment() : BaseFragment() {
             setRefreshStyle(SSPullToRefreshLayout.RefreshStyle.NORMAL);
             setLottieAnimation("lottie_clock.json");
             setOnRefreshListener {
-                requestSteamGames();
+                //requestSteamGames();
                 handler.postDelayed({
                     setRefreshing(false);
                 }, 2000)
@@ -134,7 +134,7 @@ class SteamAppFragment() : BaseFragment() {
 
     override fun onRefresh() {
         super.onRefresh()
-        requestSteamGames()
+        //requestSteamGames()
     }
 
     private fun addPresetItems() {
@@ -199,8 +199,10 @@ class SteamAppFragment() : BaseFragment() {
                 }
 
                 notifyIndices.forEach {
-                    steamAppAdapter.notifyItemChanged(it, 0)
+                    //steamAppAdapter.notifyItemChanged(it, 0)
+                    Log.i(TAG, "Notify...$it")
                 }
+                Log.i(TAG, "----------------------")
 
                 steamAppAdapter.notifyDataSetChanged()
             }

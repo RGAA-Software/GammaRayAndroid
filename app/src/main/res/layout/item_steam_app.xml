@@ -73,15 +73,21 @@
             android:background="#c000"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/id_running_game"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="#c000"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="anim_working.lottie"
-            app:layout_constraintBottom_toTopOf="@id/id_app_name"
-            app:lottie_loop="true" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/id_running_game_indicator"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            app:cardCornerRadius="9dp"
+            app:cardBackgroundColor="#00ff00"
+            android:elevation="15dp"
+            android:translationZ="15dp"
+            android:outlineAmbientShadowColor="#fff"
+            android:outlineSpotShadowColor="#ccc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            />
 
         <ImageView
             android:id="@+id/id_engine"

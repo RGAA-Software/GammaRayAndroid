@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.airbnb.lottie.LottieAnimationView
@@ -29,7 +30,7 @@ class SteamAppAdapter(private var context: Context, private var steamGames: Muta
         val appName: TextView = itemView.findViewById(R.id.id_app_name);
         val engineIndicator: ImageView = itemView.findViewById(R.id.id_engine);
         val presetIcon: ImageView = itemView.findViewById(R.id.id_status_on_icon);
-        val gameRunningIndicator: LottieAnimationView = itemView.findViewById(R.id.id_running_game)
+        val gameRunningIndicator: CardView = itemView.findViewById(R.id.id_running_game_indicator)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
