@@ -25,6 +25,7 @@ import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
 import com.tc.client.steam.SteamGame
 import com.tc.client.ui.BaseFragment
+import com.tc.client.ui.machine.MachineOpDialog
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -199,12 +200,10 @@ class SteamAppFragment() : BaseFragment() {
                 }
 
                 notifyIndices.forEach {
-                    //steamAppAdapter.notifyItemChanged(it, 0)
+                    steamAppAdapter.notifyItemChanged(it, 0)
                     Log.i(TAG, "Notify...$it")
                 }
                 Log.i(TAG, "----------------------")
-
-                steamAppAdapter.notifyDataSetChanged()
             }
         }
     }
@@ -276,16 +275,32 @@ class SteamAppFragment() : BaseFragment() {
     }
 
     fun processGameClicked(game: SteamGame) {
-        appContext.postTask {
-            val gamePath = game.getGamePath()
-            if (TextUtils.isEmpty(gamePath)) {
-                return@postTask;
+
+        val dialog = GameOpDialog(requireActivity())
+
+        dialog.onStartGameClicked = View.OnClickListener {
+            appContext.postTask {
+                val gamePath = game.getGamePath()
+                if (TextUtils.isEmpty(gamePath)) {
+                    return@postTask;
+                }
+                appContext.steamManager.startGame(gamePath)
+
+                // after some condition...
+                // startFrameRenderActivity
+
             }
-            appContext.steamManager.startGame(gamePath)
         }
 
-        return ;
+        dialog.onStopGameClicked = View.OnClickListener {
 
+        }
+
+        dialog.show()
+
+    }
+
+    private fun startFrameRenderActivity() {
         val intent = Intent(context, FrameRenderActivity::class.java);
         val server = Settings.getInstance().currentServer
         if (!server.available || TextUtils.isEmpty(server.serverIp)) {

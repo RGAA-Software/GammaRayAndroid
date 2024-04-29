@@ -111,11 +111,9 @@ class MachineFragment() : BaseFragment() {
             override fun onItemClicked(pos: Int, srv: DBServer) {
                 val dialog = MachineOpDialog(activity!!)
                 dialog.onAllAppClicked = View.OnClickListener {
-                    dialog.dismiss()
                     changeToGamesTab()
                 }
                 dialog.onDeleteAppClicked = View.OnClickListener {
-                    dialog.dismiss()
                     activity?.runOnUiThread {
                         val delDialog = CustomAlertDialog.createDialog(activity!!,
                             getString(R.string.delete),
