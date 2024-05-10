@@ -24,6 +24,7 @@ public class DPadButton extends ImageView {
     private int mCurrentEvent;
     private boolean mPressed;
     private int mBackgroundColor;
+    private int mBorderColor;
 
     public DPadButton(Context context) {
         this(context, null);
@@ -39,6 +40,12 @@ public class DPadButton extends ImageView {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DpadButton);
         mBackgroundColor = ((ColorDrawable)typedArray.getDrawable(R.styleable.DpadButton_circleColor)).getColor();
+        Drawable borderDrawable = typedArray.getDrawable(R.styleable.DpadButton_borderColor);
+        if (borderDrawable == null) {
+            mBorderColor = 0x999999;
+        } else {
+            mBorderColor = ((ColorDrawable)borderDrawable).getColor();
+        }
     }
 
     private void init() {
@@ -56,16 +63,20 @@ public class DPadButton extends ImageView {
     @Override
     protected void onDraw(Canvas canvas) {
         mPaint.setTextAlign(Paint.Align.CENTER);
-        mPaint.setColor(mBackgroundColor);
         int borderWidthDp = 2;
         int borderWidthPixel = (int) (Resources.getSystem().getDisplayMetrics().density * borderWidthDp);
         if (isButtonPressed()) {
-            mPaint.setAlpha(255);
+            mPaint.setColor(mBackgroundColor);
+            mPaint.setStyle(Paint.Style.FILL);
             canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, mPaint);
+        } else {
+            mPaint.setStrokeWidth(borderWidthPixel);
+            mPaint.setColor(mBorderColor);
+            mPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2 - borderWidthPixel, mPaint);
         }
-        mPaint.setAlpha(128);
-        canvas.drawCircle(getWidth()/2, getHeight()/2, getWidth()/2 - borderWidthPixel, mPaint);
 
+        mPaint.setStyle(Paint.Style.FILL);
         mPaint.setColor(Color.WHITE);
         int xPos = (canvas.getWidth() / 2);
         int yPos = (int) ((canvas.getHeight() / 2) - ((mPaint.descent() + mPaint.ascent()) / 2)) ;
