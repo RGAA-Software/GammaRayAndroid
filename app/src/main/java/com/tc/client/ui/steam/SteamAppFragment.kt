@@ -288,7 +288,7 @@ class SteamAppFragment() : BaseFragment() {
 
                 // after some condition...
                 // startFrameRenderActivity
-
+                startFrameRenderActivity();
             }
         }
 

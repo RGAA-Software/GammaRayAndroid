@@ -2,6 +2,7 @@ package com.tc.client.steam;
 
 import android.util.Log;
 
+import com.tc.client.Statistics;
 import com.tc.client.events.OnRunningGames;
 
 import org.greenrobot.eventbus.EventBus;
@@ -16,10 +17,11 @@ import tc.TcMessage;
 
 
 public class JavaWSClient {
+
     private static final String TAG = "Main";
 
     private final String mUrl;
-    WebSocketClient mWebSocketClient;
+    private WebSocketClient mWebSocketClient;
 
     public JavaWSClient(String ip, int port) {
         mUrl = "ws://" + ip + ":" + port;
@@ -39,7 +41,6 @@ public class JavaWSClient {
 
             @Override
             public void onMessage(ByteBuffer bytes) {
-                Log.i(TAG, "onMessage binary");
                 processMessage(bytes);
             }
 
@@ -97,13 +98,14 @@ public class JavaWSClient {
             TcMessage.Message tcMsg = TcMessage.Message.parseFrom(message);
             if (tcMsg.getType() == TcMessage.MessageType.kOnlineGames) {
                 List<TcMessage.OnlineGame> onlineGames = tcMsg.getOnlineGamesList();
-                for (TcMessage.OnlineGame rg : onlineGames) {
-                    Log.i(TAG, "run: " + rg.getGameId() + " " + rg.getGameExes());
-                }
-
                 OnRunningGames runningGames = new OnRunningGames();
                 runningGames.runningGames = onlineGames;
                 EventBus.getDefault().post(runningGames);
+
+            } else if (tcMsg.getType() == TcMessage.MessageType.kServerAudioSpectrum) {
+                TcMessage.ServerAudioSpectrum spectrum = tcMsg.getServerAudioSpectrum();
+                int specCounts = spectrum.getLeftSpectrumCount();
+                Statistics.INSTANCE.updateSpectrum(spectrum.getLeftSpectrumList(), spectrum.getRightSpectrumList());
             }
         } catch (Exception e) {
             Log.e(TAG, "parse message failed." + e.getMessage());

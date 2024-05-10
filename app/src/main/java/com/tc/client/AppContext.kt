@@ -13,7 +13,7 @@ class AppContext(private var context: Context) {
     private var handlerThread: HandlerThread = HandlerThread("bg");
     private lateinit var handler: Handler;
     private var mainHandler = Handler(context.mainLooper);
-    public var steamManager = SteamAppManager(context)
+    var steamManager = SteamAppManager(context)
 
     private var networkThread: HandlerThread = HandlerThread("network")
     private var networkHandler: Handler
@@ -24,7 +24,7 @@ class AppContext(private var context: Context) {
     private var timer2S = Timer()
     private var timer2SCallback = mutableMapOf<String, Runnable>()
 
-    public val dbManager: DBManager = DBManager(context)
+    val dbManager: DBManager = DBManager(context)
 
     init {
         handlerThread.start();
@@ -50,7 +50,7 @@ class AppContext(private var context: Context) {
         }, 100, 2000)
     }
 
-    public fun postTask(task: Runnable) {
+    fun postTask(task: Runnable) {
         handler.post(task);
     }
 
@@ -62,23 +62,23 @@ class AppContext(private var context: Context) {
         Thread(task).start()
     }
 
-    public fun postDelayTask(task: Runnable, time: Long) {
+    fun postDelayTask(task: Runnable, time: Long) {
         handler.postDelayed(task, time);
     }
 
-    public fun postUITask(task: Runnable) {
+    fun postUITask(task: Runnable) {
         mainHandler.post(task);
     }
 
-    public fun postUIDelayTask(task: Runnable, time: Long) {
+    fun postUIDelayTask(task: Runnable, time: Long) {
         mainHandler.postDelayed(task, time)
     }
 
-    public fun register1STimer(name: String, t: Runnable) {
+    fun register1STimer(name: String, t: Runnable) {
         timer1SCallbacks[name] = t;
     }
 
-    public fun remove1STimer(name: String) {
+    fun remove1STimer(name: String) {
         timer1SCallbacks.remove(name)
     }
 
