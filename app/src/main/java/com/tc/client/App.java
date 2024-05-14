@@ -6,13 +6,6 @@ import android.hardware.SensorManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.AdapterStatus;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-
-import java.util.Map;
-
 public class App extends Application {
     private static final String TAG = "Main";
     private AppContext appContext;

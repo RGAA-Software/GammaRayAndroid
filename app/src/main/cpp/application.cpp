@@ -29,7 +29,6 @@ namespace tc
 
     void Application::Init(const ThunderSdkParams& params, JNIEnv* env, jobject surface, bool hw_codec, bool use_oes, int oes_tex_id) {
         app_context_ = AppContext::Make();
-        frame_render_ = FrameRender::Make(app_context_);
         statistics_ = Statistics::Instance();
         auto drt = [&]() -> DecoderRenderType {
             if (!hw_codec) {
@@ -47,12 +46,16 @@ namespace tc
                 return DecoderRenderType::kMediaCodecSurface;
             }
         }();
-        frame_render_->Init(env, surface, drt, oes_tex_id);
+
+        if (!params.only_audio_) {
+            frame_render_ = FrameRender::Make(app_context_);
+            frame_render_->Init(env, surface, drt, oes_tex_id);
+        }
 
         thunder_sdk_ = ThunderSdk::Make(app_context_->GetMessageNotifier());
-        thunder_sdk_->Init(params, use_oes ? frame_render_->GetNativeWindow() : nullptr, drt);
+        thunder_sdk_->Init(params, (use_oes && frame_render_) ? frame_render_->GetNativeWindow() : nullptr, drt);
         thunder_sdk_->RegisterOnVideoFrameDecodedCallback([=, this](const std::shared_ptr<RawImage>& image) {
-            if (drt != DecoderRenderType::kMediaCodecSurface && image->img_buf) {
+            if (drt != DecoderRenderType::kMediaCodecSurface && image->img_buf && frame_render_) {
                 frame_render_->UpdateYUVImage(image);
             }
 

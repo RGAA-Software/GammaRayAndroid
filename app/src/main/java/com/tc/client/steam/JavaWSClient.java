@@ -103,6 +103,7 @@ public class JavaWSClient {
                 EventBus.getDefault().post(runningGames);
 
             } else if (tcMsg.getType() == TcMessage.MessageType.kServerAudioSpectrum) {
+                // !! deprecated !!
                 TcMessage.ServerAudioSpectrum spectrum = tcMsg.getServerAudioSpectrum();
                 int specCounts = spectrum.getLeftSpectrumCount();
                 Statistics.INSTANCE.updateSpectrum(spectrum.getLeftSpectrumList(), spectrum.getRightSpectrumList());

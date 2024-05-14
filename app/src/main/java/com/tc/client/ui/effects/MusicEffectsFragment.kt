@@ -2,64 +2,82 @@ package com.tc.client.ui.effects
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
-import com.tc.client.R
-import com.tc.client.databinding.FragmentDayBinding
-import com.tc.client.effects.box2d.Box2dActivity
-import com.tc.client.effects.fireworks.FireWorksActivity
-import com.tc.client.effects.spine.SpineActivity
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.tc.client.Settings
+import com.tc.client.databinding.FragmentEffectBinding
 import com.tc.client.ui.BaseFragment
+import com.tc.client.ui.base.OnListItemListener
 
 class MusicEffectsFragment() : BaseFragment() {
 
-    private var _binding: FragmentDayBinding? = null
+    private var _binding: FragmentEffectBinding? = null
     private val binding get() = _binding!!
-    private lateinit var daySentence: DaySentenceManager;
+    private lateinit var effectAdapter: EffectAdapter
+    private val effects: MutableList<EffectItem> = mutableListOf()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        for (i in 0 until 10) {
+            val item = EffectItem()
+            effects.add(item)
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val notificationsViewModel = ViewModelProvider(this).get(NotificationsViewModel::class.java)
-        daySentence = DaySentenceManager(appContext);
-        _binding = FragmentDayBinding.inflate(inflater, container, false)
+        _binding = FragmentEffectBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        root.findViewById<CardView>(R.id.day_youdao).setOnClickListener {
-            startActivity(Intent(activity, Box2dActivity::class.java));
-        }
-        root.findViewById<CardView>(R.id.day_shanbei).setOnClickListener {
-            startActivity(Intent(activity, SpineActivity::class.java));
-        }
-        root.findViewById<TextView>(R.id.date_day).setOnClickListener {
-            startActivity(Intent(activity, FireWorksActivity::class.java));
-        }
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-
-        }
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        daySentence.requestTodaySentence{ sentence ->
-            appContext.postUITask{
-                if (sentence.type == "shanbay") {
-                    binding.shanbayAuthor.text = "--" + sentence.author;
-                    binding.shanbayContent.text = sentence.content;
-                    binding.shanbayTranslation.text = sentence.translation;
-                    Glide.with(this)
-                        .load(sentence.imageUrl)
-                        .centerCrop()
-                        //.placeholder(R.drawable.test_cover)
-                        .into(binding.shanbayCover);
+
+        binding.effectList.apply {
+            layoutManager = GridLayoutManager(activity, 2);
+            effectAdapter = EffectAdapter(context, effects);
+            adapter = effectAdapter;
+            addItemDecoration(EffectItemDecoration(90));
+            effectAdapter.setOnItemClickListener(object: OnListItemListener<EffectItem> {
+                override fun onItemClicked(pos: Int, value: EffectItem) {
+                    startEffectActivity();
                 }
-            };
-        };
+            })
+
+            addOnScrollListener(object: RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                }
+
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    val manager = recyclerView.layoutManager as GridLayoutManager;
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        val lastVisibleItem = manager.findLastCompletelyVisibleItemPosition();
+                        if (lastVisibleItem == (effects.size - 1)) {
+                            //Toast.makeText(activity, "Last...", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    private fun startEffectActivity() {
+        val intent = Intent(context, EffectActivity::class.java);
+        val server = Settings.getInstance().currentServer
+        if (!server.available || TextUtils.isEmpty(server.serverIp)) {
+            Toast.makeText(context, "Server has not connected", Toast.LENGTH_SHORT).show()
+            return;
+        }
+        intent.putExtra("ip", server.serverIp);
+        intent.putExtra("port", server.streamWsPort);
+        context?.startActivity(intent)
     }
 
     override fun onDestroyView() {

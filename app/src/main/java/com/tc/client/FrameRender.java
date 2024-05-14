@@ -1,13 +1,10 @@
 package com.tc.client;
 
-import static android.opengl.GLES20.glVertexAttribPointer;
-
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES32;
 import android.opengl.GLSurfaceView;
-import android.util.Log;
 import android.view.Surface;
 
 import com.tc.client.impl.ThunderApp;

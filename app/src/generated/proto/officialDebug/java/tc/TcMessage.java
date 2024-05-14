@@ -1094,6 +1094,11 @@ public final class TcMessage {
   public interface HelloOrBuilder extends
       // @@protoc_insertion_point(interface_extends:tc.Hello)
       com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>bool only_audio = 1;</code>
+     */
+    boolean getOnlyAudio();
   }
   /**
    * Protobuf type {@code tc.Hello}
@@ -1105,6 +1110,30 @@ public final class TcMessage {
       HelloOrBuilder {
     private Hello() {
     }
+    public static final int ONLY_AUDIO_FIELD_NUMBER = 1;
+    private boolean onlyAudio_;
+    /**
+     * <code>bool only_audio = 1;</code>
+     */
+    @java.lang.Override
+    public boolean getOnlyAudio() {
+      return onlyAudio_;
+    }
+    /**
+     * <code>bool only_audio = 1;</code>
+     */
+    private void setOnlyAudio(boolean value) {
+      
+      onlyAudio_ = value;
+    }
+    /**
+     * <code>bool only_audio = 1;</code>
+     */
+    private void clearOnlyAudio() {
+      
+      onlyAudio_ = false;
+    }
+
     public static tc.TcMessage.Hello parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1200,6 +1229,30 @@ public final class TcMessage {
       }
 
 
+      /**
+       * <code>bool only_audio = 1;</code>
+       */
+      @java.lang.Override
+      public boolean getOnlyAudio() {
+        return instance.getOnlyAudio();
+      }
+      /**
+       * <code>bool only_audio = 1;</code>
+       */
+      public Builder setOnlyAudio(boolean value) {
+        copyOnWrite();
+        instance.setOnlyAudio(value);
+        return this;
+      }
+      /**
+       * <code>bool only_audio = 1;</code>
+       */
+      public Builder clearOnlyAudio() {
+        copyOnWrite();
+        instance.clearOnlyAudio();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.Hello)
     }
     @java.lang.Override
@@ -1215,8 +1268,11 @@ public final class TcMessage {
           return new Builder();
         }
         case BUILD_MESSAGE_INFO: {
-            java.lang.Object[] objects = null;java.lang.String info =
-                "\u0000\u0000";
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "onlyAudio_",
+            };
+            java.lang.String info =
+                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u0007";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

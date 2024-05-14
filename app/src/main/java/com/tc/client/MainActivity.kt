@@ -42,6 +42,11 @@ class MainActivity : AppCompatActivity() {
         const val ID_GAMES = 2
         const val ID_MUSIC_EFFECTS = 3
         const val ID_ME = 4
+
+        init {
+            System.loadLibrary("client");
+        }
+
     }
 
     private lateinit var steamAppFragment: SteamAppFragment

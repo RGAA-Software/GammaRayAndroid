@@ -15,9 +15,7 @@ import com.tc.client.util.Result;
 import com.tc.client.util.ViewUtil;
 
 public class FrameRenderActivity extends Activity {
-    static {
-        System.loadLibrary("client");
-    }
+
     private static final String TAG = "Main";
     private FrameRenderView mFrameRenderView;
     private Thread mTickThread;
@@ -42,7 +40,7 @@ public class FrameRenderActivity extends Activity {
 
         appContext = ((App)getApplication()).getAppContext();
 
-        mThunderApp = new ThunderApp(mIp, mPort);
+        mThunderApp = new ThunderApp(mIp, mPort, false);
 
         mFrameRenderView = findViewById(R.id.id_frame_render_view);
         mFrameRenderView.init(mThunderApp);

@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
     <application
         android:name=".App"
@@ -28,17 +27,13 @@
         <activity
             android:name=".activity.ManualInputActivity"
             android:exported="false" />
-        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
-        <!-- <meta-data -->
-        <!-- android:name="com.google.android.gms.ads.APPLICATION_ID" -->
-        <!-- android:value="ca-app-pub-1311601394035416~5615051424" -->
-        <!-- /> -->
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
 
         <activity
             android:name=".FrameRenderActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.effects.EffectActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
