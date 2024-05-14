@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            app:areaBackground="#66333333"
+            app:areaBackground="@color/button_border"
             app:rockerBackground="@color/joystick_button_background"
             app:rockerRadius="30dp" />
 
@@ -31,7 +31,7 @@
             android:id="@+id/id_rocker_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:areaBackground="#66333333"
+            app:areaBackground="@color/button_border"
             app:rockerBackground="@color/joystick_button_background"
             app:rockerRadius="30dp" />
 
@@ -44,6 +44,7 @@
             android:layout_height="30dp"
             android:padding="13dp"
             app:fontSize="17sp"
+            app:borderColor="@color/button_border"
             app:circleColor="@color/joystick_button_background"/>
 
         <com.tc.client.widgets.FunctionButton
@@ -52,6 +53,7 @@
             android:layout_height="30dp"
             android:padding="13dp"
             app:fontSize="17sp"
+            app:borderColor="@color/button_border"
             app:circleColor="@color/joystick_button_background"/>
 
         <com.tc.client.widgets.FunctionButton
@@ -60,6 +62,7 @@
             android:layout_height="30dp"
             android:padding="13dp"
             app:fontSize="14sp"
+            app:borderColor="@color/button_border"
             app:circleColor="@color/joystick_button_background"/>
 
         <com.tc.client.widgets.FunctionButton
@@ -68,14 +71,17 @@
             android:layout_height="30dp"
             android:padding="13dp"
             app:fontSize="14sp"
+            app:borderColor="@color/button_border"
             app:circleColor="@color/joystick_button_background"/>
 
         <com.tc.client.widgets.FunctionButton
+            android:visibility="gone"
             android:id="@+id/id_xbox"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:padding="0dp"
             android:src="@drawable/ic_xbox"
+            app:borderColor="@color/button_border"
             app:circleColor="#22000000"/>
 
         <com.tc.client.widgets.FunctionButton
@@ -84,6 +90,7 @@
             android:layout_height="30dp"
             android:padding="13dp"
             app:fontSize="18sp"
+            app:borderColor="@color/button_border"
             app:circleColor="@color/joystick_button_background"/>
 
         <com.tc.client.widgets.FunctionButton
@@ -92,6 +99,7 @@
             android:layout_height="30dp"
             android:padding="13dp"
             app:fontSize="18sp"
+            app:borderColor="@color/button_border"
             app:circleColor="@color/joystick_button_background"/>
 
         <com.tc.client.widgets.FunctionButton
@@ -100,6 +108,7 @@
             android:layout_height="30dp"
             android:padding="13dp"
             app:fontSize="18sp"
+            app:borderColor="@color/button_border"
             app:circleColor="@color/joystick_button_background"/>
 
         <com.tc.client.widgets.FunctionButton
@@ -108,6 +117,7 @@
             android:layout_height="30dp"
             android:padding="13dp"
             app:fontSize="18sp"
+            app:borderColor="@color/button_border"
             app:circleColor="@color/joystick_button_background"/>
 
     </com.tc.client.ControlLayer>

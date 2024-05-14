@@ -1,6 +1,7 @@
 package com.tc.client.widgets;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -20,11 +21,6 @@ import android.view.View;
 
 import com.tc.client.R;
 
-
-/**
- * Created by kqw on 2016/8/30.
- * 摇杆控件
- */
 public class RockerView extends View {
     private static final String TAG = "RockerView";
 
@@ -236,6 +232,8 @@ public class RockerView extends View {
             mRockerPosition.set(mCenterPoint.x, mCenterPoint.y);
         }
 
+        float borderWidth = Resources.getSystem().getDisplayMetrics().density*2;
+
         // 画可移动区域
         if (AREA_BACKGROUND_MODE_PIC == mAreaBackgroundMode || AREA_BACKGROUND_MODE_XML == mAreaBackgroundMode) {
             // 图片
@@ -245,7 +243,9 @@ public class RockerView extends View {
         } else if (AREA_BACKGROUND_MODE_COLOR == mAreaBackgroundMode) {
             // 色值
             mAreaBackgroundPaint.setColor(mAreaColor);
-            canvas.drawCircle(mCenterPoint.x, mCenterPoint.y, mAreaRadius, mAreaBackgroundPaint);
+            mAreaBackgroundPaint.setStrokeWidth(borderWidth);
+            mAreaBackgroundPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawCircle(mCenterPoint.x, mCenterPoint.y, mAreaRadius-borderWidth, mAreaBackgroundPaint);
         } else {
             // 其他或者未设置
             mAreaBackgroundPaint.setColor(Color.GRAY);
@@ -261,12 +261,15 @@ public class RockerView extends View {
         } else if (ROCKER_BACKGROUND_MODE_COLOR == mRockerBackgroundMode) {
             // 色值
             mRockerPaint.setColor(mRockerColor);
+            mRockerPaint.setStrokeWidth(borderWidth);
             if (isPressed) {
-                mRockerPaint.setAlpha(255);
+                //mRockerPaint.setAlpha(255);
+                mRockerPaint.setStyle(Paint.Style.FILL);
             } else {
-                mRockerPaint.setAlpha(128);
+                mRockerPaint.setStyle(Paint.Style.STROKE);
+                //mRockerPaint.setAlpha(128);
             }
-            canvas.drawCircle(mRockerPosition.x, mRockerPosition.y, mRockerRadius, mRockerPaint);
+            canvas.drawCircle(mRockerPosition.x, mRockerPosition.y, mRockerRadius-borderWidth, mRockerPaint);
             Log.i(TAG, "x: " + mRockerPosition.x + ", y: " + mRockerPosition.y + ", radius: " + mRockerRadius);
         } else {
             // 其他或者未设置

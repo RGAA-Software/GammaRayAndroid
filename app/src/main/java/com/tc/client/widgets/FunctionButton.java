@@ -22,6 +22,7 @@ public class FunctionButton extends ImageView {
     private int mCurrentEvent;
     private boolean mPressed;
     private int mBackgroundColor;
+    private int mBorderColor;
     private int mFontPixelSize;
 
     public FunctionButton(Context context) {
@@ -36,6 +37,7 @@ public class FunctionButton extends ImageView {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DpadButton);
         mBackgroundColor = ((ColorDrawable)typedArray.getDrawable(R.styleable.DpadButton_circleColor)).getColor();
+        mBorderColor = ((ColorDrawable)typedArray.getDrawable(R.styleable.DpadButton_borderColor)).getColor();
         mFontPixelSize = typedArray.getDimensionPixelSize(R.styleable.DpadButton_fontSize, 60);
         init();
     }
@@ -56,15 +58,23 @@ public class FunctionButton extends ImageView {
     protected void onDraw(Canvas canvas) {
 
         mPaint.setTextAlign(Paint.Align.CENTER);
-
+        int borderWidthDp = 2;
+        int borderWidthPixel = (int) (Resources.getSystem().getDisplayMetrics().density * borderWidthDp);
+        mPaint.setStrokeWidth(borderWidthPixel);
         mPaint.setColor(mBackgroundColor);
         if (isButtonPressed()) {
-            mPaint.setAlpha(255);
+            mPaint.setStyle(Paint.Style.FILL);
             canvas.drawRoundRect(0, 0, getWidth(), getHeight(), getHeight()/2, getHeight()/2, mPaint);
+        } else {
+            mPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawRoundRect(borderWidthPixel, borderWidthPixel,
+                    getWidth()-borderWidthPixel,
+                    getHeight()-borderWidthPixel,
+                    getHeight()/2 - borderWidthPixel,
+                    getHeight()/2 - borderWidthPixel, mPaint);
         }
-        mPaint.setAlpha(128);
-        canvas.drawRoundRect(0, 0, getWidth(), getHeight(), getHeight()/2, getHeight()/2, mPaint);
 
+        mPaint.setStyle(Paint.Style.FILL);
         mPaint.setColor(Color.WHITE);
         int xPos = (canvas.getWidth() / 2);
         int yPos = (int) ((canvas.getHeight() / 2) - ((mPaint.descent() + mPaint.ascent()) / 2)) ;

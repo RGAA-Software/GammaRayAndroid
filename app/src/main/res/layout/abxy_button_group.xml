@@ -16,6 +16,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerVertical="true"
+        app:borderColor="@color/button_border"
         app:circleColor="#3177fe"/>
 
     <com.tc.client.widgets.DPadButton
@@ -23,7 +24,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        app:circleColor="#ffcc33"/>
+        app:circleColor="#ffcc33"
+        app:borderColor="@color/button_border"/>
 
     <com.tc.client.widgets.DPadButton
         android:id="@+id/id_dpad_a"
@@ -31,6 +33,7 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        app:borderColor="@color/button_border"
         app:circleColor="#99cc33"/>
 
     <com.tc.client.widgets.DPadButton
@@ -39,6 +42,7 @@
         android:layout_height="50dp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
+        app:borderColor="@color/button_border"
         app:circleColor="#E32636"/>
 
 </com.tc.client.DpadButtonGroup>
