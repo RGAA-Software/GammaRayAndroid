@@ -86,25 +86,23 @@ public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFra
 
 
     public void onCreate() {
-        this.nativeCreate();
-    }
-    public void onResume() {
-        this.nativeResume();
-    }
-    public void onPause() {
-        this.nativePause();
-    }
-    public void onDestroy() {
-        this.nativeDestroy();
-    }
-    public void onRenderTick() {
-        this.nativeRenderTick();
+        mThunderApp.nativeCreate();
     }
 
-    public native void nativeCreate();
-    public native void nativeResume();
-    public native void nativePause();
-    public native void nativeDestroy();
-    public native void nativeRenderTick();
+    public void onResume() {
+        mThunderApp.nativeResume();
+    }
+
+    public void onPause() {
+        mThunderApp.nativePause();
+    }
+
+    public void onDestroy() {
+        mThunderApp.nativeDestroy();
+    }
+
+    public void onRenderTick() {
+        mThunderApp.nativeRenderTick();
+    }
 
 }

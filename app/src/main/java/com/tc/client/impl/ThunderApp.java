@@ -26,6 +26,23 @@ public class ThunderApp {
     public native int start();
     public native int stop();
     public native void sendGamepadState(int buttons, int leftTrigger, int rightTrigger, int thumbLX, int thumbLY, int thumbRX, int thumbRY);
+
+    // register callbacks
+    public void registerFrameChangedCallback(OnFrameChangedCallback cbk) {
+        mFrameChangedCallback = cbk;
+    }
+
+    // callbacks
+    public interface OnFrameChangedCallback {
+        void onFrameChanged(int width, int height);
+    }
+
+    public native void nativeCreate();
+    public native void nativeResume();
+    public native void nativePause();
+    public native void nativeDestroy();
+    public native void nativeRenderTick();
+
     public void onNativeMessage(String msg) {
         Log.i(TAG, "onNativeMessage: " + msg);
         try {
@@ -42,15 +59,5 @@ public class ThunderApp {
             e.printStackTrace();
             Log.e(TAG, "Parse native message failed: " + msg + ", e: " + e.getMessage());
         }
-    }
-
-    // register callbacks
-    public void registerFrameChangedCallback(OnFrameChangedCallback cbk) {
-        mFrameChangedCallback = cbk;
-    }
-
-    // callbacks
-    public interface OnFrameChangedCallback {
-        void onFrameChanged(int width, int height);
     }
 }

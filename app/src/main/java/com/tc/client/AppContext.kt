@@ -43,7 +43,7 @@ class AppContext(private var context: Context) {
 
         timer2S.schedule(object: TimerTask() {
             override fun run() {
-                timer2SCallback.forEach { (k, v) ->
+                timer2SCallback.forEach { (_, v) ->
                     v.run()
                 }
             }

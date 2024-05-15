@@ -68,28 +68,28 @@ Java_com_tc_client_impl_ThunderApp_stop(JNIEnv *env, jobject thiz) {
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_tc_client_FrameRender_nativeCreate(JNIEnv *env, jobject thiz) {
+Java_com_tc_client_impl_ThunderApp_nativeCreate(JNIEnv *env, jobject thiz) {
     if (g_app) {
         g_app->OnCreate();
     }
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_tc_client_FrameRender_nativeResume(JNIEnv *env, jobject thiz) {
+Java_com_tc_client_impl_ThunderApp_nativeResume(JNIEnv *env, jobject thiz) {
     if (g_app) {
         g_app->OnResume();
     }
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_tc_client_FrameRender_nativePause(JNIEnv *env, jobject thiz) {
+Java_com_tc_client_impl_ThunderApp_nativePause(JNIEnv *env, jobject thiz) {
     if (g_app) {
         g_app->OnPause();
     }
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_tc_client_FrameRender_nativeDestroy(JNIEnv *env, jobject thiz) {
+Java_com_tc_client_impl_ThunderApp_nativeDestroy(JNIEnv *env, jobject thiz) {
     if (g_app) {
         g_app->OnDestroy();
         g_app.reset();
@@ -102,7 +102,7 @@ Java_com_tc_client_FrameRender_nativeDestroy(JNIEnv *env, jobject thiz) {
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_tc_client_FrameRender_nativeRenderTick(JNIEnv *env, jobject thiz) {
+Java_com_tc_client_impl_ThunderApp_nativeRenderTick(JNIEnv *env, jobject thiz) {
     if (g_app) {
         g_app->OnRenderTick(env);
     }

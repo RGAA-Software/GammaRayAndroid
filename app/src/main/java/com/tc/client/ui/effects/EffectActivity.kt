@@ -39,4 +39,19 @@ class EffectActivity : Activity() {
         thunderApp.start()
     }
 
+    override fun onResume() {
+        super.onResume()
+        thunderApp.nativeResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        thunderApp.nativePause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        thunderApp.nativeDestroy()
+    }
+
 }

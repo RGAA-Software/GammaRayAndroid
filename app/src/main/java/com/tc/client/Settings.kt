@@ -20,7 +20,7 @@ class Settings {
 
     private val TAG = "Main";
 
-    public var currentServer: DBServer = DBServer()
+    var currentServer: DBServer = DBServer()
 
     companion object {
         private val settings = Settings()

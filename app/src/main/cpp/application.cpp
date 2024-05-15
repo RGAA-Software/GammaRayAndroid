@@ -33,16 +33,13 @@ namespace tc
         auto drt = [&]() -> DecoderRenderType {
             if (!hw_codec) {
                 return DecoderRenderType::kFFmpegI420;
-            }
-            else if (hw_codec) {
+            } else if (hw_codec) {
                 if (use_oes) {
                     return DecoderRenderType::kMediaCodecSurface;
-                }
-                else {
+                } else {
                     return DecoderRenderType::kMediaCodecNv21;
                 }
-            }
-            else {
+            } else {
                 return DecoderRenderType::kMediaCodecSurface;
             }
         }();
@@ -54,7 +51,7 @@ namespace tc
 
         thunder_sdk_ = ThunderSdk::Make(app_context_->GetMessageNotifier());
         thunder_sdk_->Init(params, (use_oes && frame_render_) ? frame_render_->GetNativeWindow() : nullptr, drt);
-        thunder_sdk_->RegisterOnVideoFrameDecodedCallback([=, this](const std::shared_ptr<RawImage>& image) {
+        thunder_sdk_->SetOnVideoFrameDecodedCallback([=, this](const std::shared_ptr<RawImage>& image) {
             if (drt != DecoderRenderType::kMediaCodecSurface && image->img_buf && frame_render_) {
                 frame_render_->UpdateYUVImage(image);
             }
@@ -69,12 +66,20 @@ namespace tc
             }
         });
 
-        thunder_sdk_->RegisterOnAudioFrameDecodedCallback([=, this](const std::shared_ptr<Data>& data, int samples, int channels, int bits) {
+        thunder_sdk_->SetOnAudioFrameDecodedCallback([=, this](const std::shared_ptr<Data>& data, int samples, int channels, int bits) {
             if (!audio_player_) {
                 audio_player_ = AudioPlayer::Make();
                 audio_player_->Init(samples, channels);
             }
             audio_player_->Write(data);
+        });
+
+        thunder_sdk_->SetOnCursorInfoCallback([=, this](const tc::CursorInfoSync& cursor) {
+
+        });
+
+        thunder_sdk_->SetOnAudioSpectrumCallback([](const tc::ServerAudioSpectrum& spectrum) {
+            LOGI("Audio spectrum: {}", spectrum.left_spectrum().size());
         });
 
         LOGI("hw codec:{}, use oes: {}, oes tex id: {}", hw_codec, use_oes, oes_tex_id);
