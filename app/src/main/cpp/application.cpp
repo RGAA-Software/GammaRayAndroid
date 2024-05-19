@@ -57,7 +57,8 @@ namespace tc
             }
 
             if (frame_width_ != image->img_width || frame_height_ != image->img_height) {
-                if (native_msg_cbk_) {
+                {
+                    std::lock_guard<std::mutex> guard(native_msg_cbk_mtx_);
                     auto frame_change_msg = NativeMsgMaker::MakeFrameInfoMessage(image->img_width, image->img_height, image->img_format);
                     native_msg_cbk_(frame_change_msg);
                 }
@@ -78,8 +79,12 @@ namespace tc
 
         });
 
-        thunder_sdk_->SetOnAudioSpectrumCallback([](const tc::ServerAudioSpectrum& spectrum) {
-            LOGI("Audio spectrum: {}", spectrum.left_spectrum().size());
+        thunder_sdk_->SetOnAudioSpectrumCallback([=, this](const tc::ServerAudioSpectrum& spectrum) {
+            {
+                std::lock_guard<std::mutex> guard(native_msg_cbk_mtx_);
+                auto msg = NativeMsgMaker::MakeSpectrumMessage(spectrum);
+                native_msg_cbk_(msg);
+            }
         });
 
         LOGI("hw codec:{}, use oes: {}, oes tex id: {}", hw_codec, use_oes, oes_tex_id);

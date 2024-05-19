@@ -7,6 +7,7 @@ object Statistics {
     private var leftSpectrum: MutableList<Double> = Collections.synchronizedList(mutableListOf<Double>());
     private var rightSpectrum: MutableList<Double> = Collections.synchronizedList(mutableListOf<Double>());
 
+    // !!! deprecated !!!
     fun updateSpectrum(ls: List<Double>, rs: List<Double>) {
         if (leftSpectrum.size != ls.size) {
             leftSpectrum.clear();

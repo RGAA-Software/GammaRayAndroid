@@ -2,20 +2,29 @@ package com.tc.client.ui.effects
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import com.badlogic.gdx.backends.android.AndroidFragmentApplication
 import com.tc.client.App
 import com.tc.client.AppContext
 import com.tc.client.R
 import com.tc.client.impl.ThunderApp
+import java.util.Timer
+import java.util.TimerTask
 
-class EffectActivity : Activity() {
+class EffectActivity : Activity(),  AndroidFragmentApplication.Callbacks {
+
+    companion object {
+        const val TAG = "Effect";
+    }
 
     private lateinit var srvIp: String
     private var srvPort: Int = 0
     private lateinit var appContext: AppContext
     private lateinit var thunderApp: ThunderApp
+    private var renderTimer: Timer = Timer()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +46,12 @@ class EffectActivity : Activity() {
         thunderApp = ThunderApp(srvIp, srvPort, true)
         thunderApp.init(false, null, false, false, 0);
         thunderApp.start()
+
+        renderTimer.schedule(object: TimerTask() {
+            override fun run() {
+                Log.i(TAG, "leftSpectrum size: " + thunderApp.leftSpectrum.size)
+            }
+        }, 100, 16);
     }
 
     override fun onResume() {
@@ -52,6 +67,10 @@ class EffectActivity : Activity() {
     override fun onDestroy() {
         super.onDestroy()
         thunderApp.nativeDestroy()
+    }
+
+    override fun exit() {
+
     }
 
 }

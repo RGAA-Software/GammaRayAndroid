@@ -31,13 +31,14 @@ Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl,
     JavaVM* vm;
     env->GetJavaVM(&vm);
     g_app = Application::Make(vm);
+    // Really hate to write so many JNI methods, use the same method to pass json-format message
     g_app->RegisterNativeMessageCallback([=](const std::string& msg) {
         auto env_wrapper = g_app->ObtainEnvWrapper();
         if (!env_wrapper || !env_wrapper->Env()) {
             LOGE("Can't get a env wrapper.");
             return;
         }
-        LOGI("msg is : {}", msg);
+        //LOGI("msg is : {}", msg);
         auto jstr_msg = env_wrapper->Env()->NewStringUTF(msg.c_str());
         env_wrapper->Env()->CallVoidMethod(g_java_app, g_cbk_methodID, jstr_msg);
     });

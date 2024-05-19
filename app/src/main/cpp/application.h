@@ -52,6 +52,7 @@ namespace tc
         std::shared_ptr<FrameRender> frame_render_ = nullptr;
         std::shared_ptr<AppContext> app_context_ = nullptr;
         std::shared_ptr<AudioPlayer> audio_player_ = nullptr;
+        std::mutex native_msg_cbk_mtx_;
         OnNativeMessageCallback native_msg_cbk_ = nullptr;
 
         int frame_width_ = 0;

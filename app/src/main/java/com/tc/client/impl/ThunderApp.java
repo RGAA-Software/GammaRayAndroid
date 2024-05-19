@@ -4,15 +4,25 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Surface;
 
+import com.tc.client.Statistics;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ThunderApp {
+
     private static final String TAG = "Main";
+
     private String mIp;
     private int mPort;
     private OnFrameChangedCallback mFrameChangedCallback;
     private boolean mOnlyAudio;
+    private List<Double> mLeftSpectrum = new ArrayList<>();
+    private List<Double> mRightSpectrum = new ArrayList<>();
 
     public ThunderApp(String ip, int port, boolean onlyAudio) {
         mIp = ip;
@@ -32,6 +42,14 @@ public class ThunderApp {
         mFrameChangedCallback = cbk;
     }
 
+    public List<Double> getLeftSpectrum() {
+        return mLeftSpectrum;
+    }
+
+    public List<Double> getRightSpectrum() {
+        return mRightSpectrum;
+    }
+
     // callbacks
     public interface OnFrameChangedCallback {
         void onFrameChanged(int width, int height);
@@ -44,16 +62,42 @@ public class ThunderApp {
     public native void nativeRenderTick();
 
     public void onNativeMessage(String msg) {
-        Log.i(TAG, "onNativeMessage: " + msg);
         try {
             JSONObject obj = new JSONObject(msg);
             String type = obj.getString("type");
+            //Log.i(TAG, "onNativeMessage type: " + type);
             if (TextUtils.equals(type, "frame")) {
                 int width = obj.getInt("width");
                 int height = obj.getInt("height");
                 if (mFrameChangedCallback != null) {
                     mFrameChangedCallback.onFrameChanged(width, height);
                 }
+            } else if (TextUtils.equals(type, "spectrum")) {
+                JSONArray leftSpectrum = obj.getJSONArray("left_spectrum");
+                JSONArray rightSpectrum = obj.getJSONArray("right_spectrum");
+                if (mLeftSpectrum.size() != leftSpectrum.length()) {
+                    mLeftSpectrum.clear();
+                }
+                if (mRightSpectrum.size() != rightSpectrum.length()) {
+                    mRightSpectrum.clear();
+                }
+                boolean leftFullSpectrum = mLeftSpectrum.size() == leftSpectrum.length();
+                boolean rightFullSpectrum = mRightSpectrum.size() == rightSpectrum.length();
+                for (int i = 0; i < leftSpectrum.length(); i++) {
+                    if (leftFullSpectrum) {
+                        mLeftSpectrum.set(i, leftSpectrum.getDouble(i));
+                    } else {
+                        mLeftSpectrum.add(leftSpectrum.getDouble(i));
+                    }
+                }
+                for (int i = 0; i < rightSpectrum.length(); i++) {
+                    if (rightFullSpectrum) {
+                        mRightSpectrum.set(i, rightSpectrum.getDouble(i));
+                    } else {
+                        mRightSpectrum.add(rightSpectrum.getDouble(i));
+                    }
+                }
+                Statistics.INSTANCE.updateSpectrum(mLeftSpectrum, mRightSpectrum);
             }
         } catch (JSONException e) {
             e.printStackTrace();
