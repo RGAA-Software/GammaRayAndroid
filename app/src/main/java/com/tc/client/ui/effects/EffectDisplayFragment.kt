@@ -11,20 +11,21 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tc.client.Settings
 import com.tc.client.databinding.FragmentEffectBinding
+import com.tc.client.effects.EffectActivity
 import com.tc.client.ui.BaseFragment
 import com.tc.client.ui.base.OnListItemListener
 
-class MusicEffectsFragment() : BaseFragment() {
+class EffectDisplayFragment() : BaseFragment() {
 
     private var _binding: FragmentEffectBinding? = null
     private val binding get() = _binding!!
-    private lateinit var effectAdapter: EffectAdapter
-    private val effects: MutableList<EffectItem> = mutableListOf()
+    private lateinit var effectDisplayAdapter: EffectDisplayAdapter
+    private val effects: MutableList<EffectDisplayItem> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         for (i in 0 until 10) {
-            val item = EffectItem()
+            val item = EffectDisplayItem()
             effects.add(item)
         }
     }
@@ -40,11 +41,11 @@ class MusicEffectsFragment() : BaseFragment() {
 
         binding.effectList.apply {
             layoutManager = GridLayoutManager(activity, 2);
-            effectAdapter = EffectAdapter(context, effects);
-            adapter = effectAdapter;
-            addItemDecoration(EffectItemDecoration(90));
-            effectAdapter.setOnItemClickListener(object: OnListItemListener<EffectItem> {
-                override fun onItemClicked(pos: Int, value: EffectItem) {
+            effectDisplayAdapter = EffectDisplayAdapter(context, effects);
+            adapter = effectDisplayAdapter;
+            addItemDecoration(EffectDisplayItemDecoration(90));
+            effectDisplayAdapter.setOnItemClickListener(object: OnListItemListener<EffectDisplayItem> {
+                override fun onItemClicked(pos: Int, value: EffectDisplayItem) {
                     startEffectActivity();
                 }
             })

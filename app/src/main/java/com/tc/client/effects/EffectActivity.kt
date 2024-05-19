@@ -1,4 +1,4 @@
-package com.tc.client.ui.effects
+package com.tc.client.effects
 
 import android.app.Activity
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.FrameLayout
+import androidx.fragment.app.FragmentActivity
 import com.badlogic.gdx.backends.android.AndroidFragmentApplication
 import com.tc.client.App
 import com.tc.client.AppContext
@@ -14,7 +16,7 @@ import com.tc.client.impl.ThunderApp
 import java.util.Timer
 import java.util.TimerTask
 
-class EffectActivity : Activity(),  AndroidFragmentApplication.Callbacks {
+class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks {
 
     companion object {
         const val TAG = "Effect";
@@ -25,6 +27,8 @@ class EffectActivity : Activity(),  AndroidFragmentApplication.Callbacks {
     private lateinit var appContext: AppContext
     private lateinit var thunderApp: ThunderApp
     private var renderTimer: Timer = Timer()
+    private lateinit var fragmentContainer: FrameLayout
+    private lateinit var effectFragment: EffectFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +42,7 @@ class EffectActivity : Activity(),  AndroidFragmentApplication.Callbacks {
             View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE
 
         setContentView(R.layout.activity_effect)
+        fragmentContainer = findViewById(R.id.id_fragment_container)
         srvIp = intent.getStringExtra("ip")!!
         srvPort = intent.getIntExtra("port", 20371)
 
@@ -49,9 +54,11 @@ class EffectActivity : Activity(),  AndroidFragmentApplication.Callbacks {
 
         renderTimer.schedule(object: TimerTask() {
             override fun run() {
-                Log.i(TAG, "leftSpectrum size: " + thunderApp.leftSpectrum.size)
+                //Log.i(TAG, "leftSpectrum size: " + thunderApp.leftSpectrum.size)
             }
         }, 100, 16);
+
+        supportFragmentManager.beginTransaction().add(R.id.id_fragment_container, EffectFragment()).commit()
     }
 
     override fun onResume() {

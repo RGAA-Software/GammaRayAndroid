@@ -33,7 +33,7 @@
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".ui.effects.EffectActivity"
+            android:name=".effects.EffectActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity

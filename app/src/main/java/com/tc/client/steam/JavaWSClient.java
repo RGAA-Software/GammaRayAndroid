@@ -106,6 +106,7 @@ public class JavaWSClient {
                 // !! deprecated !!
                 TcMessage.ServerAudioSpectrum spectrum = tcMsg.getServerAudioSpectrum();
                 int specCounts = spectrum.getLeftSpectrumCount();
+                Log.i(TAG, "spectrumSize from JavaWS socket." + specCounts);
                 Statistics.INSTANCE.updateSpectrum(spectrum.getLeftSpectrumList(), spectrum.getRightSpectrumList());
             }
         } catch (Exception e) {

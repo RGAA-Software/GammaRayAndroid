@@ -19,13 +19,12 @@ import com.tc.client.events.OnServerAvailable
 import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerScanned
 import com.tc.client.steam.JavaWSClient
-import com.tc.client.steam.UdpBroadcastReceiver
 import com.tc.client.ui.BaseFragment
 import com.tc.client.ui.MainTopRightMenu
 import com.tc.client.ui.machine.MachineFragment
 import com.tc.client.ui.steam.SteamAppFragment
 import com.tc.client.ui.me.AboutMeFragment
-import com.tc.client.ui.effects.MusicEffectsFragment
+import com.tc.client.ui.effects.EffectDisplayFragment
 import com.tc.client.util.ScreenUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var steamAppFragment: SteamAppFragment
     private lateinit var machineFragment: MachineFragment
-    private lateinit var musicEffectsFragment: MusicEffectsFragment
+    private lateinit var effectDisplayFragment: EffectDisplayFragment
     private lateinit var aboutMeFragment: AboutMeFragment
     private var currentFragment: Fragment? = null
     private val fragments = mutableListOf<BaseFragment>()
@@ -91,11 +90,11 @@ class MainActivity : AppCompatActivity() {
 
         machineFragment = getFragment(ID_MACHINE) as MachineFragment
         steamAppFragment = getFragment(ID_GAMES) as SteamAppFragment;
-        musicEffectsFragment = getFragment(ID_MUSIC_EFFECTS) as MusicEffectsFragment;
+        effectDisplayFragment = getFragment(ID_MUSIC_EFFECTS) as EffectDisplayFragment;
         aboutMeFragment = getFragment(ID_ME) as AboutMeFragment;
         fragments.add(machineFragment)
         fragments.add(steamAppFragment)
-        fragments.add(musicEffectsFragment)
+        fragments.add(effectDisplayFragment)
         fragments.add(aboutMeFragment)
 
         val fragmentHost = binding.root.findViewById<RelativeLayout>(R.id.fragment_host);
@@ -283,7 +282,7 @@ class MainActivity : AppCompatActivity() {
             }
             ID_MUSIC_EFFECTS -> {
                 binding.bottomBar.show(ID_MUSIC_EFFECTS)
-                switchFragment(musicEffectsFragment, tab.toString())
+                switchFragment(effectDisplayFragment, tab.toString())
                 setActionBarTitle("Music Effects");
             }
             ID_ME -> {
@@ -307,7 +306,7 @@ class MainActivity : AppCompatActivity() {
                 return SteamAppFragment()
             }
             ID_MUSIC_EFFECTS -> {
-                return MusicEffectsFragment()
+                return EffectDisplayFragment()
             }
             ID_ME -> {
                 return AboutMeFragment()

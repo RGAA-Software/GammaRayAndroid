@@ -1,6 +1,6 @@
 package com.tc.client.ui.effects
 
-class EffectItem {
+class EffectDisplayItem {
 
     public var effectName: String = ""
 

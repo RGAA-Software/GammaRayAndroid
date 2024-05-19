@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.tc.client.R
 import com.tc.client.ui.base.OnListItemListener
 
-class EffectAdapter(private var context: Context, private var apps: MutableList<EffectItem>) :
-    RecyclerView.Adapter<EffectAdapter.BookViewHolder>() {
+class EffectDisplayAdapter(private var context: Context, private var apps: MutableList<EffectDisplayItem>) :
+    RecyclerView.Adapter<EffectDisplayAdapter.BookViewHolder>() {
 
     private val TAG = "Steam";
 
-    private var itemClickListener: OnListItemListener<EffectItem>? = null
+    private var itemClickListener: OnListItemListener<EffectDisplayItem>? = null
 
     class BookViewHolder(itemView: View) : ViewHolder(itemView) {
         val cover: ImageView = itemView.findViewById(R.id.book_cover);
@@ -42,11 +42,11 @@ class EffectAdapter(private var context: Context, private var apps: MutableList<
             itemClickListener?.onItemClicked(position, app)
         }
 
-        holder.appName.text = "PC:${app.effectName}";
+        holder.appName.text = app.effectName
 
     }
 
-    fun setOnItemClickListener(listener: OnListItemListener<EffectItem>) {
+    fun setOnItemClickListener(listener: OnListItemListener<EffectDisplayItem>) {
         itemClickListener = listener
     }
 

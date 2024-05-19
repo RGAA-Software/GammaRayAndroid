@@ -52,7 +52,7 @@ class MachineAdapter(private var context: Context, private var apps: MutableList
         holder.connectScreen.visibility = View.VISIBLE;
         holder.searching.visibility = View.GONE;
 
-        holder.appName.text = "PC:${app.serverId}";
+        holder.appName.text = app.serverId;
         val iconUrl = "http://${app.serverIp}:${app.httpServerPort}/res/${app.iconIndex}.png"
         Glide.with(context).load(iconUrl).into(holder.connectScreen);
         if (app.available) {
