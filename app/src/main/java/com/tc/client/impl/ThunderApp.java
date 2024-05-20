@@ -23,6 +23,7 @@ public class ThunderApp {
     private boolean mOnlyAudio;
     private List<Double> mLeftSpectrum = new ArrayList<>();
     private List<Double> mRightSpectrum = new ArrayList<>();
+    private long mAudioSpectrumCount = 0;
 
     public ThunderApp(String ip, int port, boolean onlyAudio) {
         mIp = ip;
@@ -74,6 +75,9 @@ public class ThunderApp {
                 }
             } else if (TextUtils.equals(type, "spectrum")) {
                 synchronized (this) {
+                    if (mAudioSpectrumCount % 3 != 0) {
+                        return;
+                    }
                     JSONArray leftSpectrum = obj.getJSONArray("left_spectrum");
                     JSONArray rightSpectrum = obj.getJSONArray("right_spectrum");
                     if (mLeftSpectrum.size() != leftSpectrum.length()) {
