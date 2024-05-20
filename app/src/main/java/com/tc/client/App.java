@@ -6,17 +6,21 @@ import android.hardware.SensorManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
+import com.tc.client.devices.UsbDeviceManager;
+
 public class App extends Application {
     private static final String TAG = "Main";
     private AppContext appContext;
     public static SensorManager sm;
     private static App instance;
+    private UsbDeviceManager usbDeviceManager;
 
     private static int sDens = 0;
 
     public static App getInstance(){
         return instance;
     }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -33,6 +37,8 @@ public class App extends Application {
         sDens = dm.densityDpi;
         Log.d(TAG, "dens:" + sDens);
 
+        usbDeviceManager = new UsbDeviceManager(this);
+        usbDeviceManager.start();
     }
 
     public AppContext getAppContext() {

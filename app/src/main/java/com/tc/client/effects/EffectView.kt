@@ -32,7 +32,7 @@ class EffectView(var context: Context, var thunderApp: ThunderApp) : Application
     }
 
     override fun render() {
-        Gdx.gl.glClearColor(0f, 0f, 0f, 0f)
+        Gdx.gl.glClearColor(0f, 0f, 0f, 1.0f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT or GL20.GL_DEPTH_BUFFER_BIT)
         spriteBatch.begin()
         spriteBatch.draw(bgTexture, 0.0f, 0.0f)
@@ -42,15 +42,18 @@ class EffectView(var context: Context, var thunderApp: ThunderApp) : Application
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled)
         shapeRenderer.setColor(0.2f, 0.2f, 0.3f, 1.0f)
-        val xStep = 16.0f;
+
         val xGap = 2.0f;
+        val itemWidth = Gdx.graphics.width * 1.0f / leftSpectrum.size
+        val xStep = itemWidth - xGap;
+
         leftSpectrum.forEachIndexed{idx, value ->
             val xLeft = idx * (xStep + xGap);
             shapeRenderer.rect(xLeft, 0.0f, xStep, value.toFloat() * 3,
-                Color.DARK_GRAY,
-                Color.DARK_GRAY,
-                Color.LIGHT_GRAY,
-                Color.LIGHT_GRAY)
+                Color.SALMON,
+                Color.SALMON,
+                Color.ORANGE,
+                Color.ORANGE)
         }
         shapeRenderer.end()
     }
@@ -71,7 +74,7 @@ class EffectView(var context: Context, var thunderApp: ThunderApp) : Application
         leftNewSpectrum.forEachIndexed { index, newValue ->
             val oldValue = leftSpectrum[index]
             val diff = newValue - oldValue
-            var targetValue = oldValue + diff / 2
+            var targetValue = oldValue + diff / 3.5
             if (targetValue < 0) {
                 targetValue = 0.0
             }
