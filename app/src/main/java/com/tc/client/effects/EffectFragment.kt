@@ -19,8 +19,9 @@ import com.badlogic.gdx.backends.android.AndroidFragmentApplication
 import com.tc.client.R
 import com.tc.client.effects.base.InterceptableViewGroup
 import com.tc.client.effects.spine.LibgdxSpineFragment
+import com.tc.client.impl.ThunderApp
 
-class EffectFragment : AndroidFragmentApplication(), InputProcessor {
+class EffectFragment(var thunderApp: ThunderApp) : AndroidFragmentApplication(), InputProcessor {
 
     private lateinit var rootView: View
     private lateinit var container: InterceptableViewGroup
@@ -42,7 +43,7 @@ class EffectFragment : AndroidFragmentApplication(), InputProcessor {
 
     private fun buildEffectView() {
         container = rootView.findViewById<InterceptableViewGroup>(R.id.container)
-        effectView = EffectView(requireContext())
+        effectView = EffectView(requireContext(), thunderApp)
         val eView: View = CreateGLAlpha(effectView)
         container.addView(eView)
         container.setIntercept(true)
@@ -64,6 +65,10 @@ class EffectFragment : AndroidFragmentApplication(), InputProcessor {
             glView.setZOrderOnTop(true)
         }
         return view
+    }
+
+    fun onRefresh() {
+
     }
 
     fun distroy() {

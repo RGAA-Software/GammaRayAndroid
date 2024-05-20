@@ -7,18 +7,21 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.tc.client.impl.ThunderApp
 
-class EffectView(var context: Context) : ApplicationListener {
+class EffectView(var context: Context, var thunderApp: ThunderApp) : ApplicationListener {
 
     private lateinit var spriteBatch: SpriteBatch
     private lateinit var bgTexture: Texture
     private lateinit var camera: OrthographicCamera
+    private lateinit var shapeRenderer: ShapeRenderer
 
     override fun create() {
         spriteBatch = SpriteBatch()
         camera = OrthographicCamera()
         bgTexture = Texture(Gdx.files.internal("box2d/star.png"))
-
+        shapeRenderer = ShapeRenderer();
     }
 
     override fun resize(width: Int, height: Int) {
@@ -31,6 +34,20 @@ class EffectView(var context: Context) : ApplicationListener {
         spriteBatch.begin()
         spriteBatch.draw(bgTexture, 0.0f, 0.0f)
         spriteBatch.end()
+
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled)
+        shapeRenderer.setColor(0.2f, 0.2f, 0.3f, 1.0f)
+        val xStep = 16.0f;
+        val xGap = 2.0f;
+        thunderApp.leftSpectrum.forEachIndexed{idx, value ->
+            val xLeft = idx * (xStep + xGap);
+            shapeRenderer.rect(xLeft, 0.0f, xStep, value.toFloat()* 2)
+        }
+        shapeRenderer.end()
+    }
+
+    fun onRefresh() {
+
     }
 
     override fun pause() {

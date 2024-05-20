@@ -42,11 +42,11 @@ public class ThunderApp {
         mFrameChangedCallback = cbk;
     }
 
-    public List<Double> getLeftSpectrum() {
+    public synchronized List<Double> getLeftSpectrum() {
         return mLeftSpectrum;
     }
 
-    public List<Double> getRightSpectrum() {
+    public synchronized List<Double> getRightSpectrum() {
         return mRightSpectrum;
     }
 
@@ -73,31 +73,35 @@ public class ThunderApp {
                     mFrameChangedCallback.onFrameChanged(width, height);
                 }
             } else if (TextUtils.equals(type, "spectrum")) {
-                JSONArray leftSpectrum = obj.getJSONArray("left_spectrum");
-                JSONArray rightSpectrum = obj.getJSONArray("right_spectrum");
-                if (mLeftSpectrum.size() != leftSpectrum.length()) {
-                    mLeftSpectrum.clear();
-                }
-                if (mRightSpectrum.size() != rightSpectrum.length()) {
-                    mRightSpectrum.clear();
-                }
-                boolean leftFullSpectrum = mLeftSpectrum.size() == leftSpectrum.length();
-                boolean rightFullSpectrum = mRightSpectrum.size() == rightSpectrum.length();
-                for (int i = 0; i < leftSpectrum.length(); i++) {
-                    if (leftFullSpectrum) {
-                        mLeftSpectrum.set(i, leftSpectrum.getDouble(i));
-                    } else {
-                        mLeftSpectrum.add(leftSpectrum.getDouble(i));
+                synchronized (this) {
+                    JSONArray leftSpectrum = obj.getJSONArray("left_spectrum");
+                    JSONArray rightSpectrum = obj.getJSONArray("right_spectrum");
+                    if (mLeftSpectrum.size() != leftSpectrum.length()) {
+                        mLeftSpectrum.clear();
                     }
-                }
-                for (int i = 0; i < rightSpectrum.length(); i++) {
-                    if (rightFullSpectrum) {
-                        mRightSpectrum.set(i, rightSpectrum.getDouble(i));
-                    } else {
-                        mRightSpectrum.add(rightSpectrum.getDouble(i));
+                    if (mRightSpectrum.size() != rightSpectrum.length()) {
+                        mRightSpectrum.clear();
                     }
+                    boolean leftFullSpectrum = mLeftSpectrum.size() == leftSpectrum.length();
+                    boolean rightFullSpectrum = mRightSpectrum.size() == rightSpectrum.length();
+                    for (int i = 0; i < leftSpectrum.length(); i++) {
+                        if (leftFullSpectrum) {
+                            mLeftSpectrum.set(i, leftSpectrum.getDouble(i));
+                        } else {
+                            mLeftSpectrum.add(leftSpectrum.getDouble(i));
+                        }
+                    }
+                    for (int i = 0; i < rightSpectrum.length(); i++) {
+                        if (rightFullSpectrum) {
+                            mRightSpectrum.set(i, rightSpectrum.getDouble(i));
+                        } else {
+                            mRightSpectrum.add(rightSpectrum.getDouble(i));
+                        }
+                    }
+
+                    // !! deprecated !!
+                    //Statistics.INSTANCE.updateSpectrum(mLeftSpectrum, mRightSpectrum);
                 }
-                Statistics.INSTANCE.updateSpectrum(mLeftSpectrum, mRightSpectrum);
             }
         } catch (JSONException e) {
             e.printStackTrace();

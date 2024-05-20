@@ -52,13 +52,17 @@ class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks
         thunderApp.init(false, null, false, false, 0);
         thunderApp.start()
 
+        effectFragment = EffectFragment(thunderApp)
+
         renderTimer.schedule(object: TimerTask() {
             override fun run() {
-                //Log.i(TAG, "leftSpectrum size: " + thunderApp.leftSpectrum.size)
+                runOnUiThread {
+                    effectFragment.onRefresh()
+                }
             }
         }, 100, 16);
 
-        supportFragmentManager.beginTransaction().add(R.id.id_fragment_container, EffectFragment()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.id_fragment_container, effectFragment).commit()
     }
 
     override fun onResume() {
