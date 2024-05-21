@@ -74,7 +74,7 @@ class EffectView(var context: Context, var thunderApp: ThunderApp) : Application
         leftNewSpectrum.forEachIndexed { index, newValue ->
             val oldValue = leftSpectrum[index]
             val diff = newValue - oldValue
-            var targetValue = oldValue + diff / 3.5
+            var targetValue = oldValue + diff / 3.0f
             if (targetValue < 0) {
                 targetValue = 0.0
             }

@@ -14,6 +14,10 @@ public final class TcMessage {
   public enum MessageType
       implements com.google.protobuf.Internal.EnumLite {
     /**
+     * <pre>
+     * client -&gt; server
+     * </pre>
+     *
      * <code>kHello = 0;</code>
      */
     kHello(0),
@@ -93,6 +97,10 @@ public final class TcMessage {
     ;
 
     /**
+     * <pre>
+     * client -&gt; server
+     * </pre>
+     *
      * <code>kHello = 0;</code>
      */
     public static final int kHello_VALUE = 0;
@@ -339,9 +347,9 @@ public final class TcMessage {
   }
 
   /**
-   * Protobuf enum {@code tc.EButtonFlag}
+   * Protobuf enum {@code tc.ButtonFlag}
    */
-  public enum EButtonFlag
+  public enum ButtonFlag
       implements com.google.protobuf.Internal.EnumLite {
     /**
      * <code>kNone = 0;</code>
@@ -376,29 +384,17 @@ public final class TcMessage {
      */
     kRightMouseButtonUp(64),
     /**
-     * <pre>
-     *表示鼠标移动
-     * </pre>
-     *
      * <code>kMouseMove = 128;</code>
      */
     kMouseMove(128),
     /**
-     * <pre>
-     *表示鼠标滚轮滚动
-     * </pre>
-     *
-     * <code>kMouseEventfWheel = 256;</code>
+     * <code>kMouseEventWheel = 256;</code>
      */
-    kMouseEventfWheel(256),
+    kMouseEventWheel(256),
     /**
-     * <pre>
-     *表示鼠标滚轮滚动
-     * </pre>
-     *
-     * <code>kMouseEventfHWheel = 512;</code>
+     * <code>kMouseEventHWheel = 512;</code>
      */
-    kMouseEventfHWheel(512),
+    kMouseEventHWheel(512),
     /**
      * <code>kLeftMouseButtonDown = 1024;</code>
      */
@@ -447,29 +443,17 @@ public final class TcMessage {
      */
     public static final int kRightMouseButtonUp_VALUE = 64;
     /**
-     * <pre>
-     *表示鼠标移动
-     * </pre>
-     *
      * <code>kMouseMove = 128;</code>
      */
     public static final int kMouseMove_VALUE = 128;
     /**
-     * <pre>
-     *表示鼠标滚轮滚动
-     * </pre>
-     *
-     * <code>kMouseEventfWheel = 256;</code>
+     * <code>kMouseEventWheel = 256;</code>
      */
-    public static final int kMouseEventfWheel_VALUE = 256;
+    public static final int kMouseEventWheel_VALUE = 256;
     /**
-     * <pre>
-     *表示鼠标滚轮滚动
-     * </pre>
-     *
-     * <code>kMouseEventfHWheel = 512;</code>
+     * <code>kMouseEventHWheel = 512;</code>
      */
-    public static final int kMouseEventfHWheel_VALUE = 512;
+    public static final int kMouseEventHWheel_VALUE = 512;
     /**
      * <code>kLeftMouseButtonDown = 1024;</code>
      */
@@ -497,11 +481,11 @@ public final class TcMessage {
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static EButtonFlag valueOf(int value) {
+    public static ButtonFlag valueOf(int value) {
       return forNumber(value);
     }
 
-    public static EButtonFlag forNumber(int value) {
+    public static ButtonFlag forNumber(int value) {
       switch (value) {
         case 0: return kNone;
         case 1: return kCapsLockOn;
@@ -512,8 +496,8 @@ public final class TcMessage {
         case 32: return kMiddleMouseButtonUp;
         case 64: return kRightMouseButtonUp;
         case 128: return kMouseMove;
-        case 256: return kMouseEventfWheel;
-        case 512: return kMouseEventfHWheel;
+        case 256: return kMouseEventWheel;
+        case 512: return kMouseEventHWheel;
         case 1024: return kLeftMouseButtonDown;
         case 2048: return kMiddleMouseButtonDown;
         case 4096: return kRightMouseButtonDown;
@@ -521,45 +505,159 @@ public final class TcMessage {
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<EButtonFlag>
+    public static com.google.protobuf.Internal.EnumLiteMap<ButtonFlag>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        EButtonFlag> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<EButtonFlag>() {
+        ButtonFlag> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ButtonFlag>() {
             @java.lang.Override
-            public EButtonFlag findValueByNumber(int number) {
-              return EButtonFlag.forNumber(number);
+            public ButtonFlag findValueByNumber(int number) {
+              return ButtonFlag.forNumber(number);
             }
           };
 
     public static com.google.protobuf.Internal.EnumVerifier 
         internalGetVerifier() {
-      return EButtonFlagVerifier.INSTANCE;
+      return ButtonFlagVerifier.INSTANCE;
     }
 
-    private static final class EButtonFlagVerifier implements 
+    private static final class ButtonFlagVerifier implements 
          com.google.protobuf.Internal.EnumVerifier { 
-            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new EButtonFlagVerifier();
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new ButtonFlagVerifier();
             @java.lang.Override
             public boolean isInRange(int number) {
-              return EButtonFlag.forNumber(number) != null;
+              return ButtonFlag.forNumber(number) != null;
             }
           };
 
     private final int value;
 
-    private EButtonFlag(int value) {
+    private ButtonFlag(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:tc.EButtonFlag)
+    // @@protoc_insertion_point(enum_scope:tc.ButtonFlag)
+  }
+
+  /**
+   * Protobuf enum {@code tc.ClientType}
+   */
+  public enum ClientType
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>kWindows = 0;</code>
+     */
+    kWindows(0),
+    /**
+     * <code>kLinux = 1;</code>
+     */
+    kLinux(1),
+    /**
+     * <code>kMacOS = 2;</code>
+     */
+    kMacOS(2),
+    /**
+     * <code>kAndroid = 3;</code>
+     */
+    kAndroid(3),
+    /**
+     * <code>kiOS = 4;</code>
+     */
+    kiOS(4),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>kWindows = 0;</code>
+     */
+    public static final int kWindows_VALUE = 0;
+    /**
+     * <code>kLinux = 1;</code>
+     */
+    public static final int kLinux_VALUE = 1;
+    /**
+     * <code>kMacOS = 2;</code>
+     */
+    public static final int kMacOS_VALUE = 2;
+    /**
+     * <code>kAndroid = 3;</code>
+     */
+    public static final int kAndroid_VALUE = 3;
+    /**
+     * <code>kiOS = 4;</code>
+     */
+    public static final int kiOS_VALUE = 4;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ClientType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static ClientType forNumber(int value) {
+      switch (value) {
+        case 0: return kWindows;
+        case 1: return kLinux;
+        case 2: return kMacOS;
+        case 3: return kAndroid;
+        case 4: return kiOS;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ClientType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ClientType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ClientType>() {
+            @java.lang.Override
+            public ClientType findValueByNumber(int number) {
+              return ClientType.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return ClientTypeVerifier.INSTANCE;
+    }
+
+    private static final class ClientTypeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new ClientTypeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return ClientType.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private ClientType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:tc.ClientType)
   }
 
   /**
    * <pre>
-   *https://learn.microsoft.com/en-us/windows/win32/api/xinput/ns-xinput-xinput_gamepad
+   * see: https://learn.microsoft.com/en-us/windows/win32/api/xinput/ns-xinput-xinput_gamepad
    * </pre>
    *
    * Protobuf enum {@code tc.GamepadButton}
@@ -1099,6 +1197,15 @@ public final class TcMessage {
      * <code>bool only_audio = 1;</code>
      */
     boolean getOnlyAudio();
+
+    /**
+     * <code>.tc.ClientType client_type = 2;</code>
+     */
+    int getClientTypeValue();
+    /**
+     * <code>.tc.ClientType client_type = 2;</code>
+     */
+    tc.TcMessage.ClientType getClientType();
   }
   /**
    * Protobuf type {@code tc.Hello}
@@ -1132,6 +1239,47 @@ public final class TcMessage {
     private void clearOnlyAudio() {
       
       onlyAudio_ = false;
+    }
+
+    public static final int CLIENT_TYPE_FIELD_NUMBER = 2;
+    private int clientType_;
+    /**
+     * <code>.tc.ClientType client_type = 2;</code>
+     */
+    @java.lang.Override
+    public int getClientTypeValue() {
+      return clientType_;
+    }
+    /**
+     * <code>.tc.ClientType client_type = 2;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.ClientType getClientType() {
+      tc.TcMessage.ClientType result = tc.TcMessage.ClientType.forNumber(clientType_);
+      return result == null ? tc.TcMessage.ClientType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.tc.ClientType client_type = 2;</code>
+     */
+    private void setClientTypeValue(int value) {
+        clientType_ = value;
+    }
+    /**
+     * <code>.tc.ClientType client_type = 2;</code>
+     */
+    private void setClientType(tc.TcMessage.ClientType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      clientType_ = value.getNumber();
+    }
+    /**
+     * <code>.tc.ClientType client_type = 2;</code>
+     */
+    private void clearClientType() {
+      
+      clientType_ = 0;
     }
 
     public static tc.TcMessage.Hello parseFrom(
@@ -1253,6 +1401,45 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <code>.tc.ClientType client_type = 2;</code>
+       */
+      @java.lang.Override
+      public int getClientTypeValue() {
+        return instance.getClientTypeValue();
+      }
+      /**
+       * <code>.tc.ClientType client_type = 2;</code>
+       */
+      public Builder setClientTypeValue(int value) {
+        copyOnWrite();
+        instance.setClientTypeValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.ClientType client_type = 2;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.ClientType getClientType() {
+        return instance.getClientType();
+      }
+      /**
+       * <code>.tc.ClientType client_type = 2;</code>
+       */
+      public Builder setClientType(tc.TcMessage.ClientType value) {
+        copyOnWrite();
+        instance.setClientType(value);
+        return this;
+      }
+      /**
+       * <code>.tc.ClientType client_type = 2;</code>
+       */
+      public Builder clearClientType() {
+        copyOnWrite();
+        instance.clearClientType();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.Hello)
     }
     @java.lang.Override
@@ -1270,9 +1457,11 @@ public final class TcMessage {
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
               "onlyAudio_",
+              "clientType_",
             };
             java.lang.String info =
-                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u0007";
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0007\u0002\f" +
+                "";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -2717,7 +2906,7 @@ public final class TcMessage {
 
     /**
      * <pre>
-     * 虚拟键盘码,参考msdn文档的虚拟键码表: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+     * see: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
      * </pre>
      *
      * <code>uint32 key_code = 1;</code>
@@ -2725,17 +2914,13 @@ public final class TcMessage {
     int getKeyCode();
 
     /**
-     * <pre>
-     * 按下还是松开
-     * </pre>
-     *
      * <code>bool down = 2;</code>
      */
     boolean getDown();
 
     /**
      * <pre>
-     * 按键当前的状态 GetKeyState()获取
+     * by GetKeyState()
      * </pre>
      *
      * <code>int32 num_lock_status = 3;</code>
@@ -2757,10 +2942,6 @@ public final class TcMessage {
     tc.TcMessage.KeyEvent.LockKeyStatusCheck getStatusCheck();
 
     /**
-     * <pre>
-     * 当前毫秒值时间戳
-     * </pre>
-     *
      * <code>int64 timestamp = 6;</code>
      */
     long getTimestamp();
@@ -2875,7 +3056,7 @@ public final class TcMessage {
     private int keyCode_;
     /**
      * <pre>
-     * 虚拟键盘码,参考msdn文档的虚拟键码表: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+     * see: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
      * </pre>
      *
      * <code>uint32 key_code = 1;</code>
@@ -2886,7 +3067,7 @@ public final class TcMessage {
     }
     /**
      * <pre>
-     * 虚拟键盘码,参考msdn文档的虚拟键码表: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+     * see: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
      * </pre>
      *
      * <code>uint32 key_code = 1;</code>
@@ -2897,7 +3078,7 @@ public final class TcMessage {
     }
     /**
      * <pre>
-     * 虚拟键盘码,参考msdn文档的虚拟键码表: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+     * see: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
      * </pre>
      *
      * <code>uint32 key_code = 1;</code>
@@ -2910,10 +3091,6 @@ public final class TcMessage {
     public static final int DOWN_FIELD_NUMBER = 2;
     private boolean down_;
     /**
-     * <pre>
-     * 按下还是松开
-     * </pre>
-     *
      * <code>bool down = 2;</code>
      */
     @java.lang.Override
@@ -2921,10 +3098,6 @@ public final class TcMessage {
       return down_;
     }
     /**
-     * <pre>
-     * 按下还是松开
-     * </pre>
-     *
      * <code>bool down = 2;</code>
      */
     private void setDown(boolean value) {
@@ -2932,10 +3105,6 @@ public final class TcMessage {
       down_ = value;
     }
     /**
-     * <pre>
-     * 按下还是松开
-     * </pre>
-     *
      * <code>bool down = 2;</code>
      */
     private void clearDown() {
@@ -2947,7 +3116,7 @@ public final class TcMessage {
     private int numLockStatus_;
     /**
      * <pre>
-     * 按键当前的状态 GetKeyState()获取
+     * by GetKeyState()
      * </pre>
      *
      * <code>int32 num_lock_status = 3;</code>
@@ -2958,7 +3127,7 @@ public final class TcMessage {
     }
     /**
      * <pre>
-     * 按键当前的状态 GetKeyState()获取
+     * by GetKeyState()
      * </pre>
      *
      * <code>int32 num_lock_status = 3;</code>
@@ -2969,7 +3138,7 @@ public final class TcMessage {
     }
     /**
      * <pre>
-     * 按键当前的状态 GetKeyState()获取
+     * by GetKeyState()
      * </pre>
      *
      * <code>int32 num_lock_status = 3;</code>
@@ -3047,10 +3216,6 @@ public final class TcMessage {
     public static final int TIMESTAMP_FIELD_NUMBER = 6;
     private long timestamp_;
     /**
-     * <pre>
-     * 当前毫秒值时间戳
-     * </pre>
-     *
      * <code>int64 timestamp = 6;</code>
      */
     @java.lang.Override
@@ -3058,10 +3223,6 @@ public final class TcMessage {
       return timestamp_;
     }
     /**
-     * <pre>
-     * 当前毫秒值时间戳
-     * </pre>
-     *
      * <code>int64 timestamp = 6;</code>
      */
     private void setTimestamp(long value) {
@@ -3069,10 +3230,6 @@ public final class TcMessage {
       timestamp_ = value;
     }
     /**
-     * <pre>
-     * 当前毫秒值时间戳
-     * </pre>
-     *
      * <code>int64 timestamp = 6;</code>
      */
     private void clearTimestamp() {
@@ -3177,7 +3334,7 @@ public final class TcMessage {
 
       /**
        * <pre>
-       * 虚拟键盘码,参考msdn文档的虚拟键码表: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+       * see: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
        * </pre>
        *
        * <code>uint32 key_code = 1;</code>
@@ -3188,7 +3345,7 @@ public final class TcMessage {
       }
       /**
        * <pre>
-       * 虚拟键盘码,参考msdn文档的虚拟键码表: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+       * see: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
        * </pre>
        *
        * <code>uint32 key_code = 1;</code>
@@ -3200,7 +3357,7 @@ public final class TcMessage {
       }
       /**
        * <pre>
-       * 虚拟键盘码,参考msdn文档的虚拟键码表: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+       * see: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
        * </pre>
        *
        * <code>uint32 key_code = 1;</code>
@@ -3212,10 +3369,6 @@ public final class TcMessage {
       }
 
       /**
-       * <pre>
-       * 按下还是松开
-       * </pre>
-       *
        * <code>bool down = 2;</code>
        */
       @java.lang.Override
@@ -3223,10 +3376,6 @@ public final class TcMessage {
         return instance.getDown();
       }
       /**
-       * <pre>
-       * 按下还是松开
-       * </pre>
-       *
        * <code>bool down = 2;</code>
        */
       public Builder setDown(boolean value) {
@@ -3235,10 +3384,6 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <pre>
-       * 按下还是松开
-       * </pre>
-       *
        * <code>bool down = 2;</code>
        */
       public Builder clearDown() {
@@ -3249,7 +3394,7 @@ public final class TcMessage {
 
       /**
        * <pre>
-       * 按键当前的状态 GetKeyState()获取
+       * by GetKeyState()
        * </pre>
        *
        * <code>int32 num_lock_status = 3;</code>
@@ -3260,7 +3405,7 @@ public final class TcMessage {
       }
       /**
        * <pre>
-       * 按键当前的状态 GetKeyState()获取
+       * by GetKeyState()
        * </pre>
        *
        * <code>int32 num_lock_status = 3;</code>
@@ -3272,7 +3417,7 @@ public final class TcMessage {
       }
       /**
        * <pre>
-       * 按键当前的状态 GetKeyState()获取
+       * by GetKeyState()
        * </pre>
        *
        * <code>int32 num_lock_status = 3;</code>
@@ -3347,10 +3492,6 @@ public final class TcMessage {
       }
 
       /**
-       * <pre>
-       * 当前毫秒值时间戳
-       * </pre>
-       *
        * <code>int64 timestamp = 6;</code>
        */
       @java.lang.Override
@@ -3358,10 +3499,6 @@ public final class TcMessage {
         return instance.getTimestamp();
       }
       /**
-       * <pre>
-       * 当前毫秒值时间戳
-       * </pre>
-       *
        * <code>int64 timestamp = 6;</code>
        */
       public Builder setTimestamp(long value) {
@@ -3370,10 +3507,6 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <pre>
-       * 当前毫秒值时间戳
-       * </pre>
-       *
        * <code>int64 timestamp = 6;</code>
        */
       public Builder clearTimestamp() {
@@ -3467,7 +3600,7 @@ public final class TcMessage {
 
     /**
      * <pre>
-     *to do 当服务端采集方式为采集屏幕的时候，当前鼠标事件对应的屏幕索引
+     * to do
      * </pre>
      *
      * <code>int32 monitor_index = 1;</code>
@@ -3475,26 +3608,18 @@ public final class TcMessage {
     int getMonitorIndex();
 
     /**
-     * <pre>
-     * 当前鼠标x值，占窗口宽度的比值
-     * </pre>
-     *
      * <code>float x_ratio = 2;</code>
      */
     float getXRatio();
 
     /**
-     * <pre>
-     * 当前鼠标y值，占窗口高度度的比值
-     * </pre>
-     *
      * <code>float y_ratio = 3;</code>
      */
     float getYRatio();
 
     /**
      * <pre>
-     * 按键掩码, 用来表示摁下了什么按键、抬起了什么按键 ref: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
+     * see: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
      * </pre>
      *
      * <code>int32 button = 4;</code>
@@ -3503,7 +3628,7 @@ public final class TcMessage {
 
     /**
      * <pre>
-     * 鼠标data，滚轮等数据
+     * wheel
      * </pre>
      *
      * <code>int32 data = 5;</code>
@@ -3511,10 +3636,6 @@ public final class TcMessage {
     int getData();
 
     /**
-     * <pre>
-     * 当前毫秒值时间戳
-     * </pre>
-     *
      * <code>int64 timestamp = 6;</code>
      */
     long getTimestamp();
@@ -3553,7 +3674,7 @@ public final class TcMessage {
     private int monitorIndex_;
     /**
      * <pre>
-     *to do 当服务端采集方式为采集屏幕的时候，当前鼠标事件对应的屏幕索引
+     * to do
      * </pre>
      *
      * <code>int32 monitor_index = 1;</code>
@@ -3564,7 +3685,7 @@ public final class TcMessage {
     }
     /**
      * <pre>
-     *to do 当服务端采集方式为采集屏幕的时候，当前鼠标事件对应的屏幕索引
+     * to do
      * </pre>
      *
      * <code>int32 monitor_index = 1;</code>
@@ -3575,7 +3696,7 @@ public final class TcMessage {
     }
     /**
      * <pre>
-     *to do 当服务端采集方式为采集屏幕的时候，当前鼠标事件对应的屏幕索引
+     * to do
      * </pre>
      *
      * <code>int32 monitor_index = 1;</code>
@@ -3588,10 +3709,6 @@ public final class TcMessage {
     public static final int X_RATIO_FIELD_NUMBER = 2;
     private float xRatio_;
     /**
-     * <pre>
-     * 当前鼠标x值，占窗口宽度的比值
-     * </pre>
-     *
      * <code>float x_ratio = 2;</code>
      */
     @java.lang.Override
@@ -3599,10 +3716,6 @@ public final class TcMessage {
       return xRatio_;
     }
     /**
-     * <pre>
-     * 当前鼠标x值，占窗口宽度的比值
-     * </pre>
-     *
      * <code>float x_ratio = 2;</code>
      */
     private void setXRatio(float value) {
@@ -3610,10 +3723,6 @@ public final class TcMessage {
       xRatio_ = value;
     }
     /**
-     * <pre>
-     * 当前鼠标x值，占窗口宽度的比值
-     * </pre>
-     *
      * <code>float x_ratio = 2;</code>
      */
     private void clearXRatio() {
@@ -3624,10 +3733,6 @@ public final class TcMessage {
     public static final int Y_RATIO_FIELD_NUMBER = 3;
     private float yRatio_;
     /**
-     * <pre>
-     * 当前鼠标y值，占窗口高度度的比值
-     * </pre>
-     *
      * <code>float y_ratio = 3;</code>
      */
     @java.lang.Override
@@ -3635,10 +3740,6 @@ public final class TcMessage {
       return yRatio_;
     }
     /**
-     * <pre>
-     * 当前鼠标y值，占窗口高度度的比值
-     * </pre>
-     *
      * <code>float y_ratio = 3;</code>
      */
     private void setYRatio(float value) {
@@ -3646,10 +3747,6 @@ public final class TcMessage {
       yRatio_ = value;
     }
     /**
-     * <pre>
-     * 当前鼠标y值，占窗口高度度的比值
-     * </pre>
-     *
      * <code>float y_ratio = 3;</code>
      */
     private void clearYRatio() {
@@ -3661,7 +3758,7 @@ public final class TcMessage {
     private int button_;
     /**
      * <pre>
-     * 按键掩码, 用来表示摁下了什么按键、抬起了什么按键 ref: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
+     * see: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
      * </pre>
      *
      * <code>int32 button = 4;</code>
@@ -3672,7 +3769,7 @@ public final class TcMessage {
     }
     /**
      * <pre>
-     * 按键掩码, 用来表示摁下了什么按键、抬起了什么按键 ref: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
+     * see: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
      * </pre>
      *
      * <code>int32 button = 4;</code>
@@ -3683,7 +3780,7 @@ public final class TcMessage {
     }
     /**
      * <pre>
-     * 按键掩码, 用来表示摁下了什么按键、抬起了什么按键 ref: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
+     * see: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
      * </pre>
      *
      * <code>int32 button = 4;</code>
@@ -3697,7 +3794,7 @@ public final class TcMessage {
     private int data_;
     /**
      * <pre>
-     * 鼠标data，滚轮等数据
+     * wheel
      * </pre>
      *
      * <code>int32 data = 5;</code>
@@ -3708,7 +3805,7 @@ public final class TcMessage {
     }
     /**
      * <pre>
-     * 鼠标data，滚轮等数据
+     * wheel
      * </pre>
      *
      * <code>int32 data = 5;</code>
@@ -3719,7 +3816,7 @@ public final class TcMessage {
     }
     /**
      * <pre>
-     * 鼠标data，滚轮等数据
+     * wheel
      * </pre>
      *
      * <code>int32 data = 5;</code>
@@ -3732,10 +3829,6 @@ public final class TcMessage {
     public static final int TIMESTAMP_FIELD_NUMBER = 6;
     private long timestamp_;
     /**
-     * <pre>
-     * 当前毫秒值时间戳
-     * </pre>
-     *
      * <code>int64 timestamp = 6;</code>
      */
     @java.lang.Override
@@ -3743,10 +3836,6 @@ public final class TcMessage {
       return timestamp_;
     }
     /**
-     * <pre>
-     * 当前毫秒值时间戳
-     * </pre>
-     *
      * <code>int64 timestamp = 6;</code>
      */
     private void setTimestamp(long value) {
@@ -3754,10 +3843,6 @@ public final class TcMessage {
       timestamp_ = value;
     }
     /**
-     * <pre>
-     * 当前毫秒值时间戳
-     * </pre>
-     *
      * <code>int64 timestamp = 6;</code>
      */
     private void clearTimestamp() {
@@ -3958,7 +4043,7 @@ public final class TcMessage {
 
       /**
        * <pre>
-       *to do 当服务端采集方式为采集屏幕的时候，当前鼠标事件对应的屏幕索引
+       * to do
        * </pre>
        *
        * <code>int32 monitor_index = 1;</code>
@@ -3969,7 +4054,7 @@ public final class TcMessage {
       }
       /**
        * <pre>
-       *to do 当服务端采集方式为采集屏幕的时候，当前鼠标事件对应的屏幕索引
+       * to do
        * </pre>
        *
        * <code>int32 monitor_index = 1;</code>
@@ -3981,7 +4066,7 @@ public final class TcMessage {
       }
       /**
        * <pre>
-       *to do 当服务端采集方式为采集屏幕的时候，当前鼠标事件对应的屏幕索引
+       * to do
        * </pre>
        *
        * <code>int32 monitor_index = 1;</code>
@@ -3993,10 +4078,6 @@ public final class TcMessage {
       }
 
       /**
-       * <pre>
-       * 当前鼠标x值，占窗口宽度的比值
-       * </pre>
-       *
        * <code>float x_ratio = 2;</code>
        */
       @java.lang.Override
@@ -4004,10 +4085,6 @@ public final class TcMessage {
         return instance.getXRatio();
       }
       /**
-       * <pre>
-       * 当前鼠标x值，占窗口宽度的比值
-       * </pre>
-       *
        * <code>float x_ratio = 2;</code>
        */
       public Builder setXRatio(float value) {
@@ -4016,10 +4093,6 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <pre>
-       * 当前鼠标x值，占窗口宽度的比值
-       * </pre>
-       *
        * <code>float x_ratio = 2;</code>
        */
       public Builder clearXRatio() {
@@ -4029,10 +4102,6 @@ public final class TcMessage {
       }
 
       /**
-       * <pre>
-       * 当前鼠标y值，占窗口高度度的比值
-       * </pre>
-       *
        * <code>float y_ratio = 3;</code>
        */
       @java.lang.Override
@@ -4040,10 +4109,6 @@ public final class TcMessage {
         return instance.getYRatio();
       }
       /**
-       * <pre>
-       * 当前鼠标y值，占窗口高度度的比值
-       * </pre>
-       *
        * <code>float y_ratio = 3;</code>
        */
       public Builder setYRatio(float value) {
@@ -4052,10 +4117,6 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <pre>
-       * 当前鼠标y值，占窗口高度度的比值
-       * </pre>
-       *
        * <code>float y_ratio = 3;</code>
        */
       public Builder clearYRatio() {
@@ -4066,7 +4127,7 @@ public final class TcMessage {
 
       /**
        * <pre>
-       * 按键掩码, 用来表示摁下了什么按键、抬起了什么按键 ref: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
+       * see: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
        * </pre>
        *
        * <code>int32 button = 4;</code>
@@ -4077,7 +4138,7 @@ public final class TcMessage {
       }
       /**
        * <pre>
-       * 按键掩码, 用来表示摁下了什么按键、抬起了什么按键 ref: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
+       * see: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
        * </pre>
        *
        * <code>int32 button = 4;</code>
@@ -4089,7 +4150,7 @@ public final class TcMessage {
       }
       /**
        * <pre>
-       * 按键掩码, 用来表示摁下了什么按键、抬起了什么按键 ref: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
+       * see: https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event
        * </pre>
        *
        * <code>int32 button = 4;</code>
@@ -4102,7 +4163,7 @@ public final class TcMessage {
 
       /**
        * <pre>
-       * 鼠标data，滚轮等数据
+       * wheel
        * </pre>
        *
        * <code>int32 data = 5;</code>
@@ -4113,7 +4174,7 @@ public final class TcMessage {
       }
       /**
        * <pre>
-       * 鼠标data，滚轮等数据
+       * wheel
        * </pre>
        *
        * <code>int32 data = 5;</code>
@@ -4125,7 +4186,7 @@ public final class TcMessage {
       }
       /**
        * <pre>
-       * 鼠标data，滚轮等数据
+       * wheel
        * </pre>
        *
        * <code>int32 data = 5;</code>
@@ -4137,10 +4198,6 @@ public final class TcMessage {
       }
 
       /**
-       * <pre>
-       * 当前毫秒值时间戳
-       * </pre>
-       *
        * <code>int64 timestamp = 6;</code>
        */
       @java.lang.Override
@@ -4148,10 +4205,6 @@ public final class TcMessage {
         return instance.getTimestamp();
       }
       /**
-       * <pre>
-       * 当前毫秒值时间戳
-       * </pre>
-       *
        * <code>int64 timestamp = 6;</code>
        */
       public Builder setTimestamp(long value) {
@@ -4160,10 +4213,6 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <pre>
-       * 当前毫秒值时间戳
-       * </pre>
-       *
        * <code>int64 timestamp = 6;</code>
        */
       public Builder clearTimestamp() {
@@ -4356,10 +4405,6 @@ public final class TcMessage {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <pre>
-     * 是否可见
-     * </pre>
-     *
      * <code>bool visible = 1;</code>
      */
     boolean getVisible();
@@ -4395,10 +4440,6 @@ public final class TcMessage {
     int getHeight();
 
     /**
-     * <pre>
-     * 位图信息
-     * </pre>
-     *
      * <code>bytes bitmap = 8;</code>
      */
     com.google.protobuf.ByteString getBitmap();
@@ -4417,10 +4458,6 @@ public final class TcMessage {
     public static final int VISIBLE_FIELD_NUMBER = 1;
     private boolean visible_;
     /**
-     * <pre>
-     * 是否可见
-     * </pre>
-     *
      * <code>bool visible = 1;</code>
      */
     @java.lang.Override
@@ -4428,10 +4465,6 @@ public final class TcMessage {
       return visible_;
     }
     /**
-     * <pre>
-     * 是否可见
-     * </pre>
-     *
      * <code>bool visible = 1;</code>
      */
     private void setVisible(boolean value) {
@@ -4439,10 +4472,6 @@ public final class TcMessage {
       visible_ = value;
     }
     /**
-     * <pre>
-     * 是否可见
-     * </pre>
-     *
      * <code>bool visible = 1;</code>
      */
     private void clearVisible() {
@@ -4597,10 +4626,6 @@ public final class TcMessage {
     public static final int BITMAP_FIELD_NUMBER = 8;
     private com.google.protobuf.ByteString bitmap_;
     /**
-     * <pre>
-     * 位图信息
-     * </pre>
-     *
      * <code>bytes bitmap = 8;</code>
      */
     @java.lang.Override
@@ -4608,10 +4633,6 @@ public final class TcMessage {
       return bitmap_;
     }
     /**
-     * <pre>
-     * 位图信息
-     * </pre>
-     *
      * <code>bytes bitmap = 8;</code>
      */
     private void setBitmap(com.google.protobuf.ByteString value) {
@@ -4622,10 +4643,6 @@ public final class TcMessage {
       bitmap_ = value;
     }
     /**
-     * <pre>
-     * 位图信息
-     * </pre>
-     *
      * <code>bytes bitmap = 8;</code>
      */
     private void clearBitmap() {
@@ -4729,10 +4746,6 @@ public final class TcMessage {
 
 
       /**
-       * <pre>
-       * 是否可见
-       * </pre>
-       *
        * <code>bool visible = 1;</code>
        */
       @java.lang.Override
@@ -4740,10 +4753,6 @@ public final class TcMessage {
         return instance.getVisible();
       }
       /**
-       * <pre>
-       * 是否可见
-       * </pre>
-       *
        * <code>bool visible = 1;</code>
        */
       public Builder setVisible(boolean value) {
@@ -4752,10 +4761,6 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <pre>
-       * 是否可见
-       * </pre>
-       *
        * <code>bool visible = 1;</code>
        */
       public Builder clearVisible() {
@@ -4909,10 +4914,6 @@ public final class TcMessage {
       }
 
       /**
-       * <pre>
-       * 位图信息
-       * </pre>
-       *
        * <code>bytes bitmap = 8;</code>
        */
       @java.lang.Override
@@ -4920,10 +4921,6 @@ public final class TcMessage {
         return instance.getBitmap();
       }
       /**
-       * <pre>
-       * 位图信息
-       * </pre>
-       *
        * <code>bytes bitmap = 8;</code>
        */
       public Builder setBitmap(com.google.protobuf.ByteString value) {
@@ -4932,10 +4929,6 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <pre>
-       * 位图信息
-       * </pre>
-       *
        * <code>bytes bitmap = 8;</code>
        */
       public Builder clearBitmap() {
