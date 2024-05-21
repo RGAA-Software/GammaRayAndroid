@@ -9,10 +9,6 @@ import java.util.Random
 
 class RectangleBlock(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app) {
 
-    companion object {
-        const val TAG = "Effect"
-    }
-
     private lateinit var shapeRenderer: ShapeRenderer
     private val random = Random()
     private val randomIndices = mutableMapOf<Int, Int>()

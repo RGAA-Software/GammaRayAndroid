@@ -13,6 +13,10 @@ import com.tc.client.impl.ThunderApp
 
 open class EffectView(var context: Context, var thunderApp: ThunderApp) : ApplicationListener {
 
+    companion object {
+        public const val TAG = "Effect"
+    }
+
     private lateinit var camera: OrthographicCamera
     protected val leftSpectrum = mutableListOf<Double>()
     protected val rightSpectrum = mutableListOf<Double>()
