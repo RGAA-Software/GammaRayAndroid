@@ -11,20 +11,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.tc.client.impl.ThunderApp
 
-class EffectView(var context: Context, var thunderApp: ThunderApp) : ApplicationListener {
+open class EffectView(var context: Context, var thunderApp: ThunderApp) : ApplicationListener {
 
-    private lateinit var spriteBatch: SpriteBatch
-    private lateinit var bgTexture: Texture
     private lateinit var camera: OrthographicCamera
-    private lateinit var shapeRenderer: ShapeRenderer
     protected val leftSpectrum = mutableListOf<Double>()
     protected val rightSpectrum = mutableListOf<Double>()
+    protected lateinit var bgTexture: Texture
 
     override fun create() {
-        spriteBatch = SpriteBatch()
         camera = OrthographicCamera()
-        bgTexture = Texture(Gdx.files.internal("box2d/star.png"))
-        shapeRenderer = ShapeRenderer();
     }
 
     override fun resize(width: Int, height: Int) {
@@ -34,28 +29,7 @@ class EffectView(var context: Context, var thunderApp: ThunderApp) : Application
     override fun render() {
         Gdx.gl.glClearColor(0f, 0f, 0f, 1.0f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT or GL20.GL_DEPTH_BUFFER_BIT)
-        spriteBatch.begin()
-        spriteBatch.draw(bgTexture, 0.0f, 0.0f)
-        spriteBatch.end()
-
         fallDown()
-
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled)
-        shapeRenderer.setColor(0.2f, 0.2f, 0.3f, 1.0f)
-
-        val xGap = 2.0f;
-        val itemWidth = Gdx.graphics.width * 1.0f / leftSpectrum.size
-        val xStep = itemWidth - xGap;
-
-        leftSpectrum.forEachIndexed{idx, value ->
-            val xLeft = idx * (xStep + xGap);
-            shapeRenderer.rect(xLeft, 0.0f, xStep, value.toFloat() * 3,
-                Color.SALMON,
-                Color.SALMON,
-                Color.ORANGE,
-                Color.ORANGE)
-        }
-        shapeRenderer.end()
     }
 
     protected fun fallDown() {
