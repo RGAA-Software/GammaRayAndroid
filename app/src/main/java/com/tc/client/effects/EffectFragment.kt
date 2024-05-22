@@ -1,24 +1,23 @@
 package com.tc.client.effects
 
-import android.annotation.TargetApi
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.PixelFormat
 import android.opengl.GLSurfaceView
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.SurfaceView
 import android.view.View
 import android.view.ViewGroup
 import com.badlogic.gdx.ApplicationListener
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Input
 import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
 import com.badlogic.gdx.backends.android.AndroidFragmentApplication
 import com.tc.client.R
 import com.tc.client.effects.base.InterceptableViewGroup
-import com.tc.client.effects.spine.LibgdxSpineFragment
+import com.tc.client.effects.fireworks.GiftParticleContants
 import com.tc.client.impl.ThunderApp
 
 class EffectFragment(var thunderApp: ThunderApp) : AndroidFragmentApplication(), InputProcessor {
@@ -96,6 +95,12 @@ class EffectFragment(var thunderApp: ThunderApp) : AndroidFragmentApplication(),
     }
 
     override fun keyUp(keycode: Int): Boolean {
+        if (keycode == Input.Keys.BACK) {
+            activity?.runOnUiThread {
+                activity?.onBackPressed()
+            }
+            return true
+        }
         return false;
     }
 

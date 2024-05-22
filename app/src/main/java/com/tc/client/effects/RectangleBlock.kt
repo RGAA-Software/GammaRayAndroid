@@ -28,12 +28,12 @@ class RectangleBlock(var ctx: Context, var app: ThunderApp) : EffectView(ctx, ap
             return
         }
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled)
-        val verticalBlockCount: Int = 10
+        val verticalBlockCount: Int = 8
         val blockSize: Int = Gdx.graphics.height / verticalBlockCount
         val horizontalBlockCount: Int = Gdx.graphics.width / blockSize;
         // Log.i(TAG, "randomIndices size: ${randomIndices.size}, target size: ${(verticalBlockCount*horizontalBlockCount).toInt()}")
-        for (column in 0 until horizontalBlockCount) {
-            for (row in 0 until verticalBlockCount) {
+        for (column in 0 .. horizontalBlockCount) {
+            for (row in 0 .. verticalBlockCount) {
                 val index = (column * verticalBlockCount + row)
 //                if (randomIndices.size != verticalBlockCount*horizontalBlockCount) {
 //                    randomIndices[index] = (random.nextFloat()*leftSpectrum.size/3).toInt()

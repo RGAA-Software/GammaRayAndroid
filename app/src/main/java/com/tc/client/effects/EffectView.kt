@@ -32,7 +32,7 @@ open class EffectView(var context: Context, var thunderApp: ThunderApp) : Applic
 
     override fun render() {
         Gdx.gl.glClearColor(0f, 0f, 0f, 1.0f)
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT or GL20.GL_DEPTH_BUFFER_BIT)
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         fallDown()
     }
 
