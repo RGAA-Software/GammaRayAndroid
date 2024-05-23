@@ -1,4 +1,4 @@
-package com.tc.client;
+package com.tc.client.render;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -10,8 +10,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.tc.client.App;
+import com.tc.client.AppContext;
+import com.tc.client.ControlLayer;
+import com.tc.client.R;
 import com.tc.client.impl.ThunderApp;
-import com.tc.client.util.Result;
 import com.tc.client.util.ViewUtil;
 
 public class FrameRenderActivity extends Activity {

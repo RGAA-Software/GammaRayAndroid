@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".FrameRenderActivity">
+    tools:context=".render.FrameRenderActivity">
 
-    <com.tc.client.FrameRenderView
+    <com.tc.client.render.FrameRenderView
         android:id="@+id/id_frame_render_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

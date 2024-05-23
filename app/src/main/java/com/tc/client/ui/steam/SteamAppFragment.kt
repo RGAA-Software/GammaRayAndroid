@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
-import com.tc.client.FrameRenderActivity
+import com.tc.client.render.FrameRenderActivity
 import com.tc.client.Settings
 import com.tc.client.databinding.FragmentSteamAppBinding
 import com.tc.client.db.DBServer
@@ -25,11 +25,9 @@ import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
 import com.tc.client.steam.SteamGame
 import com.tc.client.ui.BaseFragment
-import com.tc.client.ui.machine.MachineOpDialog
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import java.util.Collections
 
 class SteamAppFragment() : BaseFragment() {
 

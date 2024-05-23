@@ -59,7 +59,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".FrameRenderActivity"
+            android:name=".render.FrameRenderActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity

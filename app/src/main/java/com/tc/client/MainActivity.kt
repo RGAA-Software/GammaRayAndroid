@@ -18,6 +18,7 @@ import com.tc.client.events.OnAddScanInfo
 import com.tc.client.events.OnServerAvailable
 import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerScanned
+import com.tc.client.render.FrameRenderActivity
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.ui.BaseFragment
 import com.tc.client.ui.MainTopRightMenu

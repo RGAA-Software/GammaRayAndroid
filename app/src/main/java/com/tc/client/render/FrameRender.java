@@ -1,4 +1,4 @@
-package com.tc.client;
+package com.tc.client.render;
 
 import android.content.Context;
 import android.graphics.SurfaceTexture;
@@ -7,6 +7,10 @@ import android.opengl.GLES32;
 import android.opengl.GLSurfaceView;
 import android.view.Surface;
 
+import com.tc.client.Director;
+import com.tc.client.Shader;
+import com.tc.client.Sprite;
+import com.tc.client.VAO;
 import com.tc.client.impl.ThunderApp;
 
 import java.nio.FloatBuffer;
