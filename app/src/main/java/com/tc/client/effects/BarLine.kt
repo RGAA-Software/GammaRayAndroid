@@ -24,6 +24,9 @@ class BarLine(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app) {
         super.resize(width, height)
     }
 
+    val fromColor = Color(0x72EDF2ff)
+    val toColor = Color(0x5151E5ff)
+
     override fun render() {
         super.render()
 //        spriteBatch.begin()
@@ -32,17 +35,24 @@ class BarLine(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app) {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled)
         shapeRenderer.setColor(0.2f, 0.2f, 0.3f, 1.0f)
 
-        val xGap = 2.0f;
-        val itemWidth = Gdx.graphics.width * 1.0f / leftSpectrum.size
+        val xGap = 0;//2.0f;
+        val itemWidth = Gdx.graphics.width * 1.0f / leftSpectrum.size * 1.2f
         val xStep = itemWidth - xGap;
 
         leftSpectrum.forEachIndexed{idx, value ->
             val xLeft = idx * (xStep + xGap);
-            shapeRenderer.rect(xLeft, 0.0f, xStep, value.toFloat() * 3,
-                Color.LIME,
-                Color.LIME,
-                Color.WHITE,
-                Color.WHITE)
+            val barValue = value.toFloat() * 3.6f
+            shapeRenderer.rect(xLeft, 0.0f, xStep, barValue,
+                fromColor,
+                fromColor,
+                toColor,
+                toColor)
+            shapeRenderer.rect(xLeft, barValue, xStep, Gdx.graphics.height-barValue,
+                toColor,
+                toColor,
+                fromColor,
+                fromColor
+                )
         }
         shapeRenderer.end()
     }

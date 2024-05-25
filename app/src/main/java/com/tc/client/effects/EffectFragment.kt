@@ -42,9 +42,9 @@ class EffectFragment(var thunderApp: ThunderApp) : AndroidFragmentApplication(),
 
     private fun buildEffectView() {
         container = rootView.findViewById<InterceptableViewGroup>(R.id.container)
-        //effectView = BarLine(requireContext(), thunderApp)
+        effectView = BarLine(requireContext(), thunderApp)
         //effectView = RectangleBlock(requireContext(), thunderApp)
-        effectView = HexagonBlock(requireContext(), thunderApp)
+        //effectView = HexagonBlock(requireContext(), thunderApp)
         val eView: View = CreateGLAlpha(effectView)
         container.addView(eView)
         container.setIntercept(true)
