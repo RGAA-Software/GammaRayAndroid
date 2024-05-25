@@ -3,6 +3,7 @@ package com.tc.client.render;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.InputDevice;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
+import static com.tc.client.render.GamepadButtons.*;
 
 public class FrameRenderView extends GLSurfaceView {
 
@@ -20,7 +22,27 @@ public class FrameRenderView extends GLSurfaceView {
 
     private ThunderApp mThunderApp;
     private FrameRender mRender;
-    private Dpad mDpad = new Dpad();
+    private final Dpad mDpad = new Dpad();
+    private final XInputGamepad mXInputGamepad = new XInputGamepad();
+
+    private boolean buttonAPressed = false;
+    private boolean buttonBPressed = false;
+    private boolean buttonXPressed = false;
+    private boolean buttonYPressed = false;
+    private boolean buttonStartPressed = false;
+    private boolean buttonSelectPressed = false;
+    private boolean buttonLBPressed = false;
+    private boolean buttonRBPressed = false;
+    private boolean buttonLThumbPressed = false;
+    private boolean buttonRThumbPressed = false;
+
+    private float leftThumbX = 0.0f;
+    private float leftThumbY = 0.0f;
+    private float rightThumbX = 0.0f;
+    private float rightThumbY = 0.0f;
+
+    private float leftTrigger = 0.0f;
+    private float rightTrigger = 0.0f;
 
     public FrameRenderView(Context context) {
         this(context, null);
@@ -41,7 +63,7 @@ public class FrameRenderView extends GLSurfaceView {
                 EGL10.EGL_BLUE_SIZE, 8,
                 EGL10.EGL_DEPTH_SIZE, 24,
                 EGL10.EGL_SAMPLE_BUFFERS, 1,
-//                        EGL10.EGL_SAMPLES, 4,
+                //EGL10.EGL_SAMPLES, 4,
                 EGL10.EGL_NONE
             };
             EGLConfig[] configs = new EGLConfig[1];
@@ -83,19 +105,16 @@ public class FrameRenderView extends GLSurfaceView {
 
     public void onEventTick() {
         //mRender.onRenderTick();
+        sendGamepadState();
     }
 
     @Override
     public boolean onGenericMotionEvent(MotionEvent event) {
         // Check if this event if from a D-pad and process accordingly.
         if (Dpad.isDpadDevice(event)) {
-
-            int press = mDpad.getDirectionPressed(event);
-            switch (press) {
-                case Dpad.LEFT:
-                    return true;
-                case Dpad.RIGHT:
-                    return true;
+            boolean processedDirection = mDpad.getDirectionPressed(event);
+            if (processedDirection) {
+                return true;
             }
         }
 
@@ -106,6 +125,7 @@ public class FrameRenderView extends GLSurfaceView {
 
             // Process all historical movement samples in the batch
             final int historySize = event.getHistorySize();
+            Log.i(TAG, "History joystick size: " + historySize );
 
             // Process the movements starting from the
             // earliest historical position in the batch
@@ -121,10 +141,8 @@ public class FrameRenderView extends GLSurfaceView {
         return super.onGenericMotionEvent(event);
     }
 
-    private static float getCenteredAxis(MotionEvent event,
-                                         InputDevice device, int axis, int historyPos) {
-        final InputDevice.MotionRange range =
-                device.getMotionRange(axis, event.getSource());
+    private static float getCenteredAxis(MotionEvent event, InputDevice device, int axis, int historyPos) {
+        final InputDevice.MotionRange range = device.getMotionRange(axis, event.getSource());
 
         // A joystick at rest does not always report an absolute position of
         // (0,0). Use the getFlat() method to determine the range of values
@@ -145,56 +163,51 @@ public class FrameRenderView extends GLSurfaceView {
     }
 
     private void processJoystickInput(MotionEvent event, int historyPos) {
-
         InputDevice inputDevice = event.getDevice();
+        float lx = getCenteredAxis(event, inputDevice, MotionEvent.AXIS_X, historyPos);
+        float ly = getCenteredAxis(event, inputDevice, MotionEvent.AXIS_Y, historyPos);
+        leftThumbX = lx;
+        leftThumbY = ly;
 
-        // Calculate the horizontal distance to move by
-        // using the input value from one of these physical controls:
-        // the left control stick, hat axis, or the right control stick.
-        float x = getCenteredAxis(event, inputDevice,
-                MotionEvent.AXIS_X, historyPos);
-        if (x == 0) {
-            x = getCenteredAxis(event, inputDevice,
-                    MotionEvent.AXIS_HAT_X, historyPos);
-        }
-        if (x == 0) {
-            x = getCenteredAxis(event, inputDevice,
-                    MotionEvent.AXIS_Z, historyPos);
-        }
+        float rx = getCenteredAxis(event, inputDevice, MotionEvent.AXIS_Z, historyPos);
+        float ry = getCenteredAxis(event, inputDevice, MotionEvent.AXIS_RZ, historyPos);
+        rightThumbX = rx;
+        rightThumbY = ry;
 
-        // Calculate the vertical distance to move by
-        // using the input value from one of these physical controls:
-        // the left control stick, hat switch, or the right control stick.
-        float y = getCenteredAxis(event, inputDevice,
-                MotionEvent.AXIS_Y, historyPos);
-        if (y == 0) {
-            y = getCenteredAxis(event, inputDevice,
-                    MotionEvent.AXIS_HAT_Y, historyPos);
-        }
-        if (y == 0) {
-            y = getCenteredAxis(event, inputDevice,
-                    MotionEvent.AXIS_RZ, historyPos);
-        }
-
-        // Update the ship object based on the new x and y values
+        float lt = event.getAxisValue(MotionEvent.AXIS_LTRIGGER);
+        float rt = event.getAxisValue(MotionEvent.AXIS_RTRIGGER);
+        leftTrigger = lt;
+        rightTrigger = rt;
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        boolean handled = false;
-        if ((event.getSource() & InputDevice.SOURCE_GAMEPAD)
-                == InputDevice.SOURCE_GAMEPAD) {
+        boolean handled = true;
+        if ((event.getSource() & InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD) {
+            Log.i(TAG, "repeatCount: " + event.getRepeatCount() + ", action: " + event.getAction() + ", code: " + event.getKeyCode());
             if (event.getRepeatCount() == 0) {
-                switch (keyCode) {
-                    // Handle gamepad and D-pad button presses to
-                    // navigate the ship
-
-                    default:
-                        if (isFireKey(keyCode)) {
-                            // Update the ship object to fire lasers
-                            handled = true;
-                        }
-                        break;
+                if (keyCode == KeyEvent.KEYCODE_BUTTON_A) {
+                    buttonAPressed = true;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_B) {
+                    buttonBPressed = true;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_X) {
+                    buttonXPressed = true;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_Y) {
+                    buttonYPressed = true;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_START) {
+                    buttonStartPressed = true;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_SELECT) {
+                    buttonSelectPressed = true;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_L1) {
+                    buttonLBPressed = true;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_R1) {
+                    buttonRBPressed = true;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_THUMBL) {
+                    buttonLThumbPressed = true;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_THUMBR) {
+                    buttonRThumbPressed = true;
+                } else {
+                    handled = false;
                 }
             }
             if (handled) {
@@ -204,16 +217,40 @@ public class FrameRenderView extends GLSurfaceView {
         return super.onKeyDown(keyCode, event);
     }
 
-    private static boolean isFireKey(int keyCode) {
-        // Here we treat Button_A and DPAD_CENTER as the primary action
-        // keys for the game.
-        return keyCode == KeyEvent.KEYCODE_DPAD_CENTER
-                || keyCode == KeyEvent.KEYCODE_BUTTON_A;
-    }
-
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-
+        boolean handled = true;
+        if ((event.getSource() & InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD) {
+            Log.i(TAG, "repeatCount: " + event.getRepeatCount() + ", action: " + event.getAction());
+            if (event.getRepeatCount() == 0) {
+                if (keyCode == KeyEvent.KEYCODE_BUTTON_A) {
+                    buttonAPressed = false;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_B) {
+                    buttonBPressed = false;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_X) {
+                    buttonXPressed = false;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_Y) {
+                    buttonYPressed = false;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_START) {
+                    buttonStartPressed = false;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_SELECT) {
+                    buttonSelectPressed = false;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_L1) {
+                    buttonLBPressed = false;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_R1) {
+                    buttonRBPressed = false;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_THUMBL) {
+                    buttonLThumbPressed = false;
+                } else if (keyCode == KeyEvent.KEYCODE_BUTTON_THUMBR) {
+                    buttonRThumbPressed = false;
+                } else {
+                    handled = false;
+                }
+            }
+            if (handled) {
+                return true;
+            }
+        }
         return super.onKeyUp(keyCode, event);
     }
 
@@ -236,4 +273,77 @@ public class FrameRenderView extends GLSurfaceView {
         }
         return gameControllerDeviceIds;
     }
+
+    private void sendGamepadState() {
+        if (mThunderApp == null) {
+            return;
+        }
+        mXInputGamepad.wButtons = 0;
+
+        if (mDpad.leftPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_DPAD_LEFT;
+        }
+        if (mDpad.rightPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_DPAD_RIGHT;
+        }
+        if (mDpad.upPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_DPAD_UP;
+        }
+        if (mDpad.downPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_DPAD_DOWN;
+        }
+
+        if (buttonAPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_A;
+        }
+        if (buttonBPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_B;
+        }
+        if (buttonXPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_X;
+        }
+        if (buttonYPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_Y;
+        }
+
+        if (buttonStartPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_START;
+        }
+        if (buttonSelectPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_BACK;
+        }
+
+        if (buttonLBPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_LEFT_SHOULDER;
+        }
+        if (buttonRBPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_RIGHT_SHOULDER;
+        }
+
+        if (buttonLThumbPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_LEFT_THUMB;
+        }
+        if (buttonRThumbPressed) {
+            mXInputGamepad.wButtons |= GP_XINPUT_GAMEPAD_RIGHT_THUMB;
+        }
+
+        int maxThumbValue = 32767;
+        mXInputGamepad.sThumbLX = (int) (leftThumbX * maxThumbValue);
+        mXInputGamepad.sThumbLY = (int) (leftThumbY * maxThumbValue);
+        mXInputGamepad.sThumbRX = (int) (rightThumbX * maxThumbValue);
+        mXInputGamepad.sThumbRY = (int) (rightThumbY * maxThumbValue);
+
+        int maxTriggerValue = 255;
+        mXInputGamepad.bLeftTrigger = (int) (leftTrigger * maxTriggerValue);
+        mXInputGamepad.bRightTrigger = (int) (rightTrigger * maxTriggerValue);
+
+        mThunderApp.sendGamepadState(mXInputGamepad.wButtons,
+                mXInputGamepad.bLeftTrigger,
+                mXInputGamepad.bRightTrigger,
+                mXInputGamepad.sThumbLX,
+                mXInputGamepad.sThumbLY,
+                mXInputGamepad.sThumbRX,
+                mXInputGamepad.sThumbRY);
+    }
+
 }

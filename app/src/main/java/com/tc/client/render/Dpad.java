@@ -1,66 +1,77 @@
 package com.tc.client.render;
 
+import android.util.Log;
+import android.util.Pair;
 import android.view.InputDevice;
 import android.view.InputEvent;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Dpad {
+    private static final String TAG = "Dpad";
+
     final static int UP       = 0;
     final static int LEFT     = 1;
     final static int RIGHT    = 2;
     final static int DOWN     = 3;
     final static int CENTER   = 4;
 
-    int directionPressed = -1; // initialized to -1
+    public boolean leftPressed = false;
+    public boolean rightPressed = false;
+    public boolean upPressed = false;
+    public boolean downPressed = false;
 
-    public int getDirectionPressed(InputEvent event) {
+    public boolean getDirectionPressed(InputEvent event) {
         if (!isDpadDevice(event)) {
-            return -1;
+            return false;
         }
 
         // If the input event is a MotionEvent, check its hat axis values.
         if (event instanceof MotionEvent) {
-
             // Use the hat axis value to find the D-pad direction
             MotionEvent motionEvent = (MotionEvent) event;
             float xaxis = motionEvent.getAxisValue(MotionEvent.AXIS_HAT_X);
             float yaxis = motionEvent.getAxisValue(MotionEvent.AXIS_HAT_Y);
 
-            // Check if the AXIS_HAT_X value is -1 or 1, and set the D-pad
-            // LEFT and RIGHT direction accordingly.
+            leftPressed = false;
+            rightPressed = false;
             if (Float.compare(xaxis, -1.0f) == 0) {
-                directionPressed =  Dpad.LEFT;
+                leftPressed = true;
+                return true;
             } else if (Float.compare(xaxis, 1.0f) == 0) {
-                directionPressed =  Dpad.RIGHT;
+                rightPressed = true;
+                return true;
             }
-            // Check if the AXIS_HAT_Y value is -1 or 1, and set the D-pad
-            // UP and DOWN direction accordingly.
-            else if (Float.compare(yaxis, -1.0f) == 0) {
-                directionPressed =  Dpad.UP;
+
+            upPressed = false;
+            downPressed = false;
+            if (Float.compare(yaxis, -1.0f) == 0) {
+                upPressed = true;
+                return true;
             } else if (Float.compare(yaxis, 1.0f) == 0) {
-                directionPressed =  Dpad.DOWN;
+                downPressed = true;
+                return true;
             }
-        }
-
-        // If the input event is a KeyEvent, check its key code.
-        else if (event instanceof KeyEvent) {
-
-            // Use the key code to find the D-pad direction.
+        } else if (event instanceof KeyEvent) {
+            Log.i(TAG, "getDirectionPressed KeyEvent: " + ((KeyEvent)event).getAction());
             KeyEvent keyEvent = (KeyEvent) event;
             if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT) {
-                directionPressed = Dpad.LEFT;
+
             } else if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT) {
-                directionPressed = Dpad.RIGHT;
+
             } else if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_DPAD_UP) {
-                directionPressed = Dpad.UP;
+
             } else if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN) {
-                directionPressed = Dpad.DOWN;
+
             } else if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER) {
-                directionPressed = Dpad.CENTER;
+
             }
         }
-        return directionPressed;
+
+        return false;
     }
 
     public static boolean isDpadDevice(InputEvent event) {

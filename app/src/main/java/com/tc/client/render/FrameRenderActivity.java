@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -57,7 +59,7 @@ public class FrameRenderActivity extends Activity {
         mTickThread = new Thread(() -> {
             while(!mExitTickThread) {
                  mHandler.post(() -> {
-                     mControlLayer.onEventTick();
+                     //mControlLayer.onEventTick();
                      mFrameRenderView.onEventTick();
                  });
                 SystemClock.sleep(17);
@@ -119,4 +121,13 @@ public class FrameRenderActivity extends Activity {
         Log.i(TAG, "After resize view, width: " + targetWidth + ", height: " + screenHeight);
     }
 
+    @Override
+    public boolean dispatchGenericMotionEvent(MotionEvent ev) {
+        return super.dispatchGenericMotionEvent(ev);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        return super.dispatchKeyEvent(event);
+    }
 }

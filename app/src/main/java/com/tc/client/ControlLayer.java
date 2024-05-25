@@ -1,5 +1,7 @@
 package com.tc.client;
 
+import static com.tc.client.render.GamepadButtons.*;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -17,22 +19,6 @@ import com.tc.client.widgets.RockerView;
 
 public class ControlLayer extends FrameLayout {
     private static final String TAG = "Controller";
-
-    private static final int GP_XINPUT_GAMEPAD_DPAD_UP = 0x0001;
-    private static final int GP_XINPUT_GAMEPAD_DPAD_DOWN =	0x0002;
-    private static final int GP_XINPUT_GAMEPAD_DPAD_LEFT =	0x0004;
-    private static final int GP_XINPUT_GAMEPAD_DPAD_RIGHT =	0x0008;
-    private static final int GP_XINPUT_GAMEPAD_START =	0x0010;
-    private static final int GP_XINPUT_GAMEPAD_BACK =	0x0020;
-    private static final int GP_XINPUT_GAMEPAD_LEFT_THUMB =	0x0040;
-    private static final int GP_XINPUT_GAMEPAD_RIGHT_THUMB =	0x0080;
-    private static final int GP_XINPUT_GAMEPAD_LEFT_SHOULDER =	0x0100;
-    private static final int GP_XINPUT_GAMEPAD_RIGHT_SHOULDER =	0x0200;
-    private static final int GP_XINPUT_GAMEPAT_XBOX = 0x0400;
-    private static final int GP_XINPUT_GAMEPAD_A =	0x1000;
-    private static final int GP_XINPUT_GAMEPAD_B =	0x2000;
-    private static final int GP_XINPUT_GAMEPAD_X =	0x4000;
-    private static final int GP_XINPUT_GAMEPAD_Y =	0x8000;
 
     private boolean mInit;
     private DPadButton mDpadX;

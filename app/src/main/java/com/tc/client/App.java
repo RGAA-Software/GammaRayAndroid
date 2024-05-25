@@ -13,7 +13,7 @@ public class App extends Application {
     private AppContext appContext;
     public static SensorManager sm;
     private static App instance;
-    private UsbDeviceManager usbDeviceManager;
+    //private UsbDeviceManager usbDeviceManager;
 
     private static int sDens = 0;
 
@@ -37,8 +37,8 @@ public class App extends Application {
         sDens = dm.densityDpi;
         Log.d(TAG, "dens:" + sDens);
 
-        usbDeviceManager = new UsbDeviceManager(this);
-        usbDeviceManager.start();
+//        usbDeviceManager = new UsbDeviceManager(this);
+//        usbDeviceManager.start();
     }
 
     public AppContext getAppContext() {

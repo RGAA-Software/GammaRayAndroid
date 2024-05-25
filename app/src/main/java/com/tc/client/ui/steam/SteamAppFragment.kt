@@ -199,9 +199,9 @@ class SteamAppFragment() : BaseFragment() {
 
                 notifyIndices.forEach {
                     steamAppAdapter.notifyItemChanged(it, 0)
-                    Log.i(TAG, "Notify...$it")
+                    //Log.i(TAG, "Notify...$it")
                 }
-                Log.i(TAG, "----------------------")
+                //Log.i(TAG, "----------------------")
             }
         }
     }

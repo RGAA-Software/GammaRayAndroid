@@ -108,6 +108,7 @@ Java_com_tc_client_impl_ThunderApp_nativeRenderTick(JNIEnv *env, jobject thiz) {
         g_app->OnRenderTick(env);
     }
 }
+
 extern "C" JNIEXPORT void JNICALL
 Java_com_tc_client_impl_ThunderApp_sendGamepadState(JNIEnv *env, jobject thiz, jint buttons,
                                                     jint left_trigger, jint right_trigger,
