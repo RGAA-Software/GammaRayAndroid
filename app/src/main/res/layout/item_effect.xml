@@ -30,7 +30,7 @@
         <TextView
             android:id="@+id/id_app_name"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="65dp"
             android:background="#cfff"
             android:ellipsize="end"
             android:gravity="center"

@@ -45,6 +45,7 @@ class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks
         fragmentContainer = findViewById(R.id.id_fragment_container)
         srvIp = intent.getStringExtra("ip")!!
         srvPort = intent.getIntExtra("port", 20371)
+        val effectIdx = intent.getIntExtra("idx", 1)
 
         appContext = (application as App).appContext
 
@@ -52,7 +53,7 @@ class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks
         thunderApp.init(false, null, false, false, 0);
         thunderApp.start()
 
-        effectFragment = EffectFragment(thunderApp)
+        effectFragment = EffectFragment(thunderApp, effectIdx)
 
         renderTimer.schedule(object: TimerTask() {
             override fun run() {

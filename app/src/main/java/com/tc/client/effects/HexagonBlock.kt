@@ -8,15 +8,10 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.crashinvaders.vfx.VfxManager
-import com.crashinvaders.vfx.effects.BloomEffect
 import com.crashinvaders.vfx.effects.ChainVfxEffect
 import com.crashinvaders.vfx.effects.CrtEffect
-import com.crashinvaders.vfx.effects.FilmGrainEffect
-import com.crashinvaders.vfx.effects.GaussianBlurEffect
 import com.crashinvaders.vfx.effects.LensFlareEffect
 import com.crashinvaders.vfx.effects.OldTvEffect
-import com.crashinvaders.vfx.effects.VfxEffect
-import com.crashinvaders.vfx.effects.WaterDistortionEffect
 import com.tc.client.impl.ThunderApp
 import space.earlygrey.shapedrawer.ShapeDrawer
 import java.util.Random
@@ -32,6 +27,7 @@ class HexagonBlock(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app)
     private val vfxEffects = mutableListOf<ChainVfxEffect>()
     private val random = Random()
     private val randomSegmentCount = 36 + random.nextInt(30)
+    private var renderRotation = 0.0f
 
     override fun create() {
         super.create()
@@ -55,8 +51,8 @@ class HexagonBlock(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app)
         vfxEffects.add(CrtEffect())
         vfxEffects.add(OldTvEffect())
         vfxEffects.add(LensFlareEffect())
-        vfxEffects.add(FilmGrainEffect())
-        vfxEffects.add(WaterDistortionEffect(0.0f, 0.0f))
+//        vfxEffects.add(FilmGrainEffect())
+//        vfxEffects.add(WaterDistortionEffect(0.0f, 0.0f))
         vfxEffects.forEach {
             vfxManager.addEffect(it)
         }
@@ -68,11 +64,13 @@ class HexagonBlock(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app)
     }
 
     override fun render() {
-        // Clean up internal buffers, as we don't need any information from the last render.
         vfxManager.cleanUpBuffers();
-        // Begin render to an off-screen buffer.
         vfxManager.beginInputCapture();
+
         super.render()
+
+        renderRotation += Gdx.graphics.deltaTime
+
         val verticalCount = 8
         val scaleSize = Gdx.graphics.height/verticalCount/2;
         val horizontalCount = Gdx.graphics.width/scaleSize/2;
@@ -90,7 +88,8 @@ class HexagonBlock(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app)
                     7,
                     scaleSize.toFloat(),
                     scaleSize.toFloat(),
-                    index* 5.0f
+                    renderRotation
+//                    index* 5.0f
                 );
             }
         }
@@ -105,7 +104,6 @@ class HexagonBlock(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app)
 
         // Render result to the screen.
         vfxManager.renderToScreen();
-
     }
 
     override fun dispose() {

@@ -28,7 +28,8 @@ class RectangleBlock(var ctx: Context, var app: ThunderApp) : EffectView(ctx, ap
             return
         }
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled)
-        val verticalBlockCount: Int = 8
+        val verticalBlockCount: Int = 10
+        val padding = 3;
         val blockSize: Int = Gdx.graphics.height / verticalBlockCount
         val horizontalBlockCount: Int = Gdx.graphics.width / blockSize;
         // Log.i(TAG, "randomIndices size: ${randomIndices.size}, target size: ${(verticalBlockCount*horizontalBlockCount).toInt()}")
@@ -46,8 +47,8 @@ class RectangleBlock(var ctx: Context, var app: ThunderApp) : EffectView(ctx, ap
                 val targetIndex = index % 50
                 //Log.i(TAG, "targetIndex: $targetIndex")
                 val factor: Float = (leftSpectrum[targetIndex]*1.0f / 250.0f).toFloat()
-                shapeRenderer.setColor(0.05f + factor, 0.13f + factor*1.2f, 0.35f + factor, 1.0f)
-                shapeRenderer.rect(column*blockSize*1.0f, row*blockSize*1.0f, blockSize*1.0f, blockSize*1.0f)
+                shapeRenderer.setColor(factor * 2.2f, factor*1.6f, factor*0.8f, 1.0f)
+                shapeRenderer.rect(column*blockSize*1.0f + padding, row*blockSize*1.0f + padding, blockSize*1.0f - padding * 2, blockSize*1.0f - padding*2)
 
             }
         }

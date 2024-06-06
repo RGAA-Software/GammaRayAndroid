@@ -20,7 +20,7 @@ import com.tc.client.effects.base.InterceptableViewGroup
 import com.tc.client.effects.fireworks.GiftParticleContants
 import com.tc.client.impl.ThunderApp
 
-class EffectFragment(var thunderApp: ThunderApp) : AndroidFragmentApplication(), InputProcessor {
+class EffectFragment(var thunderApp: ThunderApp, var effectIdx: Int) : AndroidFragmentApplication(), InputProcessor {
 
     private lateinit var rootView: View
     private lateinit var container: InterceptableViewGroup
@@ -42,9 +42,14 @@ class EffectFragment(var thunderApp: ThunderApp) : AndroidFragmentApplication(),
 
     private fun buildEffectView() {
         container = rootView.findViewById<InterceptableViewGroup>(R.id.container)
-        effectView = BarLine(requireContext(), thunderApp)
-        //effectView = RectangleBlock(requireContext(), thunderApp)
-        //effectView = HexagonBlock(requireContext(), thunderApp)
+        if (effectIdx == EffectDefinition.EFFECT_BAR_LINE) {
+            effectView = BarLine(requireContext(), thunderApp)
+        } else if (effectIdx == EffectDefinition.EFFECT_HEXAGON_BLOCK) {
+            effectView = HexagonBlock(requireContext(), thunderApp)
+        } else if (effectIdx == EffectDefinition.EFFECT_RECTANGLE_BLOCK) {
+            effectView = RectangleBlock(requireContext(), thunderApp)
+        }
+
         val eView: View = CreateGLAlpha(effectView)
         container.addView(eView)
         container.setIntercept(true)

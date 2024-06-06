@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tc.client.Settings
 import com.tc.client.databinding.FragmentEffectBinding
 import com.tc.client.effects.EffectActivity
+import com.tc.client.effects.EffectDefinition
 import com.tc.client.ui.BaseFragment
 import com.tc.client.ui.base.OnListItemListener
 
@@ -20,14 +21,13 @@ class EffectDisplayFragment() : BaseFragment() {
     private var _binding: FragmentEffectBinding? = null
     private val binding get() = _binding!!
     private lateinit var effectDisplayAdapter: EffectDisplayAdapter
-    private val effects: MutableList<EffectDisplayItem> = mutableListOf()
+    private val effects: MutableList<EffectDefinition.EffectInfo> = mutableListOf()
+    private val effectDefinition = EffectDefinition()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        for (i in 0 until 10) {
-            val item = EffectDisplayItem()
-            effects.add(item)
-        }
+        effectDefinition.init()
+        effects.addAll(effectDefinition.effects)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -44,9 +44,9 @@ class EffectDisplayFragment() : BaseFragment() {
             effectDisplayAdapter = EffectDisplayAdapter(context, effects);
             adapter = effectDisplayAdapter;
             addItemDecoration(EffectDisplayItemDecoration(90));
-            effectDisplayAdapter.setOnItemClickListener(object: OnListItemListener<EffectDisplayItem> {
-                override fun onItemClicked(pos: Int, value: EffectDisplayItem) {
-                    startEffectActivity();
+            effectDisplayAdapter.setOnItemClickListener(object: OnListItemListener<EffectDefinition.EffectInfo> {
+                override fun onItemClicked(pos: Int, value: EffectDefinition.EffectInfo) {
+                    startEffectActivity(value);
                 }
             })
 
@@ -69,7 +69,7 @@ class EffectDisplayFragment() : BaseFragment() {
         }
     }
 
-    private fun startEffectActivity() {
+    private fun startEffectActivity(value: EffectDefinition.EffectInfo) {
         val intent = Intent(context, EffectActivity::class.java);
         val server = Settings.getInstance().currentServer
         if (!server.available || TextUtils.isEmpty(server.serverIp)) {
@@ -78,6 +78,7 @@ class EffectDisplayFragment() : BaseFragment() {
         }
         intent.putExtra("ip", server.serverIp);
         intent.putExtra("port", server.streamWsPort);
+        intent.putExtra("idx", value.idx)
         context?.startActivity(intent)
     }
 
