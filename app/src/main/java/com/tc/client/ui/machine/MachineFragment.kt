@@ -49,7 +49,6 @@ class MachineFragment() : BaseFragment() {
         preset.available = true;
         machines.add(preset);
         Log.i(TAG, "MachineFragment onCreate, will loadServers")
-        loadServers();
         EventBus.getDefault().register(this);
     }
 
@@ -130,6 +129,8 @@ class MachineFragment() : BaseFragment() {
                 dialog.show()
             }
         })
+
+        loadServers();
     }
 
     override fun onStart() {
