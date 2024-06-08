@@ -2,6 +2,8 @@ package com.tc.client.effects
 
 import android.app.Activity
 import android.os.Bundle
+import android.os.PowerManager
+import android.os.PowerManager.WakeLock
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -29,6 +31,7 @@ class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks
     private var renderTimer: Timer = Timer()
     private lateinit var fragmentContainer: FrameLayout
     private lateinit var effectFragment: EffectFragment
+    private var wakeLock: WakeLock? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +52,7 @@ class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks
 
         appContext = (application as App).appContext
 
-        thunderApp = ThunderApp(srvIp, srvPort, true)
+        thunderApp = ThunderApp(srvIp, srvPort, true, false)
         thunderApp.init(false, null, false, false, 0);
         thunderApp.start()
 
@@ -64,16 +67,25 @@ class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks
         }, 100, 16);
 
         supportFragmentManager.beginTransaction().add(R.id.id_fragment_container, effectFragment).commit()
+
+        val powerManager = getSystemService(POWER_SERVICE) as PowerManager
+        wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "GammaRay:WakeLock")
     }
 
     override fun onResume() {
         super.onResume()
         thunderApp.nativeResume()
+        if (wakeLock != null) {
+            wakeLock?.acquire(120*60*1000L /*10 minutes*/);
+        }
     }
 
     override fun onPause() {
         super.onPause()
         thunderApp.nativePause()
+        if (wakeLock != null) {
+            wakeLock?.release();
+        }
     }
 
     override fun onDestroy() {

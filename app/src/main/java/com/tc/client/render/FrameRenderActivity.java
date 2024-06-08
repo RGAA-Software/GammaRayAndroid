@@ -45,7 +45,7 @@ public class FrameRenderActivity extends Activity {
 
         appContext = ((App)getApplication()).getAppContext();
 
-        mThunderApp = new ThunderApp(mIp, mPort, false);
+        mThunderApp = new ThunderApp(mIp, mPort, false, true);
 
         mFrameRenderView = findViewById(R.id.id_frame_render_view);
         mFrameRenderView.init(mThunderApp);

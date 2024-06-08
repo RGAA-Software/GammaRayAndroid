@@ -1206,6 +1206,11 @@ public final class TcMessage {
      * <code>.tc.ClientType client_type = 2;</code>
      */
     tc.TcMessage.ClientType getClientType();
+
+    /**
+     * <code>bool enable_controller = 3;</code>
+     */
+    boolean getEnableController();
   }
   /**
    * Protobuf type {@code tc.Hello}
@@ -1280,6 +1285,30 @@ public final class TcMessage {
     private void clearClientType() {
       
       clientType_ = 0;
+    }
+
+    public static final int ENABLE_CONTROLLER_FIELD_NUMBER = 3;
+    private boolean enableController_;
+    /**
+     * <code>bool enable_controller = 3;</code>
+     */
+    @java.lang.Override
+    public boolean getEnableController() {
+      return enableController_;
+    }
+    /**
+     * <code>bool enable_controller = 3;</code>
+     */
+    private void setEnableController(boolean value) {
+      
+      enableController_ = value;
+    }
+    /**
+     * <code>bool enable_controller = 3;</code>
+     */
+    private void clearEnableController() {
+      
+      enableController_ = false;
     }
 
     public static tc.TcMessage.Hello parseFrom(
@@ -1440,6 +1469,30 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <code>bool enable_controller = 3;</code>
+       */
+      @java.lang.Override
+      public boolean getEnableController() {
+        return instance.getEnableController();
+      }
+      /**
+       * <code>bool enable_controller = 3;</code>
+       */
+      public Builder setEnableController(boolean value) {
+        copyOnWrite();
+        instance.setEnableController(value);
+        return this;
+      }
+      /**
+       * <code>bool enable_controller = 3;</code>
+       */
+      public Builder clearEnableController() {
+        copyOnWrite();
+        instance.clearEnableController();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.Hello)
     }
     @java.lang.Override
@@ -1458,10 +1511,11 @@ public final class TcMessage {
             java.lang.Object[] objects = new java.lang.Object[] {
               "onlyAudio_",
               "clientType_",
+              "enableController_",
             };
             java.lang.String info =
-                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0007\u0002\f" +
-                "";
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0007\u0002\f" +
+                "\u0003\u0007";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -5056,6 +5110,15 @@ public final class TcMessage {
      * <code>int32 thumb_ry = 7;</code>
      */
     int getThumbRy();
+
+    /**
+     * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+     */
+    int getGpTypeValue();
+    /**
+     * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+     */
+    tc.TcMessage.GamepadState.GamepadType getGpType();
   }
   /**
    * Protobuf type {@code tc.GamepadState}
@@ -5067,6 +5130,120 @@ public final class TcMessage {
       GamepadStateOrBuilder {
     private GamepadState() {
     }
+    /**
+     * Protobuf enum {@code tc.GamepadState.GamepadType}
+     */
+    public enum GamepadType
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <code>kButtons = 0;</code>
+       */
+      kButtons(0),
+      /**
+       * <code>kLeftTrigger = 1;</code>
+       */
+      kLeftTrigger(1),
+      /**
+       * <code>kRightTrigger = 2;</code>
+       */
+      kRightTrigger(2),
+      /**
+       * <code>kLeftThumb = 3;</code>
+       */
+      kLeftThumb(3),
+      /**
+       * <code>kRightThumb = 4;</code>
+       */
+      kRightThumb(4),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>kButtons = 0;</code>
+       */
+      public static final int kButtons_VALUE = 0;
+      /**
+       * <code>kLeftTrigger = 1;</code>
+       */
+      public static final int kLeftTrigger_VALUE = 1;
+      /**
+       * <code>kRightTrigger = 2;</code>
+       */
+      public static final int kRightTrigger_VALUE = 2;
+      /**
+       * <code>kLeftThumb = 3;</code>
+       */
+      public static final int kLeftThumb_VALUE = 3;
+      /**
+       * <code>kRightThumb = 4;</code>
+       */
+      public static final int kRightThumb_VALUE = 4;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static GamepadType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static GamepadType forNumber(int value) {
+        switch (value) {
+          case 0: return kButtons;
+          case 1: return kLeftTrigger;
+          case 2: return kRightTrigger;
+          case 3: return kLeftThumb;
+          case 4: return kRightThumb;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<GamepadType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          GamepadType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<GamepadType>() {
+              @java.lang.Override
+              public GamepadType findValueByNumber(int number) {
+                return GamepadType.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return GamepadTypeVerifier.INSTANCE;
+      }
+
+      private static final class GamepadTypeVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new GamepadTypeVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return GamepadType.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private GamepadType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:tc.GamepadState.GamepadType)
+    }
+
     public static final int BUTTONS_FIELD_NUMBER = 1;
     private int buttons_;
     /**
@@ -5233,6 +5410,47 @@ public final class TcMessage {
     private void clearThumbRy() {
       
       thumbRy_ = 0;
+    }
+
+    public static final int GP_TYPE_FIELD_NUMBER = 8;
+    private int gpType_;
+    /**
+     * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+     */
+    @java.lang.Override
+    public int getGpTypeValue() {
+      return gpType_;
+    }
+    /**
+     * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.GamepadState.GamepadType getGpType() {
+      tc.TcMessage.GamepadState.GamepadType result = tc.TcMessage.GamepadState.GamepadType.forNumber(gpType_);
+      return result == null ? tc.TcMessage.GamepadState.GamepadType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+     */
+    private void setGpTypeValue(int value) {
+        gpType_ = value;
+    }
+    /**
+     * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+     */
+    private void setGpType(tc.TcMessage.GamepadState.GamepadType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      gpType_ = value.getNumber();
+    }
+    /**
+     * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+     */
+    private void clearGpType() {
+      
+      gpType_ = 0;
     }
 
     public static tc.TcMessage.GamepadState parseFrom(
@@ -5498,6 +5716,45 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+       */
+      @java.lang.Override
+      public int getGpTypeValue() {
+        return instance.getGpTypeValue();
+      }
+      /**
+       * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+       */
+      public Builder setGpTypeValue(int value) {
+        copyOnWrite();
+        instance.setGpTypeValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.GamepadState.GamepadType getGpType() {
+        return instance.getGpType();
+      }
+      /**
+       * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+       */
+      public Builder setGpType(tc.TcMessage.GamepadState.GamepadType value) {
+        copyOnWrite();
+        instance.setGpType(value);
+        return this;
+      }
+      /**
+       * <code>.tc.GamepadState.GamepadType gp_type = 8;</code>
+       */
+      public Builder clearGpType() {
+        copyOnWrite();
+        instance.clearGpType();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.GamepadState)
     }
     @java.lang.Override
@@ -5521,10 +5778,11 @@ public final class TcMessage {
               "thumbLy_",
               "thumbRx_",
               "thumbRy_",
+              "gpType_",
             };
             java.lang.String info =
-                "\u0000\u0007\u0000\u0000\u0001\u0007\u0007\u0000\u0000\u0000\u0001\u000b\u0002\u000b" +
-                "\u0003\u000b\u0004\u0004\u0005\u0004\u0006\u0004\u0007\u0004";
+                "\u0000\b\u0000\u0000\u0001\b\b\u0000\u0000\u0000\u0001\u000b\u0002\u000b\u0003\u000b" +
+                "\u0004\u0004\u0005\u0004\u0006\u0004\u0007\u0004\b\f";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
