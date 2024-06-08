@@ -132,19 +132,6 @@ class MainActivity : AppCompatActivity() {
 
         //udpReceiver = UdpBroadcastReceiver();
         //udpReceiver.start();
-
-        // test
-        val testIp = "10.0.0.16";
-//        val testIp = "192.168.31.5";
-        val testPort = 20371;
-        //val client = TestMediaClient(testIp, testPort);
-        //client.start()
-
-        // test
-        val intent = Intent(this, FrameRenderActivity::class.java);
-        intent.putExtra("ip", testIp);
-        intent.putExtra("port", testPort);
-        //this.startActivity(intent)
     }
 
     private fun switchFragment(to: Fragment, tab: String) {

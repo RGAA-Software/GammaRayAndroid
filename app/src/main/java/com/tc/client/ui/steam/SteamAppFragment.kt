@@ -133,7 +133,7 @@ class SteamAppFragment() : BaseFragment() {
 
     override fun onRefresh() {
         super.onRefresh()
-        //requestSteamGames()
+        requestSteamGames()
     }
 
     private fun addPresetItems() {
