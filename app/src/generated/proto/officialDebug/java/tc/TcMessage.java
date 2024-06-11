@@ -1194,21 +1194,26 @@ public final class TcMessage {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>bool only_audio = 1;</code>
+     * <code>bool enable_audio = 1;</code>
      */
-    boolean getOnlyAudio();
+    boolean getEnableAudio();
 
     /**
-     * <code>.tc.ClientType client_type = 2;</code>
+     * <code>bool enable_video = 2;</code>
+     */
+    boolean getEnableVideo();
+
+    /**
+     * <code>.tc.ClientType client_type = 3;</code>
      */
     int getClientTypeValue();
     /**
-     * <code>.tc.ClientType client_type = 2;</code>
+     * <code>.tc.ClientType client_type = 3;</code>
      */
     tc.TcMessage.ClientType getClientType();
 
     /**
-     * <code>bool enable_controller = 3;</code>
+     * <code>bool enable_controller = 4;</code>
      */
     boolean getEnableController();
   }
@@ -1222,41 +1227,65 @@ public final class TcMessage {
       HelloOrBuilder {
     private Hello() {
     }
-    public static final int ONLY_AUDIO_FIELD_NUMBER = 1;
-    private boolean onlyAudio_;
+    public static final int ENABLE_AUDIO_FIELD_NUMBER = 1;
+    private boolean enableAudio_;
     /**
-     * <code>bool only_audio = 1;</code>
+     * <code>bool enable_audio = 1;</code>
      */
     @java.lang.Override
-    public boolean getOnlyAudio() {
-      return onlyAudio_;
+    public boolean getEnableAudio() {
+      return enableAudio_;
     }
     /**
-     * <code>bool only_audio = 1;</code>
+     * <code>bool enable_audio = 1;</code>
      */
-    private void setOnlyAudio(boolean value) {
+    private void setEnableAudio(boolean value) {
       
-      onlyAudio_ = value;
+      enableAudio_ = value;
     }
     /**
-     * <code>bool only_audio = 1;</code>
+     * <code>bool enable_audio = 1;</code>
      */
-    private void clearOnlyAudio() {
+    private void clearEnableAudio() {
       
-      onlyAudio_ = false;
+      enableAudio_ = false;
     }
 
-    public static final int CLIENT_TYPE_FIELD_NUMBER = 2;
+    public static final int ENABLE_VIDEO_FIELD_NUMBER = 2;
+    private boolean enableVideo_;
+    /**
+     * <code>bool enable_video = 2;</code>
+     */
+    @java.lang.Override
+    public boolean getEnableVideo() {
+      return enableVideo_;
+    }
+    /**
+     * <code>bool enable_video = 2;</code>
+     */
+    private void setEnableVideo(boolean value) {
+      
+      enableVideo_ = value;
+    }
+    /**
+     * <code>bool enable_video = 2;</code>
+     */
+    private void clearEnableVideo() {
+      
+      enableVideo_ = false;
+    }
+
+    public static final int CLIENT_TYPE_FIELD_NUMBER = 3;
     private int clientType_;
     /**
-     * <code>.tc.ClientType client_type = 2;</code>
+     * <code>.tc.ClientType client_type = 3;</code>
      */
     @java.lang.Override
     public int getClientTypeValue() {
       return clientType_;
     }
     /**
-     * <code>.tc.ClientType client_type = 2;</code>
+     * <code>.tc.ClientType client_type = 3;</code>
      */
     @java.lang.Override
     public tc.TcMessage.ClientType getClientType() {
@@ -1264,13 +1293,13 @@ public final class TcMessage {
       return result == null ? tc.TcMessage.ClientType.UNRECOGNIZED : result;
     }
     /**
-     * <code>.tc.ClientType client_type = 2;</code>
+     * <code>.tc.ClientType client_type = 3;</code>
      */
     private void setClientTypeValue(int value) {
         clientType_ = value;
     }
     /**
-     * <code>.tc.ClientType client_type = 2;</code>
+     * <code>.tc.ClientType client_type = 3;</code>
      */
     private void setClientType(tc.TcMessage.ClientType value) {
       if (value == null) {
@@ -1280,31 +1309,31 @@ public final class TcMessage {
       clientType_ = value.getNumber();
     }
     /**
-     * <code>.tc.ClientType client_type = 2;</code>
+     * <code>.tc.ClientType client_type = 3;</code>
      */
     private void clearClientType() {
       
       clientType_ = 0;
     }
 
-    public static final int ENABLE_CONTROLLER_FIELD_NUMBER = 3;
+    public static final int ENABLE_CONTROLLER_FIELD_NUMBER = 4;
     private boolean enableController_;
     /**
-     * <code>bool enable_controller = 3;</code>
+     * <code>bool enable_controller = 4;</code>
      */
     @java.lang.Override
     public boolean getEnableController() {
       return enableController_;
     }
     /**
-     * <code>bool enable_controller = 3;</code>
+     * <code>bool enable_controller = 4;</code>
      */
     private void setEnableController(boolean value) {
       
       enableController_ = value;
     }
     /**
-     * <code>bool enable_controller = 3;</code>
+     * <code>bool enable_controller = 4;</code>
      */
     private void clearEnableController() {
       
@@ -1407,38 +1436,62 @@ public final class TcMessage {
 
 
       /**
-       * <code>bool only_audio = 1;</code>
+       * <code>bool enable_audio = 1;</code>
        */
       @java.lang.Override
-      public boolean getOnlyAudio() {
-        return instance.getOnlyAudio();
+      public boolean getEnableAudio() {
+        return instance.getEnableAudio();
       }
       /**
-       * <code>bool only_audio = 1;</code>
+       * <code>bool enable_audio = 1;</code>
        */
-      public Builder setOnlyAudio(boolean value) {
+      public Builder setEnableAudio(boolean value) {
         copyOnWrite();
-        instance.setOnlyAudio(value);
+        instance.setEnableAudio(value);
         return this;
       }
       /**
-       * <code>bool only_audio = 1;</code>
+       * <code>bool enable_audio = 1;</code>
        */
-      public Builder clearOnlyAudio() {
+      public Builder clearEnableAudio() {
         copyOnWrite();
-        instance.clearOnlyAudio();
+        instance.clearEnableAudio();
         return this;
       }
 
       /**
-       * <code>.tc.ClientType client_type = 2;</code>
+       * <code>bool enable_video = 2;</code>
+       */
+      @java.lang.Override
+      public boolean getEnableVideo() {
+        return instance.getEnableVideo();
+      }
+      /**
+       * <code>bool enable_video = 2;</code>
+       */
+      public Builder setEnableVideo(boolean value) {
+        copyOnWrite();
+        instance.setEnableVideo(value);
+        return this;
+      }
+      /**
+       * <code>bool enable_video = 2;</code>
+       */
+      public Builder clearEnableVideo() {
+        copyOnWrite();
+        instance.clearEnableVideo();
+        return this;
+      }
+
+      /**
+       * <code>.tc.ClientType client_type = 3;</code>
        */
       @java.lang.Override
       public int getClientTypeValue() {
         return instance.getClientTypeValue();
       }
       /**
-       * <code>.tc.ClientType client_type = 2;</code>
+       * <code>.tc.ClientType client_type = 3;</code>
        */
       public Builder setClientTypeValue(int value) {
         copyOnWrite();
@@ -1446,14 +1499,14 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.ClientType client_type = 2;</code>
+       * <code>.tc.ClientType client_type = 3;</code>
        */
       @java.lang.Override
       public tc.TcMessage.ClientType getClientType() {
         return instance.getClientType();
       }
       /**
-       * <code>.tc.ClientType client_type = 2;</code>
+       * <code>.tc.ClientType client_type = 3;</code>
        */
       public Builder setClientType(tc.TcMessage.ClientType value) {
         copyOnWrite();
@@ -1461,7 +1514,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.ClientType client_type = 2;</code>
+       * <code>.tc.ClientType client_type = 3;</code>
        */
       public Builder clearClientType() {
         copyOnWrite();
@@ -1470,14 +1523,14 @@ public final class TcMessage {
       }
 
       /**
-       * <code>bool enable_controller = 3;</code>
+       * <code>bool enable_controller = 4;</code>
        */
       @java.lang.Override
       public boolean getEnableController() {
         return instance.getEnableController();
       }
       /**
-       * <code>bool enable_controller = 3;</code>
+       * <code>bool enable_controller = 4;</code>
        */
       public Builder setEnableController(boolean value) {
         copyOnWrite();
@@ -1485,7 +1538,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>bool enable_controller = 3;</code>
+       * <code>bool enable_controller = 4;</code>
        */
       public Builder clearEnableController() {
         copyOnWrite();
@@ -1509,13 +1562,14 @@ public final class TcMessage {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "onlyAudio_",
+              "enableAudio_",
+              "enableVideo_",
               "clientType_",
               "enableController_",
             };
             java.lang.String info =
-                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0007\u0002\f" +
-                "\u0003\u0007";
+                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0007\u0002\u0007" +
+                "\u0003\f\u0004\u0007";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

@@ -20,22 +20,24 @@ public class ThunderApp {
     private final String mIp;
     private final int mPort;
     private OnFrameChangedCallback mFrameChangedCallback;
-    private final boolean mOnlyAudio;
+    private final boolean mEnableAudio;
+    private final boolean mEnableVideo;
     private final boolean mEnableController;
     private final List<Double> mLeftSpectrum = new ArrayList<>();
     private final List<Double> mRightSpectrum = new ArrayList<>();
     private long mAudioSpectrumCount = 0;
 
-    public ThunderApp(String ip, int port, boolean onlyAudio, boolean enableController) {
+    public ThunderApp(String ip, int port, boolean enableAudio, boolean enableVideo, boolean enableController) {
         mIp = ip;
         mPort = port;
-        mOnlyAudio = onlyAudio;
+        mEnableAudio = enableAudio;
+        mEnableVideo = enableVideo;
         mEnableController = enableController;
     }
     public void init(boolean ssl, Surface surface, boolean hwCodec, boolean useOES, int oesTexId) {
-        this.init(ssl, mOnlyAudio, mEnableController, mIp, mPort, "/media", surface, hwCodec, useOES, oesTexId);
+        this.init(ssl, mEnableAudio, mEnableVideo, mEnableController, mIp, mPort, "/media", surface, hwCodec, useOES, oesTexId);
     }
-    public native int init(boolean ssl, boolean onlyAudio, boolean enableController, String ip, int port,
+    public native int init(boolean ssl, boolean enableAudio, boolean enableVideo, boolean enableController, String ip, int port,
                            String path, Surface surface, boolean hwCodec, boolean useOES, int oesTexId);
     public native int start();
     public native int stop();

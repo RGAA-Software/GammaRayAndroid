@@ -44,7 +44,7 @@ namespace tc
             }
         }();
 
-        if (!params.only_audio_) {
+        if (params.enable_video_) {
             frame_render_ = FrameRender::Make(app_context_);
             frame_render_->Init(env, surface, drt, oes_tex_id);
         }

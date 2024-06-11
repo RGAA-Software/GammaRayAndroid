@@ -20,7 +20,7 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved) {
 }
 
 extern "C" JNIEXPORT jint JNICALL
-Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl, jboolean only_audio, jboolean enable_controller, jstring ip,
+Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl, jboolean enable_audio, jboolean enable_video, jboolean enable_controller, jstring ip,
                                         jint port, jstring path, jobject surface, jboolean hw_codec, jboolean use_oes, jint oes_tex_id) {
     const char* ip_str = env->GetStringUTFChars(ip, nullptr);
     const char* path_str = env->GetStringUTFChars(path, nullptr);
@@ -45,7 +45,8 @@ Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl,
 
     g_app->Init(ThunderSdkParams {
             .ssl_ = (bool)ssl,
-            .only_audio_ = (bool) only_audio,
+            .enable_audio_ = (bool) enable_audio,
+            .enable_video_ = (bool) enable_video,
             .enable_controller_ = (bool)enable_controller,
             .ip_ = ip_str,
             .port_ = port,

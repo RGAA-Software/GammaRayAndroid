@@ -52,7 +52,7 @@ class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks
 
         appContext = (application as App).appContext
 
-        thunderApp = ThunderApp(srvIp, srvPort, true, false)
+        thunderApp = ThunderApp(srvIp, srvPort, true, false, false)
         thunderApp.init(false, null, false, false, 0);
         thunderApp.start()
 
