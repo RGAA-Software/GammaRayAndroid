@@ -103,8 +103,8 @@ class MainActivity : AppCompatActivity() {
         binding.bottomBar.apply {
             add(MeowBottomNavigation.Model(ID_MACHINE, R.drawable.ic_laptop))
             add(MeowBottomNavigation.Model(ID_GAMES, R.drawable.ic_controller))
-            add(MeowBottomNavigation.Model(ID_MUSIC_EFFECTS, R.drawable.ic_sun))
-            add(MeowBottomNavigation.Model(ID_ME, R.drawable.ic_account))
+            add(MeowBottomNavigation.Model(ID_MUSIC_EFFECTS, R.drawable.ic_eq))
+            add(MeowBottomNavigation.Model(ID_ME, R.drawable.ic_settings))
 
             //setCount(ID_NOTIFICATION, "15")
 
