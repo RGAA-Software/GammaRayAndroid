@@ -14,7 +14,9 @@ namespace tc
     class NativeMsgMaker {
     public:
 
-        static std::string MakeFrameInfoMessage(int width, int height, int format);
+        static std::string MakeFrameInfoMessage(int width, int height, int format, int mon_idx,
+                                                const std::string& mon_name, int mon_left,
+                                                int mon_top, int mon_right, int mon_bottom);
         static std::string MakeSpectrumMessage(const tc::ServerAudioSpectrum& spectrum);
 
     };

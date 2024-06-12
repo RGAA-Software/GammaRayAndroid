@@ -11,12 +11,20 @@ using namespace nlohmann;
 namespace tc
 {
 
-    std::string NativeMsgMaker::MakeFrameInfoMessage(int width, int height, int format) {
+    std::string NativeMsgMaker::MakeFrameInfoMessage(int width, int height, int format, int mon_idx,
+                                                     const std::string& mon_name, int mon_left,
+                                                     int mon_top, int mon_right, int mon_bottom) {
         json msg;
         msg["type"] = "frame";
         msg["width"] = width;
         msg["height"] = height;
         msg["format"] = format;
+        msg["mon_idx"] = mon_idx;
+        msg["mon_name"] = mon_name;
+        msg["mon_left"] = mon_left;
+        msg["mon_top"] = mon_top;
+        msg["mon_right"] = mon_right;
+        msg["mon_bottom"] = mon_bottom;
         return msg.dump();
     }
 

@@ -1849,6 +1849,41 @@ public final class TcMessage {
      */
     com.google.protobuf.ByteString
         getExtraBytes();
+
+    /**
+     * <code>int32 mon_idx = 8;</code>
+     */
+    int getMonIdx();
+
+    /**
+     * <code>string mon_name = 9;</code>
+     */
+    java.lang.String getMonName();
+    /**
+     * <code>string mon_name = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getMonNameBytes();
+
+    /**
+     * <code>int32 mon_left = 10;</code>
+     */
+    int getMonLeft();
+
+    /**
+     * <code>int32 mon_top = 11;</code>
+     */
+    int getMonTop();
+
+    /**
+     * <code>int32 mon_right = 12;</code>
+     */
+    int getMonRight();
+
+    /**
+     * <code>int32 mon_bottom = 13;</code>
+     */
+    int getMonBottom();
   }
   /**
    * Protobuf type {@code tc.VideoFrame}
@@ -1861,6 +1896,7 @@ public final class TcMessage {
     private VideoFrame() {
       data_ = com.google.protobuf.ByteString.EMPTY;
       extra_ = "";
+      monName_ = "";
     }
     public static final int TYPE_FIELD_NUMBER = 1;
     private int type_;
@@ -2072,6 +2108,174 @@ public final class TcMessage {
   checkByteStringIsUtf8(value);
       
       extra_ = value.toStringUtf8();
+    }
+
+    public static final int MON_IDX_FIELD_NUMBER = 8;
+    private int monIdx_;
+    /**
+     * <code>int32 mon_idx = 8;</code>
+     */
+    @java.lang.Override
+    public int getMonIdx() {
+      return monIdx_;
+    }
+    /**
+     * <code>int32 mon_idx = 8;</code>
+     */
+    private void setMonIdx(int value) {
+      
+      monIdx_ = value;
+    }
+    /**
+     * <code>int32 mon_idx = 8;</code>
+     */
+    private void clearMonIdx() {
+      
+      monIdx_ = 0;
+    }
+
+    public static final int MON_NAME_FIELD_NUMBER = 9;
+    private java.lang.String monName_;
+    /**
+     * <code>string mon_name = 9;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getMonName() {
+      return monName_;
+    }
+    /**
+     * <code>string mon_name = 9;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMonNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(monName_);
+    }
+    /**
+     * <code>string mon_name = 9;</code>
+     */
+    private void setMonName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      monName_ = value;
+    }
+    /**
+     * <code>string mon_name = 9;</code>
+     */
+    private void clearMonName() {
+      
+      monName_ = getDefaultInstance().getMonName();
+    }
+    /**
+     * <code>string mon_name = 9;</code>
+     */
+    private void setMonNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      monName_ = value.toStringUtf8();
+    }
+
+    public static final int MON_LEFT_FIELD_NUMBER = 10;
+    private int monLeft_;
+    /**
+     * <code>int32 mon_left = 10;</code>
+     */
+    @java.lang.Override
+    public int getMonLeft() {
+      return monLeft_;
+    }
+    /**
+     * <code>int32 mon_left = 10;</code>
+     */
+    private void setMonLeft(int value) {
+      
+      monLeft_ = value;
+    }
+    /**
+     * <code>int32 mon_left = 10;</code>
+     */
+    private void clearMonLeft() {
+      
+      monLeft_ = 0;
+    }
+
+    public static final int MON_TOP_FIELD_NUMBER = 11;
+    private int monTop_;
+    /**
+     * <code>int32 mon_top = 11;</code>
+     */
+    @java.lang.Override
+    public int getMonTop() {
+      return monTop_;
+    }
+    /**
+     * <code>int32 mon_top = 11;</code>
+     */
+    private void setMonTop(int value) {
+      
+      monTop_ = value;
+    }
+    /**
+     * <code>int32 mon_top = 11;</code>
+     */
+    private void clearMonTop() {
+      
+      monTop_ = 0;
+    }
+
+    public static final int MON_RIGHT_FIELD_NUMBER = 12;
+    private int monRight_;
+    /**
+     * <code>int32 mon_right = 12;</code>
+     */
+    @java.lang.Override
+    public int getMonRight() {
+      return monRight_;
+    }
+    /**
+     * <code>int32 mon_right = 12;</code>
+     */
+    private void setMonRight(int value) {
+      
+      monRight_ = value;
+    }
+    /**
+     * <code>int32 mon_right = 12;</code>
+     */
+    private void clearMonRight() {
+      
+      monRight_ = 0;
+    }
+
+    public static final int MON_BOTTOM_FIELD_NUMBER = 13;
+    private int monBottom_;
+    /**
+     * <code>int32 mon_bottom = 13;</code>
+     */
+    @java.lang.Override
+    public int getMonBottom() {
+      return monBottom_;
+    }
+    /**
+     * <code>int32 mon_bottom = 13;</code>
+     */
+    private void setMonBottom(int value) {
+      
+      monBottom_ = value;
+    }
+    /**
+     * <code>int32 mon_bottom = 13;</code>
+     */
+    private void clearMonBottom() {
+      
+      monBottom_ = 0;
     }
 
     public static tc.TcMessage.VideoFrame parseFrom(
@@ -2370,6 +2574,168 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <code>int32 mon_idx = 8;</code>
+       */
+      @java.lang.Override
+      public int getMonIdx() {
+        return instance.getMonIdx();
+      }
+      /**
+       * <code>int32 mon_idx = 8;</code>
+       */
+      public Builder setMonIdx(int value) {
+        copyOnWrite();
+        instance.setMonIdx(value);
+        return this;
+      }
+      /**
+       * <code>int32 mon_idx = 8;</code>
+       */
+      public Builder clearMonIdx() {
+        copyOnWrite();
+        instance.clearMonIdx();
+        return this;
+      }
+
+      /**
+       * <code>string mon_name = 9;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getMonName() {
+        return instance.getMonName();
+      }
+      /**
+       * <code>string mon_name = 9;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMonNameBytes() {
+        return instance.getMonNameBytes();
+      }
+      /**
+       * <code>string mon_name = 9;</code>
+       */
+      public Builder setMonName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setMonName(value);
+        return this;
+      }
+      /**
+       * <code>string mon_name = 9;</code>
+       */
+      public Builder clearMonName() {
+        copyOnWrite();
+        instance.clearMonName();
+        return this;
+      }
+      /**
+       * <code>string mon_name = 9;</code>
+       */
+      public Builder setMonNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setMonNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>int32 mon_left = 10;</code>
+       */
+      @java.lang.Override
+      public int getMonLeft() {
+        return instance.getMonLeft();
+      }
+      /**
+       * <code>int32 mon_left = 10;</code>
+       */
+      public Builder setMonLeft(int value) {
+        copyOnWrite();
+        instance.setMonLeft(value);
+        return this;
+      }
+      /**
+       * <code>int32 mon_left = 10;</code>
+       */
+      public Builder clearMonLeft() {
+        copyOnWrite();
+        instance.clearMonLeft();
+        return this;
+      }
+
+      /**
+       * <code>int32 mon_top = 11;</code>
+       */
+      @java.lang.Override
+      public int getMonTop() {
+        return instance.getMonTop();
+      }
+      /**
+       * <code>int32 mon_top = 11;</code>
+       */
+      public Builder setMonTop(int value) {
+        copyOnWrite();
+        instance.setMonTop(value);
+        return this;
+      }
+      /**
+       * <code>int32 mon_top = 11;</code>
+       */
+      public Builder clearMonTop() {
+        copyOnWrite();
+        instance.clearMonTop();
+        return this;
+      }
+
+      /**
+       * <code>int32 mon_right = 12;</code>
+       */
+      @java.lang.Override
+      public int getMonRight() {
+        return instance.getMonRight();
+      }
+      /**
+       * <code>int32 mon_right = 12;</code>
+       */
+      public Builder setMonRight(int value) {
+        copyOnWrite();
+        instance.setMonRight(value);
+        return this;
+      }
+      /**
+       * <code>int32 mon_right = 12;</code>
+       */
+      public Builder clearMonRight() {
+        copyOnWrite();
+        instance.clearMonRight();
+        return this;
+      }
+
+      /**
+       * <code>int32 mon_bottom = 13;</code>
+       */
+      @java.lang.Override
+      public int getMonBottom() {
+        return instance.getMonBottom();
+      }
+      /**
+       * <code>int32 mon_bottom = 13;</code>
+       */
+      public Builder setMonBottom(int value) {
+        copyOnWrite();
+        instance.setMonBottom(value);
+        return this;
+      }
+      /**
+       * <code>int32 mon_bottom = 13;</code>
+       */
+      public Builder clearMonBottom() {
+        copyOnWrite();
+        instance.clearMonBottom();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.VideoFrame)
     }
     @java.lang.Override
@@ -2393,10 +2759,17 @@ public final class TcMessage {
               "frameWidth_",
               "frameHeight_",
               "extra_",
+              "monIdx_",
+              "monName_",
+              "monLeft_",
+              "monTop_",
+              "monRight_",
+              "monBottom_",
             };
             java.lang.String info =
-                "\u0000\u0007\u0000\u0000\u0001\u0007\u0007\u0000\u0000\u0000\u0001\f\u0002\n\u0003" +
-                "\u0003\u0004\u0007\u0005\u0004\u0006\u0004\u0007\u0208";
+                "\u0000\r\u0000\u0000\u0001\r\r\u0000\u0000\u0000\u0001\f\u0002\n\u0003\u0003\u0004" +
+                "\u0007\u0005\u0004\u0006\u0004\u0007\u0208\b\u0004\t\u0208\n\u0004\u000b\u0004\f" +
+                "\u0004\r\u0004";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

@@ -51,7 +51,7 @@ namespace tc
 
         thunder_sdk_ = ThunderSdk::Make(app_context_->GetMessageNotifier());
         thunder_sdk_->Init(params, (use_oes && frame_render_) ? frame_render_->GetNativeWindow() : nullptr, drt);
-        thunder_sdk_->SetOnVideoFrameDecodedCallback([=, this](const std::shared_ptr<RawImage>& image) {
+        thunder_sdk_->SetOnVideoFrameDecodedCallback([=, this](const std::shared_ptr<RawImage>& image, const CaptureMonitorInfo& cap_mon_info) {
             if (drt != DecoderRenderType::kMediaCodecSurface && image->img_buf && frame_render_) {
                 frame_render_->UpdateYUVImage(image);
             }
@@ -59,8 +59,12 @@ namespace tc
             if (frame_width_ != image->img_width || frame_height_ != image->img_height) {
                 {
                     std::lock_guard<std::mutex> guard(native_msg_cbk_mtx_);
-                    auto frame_change_msg = NativeMsgMaker::MakeFrameInfoMessage(image->img_width, image->img_height, image->img_format);
+                    auto frame_change_msg = NativeMsgMaker::MakeFrameInfoMessage(
+                            image->img_width, image->img_height, image->img_format,
+                            cap_mon_info.mon_idx_, cap_mon_info.mon_name_, cap_mon_info.mon_left_,
+                            cap_mon_info.mon_top_, cap_mon_info.mon_right_, cap_mon_info.mon_bottom_);
                     native_msg_cbk_(frame_change_msg);
+                    LOGI("frame_change_msg: {}", frame_change_msg);
                 }
                 frame_width_ = image->img_width;
                 frame_height_ = image->img_height;
