@@ -18,13 +18,12 @@ import com.tc.client.events.OnAddScanInfo
 import com.tc.client.events.OnServerAvailable
 import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerScanned
-import com.tc.client.render.FrameRenderActivity
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.ui.BaseFragment
 import com.tc.client.ui.MainTopRightMenu
 import com.tc.client.ui.machine.MachineFragment
 import com.tc.client.ui.steam.SteamAppFragment
-import com.tc.client.ui.me.AboutMeFragment
+import com.tc.client.ui.me.SettingsFragment
 import com.tc.client.ui.effects.EffectDisplayFragment
 import com.tc.client.util.ScreenUtil
 import org.greenrobot.eventbus.EventBus
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var steamAppFragment: SteamAppFragment
     private lateinit var machineFragment: MachineFragment
     private lateinit var effectDisplayFragment: EffectDisplayFragment
-    private lateinit var aboutMeFragment: AboutMeFragment
+    private lateinit var settingsFragment: SettingsFragment
     private var currentFragment: Fragment? = null
     private val fragments = mutableListOf<BaseFragment>()
 
@@ -92,11 +91,11 @@ class MainActivity : AppCompatActivity() {
         machineFragment = getFragment(ID_MACHINE) as MachineFragment
         steamAppFragment = getFragment(ID_GAMES) as SteamAppFragment;
         effectDisplayFragment = getFragment(ID_MUSIC_EFFECTS) as EffectDisplayFragment;
-        aboutMeFragment = getFragment(ID_ME) as AboutMeFragment;
+        settingsFragment = getFragment(ID_ME) as SettingsFragment;
         fragments.add(machineFragment)
         fragments.add(steamAppFragment)
         fragments.add(effectDisplayFragment)
-        fragments.add(aboutMeFragment)
+        fragments.add(settingsFragment)
 
         val fragmentHost = binding.root.findViewById<RelativeLayout>(R.id.fragment_host);
 
@@ -275,8 +274,8 @@ class MainActivity : AppCompatActivity() {
             }
             ID_ME -> {
                 binding.bottomBar.show(ID_ME)
-                switchFragment(aboutMeFragment, tab.toString())
-                setActionBarTitle("About Me");
+                switchFragment(settingsFragment, tab.toString())
+                setActionBarTitle("Settings");
             }
         }
     }
@@ -297,7 +296,7 @@ class MainActivity : AppCompatActivity() {
                 return EffectDisplayFragment()
             }
             ID_ME -> {
-                return AboutMeFragment()
+                return SettingsFragment()
             }
         }
         return MachineFragment()

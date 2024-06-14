@@ -16,6 +16,7 @@ import com.tc.client.App;
 import com.tc.client.AppContext;
 import com.tc.client.ControlLayer;
 import com.tc.client.R;
+import com.tc.client.Settings;
 import com.tc.client.impl.ThunderApp;
 import com.tc.client.util.ViewUtil;
 
@@ -52,6 +53,7 @@ public class FrameRenderActivity extends Activity {
         mFrameRenderView.onCreate();
 
         mControlLayer = findViewById(R.id.id_control_layer);
+        mControlLayer.setVisibility(Settings.Companion.getInstance().getShowVirtualGamepad() ? View.VISIBLE : View.GONE);
         mControlLayer.setThunderApp(mThunderApp);
 
         mHandler = new Handler(getMainLooper());
@@ -59,8 +61,11 @@ public class FrameRenderActivity extends Activity {
         mTickThread = new Thread(() -> {
             while(!mExitTickThread) {
                  mHandler.post(() -> {
-                     //mControlLayer.onEventTick();
-                     mFrameRenderView.onEventTick();
+                     if (Settings.Companion.getInstance().getShowVirtualGamepad()) {
+                         mControlLayer.onEventTick();
+                     } else {
+                         mFrameRenderView.onEventTick();
+                     }
                  });
                 SystemClock.sleep(17);
             }

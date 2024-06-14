@@ -16,7 +16,6 @@
         android:clickable="true" />
 
     <com.tc.client.ControlLayer
-        android:visibility="gone"
         android:id="@+id/id_control_layer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

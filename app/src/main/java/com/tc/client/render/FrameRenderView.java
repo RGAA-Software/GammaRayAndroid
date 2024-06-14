@@ -8,6 +8,7 @@ import android.view.InputDevice;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
+import com.tc.client.Settings;
 import com.tc.client.impl.ThunderApp;
 
 import java.util.ArrayList;
@@ -332,6 +333,11 @@ public class FrameRenderView extends GLSurfaceView {
         mXInputGamepad.sThumbLY = (int) (leftThumbY * maxThumbValue);
         mXInputGamepad.sThumbRX = (int) (rightThumbX * maxThumbValue);
         mXInputGamepad.sThumbRY = (int) (rightThumbY * maxThumbValue);
+
+        if (Settings.Companion.getInstance().getInvertJoystickYAxis()) {
+            mXInputGamepad.sThumbLY *= -1;
+            mXInputGamepad.sThumbRY *= -1;
+        }
 
         int maxTriggerValue = 255;
         mXInputGamepad.bLeftTrigger = (int) (leftTrigger * maxTriggerValue);

@@ -21,8 +21,13 @@ class Settings {
     private val TAG = "Main";
 
     var currentServer: DBServer = DBServer()
+    var showVirtualGamepad: Boolean = false
+    var invertJoystickYAxis: Boolean = false
 
     companion object {
+        const val KEY_SHOW_VIRTUAL_GAMEPAD = "show_virtual_gamepad";
+        const val KEY_INVERT_JOYSTICK_Y_AXIS = "invert_joystick_y_axis";
+
         private val settings = Settings()
         fun getInstance(): Settings {
             return settings
@@ -30,6 +35,8 @@ class Settings {
     }
 
     fun loadConfig(ctx: Context) {
+        showVirtualGamepad = SpUtils.getInstance(ctx).getBoolean(KEY_SHOW_VIRTUAL_GAMEPAD)
+        invertJoystickYAxis = SpUtils.getInstance(ctx).getBoolean(KEY_INVERT_JOYSTICK_Y_AXIS);
         EventBus.getDefault().register(this);
     }
 
@@ -114,8 +121,20 @@ class Settings {
         return scanInfo;
     }
 
+    fun setShowVirtualGamepad(ctx: Context, state: Boolean) {
+        showVirtualGamepad = state
+        SpUtils.getInstance(ctx).put(KEY_SHOW_VIRTUAL_GAMEPAD, state)
+    }
+
+    fun setInvertJoystickYAxis(ctx: Context, state: Boolean) {
+        invertJoystickYAxis = state
+        SpUtils.getInstance(ctx).put(KEY_INVERT_JOYSTICK_Y_AXIS, state)
+    }
+
     fun dump() {
         Log.i(TAG, "Settings------------------------")
+        Log.i(TAG, "Show virtual GamePad: $showVirtualGamepad")
+        Log.i(TAG, "Invert Joystick Y Axis: $invertJoystickYAxis")
         Log.i(TAG, "Settings------------------------")
     }
 }

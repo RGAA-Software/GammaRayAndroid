@@ -5,4 +5,6 @@
     <string name="no_server">Add server by + button</string>
     <string name="delete">DELETE</string>
     <string name="do_you_want_to_delete_this_server">Do you want to delete this server ?</string>
+    <string name="show_virtual_gamepad">Show virtual GamePad</string>
+    <string name="invert_joystick_y_axis">Invert Joystick Y Axis</string>
 </resources>
