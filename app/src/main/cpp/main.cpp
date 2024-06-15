@@ -58,8 +58,8 @@ Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl,
         auto env = env_wrapper->Env();
         jfloat x = (cursor.x() - cap_mon_info.mon_left_)*1.0f/cap_mon_info.Width();
         jfloat y = (cursor.y() - cap_mon_info.mon_top_)*1.0f/cap_mon_info.Height();
-        LOGI("x ratio: {}, y ratio: {}, cursor x: {}, cursor y: {}, left: {}, right: {}",
-             x, y, cursor.x(), cursor.y(), cap_mon_info.mon_left_, cap_mon_info.mon_right_);
+        LOGI("x ratio: {}, y ratio: {}, cursor x: ({},{}), {}x{} left: {}, right: {}",
+             x, y, cursor.x(), cursor.y(), cursor.width(), cursor.height(), cap_mon_info.mon_left_, cap_mon_info.mon_right_);
         jint hotspot_x = cursor.hotspot_x();
         jint hotspot_y = cursor.hotspot_y();
         jint width = cursor.width();

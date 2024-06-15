@@ -48,6 +48,7 @@ public class Sprite extends Renderer {
 
     private static final String TAG = "Sprite";
 
+    private final Object mImageLock = new Object();
     private Image mImage;
     private int mTextureId;
     private float mPosX;
@@ -118,7 +119,6 @@ public class Sprite extends Renderer {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//        glGenerateMipmap(GL_TEXTURE_2D);
 
         glBindTexture(GL_TEXTURE_2D, 0);
         glBindVertexArray(0);
@@ -129,7 +129,6 @@ public class Sprite extends Renderer {
         super.render(delta);
 
         GLES32.glEnable(GL_BLEND);
-        GLES32.glEnable(GL_DEPTH);
         GLES32.glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         mModel.identity();
@@ -140,16 +139,18 @@ public class Sprite extends Renderer {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, mTextureId);
         glUniform1i(mShader.getUniformLocation("image"), 0);
-        if (mImage != null) {
-            glTexImage2D(GL_TEXTURE_2D,
-                    0,
-                    GL_RGBA,
-                    mImage.getWidth(),
-                    mImage.getHeight(),
-                    0,
-                    GL_RGBA,
-                    GL_UNSIGNED_BYTE,
-                    mImage.getData());
+        synchronized (mImageLock) {
+            if (mImage != null) {
+                glTexImage2D(GL_TEXTURE_2D,
+                        0,
+                        GL_RGBA,
+                        mImage.getWidth(),
+                        mImage.getHeight(),
+                        0,
+                        GL_RGBA,
+                        GL_UNSIGNED_BYTE,
+                        mImage.getData());
+            }
         }
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
@@ -157,7 +158,9 @@ public class Sprite extends Renderer {
     }
 
     public void updateImage(Image image) {
-        mImage = image;
+        synchronized (mImageLock) {
+            mImage = image;
+        }
     }
 
     public void updateImagePosition(float x, float y) {

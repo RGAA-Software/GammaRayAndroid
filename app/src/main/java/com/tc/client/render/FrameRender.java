@@ -30,20 +30,15 @@ public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFra
 
     private Director mDirector;
     private Sprite mCursor;
-    private Image mCursorImage;
 
     public FrameRender(Context ctx, ThunderApp sdk) {
         mContext = ctx;
         mThunderApp = sdk;
         mThunderApp.registerCursorInfoCallback(info -> {
             if (mCursor != null) {
-                if (mCursorImage == null || mCursorImage.getWidth() != info.getWidth() || mCursorImage.getHeight() != info.getHeight()) {
-                    mCursorImage = new Image(info.getWidth(), info.getHeight(), 4, info.getBitmap());
-                } else {
-                    mCursorImage.putData(info.getBitmap());
-                }
+                Image image = new Image(info.getWidth(), info.getHeight(), 4, info.getBitmap());
                 mCursor.updateImagePosition(info.getX(), info.getY());
-                mCursor.updateImage(mCursorImage);
+                mCursor.updateImage(image);
             }
         });
     }
