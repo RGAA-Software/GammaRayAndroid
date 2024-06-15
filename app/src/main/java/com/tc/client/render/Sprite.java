@@ -1,4 +1,4 @@
-package com.tc.client;
+package com.tc.client.render;
 
 import static android.opengl.GLES20.GL_ARRAY_BUFFER;
 import static android.opengl.GLES20.GL_DYNAMIC_DRAW;
@@ -28,6 +28,7 @@ import static android.opengl.GLES20.glTexImage2D;
 import static android.opengl.GLES20.glTexParameteri;
 import static android.opengl.GLES20.glUniform1i;
 import static android.opengl.GLES20.glVertexAttribPointer;
+import static android.opengl.GLES30.GL_DEPTH;
 import static android.opengl.GLES30.glBindVertexArray;
 import static javax.microedition.khronos.opengles.GL10.GL_BLEND;
 import static javax.microedition.khronos.opengles.GL10.GL_ONE_MINUS_SRC_ALPHA;
@@ -56,7 +57,6 @@ public class Sprite extends Renderer {
         Context context = director.getContext();
         String vsPath = "base_vertex.glsl";
         String fsPath = "base_tex_fragment.glsl";
-        //fsPath = "base_fragment.glsl";
         String vs = AssetsUtil.readAssetFileAsString(context, vsPath);
         String fs = AssetsUtil.readAssetFileAsString(context, fsPath);
         return new Sprite(context, director, vs, fs);
@@ -129,10 +129,11 @@ public class Sprite extends Renderer {
         super.render(delta);
 
         GLES32.glEnable(GL_BLEND);
+        GLES32.glEnable(GL_DEPTH);
         GLES32.glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         mModel.identity();
-        mModel.translate(mPosX, mPosY, 0);
+        mModel.translate(mPosX, mPosY, 1);
         convertModelMatrix();
         mShader.setUniformMatrix4fv("model", mModelBuffer);
 
@@ -167,6 +168,5 @@ public class Sprite extends Renderer {
     @Override
     public void release() {
         super.release();
-
     }
 }

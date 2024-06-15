@@ -20,6 +20,7 @@ public class ThunderApp {
     private final String mIp;
     private final int mPort;
     private OnFrameChangedCallback mFrameChangedCallback;
+    private OnCursorInfoCallback mCursorInfoCallback;
     private final boolean mEnableAudio;
     private final boolean mEnableVideo;
     private final boolean mEnableController;
@@ -42,10 +43,15 @@ public class ThunderApp {
     public native int start();
     public native int stop();
     public native void sendGamepadState(int buttons, int leftTrigger, int rightTrigger, int thumbLX, int thumbLY, int thumbRX, int thumbRY);
+    public native void sendMouseEvent(int event, float xRatio, float yRatio);
 
     // register callbacks
     public void registerFrameChangedCallback(OnFrameChangedCallback cbk) {
         mFrameChangedCallback = cbk;
+    }
+
+    public void registerCursorInfoCallback(OnCursorInfoCallback cbk) {
+        mCursorInfoCallback = cbk;
     }
 
     public synchronized List<Double> getLeftSpectrum() {
@@ -59,6 +65,10 @@ public class ThunderApp {
     // callbacks
     public interface OnFrameChangedCallback {
         void onFrameChanged(int width, int height);
+    }
+
+    public interface OnCursorInfoCallback {
+        void onCursorInfo(CursorInfo info);
     }
 
     public native void nativeCreate();
@@ -116,5 +126,21 @@ public class ThunderApp {
             e.printStackTrace();
             Log.e(TAG, "Parse native message failed: " + msg + ", e: " + e.getMessage());
         }
+    }
+
+    public void onCursorInfo(float x, float y, int hotspotX, int hotspotY, int width, int height, boolean visible, byte[] data) {
+        if (mCursorInfoCallback == null) {
+            return;
+        }
+        CursorInfo cursorInfo = new CursorInfo();
+        cursorInfo.setX(x);
+        cursorInfo.setY(y);
+        cursorInfo.setHotspotX(hotspotX);
+        cursorInfo.setHotspotY(hotspotY);
+        cursorInfo.setWidth(width);
+        cursorInfo.setHeight(height);
+        cursorInfo.setVisible(visible);
+        cursorInfo.setBitmap(data);
+        mCursorInfoCallback.onCursorInfo(cursorInfo);
     }
 }

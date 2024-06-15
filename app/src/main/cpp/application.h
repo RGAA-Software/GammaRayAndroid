@@ -44,7 +44,12 @@ namespace tc
         void SendGamepadState(int32_t buttons, int32_t left_trigger, int32_t right_trigger, int32_t thumb_lx,
                               int32_t thumb_ly, int32_t thumb_rx, int32_t thumb_ry);
 
+        void SendMouseEvent(int32_t event, float x_ratio, float y_ratio);
+
         void RegisterNativeMessageCallback(OnNativeMessageCallback&& cbk) { native_msg_cbk_ = cbk; }
+        void RegisterCursorInfoCallback(OnCursorInfoSyncMsgCallback&& cbk) { cursor_info_cbk_ = cbk; }
+
+        const CaptureMonitorInfo& GetCapMonitorInfo() const;
 
     private:
         JavaVM* vm_ = nullptr;
@@ -54,9 +59,11 @@ namespace tc
         std::shared_ptr<AudioPlayer> audio_player_ = nullptr;
         std::mutex native_msg_cbk_mtx_;
         OnNativeMessageCallback native_msg_cbk_ = nullptr;
+        OnCursorInfoSyncMsgCallback  cursor_info_cbk_ = nullptr;
 
         int frame_width_ = 0;
         int frame_height_ = 0;
+        CaptureMonitorInfo cap_mon_info_;
 
         Statistics* statistics_ = nullptr;
 

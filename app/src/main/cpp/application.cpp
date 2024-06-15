@@ -56,7 +56,7 @@ namespace tc
                 frame_render_->UpdateYUVImage(image);
             }
 
-            if (frame_width_ != image->img_width || frame_height_ != image->img_height) {
+            if (frame_width_ != image->img_width || frame_height_ != image->img_height || this->cap_mon_info_.mon_idx_ != cap_mon_info.mon_idx_) {
                 {
                     std::lock_guard<std::mutex> guard(native_msg_cbk_mtx_);
                     auto frame_change_msg = NativeMsgMaker::MakeFrameInfoMessage(
@@ -68,6 +68,7 @@ namespace tc
                 }
                 frame_width_ = image->img_width;
                 frame_height_ = image->img_height;
+                this->cap_mon_info_ = cap_mon_info;
             }
         });
 
@@ -80,7 +81,9 @@ namespace tc
         });
 
         thunder_sdk_->SetOnCursorInfoCallback([=, this](const tc::CursorInfoSync& cursor) {
-
+            if (cursor_info_cbk_) {
+                cursor_info_cbk_(cursor);
+            }
         });
 
         thunder_sdk_->SetOnAudioSpectrumCallback([=, this](const tc::ServerAudioSpectrum& spectrum) {
@@ -150,10 +153,21 @@ namespace tc
 
     void Application::SendGamepadState(int32_t buttons, int32_t left_trigger,int32_t right_trigger,
                                        int32_t thumb_lx, int32_t thumb_ly, int32_t thumb_rx, int32_t thumb_ry) {
-        auto msg = ProtoMessageMaker::MakeGamepadState(buttons, left_trigger, right_trigger, thumb_lx, thumb_ly, thumb_rx, thumb_ry);
         if (thunder_sdk_) {
+            auto msg = ProtoMessageMaker::MakeGamepadState(buttons, left_trigger, right_trigger, thumb_lx, thumb_ly, thumb_rx, thumb_ry);
             thunder_sdk_->PostBinaryMessage(msg);
         }
+    }
+
+    void Application::SendMouseEvent(int32_t event, float x_ratio, float y_ratio) {
+        if (thunder_sdk_) {
+            auto msg = ProtoMessageMaker::MakeMouseEventFromTouch(event, cap_mon_info_.mon_idx_, x_ratio, y_ratio);
+            thunder_sdk_->PostBinaryMessage(msg);
+        }
+    }
+
+    const CaptureMonitorInfo& Application::GetCapMonitorInfo() const {
+        return cap_mon_info_;
     }
 
 }

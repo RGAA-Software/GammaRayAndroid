@@ -5,14 +5,14 @@ import android.graphics.SurfaceTexture;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES32;
 import android.opengl.GLSurfaceView;
+import android.util.Log;
 import android.view.Surface;
 
-import com.tc.client.Director;
-import com.tc.client.Shader;
-import com.tc.client.Sprite;
-import com.tc.client.VAO;
+import com.tc.client.impl.CursorInfo;
 import com.tc.client.impl.ThunderApp;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -21,31 +21,31 @@ import javax.microedition.khronos.opengles.GL10;
 public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFrameAvailableListener {
 
     private static final String TAG = "FrameRender";
-    private ThunderApp mThunderApp;
-    private Context mContext;
-    private final float[] vertexData = {
-            -1f, -1f, 0f, 1f,
-            1f, -1f,  1f, 1f,
-            -1f, 1f,  0f, 0f,
-            1f, 1f,   1f, 0f
+    private final ThunderApp mThunderApp;
+    private final Context mContext;
 
-    };
-
-    private FloatBuffer vertexBuffer;
-
-    private Shader mShader;
-    private int samplerOES_mediacodec;
     private int mOESTexId;
     private SurfaceTexture mOESSurfaceTexture;
     private Surface mOESSurface;
 
-    private VAO mVideoVAO;
     private Director mDirector;
     private Sprite mCursor;
+    private Image mCursorImage;
 
     public FrameRender(Context ctx, ThunderApp sdk) {
         mContext = ctx;
         mThunderApp = sdk;
+        mThunderApp.registerCursorInfoCallback(info -> {
+            if (mCursor != null) {
+                if (mCursorImage == null || mCursorImage.getWidth() != info.getWidth() || mCursorImage.getHeight() != info.getHeight()) {
+                    mCursorImage = new Image(info.getWidth(), info.getHeight(), 4, info.getBitmap());
+                } else {
+                    mCursorImage.putData(info.getBitmap());
+                }
+                mCursor.updateImagePosition(info.getX(), info.getY());
+                mCursor.updateImage(mCursorImage);
+            }
+        });
     }
 
     @Override
@@ -59,6 +59,9 @@ public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFra
         initRenderMediacodec();
         mThunderApp.init(false,  mOESSurface, true, true, mOESTexId);
         mThunderApp.start();
+
+        mCursor = Sprite.Make(mDirector);
+        mCursor.init();
     }
 
     @Override
@@ -69,8 +72,15 @@ public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFra
 
     @Override
     public void onDrawFrame(GL10 gl10) {
+        GLES32.glClear(GLES32.GL_COLOR_BUFFER_BIT|GLES32.GL_DEPTH_BUFFER_BIT);
+        GLES32.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
         mOESSurfaceTexture.updateTexImage();
         onRenderTick();
+
+        if (mCursor != null) {
+            mCursor.render(0);
+        }
     }
 
     private void initRenderMediacodec() {

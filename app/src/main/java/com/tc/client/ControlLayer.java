@@ -187,8 +187,8 @@ public class ControlLayer extends FrameLayout {
         setTranslation(mStart, mControlParam.startLeft*density, mControlParam.startTop*density);
         setTranslation(mBack, mControlParam.backLeft* density, mControlParam.backTop*density);
         setTranslation(mXbox, mControlParam.xboxLeft*density, mControlParam.xboxTop*density);
-        setTranslation(mLT, mControlParam.ltLeft*density, mControlParam.ltTop*density);
-        setTranslation(mLB, mControlParam.lbLeft*density, mControlParam.lbTop*density);
+        setTranslation(mLB, mControlParam.ltLeft*density, mControlParam.ltTop*density);
+        setTranslation(mLT, mControlParam.lbLeft*density, mControlParam.lbTop*density);
         setTranslation(mRT, mControlParam.rtLeft*density, mControlParam.rtTop*density);
         setTranslation(mRB, mControlParam.rbLeft*density, mControlParam.rbTop*density);
     }

@@ -13,6 +13,7 @@ std::shared_ptr<Application> g_app = nullptr;
 jobject g_java_app = nullptr;
 jclass g_java_class = nullptr;
 jmethodID g_cbk_methodID = nullptr;
+jmethodID g_cbk_cursor_methodID = nullptr;
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved) {
     LOGI("JNI onload");
@@ -28,6 +29,7 @@ Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl,
     g_java_app = env->NewGlobalRef(thiz);
     g_java_class = env->GetObjectClass(thiz);
     g_cbk_methodID = env->GetMethodID(g_java_class, "onNativeMessage", "(Ljava/lang/String;)V");
+    g_cbk_cursor_methodID = env->GetMethodID(g_java_class, "onCursorInfo", "(FFIIIIZ[B)V");
     JavaVM* vm;
     env->GetJavaVM(&vm);
     g_app = Application::Make(vm);
@@ -35,12 +37,40 @@ Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl,
     g_app->RegisterNativeMessageCallback([=](const std::string& msg) {
         auto env_wrapper = g_app->ObtainEnvWrapper();
         if (!env_wrapper || !env_wrapper->Env()) {
-            LOGE("Can't get a env wrapper.");
+            LOGE("RegisterNativeMessageCallback; Can't get a env wrapper.");
             return;
         }
-        //LOGI("msg is : {}", msg);
         auto jstr_msg = env_wrapper->Env()->NewStringUTF(msg.c_str());
         env_wrapper->Env()->CallVoidMethod(g_java_app, g_cbk_methodID, jstr_msg);
+    });
+
+    g_app->RegisterCursorInfoCallback([=](const tc::CursorInfoSync& cursor) {
+        auto env_wrapper = g_app->ObtainEnvWrapper();
+        if (!env_wrapper || !env_wrapper->Env()) {
+            LOGE("RegisterCursorInfoCallback; Can't get a env wrapper.");
+            return;
+        }
+
+        const CaptureMonitorInfo& cap_mon_info = g_app->GetCapMonitorInfo();
+        if (cap_mon_info.Width() <= 0 || cap_mon_info.Height() <= 0) {
+            return;
+        }
+        auto env = env_wrapper->Env();
+        jfloat x = cursor.x()*1.0f/cap_mon_info.Width();
+        jfloat y = cursor.y()*1.0f/cap_mon_info.Height();
+        jint hotspot_x = cursor.hotspot_x();
+        jint hotspot_y = cursor.hotspot_y();
+        jint width = cursor.width();
+        jint height = cursor.height();
+        jboolean visible = cursor.visible();
+        auto bitmap = cursor.bitmap();
+        auto cursorArray = env->NewByteArray(bitmap.size());
+        if (!cursorArray) {
+            return;
+        }
+        env->SetByteArrayRegion(cursorArray, 0, static_cast<jsize>(bitmap.size()), reinterpret_cast<const jbyte*>(bitmap.data()));
+        //int x, int y, int hotspotX, int hotspotY, int width, int height, boolean visible, byte[] data
+        env->CallVoidMethod(g_java_app, g_cbk_cursor_methodID, x, y, hotspot_x, hotspot_y, width, height, visible, cursorArray);
     });
 
     g_app->Init(ThunderSdkParams {
@@ -118,5 +148,12 @@ Java_com_tc_client_impl_ThunderApp_sendGamepadState(JNIEnv *env, jobject thiz, j
                                                     jint thumb_ry) {
     if (g_app) {
         g_app->SendGamepadState(buttons, left_trigger, right_trigger, thumb_lx, thumb_ly, thumb_rx, thumb_ry);
+    }
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_tc_client_impl_ThunderApp_sendMouseEvent(JNIEnv *env, jobject thiz, jint event, jfloat x_ratio, jfloat y_ratio) {
+    if (g_app) {
+        g_app->SendMouseEvent(event, x_ratio, y_ratio);
     }
 }

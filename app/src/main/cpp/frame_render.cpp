@@ -232,8 +232,6 @@ namespace tc
             return;
         }
 
-        glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
         glUseProgram(program_);
         glBindVertexArray(video_vao_);
 

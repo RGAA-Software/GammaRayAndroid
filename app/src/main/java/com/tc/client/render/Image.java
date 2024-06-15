@@ -1,4 +1,4 @@
-package com.tc.client;
+package com.tc.client.render;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -39,6 +39,12 @@ public class Image {
 
     public ByteBuffer getData() {
         return mData;
+    }
+
+    public void putData(byte[] data) {
+        mData.position(0);
+        mData.put(data);
+        mData.position(0);
     }
 
 }

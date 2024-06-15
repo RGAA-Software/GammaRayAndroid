@@ -352,4 +352,23 @@ public class FrameRenderView extends GLSurfaceView {
                 mXInputGamepad.sThumbRY);
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_UP
+                || action == MotionEvent.ACTION_MOVE || action == MotionEvent.ACTION_CANCEL) {
+
+            int targetAction = action;
+            if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
+                targetAction = MotionEvent.ACTION_UP;
+            }
+
+            mThunderApp.sendMouseEvent(targetAction, event.getX()/this.getWidth(), event.getY()/this.getHeight());
+            if (action == MotionEvent.ACTION_DOWN) {
+                // Move the cursor to current position
+                mThunderApp.sendMouseEvent(MotionEvent.ACTION_MOVE, event.getX()/this.getWidth(), event.getY()/this.getHeight());
+            }
+        }
+        return super.onTouchEvent(event);
+    }
 }

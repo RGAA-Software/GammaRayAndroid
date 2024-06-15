@@ -28,8 +28,7 @@ namespace tc
                 } else {
                     LOGE("JNI AttachCurrentThread failed.");
                 }
-            }
-            else {
+            } else {
                 LOGE("JNI GetEnv failed.");
             }
         }

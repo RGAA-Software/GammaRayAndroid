@@ -1,4 +1,4 @@
-package com.tc.client;
+package com.tc.client.render;
 
 import android.content.Context;
 

@@ -76,7 +76,7 @@ class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks
         super.onResume()
         thunderApp.nativeResume()
         if (wakeLock != null) {
-            wakeLock?.acquire(120*60*1000L /*10 minutes*/);
+            wakeLock?.acquire(120*60*1000L)
         }
     }
 
@@ -84,7 +84,7 @@ class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks
         super.onPause()
         thunderApp.nativePause()
         if (wakeLock != null) {
-            wakeLock?.release();
+            wakeLock?.release()
         }
     }
 

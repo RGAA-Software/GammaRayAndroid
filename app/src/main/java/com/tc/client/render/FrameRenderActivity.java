@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -32,6 +33,7 @@ public class FrameRenderActivity extends Activity {
     private String mIp;
     private int mPort;
     private AppContext appContext;
+    private PowerManager.WakeLock mWakeLock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,19 +79,27 @@ public class FrameRenderActivity extends Activity {
                 resizeFrameView(width, height);
             });
         }));
+
+        PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
+        mWakeLock = powerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "GammaRay:Render");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         mFrameRenderView.onResume();
+        if (mWakeLock != null) {
+            mWakeLock.acquire(120 * 60 * 1000L);
+        }
     }
 
     @Override
     protected void onPause() {
-        //mFrameRenderView.setVisibility(View.GONE);
         super.onPause();
         mFrameRenderView.onPause();
+        if (mWakeLock != null) {
+            mWakeLock.release();
+        }
     }
 
     @Override
@@ -122,7 +132,6 @@ public class FrameRenderActivity extends Activity {
         mFrameRenderView.getLayoutParams().height = screenHeight;
         mFrameRenderView.layout(offsetX, 0, (int) (offsetX+targetWidth), screenHeight);
         mFrameRenderView.postInvalidate();
-        //mFrameRenderView.getHolder().setFixedSize(targetWidth, screenHeight);
         Log.i(TAG, "After resize view, width: " + targetWidth + ", height: " + screenHeight);
     }
 
