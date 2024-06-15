@@ -4891,22 +4891,22 @@ public final class TcMessage {
     boolean getVisible();
 
     /**
-     * <code>uint32 x = 2;</code>
+     * <code>int32 x = 2;</code>
      */
     int getX();
 
     /**
-     * <code>uint32 y = 3;</code>
+     * <code>int32 y = 3;</code>
      */
     int getY();
 
     /**
-     * <code>uint32 hotspot_x = 4;</code>
+     * <code>int32 hotspot_x = 4;</code>
      */
     int getHotspotX();
 
     /**
-     * <code>uint32 hotspot_y = 5;</code>
+     * <code>int32 hotspot_y = 5;</code>
      */
     int getHotspotY();
 
@@ -4963,21 +4963,21 @@ public final class TcMessage {
     public static final int X_FIELD_NUMBER = 2;
     private int x_;
     /**
-     * <code>uint32 x = 2;</code>
+     * <code>int32 x = 2;</code>
      */
     @java.lang.Override
     public int getX() {
       return x_;
     }
     /**
-     * <code>uint32 x = 2;</code>
+     * <code>int32 x = 2;</code>
      */
     private void setX(int value) {
       
       x_ = value;
     }
     /**
-     * <code>uint32 x = 2;</code>
+     * <code>int32 x = 2;</code>
      */
     private void clearX() {
       
@@ -4987,21 +4987,21 @@ public final class TcMessage {
     public static final int Y_FIELD_NUMBER = 3;
     private int y_;
     /**
-     * <code>uint32 y = 3;</code>
+     * <code>int32 y = 3;</code>
      */
     @java.lang.Override
     public int getY() {
       return y_;
     }
     /**
-     * <code>uint32 y = 3;</code>
+     * <code>int32 y = 3;</code>
      */
     private void setY(int value) {
       
       y_ = value;
     }
     /**
-     * <code>uint32 y = 3;</code>
+     * <code>int32 y = 3;</code>
      */
     private void clearY() {
       
@@ -5011,21 +5011,21 @@ public final class TcMessage {
     public static final int HOTSPOT_X_FIELD_NUMBER = 4;
     private int hotspotX_;
     /**
-     * <code>uint32 hotspot_x = 4;</code>
+     * <code>int32 hotspot_x = 4;</code>
      */
     @java.lang.Override
     public int getHotspotX() {
       return hotspotX_;
     }
     /**
-     * <code>uint32 hotspot_x = 4;</code>
+     * <code>int32 hotspot_x = 4;</code>
      */
     private void setHotspotX(int value) {
       
       hotspotX_ = value;
     }
     /**
-     * <code>uint32 hotspot_x = 4;</code>
+     * <code>int32 hotspot_x = 4;</code>
      */
     private void clearHotspotX() {
       
@@ -5035,21 +5035,21 @@ public final class TcMessage {
     public static final int HOTSPOT_Y_FIELD_NUMBER = 5;
     private int hotspotY_;
     /**
-     * <code>uint32 hotspot_y = 5;</code>
+     * <code>int32 hotspot_y = 5;</code>
      */
     @java.lang.Override
     public int getHotspotY() {
       return hotspotY_;
     }
     /**
-     * <code>uint32 hotspot_y = 5;</code>
+     * <code>int32 hotspot_y = 5;</code>
      */
     private void setHotspotY(int value) {
       
       hotspotY_ = value;
     }
     /**
-     * <code>uint32 hotspot_y = 5;</code>
+     * <code>int32 hotspot_y = 5;</code>
      */
     private void clearHotspotY() {
       
@@ -5251,14 +5251,14 @@ public final class TcMessage {
       }
 
       /**
-       * <code>uint32 x = 2;</code>
+       * <code>int32 x = 2;</code>
        */
       @java.lang.Override
       public int getX() {
         return instance.getX();
       }
       /**
-       * <code>uint32 x = 2;</code>
+       * <code>int32 x = 2;</code>
        */
       public Builder setX(int value) {
         copyOnWrite();
@@ -5266,7 +5266,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>uint32 x = 2;</code>
+       * <code>int32 x = 2;</code>
        */
       public Builder clearX() {
         copyOnWrite();
@@ -5275,14 +5275,14 @@ public final class TcMessage {
       }
 
       /**
-       * <code>uint32 y = 3;</code>
+       * <code>int32 y = 3;</code>
        */
       @java.lang.Override
       public int getY() {
         return instance.getY();
       }
       /**
-       * <code>uint32 y = 3;</code>
+       * <code>int32 y = 3;</code>
        */
       public Builder setY(int value) {
         copyOnWrite();
@@ -5290,7 +5290,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>uint32 y = 3;</code>
+       * <code>int32 y = 3;</code>
        */
       public Builder clearY() {
         copyOnWrite();
@@ -5299,14 +5299,14 @@ public final class TcMessage {
       }
 
       /**
-       * <code>uint32 hotspot_x = 4;</code>
+       * <code>int32 hotspot_x = 4;</code>
        */
       @java.lang.Override
       public int getHotspotX() {
         return instance.getHotspotX();
       }
       /**
-       * <code>uint32 hotspot_x = 4;</code>
+       * <code>int32 hotspot_x = 4;</code>
        */
       public Builder setHotspotX(int value) {
         copyOnWrite();
@@ -5314,7 +5314,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>uint32 hotspot_x = 4;</code>
+       * <code>int32 hotspot_x = 4;</code>
        */
       public Builder clearHotspotX() {
         copyOnWrite();
@@ -5323,14 +5323,14 @@ public final class TcMessage {
       }
 
       /**
-       * <code>uint32 hotspot_y = 5;</code>
+       * <code>int32 hotspot_y = 5;</code>
        */
       @java.lang.Override
       public int getHotspotY() {
         return instance.getHotspotY();
       }
       /**
-       * <code>uint32 hotspot_y = 5;</code>
+       * <code>int32 hotspot_y = 5;</code>
        */
       public Builder setHotspotY(int value) {
         copyOnWrite();
@@ -5338,7 +5338,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>uint32 hotspot_y = 5;</code>
+       * <code>int32 hotspot_y = 5;</code>
        */
       public Builder clearHotspotY() {
         copyOnWrite();
@@ -5444,8 +5444,8 @@ public final class TcMessage {
               "bitmap_",
             };
             java.lang.String info =
-                "\u0000\b\u0000\u0000\u0001\b\b\u0000\u0000\u0000\u0001\u0007\u0002\u000b\u0003\u000b" +
-                "\u0004\u000b\u0005\u000b\u0006\u000b\u0007\u000b\b\n";
+                "\u0000\b\u0000\u0000\u0001\b\b\u0000\u0000\u0000\u0001\u0007\u0002\u0004\u0003\u0004" +
+                "\u0004\u0004\u0005\u0004\u0006\u000b\u0007\u000b\b\n";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
