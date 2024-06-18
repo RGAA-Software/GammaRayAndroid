@@ -1,6 +1,7 @@
 package com.tc.client.ui.steam
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -25,6 +26,8 @@ import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
 import com.tc.client.steam.SteamGame
 import com.tc.client.ui.BaseFragment
+import com.tc.client.ui.effects.EffectDisplayItemDecoration
+import com.tc.client.ui.effects.EffectDisplayItemDecorationHorizontal
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -79,7 +82,15 @@ class SteamAppFragment() : BaseFragment() {
         }
 
         binding.bookList.apply {
-            layoutManager = GridLayoutManager(activity, 2);
+            val itemCount: Int
+            if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                itemCount = 2
+                addItemDecoration(ItemDecoration(90));
+            } else {
+                itemCount = 4
+                addItemDecoration(ItemDecorationHorizontal(90));
+            }
+            layoutManager = GridLayoutManager(activity, itemCount)
             steamAppAdapter = SteamAppAdapter(context, steamGames);
             steamAppAdapter.itemClickListener = object : SteamAppAdapter.OnItemClickListener {
                 override fun onItemClicked(game: SteamGame) {
@@ -88,7 +99,6 @@ class SteamAppFragment() : BaseFragment() {
             }
 
             adapter = steamAppAdapter;
-            addItemDecoration(ItemDecoration(90));
             addOnScrollListener(object: RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)

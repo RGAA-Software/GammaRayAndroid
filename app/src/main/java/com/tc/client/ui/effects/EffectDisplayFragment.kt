@@ -1,6 +1,7 @@
 package com.tc.client.ui.effects
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -40,10 +41,17 @@ class EffectDisplayFragment() : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.effectList.apply {
-            layoutManager = GridLayoutManager(activity, 2);
+            var itemCount = 0
+            if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                itemCount = 2
+                addItemDecoration(EffectDisplayItemDecoration(90));
+            } else {
+                itemCount = 4
+                addItemDecoration(EffectDisplayItemDecorationHorizontal(90));
+            }
+            layoutManager = GridLayoutManager(activity, itemCount)
             effectDisplayAdapter = EffectDisplayAdapter(context, effects);
             adapter = effectDisplayAdapter;
-            addItemDecoration(EffectDisplayItemDecoration(90));
             effectDisplayAdapter.setOnItemClickListener(object: OnListItemListener<EffectDefinition.EffectInfo> {
                 override fun onItemClicked(pos: Int, value: EffectDefinition.EffectInfo) {
                     startEffectActivity(value);

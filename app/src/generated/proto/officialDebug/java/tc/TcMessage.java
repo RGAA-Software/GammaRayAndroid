@@ -93,6 +93,14 @@ public final class TcMessage {
      * <code>kOnlineGames = 12;</code>
      */
     kOnlineGames(12),
+    /**
+     * <pre>
+     * ui server hello
+     * </pre>
+     *
+     * <code>kUIServerHello = 13;</code>
+     */
+    kUIServerHello(13),
     UNRECOGNIZED(-1),
     ;
 
@@ -176,6 +184,14 @@ public final class TcMessage {
      * <code>kOnlineGames = 12;</code>
      */
     public static final int kOnlineGames_VALUE = 12;
+    /**
+     * <pre>
+     * ui server hello
+     * </pre>
+     *
+     * <code>kUIServerHello = 13;</code>
+     */
+    public static final int kUIServerHello_VALUE = 13;
 
 
     @java.lang.Override
@@ -210,6 +226,7 @@ public final class TcMessage {
         case 10: return kClientStatistics;
         case 11: return kServerAudioSpectrum;
         case 12: return kOnlineGames;
+        case 13: return kUIServerHello;
         default: return null;
       }
     }
@@ -653,6 +670,106 @@ public final class TcMessage {
     }
 
     // @@protoc_insertion_point(enum_scope:tc.ClientType)
+  }
+
+  /**
+   * <pre>
+   * UI server
+   * </pre>
+   *
+   * Protobuf enum {@code tc.SessionType}
+   */
+  public enum SessionType
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>kInnerServer = 0;</code>
+     */
+    kInnerServer(0),
+    /**
+     * <code>kAndroidClient = 1;</code>
+     */
+    kAndroidClient(1),
+    /**
+     * <code>kWindowsClient = 2;</code>
+     */
+    kWindowsClient(2),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>kInnerServer = 0;</code>
+     */
+    public static final int kInnerServer_VALUE = 0;
+    /**
+     * <code>kAndroidClient = 1;</code>
+     */
+    public static final int kAndroidClient_VALUE = 1;
+    /**
+     * <code>kWindowsClient = 2;</code>
+     */
+    public static final int kWindowsClient_VALUE = 2;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static SessionType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static SessionType forNumber(int value) {
+      switch (value) {
+        case 0: return kInnerServer;
+        case 1: return kAndroidClient;
+        case 2: return kWindowsClient;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<SessionType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        SessionType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<SessionType>() {
+            @java.lang.Override
+            public SessionType findValueByNumber(int number) {
+              return SessionType.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return SessionTypeVerifier.INSTANCE;
+    }
+
+    private static final class SessionTypeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new SessionTypeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return SessionType.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private SessionType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:tc.SessionType)
   }
 
   /**
@@ -9983,6 +10100,277 @@ public final class TcMessage {
     }
   }
 
+  public interface UIServerHelloOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.UIServerHello)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>.tc.SessionType type = 1;</code>
+     */
+    int getTypeValue();
+    /**
+     * <code>.tc.SessionType type = 1;</code>
+     */
+    tc.TcMessage.SessionType getType();
+  }
+  /**
+   * Protobuf type {@code tc.UIServerHello}
+   */
+  public  static final class UIServerHello extends
+      com.google.protobuf.GeneratedMessageLite<
+          UIServerHello, UIServerHello.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.UIServerHello)
+      UIServerHelloOrBuilder {
+    private UIServerHello() {
+    }
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>.tc.SessionType type = 1;</code>
+     */
+    @java.lang.Override
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.tc.SessionType type = 1;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.SessionType getType() {
+      tc.TcMessage.SessionType result = tc.TcMessage.SessionType.forNumber(type_);
+      return result == null ? tc.TcMessage.SessionType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.tc.SessionType type = 1;</code>
+     */
+    private void setTypeValue(int value) {
+        type_ = value;
+    }
+    /**
+     * <code>.tc.SessionType type = 1;</code>
+     */
+    private void setType(tc.TcMessage.SessionType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      type_ = value.getNumber();
+    }
+    /**
+     * <code>.tc.SessionType type = 1;</code>
+     */
+    private void clearType() {
+      
+      type_ = 0;
+    }
+
+    public static tc.TcMessage.UIServerHello parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.UIServerHello parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.UIServerHello parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.UIServerHello parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.UIServerHello parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.UIServerHello parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.UIServerHello parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.UIServerHello parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.UIServerHello parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.UIServerHello parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.UIServerHello parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.UIServerHello parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcMessage.UIServerHello prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.UIServerHello}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcMessage.UIServerHello, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.UIServerHello)
+        tc.TcMessage.UIServerHelloOrBuilder {
+      // Construct using tc.TcMessage.UIServerHello.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>.tc.SessionType type = 1;</code>
+       */
+      @java.lang.Override
+      public int getTypeValue() {
+        return instance.getTypeValue();
+      }
+      /**
+       * <code>.tc.SessionType type = 1;</code>
+       */
+      public Builder setTypeValue(int value) {
+        copyOnWrite();
+        instance.setTypeValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.SessionType type = 1;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.SessionType getType() {
+        return instance.getType();
+      }
+      /**
+       * <code>.tc.SessionType type = 1;</code>
+       */
+      public Builder setType(tc.TcMessage.SessionType value) {
+        copyOnWrite();
+        instance.setType(value);
+        return this;
+      }
+      /**
+       * <code>.tc.SessionType type = 1;</code>
+       */
+      public Builder clearType() {
+        copyOnWrite();
+        instance.clearType();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.UIServerHello)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcMessage.UIServerHello();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "type_",
+            };
+            java.lang.String info =
+                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0000\u0000\u0001\f";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcMessage.UIServerHello> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcMessage.UIServerHello.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.UIServerHello)
+    private static final tc.TcMessage.UIServerHello DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new UIServerHello();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        UIServerHello.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcMessage.UIServerHello getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<UIServerHello> PARSER;
+
+    public static com.google.protobuf.Parser<UIServerHello> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface MessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:tc.Message)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -10132,6 +10520,15 @@ public final class TcMessage {
      * <code>repeated .tc.OnlineGame online_games = 16;</code>
      */
     int getOnlineGamesCount();
+
+    /**
+     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     */
+    boolean hasUiServerHello();
+    /**
+     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     */
+    tc.TcMessage.UIServerHello getUiServerHello();
   }
   /**
    * Protobuf type {@code tc.Message}
@@ -11077,6 +11474,64 @@ public final class TcMessage {
       onlineGames_.remove(index);
     }
 
+    public static final int UI_SERVER_HELLO_FIELD_NUMBER = 17;
+    private tc.TcMessage.UIServerHello uiServerHello_;
+    /**
+     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     */
+    @java.lang.Override
+    public boolean hasUiServerHello() {
+      return uiServerHello_ != null;
+    }
+    /**
+     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.UIServerHello getUiServerHello() {
+      return uiServerHello_ == null ? tc.TcMessage.UIServerHello.getDefaultInstance() : uiServerHello_;
+    }
+    /**
+     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     */
+    private void setUiServerHello(tc.TcMessage.UIServerHello value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      uiServerHello_ = value;
+      
+      }
+    /**
+     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     */
+    private void setUiServerHello(
+        tc.TcMessage.UIServerHello.Builder builderForValue) {
+      uiServerHello_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeUiServerHello(tc.TcMessage.UIServerHello value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (uiServerHello_ != null &&
+          uiServerHello_ != tc.TcMessage.UIServerHello.getDefaultInstance()) {
+        uiServerHello_ =
+          tc.TcMessage.UIServerHello.newBuilder(uiServerHello_).mergeFrom(value).buildPartial();
+      } else {
+        uiServerHello_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     */
+    private void clearUiServerHello() {  uiServerHello_ = null;
+      
+    }
+
     public static tc.TcMessage.Message parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -11941,6 +12396,53 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       */
+      @java.lang.Override
+      public boolean hasUiServerHello() {
+        return instance.hasUiServerHello();
+      }
+      /**
+       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.UIServerHello getUiServerHello() {
+        return instance.getUiServerHello();
+      }
+      /**
+       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       */
+      public Builder setUiServerHello(tc.TcMessage.UIServerHello value) {
+        copyOnWrite();
+        instance.setUiServerHello(value);
+        return this;
+        }
+      /**
+       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       */
+      public Builder setUiServerHello(
+          tc.TcMessage.UIServerHello.Builder builderForValue) {
+        copyOnWrite();
+        instance.setUiServerHello(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       */
+      public Builder mergeUiServerHello(tc.TcMessage.UIServerHello value) {
+        copyOnWrite();
+        instance.mergeUiServerHello(value);
+        return this;
+      }
+      /**
+       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       */
+      public Builder clearUiServerHello() {  copyOnWrite();
+        instance.clearUiServerHello();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.Message)
     }
     @java.lang.Override
@@ -11974,11 +12476,12 @@ public final class TcMessage {
               "serverAudioSpectrum_",
               "onlineGames_",
               tc.TcMessage.OnlineGame.class,
+              "uiServerHello_",
             };
             java.lang.String info =
-                "\u0000\u0010\u0000\u0000\u0001\u0010\u0010\u0000\u0001\u0000\u0001\f\u0002\u0003" +
+                "\u0000\u0011\u0000\u0000\u0001\u0011\u0011\u0000\u0001\u0000\u0001\f\u0002\u0003" +
                 "\u0003\u0208\u0004\t\u0005\t\u0006\t\u0007\t\b\t\t\t\n\t\u000b\t\f\t\r\t\u000e\t" +
-                "\u000f\t\u0010\u001b";
+                "\u000f\t\u0010\u001b\u0011\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
