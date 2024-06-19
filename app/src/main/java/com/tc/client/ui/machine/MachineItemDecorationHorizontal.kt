@@ -1,15 +1,14 @@
-package com.tc.client.ui.steam
+package com.tc.client.ui.machine
 
 import android.content.res.Resources
 import android.graphics.Rect
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemDecorationHorizontal(private var itemCount: Int) : RecyclerView.ItemDecoration() {
+class MachineItemDecorationHorizontal(private var itemCount: Int) : RecyclerView.ItemDecoration() {
 
     private val density = Resources.getSystem().displayMetrics.density;
-    private var sizeRatio = 100.0f/150
+    private var sizeRatio = 100.0f/120
 
     override fun getItemOffsets(
         outRect: Rect,
@@ -28,7 +27,7 @@ class ItemDecorationHorizontal(private var itemCount: Int) : RecyclerView.ItemDe
             view.layoutParams.height = (itemWidth/sizeRatio).toInt()
         }
 
-        outRect.top = (20*density).toInt();
+        outRect.top = (20*density).toInt()
         outRect.right = itemGapPixelSize
     }
 }

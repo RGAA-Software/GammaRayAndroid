@@ -5,7 +5,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemDecoration(private var dpSize: Int) : RecyclerView.ItemDecoration() {
+class ItemDecoration : RecyclerView.ItemDecoration() {
 
     private val density = Resources.getSystem().displayMetrics.density;
     //private val pixSize = (density * dpSize).toInt();

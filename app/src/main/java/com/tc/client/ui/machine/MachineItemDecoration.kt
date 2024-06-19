@@ -5,10 +5,9 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class MachineItemDecoration(private var dpSize: Int) : RecyclerView.ItemDecoration() {
+class MachineItemDecoration : RecyclerView.ItemDecoration() {
 
-    private val density = Resources.getSystem().displayMetrics.density;
-    //private val pixSize = (density * dpSize).toInt();
+    private val density = Resources.getSystem().displayMetrics.density
     private var itemFactor = 1.66;
     private var itemWidth = 100;
     private var itemHeight = 120;

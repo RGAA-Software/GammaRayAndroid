@@ -44,10 +44,10 @@ class EffectDisplayFragment() : BaseFragment() {
             var itemCount = 0
             if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 itemCount = 2
-                addItemDecoration(EffectDisplayItemDecoration(90));
+                addItemDecoration(EffectDisplayItemDecoration());
             } else {
                 itemCount = 4
-                addItemDecoration(EffectDisplayItemDecorationHorizontal(90));
+                addItemDecoration(EffectDisplayItemDecorationHorizontal(4));
             }
             layoutManager = GridLayoutManager(activity, itemCount)
             effectDisplayAdapter = EffectDisplayAdapter(context, effects);

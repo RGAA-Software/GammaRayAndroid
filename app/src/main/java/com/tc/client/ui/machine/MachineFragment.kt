@@ -1,12 +1,11 @@
 package com.tc.client.ui.machine
 
-import android.app.Activity
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +24,7 @@ import com.tc.client.events.OnServerScanned
 import com.tc.client.ui.BaseFragment
 import com.tc.client.ui.base.CustomAlertDialog
 import com.tc.client.ui.base.OnListItemListener
+import com.tc.client.ui.effects.EffectDisplayItemDecorationHorizontal
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -84,10 +84,17 @@ class MachineFragment() : BaseFragment() {
         }
 
         binding.machineList.apply {
-            layoutManager = GridLayoutManager(activity, 2);
+            val itemCount: Int
+            if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                itemCount = 2
+                addItemDecoration(MachineItemDecoration());
+            } else {
+                itemCount = 4
+                addItemDecoration(MachineItemDecorationHorizontal(itemCount));
+            }
+            layoutManager = GridLayoutManager(activity, itemCount);
             machineAdapter = MachineAdapter(context, machines);
             adapter = machineAdapter;
-            addItemDecoration(MachineItemDecoration(90));
             addOnScrollListener(object: RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)

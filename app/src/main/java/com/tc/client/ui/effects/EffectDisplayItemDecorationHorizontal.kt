@@ -5,13 +5,10 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class EffectDisplayItemDecorationHorizontal(private var dpSize: Int) : RecyclerView.ItemDecoration() {
+class EffectDisplayItemDecorationHorizontal(private var itemCount: Int) : RecyclerView.ItemDecoration() {
 
     private val density = Resources.getSystem().displayMetrics.density;
-    //private val pixSize = (density * dpSize).toInt();
-    private var itemFactor = 1.66;
-    private var itemWidth = 100;
-    private var itemHeight = 120;
+    private var sizeRatio = 100.0f/120
 
     override fun getItemOffsets(
         outRect: Rect,
@@ -20,25 +17,17 @@ class EffectDisplayItemDecorationHorizontal(private var dpSize: Int) : RecyclerV
         state: RecyclerView.State
     ) {
         super.getItemOffsets(outRect, view, parent, state);
-        var itemCount = 4
-        var pixSize = 0;
+        var itemGapPixelSize = 0;
+        val itemGap = 20
+
         if (view.layoutParams != null) {
-            //view.layoutParams.width = (density * itemWidth * itemFactor).toInt();
-            val itemWidth = (density * itemWidth * itemFactor).toInt();
-            view.layoutParams.height = (density * itemHeight * itemFactor).toInt();
-            pixSize = ((Resources.getSystem().displayMetrics.widthPixels - itemWidth*itemCount)/(itemCount+1)).toInt();
+            itemGapPixelSize = (density * itemGap).toInt()
+            val totalGapPixelSize = itemGapPixelSize * itemCount
+            val itemWidth = (Resources.getSystem().displayMetrics.widthPixels - totalGapPixelSize)/itemCount
+            view.layoutParams.height = (itemWidth/sizeRatio).toInt()
         }
 
-        outRect.top = (15*density).toInt();
-        if (parent.getChildAdapterPosition(view) % 4 == 0) {
-            outRect.left = pixSize
-            outRect.right = pixSize/2
-        } else if (parent.getChildAdapterPosition(view) % 4 == 1 || parent.getChildAdapterPosition(view) % 4 == 2) {
-            outRect.left = pixSize/2
-            outRect.right = pixSize/2
-        } else if (parent.getChildAdapterPosition(view) % 4 == 3) {
-            outRect.left = pixSize/2
-            outRect.right = pixSize
-        }
+        outRect.top = (20*density).toInt()
+        outRect.right = itemGapPixelSize
     }
 }

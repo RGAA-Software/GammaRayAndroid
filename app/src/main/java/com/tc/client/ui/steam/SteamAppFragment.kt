@@ -26,8 +26,6 @@ import com.tc.client.events.OnServerEmpty
 import com.tc.client.events.OnServerOffline
 import com.tc.client.steam.SteamGame
 import com.tc.client.ui.BaseFragment
-import com.tc.client.ui.effects.EffectDisplayItemDecoration
-import com.tc.client.ui.effects.EffectDisplayItemDecorationHorizontal
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -85,10 +83,10 @@ class SteamAppFragment() : BaseFragment() {
             val itemCount: Int
             if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 itemCount = 2
-                addItemDecoration(ItemDecoration(90));
+                addItemDecoration(ItemDecoration());
             } else {
-                itemCount = 4
-                addItemDecoration(ItemDecorationHorizontal(90));
+                itemCount = 5
+                addItemDecoration(ItemDecorationHorizontal(itemCount))
             }
             layoutManager = GridLayoutManager(activity, itemCount)
             steamAppAdapter = SteamAppAdapter(context, steamGames);
