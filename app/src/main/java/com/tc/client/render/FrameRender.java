@@ -8,6 +8,7 @@ import android.opengl.GLSurfaceView;
 import android.util.Log;
 import android.view.Surface;
 
+import com.tc.client.Settings;
 import com.tc.client.impl.CursorInfo;
 import com.tc.client.impl.ThunderApp;
 
@@ -73,7 +74,7 @@ public class FrameRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFra
         mOESSurfaceTexture.updateTexImage();
         onRenderTick();
 
-        if (mCursor != null) {
+        if (mCursor != null && Settings.Companion.getInstance().getShowCursor()) {
             mCursor.render(0);
         }
     }
