@@ -38,6 +38,10 @@ class SettingsFragment() : BaseFragment() {
             context?.let { Settings.getInstance().setInvertJoystickYAxis(it, isChecked) }
         }
 
+        binding.idShowCursor.setOnCheckedChangeListener { view, isChecked -> {
+
+        }}
+
     }
 
 }

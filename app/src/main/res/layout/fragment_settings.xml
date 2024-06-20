@@ -80,4 +80,35 @@
 
     </RelativeLayout>
 
+    <!-- Show cursor -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/settings_item_height">
+
+        <TextView
+            android:text="@string/show_cursor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="@dimen/settings_title_font_size"
+            android:layout_marginLeft="@dimen/settings_margin_border"
+            android:layout_centerVertical="true"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/id_show_cursor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/settings_margin_border"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/settings_margin_border"
+            android:layout_marginRight="@dimen/settings_margin_border"
+            android:background="#EEEEEE"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
 </LinearLayout>
