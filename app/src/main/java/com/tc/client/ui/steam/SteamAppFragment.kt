@@ -1,5 +1,6 @@
 package com.tc.client.ui.steam
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -281,29 +282,31 @@ class SteamAppFragment() : BaseFragment() {
     }
 
     fun processGameClicked(game: SteamGame) {
-
         val dialog = GameOpDialog(requireActivity())
-
         dialog.onStartGameClicked = View.OnClickListener {
             appContext.postTask {
                 val gamePath = game.getGamePath()
-                if (TextUtils.isEmpty(gamePath)) {
+                if (TextUtils.isEmpty(gamePath) && !game.isDesktop() && !game.isBigPictureMode()) {
+                    AlertDialog.Builder(activity)
+                        .setTitle("Error")
+                        .setMessage("Game exe path is empty")
+                        .show()
                     return@postTask;
                 }
                 appContext.steamManager.startGame(gamePath)
 
-                // after some condition...
+                // after some conditions...
                 // startFrameRenderActivity
                 startFrameRenderActivity();
             }
         }
 
         dialog.onStopGameClicked = View.OnClickListener {
-
+            appContext.postTask {
+                appContext.steamManager.stopGame(game.gameId.toString())
+            }
         }
-
         dialog.show()
-
     }
 
     private fun startFrameRenderActivity() {

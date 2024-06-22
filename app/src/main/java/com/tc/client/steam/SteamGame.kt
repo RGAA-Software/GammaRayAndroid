@@ -7,9 +7,9 @@ class SteamGame : Comparable<SteamGame> {
     var engine: String = "";
     var exePath: String = "";
     var gameTag: Int = TAG_IDLE;
+    var steamUrl: String = ""
 
      companion object {
-
          const val TAG_PRESET = 0;
          const val TAG_RUNNING = 1;
          const val TAG_IDLE = 2;
@@ -39,15 +39,28 @@ class SteamGame : Comparable<SteamGame> {
     }
 
     fun getGamePath(): String {
-        if (gameId > 0) {
-            if (gameId == 2) {
-                return "steam://open/bigpicture";
-            }
+        if (gameId == 1) {
+            return "steam://rungameid/1"
+        }
+        if (gameId == 2) {
+            return "steam://open/bigpicture";
+        }
+        if (isSteamGame()) {
             return "steam://rungameid/${gameId}"
         }
         return exePath
     }
 
+    fun isSteamGame(): Boolean {
+        return gameId > 2 && steamUrl.isNotEmpty()
+    }
 
+    fun isDesktop(): Boolean {
+        return gameId == 1;
+    }
+
+    fun isBigPictureMode(): Boolean {
+        return gameId == 2
+    }
 
 }

@@ -33,6 +33,13 @@ class SteamAppManager(val context: Context) {
                     app.coverName = item.getString("cover_name");
                     app.gameName = item.getString("name");
                     app.engine = item.getString("engine");
+                    app.steamUrl = item.getString("steam_url")
+                    if (item.has("exes")) {
+                        val exeArray = item.getJSONArray("exes")
+                        if (exeArray.length() > 0) {
+                            app.exePath = exeArray.getString(0)
+                        }
+                    }
                     result.add(app)
                 }
             }
@@ -52,7 +59,17 @@ class SteamAppManager(val context: Context) {
         if (TextUtils.isEmpty(resp)) {
             return Result(Result.ERR, "start failed");
         }
+        return Result(Result.OK, "OK")
+    }
 
+    fun stopGame(gameId: String): Result<String> {
+        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.gameStop
+        val params = mutableMapOf<String, String>()
+        params["game_id"] = gameId;
+        val resp = HttpUtil.postUrl(url, params)
+        if (TextUtils.isEmpty(resp)) {
+            return Result(Result.ERR, "start failed");
+        }
         return Result(Result.OK, "OK")
     }
 
