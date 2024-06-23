@@ -21,7 +21,7 @@ import com.tc.client.events.OnServerScanned
 import com.tc.client.steam.JavaWSClient
 import com.tc.client.ui.BaseFragment
 import com.tc.client.ui.MainTopRightMenu
-import com.tc.client.ui.machine.MachineFragment
+import com.tc.client.ui.server.ServerFragment
 import com.tc.client.ui.steam.SteamAppFragment
 import com.tc.client.ui.me.SettingsFragment
 import com.tc.client.ui.effects.EffectDisplayFragment
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var steamAppFragment: SteamAppFragment
-    private lateinit var machineFragment: MachineFragment
+    private lateinit var serverFragment: ServerFragment
     private lateinit var effectDisplayFragment: EffectDisplayFragment
     private lateinit var settingsFragment: SettingsFragment
     private var currentFragment: Fragment? = null
@@ -88,11 +88,11 @@ class MainActivity : AppCompatActivity() {
 
         Log.i(TAG, "MainActivity onCreate, will create fragments")
 
-        machineFragment = getFragment(ID_MACHINE) as MachineFragment
+        serverFragment = getFragment(ID_MACHINE) as ServerFragment
         steamAppFragment = getFragment(ID_GAMES) as SteamAppFragment;
         effectDisplayFragment = getFragment(ID_MUSIC_EFFECTS) as EffectDisplayFragment;
         settingsFragment = getFragment(ID_ME) as SettingsFragment;
-        fragments.add(machineFragment)
+        fragments.add(serverFragment)
         fragments.add(steamAppFragment)
         fragments.add(effectDisplayFragment)
         fragments.add(settingsFragment)
@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun switchFragment(to: Fragment, tab: String) {
-        if (to is MachineFragment) {
+        if (to is ServerFragment) {
             binding.idOption.visibility = View.VISIBLE
         } else {
             binding.idOption.visibility = View.GONE
@@ -259,7 +259,7 @@ class MainActivity : AppCompatActivity() {
         when (tab) {
             ID_MACHINE -> {
                 binding.bottomBar.show(ID_MACHINE)
-                switchFragment(machineFragment, tab.toString());
+                switchFragment(serverFragment, tab.toString());
                 setActionBarTitle("Machines");
             }
             ID_GAMES -> {
@@ -287,7 +287,7 @@ class MainActivity : AppCompatActivity() {
         }
         when (id) {
             ID_MACHINE -> {
-                return MachineFragment()
+                return ServerFragment()
             }
             ID_GAMES -> {
                 return SteamAppFragment()
@@ -299,7 +299,7 @@ class MainActivity : AppCompatActivity() {
                 return SettingsFragment()
             }
         }
-        return MachineFragment()
+        return ServerFragment()
     }
 
 }

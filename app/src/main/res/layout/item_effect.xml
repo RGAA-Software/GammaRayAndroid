@@ -16,10 +16,9 @@
         android:layout_height="120dp" />
 
     <ImageView
-        android:id="@+id/book_cover"
+        android:id="@+id/effect_cover"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="book cover"
         android:scaleType="centerCrop"
         android:src="#fff" />
 
@@ -40,8 +39,10 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <androidx.cardview.widget.CardView
-            android:layout_width="82dp"
-            android:layout_height="82dp"
+            android:visibility="gone"
+            android:id="@+id/id_effect_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:translationZ="10dp"
             app:cardBackgroundColor="#ffffff"
             android:elevation="10dp"
@@ -50,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="80dp">
+            android:layout_marginBottom="65dp">
 
             <ImageView
                 android:id="@+id/connect_screen"

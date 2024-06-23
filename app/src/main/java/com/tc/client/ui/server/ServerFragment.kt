@@ -1,18 +1,20 @@
-package com.tc.client.ui.machine
+package com.tc.client.ui.server
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.simform.refresh.SSPullToRefreshLayout
 import com.tc.client.MainActivity
 import com.tc.client.NetworkChecker
 import com.tc.client.R
+import com.tc.client.ServerApi
 import com.tc.client.Settings
 import com.tc.client.databinding.FragmentMachineBinding
 import com.tc.client.db.DBServer
@@ -24,13 +26,13 @@ import com.tc.client.events.OnServerScanned
 import com.tc.client.ui.BaseFragment
 import com.tc.client.ui.base.CustomAlertDialog
 import com.tc.client.ui.base.OnListItemListener
-import com.tc.client.ui.effects.EffectDisplayItemDecorationHorizontal
+import com.tc.client.util.HttpUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 
-class MachineFragment() : BaseFragment() {
+class ServerFragment() : BaseFragment() {
 
     companion object {
         const val TAG = "Main"
@@ -39,29 +41,22 @@ class MachineFragment() : BaseFragment() {
     private var _binding: FragmentMachineBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var machineAdapter: MachineAdapter
-    private var machines = mutableListOf<DBServer>();
+    private lateinit var serverAdapter: ServerAdapter
+    private var servers = mutableListOf<DBServer>();
     private var timerCounter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val preset = DBServer.create("MOCKING");
         preset.available = true;
-        machines.add(preset);
+        servers.add(preset);
         Log.i(TAG, "MachineFragment onCreate, will loadServers")
         EventBus.getDefault().register(this);
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-
         _binding = FragmentMachineBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-
-        }
-
         return root
     }
 
@@ -87,14 +82,14 @@ class MachineFragment() : BaseFragment() {
             val itemCount: Int
             if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 itemCount = 2
-                addItemDecoration(MachineItemDecoration());
+                addItemDecoration(ServerItemDecoration());
             } else {
                 itemCount = 4
-                addItemDecoration(MachineItemDecorationHorizontal(itemCount));
+                addItemDecoration(ServerItemDecorationHorizontal(itemCount));
             }
             layoutManager = GridLayoutManager(activity, itemCount);
-            machineAdapter = MachineAdapter(context, machines);
-            adapter = machineAdapter;
+            serverAdapter = ServerAdapter(context, servers);
+            adapter = serverAdapter;
             addOnScrollListener(object: RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
@@ -105,7 +100,7 @@ class MachineFragment() : BaseFragment() {
                     val manager = recyclerView.layoutManager as GridLayoutManager;
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         val lastVisibleItem = manager.findLastCompletelyVisibleItemPosition();
-                        if (lastVisibleItem == (machines.size - 1)) {
+                        if (lastVisibleItem == (servers.size - 1)) {
                             //Toast.makeText(activity, "Last...", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -113,22 +108,36 @@ class MachineFragment() : BaseFragment() {
             });
         }
 
-        machineAdapter.setOnItemClickListener(object: OnListItemListener<DBServer> {
-            override fun onItemClicked(pos: Int, srv: DBServer) {
-                val dialog = MachineOpDialog(activity!!)
+        serverAdapter.setOnItemClickListener(object: OnListItemListener<DBServer> {
+            override fun onItemClicked(pos: Int, server: DBServer) {
+                val dialog = ServerOpDialog(activity!!)
                 dialog.onAllAppClicked = View.OnClickListener {
                     changeToGamesTab()
                 }
+
+                dialog.onRestartServerClicked = View.OnClickListener {
+                    activity?.runOnUiThread {
+                        val delDialog = CustomAlertDialog.createDialog(activity!!,
+                            getString(R.string.restart_server),
+                            getString(R.string.do_you_want_to_restart_server))
+                        delDialog.onSureClicked = View.OnClickListener {
+                            restartServer(pos, server)
+                        }
+                        delDialog.show()
+                    }
+                }
+
+                dialog.onAllProcessClicked = View.OnClickListener {
+
+                }
+
                 dialog.onDeleteAppClicked = View.OnClickListener {
                     activity?.runOnUiThread {
                         val delDialog = CustomAlertDialog.createDialog(activity!!,
                             getString(R.string.delete),
                             getString(R.string.do_you_want_to_delete_this_server))
                         delDialog.onSureClicked = View.OnClickListener {
-                            deleteServer(srv)
-                        }
-                        delDialog.onCancelClicked = View.OnClickListener {
-
+                            deleteServer(server)
                         }
                         delDialog.show()
                     }
@@ -173,13 +182,13 @@ class MachineFragment() : BaseFragment() {
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     fun onMessageEvent(event: OnServerScanned) {
-        if (machines.contains(event.server)) {
+        if (servers.contains(event.server)) {
             return;
         }
-        machines.add(event.server)
+        servers.add(event.server)
         activity?.runOnUiThread {
-            setEmptyTipVisibility(machines.isEmpty())
-            machineAdapter.notifyDataSetChanged()
+            setEmptyTipVisibility(servers.isEmpty())
+            serverAdapter.notifyDataSetChanged()
             checkServerInfo()
         }
     }
@@ -191,11 +200,11 @@ class MachineFragment() : BaseFragment() {
                 EventBus.getDefault().post(OnServerEmpty())
             }
 
-            machines.clear()
-            machines.addAll(servers)
+            this.servers.clear()
+            this.servers.addAll(servers)
             appContext.postUITask{
-                setEmptyTipVisibility(machines.isEmpty())
-                machineAdapter.notifyDataSetChanged()
+                setEmptyTipVisibility(this.servers.isEmpty())
+                serverAdapter.notifyDataSetChanged()
                 Log.i(TAG, "Machine fragment checkServer info")
                 checkServerInfo()
             }
@@ -209,7 +218,7 @@ class MachineFragment() : BaseFragment() {
 
     private fun checkServerInfo() {
         val nc = NetworkChecker(appContext);
-        machines.forEach {
+        servers.forEach {
             nc.checkDBServerAvailable(it, object: NetworkChecker.OnDBServerCheckAvailableCallback {
                 override fun onCheck(s: DBServer, originAvailable: Boolean) {
                     if (s.available) {
@@ -219,7 +228,7 @@ class MachineFragment() : BaseFragment() {
 
                         appContext.postUITask {
                             if (s.available != originAvailable) {
-                                machineAdapter.notifyDataSetChanged()
+                                serverAdapter.notifyDataSetChanged()
                             }
                             if (s.serverIp != null) {
                                 if (activity != null) {
@@ -234,7 +243,7 @@ class MachineFragment() : BaseFragment() {
                         EventBus.getDefault().post(msg)
                         appContext.postUITask {
                             if (s.available != originAvailable) {
-                                machineAdapter.notifyDataSetChanged()
+                                serverAdapter.notifyDataSetChanged()
                             }
                             // the offline server is current server
                             if (s.serverIp != null && s.serverIp == originServerIp && activity != null) {
@@ -247,12 +256,12 @@ class MachineFragment() : BaseFragment() {
         }
     }
 
-    private fun deleteServer(srv: DBServer) {
+    private fun deleteServer(server: DBServer) {
         appContext.postTask {
-            appContext.dbManager.deleteServer(srv)
+            appContext.dbManager.deleteServer(server)
             appContext.postUITask {
                 val msg = OnServerDeleted()
-                msg.server = srv
+                msg.server = server
                 EventBus.getDefault().post(msg)
                 if (activity != null) {
                     (activity as MainActivity).updateTitleMessage("")
@@ -265,6 +274,24 @@ class MachineFragment() : BaseFragment() {
     private fun changeToGamesTab() {
         if (activity != null) {
             (activity as MainActivity).changeToTab(MainActivity.Companion.ID_GAMES)
+        }
+    }
+
+    private fun restartServer(position: Int, server: DBServer) {
+        appContext.postNetworkTask {
+            val url = Settings.getInstance().getApiBaseUrl() + ServerApi.stopServer
+            val resp = HttpUtil.reqUrl(url)
+            if (TextUtils.isEmpty(resp)) {
+                appContext.postUITask {
+                    Toast.makeText(activity, "Failed to restart server", Toast.LENGTH_SHORT).show()
+                }
+                return@postNetworkTask
+            }
+            appContext.postUITask {
+                server.available = false
+                serverAdapter.notifyItemChanged(position)
+                Toast.makeText(activity, "Request to restart server success, wait server starting...", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

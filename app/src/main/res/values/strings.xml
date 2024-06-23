@@ -8,4 +8,8 @@
     <string name="show_virtual_gamepad">Show virtual GamePad (Ignore Hardware)</string>
     <string name="invert_joystick_y_axis">Invert Joystick Y Axis</string>
     <string name="show_cursor">Show Cursor</string>
+    <string name="restart_server">Restart Server</string>
+    <string name="do_you_want_to_restart_server">Do you want to restart server ?</string>
+    <string name="open_spectrum_activity">Open Spectrum Activity</string>
+    <string name="do_you_want_to_open_spectrum_activity">Do you want to open spectrum activity?</string>
 </resources>

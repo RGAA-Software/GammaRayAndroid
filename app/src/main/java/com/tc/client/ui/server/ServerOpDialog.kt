@@ -1,4 +1,4 @@
-package com.tc.client.ui.machine
+package com.tc.client.ui.server
 
 import android.app.AlertDialog
 import android.content.Context
@@ -7,10 +7,12 @@ import android.os.Bundle
 import android.view.View
 import com.tc.client.R
 
-class MachineOpDialog(var ctx: Context) : AlertDialog(ctx) {
+class ServerOpDialog(var ctx: Context) : AlertDialog(ctx) {
 
     lateinit var onAllAppClicked: View.OnClickListener
     lateinit var onDeleteAppClicked: View.OnClickListener
+    lateinit var onRestartServerClicked: View.OnClickListener
+    lateinit var onAllProcessClicked: View.OnClickListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +21,16 @@ class MachineOpDialog(var ctx: Context) : AlertDialog(ctx) {
 
         view.findViewById<View>(R.id.id_op_all_apps).setOnClickListener {
             onAllAppClicked.onClick(it)
+            this.dismiss()
+        }
+
+        view.findViewById<View>(R.id.id_op_restart_server).setOnClickListener {
+            onRestartServerClicked.onClick(it)
+            this.dismiss()
+        }
+
+        view.findViewById<View>(R.id.id_op_all_processes).setOnClickListener {
+            onAllProcessClicked.onClick(it)
             this.dismiss()
         }
 

@@ -12,7 +12,7 @@ import com.tc.client.R
 class CustomAlertDialog(val ctx: Context) : AlertDialog(ctx) {
 
     lateinit var onSureClicked: View.OnClickListener
-    lateinit var onCancelClicked: View.OnClickListener
+    var onCancelClicked: View.OnClickListener? = null
 
     companion object {
         fun createDialog(c: Context, title: String, msg: String) : CustomAlertDialog {
@@ -40,7 +40,9 @@ class CustomAlertDialog(val ctx: Context) : AlertDialog(ctx) {
 
         view.findViewById<Button>(R.id.id_cancel).setOnClickListener {
             dismiss()
-            onCancelClicked.onClick(it)
+            if (onCancelClicked != null) {
+                onCancelClicked?.onClick(it)
+            }
         }
 
     }

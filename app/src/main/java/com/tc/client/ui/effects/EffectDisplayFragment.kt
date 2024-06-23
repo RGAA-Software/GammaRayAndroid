@@ -10,11 +10,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.tc.client.R
 import com.tc.client.Settings
 import com.tc.client.databinding.FragmentEffectBinding
 import com.tc.client.effects.EffectActivity
 import com.tc.client.effects.EffectDefinition
 import com.tc.client.ui.BaseFragment
+import com.tc.client.ui.base.CustomAlertDialog
 import com.tc.client.ui.base.OnListItemListener
 
 class EffectDisplayFragment() : BaseFragment() {
@@ -54,7 +56,13 @@ class EffectDisplayFragment() : BaseFragment() {
             adapter = effectDisplayAdapter;
             effectDisplayAdapter.setOnItemClickListener(object: OnListItemListener<EffectDefinition.EffectInfo> {
                 override fun onItemClicked(pos: Int, value: EffectDefinition.EffectInfo) {
-                    startEffectActivity(value);
+                    val dialog = CustomAlertDialog.createDialog(activity!!,
+                        context.getString(R.string.open_spectrum_activity),
+                        context.getString(R.string.do_you_want_to_open_spectrum_activity))
+                    dialog.onSureClicked = View.OnClickListener {
+                        startEffectActivity(value);
+                    }
+                    dialog.show()
                 }
             })
 

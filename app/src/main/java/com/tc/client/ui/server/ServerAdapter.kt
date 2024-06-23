@@ -1,4 +1,4 @@
-package com.tc.client.ui.machine
+package com.tc.client.ui.server
 
 import android.content.Context
 import android.graphics.Typeface
@@ -14,15 +14,15 @@ import com.tc.client.R
 import com.tc.client.db.DBServer
 import com.tc.client.ui.base.OnListItemListener
 
-class MachineAdapter(private var context: Context, private var apps: MutableList<DBServer>) :
-    RecyclerView.Adapter<MachineAdapter.BookViewHolder>() {
+class ServerAdapter(private var context: Context, private var servers: MutableList<DBServer>) :
+    RecyclerView.Adapter<ServerAdapter.BookViewHolder>() {
 
     private val TAG = "Steam";
 
     private var itemClickListener: OnListItemListener<DBServer>? = null
 
     class BookViewHolder(itemView: View) : ViewHolder(itemView) {
-        val cover: ImageView = itemView.findViewById(R.id.book_cover);
+        val cover: ImageView = itemView.findViewById(R.id.effect_cover);
         val appName: TextView = itemView.findViewById(R.id.id_app_name);
         val statusOnIcon: LottieAnimationView = itemView.findViewById(R.id.id_status_on_icon);
         val statusOffIcon: LottieAnimationView = itemView.findViewById(R.id.id_status_off_icon);
@@ -40,22 +40,22 @@ class MachineAdapter(private var context: Context, private var apps: MutableList
     }
 
     override fun getItemCount(): Int {
-        return apps.size;
+        return servers.size;
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-        val app = apps[position];
+        val server = servers[position];
         holder.itemView.setOnClickListener {
-            itemClickListener?.onItemClicked(position, app)
+            itemClickListener?.onItemClicked(position, server)
         }
 
         holder.connectScreen.visibility = View.VISIBLE;
         holder.searching.visibility = View.GONE;
 
-        holder.appName.text = app.serverId;
-        val iconUrl = "http://${app.serverIp}:${app.httpServerPort}/res/${app.iconIndex}.png"
+        holder.appName.text = server.serverId;
+        val iconUrl = "http://${server.serverIp}:${server.httpServerPort}/res/${server.iconIndex}.png"
         Glide.with(context).load(iconUrl).into(holder.connectScreen);
-        if (app.available) {
+        if (server.available) {
             holder.statusOnIcon.visibility = View.VISIBLE;
             holder.statusOffIcon.visibility = View.GONE
             holder.appName.setTextColor(context.getColor(R.color.colorPrimary));

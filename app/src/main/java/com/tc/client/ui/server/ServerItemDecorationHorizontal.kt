@@ -1,11 +1,11 @@
-package com.tc.client.ui.machine
+package com.tc.client.ui.server
 
 import android.content.res.Resources
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class MachineItemDecorationHorizontal(private var itemCount: Int) : RecyclerView.ItemDecoration() {
+class ServerItemDecorationHorizontal(private var itemCount: Int) : RecyclerView.ItemDecoration() {
 
     private val density = Resources.getSystem().displayMetrics.density;
     private var sizeRatio = 100.0f/120

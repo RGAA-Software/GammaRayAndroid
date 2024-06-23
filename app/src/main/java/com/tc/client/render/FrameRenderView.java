@@ -165,6 +165,9 @@ public class FrameRenderView extends GLSurfaceView {
 
     private void processJoystickInput(MotionEvent event, int historyPos) {
         InputDevice inputDevice = event.getDevice();
+        if (inputDevice == null) {
+            return;
+        }
         float lx = getCenteredAxis(event, inputDevice, MotionEvent.AXIS_X, historyPos);
         float ly = getCenteredAxis(event, inputDevice, MotionEvent.AXIS_Y, historyPos);
         leftThumbX = lx;
