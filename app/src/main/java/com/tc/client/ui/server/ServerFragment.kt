@@ -1,5 +1,6 @@
 package com.tc.client.ui.server
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.text.TextUtils
@@ -26,6 +27,7 @@ import com.tc.client.events.OnServerScanned
 import com.tc.client.ui.BaseFragment
 import com.tc.client.ui.base.CustomAlertDialog
 import com.tc.client.ui.base.OnListItemListener
+import com.tc.client.ui.processes.AllRunningProcessActivity
 import com.tc.client.util.HttpUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -128,7 +130,7 @@ class ServerFragment() : BaseFragment() {
                 }
 
                 dialog.onAllProcessClicked = View.OnClickListener {
-
+                    startActivity(Intent(activity, AllRunningProcessActivity::class.java))
                 }
 
                 dialog.onDeleteAppClicked = View.OnClickListener {
@@ -279,7 +281,7 @@ class ServerFragment() : BaseFragment() {
 
     private fun restartServer(position: Int, server: DBServer) {
         appContext.postNetworkTask {
-            val url = Settings.getInstance().getApiBaseUrl() + ServerApi.stopServer
+            val url = Settings.getInstance().getApiBaseUrl() + ServerApi.API_STOP_SERVER
             val resp = HttpUtil.reqUrl(url)
             if (TextUtils.isEmpty(resp)) {
                 appContext.postUITask {

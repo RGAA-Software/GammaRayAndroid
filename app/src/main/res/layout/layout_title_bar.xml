@@ -39,5 +39,16 @@
             android:layout_toRightOf="@id/id_back"
             android:textSize="18sp" />
 
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/id_refresh"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="11dp"
+            android:src="@drawable/ic_refresh"
+            android:layout_alignParentRight="true"
+            app:tint="@color/white" />
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

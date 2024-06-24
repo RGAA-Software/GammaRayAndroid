@@ -25,7 +25,7 @@ class NetworkChecker(val appContext: AppContext) {
     fun checkScanInfoAvailable(scanInfo: ScanInfo, cbk: OnScanInfoCheckAvailableCallback) {
         appContext.spawnInNewThread {
             scanInfo.ipInfo.forEach {
-                val url = "http://" + it.ip + ":" + scanInfo.httpServerPort + ServerApi.ping;
+                val url = "http://" + it.ip + ":" + scanInfo.httpServerPort + ServerApi.API_PING;
                 Log.i(TAG, "check available: $url")
                 val resp = HttpUtil.reqUrl(url)
                 if (!TextUtils.isEmpty(resp) && resp == "Pong") {
@@ -54,7 +54,7 @@ class NetworkChecker(val appContext: AppContext) {
 //            Log.i(TAG, "available for: ${srv.serverIp}, result: $available, used time: ${pingEnd - pingBeg}")
 
             val beg = System.currentTimeMillis();
-            val url = "http://" + srv.serverIp + ":" + srv.httpServerPort + ServerApi.ping;
+            val url = "http://" + srv.serverIp + ":" + srv.httpServerPort + ServerApi.API_PING;
             //Log.i(TAG, "check db server available: $url")
             val resp = HttpUtil.reqUrl(url)
             val end = System.currentTimeMillis();

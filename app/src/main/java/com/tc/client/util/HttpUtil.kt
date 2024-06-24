@@ -49,22 +49,32 @@ class HttpUtil {
                 .post(requestBody)
                 .build()
 
-            client.newCall(request).enqueue(object : okhttp3.Callback {
-                override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
-                    if (response.isSuccessful) {
-                        val responseString = response.body?.string()
-                        Log.i(TAG, "Response is: $responseString")
-                    } else {
-                        Log.i(TAG, "Failed to fetch data: ${response.code}")
-                    }
-                    response.close() // Important to close the response body!
+            try {
+                val resp = client.newCall(request).execute()
+                if (resp.code != 200) {
+                    return null;
                 }
-
-                override fun onFailure(call: okhttp3.Call, e: IOException) {
-                    Log.i(TAG, "Failed to execute request: ${e.message}")
-                }
-            })
-            return ""
+                val value = resp.body?.string();
+                return value
+            } catch (e: Exception) {
+                Log.i(TAG, "Failed to execute request: ${e.message}")
+                return ""
+            }
+//            client.newCall(request).enqueue(object : okhttp3.Callback {
+//                override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+//                    if (response.isSuccessful) {
+//                        val responseString = response.body?.string()
+//                        Log.i(TAG, "Response is: $responseString")
+//                    } else {
+//                        Log.i(TAG, "Failed to fetch data: ${response.code}")
+//                    }
+//                    response.close() // Important to close the response body!
+//                }
+//
+//                override fun onFailure(call: okhttp3.Call, e: IOException) {
+//                    Log.i(TAG, "Failed to execute request: ${e.message}")
+//                }
+//            })
         }
     }
 }

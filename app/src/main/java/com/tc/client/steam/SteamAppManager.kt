@@ -14,7 +14,7 @@ class SteamAppManager(val context: Context) {
     val TAG = "Steam";
 
     fun requestSteamGames(): Result<List<SteamGame>> {
-        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.games
+        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.API_GAMES
         val resp = HttpUtil.reqUrl(url)
         val result = mutableListOf<SteamGame>();
         if (TextUtils.isEmpty(resp)) {
@@ -52,7 +52,7 @@ class SteamAppManager(val context: Context) {
     }
 
     fun startGame(gamePath: String): Result<String> {
-        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.gameStart
+        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.API_START_GAME
         val params = mutableMapOf<String, String>()
         params["game_path"] = gamePath;
         val resp = HttpUtil.postUrl(url, params)
@@ -63,7 +63,7 @@ class SteamAppManager(val context: Context) {
     }
 
     fun stopGame(gameId: String): Result<String> {
-        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.gameStop
+        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.API_STOP_GAME
         val params = mutableMapOf<String, String>()
         params["game_id"] = gameId;
         val resp = HttpUtil.postUrl(url, params)
@@ -74,7 +74,7 @@ class SteamAppManager(val context: Context) {
     }
 
     fun requestRunningGames(): Result<List<RunningGame>> {
-        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.runningGames
+        val url = Settings.getInstance().getApiBaseUrl() + ServerApi.API_RUNNING_GAMES
         val resp = HttpUtil.reqUrl(url)
         val result = mutableListOf<RunningGame>();
         if (TextUtils.isEmpty(resp)) {
