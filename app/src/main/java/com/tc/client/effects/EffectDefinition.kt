@@ -8,6 +8,7 @@ class EffectDefinition {
         const val EFFECT_BAR_LINE = 1
         const val EFFECT_HEXAGON_BLOCK = 2
         const val EFFECT_RECTANGLE_BLOCK = 3
+        const val EFFECT_BAR_TIME = 4;
     }
 
     class EffectInfo(var idx: Int, var name: String, var iconResId: Int) {
@@ -21,6 +22,7 @@ class EffectDefinition {
             add(EffectInfo(EFFECT_BAR_LINE, "Bar Line", R.drawable.effect_bar_line))
             add(EffectInfo(EFFECT_HEXAGON_BLOCK, "Hexagon Block", R.drawable.effect_hexagon))
             add(EffectInfo(EFFECT_RECTANGLE_BLOCK, "Rectangle Block", R.drawable.effect_rectangle))
+            add(EffectInfo(EFFECT_BAR_TIME, "Bar Time", R.drawable.effect_rectangle))
         }
     }
 

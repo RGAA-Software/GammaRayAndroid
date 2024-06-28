@@ -48,6 +48,8 @@ class EffectFragment(var thunderApp: ThunderApp, var effectIdx: Int) : AndroidFr
             effectView = HexagonBlock(requireContext(), thunderApp)
         } else if (effectIdx == EffectDefinition.EFFECT_RECTANGLE_BLOCK) {
             effectView = RectangleBlock(requireContext(), thunderApp)
+        } else if (effectIdx == EffectDefinition.EFFECT_BAR_TIME) {
+            effectView = BarTime(requireContext(), thunderApp)
         }
 
         val eView: View = CreateGLAlpha(effectView)

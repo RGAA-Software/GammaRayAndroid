@@ -311,6 +311,9 @@ dependencies {
     implementation "com.badlogicgames.gdx:gdx-box2d:$box2dVersion"
     natives "com.badlogicgames.gdx:gdx-box2d-platform:$box2dVersion:natives-arm64-v8a"
     implementation "com.esotericsoftware.spine:spine-libgdx:3.5.51.1"
+    implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+    //api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
