@@ -50,6 +50,8 @@ class EffectFragment(var thunderApp: ThunderApp, var effectIdx: Int) : AndroidFr
             effectView = RectangleBlock(requireContext(), thunderApp)
         } else if (effectIdx == EffectDefinition.EFFECT_BAR_TIME) {
             effectView = BarTime(requireContext(), thunderApp)
+        } else if (effectIdx == EffectDefinition.EFFECT_CIRCLE_IMAGES) {
+            effectView = CircleImages(requireContext(), thunderApp)
         }
 
         val eView: View = CreateGLAlpha(effectView)
@@ -65,6 +67,7 @@ class EffectFragment(var thunderApp: ThunderApp, var effectIdx: Int) : AndroidFr
         cfg.b = cfg.a
         cfg.g = cfg.b
         cfg.r = cfg.g
+        cfg.numSamples = 4
         val view = initializeForView(application, cfg)
         if (view is SurfaceView) {
             val glView = graphics.view as GLSurfaceView
