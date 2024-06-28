@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.tc.client.impl.ThunderApp
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.Timer
+import java.util.TimerTask
 
 
 class BarTime(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app) {
@@ -34,6 +36,14 @@ class BarTime(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app) {
 
         layout = GlyphLayout()
         currentTime = getCurrentTime()
+
+        val timer = Timer()
+        timer.schedule(object: TimerTask() {
+            override fun run() {
+                currentTime = getCurrentTime()
+            }
+
+        }, 100, 1000)
     }
 
     override fun resize(width: Int, height: Int) {
