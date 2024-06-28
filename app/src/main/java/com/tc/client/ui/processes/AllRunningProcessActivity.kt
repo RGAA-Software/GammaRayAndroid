@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.text.toLowerCase
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tc.client.App
 import com.tc.client.AppContext
@@ -21,6 +22,8 @@ import com.tc.client.databinding.ActivityRunningProcessBinding
 import com.tc.client.util.HttpUtil
 import com.tc.client.util.Result
 import org.json.JSONObject
+import java.util.Collections
+import java.util.Locale
 
 class AllRunningProcessActivity : AppCompatActivity() {
 
@@ -30,7 +33,7 @@ class AllRunningProcessActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRunningProcessBinding
     private lateinit var runningProcessAdapter: RunningProcessAdapter
-    private val processes = mutableListOf<RunningProcess>()
+    private var processes = mutableListOf<RunningProcess>()
     private lateinit var appContext: AppContext;
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,9 +93,15 @@ class AllRunningProcessActivity : AppCompatActivity() {
                         val item = data.getJSONObject(i);
                         rp.pid = item.getInt("pid");
                         rp.exePath = item.getString("exe_path")
+                        val splitItems = rp.exePath.split("/")
+                        rp.exeName = splitItems[splitItems.size-1].lowercase(Locale.ROOT)
                         rp.iconName = item.getString("icon")
                         processes.add(rp)
                     }
+
+                    processes.sortWith(compareBy {
+                        it.exeName
+                    })
                 }
 
                 appContext.postUITask {
