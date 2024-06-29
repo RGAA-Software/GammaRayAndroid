@@ -3,10 +3,13 @@ package com.tc.client.effects
 import android.content.Context
 import android.util.Log
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.badlogic.gdx.math.MathUtils
+import com.badlogic.gdx.math.Matrix4
 import com.tc.client.impl.ThunderApp
 import kotlin.math.cos
 import kotlin.math.sin
@@ -20,6 +23,8 @@ class CircleImages(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app)
     private lateinit var leftImage: Texture
     private lateinit var rightImage: Texture
     private var rotateAngle = 0.0f
+    private val fromColor: Color = Color.valueOf("#F31B20")
+    private val toColor: Color = Color.valueOf("#FFE4C2")
 
     override fun create() {
         super.create()
@@ -87,15 +92,19 @@ class CircleImages(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app)
         val rightCenterY = leftCenterY
 
         leftSpectrum.forEachIndexed{idx, value ->
+            if (idx >= numberOfLines) {
+                return@forEachIndexed
+            }
+            val targetValue = value * 2.3f
             val leftAngle: Float = angleStep * idx
             val radiusOffset = 10
             val leftCosValue = cos(Math.toRadians(leftAngle.toDouble()))
             val leftSinAngle = sin(Math.toRadians(leftAngle.toDouble()))
             val leftStartX: Double = leftCenterX + (targetImageWidth/2 + radiusOffset) * leftCosValue
             val leftStartY: Double = leftCenterY + (targetImageHeight/2 + radiusOffset) * leftSinAngle
-            val leftEndX: Double = leftStartX + leftCosValue * (value)
-            val leftEndY: Double = leftStartY + leftSinAngle * (value)
-
+            val leftEndX: Double = leftStartX + leftCosValue * (targetValue)
+            val leftEndY: Double = leftStartY + leftSinAngle * (targetValue)
+            shapeRenderer.identity();
             shapeRenderer.rectLine(
                 leftStartX.toFloat(),
                 leftStartY.toFloat(),
@@ -109,18 +118,18 @@ class CircleImages(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app)
             val rightSinAngle = sin(Math.toRadians(rightAngle.toDouble()))
             val rightStartX: Double = rightCenterX +  (targetImageHeight/2 + radiusOffset) * rightCosValue
             val rightStartY: Double = rightCenterY +  (targetImageHeight/2 + radiusOffset) * rightSinAngle
-            val rightEndX: Double = rightStartX + rightCosValue * (value)
-            val rightEndY: Double = rightStartY + rightSinAngle * (value)
+            val rightEndX: Double = rightStartX + rightCosValue * (targetValue)
+            val rightEndY: Double = rightStartY + rightSinAngle * (targetValue)
 
-            shapeRenderer.rectLine(
-                rightStartX.toFloat(),
-                rightStartY.toFloat(),
-                rightEndX.toFloat(),
-                rightEndY.toFloat(),
-                lineWidth
-            )
-
+            shapeRenderer.identity();
+            shapeRenderer.translate(rightStartX.toFloat(), rightStartY.toFloat(), 0f)
+            shapeRenderer.rotate(0.0f, 0f, 1.0f ,rightAngle)
+            shapeRenderer.rect(0f, -lineWidth/2,
+                targetValue.toFloat(), lineWidth,
+                fromColor, toColor,
+                toColor, fromColor )
         }
+
         shapeRenderer.end()
     }
 

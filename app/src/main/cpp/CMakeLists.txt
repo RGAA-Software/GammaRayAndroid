@@ -21,7 +21,9 @@ project("client")
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
+if (ANDROID)
+    add_compile_options(-Wno-error=deprecated-declarations)
+endif ()
 include_directories(${CMAKE_SOURCE_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/tc_3rdparty)
 include_directories(${CMAKE_SOURCE_DIR}/tc_3rdparty/eventbus/src)

@@ -37,9 +37,8 @@ class SteamAppFragment() : BaseFragment() {
         const val TAG = "Main";
     }
 
-    private var _binding: FragmentSteamAppBinding? = null
+    private var binding: FragmentSteamAppBinding? = null
     private var _handler: Handler? = null;
-    private val binding get() = _binding!!
     private val handler get() = _handler!!;
     private lateinit var steamAppAdapter: SteamAppAdapter
     private var steamGames = mutableListOf<SteamGame>();
@@ -54,20 +53,18 @@ class SteamAppFragment() : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        _binding = FragmentSteamAppBinding.inflate(inflater, container, false)
+        binding = FragmentSteamAppBinding.inflate(inflater, container, false)
         _handler = Handler(Looper.getMainLooper());
-        val root: View = binding.root
-        binding.idEmptyIcon.visibility = View.GONE
+        binding?.idEmptyIcon?.visibility = View.GONE
         homeViewModel.text.observe(viewLifecycleOwner) {
 
         }
-        return root
+        return binding?.root!!
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.refreshLayout.apply {
+        binding!!.refreshLayout.apply {
             setRepeatMode(SSPullToRefreshLayout.RepeatMode.REPEAT);
             setRepeatCount(SSPullToRefreshLayout.RepeatCount.INFINITE);
             setRefreshStyle(SSPullToRefreshLayout.RefreshStyle.NORMAL);
@@ -80,7 +77,7 @@ class SteamAppFragment() : BaseFragment() {
             }
         }
 
-        binding.bookList.apply {
+        binding!!.bookList.apply {
             val itemCount: Int
             if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 itemCount = 2
@@ -119,7 +116,6 @@ class SteamAppFragment() : BaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 
     override fun onStart() {
@@ -273,11 +269,11 @@ class SteamAppFragment() : BaseFragment() {
 
     private fun setEmptyVisibility(visible: Boolean) {
         if (visible) {
-            binding.idEmptyIcon.visibility = View.VISIBLE
-            binding.idEmptyTip.visibility = View.VISIBLE
+            binding?.idEmptyIcon?.visibility = View.VISIBLE
+            binding?.idEmptyTip?.visibility = View.VISIBLE
         } else {
-            binding.idEmptyIcon.visibility = View.GONE
-            binding.idEmptyTip.visibility = View.GONE
+            binding?.idEmptyIcon?.visibility = View.GONE
+            binding?.idEmptyTip?.visibility = View.GONE
         }
     }
 
