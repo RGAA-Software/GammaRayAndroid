@@ -31,6 +31,8 @@ include_directories(${CMAKE_SOURCE_DIR}/tc_3rdparty/spdlog)
 include_directories(${CMAKE_SOURCE_DIR}/tc_common_new)
 include_directories(${CMAKE_SOURCE_DIR}/tc_client_sdk_new)
 include_directories(${CMAKE_SOURCE_DIR}/tc_message_new)
+include_directories(${CMAKE_SOURCE_DIR}/tc_3rdparty/opus/include)
+include_directories(${VCPKG_ROOT}/installed/arm64-android/include)
 
 add_subdirectory(tc_3rdparty)
 add_subdirectory(tc_common_new)

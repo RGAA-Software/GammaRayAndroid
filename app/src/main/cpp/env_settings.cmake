@@ -1,1 +1,1 @@
-set(VCPKG_ROOT C:/source/vcpkg)
+set(VCPKG_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/tc_3rdparty/vcpkg)
