@@ -12,4 +12,8 @@
     <string name="do_you_want_to_restart_server">Do you want to restart server ?</string>
     <string name="open_spectrum_activity">Open Spectrum Activity</string>
     <string name="do_you_want_to_open_spectrum_activity">Do you want to open spectrum activity?</string>
+    <string name="stop_game">Stop Game</string>
+    <string name="do_you_want_to_stop_game">Do you want to stop game ?</string>
+    <string name="error">Error</string>
+    <string name="server_offline">Server offline!</string>
 </resources>

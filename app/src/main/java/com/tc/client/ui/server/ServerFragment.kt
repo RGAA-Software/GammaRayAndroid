@@ -112,12 +112,32 @@ class ServerFragment() : BaseFragment() {
 
         serverAdapter.setOnItemClickListener(object: OnListItemListener<DBServer> {
             override fun onItemClicked(pos: Int, server: DBServer) {
+
+                val funShowOfflineIfNeeded: ()->Boolean = {
+                    if (Settings.getInstance().currentServer.serverId != server.serverId) {
+                        val confirmDialog = CustomAlertDialog.createDialog(requireActivity(),
+                            getString(R.string.error),
+                            getString(R.string.server_offline))
+                        confirmDialog.show()
+                        true
+                    } else {
+                        false
+                    }
+                }
+
                 val dialog = ServerOpDialog(activity!!)
                 dialog.onAllAppClicked = View.OnClickListener {
+                    if (funShowOfflineIfNeeded()) {
+                        return@OnClickListener
+                    }
                     changeToGamesTab()
                 }
 
                 dialog.onRestartServerClicked = View.OnClickListener {
+                    if (funShowOfflineIfNeeded()) {
+                        return@OnClickListener
+                    }
+
                     activity?.runOnUiThread {
                         val delDialog = CustomAlertDialog.createDialog(activity!!,
                             getString(R.string.restart_server),
@@ -130,6 +150,9 @@ class ServerFragment() : BaseFragment() {
                 }
 
                 dialog.onAllProcessClicked = View.OnClickListener {
+                    if (funShowOfflineIfNeeded()) {
+                        return@OnClickListener
+                    }
                     startActivity(Intent(activity, AllRunningProcessActivity::class.java))
                 }
 
