@@ -11,6 +11,7 @@ class EffectDefinition {
         const val EFFECT_BAR_TIME = 4
         const val EFFECT_CIRCLE_IMAGES = 5
         const val EFFECT_BAR_LINE2 = 6
+        const val EFFECT_RANDOM_CIRCLE = 7
     }
 
     class EffectInfo(var idx: Int, var name: String, var iconResId: Int) {
@@ -27,6 +28,7 @@ class EffectDefinition {
             add(EffectInfo(EFFECT_BAR_TIME, "Bar Time", R.drawable.effect_bar_time))
             add(EffectInfo(EFFECT_CIRCLE_IMAGES, "Circle Images", R.drawable.effect_circle_images))
             add(EffectInfo(EFFECT_BAR_LINE2, "Bar Line2", R.drawable.effect_bar_line2))
+            add(EffectInfo(EFFECT_RANDOM_CIRCLE, "Random Circle", R.drawable.effect_random_circle))
         }
     }
 

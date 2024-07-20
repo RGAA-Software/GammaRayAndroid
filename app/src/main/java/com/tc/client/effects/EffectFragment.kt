@@ -54,6 +54,8 @@ class EffectFragment(private var thunderApp: ThunderApp, private var effectIdx: 
             effectView = CircleImages(requireContext(), thunderApp)
         } else if (effectIdx == EffectDefinition.EFFECT_BAR_LINE2) {
             effectView = BarLine2(requireContext(), thunderApp)
+        } else if (effectIdx == EffectDefinition.EFFECT_RANDOM_CIRCLE) {
+            effectView = RandomCircle(requireContext(), thunderApp)
         }
 
         val eView: View = CreateGLAlpha(effectView)
