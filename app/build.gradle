@@ -124,7 +124,6 @@ android {
             manifestPlaceholders = [
                     app_icon: "@drawable/ic_launcher",
                     app_name: "GammaRay",
-                    //src_package: "cn.dolit.vr.demo",
                     apk_name: "Official"
             ]
         }

@@ -69,19 +69,16 @@ class RandomCircle(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app)
     }
 
     override fun render() {
+        val totalCircleSize = 70
+        if (leftSpectrum.size < totalCircleSize) {
+            super.render()
+            return
+        }
         vfxManager.cleanUpBuffers();
         vfxManager.beginInputCapture();
-
         super.render()
-
         renderRotation += Gdx.graphics.deltaTime
-
-        val verticalCount = 8
-        val scaleSize = Gdx.graphics.height/verticalCount/2;
-        val horizontalCount = Gdx.graphics.width/scaleSize/2;
         stage.batch.begin()
-
-        val totalCircleSize = 70
         for (idx in 0 until totalCircleSize) {
             var circleInfo: CircleInfo
             if (circleCenters.size != totalCircleSize) {
