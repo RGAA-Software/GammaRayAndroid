@@ -32,6 +32,7 @@ import com.tc.client.util.HttpUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import org.json.JSONObject
 
 
 class ServerFragment() : BaseFragment() {
@@ -237,8 +238,8 @@ class ServerFragment() : BaseFragment() {
     }
 
     private fun setEmptyTipVisibility(visible: Boolean) {
-        binding.idEmptyIcon.visibility = if (visible) View.VISIBLE else View.GONE
-        binding.idEmptyTip.visibility = if (visible) View.VISIBLE else View.GONE
+        binding?.idEmptyIcon?.visibility = if (visible) View.VISIBLE else View.GONE
+        binding?.idEmptyTip?.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
     private fun checkServerInfo() {
@@ -247,20 +248,7 @@ class ServerFragment() : BaseFragment() {
             nc.checkDBServerAvailable(it, object: NetworkChecker.OnDBServerCheckAvailableCallback {
                 override fun onCheck(s: DBServer, originAvailable: Boolean) {
                     if (s.available) {
-                        val msg = OnServerAvailable()
-                        msg.server = s
-                        EventBus.getDefault().post(msg)
-
-                        appContext.postUITask {
-                            if (s.available != originAvailable) {
-                                serverAdapter.notifyDataSetChanged()
-                            }
-                            if (s.serverIp != null) {
-                                if (activity != null) {
-                                    (activity as MainActivity).updateTitleMessage(s.serverId)
-                                }
-                            }
-                        }
+                        requestAvailableServerInfo(s)
                     } else {
                         val originServerIp = Settings.getInstance().currentServer.serverIp;
                         val msg = OnServerOffline()
@@ -278,6 +266,49 @@ class ServerFragment() : BaseFragment() {
                     }
                 }
             })
+        }
+    }
+
+    private fun requestAvailableServerInfo(srv: DBServer) {
+        appContext.postTask{
+            val url = "http://" + srv.serverIp + ":" + srv.httpServerPort + ServerApi.API_SIMPLE_INFO
+            val resp = HttpUtil.reqUrl(url)
+            if (TextUtils.isEmpty(resp)) {
+                appContext.postUITask {
+                    Toast.makeText(activity, "Failed to restart server", Toast.LENGTH_SHORT).show()
+                }
+                return@postTask
+            }
+            var info = ""
+            try {
+                info = JSONObject(resp!!).getJSONObject("data").toString()
+            } catch (e: Exception) {
+                Log.e(TAG, "Parse failed: " + resp!!)
+                return@postTask;
+            }
+            val scanInfo = Settings.getInstance().parseScanInfo(info)
+            srv.iconIndex = scanInfo.iconIndex
+            srv.serverId = scanInfo.sysUniqueId
+            Log.i(TAG, "online server, ip: ${srv.serverIp}, icon index: ${srv.iconIndex}")
+
+            val msg = OnServerAvailable()
+            msg.server = srv
+            EventBus.getDefault().post(msg)
+
+            appContext.postUITask {
+                servers.forEach {
+                    if (scanInfo.hasTargetIp(it.serverIp)) {
+                        it.iconIndex = scanInfo.iconIndex
+                        it.serverId = scanInfo.sysUniqueId
+                    }
+                }
+                if (srv.serverIp != null) {
+                    if (activity != null) {
+                        (activity as MainActivity).updateTitleMessage(srv.serverId)
+                    }
+                }
+                serverAdapter.notifyDataSetChanged()
+            }
         }
     }
 
