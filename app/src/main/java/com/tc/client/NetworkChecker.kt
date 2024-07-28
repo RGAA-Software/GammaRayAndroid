@@ -73,15 +73,10 @@ class NetworkChecker(val appContext: AppContext) {
 
     fun pingIP(ipAddress: String): Boolean {
         return try {
-            // 构造ping命令，-c 1表示发送ping请求1次
             val command = "ping -c 1 $ipAddress"
-            // 执行ping命令并获取执行的进程
             val runtime = Runtime.getRuntime()
             val process = runtime.exec(command)
-
-            // 等待进程结束并获取退出值，0表示成功
             val exitValue = process.waitFor()
-            // 如果exitValue为0，表示ping成功
             exitValue == 0
         } catch (e: IOException) {
             e.printStackTrace()
@@ -91,5 +86,4 @@ class NetworkChecker(val appContext: AppContext) {
             false
         }
     }
-
 }

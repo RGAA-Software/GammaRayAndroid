@@ -53,6 +53,15 @@ public class ScanInfo {
         return s;
     }
 
+    fun hasTargetIp(ip: String): Boolean {
+        ipInfo.forEach {
+            if (it.ip == ip) {
+                return true
+            }
+        }
+        return false
+    }
+
     override fun toString(): String {
         return "ScanInfo(sysUniqueId='$sysUniqueId', httpServerPort=$httpServerPort, wsServerPort=$wsServerPort, udpServerPort=$udpServerPort, ipInfo=$ipInfo)"
     }

@@ -2,6 +2,7 @@ package com.tc.client.ui.server
 
 import android.content.Context
 import android.graphics.Typeface
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -54,6 +55,7 @@ class ServerAdapter(private var context: Context, private var servers: MutableLi
 
         holder.appName.text = server.serverId;
         val iconUrl = "http://${server.serverIp}:${server.httpServerPort}/res/${server.iconIndex}.png"
+        Log.i(TAG, "iconurl: $iconUrl")
         Glide.with(context).load(iconUrl).into(holder.connectScreen);
         if (server.available) {
             holder.statusOnIcon.visibility = View.VISIBLE;
