@@ -13,9 +13,9 @@ android {
         applicationId "com.tc.client"
         minSdk 26
         targetSdk 34
-        versionCode 1
+        versionCode 114
         multiDexEnabled true
-        versionName "1.1.3"
+        versionName "1.1.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {

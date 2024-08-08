@@ -41,8 +41,7 @@ class ServerFragment() : BaseFragment() {
         const val TAG = "Main"
     }
 
-    private var _binding: FragmentMachineBinding? = null
-    private val binding get() = _binding!!
+    private var binding: FragmentMachineBinding? = null
 
     private lateinit var serverAdapter: ServerAdapter
     private var servers = mutableListOf<DBServer>();
@@ -58,8 +57,8 @@ class ServerFragment() : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentMachineBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        binding = FragmentMachineBinding.inflate(inflater, container, false)
+        val root: View = binding?.root!!
         return root
     }
 
@@ -68,7 +67,7 @@ class ServerFragment() : BaseFragment() {
 
         setEmptyTipVisibility(true)
 
-        binding.refreshLayout.apply {
+        binding!!.refreshLayout.apply {
             setRepeatMode(SSPullToRefreshLayout.RepeatMode.REPEAT);
             setRepeatCount(SSPullToRefreshLayout.RepeatCount.INFINITE);
             setRefreshStyle(SSPullToRefreshLayout.RefreshStyle.NORMAL);
@@ -81,7 +80,7 @@ class ServerFragment() : BaseFragment() {
             }
         }
 
-        binding.machineList.apply {
+        binding!!.machineList.apply {
             val itemCount: Int
             if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 itemCount = 2
@@ -193,7 +192,6 @@ class ServerFragment() : BaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 
     override fun onDestroy() {
