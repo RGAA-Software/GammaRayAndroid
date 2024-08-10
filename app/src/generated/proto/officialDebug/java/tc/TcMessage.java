@@ -5075,6 +5075,15 @@ public final class TcMessage {
      * <code>bytes bitmap = 8;</code>
      */
     com.google.protobuf.ByteString getBitmap();
+
+    /**
+     * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+     */
+    int getTypeValue();
+    /**
+     * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+     */
+    tc.TcMessage.CursorInfoSync.CursorType getType();
   }
   /**
    * Protobuf type {@code tc.CursorInfoSync}
@@ -5087,6 +5096,219 @@ public final class TcMessage {
     private CursorInfoSync() {
       bitmap_ = com.google.protobuf.ByteString.EMPTY;
     }
+    /**
+     * Protobuf enum {@code tc.CursorInfoSync.CursorType}
+     */
+    public enum CursorType
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <code>kIdcArrow = 0;</code>
+       */
+      kIdcArrow(0),
+      /**
+       * <code>kIdcIBeam = 1;</code>
+       */
+      kIdcIBeam(1),
+      /**
+       * <code>kIdcWait = 2;</code>
+       */
+      kIdcWait(2),
+      /**
+       * <code>kIdcCross = 3;</code>
+       */
+      kIdcCross(3),
+      /**
+       * <code>kIdcUpArrow = 4;</code>
+       */
+      kIdcUpArrow(4),
+      /**
+       * <code>kIdcSize = 5;</code>
+       */
+      kIdcSize(5),
+      /**
+       * <code>kIdcIcon = 6;</code>
+       */
+      kIdcIcon(6),
+      /**
+       * <code>kIdcSizeNWSE = 7;</code>
+       */
+      kIdcSizeNWSE(7),
+      /**
+       * <code>kIdcSizeNESW = 8;</code>
+       */
+      kIdcSizeNESW(8),
+      /**
+       * <code>kIdcSizeWE = 9;</code>
+       */
+      kIdcSizeWE(9),
+      /**
+       * <code>kIdcSizeNS = 10;</code>
+       */
+      kIdcSizeNS(10),
+      /**
+       * <code>kIdcSizeAll = 11;</code>
+       */
+      kIdcSizeAll(11),
+      /**
+       * <code>kIdcHand = 12;</code>
+       */
+      kIdcHand(12),
+      /**
+       * <code>kIdcHelp = 13;</code>
+       */
+      kIdcHelp(13),
+      /**
+       * <code>kIdcPin = 14;</code>
+       */
+      kIdcPin(14),
+      /**
+       * <code>kIdcPerson = 15;</code>
+       */
+      kIdcPerson(15),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>kIdcArrow = 0;</code>
+       */
+      public static final int kIdcArrow_VALUE = 0;
+      /**
+       * <code>kIdcIBeam = 1;</code>
+       */
+      public static final int kIdcIBeam_VALUE = 1;
+      /**
+       * <code>kIdcWait = 2;</code>
+       */
+      public static final int kIdcWait_VALUE = 2;
+      /**
+       * <code>kIdcCross = 3;</code>
+       */
+      public static final int kIdcCross_VALUE = 3;
+      /**
+       * <code>kIdcUpArrow = 4;</code>
+       */
+      public static final int kIdcUpArrow_VALUE = 4;
+      /**
+       * <code>kIdcSize = 5;</code>
+       */
+      public static final int kIdcSize_VALUE = 5;
+      /**
+       * <code>kIdcIcon = 6;</code>
+       */
+      public static final int kIdcIcon_VALUE = 6;
+      /**
+       * <code>kIdcSizeNWSE = 7;</code>
+       */
+      public static final int kIdcSizeNWSE_VALUE = 7;
+      /**
+       * <code>kIdcSizeNESW = 8;</code>
+       */
+      public static final int kIdcSizeNESW_VALUE = 8;
+      /**
+       * <code>kIdcSizeWE = 9;</code>
+       */
+      public static final int kIdcSizeWE_VALUE = 9;
+      /**
+       * <code>kIdcSizeNS = 10;</code>
+       */
+      public static final int kIdcSizeNS_VALUE = 10;
+      /**
+       * <code>kIdcSizeAll = 11;</code>
+       */
+      public static final int kIdcSizeAll_VALUE = 11;
+      /**
+       * <code>kIdcHand = 12;</code>
+       */
+      public static final int kIdcHand_VALUE = 12;
+      /**
+       * <code>kIdcHelp = 13;</code>
+       */
+      public static final int kIdcHelp_VALUE = 13;
+      /**
+       * <code>kIdcPin = 14;</code>
+       */
+      public static final int kIdcPin_VALUE = 14;
+      /**
+       * <code>kIdcPerson = 15;</code>
+       */
+      public static final int kIdcPerson_VALUE = 15;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static CursorType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static CursorType forNumber(int value) {
+        switch (value) {
+          case 0: return kIdcArrow;
+          case 1: return kIdcIBeam;
+          case 2: return kIdcWait;
+          case 3: return kIdcCross;
+          case 4: return kIdcUpArrow;
+          case 5: return kIdcSize;
+          case 6: return kIdcIcon;
+          case 7: return kIdcSizeNWSE;
+          case 8: return kIdcSizeNESW;
+          case 9: return kIdcSizeWE;
+          case 10: return kIdcSizeNS;
+          case 11: return kIdcSizeAll;
+          case 12: return kIdcHand;
+          case 13: return kIdcHelp;
+          case 14: return kIdcPin;
+          case 15: return kIdcPerson;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<CursorType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          CursorType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<CursorType>() {
+              @java.lang.Override
+              public CursorType findValueByNumber(int number) {
+                return CursorType.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return CursorTypeVerifier.INSTANCE;
+      }
+
+      private static final class CursorTypeVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new CursorTypeVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return CursorType.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private CursorType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:tc.CursorInfoSync.CursorType)
+    }
+
     public static final int VISIBLE_FIELD_NUMBER = 1;
     private boolean visible_;
     /**
@@ -5280,6 +5502,47 @@ public final class TcMessage {
     private void clearBitmap() {
       
       bitmap_ = getDefaultInstance().getBitmap();
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 9;
+    private int type_;
+    /**
+     * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+     */
+    @java.lang.Override
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.CursorInfoSync.CursorType getType() {
+      tc.TcMessage.CursorInfoSync.CursorType result = tc.TcMessage.CursorInfoSync.CursorType.forNumber(type_);
+      return result == null ? tc.TcMessage.CursorInfoSync.CursorType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+     */
+    private void setTypeValue(int value) {
+        type_ = value;
+    }
+    /**
+     * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+     */
+    private void setType(tc.TcMessage.CursorInfoSync.CursorType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      type_ = value.getNumber();
+    }
+    /**
+     * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+     */
+    private void clearType() {
+      
+      type_ = 0;
     }
 
     public static tc.TcMessage.CursorInfoSync parseFrom(
@@ -5569,6 +5832,45 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+       */
+      @java.lang.Override
+      public int getTypeValue() {
+        return instance.getTypeValue();
+      }
+      /**
+       * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+       */
+      public Builder setTypeValue(int value) {
+        copyOnWrite();
+        instance.setTypeValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.CursorInfoSync.CursorType getType() {
+        return instance.getType();
+      }
+      /**
+       * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+       */
+      public Builder setType(tc.TcMessage.CursorInfoSync.CursorType value) {
+        copyOnWrite();
+        instance.setType(value);
+        return this;
+      }
+      /**
+       * <code>.tc.CursorInfoSync.CursorType type = 9;</code>
+       */
+      public Builder clearType() {
+        copyOnWrite();
+        instance.clearType();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.CursorInfoSync)
     }
     @java.lang.Override
@@ -5593,10 +5895,11 @@ public final class TcMessage {
               "width_",
               "height_",
               "bitmap_",
+              "type_",
             };
             java.lang.String info =
-                "\u0000\b\u0000\u0000\u0001\b\b\u0000\u0000\u0000\u0001\u0007\u0002\u0004\u0003\u0004" +
-                "\u0004\u0004\u0005\u0004\u0006\u000b\u0007\u000b\b\n";
+                "\u0000\t\u0000\u0000\u0001\t\t\u0000\u0000\u0000\u0001\u0007\u0002\u0004\u0003\u0004" +
+                "\u0004\u0004\u0005\u0004\u0006\u000b\u0007\u000b\b\n\t\f";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -10496,6 +10799,26 @@ public final class TcMessage {
      * <code>uint64 timestamp = 100;</code>
      */
     long getTimestamp();
+
+    /**
+     * <code>string ref_path = 110;</code>
+     */
+    java.lang.String getRefPath();
+    /**
+     * <code>string ref_path = 110;</code>
+     */
+    com.google.protobuf.ByteString
+        getRefPathBytes();
+
+    /**
+     * <code>string ref_folder = 120;</code>
+     */
+    java.lang.String getRefFolder();
+    /**
+     * <code>string ref_folder = 120;</code>
+     */
+    com.google.protobuf.ByteString
+        getRefFolderBytes();
   }
   /**
    * Protobuf type {@code tc.FileTransfer}
@@ -10512,6 +10835,8 @@ public final class TcMessage {
       data_ = com.google.protobuf.ByteString.EMPTY;
       fileMd5_ = "";
       localFilepath_ = "";
+      refPath_ = "";
+      refFolder_ = "";
     }
     /**
      * Protobuf enum {@code tc.FileTransfer.FileType}
@@ -11150,6 +11475,102 @@ public final class TcMessage {
       timestamp_ = 0L;
     }
 
+    public static final int REF_PATH_FIELD_NUMBER = 110;
+    private java.lang.String refPath_;
+    /**
+     * <code>string ref_path = 110;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getRefPath() {
+      return refPath_;
+    }
+    /**
+     * <code>string ref_path = 110;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRefPathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(refPath_);
+    }
+    /**
+     * <code>string ref_path = 110;</code>
+     */
+    private void setRefPath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      refPath_ = value;
+    }
+    /**
+     * <code>string ref_path = 110;</code>
+     */
+    private void clearRefPath() {
+      
+      refPath_ = getDefaultInstance().getRefPath();
+    }
+    /**
+     * <code>string ref_path = 110;</code>
+     */
+    private void setRefPathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      refPath_ = value.toStringUtf8();
+    }
+
+    public static final int REF_FOLDER_FIELD_NUMBER = 120;
+    private java.lang.String refFolder_;
+    /**
+     * <code>string ref_folder = 120;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getRefFolder() {
+      return refFolder_;
+    }
+    /**
+     * <code>string ref_folder = 120;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRefFolderBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(refFolder_);
+    }
+    /**
+     * <code>string ref_folder = 120;</code>
+     */
+    private void setRefFolder(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      refFolder_ = value;
+    }
+    /**
+     * <code>string ref_folder = 120;</code>
+     */
+    private void clearRefFolder() {
+      
+      refFolder_ = getDefaultInstance().getRefFolder();
+    }
+    /**
+     * <code>string ref_folder = 120;</code>
+     */
+    private void setRefFolderBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      refFolder_ = value.toStringUtf8();
+    }
+
     public static tc.TcMessage.FileTransfer parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -11629,6 +12050,90 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <code>string ref_path = 110;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getRefPath() {
+        return instance.getRefPath();
+      }
+      /**
+       * <code>string ref_path = 110;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getRefPathBytes() {
+        return instance.getRefPathBytes();
+      }
+      /**
+       * <code>string ref_path = 110;</code>
+       */
+      public Builder setRefPath(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setRefPath(value);
+        return this;
+      }
+      /**
+       * <code>string ref_path = 110;</code>
+       */
+      public Builder clearRefPath() {
+        copyOnWrite();
+        instance.clearRefPath();
+        return this;
+      }
+      /**
+       * <code>string ref_path = 110;</code>
+       */
+      public Builder setRefPathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setRefPathBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string ref_folder = 120;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getRefFolder() {
+        return instance.getRefFolder();
+      }
+      /**
+       * <code>string ref_folder = 120;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getRefFolderBytes() {
+        return instance.getRefFolderBytes();
+      }
+      /**
+       * <code>string ref_folder = 120;</code>
+       */
+      public Builder setRefFolder(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setRefFolder(value);
+        return this;
+      }
+      /**
+       * <code>string ref_folder = 120;</code>
+       */
+      public Builder clearRefFolder() {
+        copyOnWrite();
+        instance.clearRefFolder();
+        return this;
+      }
+      /**
+       * <code>string ref_folder = 120;</code>
+       */
+      public Builder setRefFolderBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setRefFolderBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.FileTransfer)
     }
     @java.lang.Override
@@ -11656,10 +12161,12 @@ public final class TcMessage {
               "fileMd5_",
               "localFilepath_",
               "timestamp_",
+              "refPath_",
+              "refFolder_",
             };
             java.lang.String info =
-                "\u0000\u000b\u0000\u0000\u0001d\u000b\u0000\u0000\u0000\u0001\u0208\n\f\u0014\f\u001e" +
-                "\u0208(\u02082\n<\u0003F\u0003P\u0208Z\u0208d\u0003";
+                "\u0000\r\u0000\u0000\u0001x\r\u0000\u0000\u0000\u0001\u0208\n\f\u0014\f\u001e\u0208" +
+                "(\u02082\n<\u0003F\u0003P\u0208Z\u0208d\u0003n\u0208x\u0208";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

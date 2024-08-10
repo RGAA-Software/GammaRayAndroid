@@ -92,7 +92,7 @@ android {
 
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "GammaRay_" + productFlavors[0].manifestPlaceholders.get("apk_name") + "_" + variant.versionName + ".apk"
+            outputFileName = "gammaray_" + productFlavors[0].manifestPlaceholders.get("apk_name") + "_" + variant.versionName + ".apk"
         }
     }
 
@@ -124,7 +124,7 @@ android {
             manifestPlaceholders = [
                     app_icon: "@drawable/ic_launcher",
                     app_name: "GammaRay",
-                    apk_name: "Official"
+                    apk_name: "official"
             ]
         }
 //        steam {
