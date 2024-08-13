@@ -25,7 +25,7 @@ android {
             }
         }
         ndk {
-            abiFilters "arm64-v8a" //, "armeabi-v7a"
+            abiFilters "arm64-v8a", "x86_64" //"armeabi-v7a", "x86",
         }
         ndkVersion "27.0.11902837"
     }
@@ -48,13 +48,13 @@ android {
     buildTypes {
         debug {
             ndk {
-                abiFilters "arm64-v8a" //, "armeabi-v7a"
+                abiFilters "arm64-v8a", "x86_64" //"armeabi-v7a", "x86",
             }
             signingConfig signingConfigs.release
         }
         release {
             ndk {
-                abiFilters "arm64-v8a" //, "armeabi-v7a"
+                abiFilters "arm64-v8a", "x86_64" //"armeabi-v7a", "x86",
             }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -307,15 +307,15 @@ dependencies {
 
     implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
     natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
-    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
     implementation "com.badlogicgames.gdx:gdx-box2d:$box2dVersion"
     natives "com.badlogicgames.gdx:gdx-box2d-platform:$box2dVersion:natives-arm64-v8a"
-    natives "com.badlogicgames.gdx:gdx-box2d-platform:$box2dVersion:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:$box2dVersion:natives-x86_64"
     implementation "com.esotericsoftware.spine:spine-libgdx:3.5.51.1"
     implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
     //api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
     natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
-    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -344,18 +344,18 @@ protobuf {
 
 task copyAndroidNatives() {
     file("libs/arm64-v8a/").mkdirs();
-//    file("libs/armeabi/").mkdirs();
-//    file("libs/armeabi-v7a/").mkdirs();
-//    file("libs/x86_64/").mkdirs();
-//    file("libs/x86/").mkdirs();
+    //file("libs/armeabi/").mkdirs();
+    //file("libs/armeabi-v7a/").mkdirs();
+    file("libs/x86_64/").mkdirs();
+    //file("libs/x86/").mkdirs();
 
     configurations.natives.files.each { jar ->
         def outputDir = null
         if(jar.name.endsWith("natives-arm64-v8a.jar")) outputDir = file("libs/arm64-v8a")
-//        if(jar.name.endsWith("natives-armeabi-v7a.jar")) outputDir = file("libs/armeabi-v7a")
-//        if(jar.name.endsWith("natives-armeabi.jar")) outputDir = file("libs/armeabi")
-//        if(jar.name.endsWith("natives-x86_64.jar")) outputDir = file("libs/x86_64")
-//        if(jar.name.endsWith("natives-x86.jar")) outputDir = file("libs/x86")
+        //if(jar.name.endsWith("natives-armeabi-v7a.jar")) outputDir = file("libs/armeabi-v7a")
+        //if(jar.name.endsWith("natives-armeabi.jar")) outputDir = file("libs/armeabi")
+        if(jar.name.endsWith("natives-x86_64.jar")) outputDir = file("libs/x86_64")
+        //if(jar.name.endsWith("natives-x86.jar")) outputDir = file("libs/x86")
         if(outputDir != null) {
             copy {
                 from zipTree(jar)

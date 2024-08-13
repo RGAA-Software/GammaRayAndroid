@@ -3,6 +3,10 @@
 **[Server](https://github.com/RGAA-Software/GammaRay)**  
 **[PC Client](https://github.com/RGAA-Software/GammaRayPC)**
 
+#### Support platforms
+- arm64-android
+- x64-android
+
 #### Recordings
 ##### Test (Ori)
 ![](docs/images/test1.gif)
@@ -10,7 +14,7 @@
 ![](docs/images/test2.gif)
 
 #### 2 Run a Android Client
-> Download and install the GammaRay_Official_xxx.apk first
+> Download and install the gammaray_official_xxx.apk first
 ##### 2.0 Prepare
 ![](docs/images/android_prepare_1.jpg)
 ##### 2.1 Scan the QR in server panel, it will connect automatically.
@@ -44,12 +48,18 @@
     ./bootstrap-vcpkg.bat
 ```
 
-#### 3. Install dependences
+#### 3. Install dependencies
 ```c++
     ./vcpkg.exe install sqlite3:arm64-android
-    ./vcpkg.exe install ffmpeg:arm64-android
+    ./vcpkg.exe install ffmpeg[x264]:arm64-android
     ./vcpkg.exe install protobuf:arm64-android
-    ./vcpkg.exe install openssl:arm64-android
-    ./vcpkg.exe install libyuv:arm64-android
     ./vcpkg.exe install glm:arm64-android
+    
+    and
+    
+    ./vcpkg.exe install sqlite3:x64-android
+    ./vcpkg.exe install ffmpeg[x264]:x64-android
+    ./vcpkg.exe install protobuf:x64-android
+    ./vcpkg.exe install glm:x64-android
+    
 ```
