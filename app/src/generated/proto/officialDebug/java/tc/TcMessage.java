@@ -22,101 +22,105 @@ public final class TcMessage {
      */
     kHello(0),
     /**
-     * <code>kAck = 1;</code>
+     * <code>kAck = 10;</code>
      */
-    kAck(1),
+    kAck(10),
     /**
-     * <code>kHeartBeat = 2;</code>
+     * <code>kHeartBeat = 20;</code>
      */
-    kHeartBeat(2),
+    kHeartBeat(20),
     /**
-     * <code>kVideoFrame = 3;</code>
+     * <code>kOnHeartBeat = 21;</code>
      */
-    kVideoFrame(3),
+    kOnHeartBeat(21),
     /**
-     * <code>kAudioFrame = 4;</code>
+     * <code>kVideoFrame = 30;</code>
      */
-    kAudioFrame(4),
+    kVideoFrame(30),
     /**
-     * <code>kKeyEvent = 5;</code>
+     * <code>kAudioFrame = 40;</code>
      */
-    kKeyEvent(5),
+    kAudioFrame(40),
     /**
-     * <code>kMouseEvent = 6;</code>
+     * <code>kKeyEvent = 50;</code>
      */
-    kMouseEvent(6),
+    kKeyEvent(50),
+    /**
+     * <code>kMouseEvent = 60;</code>
+     */
+    kMouseEvent(60),
     /**
      * <pre>
      * server -&gt; client
      * </pre>
      *
-     * <code>kCursorInfoSync = 7;</code>
+     * <code>kCursorInfoSync = 70;</code>
      */
-    kCursorInfoSync(7),
+    kCursorInfoSync(70),
     /**
      * <pre>
      * client -&gt; server
      * </pre>
      *
-     * <code>kGamepadState = 8;</code>
+     * <code>kGamepadState = 80;</code>
      */
-    kGamepadState(8),
+    kGamepadState(80),
     /**
      * <pre>
      * capture server -&gt; host panel
      * </pre>
      *
-     * <code>kCaptureStatistics = 9;</code>
+     * <code>kCaptureStatistics = 90;</code>
      */
-    kCaptureStatistics(9),
+    kCaptureStatistics(90),
     /**
      * <pre>
      * client statistics
      * </pre>
      *
-     * <code>kClientStatistics = 10;</code>
+     * <code>kClientStatistics = 100;</code>
      */
-    kClientStatistics(10),
+    kClientStatistics(100),
     /**
      * <pre>
      * capture server -&gt; host panel
      * </pre>
      *
-     * <code>kServerAudioSpectrum = 11;</code>
+     * <code>kServerAudioSpectrum = 110;</code>
      */
-    kServerAudioSpectrum(11),
+    kServerAudioSpectrum(110),
     /**
      * <pre>
      * host panel -&gt; client
      * </pre>
      *
-     * <code>kOnlineGames = 12;</code>
+     * <code>kOnlineGames = 120;</code>
      */
-    kOnlineGames(12),
+    kOnlineGames(120),
     /**
      * <pre>
      * ui server hello
      * </pre>
      *
-     * <code>kUIServerHello = 13;</code>
+     * <code>kUIServerHello = 130;</code>
      */
-    kUIServerHello(13),
+    kUIServerHello(130),
     /**
      * <pre>
      * file transfer
      * </pre>
      *
-     * <code>kFileTransfer = 14;</code>
+     * <code>kFileTransfer = 140;</code>
      */
-    kFileTransfer(14),
+    kFileTransfer(140),
     /**
      * <pre>
      * file transfer resp
      * </pre>
      *
-     * <code>kRespFileTransfer = 15;</code>
+     * <code>kRespFileTransfer = 150;</code>
      */
-    kRespFileTransfer(15),
+    kRespFileTransfer(150),
     UNRECOGNIZED(-1),
     ;
 
@@ -129,101 +133,105 @@ public final class TcMessage {
      */
     public static final int kHello_VALUE = 0;
     /**
-     * <code>kAck = 1;</code>
+     * <code>kAck = 10;</code>
      */
-    public static final int kAck_VALUE = 1;
+    public static final int kAck_VALUE = 10;
     /**
-     * <code>kHeartBeat = 2;</code>
+     * <code>kHeartBeat = 20;</code>
      */
-    public static final int kHeartBeat_VALUE = 2;
+    public static final int kHeartBeat_VALUE = 20;
     /**
-     * <code>kVideoFrame = 3;</code>
+     * <code>kOnHeartBeat = 21;</code>
      */
-    public static final int kVideoFrame_VALUE = 3;
+    public static final int kOnHeartBeat_VALUE = 21;
     /**
-     * <code>kAudioFrame = 4;</code>
+     * <code>kVideoFrame = 30;</code>
      */
-    public static final int kAudioFrame_VALUE = 4;
+    public static final int kVideoFrame_VALUE = 30;
     /**
-     * <code>kKeyEvent = 5;</code>
+     * <code>kAudioFrame = 40;</code>
      */
-    public static final int kKeyEvent_VALUE = 5;
+    public static final int kAudioFrame_VALUE = 40;
     /**
-     * <code>kMouseEvent = 6;</code>
+     * <code>kKeyEvent = 50;</code>
      */
-    public static final int kMouseEvent_VALUE = 6;
+    public static final int kKeyEvent_VALUE = 50;
+    /**
+     * <code>kMouseEvent = 60;</code>
+     */
+    public static final int kMouseEvent_VALUE = 60;
     /**
      * <pre>
      * server -&gt; client
      * </pre>
      *
-     * <code>kCursorInfoSync = 7;</code>
+     * <code>kCursorInfoSync = 70;</code>
      */
-    public static final int kCursorInfoSync_VALUE = 7;
+    public static final int kCursorInfoSync_VALUE = 70;
     /**
      * <pre>
      * client -&gt; server
      * </pre>
      *
-     * <code>kGamepadState = 8;</code>
+     * <code>kGamepadState = 80;</code>
      */
-    public static final int kGamepadState_VALUE = 8;
+    public static final int kGamepadState_VALUE = 80;
     /**
      * <pre>
      * capture server -&gt; host panel
      * </pre>
      *
-     * <code>kCaptureStatistics = 9;</code>
+     * <code>kCaptureStatistics = 90;</code>
      */
-    public static final int kCaptureStatistics_VALUE = 9;
+    public static final int kCaptureStatistics_VALUE = 90;
     /**
      * <pre>
      * client statistics
      * </pre>
      *
-     * <code>kClientStatistics = 10;</code>
+     * <code>kClientStatistics = 100;</code>
      */
-    public static final int kClientStatistics_VALUE = 10;
+    public static final int kClientStatistics_VALUE = 100;
     /**
      * <pre>
      * capture server -&gt; host panel
      * </pre>
      *
-     * <code>kServerAudioSpectrum = 11;</code>
+     * <code>kServerAudioSpectrum = 110;</code>
      */
-    public static final int kServerAudioSpectrum_VALUE = 11;
+    public static final int kServerAudioSpectrum_VALUE = 110;
     /**
      * <pre>
      * host panel -&gt; client
      * </pre>
      *
-     * <code>kOnlineGames = 12;</code>
+     * <code>kOnlineGames = 120;</code>
      */
-    public static final int kOnlineGames_VALUE = 12;
+    public static final int kOnlineGames_VALUE = 120;
     /**
      * <pre>
      * ui server hello
      * </pre>
      *
-     * <code>kUIServerHello = 13;</code>
+     * <code>kUIServerHello = 130;</code>
      */
-    public static final int kUIServerHello_VALUE = 13;
+    public static final int kUIServerHello_VALUE = 130;
     /**
      * <pre>
      * file transfer
      * </pre>
      *
-     * <code>kFileTransfer = 14;</code>
+     * <code>kFileTransfer = 140;</code>
      */
-    public static final int kFileTransfer_VALUE = 14;
+    public static final int kFileTransfer_VALUE = 140;
     /**
      * <pre>
      * file transfer resp
      * </pre>
      *
-     * <code>kRespFileTransfer = 15;</code>
+     * <code>kRespFileTransfer = 150;</code>
      */
-    public static final int kRespFileTransfer_VALUE = 15;
+    public static final int kRespFileTransfer_VALUE = 150;
 
 
     @java.lang.Override
@@ -246,21 +254,22 @@ public final class TcMessage {
     public static MessageType forNumber(int value) {
       switch (value) {
         case 0: return kHello;
-        case 1: return kAck;
-        case 2: return kHeartBeat;
-        case 3: return kVideoFrame;
-        case 4: return kAudioFrame;
-        case 5: return kKeyEvent;
-        case 6: return kMouseEvent;
-        case 7: return kCursorInfoSync;
-        case 8: return kGamepadState;
-        case 9: return kCaptureStatistics;
-        case 10: return kClientStatistics;
-        case 11: return kServerAudioSpectrum;
-        case 12: return kOnlineGames;
-        case 13: return kUIServerHello;
-        case 14: return kFileTransfer;
-        case 15: return kRespFileTransfer;
+        case 10: return kAck;
+        case 20: return kHeartBeat;
+        case 21: return kOnHeartBeat;
+        case 30: return kVideoFrame;
+        case 40: return kAudioFrame;
+        case 50: return kKeyEvent;
+        case 60: return kMouseEvent;
+        case 70: return kCursorInfoSync;
+        case 80: return kGamepadState;
+        case 90: return kCaptureStatistics;
+        case 100: return kClientStatistics;
+        case 110: return kServerAudioSpectrum;
+        case 120: return kOnlineGames;
+        case 130: return kUIServerHello;
+        case 140: return kFileTransfer;
+        case 150: return kRespFileTransfer;
         default: return null;
       }
     }
@@ -1777,6 +1786,11 @@ public final class TcMessage {
   public interface HeartBeatOrBuilder extends
       // @@protoc_insertion_point(interface_extends:tc.HeartBeat)
       com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>uint64 index = 1;</code>
+     */
+    long getIndex();
   }
   /**
    * Protobuf type {@code tc.HeartBeat}
@@ -1788,6 +1802,30 @@ public final class TcMessage {
       HeartBeatOrBuilder {
     private HeartBeat() {
     }
+    public static final int INDEX_FIELD_NUMBER = 1;
+    private long index_;
+    /**
+     * <code>uint64 index = 1;</code>
+     */
+    @java.lang.Override
+    public long getIndex() {
+      return index_;
+    }
+    /**
+     * <code>uint64 index = 1;</code>
+     */
+    private void setIndex(long value) {
+      
+      index_ = value;
+    }
+    /**
+     * <code>uint64 index = 1;</code>
+     */
+    private void clearIndex() {
+      
+      index_ = 0L;
+    }
+
     public static tc.TcMessage.HeartBeat parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1883,6 +1921,30 @@ public final class TcMessage {
       }
 
 
+      /**
+       * <code>uint64 index = 1;</code>
+       */
+      @java.lang.Override
+      public long getIndex() {
+        return instance.getIndex();
+      }
+      /**
+       * <code>uint64 index = 1;</code>
+       */
+      public Builder setIndex(long value) {
+        copyOnWrite();
+        instance.setIndex(value);
+        return this;
+      }
+      /**
+       * <code>uint64 index = 1;</code>
+       */
+      public Builder clearIndex() {
+        copyOnWrite();
+        instance.clearIndex();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.HeartBeat)
     }
     @java.lang.Override
@@ -1898,8 +1960,11 @@ public final class TcMessage {
           return new Builder();
         }
         case BUILD_MESSAGE_INFO: {
-            java.lang.Object[] objects = null;java.lang.String info =
-                "\u0000\u0000";
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "index_",
+            };
+            java.lang.String info =
+                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u0003";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -1949,6 +2014,702 @@ public final class TcMessage {
     private static volatile com.google.protobuf.Parser<HeartBeat> PARSER;
 
     public static com.google.protobuf.Parser<HeartBeat> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface OnHeartBeatOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.OnHeartBeat)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>uint64 index = 1;</code>
+     */
+    long getIndex();
+
+    /**
+     * <pre>
+     * keyboard information
+     * </pre>
+     *
+     * <code>bool caps_lock_pressed = 10;</code>
+     */
+    boolean getCapsLockPressed();
+
+    /**
+     * <code>int32 caps_lock_state = 11;</code>
+     */
+    int getCapsLockState();
+
+    /**
+     * <code>bool num_lock_pressed = 20;</code>
+     */
+    boolean getNumLockPressed();
+
+    /**
+     * <code>int32 num_lock_state = 21;</code>
+     */
+    int getNumLockState();
+
+    /**
+     * <code>bool alt_pressed = 30;</code>
+     */
+    boolean getAltPressed();
+
+    /**
+     * <code>bool control_pressed = 40;</code>
+     */
+    boolean getControlPressed();
+
+    /**
+     * <code>bool win_pressed = 50;</code>
+     */
+    boolean getWinPressed();
+
+    /**
+     * <code>bool shift_pressed = 60;</code>
+     */
+    boolean getShiftPressed();
+  }
+  /**
+   * Protobuf type {@code tc.OnHeartBeat}
+   */
+  public  static final class OnHeartBeat extends
+      com.google.protobuf.GeneratedMessageLite<
+          OnHeartBeat, OnHeartBeat.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.OnHeartBeat)
+      OnHeartBeatOrBuilder {
+    private OnHeartBeat() {
+    }
+    public static final int INDEX_FIELD_NUMBER = 1;
+    private long index_;
+    /**
+     * <code>uint64 index = 1;</code>
+     */
+    @java.lang.Override
+    public long getIndex() {
+      return index_;
+    }
+    /**
+     * <code>uint64 index = 1;</code>
+     */
+    private void setIndex(long value) {
+      
+      index_ = value;
+    }
+    /**
+     * <code>uint64 index = 1;</code>
+     */
+    private void clearIndex() {
+      
+      index_ = 0L;
+    }
+
+    public static final int CAPS_LOCK_PRESSED_FIELD_NUMBER = 10;
+    private boolean capsLockPressed_;
+    /**
+     * <pre>
+     * keyboard information
+     * </pre>
+     *
+     * <code>bool caps_lock_pressed = 10;</code>
+     */
+    @java.lang.Override
+    public boolean getCapsLockPressed() {
+      return capsLockPressed_;
+    }
+    /**
+     * <pre>
+     * keyboard information
+     * </pre>
+     *
+     * <code>bool caps_lock_pressed = 10;</code>
+     */
+    private void setCapsLockPressed(boolean value) {
+      
+      capsLockPressed_ = value;
+    }
+    /**
+     * <pre>
+     * keyboard information
+     * </pre>
+     *
+     * <code>bool caps_lock_pressed = 10;</code>
+     */
+    private void clearCapsLockPressed() {
+      
+      capsLockPressed_ = false;
+    }
+
+    public static final int CAPS_LOCK_STATE_FIELD_NUMBER = 11;
+    private int capsLockState_;
+    /**
+     * <code>int32 caps_lock_state = 11;</code>
+     */
+    @java.lang.Override
+    public int getCapsLockState() {
+      return capsLockState_;
+    }
+    /**
+     * <code>int32 caps_lock_state = 11;</code>
+     */
+    private void setCapsLockState(int value) {
+      
+      capsLockState_ = value;
+    }
+    /**
+     * <code>int32 caps_lock_state = 11;</code>
+     */
+    private void clearCapsLockState() {
+      
+      capsLockState_ = 0;
+    }
+
+    public static final int NUM_LOCK_PRESSED_FIELD_NUMBER = 20;
+    private boolean numLockPressed_;
+    /**
+     * <code>bool num_lock_pressed = 20;</code>
+     */
+    @java.lang.Override
+    public boolean getNumLockPressed() {
+      return numLockPressed_;
+    }
+    /**
+     * <code>bool num_lock_pressed = 20;</code>
+     */
+    private void setNumLockPressed(boolean value) {
+      
+      numLockPressed_ = value;
+    }
+    /**
+     * <code>bool num_lock_pressed = 20;</code>
+     */
+    private void clearNumLockPressed() {
+      
+      numLockPressed_ = false;
+    }
+
+    public static final int NUM_LOCK_STATE_FIELD_NUMBER = 21;
+    private int numLockState_;
+    /**
+     * <code>int32 num_lock_state = 21;</code>
+     */
+    @java.lang.Override
+    public int getNumLockState() {
+      return numLockState_;
+    }
+    /**
+     * <code>int32 num_lock_state = 21;</code>
+     */
+    private void setNumLockState(int value) {
+      
+      numLockState_ = value;
+    }
+    /**
+     * <code>int32 num_lock_state = 21;</code>
+     */
+    private void clearNumLockState() {
+      
+      numLockState_ = 0;
+    }
+
+    public static final int ALT_PRESSED_FIELD_NUMBER = 30;
+    private boolean altPressed_;
+    /**
+     * <code>bool alt_pressed = 30;</code>
+     */
+    @java.lang.Override
+    public boolean getAltPressed() {
+      return altPressed_;
+    }
+    /**
+     * <code>bool alt_pressed = 30;</code>
+     */
+    private void setAltPressed(boolean value) {
+      
+      altPressed_ = value;
+    }
+    /**
+     * <code>bool alt_pressed = 30;</code>
+     */
+    private void clearAltPressed() {
+      
+      altPressed_ = false;
+    }
+
+    public static final int CONTROL_PRESSED_FIELD_NUMBER = 40;
+    private boolean controlPressed_;
+    /**
+     * <code>bool control_pressed = 40;</code>
+     */
+    @java.lang.Override
+    public boolean getControlPressed() {
+      return controlPressed_;
+    }
+    /**
+     * <code>bool control_pressed = 40;</code>
+     */
+    private void setControlPressed(boolean value) {
+      
+      controlPressed_ = value;
+    }
+    /**
+     * <code>bool control_pressed = 40;</code>
+     */
+    private void clearControlPressed() {
+      
+      controlPressed_ = false;
+    }
+
+    public static final int WIN_PRESSED_FIELD_NUMBER = 50;
+    private boolean winPressed_;
+    /**
+     * <code>bool win_pressed = 50;</code>
+     */
+    @java.lang.Override
+    public boolean getWinPressed() {
+      return winPressed_;
+    }
+    /**
+     * <code>bool win_pressed = 50;</code>
+     */
+    private void setWinPressed(boolean value) {
+      
+      winPressed_ = value;
+    }
+    /**
+     * <code>bool win_pressed = 50;</code>
+     */
+    private void clearWinPressed() {
+      
+      winPressed_ = false;
+    }
+
+    public static final int SHIFT_PRESSED_FIELD_NUMBER = 60;
+    private boolean shiftPressed_;
+    /**
+     * <code>bool shift_pressed = 60;</code>
+     */
+    @java.lang.Override
+    public boolean getShiftPressed() {
+      return shiftPressed_;
+    }
+    /**
+     * <code>bool shift_pressed = 60;</code>
+     */
+    private void setShiftPressed(boolean value) {
+      
+      shiftPressed_ = value;
+    }
+    /**
+     * <code>bool shift_pressed = 60;</code>
+     */
+    private void clearShiftPressed() {
+      
+      shiftPressed_ = false;
+    }
+
+    public static tc.TcMessage.OnHeartBeat parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.OnHeartBeat parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.OnHeartBeat parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.OnHeartBeat parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.OnHeartBeat parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.OnHeartBeat parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.OnHeartBeat parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.OnHeartBeat parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.OnHeartBeat parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.OnHeartBeat parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.OnHeartBeat parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.OnHeartBeat parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcMessage.OnHeartBeat prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.OnHeartBeat}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcMessage.OnHeartBeat, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.OnHeartBeat)
+        tc.TcMessage.OnHeartBeatOrBuilder {
+      // Construct using tc.TcMessage.OnHeartBeat.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>uint64 index = 1;</code>
+       */
+      @java.lang.Override
+      public long getIndex() {
+        return instance.getIndex();
+      }
+      /**
+       * <code>uint64 index = 1;</code>
+       */
+      public Builder setIndex(long value) {
+        copyOnWrite();
+        instance.setIndex(value);
+        return this;
+      }
+      /**
+       * <code>uint64 index = 1;</code>
+       */
+      public Builder clearIndex() {
+        copyOnWrite();
+        instance.clearIndex();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * keyboard information
+       * </pre>
+       *
+       * <code>bool caps_lock_pressed = 10;</code>
+       */
+      @java.lang.Override
+      public boolean getCapsLockPressed() {
+        return instance.getCapsLockPressed();
+      }
+      /**
+       * <pre>
+       * keyboard information
+       * </pre>
+       *
+       * <code>bool caps_lock_pressed = 10;</code>
+       */
+      public Builder setCapsLockPressed(boolean value) {
+        copyOnWrite();
+        instance.setCapsLockPressed(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * keyboard information
+       * </pre>
+       *
+       * <code>bool caps_lock_pressed = 10;</code>
+       */
+      public Builder clearCapsLockPressed() {
+        copyOnWrite();
+        instance.clearCapsLockPressed();
+        return this;
+      }
+
+      /**
+       * <code>int32 caps_lock_state = 11;</code>
+       */
+      @java.lang.Override
+      public int getCapsLockState() {
+        return instance.getCapsLockState();
+      }
+      /**
+       * <code>int32 caps_lock_state = 11;</code>
+       */
+      public Builder setCapsLockState(int value) {
+        copyOnWrite();
+        instance.setCapsLockState(value);
+        return this;
+      }
+      /**
+       * <code>int32 caps_lock_state = 11;</code>
+       */
+      public Builder clearCapsLockState() {
+        copyOnWrite();
+        instance.clearCapsLockState();
+        return this;
+      }
+
+      /**
+       * <code>bool num_lock_pressed = 20;</code>
+       */
+      @java.lang.Override
+      public boolean getNumLockPressed() {
+        return instance.getNumLockPressed();
+      }
+      /**
+       * <code>bool num_lock_pressed = 20;</code>
+       */
+      public Builder setNumLockPressed(boolean value) {
+        copyOnWrite();
+        instance.setNumLockPressed(value);
+        return this;
+      }
+      /**
+       * <code>bool num_lock_pressed = 20;</code>
+       */
+      public Builder clearNumLockPressed() {
+        copyOnWrite();
+        instance.clearNumLockPressed();
+        return this;
+      }
+
+      /**
+       * <code>int32 num_lock_state = 21;</code>
+       */
+      @java.lang.Override
+      public int getNumLockState() {
+        return instance.getNumLockState();
+      }
+      /**
+       * <code>int32 num_lock_state = 21;</code>
+       */
+      public Builder setNumLockState(int value) {
+        copyOnWrite();
+        instance.setNumLockState(value);
+        return this;
+      }
+      /**
+       * <code>int32 num_lock_state = 21;</code>
+       */
+      public Builder clearNumLockState() {
+        copyOnWrite();
+        instance.clearNumLockState();
+        return this;
+      }
+
+      /**
+       * <code>bool alt_pressed = 30;</code>
+       */
+      @java.lang.Override
+      public boolean getAltPressed() {
+        return instance.getAltPressed();
+      }
+      /**
+       * <code>bool alt_pressed = 30;</code>
+       */
+      public Builder setAltPressed(boolean value) {
+        copyOnWrite();
+        instance.setAltPressed(value);
+        return this;
+      }
+      /**
+       * <code>bool alt_pressed = 30;</code>
+       */
+      public Builder clearAltPressed() {
+        copyOnWrite();
+        instance.clearAltPressed();
+        return this;
+      }
+
+      /**
+       * <code>bool control_pressed = 40;</code>
+       */
+      @java.lang.Override
+      public boolean getControlPressed() {
+        return instance.getControlPressed();
+      }
+      /**
+       * <code>bool control_pressed = 40;</code>
+       */
+      public Builder setControlPressed(boolean value) {
+        copyOnWrite();
+        instance.setControlPressed(value);
+        return this;
+      }
+      /**
+       * <code>bool control_pressed = 40;</code>
+       */
+      public Builder clearControlPressed() {
+        copyOnWrite();
+        instance.clearControlPressed();
+        return this;
+      }
+
+      /**
+       * <code>bool win_pressed = 50;</code>
+       */
+      @java.lang.Override
+      public boolean getWinPressed() {
+        return instance.getWinPressed();
+      }
+      /**
+       * <code>bool win_pressed = 50;</code>
+       */
+      public Builder setWinPressed(boolean value) {
+        copyOnWrite();
+        instance.setWinPressed(value);
+        return this;
+      }
+      /**
+       * <code>bool win_pressed = 50;</code>
+       */
+      public Builder clearWinPressed() {
+        copyOnWrite();
+        instance.clearWinPressed();
+        return this;
+      }
+
+      /**
+       * <code>bool shift_pressed = 60;</code>
+       */
+      @java.lang.Override
+      public boolean getShiftPressed() {
+        return instance.getShiftPressed();
+      }
+      /**
+       * <code>bool shift_pressed = 60;</code>
+       */
+      public Builder setShiftPressed(boolean value) {
+        copyOnWrite();
+        instance.setShiftPressed(value);
+        return this;
+      }
+      /**
+       * <code>bool shift_pressed = 60;</code>
+       */
+      public Builder clearShiftPressed() {
+        copyOnWrite();
+        instance.clearShiftPressed();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.OnHeartBeat)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcMessage.OnHeartBeat();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "index_",
+              "capsLockPressed_",
+              "capsLockState_",
+              "numLockPressed_",
+              "numLockState_",
+              "altPressed_",
+              "controlPressed_",
+              "winPressed_",
+              "shiftPressed_",
+            };
+            java.lang.String info =
+                "\u0000\t\u0000\u0000\u0001<\t\u0000\u0000\u0000\u0001\u0003\n\u0007\u000b\u0004\u0014" +
+                "\u0007\u0015\u0004\u001e\u0007(\u00072\u0007<\u0007";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcMessage.OnHeartBeat> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcMessage.OnHeartBeat.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.OnHeartBeat)
+    private static final tc.TcMessage.OnHeartBeat DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new OnHeartBeat();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        OnHeartBeat.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcMessage.OnHeartBeat getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<OnHeartBeat> PARSER;
+
+    public static com.google.protobuf.Parser<OnHeartBeat> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
@@ -13190,175 +13951,184 @@ public final class TcMessage {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>.tc.MessageType type = 1;</code>
+     * <code>.tc.MessageType type = 10;</code>
      */
     int getTypeValue();
     /**
-     * <code>.tc.MessageType type = 1;</code>
+     * <code>.tc.MessageType type = 10;</code>
      */
     tc.TcMessage.MessageType getType();
 
     /**
-     * <code>uint64 send_time = 2;</code>
+     * <code>uint64 send_time = 20;</code>
      */
     long getSendTime();
 
     /**
-     * <code>string extra = 3;</code>
+     * <code>string extra = 30;</code>
      */
     java.lang.String getExtra();
     /**
-     * <code>string extra = 3;</code>
+     * <code>string extra = 30;</code>
      */
     com.google.protobuf.ByteString
         getExtraBytes();
 
     /**
-     * <code>.tc.Hello hello = 4;</code>
+     * <code>.tc.Hello hello = 40;</code>
      */
     boolean hasHello();
     /**
-     * <code>.tc.Hello hello = 4;</code>
+     * <code>.tc.Hello hello = 40;</code>
      */
     tc.TcMessage.Hello getHello();
 
     /**
-     * <code>.tc.Ack ack = 5;</code>
+     * <code>.tc.Ack ack = 50;</code>
      */
     boolean hasAck();
     /**
-     * <code>.tc.Ack ack = 5;</code>
+     * <code>.tc.Ack ack = 50;</code>
      */
     tc.TcMessage.Ack getAck();
 
     /**
-     * <code>.tc.HeartBeat heart_beat = 6;</code>
+     * <code>.tc.HeartBeat heartbeat = 60;</code>
      */
-    boolean hasHeartBeat();
+    boolean hasHeartbeat();
     /**
-     * <code>.tc.HeartBeat heart_beat = 6;</code>
+     * <code>.tc.HeartBeat heartbeat = 60;</code>
      */
-    tc.TcMessage.HeartBeat getHeartBeat();
+    tc.TcMessage.HeartBeat getHeartbeat();
 
     /**
-     * <code>.tc.VideoFrame video_frame = 7;</code>
+     * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+     */
+    boolean hasOnHeartbeat();
+    /**
+     * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+     */
+    tc.TcMessage.OnHeartBeat getOnHeartbeat();
+
+    /**
+     * <code>.tc.VideoFrame video_frame = 70;</code>
      */
     boolean hasVideoFrame();
     /**
-     * <code>.tc.VideoFrame video_frame = 7;</code>
+     * <code>.tc.VideoFrame video_frame = 70;</code>
      */
     tc.TcMessage.VideoFrame getVideoFrame();
 
     /**
-     * <code>.tc.AudioFrame audio_frame = 8;</code>
+     * <code>.tc.AudioFrame audio_frame = 80;</code>
      */
     boolean hasAudioFrame();
     /**
-     * <code>.tc.AudioFrame audio_frame = 8;</code>
+     * <code>.tc.AudioFrame audio_frame = 80;</code>
      */
     tc.TcMessage.AudioFrame getAudioFrame();
 
     /**
-     * <code>.tc.KeyEvent key_event = 9;</code>
+     * <code>.tc.KeyEvent key_event = 90;</code>
      */
     boolean hasKeyEvent();
     /**
-     * <code>.tc.KeyEvent key_event = 9;</code>
+     * <code>.tc.KeyEvent key_event = 90;</code>
      */
     tc.TcMessage.KeyEvent getKeyEvent();
 
     /**
-     * <code>.tc.MouseEvent mouse_event = 10;</code>
+     * <code>.tc.MouseEvent mouse_event = 100;</code>
      */
     boolean hasMouseEvent();
     /**
-     * <code>.tc.MouseEvent mouse_event = 10;</code>
+     * <code>.tc.MouseEvent mouse_event = 100;</code>
      */
     tc.TcMessage.MouseEvent getMouseEvent();
 
     /**
-     * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+     * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
      */
     boolean hasCursorInfoSync();
     /**
-     * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+     * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
      */
     tc.TcMessage.CursorInfoSync getCursorInfoSync();
 
     /**
-     * <code>.tc.GamepadState gamepad_state = 12;</code>
+     * <code>.tc.GamepadState gamepad_state = 120;</code>
      */
     boolean hasGamepadState();
     /**
-     * <code>.tc.GamepadState gamepad_state = 12;</code>
+     * <code>.tc.GamepadState gamepad_state = 120;</code>
      */
     tc.TcMessage.GamepadState getGamepadState();
 
     /**
-     * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+     * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
      */
     boolean hasCaptureStatistics();
     /**
-     * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+     * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
      */
     tc.TcMessage.CaptureStatistics getCaptureStatistics();
 
     /**
-     * <code>.tc.ClientStatistics client_statistics = 14;</code>
+     * <code>.tc.ClientStatistics client_statistics = 140;</code>
      */
     boolean hasClientStatistics();
     /**
-     * <code>.tc.ClientStatistics client_statistics = 14;</code>
+     * <code>.tc.ClientStatistics client_statistics = 140;</code>
      */
     tc.TcMessage.ClientStatistics getClientStatistics();
 
     /**
-     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
      */
     boolean hasServerAudioSpectrum();
     /**
-     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
      */
     tc.TcMessage.ServerAudioSpectrum getServerAudioSpectrum();
 
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     java.util.List<tc.TcMessage.OnlineGame> 
         getOnlineGamesList();
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     tc.TcMessage.OnlineGame getOnlineGames(int index);
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     int getOnlineGamesCount();
 
     /**
-     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     * <code>.tc.UIServerHello ui_server_hello = 170;</code>
      */
     boolean hasUiServerHello();
     /**
-     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     * <code>.tc.UIServerHello ui_server_hello = 170;</code>
      */
     tc.TcMessage.UIServerHello getUiServerHello();
 
     /**
-     * <code>.tc.FileTransfer file_transfer = 18;</code>
+     * <code>.tc.FileTransfer file_transfer = 180;</code>
      */
     boolean hasFileTransfer();
     /**
-     * <code>.tc.FileTransfer file_transfer = 18;</code>
+     * <code>.tc.FileTransfer file_transfer = 180;</code>
      */
     tc.TcMessage.FileTransfer getFileTransfer();
 
     /**
-     * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+     * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
      */
     boolean hasRespFileTransfer();
     /**
-     * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+     * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
      */
     tc.TcMessage.RespFileTransfer getRespFileTransfer();
   }
@@ -13374,17 +14144,17 @@ public final class TcMessage {
       extra_ = "";
       onlineGames_ = emptyProtobufList();
     }
-    public static final int TYPE_FIELD_NUMBER = 1;
+    public static final int TYPE_FIELD_NUMBER = 10;
     private int type_;
     /**
-     * <code>.tc.MessageType type = 1;</code>
+     * <code>.tc.MessageType type = 10;</code>
      */
     @java.lang.Override
     public int getTypeValue() {
       return type_;
     }
     /**
-     * <code>.tc.MessageType type = 1;</code>
+     * <code>.tc.MessageType type = 10;</code>
      */
     @java.lang.Override
     public tc.TcMessage.MessageType getType() {
@@ -13392,13 +14162,13 @@ public final class TcMessage {
       return result == null ? tc.TcMessage.MessageType.UNRECOGNIZED : result;
     }
     /**
-     * <code>.tc.MessageType type = 1;</code>
+     * <code>.tc.MessageType type = 10;</code>
      */
     private void setTypeValue(int value) {
         type_ = value;
     }
     /**
-     * <code>.tc.MessageType type = 1;</code>
+     * <code>.tc.MessageType type = 10;</code>
      */
     private void setType(tc.TcMessage.MessageType value) {
       if (value == null) {
@@ -13408,48 +14178,48 @@ public final class TcMessage {
       type_ = value.getNumber();
     }
     /**
-     * <code>.tc.MessageType type = 1;</code>
+     * <code>.tc.MessageType type = 10;</code>
      */
     private void clearType() {
       
       type_ = 0;
     }
 
-    public static final int SEND_TIME_FIELD_NUMBER = 2;
+    public static final int SEND_TIME_FIELD_NUMBER = 20;
     private long sendTime_;
     /**
-     * <code>uint64 send_time = 2;</code>
+     * <code>uint64 send_time = 20;</code>
      */
     @java.lang.Override
     public long getSendTime() {
       return sendTime_;
     }
     /**
-     * <code>uint64 send_time = 2;</code>
+     * <code>uint64 send_time = 20;</code>
      */
     private void setSendTime(long value) {
       
       sendTime_ = value;
     }
     /**
-     * <code>uint64 send_time = 2;</code>
+     * <code>uint64 send_time = 20;</code>
      */
     private void clearSendTime() {
       
       sendTime_ = 0L;
     }
 
-    public static final int EXTRA_FIELD_NUMBER = 3;
+    public static final int EXTRA_FIELD_NUMBER = 30;
     private java.lang.String extra_;
     /**
-     * <code>string extra = 3;</code>
+     * <code>string extra = 30;</code>
      */
     @java.lang.Override
     public java.lang.String getExtra() {
       return extra_;
     }
     /**
-     * <code>string extra = 3;</code>
+     * <code>string extra = 30;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
@@ -13457,7 +14227,7 @@ public final class TcMessage {
       return com.google.protobuf.ByteString.copyFromUtf8(extra_);
     }
     /**
-     * <code>string extra = 3;</code>
+     * <code>string extra = 30;</code>
      */
     private void setExtra(
         java.lang.String value) {
@@ -13468,14 +14238,14 @@ public final class TcMessage {
       extra_ = value;
     }
     /**
-     * <code>string extra = 3;</code>
+     * <code>string extra = 30;</code>
      */
     private void clearExtra() {
       
       extra_ = getDefaultInstance().getExtra();
     }
     /**
-     * <code>string extra = 3;</code>
+     * <code>string extra = 30;</code>
      */
     private void setExtraBytes(
         com.google.protobuf.ByteString value) {
@@ -13487,24 +14257,24 @@ public final class TcMessage {
       extra_ = value.toStringUtf8();
     }
 
-    public static final int HELLO_FIELD_NUMBER = 4;
+    public static final int HELLO_FIELD_NUMBER = 40;
     private tc.TcMessage.Hello hello_;
     /**
-     * <code>.tc.Hello hello = 4;</code>
+     * <code>.tc.Hello hello = 40;</code>
      */
     @java.lang.Override
     public boolean hasHello() {
       return hello_ != null;
     }
     /**
-     * <code>.tc.Hello hello = 4;</code>
+     * <code>.tc.Hello hello = 40;</code>
      */
     @java.lang.Override
     public tc.TcMessage.Hello getHello() {
       return hello_ == null ? tc.TcMessage.Hello.getDefaultInstance() : hello_;
     }
     /**
-     * <code>.tc.Hello hello = 4;</code>
+     * <code>.tc.Hello hello = 40;</code>
      */
     private void setHello(tc.TcMessage.Hello value) {
       if (value == null) {
@@ -13514,7 +14284,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.Hello hello = 4;</code>
+     * <code>.tc.Hello hello = 40;</code>
      */
     private void setHello(
         tc.TcMessage.Hello.Builder builderForValue) {
@@ -13522,7 +14292,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.Hello hello = 4;</code>
+     * <code>.tc.Hello hello = 40;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeHello(tc.TcMessage.Hello value) {
@@ -13539,30 +14309,30 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.Hello hello = 4;</code>
+     * <code>.tc.Hello hello = 40;</code>
      */
     private void clearHello() {  hello_ = null;
       
     }
 
-    public static final int ACK_FIELD_NUMBER = 5;
+    public static final int ACK_FIELD_NUMBER = 50;
     private tc.TcMessage.Ack ack_;
     /**
-     * <code>.tc.Ack ack = 5;</code>
+     * <code>.tc.Ack ack = 50;</code>
      */
     @java.lang.Override
     public boolean hasAck() {
       return ack_ != null;
     }
     /**
-     * <code>.tc.Ack ack = 5;</code>
+     * <code>.tc.Ack ack = 50;</code>
      */
     @java.lang.Override
     public tc.TcMessage.Ack getAck() {
       return ack_ == null ? tc.TcMessage.Ack.getDefaultInstance() : ack_;
     }
     /**
-     * <code>.tc.Ack ack = 5;</code>
+     * <code>.tc.Ack ack = 50;</code>
      */
     private void setAck(tc.TcMessage.Ack value) {
       if (value == null) {
@@ -13572,7 +14342,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.Ack ack = 5;</code>
+     * <code>.tc.Ack ack = 50;</code>
      */
     private void setAck(
         tc.TcMessage.Ack.Builder builderForValue) {
@@ -13580,7 +14350,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.Ack ack = 5;</code>
+     * <code>.tc.Ack ack = 50;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeAck(tc.TcMessage.Ack value) {
@@ -13597,88 +14367,146 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.Ack ack = 5;</code>
+     * <code>.tc.Ack ack = 50;</code>
      */
     private void clearAck() {  ack_ = null;
       
     }
 
-    public static final int HEART_BEAT_FIELD_NUMBER = 6;
-    private tc.TcMessage.HeartBeat heartBeat_;
+    public static final int HEARTBEAT_FIELD_NUMBER = 60;
+    private tc.TcMessage.HeartBeat heartbeat_;
     /**
-     * <code>.tc.HeartBeat heart_beat = 6;</code>
+     * <code>.tc.HeartBeat heartbeat = 60;</code>
      */
     @java.lang.Override
-    public boolean hasHeartBeat() {
-      return heartBeat_ != null;
+    public boolean hasHeartbeat() {
+      return heartbeat_ != null;
     }
     /**
-     * <code>.tc.HeartBeat heart_beat = 6;</code>
+     * <code>.tc.HeartBeat heartbeat = 60;</code>
      */
     @java.lang.Override
-    public tc.TcMessage.HeartBeat getHeartBeat() {
-      return heartBeat_ == null ? tc.TcMessage.HeartBeat.getDefaultInstance() : heartBeat_;
+    public tc.TcMessage.HeartBeat getHeartbeat() {
+      return heartbeat_ == null ? tc.TcMessage.HeartBeat.getDefaultInstance() : heartbeat_;
     }
     /**
-     * <code>.tc.HeartBeat heart_beat = 6;</code>
+     * <code>.tc.HeartBeat heartbeat = 60;</code>
      */
-    private void setHeartBeat(tc.TcMessage.HeartBeat value) {
+    private void setHeartbeat(tc.TcMessage.HeartBeat value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      heartBeat_ = value;
+      heartbeat_ = value;
       
       }
     /**
-     * <code>.tc.HeartBeat heart_beat = 6;</code>
+     * <code>.tc.HeartBeat heartbeat = 60;</code>
      */
-    private void setHeartBeat(
+    private void setHeartbeat(
         tc.TcMessage.HeartBeat.Builder builderForValue) {
-      heartBeat_ = builderForValue.build();
+      heartbeat_ = builderForValue.build();
       
     }
     /**
-     * <code>.tc.HeartBeat heart_beat = 6;</code>
+     * <code>.tc.HeartBeat heartbeat = 60;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
-    private void mergeHeartBeat(tc.TcMessage.HeartBeat value) {
+    private void mergeHeartbeat(tc.TcMessage.HeartBeat value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      if (heartBeat_ != null &&
-          heartBeat_ != tc.TcMessage.HeartBeat.getDefaultInstance()) {
-        heartBeat_ =
-          tc.TcMessage.HeartBeat.newBuilder(heartBeat_).mergeFrom(value).buildPartial();
+      if (heartbeat_ != null &&
+          heartbeat_ != tc.TcMessage.HeartBeat.getDefaultInstance()) {
+        heartbeat_ =
+          tc.TcMessage.HeartBeat.newBuilder(heartbeat_).mergeFrom(value).buildPartial();
       } else {
-        heartBeat_ = value;
+        heartbeat_ = value;
       }
       
     }
     /**
-     * <code>.tc.HeartBeat heart_beat = 6;</code>
+     * <code>.tc.HeartBeat heartbeat = 60;</code>
      */
-    private void clearHeartBeat() {  heartBeat_ = null;
+    private void clearHeartbeat() {  heartbeat_ = null;
       
     }
 
-    public static final int VIDEO_FRAME_FIELD_NUMBER = 7;
+    public static final int ON_HEARTBEAT_FIELD_NUMBER = 61;
+    private tc.TcMessage.OnHeartBeat onHeartbeat_;
+    /**
+     * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+     */
+    @java.lang.Override
+    public boolean hasOnHeartbeat() {
+      return onHeartbeat_ != null;
+    }
+    /**
+     * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.OnHeartBeat getOnHeartbeat() {
+      return onHeartbeat_ == null ? tc.TcMessage.OnHeartBeat.getDefaultInstance() : onHeartbeat_;
+    }
+    /**
+     * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+     */
+    private void setOnHeartbeat(tc.TcMessage.OnHeartBeat value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      onHeartbeat_ = value;
+      
+      }
+    /**
+     * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+     */
+    private void setOnHeartbeat(
+        tc.TcMessage.OnHeartBeat.Builder builderForValue) {
+      onHeartbeat_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeOnHeartbeat(tc.TcMessage.OnHeartBeat value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (onHeartbeat_ != null &&
+          onHeartbeat_ != tc.TcMessage.OnHeartBeat.getDefaultInstance()) {
+        onHeartbeat_ =
+          tc.TcMessage.OnHeartBeat.newBuilder(onHeartbeat_).mergeFrom(value).buildPartial();
+      } else {
+        onHeartbeat_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+     */
+    private void clearOnHeartbeat() {  onHeartbeat_ = null;
+      
+    }
+
+    public static final int VIDEO_FRAME_FIELD_NUMBER = 70;
     private tc.TcMessage.VideoFrame videoFrame_;
     /**
-     * <code>.tc.VideoFrame video_frame = 7;</code>
+     * <code>.tc.VideoFrame video_frame = 70;</code>
      */
     @java.lang.Override
     public boolean hasVideoFrame() {
       return videoFrame_ != null;
     }
     /**
-     * <code>.tc.VideoFrame video_frame = 7;</code>
+     * <code>.tc.VideoFrame video_frame = 70;</code>
      */
     @java.lang.Override
     public tc.TcMessage.VideoFrame getVideoFrame() {
       return videoFrame_ == null ? tc.TcMessage.VideoFrame.getDefaultInstance() : videoFrame_;
     }
     /**
-     * <code>.tc.VideoFrame video_frame = 7;</code>
+     * <code>.tc.VideoFrame video_frame = 70;</code>
      */
     private void setVideoFrame(tc.TcMessage.VideoFrame value) {
       if (value == null) {
@@ -13688,7 +14516,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.VideoFrame video_frame = 7;</code>
+     * <code>.tc.VideoFrame video_frame = 70;</code>
      */
     private void setVideoFrame(
         tc.TcMessage.VideoFrame.Builder builderForValue) {
@@ -13696,7 +14524,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.VideoFrame video_frame = 7;</code>
+     * <code>.tc.VideoFrame video_frame = 70;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeVideoFrame(tc.TcMessage.VideoFrame value) {
@@ -13713,30 +14541,30 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.VideoFrame video_frame = 7;</code>
+     * <code>.tc.VideoFrame video_frame = 70;</code>
      */
     private void clearVideoFrame() {  videoFrame_ = null;
       
     }
 
-    public static final int AUDIO_FRAME_FIELD_NUMBER = 8;
+    public static final int AUDIO_FRAME_FIELD_NUMBER = 80;
     private tc.TcMessage.AudioFrame audioFrame_;
     /**
-     * <code>.tc.AudioFrame audio_frame = 8;</code>
+     * <code>.tc.AudioFrame audio_frame = 80;</code>
      */
     @java.lang.Override
     public boolean hasAudioFrame() {
       return audioFrame_ != null;
     }
     /**
-     * <code>.tc.AudioFrame audio_frame = 8;</code>
+     * <code>.tc.AudioFrame audio_frame = 80;</code>
      */
     @java.lang.Override
     public tc.TcMessage.AudioFrame getAudioFrame() {
       return audioFrame_ == null ? tc.TcMessage.AudioFrame.getDefaultInstance() : audioFrame_;
     }
     /**
-     * <code>.tc.AudioFrame audio_frame = 8;</code>
+     * <code>.tc.AudioFrame audio_frame = 80;</code>
      */
     private void setAudioFrame(tc.TcMessage.AudioFrame value) {
       if (value == null) {
@@ -13746,7 +14574,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.AudioFrame audio_frame = 8;</code>
+     * <code>.tc.AudioFrame audio_frame = 80;</code>
      */
     private void setAudioFrame(
         tc.TcMessage.AudioFrame.Builder builderForValue) {
@@ -13754,7 +14582,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.AudioFrame audio_frame = 8;</code>
+     * <code>.tc.AudioFrame audio_frame = 80;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeAudioFrame(tc.TcMessage.AudioFrame value) {
@@ -13771,30 +14599,30 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.AudioFrame audio_frame = 8;</code>
+     * <code>.tc.AudioFrame audio_frame = 80;</code>
      */
     private void clearAudioFrame() {  audioFrame_ = null;
       
     }
 
-    public static final int KEY_EVENT_FIELD_NUMBER = 9;
+    public static final int KEY_EVENT_FIELD_NUMBER = 90;
     private tc.TcMessage.KeyEvent keyEvent_;
     /**
-     * <code>.tc.KeyEvent key_event = 9;</code>
+     * <code>.tc.KeyEvent key_event = 90;</code>
      */
     @java.lang.Override
     public boolean hasKeyEvent() {
       return keyEvent_ != null;
     }
     /**
-     * <code>.tc.KeyEvent key_event = 9;</code>
+     * <code>.tc.KeyEvent key_event = 90;</code>
      */
     @java.lang.Override
     public tc.TcMessage.KeyEvent getKeyEvent() {
       return keyEvent_ == null ? tc.TcMessage.KeyEvent.getDefaultInstance() : keyEvent_;
     }
     /**
-     * <code>.tc.KeyEvent key_event = 9;</code>
+     * <code>.tc.KeyEvent key_event = 90;</code>
      */
     private void setKeyEvent(tc.TcMessage.KeyEvent value) {
       if (value == null) {
@@ -13804,7 +14632,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.KeyEvent key_event = 9;</code>
+     * <code>.tc.KeyEvent key_event = 90;</code>
      */
     private void setKeyEvent(
         tc.TcMessage.KeyEvent.Builder builderForValue) {
@@ -13812,7 +14640,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.KeyEvent key_event = 9;</code>
+     * <code>.tc.KeyEvent key_event = 90;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeKeyEvent(tc.TcMessage.KeyEvent value) {
@@ -13829,30 +14657,30 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.KeyEvent key_event = 9;</code>
+     * <code>.tc.KeyEvent key_event = 90;</code>
      */
     private void clearKeyEvent() {  keyEvent_ = null;
       
     }
 
-    public static final int MOUSE_EVENT_FIELD_NUMBER = 10;
+    public static final int MOUSE_EVENT_FIELD_NUMBER = 100;
     private tc.TcMessage.MouseEvent mouseEvent_;
     /**
-     * <code>.tc.MouseEvent mouse_event = 10;</code>
+     * <code>.tc.MouseEvent mouse_event = 100;</code>
      */
     @java.lang.Override
     public boolean hasMouseEvent() {
       return mouseEvent_ != null;
     }
     /**
-     * <code>.tc.MouseEvent mouse_event = 10;</code>
+     * <code>.tc.MouseEvent mouse_event = 100;</code>
      */
     @java.lang.Override
     public tc.TcMessage.MouseEvent getMouseEvent() {
       return mouseEvent_ == null ? tc.TcMessage.MouseEvent.getDefaultInstance() : mouseEvent_;
     }
     /**
-     * <code>.tc.MouseEvent mouse_event = 10;</code>
+     * <code>.tc.MouseEvent mouse_event = 100;</code>
      */
     private void setMouseEvent(tc.TcMessage.MouseEvent value) {
       if (value == null) {
@@ -13862,7 +14690,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.MouseEvent mouse_event = 10;</code>
+     * <code>.tc.MouseEvent mouse_event = 100;</code>
      */
     private void setMouseEvent(
         tc.TcMessage.MouseEvent.Builder builderForValue) {
@@ -13870,7 +14698,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.MouseEvent mouse_event = 10;</code>
+     * <code>.tc.MouseEvent mouse_event = 100;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeMouseEvent(tc.TcMessage.MouseEvent value) {
@@ -13887,30 +14715,30 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.MouseEvent mouse_event = 10;</code>
+     * <code>.tc.MouseEvent mouse_event = 100;</code>
      */
     private void clearMouseEvent() {  mouseEvent_ = null;
       
     }
 
-    public static final int CURSOR_INFO_SYNC_FIELD_NUMBER = 11;
+    public static final int CURSOR_INFO_SYNC_FIELD_NUMBER = 110;
     private tc.TcMessage.CursorInfoSync cursorInfoSync_;
     /**
-     * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+     * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
      */
     @java.lang.Override
     public boolean hasCursorInfoSync() {
       return cursorInfoSync_ != null;
     }
     /**
-     * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+     * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
      */
     @java.lang.Override
     public tc.TcMessage.CursorInfoSync getCursorInfoSync() {
       return cursorInfoSync_ == null ? tc.TcMessage.CursorInfoSync.getDefaultInstance() : cursorInfoSync_;
     }
     /**
-     * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+     * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
      */
     private void setCursorInfoSync(tc.TcMessage.CursorInfoSync value) {
       if (value == null) {
@@ -13920,7 +14748,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+     * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
      */
     private void setCursorInfoSync(
         tc.TcMessage.CursorInfoSync.Builder builderForValue) {
@@ -13928,7 +14756,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+     * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeCursorInfoSync(tc.TcMessage.CursorInfoSync value) {
@@ -13945,30 +14773,30 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+     * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
      */
     private void clearCursorInfoSync() {  cursorInfoSync_ = null;
       
     }
 
-    public static final int GAMEPAD_STATE_FIELD_NUMBER = 12;
+    public static final int GAMEPAD_STATE_FIELD_NUMBER = 120;
     private tc.TcMessage.GamepadState gamepadState_;
     /**
-     * <code>.tc.GamepadState gamepad_state = 12;</code>
+     * <code>.tc.GamepadState gamepad_state = 120;</code>
      */
     @java.lang.Override
     public boolean hasGamepadState() {
       return gamepadState_ != null;
     }
     /**
-     * <code>.tc.GamepadState gamepad_state = 12;</code>
+     * <code>.tc.GamepadState gamepad_state = 120;</code>
      */
     @java.lang.Override
     public tc.TcMessage.GamepadState getGamepadState() {
       return gamepadState_ == null ? tc.TcMessage.GamepadState.getDefaultInstance() : gamepadState_;
     }
     /**
-     * <code>.tc.GamepadState gamepad_state = 12;</code>
+     * <code>.tc.GamepadState gamepad_state = 120;</code>
      */
     private void setGamepadState(tc.TcMessage.GamepadState value) {
       if (value == null) {
@@ -13978,7 +14806,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.GamepadState gamepad_state = 12;</code>
+     * <code>.tc.GamepadState gamepad_state = 120;</code>
      */
     private void setGamepadState(
         tc.TcMessage.GamepadState.Builder builderForValue) {
@@ -13986,7 +14814,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.GamepadState gamepad_state = 12;</code>
+     * <code>.tc.GamepadState gamepad_state = 120;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeGamepadState(tc.TcMessage.GamepadState value) {
@@ -14003,30 +14831,30 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.GamepadState gamepad_state = 12;</code>
+     * <code>.tc.GamepadState gamepad_state = 120;</code>
      */
     private void clearGamepadState() {  gamepadState_ = null;
       
     }
 
-    public static final int CAPTURE_STATISTICS_FIELD_NUMBER = 13;
+    public static final int CAPTURE_STATISTICS_FIELD_NUMBER = 130;
     private tc.TcMessage.CaptureStatistics captureStatistics_;
     /**
-     * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+     * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
      */
     @java.lang.Override
     public boolean hasCaptureStatistics() {
       return captureStatistics_ != null;
     }
     /**
-     * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+     * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
      */
     @java.lang.Override
     public tc.TcMessage.CaptureStatistics getCaptureStatistics() {
       return captureStatistics_ == null ? tc.TcMessage.CaptureStatistics.getDefaultInstance() : captureStatistics_;
     }
     /**
-     * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+     * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
      */
     private void setCaptureStatistics(tc.TcMessage.CaptureStatistics value) {
       if (value == null) {
@@ -14036,7 +14864,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+     * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
      */
     private void setCaptureStatistics(
         tc.TcMessage.CaptureStatistics.Builder builderForValue) {
@@ -14044,7 +14872,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+     * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeCaptureStatistics(tc.TcMessage.CaptureStatistics value) {
@@ -14061,30 +14889,30 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+     * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
      */
     private void clearCaptureStatistics() {  captureStatistics_ = null;
       
     }
 
-    public static final int CLIENT_STATISTICS_FIELD_NUMBER = 14;
+    public static final int CLIENT_STATISTICS_FIELD_NUMBER = 140;
     private tc.TcMessage.ClientStatistics clientStatistics_;
     /**
-     * <code>.tc.ClientStatistics client_statistics = 14;</code>
+     * <code>.tc.ClientStatistics client_statistics = 140;</code>
      */
     @java.lang.Override
     public boolean hasClientStatistics() {
       return clientStatistics_ != null;
     }
     /**
-     * <code>.tc.ClientStatistics client_statistics = 14;</code>
+     * <code>.tc.ClientStatistics client_statistics = 140;</code>
      */
     @java.lang.Override
     public tc.TcMessage.ClientStatistics getClientStatistics() {
       return clientStatistics_ == null ? tc.TcMessage.ClientStatistics.getDefaultInstance() : clientStatistics_;
     }
     /**
-     * <code>.tc.ClientStatistics client_statistics = 14;</code>
+     * <code>.tc.ClientStatistics client_statistics = 140;</code>
      */
     private void setClientStatistics(tc.TcMessage.ClientStatistics value) {
       if (value == null) {
@@ -14094,7 +14922,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.ClientStatistics client_statistics = 14;</code>
+     * <code>.tc.ClientStatistics client_statistics = 140;</code>
      */
     private void setClientStatistics(
         tc.TcMessage.ClientStatistics.Builder builderForValue) {
@@ -14102,7 +14930,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.ClientStatistics client_statistics = 14;</code>
+     * <code>.tc.ClientStatistics client_statistics = 140;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeClientStatistics(tc.TcMessage.ClientStatistics value) {
@@ -14119,30 +14947,30 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.ClientStatistics client_statistics = 14;</code>
+     * <code>.tc.ClientStatistics client_statistics = 140;</code>
      */
     private void clearClientStatistics() {  clientStatistics_ = null;
       
     }
 
-    public static final int SERVER_AUDIO_SPECTRUM_FIELD_NUMBER = 15;
+    public static final int SERVER_AUDIO_SPECTRUM_FIELD_NUMBER = 150;
     private tc.TcMessage.ServerAudioSpectrum serverAudioSpectrum_;
     /**
-     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
      */
     @java.lang.Override
     public boolean hasServerAudioSpectrum() {
       return serverAudioSpectrum_ != null;
     }
     /**
-     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
      */
     @java.lang.Override
     public tc.TcMessage.ServerAudioSpectrum getServerAudioSpectrum() {
       return serverAudioSpectrum_ == null ? tc.TcMessage.ServerAudioSpectrum.getDefaultInstance() : serverAudioSpectrum_;
     }
     /**
-     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
      */
     private void setServerAudioSpectrum(tc.TcMessage.ServerAudioSpectrum value) {
       if (value == null) {
@@ -14152,7 +14980,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
      */
     private void setServerAudioSpectrum(
         tc.TcMessage.ServerAudioSpectrum.Builder builderForValue) {
@@ -14160,7 +14988,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeServerAudioSpectrum(tc.TcMessage.ServerAudioSpectrum value) {
@@ -14177,44 +15005,44 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+     * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
      */
     private void clearServerAudioSpectrum() {  serverAudioSpectrum_ = null;
       
     }
 
-    public static final int ONLINE_GAMES_FIELD_NUMBER = 16;
+    public static final int ONLINE_GAMES_FIELD_NUMBER = 160;
     private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.OnlineGame> onlineGames_;
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     @java.lang.Override
     public java.util.List<tc.TcMessage.OnlineGame> getOnlineGamesList() {
       return onlineGames_;
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     public java.util.List<? extends tc.TcMessage.OnlineGameOrBuilder> 
         getOnlineGamesOrBuilderList() {
       return onlineGames_;
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     @java.lang.Override
     public int getOnlineGamesCount() {
       return onlineGames_.size();
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     @java.lang.Override
     public tc.TcMessage.OnlineGame getOnlineGames(int index) {
       return onlineGames_.get(index);
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     public tc.TcMessage.OnlineGameOrBuilder getOnlineGamesOrBuilder(
         int index) {
@@ -14228,7 +15056,7 @@ public final class TcMessage {
     }
 
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     private void setOnlineGames(
         int index, tc.TcMessage.OnlineGame value) {
@@ -14239,7 +15067,7 @@ public final class TcMessage {
       onlineGames_.set(index, value);
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     private void setOnlineGames(
         int index, tc.TcMessage.OnlineGame.Builder builderForValue) {
@@ -14247,7 +15075,7 @@ public final class TcMessage {
       onlineGames_.set(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     private void addOnlineGames(tc.TcMessage.OnlineGame value) {
       if (value == null) {
@@ -14257,7 +15085,7 @@ public final class TcMessage {
       onlineGames_.add(value);
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     private void addOnlineGames(
         int index, tc.TcMessage.OnlineGame value) {
@@ -14268,7 +15096,7 @@ public final class TcMessage {
       onlineGames_.add(index, value);
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     private void addOnlineGames(
         tc.TcMessage.OnlineGame.Builder builderForValue) {
@@ -14276,7 +15104,7 @@ public final class TcMessage {
       onlineGames_.add(builderForValue.build());
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     private void addOnlineGames(
         int index, tc.TcMessage.OnlineGame.Builder builderForValue) {
@@ -14284,7 +15112,7 @@ public final class TcMessage {
       onlineGames_.add(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     private void addAllOnlineGames(
         java.lang.Iterable<? extends tc.TcMessage.OnlineGame> values) {
@@ -14293,37 +15121,37 @@ public final class TcMessage {
           values, onlineGames_);
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     private void clearOnlineGames() {
       onlineGames_ = emptyProtobufList();
     }
     /**
-     * <code>repeated .tc.OnlineGame online_games = 16;</code>
+     * <code>repeated .tc.OnlineGame online_games = 160;</code>
      */
     private void removeOnlineGames(int index) {
       ensureOnlineGamesIsMutable();
       onlineGames_.remove(index);
     }
 
-    public static final int UI_SERVER_HELLO_FIELD_NUMBER = 17;
+    public static final int UI_SERVER_HELLO_FIELD_NUMBER = 170;
     private tc.TcMessage.UIServerHello uiServerHello_;
     /**
-     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     * <code>.tc.UIServerHello ui_server_hello = 170;</code>
      */
     @java.lang.Override
     public boolean hasUiServerHello() {
       return uiServerHello_ != null;
     }
     /**
-     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     * <code>.tc.UIServerHello ui_server_hello = 170;</code>
      */
     @java.lang.Override
     public tc.TcMessage.UIServerHello getUiServerHello() {
       return uiServerHello_ == null ? tc.TcMessage.UIServerHello.getDefaultInstance() : uiServerHello_;
     }
     /**
-     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     * <code>.tc.UIServerHello ui_server_hello = 170;</code>
      */
     private void setUiServerHello(tc.TcMessage.UIServerHello value) {
       if (value == null) {
@@ -14333,7 +15161,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     * <code>.tc.UIServerHello ui_server_hello = 170;</code>
      */
     private void setUiServerHello(
         tc.TcMessage.UIServerHello.Builder builderForValue) {
@@ -14341,7 +15169,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     * <code>.tc.UIServerHello ui_server_hello = 170;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeUiServerHello(tc.TcMessage.UIServerHello value) {
@@ -14358,30 +15186,30 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+     * <code>.tc.UIServerHello ui_server_hello = 170;</code>
      */
     private void clearUiServerHello() {  uiServerHello_ = null;
       
     }
 
-    public static final int FILE_TRANSFER_FIELD_NUMBER = 18;
+    public static final int FILE_TRANSFER_FIELD_NUMBER = 180;
     private tc.TcMessage.FileTransfer fileTransfer_;
     /**
-     * <code>.tc.FileTransfer file_transfer = 18;</code>
+     * <code>.tc.FileTransfer file_transfer = 180;</code>
      */
     @java.lang.Override
     public boolean hasFileTransfer() {
       return fileTransfer_ != null;
     }
     /**
-     * <code>.tc.FileTransfer file_transfer = 18;</code>
+     * <code>.tc.FileTransfer file_transfer = 180;</code>
      */
     @java.lang.Override
     public tc.TcMessage.FileTransfer getFileTransfer() {
       return fileTransfer_ == null ? tc.TcMessage.FileTransfer.getDefaultInstance() : fileTransfer_;
     }
     /**
-     * <code>.tc.FileTransfer file_transfer = 18;</code>
+     * <code>.tc.FileTransfer file_transfer = 180;</code>
      */
     private void setFileTransfer(tc.TcMessage.FileTransfer value) {
       if (value == null) {
@@ -14391,7 +15219,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.FileTransfer file_transfer = 18;</code>
+     * <code>.tc.FileTransfer file_transfer = 180;</code>
      */
     private void setFileTransfer(
         tc.TcMessage.FileTransfer.Builder builderForValue) {
@@ -14399,7 +15227,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.FileTransfer file_transfer = 18;</code>
+     * <code>.tc.FileTransfer file_transfer = 180;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeFileTransfer(tc.TcMessage.FileTransfer value) {
@@ -14416,30 +15244,30 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.FileTransfer file_transfer = 18;</code>
+     * <code>.tc.FileTransfer file_transfer = 180;</code>
      */
     private void clearFileTransfer() {  fileTransfer_ = null;
       
     }
 
-    public static final int RESP_FILE_TRANSFER_FIELD_NUMBER = 19;
+    public static final int RESP_FILE_TRANSFER_FIELD_NUMBER = 190;
     private tc.TcMessage.RespFileTransfer respFileTransfer_;
     /**
-     * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+     * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
      */
     @java.lang.Override
     public boolean hasRespFileTransfer() {
       return respFileTransfer_ != null;
     }
     /**
-     * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+     * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
      */
     @java.lang.Override
     public tc.TcMessage.RespFileTransfer getRespFileTransfer() {
       return respFileTransfer_ == null ? tc.TcMessage.RespFileTransfer.getDefaultInstance() : respFileTransfer_;
     }
     /**
-     * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+     * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
      */
     private void setRespFileTransfer(tc.TcMessage.RespFileTransfer value) {
       if (value == null) {
@@ -14449,7 +15277,7 @@ public final class TcMessage {
       
       }
     /**
-     * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+     * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
      */
     private void setRespFileTransfer(
         tc.TcMessage.RespFileTransfer.Builder builderForValue) {
@@ -14457,7 +15285,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+     * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeRespFileTransfer(tc.TcMessage.RespFileTransfer value) {
@@ -14474,7 +15302,7 @@ public final class TcMessage {
       
     }
     /**
-     * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+     * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
      */
     private void clearRespFileTransfer() {  respFileTransfer_ = null;
       
@@ -14576,14 +15404,14 @@ public final class TcMessage {
 
 
       /**
-       * <code>.tc.MessageType type = 1;</code>
+       * <code>.tc.MessageType type = 10;</code>
        */
       @java.lang.Override
       public int getTypeValue() {
         return instance.getTypeValue();
       }
       /**
-       * <code>.tc.MessageType type = 1;</code>
+       * <code>.tc.MessageType type = 10;</code>
        */
       public Builder setTypeValue(int value) {
         copyOnWrite();
@@ -14591,14 +15419,14 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.MessageType type = 1;</code>
+       * <code>.tc.MessageType type = 10;</code>
        */
       @java.lang.Override
       public tc.TcMessage.MessageType getType() {
         return instance.getType();
       }
       /**
-       * <code>.tc.MessageType type = 1;</code>
+       * <code>.tc.MessageType type = 10;</code>
        */
       public Builder setType(tc.TcMessage.MessageType value) {
         copyOnWrite();
@@ -14606,7 +15434,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.MessageType type = 1;</code>
+       * <code>.tc.MessageType type = 10;</code>
        */
       public Builder clearType() {
         copyOnWrite();
@@ -14615,14 +15443,14 @@ public final class TcMessage {
       }
 
       /**
-       * <code>uint64 send_time = 2;</code>
+       * <code>uint64 send_time = 20;</code>
        */
       @java.lang.Override
       public long getSendTime() {
         return instance.getSendTime();
       }
       /**
-       * <code>uint64 send_time = 2;</code>
+       * <code>uint64 send_time = 20;</code>
        */
       public Builder setSendTime(long value) {
         copyOnWrite();
@@ -14630,7 +15458,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>uint64 send_time = 2;</code>
+       * <code>uint64 send_time = 20;</code>
        */
       public Builder clearSendTime() {
         copyOnWrite();
@@ -14639,14 +15467,14 @@ public final class TcMessage {
       }
 
       /**
-       * <code>string extra = 3;</code>
+       * <code>string extra = 30;</code>
        */
       @java.lang.Override
       public java.lang.String getExtra() {
         return instance.getExtra();
       }
       /**
-       * <code>string extra = 3;</code>
+       * <code>string extra = 30;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
@@ -14654,7 +15482,7 @@ public final class TcMessage {
         return instance.getExtraBytes();
       }
       /**
-       * <code>string extra = 3;</code>
+       * <code>string extra = 30;</code>
        */
       public Builder setExtra(
           java.lang.String value) {
@@ -14663,7 +15491,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>string extra = 3;</code>
+       * <code>string extra = 30;</code>
        */
       public Builder clearExtra() {
         copyOnWrite();
@@ -14671,7 +15499,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>string extra = 3;</code>
+       * <code>string extra = 30;</code>
        */
       public Builder setExtraBytes(
           com.google.protobuf.ByteString value) {
@@ -14681,21 +15509,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.Hello hello = 4;</code>
+       * <code>.tc.Hello hello = 40;</code>
        */
       @java.lang.Override
       public boolean hasHello() {
         return instance.hasHello();
       }
       /**
-       * <code>.tc.Hello hello = 4;</code>
+       * <code>.tc.Hello hello = 40;</code>
        */
       @java.lang.Override
       public tc.TcMessage.Hello getHello() {
         return instance.getHello();
       }
       /**
-       * <code>.tc.Hello hello = 4;</code>
+       * <code>.tc.Hello hello = 40;</code>
        */
       public Builder setHello(tc.TcMessage.Hello value) {
         copyOnWrite();
@@ -14703,7 +15531,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.Hello hello = 4;</code>
+       * <code>.tc.Hello hello = 40;</code>
        */
       public Builder setHello(
           tc.TcMessage.Hello.Builder builderForValue) {
@@ -14712,7 +15540,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.Hello hello = 4;</code>
+       * <code>.tc.Hello hello = 40;</code>
        */
       public Builder mergeHello(tc.TcMessage.Hello value) {
         copyOnWrite();
@@ -14720,7 +15548,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.Hello hello = 4;</code>
+       * <code>.tc.Hello hello = 40;</code>
        */
       public Builder clearHello() {  copyOnWrite();
         instance.clearHello();
@@ -14728,21 +15556,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.Ack ack = 5;</code>
+       * <code>.tc.Ack ack = 50;</code>
        */
       @java.lang.Override
       public boolean hasAck() {
         return instance.hasAck();
       }
       /**
-       * <code>.tc.Ack ack = 5;</code>
+       * <code>.tc.Ack ack = 50;</code>
        */
       @java.lang.Override
       public tc.TcMessage.Ack getAck() {
         return instance.getAck();
       }
       /**
-       * <code>.tc.Ack ack = 5;</code>
+       * <code>.tc.Ack ack = 50;</code>
        */
       public Builder setAck(tc.TcMessage.Ack value) {
         copyOnWrite();
@@ -14750,7 +15578,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.Ack ack = 5;</code>
+       * <code>.tc.Ack ack = 50;</code>
        */
       public Builder setAck(
           tc.TcMessage.Ack.Builder builderForValue) {
@@ -14759,7 +15587,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.Ack ack = 5;</code>
+       * <code>.tc.Ack ack = 50;</code>
        */
       public Builder mergeAck(tc.TcMessage.Ack value) {
         copyOnWrite();
@@ -14767,7 +15595,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.Ack ack = 5;</code>
+       * <code>.tc.Ack ack = 50;</code>
        */
       public Builder clearAck() {  copyOnWrite();
         instance.clearAck();
@@ -14775,68 +15603,115 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.HeartBeat heart_beat = 6;</code>
+       * <code>.tc.HeartBeat heartbeat = 60;</code>
        */
       @java.lang.Override
-      public boolean hasHeartBeat() {
-        return instance.hasHeartBeat();
+      public boolean hasHeartbeat() {
+        return instance.hasHeartbeat();
       }
       /**
-       * <code>.tc.HeartBeat heart_beat = 6;</code>
+       * <code>.tc.HeartBeat heartbeat = 60;</code>
        */
       @java.lang.Override
-      public tc.TcMessage.HeartBeat getHeartBeat() {
-        return instance.getHeartBeat();
+      public tc.TcMessage.HeartBeat getHeartbeat() {
+        return instance.getHeartbeat();
       }
       /**
-       * <code>.tc.HeartBeat heart_beat = 6;</code>
+       * <code>.tc.HeartBeat heartbeat = 60;</code>
        */
-      public Builder setHeartBeat(tc.TcMessage.HeartBeat value) {
+      public Builder setHeartbeat(tc.TcMessage.HeartBeat value) {
         copyOnWrite();
-        instance.setHeartBeat(value);
+        instance.setHeartbeat(value);
         return this;
         }
       /**
-       * <code>.tc.HeartBeat heart_beat = 6;</code>
+       * <code>.tc.HeartBeat heartbeat = 60;</code>
        */
-      public Builder setHeartBeat(
+      public Builder setHeartbeat(
           tc.TcMessage.HeartBeat.Builder builderForValue) {
         copyOnWrite();
-        instance.setHeartBeat(builderForValue);
+        instance.setHeartbeat(builderForValue);
         return this;
       }
       /**
-       * <code>.tc.HeartBeat heart_beat = 6;</code>
+       * <code>.tc.HeartBeat heartbeat = 60;</code>
        */
-      public Builder mergeHeartBeat(tc.TcMessage.HeartBeat value) {
+      public Builder mergeHeartbeat(tc.TcMessage.HeartBeat value) {
         copyOnWrite();
-        instance.mergeHeartBeat(value);
+        instance.mergeHeartbeat(value);
         return this;
       }
       /**
-       * <code>.tc.HeartBeat heart_beat = 6;</code>
+       * <code>.tc.HeartBeat heartbeat = 60;</code>
        */
-      public Builder clearHeartBeat() {  copyOnWrite();
-        instance.clearHeartBeat();
+      public Builder clearHeartbeat() {  copyOnWrite();
+        instance.clearHeartbeat();
         return this;
       }
 
       /**
-       * <code>.tc.VideoFrame video_frame = 7;</code>
+       * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+       */
+      @java.lang.Override
+      public boolean hasOnHeartbeat() {
+        return instance.hasOnHeartbeat();
+      }
+      /**
+       * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.OnHeartBeat getOnHeartbeat() {
+        return instance.getOnHeartbeat();
+      }
+      /**
+       * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+       */
+      public Builder setOnHeartbeat(tc.TcMessage.OnHeartBeat value) {
+        copyOnWrite();
+        instance.setOnHeartbeat(value);
+        return this;
+        }
+      /**
+       * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+       */
+      public Builder setOnHeartbeat(
+          tc.TcMessage.OnHeartBeat.Builder builderForValue) {
+        copyOnWrite();
+        instance.setOnHeartbeat(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+       */
+      public Builder mergeOnHeartbeat(tc.TcMessage.OnHeartBeat value) {
+        copyOnWrite();
+        instance.mergeOnHeartbeat(value);
+        return this;
+      }
+      /**
+       * <code>.tc.OnHeartBeat on_heartbeat = 61;</code>
+       */
+      public Builder clearOnHeartbeat() {  copyOnWrite();
+        instance.clearOnHeartbeat();
+        return this;
+      }
+
+      /**
+       * <code>.tc.VideoFrame video_frame = 70;</code>
        */
       @java.lang.Override
       public boolean hasVideoFrame() {
         return instance.hasVideoFrame();
       }
       /**
-       * <code>.tc.VideoFrame video_frame = 7;</code>
+       * <code>.tc.VideoFrame video_frame = 70;</code>
        */
       @java.lang.Override
       public tc.TcMessage.VideoFrame getVideoFrame() {
         return instance.getVideoFrame();
       }
       /**
-       * <code>.tc.VideoFrame video_frame = 7;</code>
+       * <code>.tc.VideoFrame video_frame = 70;</code>
        */
       public Builder setVideoFrame(tc.TcMessage.VideoFrame value) {
         copyOnWrite();
@@ -14844,7 +15719,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.VideoFrame video_frame = 7;</code>
+       * <code>.tc.VideoFrame video_frame = 70;</code>
        */
       public Builder setVideoFrame(
           tc.TcMessage.VideoFrame.Builder builderForValue) {
@@ -14853,7 +15728,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.VideoFrame video_frame = 7;</code>
+       * <code>.tc.VideoFrame video_frame = 70;</code>
        */
       public Builder mergeVideoFrame(tc.TcMessage.VideoFrame value) {
         copyOnWrite();
@@ -14861,7 +15736,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.VideoFrame video_frame = 7;</code>
+       * <code>.tc.VideoFrame video_frame = 70;</code>
        */
       public Builder clearVideoFrame() {  copyOnWrite();
         instance.clearVideoFrame();
@@ -14869,21 +15744,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.AudioFrame audio_frame = 8;</code>
+       * <code>.tc.AudioFrame audio_frame = 80;</code>
        */
       @java.lang.Override
       public boolean hasAudioFrame() {
         return instance.hasAudioFrame();
       }
       /**
-       * <code>.tc.AudioFrame audio_frame = 8;</code>
+       * <code>.tc.AudioFrame audio_frame = 80;</code>
        */
       @java.lang.Override
       public tc.TcMessage.AudioFrame getAudioFrame() {
         return instance.getAudioFrame();
       }
       /**
-       * <code>.tc.AudioFrame audio_frame = 8;</code>
+       * <code>.tc.AudioFrame audio_frame = 80;</code>
        */
       public Builder setAudioFrame(tc.TcMessage.AudioFrame value) {
         copyOnWrite();
@@ -14891,7 +15766,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.AudioFrame audio_frame = 8;</code>
+       * <code>.tc.AudioFrame audio_frame = 80;</code>
        */
       public Builder setAudioFrame(
           tc.TcMessage.AudioFrame.Builder builderForValue) {
@@ -14900,7 +15775,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.AudioFrame audio_frame = 8;</code>
+       * <code>.tc.AudioFrame audio_frame = 80;</code>
        */
       public Builder mergeAudioFrame(tc.TcMessage.AudioFrame value) {
         copyOnWrite();
@@ -14908,7 +15783,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.AudioFrame audio_frame = 8;</code>
+       * <code>.tc.AudioFrame audio_frame = 80;</code>
        */
       public Builder clearAudioFrame() {  copyOnWrite();
         instance.clearAudioFrame();
@@ -14916,21 +15791,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.KeyEvent key_event = 9;</code>
+       * <code>.tc.KeyEvent key_event = 90;</code>
        */
       @java.lang.Override
       public boolean hasKeyEvent() {
         return instance.hasKeyEvent();
       }
       /**
-       * <code>.tc.KeyEvent key_event = 9;</code>
+       * <code>.tc.KeyEvent key_event = 90;</code>
        */
       @java.lang.Override
       public tc.TcMessage.KeyEvent getKeyEvent() {
         return instance.getKeyEvent();
       }
       /**
-       * <code>.tc.KeyEvent key_event = 9;</code>
+       * <code>.tc.KeyEvent key_event = 90;</code>
        */
       public Builder setKeyEvent(tc.TcMessage.KeyEvent value) {
         copyOnWrite();
@@ -14938,7 +15813,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.KeyEvent key_event = 9;</code>
+       * <code>.tc.KeyEvent key_event = 90;</code>
        */
       public Builder setKeyEvent(
           tc.TcMessage.KeyEvent.Builder builderForValue) {
@@ -14947,7 +15822,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.KeyEvent key_event = 9;</code>
+       * <code>.tc.KeyEvent key_event = 90;</code>
        */
       public Builder mergeKeyEvent(tc.TcMessage.KeyEvent value) {
         copyOnWrite();
@@ -14955,7 +15830,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.KeyEvent key_event = 9;</code>
+       * <code>.tc.KeyEvent key_event = 90;</code>
        */
       public Builder clearKeyEvent() {  copyOnWrite();
         instance.clearKeyEvent();
@@ -14963,21 +15838,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.MouseEvent mouse_event = 10;</code>
+       * <code>.tc.MouseEvent mouse_event = 100;</code>
        */
       @java.lang.Override
       public boolean hasMouseEvent() {
         return instance.hasMouseEvent();
       }
       /**
-       * <code>.tc.MouseEvent mouse_event = 10;</code>
+       * <code>.tc.MouseEvent mouse_event = 100;</code>
        */
       @java.lang.Override
       public tc.TcMessage.MouseEvent getMouseEvent() {
         return instance.getMouseEvent();
       }
       /**
-       * <code>.tc.MouseEvent mouse_event = 10;</code>
+       * <code>.tc.MouseEvent mouse_event = 100;</code>
        */
       public Builder setMouseEvent(tc.TcMessage.MouseEvent value) {
         copyOnWrite();
@@ -14985,7 +15860,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.MouseEvent mouse_event = 10;</code>
+       * <code>.tc.MouseEvent mouse_event = 100;</code>
        */
       public Builder setMouseEvent(
           tc.TcMessage.MouseEvent.Builder builderForValue) {
@@ -14994,7 +15869,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.MouseEvent mouse_event = 10;</code>
+       * <code>.tc.MouseEvent mouse_event = 100;</code>
        */
       public Builder mergeMouseEvent(tc.TcMessage.MouseEvent value) {
         copyOnWrite();
@@ -15002,7 +15877,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.MouseEvent mouse_event = 10;</code>
+       * <code>.tc.MouseEvent mouse_event = 100;</code>
        */
       public Builder clearMouseEvent() {  copyOnWrite();
         instance.clearMouseEvent();
@@ -15010,21 +15885,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+       * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
        */
       @java.lang.Override
       public boolean hasCursorInfoSync() {
         return instance.hasCursorInfoSync();
       }
       /**
-       * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+       * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
        */
       @java.lang.Override
       public tc.TcMessage.CursorInfoSync getCursorInfoSync() {
         return instance.getCursorInfoSync();
       }
       /**
-       * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+       * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
        */
       public Builder setCursorInfoSync(tc.TcMessage.CursorInfoSync value) {
         copyOnWrite();
@@ -15032,7 +15907,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+       * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
        */
       public Builder setCursorInfoSync(
           tc.TcMessage.CursorInfoSync.Builder builderForValue) {
@@ -15041,7 +15916,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+       * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
        */
       public Builder mergeCursorInfoSync(tc.TcMessage.CursorInfoSync value) {
         copyOnWrite();
@@ -15049,7 +15924,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.CursorInfoSync cursor_info_sync = 11;</code>
+       * <code>.tc.CursorInfoSync cursor_info_sync = 110;</code>
        */
       public Builder clearCursorInfoSync() {  copyOnWrite();
         instance.clearCursorInfoSync();
@@ -15057,21 +15932,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.GamepadState gamepad_state = 12;</code>
+       * <code>.tc.GamepadState gamepad_state = 120;</code>
        */
       @java.lang.Override
       public boolean hasGamepadState() {
         return instance.hasGamepadState();
       }
       /**
-       * <code>.tc.GamepadState gamepad_state = 12;</code>
+       * <code>.tc.GamepadState gamepad_state = 120;</code>
        */
       @java.lang.Override
       public tc.TcMessage.GamepadState getGamepadState() {
         return instance.getGamepadState();
       }
       /**
-       * <code>.tc.GamepadState gamepad_state = 12;</code>
+       * <code>.tc.GamepadState gamepad_state = 120;</code>
        */
       public Builder setGamepadState(tc.TcMessage.GamepadState value) {
         copyOnWrite();
@@ -15079,7 +15954,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.GamepadState gamepad_state = 12;</code>
+       * <code>.tc.GamepadState gamepad_state = 120;</code>
        */
       public Builder setGamepadState(
           tc.TcMessage.GamepadState.Builder builderForValue) {
@@ -15088,7 +15963,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.GamepadState gamepad_state = 12;</code>
+       * <code>.tc.GamepadState gamepad_state = 120;</code>
        */
       public Builder mergeGamepadState(tc.TcMessage.GamepadState value) {
         copyOnWrite();
@@ -15096,7 +15971,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.GamepadState gamepad_state = 12;</code>
+       * <code>.tc.GamepadState gamepad_state = 120;</code>
        */
       public Builder clearGamepadState() {  copyOnWrite();
         instance.clearGamepadState();
@@ -15104,21 +15979,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+       * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
        */
       @java.lang.Override
       public boolean hasCaptureStatistics() {
         return instance.hasCaptureStatistics();
       }
       /**
-       * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+       * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
        */
       @java.lang.Override
       public tc.TcMessage.CaptureStatistics getCaptureStatistics() {
         return instance.getCaptureStatistics();
       }
       /**
-       * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+       * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
        */
       public Builder setCaptureStatistics(tc.TcMessage.CaptureStatistics value) {
         copyOnWrite();
@@ -15126,7 +16001,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+       * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
        */
       public Builder setCaptureStatistics(
           tc.TcMessage.CaptureStatistics.Builder builderForValue) {
@@ -15135,7 +16010,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+       * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
        */
       public Builder mergeCaptureStatistics(tc.TcMessage.CaptureStatistics value) {
         copyOnWrite();
@@ -15143,7 +16018,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.CaptureStatistics capture_statistics = 13;</code>
+       * <code>.tc.CaptureStatistics capture_statistics = 130;</code>
        */
       public Builder clearCaptureStatistics() {  copyOnWrite();
         instance.clearCaptureStatistics();
@@ -15151,21 +16026,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.ClientStatistics client_statistics = 14;</code>
+       * <code>.tc.ClientStatistics client_statistics = 140;</code>
        */
       @java.lang.Override
       public boolean hasClientStatistics() {
         return instance.hasClientStatistics();
       }
       /**
-       * <code>.tc.ClientStatistics client_statistics = 14;</code>
+       * <code>.tc.ClientStatistics client_statistics = 140;</code>
        */
       @java.lang.Override
       public tc.TcMessage.ClientStatistics getClientStatistics() {
         return instance.getClientStatistics();
       }
       /**
-       * <code>.tc.ClientStatistics client_statistics = 14;</code>
+       * <code>.tc.ClientStatistics client_statistics = 140;</code>
        */
       public Builder setClientStatistics(tc.TcMessage.ClientStatistics value) {
         copyOnWrite();
@@ -15173,7 +16048,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.ClientStatistics client_statistics = 14;</code>
+       * <code>.tc.ClientStatistics client_statistics = 140;</code>
        */
       public Builder setClientStatistics(
           tc.TcMessage.ClientStatistics.Builder builderForValue) {
@@ -15182,7 +16057,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.ClientStatistics client_statistics = 14;</code>
+       * <code>.tc.ClientStatistics client_statistics = 140;</code>
        */
       public Builder mergeClientStatistics(tc.TcMessage.ClientStatistics value) {
         copyOnWrite();
@@ -15190,7 +16065,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.ClientStatistics client_statistics = 14;</code>
+       * <code>.tc.ClientStatistics client_statistics = 140;</code>
        */
       public Builder clearClientStatistics() {  copyOnWrite();
         instance.clearClientStatistics();
@@ -15198,21 +16073,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
        */
       @java.lang.Override
       public boolean hasServerAudioSpectrum() {
         return instance.hasServerAudioSpectrum();
       }
       /**
-       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
        */
       @java.lang.Override
       public tc.TcMessage.ServerAudioSpectrum getServerAudioSpectrum() {
         return instance.getServerAudioSpectrum();
       }
       /**
-       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
        */
       public Builder setServerAudioSpectrum(tc.TcMessage.ServerAudioSpectrum value) {
         copyOnWrite();
@@ -15220,7 +16095,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
        */
       public Builder setServerAudioSpectrum(
           tc.TcMessage.ServerAudioSpectrum.Builder builderForValue) {
@@ -15229,7 +16104,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
        */
       public Builder mergeServerAudioSpectrum(tc.TcMessage.ServerAudioSpectrum value) {
         copyOnWrite();
@@ -15237,7 +16112,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 15;</code>
+       * <code>.tc.ServerAudioSpectrum server_audio_spectrum = 150;</code>
        */
       public Builder clearServerAudioSpectrum() {  copyOnWrite();
         instance.clearServerAudioSpectrum();
@@ -15245,7 +16120,7 @@ public final class TcMessage {
       }
 
       /**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       @java.lang.Override
       public java.util.List<tc.TcMessage.OnlineGame> getOnlineGamesList() {
@@ -15253,20 +16128,20 @@ public final class TcMessage {
             instance.getOnlineGamesList());
       }
       /**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       @java.lang.Override
       public int getOnlineGamesCount() {
         return instance.getOnlineGamesCount();
       }/**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       @java.lang.Override
       public tc.TcMessage.OnlineGame getOnlineGames(int index) {
         return instance.getOnlineGames(index);
       }
       /**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       public Builder setOnlineGames(
           int index, tc.TcMessage.OnlineGame value) {
@@ -15275,7 +16150,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       public Builder setOnlineGames(
           int index, tc.TcMessage.OnlineGame.Builder builderForValue) {
@@ -15284,7 +16159,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       public Builder addOnlineGames(tc.TcMessage.OnlineGame value) {
         copyOnWrite();
@@ -15292,7 +16167,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       public Builder addOnlineGames(
           int index, tc.TcMessage.OnlineGame value) {
@@ -15301,7 +16176,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       public Builder addOnlineGames(
           tc.TcMessage.OnlineGame.Builder builderForValue) {
@@ -15310,7 +16185,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       public Builder addOnlineGames(
           int index, tc.TcMessage.OnlineGame.Builder builderForValue) {
@@ -15319,7 +16194,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       public Builder addAllOnlineGames(
           java.lang.Iterable<? extends tc.TcMessage.OnlineGame> values) {
@@ -15328,7 +16203,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       public Builder clearOnlineGames() {
         copyOnWrite();
@@ -15336,7 +16211,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.OnlineGame online_games = 16;</code>
+       * <code>repeated .tc.OnlineGame online_games = 160;</code>
        */
       public Builder removeOnlineGames(int index) {
         copyOnWrite();
@@ -15345,21 +16220,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       * <code>.tc.UIServerHello ui_server_hello = 170;</code>
        */
       @java.lang.Override
       public boolean hasUiServerHello() {
         return instance.hasUiServerHello();
       }
       /**
-       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       * <code>.tc.UIServerHello ui_server_hello = 170;</code>
        */
       @java.lang.Override
       public tc.TcMessage.UIServerHello getUiServerHello() {
         return instance.getUiServerHello();
       }
       /**
-       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       * <code>.tc.UIServerHello ui_server_hello = 170;</code>
        */
       public Builder setUiServerHello(tc.TcMessage.UIServerHello value) {
         copyOnWrite();
@@ -15367,7 +16242,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       * <code>.tc.UIServerHello ui_server_hello = 170;</code>
        */
       public Builder setUiServerHello(
           tc.TcMessage.UIServerHello.Builder builderForValue) {
@@ -15376,7 +16251,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       * <code>.tc.UIServerHello ui_server_hello = 170;</code>
        */
       public Builder mergeUiServerHello(tc.TcMessage.UIServerHello value) {
         copyOnWrite();
@@ -15384,7 +16259,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.UIServerHello ui_server_hello = 17;</code>
+       * <code>.tc.UIServerHello ui_server_hello = 170;</code>
        */
       public Builder clearUiServerHello() {  copyOnWrite();
         instance.clearUiServerHello();
@@ -15392,21 +16267,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.FileTransfer file_transfer = 18;</code>
+       * <code>.tc.FileTransfer file_transfer = 180;</code>
        */
       @java.lang.Override
       public boolean hasFileTransfer() {
         return instance.hasFileTransfer();
       }
       /**
-       * <code>.tc.FileTransfer file_transfer = 18;</code>
+       * <code>.tc.FileTransfer file_transfer = 180;</code>
        */
       @java.lang.Override
       public tc.TcMessage.FileTransfer getFileTransfer() {
         return instance.getFileTransfer();
       }
       /**
-       * <code>.tc.FileTransfer file_transfer = 18;</code>
+       * <code>.tc.FileTransfer file_transfer = 180;</code>
        */
       public Builder setFileTransfer(tc.TcMessage.FileTransfer value) {
         copyOnWrite();
@@ -15414,7 +16289,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.FileTransfer file_transfer = 18;</code>
+       * <code>.tc.FileTransfer file_transfer = 180;</code>
        */
       public Builder setFileTransfer(
           tc.TcMessage.FileTransfer.Builder builderForValue) {
@@ -15423,7 +16298,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.FileTransfer file_transfer = 18;</code>
+       * <code>.tc.FileTransfer file_transfer = 180;</code>
        */
       public Builder mergeFileTransfer(tc.TcMessage.FileTransfer value) {
         copyOnWrite();
@@ -15431,7 +16306,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.FileTransfer file_transfer = 18;</code>
+       * <code>.tc.FileTransfer file_transfer = 180;</code>
        */
       public Builder clearFileTransfer() {  copyOnWrite();
         instance.clearFileTransfer();
@@ -15439,21 +16314,21 @@ public final class TcMessage {
       }
 
       /**
-       * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+       * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
        */
       @java.lang.Override
       public boolean hasRespFileTransfer() {
         return instance.hasRespFileTransfer();
       }
       /**
-       * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+       * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
        */
       @java.lang.Override
       public tc.TcMessage.RespFileTransfer getRespFileTransfer() {
         return instance.getRespFileTransfer();
       }
       /**
-       * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+       * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
        */
       public Builder setRespFileTransfer(tc.TcMessage.RespFileTransfer value) {
         copyOnWrite();
@@ -15461,7 +16336,7 @@ public final class TcMessage {
         return this;
         }
       /**
-       * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+       * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
        */
       public Builder setRespFileTransfer(
           tc.TcMessage.RespFileTransfer.Builder builderForValue) {
@@ -15470,7 +16345,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+       * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
        */
       public Builder mergeRespFileTransfer(tc.TcMessage.RespFileTransfer value) {
         copyOnWrite();
@@ -15478,7 +16353,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>.tc.RespFileTransfer resp_file_transfer = 19;</code>
+       * <code>.tc.RespFileTransfer resp_file_transfer = 190;</code>
        */
       public Builder clearRespFileTransfer() {  copyOnWrite();
         instance.clearRespFileTransfer();
@@ -15506,7 +16381,8 @@ public final class TcMessage {
               "extra_",
               "hello_",
               "ack_",
-              "heartBeat_",
+              "heartbeat_",
+              "onHeartbeat_",
               "videoFrame_",
               "audioFrame_",
               "keyEvent_",
@@ -15523,9 +16399,9 @@ public final class TcMessage {
               "respFileTransfer_",
             };
             java.lang.String info =
-                "\u0000\u0013\u0000\u0000\u0001\u0013\u0013\u0000\u0001\u0000\u0001\f\u0002\u0003" +
-                "\u0003\u0208\u0004\t\u0005\t\u0006\t\u0007\t\b\t\t\t\n\t\u000b\t\f\t\r\t\u000e\t" +
-                "\u000f\t\u0010\u001b\u0011\t\u0012\t\u0013\t";
+                "\u0000\u0014\u0000\u0000\n\u00be\u0014\u0000\u0001\u0000\n\f\u0014\u0003\u001e\u0208" +
+                "(\t2\t<\t=\tF\tP\tZ\td\tn\tx\t\u0082\t\u008c\t\u0096\t\u00a0\u001b\u00aa\t\u00b4" +
+                "\t\u00be\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
