@@ -13,9 +13,9 @@ android {
         applicationId "com.tc.client"
         minSdk 26
         targetSdk 34
-        versionCode 115
+        versionCode 116
         multiDexEnabled true
-        versionName "1.1.5"
+        versionName "1.1.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
@@ -80,6 +80,7 @@ android {
         compose true
         prefab true
         dataBinding true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion '1.4.3'

@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Surface;
 
+import com.tc.client.Settings;
 import com.tc.client.Statistics;
 
 import org.json.JSONArray;
@@ -81,8 +82,8 @@ public class ThunderApp {
         try {
             JSONObject obj = new JSONObject(msg);
             String type = obj.getString("type");
-            //Log.i(TAG, "onNativeMessage type: " + type);
-            if (TextUtils.equals(type, "frame")) {
+            if (TextUtils.equals(type, "frame") && !Settings.Companion.getInstance().getFullscreen()) {
+                Log.i(TAG, "frame resize : " + msg);
                 int width = obj.getInt("width");
                 int height = obj.getInt("height");
                 if (mFrameChangedCallback != null) {

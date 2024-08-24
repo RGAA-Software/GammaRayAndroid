@@ -24,11 +24,13 @@ class Settings {
     var showVirtualGamepad: Boolean = false
     var invertJoystickYAxis: Boolean = false
     var showCursor: Boolean = false
+    var fullscreen: Boolean = false
 
     companion object {
         const val KEY_SHOW_VIRTUAL_GAMEPAD = "show_virtual_gamepad"
         const val KEY_INVERT_JOYSTICK_Y_AXIS = "invert_joystick_y_axis"
         const val KEY_SHOW_CURSOR = "show_cursor"
+        const val KEY_FULLSCREEN = "fullscreen"
 
         private val settings = Settings()
         fun getInstance(): Settings {
@@ -40,6 +42,7 @@ class Settings {
         showVirtualGamepad = SpUtils.getInstance(ctx).getBoolean(KEY_SHOW_VIRTUAL_GAMEPAD)
         invertJoystickYAxis = SpUtils.getInstance(ctx).getBoolean(KEY_INVERT_JOYSTICK_Y_AXIS)
         showCursor = SpUtils.getInstance(ctx).getBoolean(KEY_SHOW_CURSOR)
+        fullscreen = SpUtils.getInstance(ctx).getBoolean(KEY_FULLSCREEN)
         EventBus.getDefault().register(this);
     }
 
@@ -137,6 +140,11 @@ class Settings {
     fun setShowCursor(ctx: Context, state: Boolean) {
         showCursor = state
         SpUtils.getInstance(ctx).put(KEY_SHOW_CURSOR, state)
+    }
+
+    fun setFullscreen(ctx: Context, state: Boolean) {
+        fullscreen = state
+        SpUtils.getInstance(ctx).put(KEY_FULLSCREEN, state)
     }
 
     fun dump() {

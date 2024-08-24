@@ -12,6 +12,7 @@ class EffectDefinition {
         const val EFFECT_CIRCLE_IMAGES = 5
         const val EFFECT_BAR_LINE2 = 6
         const val EFFECT_RANDOM_CIRCLE = 7
+        const val EFFECT_SPREAD_TRIANGLE = 8
     }
 
     class EffectInfo(var idx: Int, var name: String, var iconResId: Int) {
@@ -29,6 +30,7 @@ class EffectDefinition {
             add(EffectInfo(EFFECT_CIRCLE_IMAGES, "Circle Images", R.drawable.effect_circle_images))
             add(EffectInfo(EFFECT_BAR_LINE2, "Bar Line2", R.drawable.effect_bar_line2))
             add(EffectInfo(EFFECT_RANDOM_CIRCLE, "Random Circle", R.drawable.effect_random_circle))
+            add(EffectInfo(EFFECT_SPREAD_TRIANGLE, "Spread Triangle", R.drawable.effect_spread_triangle))
         }
     }
 

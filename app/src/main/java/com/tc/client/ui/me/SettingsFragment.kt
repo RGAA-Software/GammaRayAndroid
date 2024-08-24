@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.tc.client.BuildConfig
 import com.tc.client.Settings
 import com.tc.client.databinding.FragmentSettingsBinding
 import com.tc.client.ui.BaseFragment
@@ -42,6 +43,13 @@ class SettingsFragment() : BaseFragment() {
         binding.idShowCursor.setOnCheckedChangeListener { buttonView, isChecked ->
             context?.let { Settings.getInstance().setShowCursor(it, isChecked) }
         }
+
+        binding.idFullscreen.isChecked = Settings.getInstance().fullscreen
+        binding.idFullscreen.setOnCheckedChangeListener { buttView, isChecked ->
+            context?.let { Settings.getInstance().setFullscreen(it, isChecked) }
+        }
+
+        binding.idVersion.setText("V " + BuildConfig.VERSION_NAME)
 
     }
 

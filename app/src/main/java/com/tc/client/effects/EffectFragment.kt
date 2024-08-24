@@ -56,6 +56,8 @@ class EffectFragment(private var thunderApp: ThunderApp, private var effectIdx: 
             effectView = BarLine2(requireContext(), thunderApp)
         } else if (effectIdx == EffectDefinition.EFFECT_RANDOM_CIRCLE) {
             effectView = RandomCircle(requireContext(), thunderApp)
+        } else if (effectIdx == EffectDefinition.EFFECT_SPREAD_TRIANGLE) {
+            effectView = SpreadTriangle(requireContext(), thunderApp)
         }
 
         val eView: View = CreateGLAlpha(effectView)

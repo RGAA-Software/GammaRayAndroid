@@ -16,4 +16,5 @@
     <string name="do_you_want_to_stop_game">Do you want to stop game ?</string>
     <string name="error">Error</string>
     <string name="server_offline">Server offline!</string>
+    <string name="version">Version</string>
 </resources>

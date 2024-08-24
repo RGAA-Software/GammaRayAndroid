@@ -112,6 +112,8 @@ class RandomCircle(var ctx: Context, var app: ThunderApp) : EffectView(ctx, app)
         vfxEffects.forEach {
             it.dispose()
         }
+        stage.dispose()
+        texture.dispose()
     }
 
 }
