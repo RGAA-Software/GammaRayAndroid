@@ -125,4 +125,11 @@
 
     </com.tc.client.ControlLayer>
 
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:background="@drawable/logo_text"
+        android:layout_marginEnd="10dp"
+        android:layout_gravity="right" />
+
 </FrameLayout>
