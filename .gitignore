@@ -18,3 +18,4 @@ app/debug/*
 app/release/*
 app/apk/*
 app/src/generated/proto/officialRelease/*
+app/official/*

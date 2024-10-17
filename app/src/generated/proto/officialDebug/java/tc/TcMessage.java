@@ -157,6 +157,38 @@ public final class TcMessage {
      * <code>kSwitchWorkMode = 190;</code>
      */
     kSwitchWorkMode(190),
+    /**
+     * <pre>
+     * change monitor resolution
+     * </pre>
+     *
+     * <code>kChangeMonitorResolution = 200;</code>
+     */
+    kChangeMonitorResolution(200),
+    /**
+     * <pre>
+     * change monitor resolution result
+     * </pre>
+     *
+     * <code>kChangeMonitorResolutionResult = 210;</code>
+     */
+    kChangeMonitorResolutionResult(210),
+    /**
+     * <pre>
+     * available resolutions for target monitor
+     * </pre>
+     *
+     * <code>kAvailableResolutions = 220;</code>
+     */
+    kAvailableResolutions(220),
+    /**
+     * <pre>
+     * insert key frame
+     * </pre>
+     *
+     * <code>kInsertKeyFrame = 230;</code>
+     */
+    kInsertKeyFrame(230),
     UNRECOGNIZED(-1),
     ;
 
@@ -304,6 +336,38 @@ public final class TcMessage {
      * <code>kSwitchWorkMode = 190;</code>
      */
     public static final int kSwitchWorkMode_VALUE = 190;
+    /**
+     * <pre>
+     * change monitor resolution
+     * </pre>
+     *
+     * <code>kChangeMonitorResolution = 200;</code>
+     */
+    public static final int kChangeMonitorResolution_VALUE = 200;
+    /**
+     * <pre>
+     * change monitor resolution result
+     * </pre>
+     *
+     * <code>kChangeMonitorResolutionResult = 210;</code>
+     */
+    public static final int kChangeMonitorResolutionResult_VALUE = 210;
+    /**
+     * <pre>
+     * available resolutions for target monitor
+     * </pre>
+     *
+     * <code>kAvailableResolutions = 220;</code>
+     */
+    public static final int kAvailableResolutions_VALUE = 220;
+    /**
+     * <pre>
+     * insert key frame
+     * </pre>
+     *
+     * <code>kInsertKeyFrame = 230;</code>
+     */
+    public static final int kInsertKeyFrame_VALUE = 230;
 
 
     @java.lang.Override
@@ -347,6 +411,10 @@ public final class TcMessage {
         case 170: return kSwitchMonitor;
         case 180: return kMonitorSwitched;
         case 190: return kSwitchWorkMode;
+        case 200: return kChangeMonitorResolution;
+        case 210: return kChangeMonitorResolutionResult;
+        case 220: return kAvailableResolutions;
+        case 230: return kInsertKeyFrame;
         default: return null;
       }
     }
@@ -1860,8 +1928,298 @@ public final class TcMessage {
     }
   }
 
-  public interface ScreenInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:tc.ScreenInfo)
+  public interface MonitorResolutionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.MonitorResolution)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>int32 width = 1;</code>
+     */
+    int getWidth();
+
+    /**
+     * <code>int32 height = 2;</code>
+     */
+    int getHeight();
+  }
+  /**
+   * Protobuf type {@code tc.MonitorResolution}
+   */
+  public  static final class MonitorResolution extends
+      com.google.protobuf.GeneratedMessageLite<
+          MonitorResolution, MonitorResolution.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.MonitorResolution)
+      MonitorResolutionOrBuilder {
+    private MonitorResolution() {
+    }
+    public static final int WIDTH_FIELD_NUMBER = 1;
+    private int width_;
+    /**
+     * <code>int32 width = 1;</code>
+     */
+    @java.lang.Override
+    public int getWidth() {
+      return width_;
+    }
+    /**
+     * <code>int32 width = 1;</code>
+     */
+    private void setWidth(int value) {
+      
+      width_ = value;
+    }
+    /**
+     * <code>int32 width = 1;</code>
+     */
+    private void clearWidth() {
+      
+      width_ = 0;
+    }
+
+    public static final int HEIGHT_FIELD_NUMBER = 2;
+    private int height_;
+    /**
+     * <code>int32 height = 2;</code>
+     */
+    @java.lang.Override
+    public int getHeight() {
+      return height_;
+    }
+    /**
+     * <code>int32 height = 2;</code>
+     */
+    private void setHeight(int value) {
+      
+      height_ = value;
+    }
+    /**
+     * <code>int32 height = 2;</code>
+     */
+    private void clearHeight() {
+      
+      height_ = 0;
+    }
+
+    public static tc.TcMessage.MonitorResolution parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.MonitorResolution parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.MonitorResolution parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.MonitorResolution parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.MonitorResolution parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.MonitorResolution parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.MonitorResolution parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.MonitorResolution parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.MonitorResolution parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.MonitorResolution parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.MonitorResolution parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.MonitorResolution parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcMessage.MonitorResolution prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.MonitorResolution}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcMessage.MonitorResolution, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.MonitorResolution)
+        tc.TcMessage.MonitorResolutionOrBuilder {
+      // Construct using tc.TcMessage.MonitorResolution.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>int32 width = 1;</code>
+       */
+      @java.lang.Override
+      public int getWidth() {
+        return instance.getWidth();
+      }
+      /**
+       * <code>int32 width = 1;</code>
+       */
+      public Builder setWidth(int value) {
+        copyOnWrite();
+        instance.setWidth(value);
+        return this;
+      }
+      /**
+       * <code>int32 width = 1;</code>
+       */
+      public Builder clearWidth() {
+        copyOnWrite();
+        instance.clearWidth();
+        return this;
+      }
+
+      /**
+       * <code>int32 height = 2;</code>
+       */
+      @java.lang.Override
+      public int getHeight() {
+        return instance.getHeight();
+      }
+      /**
+       * <code>int32 height = 2;</code>
+       */
+      public Builder setHeight(int value) {
+        copyOnWrite();
+        instance.setHeight(value);
+        return this;
+      }
+      /**
+       * <code>int32 height = 2;</code>
+       */
+      public Builder clearHeight() {
+        copyOnWrite();
+        instance.clearHeight();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.MonitorResolution)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcMessage.MonitorResolution();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "width_",
+              "height_",
+            };
+            java.lang.String info =
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0004\u0002\u0004" +
+                "";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcMessage.MonitorResolution> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcMessage.MonitorResolution.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.MonitorResolution)
+    private static final tc.TcMessage.MonitorResolution DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new MonitorResolution();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        MonitorResolution.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcMessage.MonitorResolution getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<MonitorResolution> PARSER;
+
+    public static com.google.protobuf.Parser<MonitorResolution> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface MonitorInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.MonitorInfo)
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
@@ -1878,17 +2236,32 @@ public final class TcMessage {
      */
     com.google.protobuf.ByteString
         getNameBytes();
+
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    java.util.List<tc.TcMessage.MonitorResolution> 
+        getResolutionsList();
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    tc.TcMessage.MonitorResolution getResolutions(int index);
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    int getResolutionsCount();
   }
   /**
-   * Protobuf type {@code tc.ScreenInfo}
+   * Protobuf type {@code tc.MonitorInfo}
    */
-  public  static final class ScreenInfo extends
+  public  static final class MonitorInfo extends
       com.google.protobuf.GeneratedMessageLite<
-          ScreenInfo, ScreenInfo.Builder> implements
-      // @@protoc_insertion_point(message_implements:tc.ScreenInfo)
-      ScreenInfoOrBuilder {
-    private ScreenInfo() {
+          MonitorInfo, MonitorInfo.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.MonitorInfo)
+      MonitorInfoOrBuilder {
+    private MonitorInfo() {
       name_ = "";
+      resolutions_ = emptyProtobufList();
     }
     public static final int INDEX_FIELD_NUMBER = 1;
     private int index_;
@@ -1962,73 +2335,196 @@ public final class TcMessage {
       name_ = value.toStringUtf8();
     }
 
-    public static tc.TcMessage.ScreenInfo parseFrom(
+    public static final int RESOLUTIONS_FIELD_NUMBER = 3;
+    private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.MonitorResolution> resolutions_;
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<tc.TcMessage.MonitorResolution> getResolutionsList() {
+      return resolutions_;
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    public java.util.List<? extends tc.TcMessage.MonitorResolutionOrBuilder> 
+        getResolutionsOrBuilderList() {
+      return resolutions_;
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    @java.lang.Override
+    public int getResolutionsCount() {
+      return resolutions_.size();
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.MonitorResolution getResolutions(int index) {
+      return resolutions_.get(index);
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    public tc.TcMessage.MonitorResolutionOrBuilder getResolutionsOrBuilder(
+        int index) {
+      return resolutions_.get(index);
+    }
+    private void ensureResolutionsIsMutable() {
+      if (!resolutions_.isModifiable()) {
+        resolutions_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(resolutions_);
+       }
+    }
+
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    private void setResolutions(
+        int index, tc.TcMessage.MonitorResolution value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureResolutionsIsMutable();
+      resolutions_.set(index, value);
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    private void setResolutions(
+        int index, tc.TcMessage.MonitorResolution.Builder builderForValue) {
+      ensureResolutionsIsMutable();
+      resolutions_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    private void addResolutions(tc.TcMessage.MonitorResolution value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureResolutionsIsMutable();
+      resolutions_.add(value);
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    private void addResolutions(
+        int index, tc.TcMessage.MonitorResolution value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureResolutionsIsMutable();
+      resolutions_.add(index, value);
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    private void addResolutions(
+        tc.TcMessage.MonitorResolution.Builder builderForValue) {
+      ensureResolutionsIsMutable();
+      resolutions_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    private void addResolutions(
+        int index, tc.TcMessage.MonitorResolution.Builder builderForValue) {
+      ensureResolutionsIsMutable();
+      resolutions_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    private void addAllResolutions(
+        java.lang.Iterable<? extends tc.TcMessage.MonitorResolution> values) {
+      ensureResolutionsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, resolutions_);
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    private void clearResolutions() {
+      resolutions_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     */
+    private void removeResolutions(int index) {
+      ensureResolutionsIsMutable();
+      resolutions_.remove(index);
+    }
+
+    public static tc.TcMessage.MonitorInfo parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcMessage.ScreenInfo parseFrom(
+    public static tc.TcMessage.MonitorInfo parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcMessage.ScreenInfo parseFrom(
+    public static tc.TcMessage.MonitorInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcMessage.ScreenInfo parseFrom(
+    public static tc.TcMessage.MonitorInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcMessage.ScreenInfo parseFrom(byte[] data)
+    public static tc.TcMessage.MonitorInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcMessage.ScreenInfo parseFrom(
+    public static tc.TcMessage.MonitorInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcMessage.ScreenInfo parseFrom(java.io.InputStream input)
+    public static tc.TcMessage.MonitorInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static tc.TcMessage.ScreenInfo parseFrom(
+    public static tc.TcMessage.MonitorInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static tc.TcMessage.ScreenInfo parseDelimitedFrom(java.io.InputStream input)
+    public static tc.TcMessage.MonitorInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static tc.TcMessage.ScreenInfo parseDelimitedFrom(
+    public static tc.TcMessage.MonitorInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static tc.TcMessage.ScreenInfo parseFrom(
+    public static tc.TcMessage.MonitorInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static tc.TcMessage.ScreenInfo parseFrom(
+    public static tc.TcMessage.MonitorInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2039,19 +2535,19 @@ public final class TcMessage {
     public static Builder newBuilder() {
       return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
-    public static Builder newBuilder(tc.TcMessage.ScreenInfo prototype) {
+    public static Builder newBuilder(tc.TcMessage.MonitorInfo prototype) {
       return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
     /**
-     * Protobuf type {@code tc.ScreenInfo}
+     * Protobuf type {@code tc.MonitorInfo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageLite.Builder<
-          tc.TcMessage.ScreenInfo, Builder> implements
-        // @@protoc_insertion_point(builder_implements:tc.ScreenInfo)
-        tc.TcMessage.ScreenInfoOrBuilder {
-      // Construct using tc.TcMessage.ScreenInfo.newBuilder()
+          tc.TcMessage.MonitorInfo, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.MonitorInfo)
+        tc.TcMessage.MonitorInfoOrBuilder {
+      // Construct using tc.TcMessage.MonitorInfo.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
       }
@@ -2123,7 +2619,107 @@ public final class TcMessage {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:tc.ScreenInfo)
+      /**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      @java.lang.Override
+      public java.util.List<tc.TcMessage.MonitorResolution> getResolutionsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getResolutionsList());
+      }
+      /**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      @java.lang.Override
+      public int getResolutionsCount() {
+        return instance.getResolutionsCount();
+      }/**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.MonitorResolution getResolutions(int index) {
+        return instance.getResolutions(index);
+      }
+      /**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      public Builder setResolutions(
+          int index, tc.TcMessage.MonitorResolution value) {
+        copyOnWrite();
+        instance.setResolutions(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      public Builder setResolutions(
+          int index, tc.TcMessage.MonitorResolution.Builder builderForValue) {
+        copyOnWrite();
+        instance.setResolutions(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      public Builder addResolutions(tc.TcMessage.MonitorResolution value) {
+        copyOnWrite();
+        instance.addResolutions(value);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      public Builder addResolutions(
+          int index, tc.TcMessage.MonitorResolution value) {
+        copyOnWrite();
+        instance.addResolutions(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      public Builder addResolutions(
+          tc.TcMessage.MonitorResolution.Builder builderForValue) {
+        copyOnWrite();
+        instance.addResolutions(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      public Builder addResolutions(
+          int index, tc.TcMessage.MonitorResolution.Builder builderForValue) {
+        copyOnWrite();
+        instance.addResolutions(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      public Builder addAllResolutions(
+          java.lang.Iterable<? extends tc.TcMessage.MonitorResolution> values) {
+        copyOnWrite();
+        instance.addAllResolutions(values);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      public Builder clearResolutions() {
+        copyOnWrite();
+        instance.clearResolutions();
+        return this;
+      }
+      /**
+       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       */
+      public Builder removeResolutions(int index) {
+        copyOnWrite();
+        instance.removeResolutions(index);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.MonitorInfo)
     }
     @java.lang.Override
     @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
@@ -2132,7 +2728,7 @@ public final class TcMessage {
         java.lang.Object arg0, java.lang.Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new tc.TcMessage.ScreenInfo();
+          return new tc.TcMessage.MonitorInfo();
         }
         case NEW_BUILDER: {
           return new Builder();
@@ -2141,10 +2737,12 @@ public final class TcMessage {
             java.lang.Object[] objects = new java.lang.Object[] {
               "index_",
               "name_",
+              "resolutions_",
+              tc.TcMessage.MonitorResolution.class,
             };
             java.lang.String info =
-                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0004\u0002\u0208" +
-                "";
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0001\u0000\u0001\u0004\u0002\u0208" +
+                "\u0003\u001b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -2152,9 +2750,9 @@ public final class TcMessage {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          com.google.protobuf.Parser<tc.TcMessage.ScreenInfo> parser = PARSER;
+          com.google.protobuf.Parser<tc.TcMessage.MonitorInfo> parser = PARSER;
           if (parser == null) {
-            synchronized (tc.TcMessage.ScreenInfo.class) {
+            synchronized (tc.TcMessage.MonitorInfo.class) {
               parser = PARSER;
               if (parser == null) {
                 parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
@@ -2175,25 +2773,25 @@ public final class TcMessage {
     }
 
 
-    // @@protoc_insertion_point(class_scope:tc.ScreenInfo)
-    private static final tc.TcMessage.ScreenInfo DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:tc.MonitorInfo)
+    private static final tc.TcMessage.MonitorInfo DEFAULT_INSTANCE;
     static {
       // New instances are implicitly immutable so no need to make
       // immutable.
-      DEFAULT_INSTANCE = new ScreenInfo();
+      DEFAULT_INSTANCE = new MonitorInfo();
     }
 
     static {
       com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
-        ScreenInfo.class, DEFAULT_INSTANCE);
+        MonitorInfo.class, DEFAULT_INSTANCE);
     }
-    public static tc.TcMessage.ScreenInfo getDefaultInstance() {
+    public static tc.TcMessage.MonitorInfo getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static volatile com.google.protobuf.Parser<ScreenInfo> PARSER;
+    private static volatile com.google.protobuf.Parser<MonitorInfo> PARSER;
 
-    public static com.google.protobuf.Parser<ScreenInfo> parser() {
+    public static com.google.protobuf.Parser<MonitorInfo> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
@@ -2203,18 +2801,18 @@ public final class TcMessage {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    java.util.List<tc.TcMessage.ScreenInfo> 
-        getScreenInfoList();
+    java.util.List<tc.TcMessage.MonitorInfo> 
+        getMonitorInfoList();
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    tc.TcMessage.ScreenInfo getScreenInfo(int index);
+    tc.TcMessage.MonitorInfo getMonitorInfo(int index);
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    int getScreenInfoCount();
+    int getMonitorInfoCount();
 
     /**
      * <code>int32 current_capturing_index = 2;</code>
@@ -2230,129 +2828,129 @@ public final class TcMessage {
       // @@protoc_insertion_point(message_implements:tc.ServerConfiguration)
       ServerConfigurationOrBuilder {
     private ServerConfiguration() {
-      screenInfo_ = emptyProtobufList();
+      monitorInfo_ = emptyProtobufList();
     }
-    public static final int SCREEN_INFO_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.ScreenInfo> screenInfo_;
+    public static final int MONITOR_INFO_FIELD_NUMBER = 1;
+    private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.MonitorInfo> monitorInfo_;
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<tc.TcMessage.ScreenInfo> getScreenInfoList() {
-      return screenInfo_;
+    public java.util.List<tc.TcMessage.MonitorInfo> getMonitorInfoList() {
+      return monitorInfo_;
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    public java.util.List<? extends tc.TcMessage.ScreenInfoOrBuilder> 
-        getScreenInfoOrBuilderList() {
-      return screenInfo_;
+    public java.util.List<? extends tc.TcMessage.MonitorInfoOrBuilder> 
+        getMonitorInfoOrBuilderList() {
+      return monitorInfo_;
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
-     */
-    @java.lang.Override
-    public int getScreenInfoCount() {
-      return screenInfo_.size();
-    }
-    /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
     @java.lang.Override
-    public tc.TcMessage.ScreenInfo getScreenInfo(int index) {
-      return screenInfo_.get(index);
+    public int getMonitorInfoCount() {
+      return monitorInfo_.size();
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    public tc.TcMessage.ScreenInfoOrBuilder getScreenInfoOrBuilder(
+    @java.lang.Override
+    public tc.TcMessage.MonitorInfo getMonitorInfo(int index) {
+      return monitorInfo_.get(index);
+    }
+    /**
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     */
+    public tc.TcMessage.MonitorInfoOrBuilder getMonitorInfoOrBuilder(
         int index) {
-      return screenInfo_.get(index);
+      return monitorInfo_.get(index);
     }
-    private void ensureScreenInfoIsMutable() {
-      if (!screenInfo_.isModifiable()) {
-        screenInfo_ =
-            com.google.protobuf.GeneratedMessageLite.mutableCopy(screenInfo_);
+    private void ensureMonitorInfoIsMutable() {
+      if (!monitorInfo_.isModifiable()) {
+        monitorInfo_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(monitorInfo_);
        }
     }
 
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    private void setScreenInfo(
-        int index, tc.TcMessage.ScreenInfo value) {
+    private void setMonitorInfo(
+        int index, tc.TcMessage.MonitorInfo value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ensureScreenInfoIsMutable();
-      screenInfo_.set(index, value);
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.set(index, value);
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    private void setScreenInfo(
-        int index, tc.TcMessage.ScreenInfo.Builder builderForValue) {
-      ensureScreenInfoIsMutable();
-      screenInfo_.set(index, builderForValue.build());
+    private void setMonitorInfo(
+        int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.set(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    private void addScreenInfo(tc.TcMessage.ScreenInfo value) {
+    private void addMonitorInfo(tc.TcMessage.MonitorInfo value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ensureScreenInfoIsMutable();
-      screenInfo_.add(value);
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.add(value);
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    private void addScreenInfo(
-        int index, tc.TcMessage.ScreenInfo value) {
+    private void addMonitorInfo(
+        int index, tc.TcMessage.MonitorInfo value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ensureScreenInfoIsMutable();
-      screenInfo_.add(index, value);
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.add(index, value);
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    private void addScreenInfo(
-        tc.TcMessage.ScreenInfo.Builder builderForValue) {
-      ensureScreenInfoIsMutable();
-      screenInfo_.add(builderForValue.build());
+    private void addMonitorInfo(
+        tc.TcMessage.MonitorInfo.Builder builderForValue) {
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.add(builderForValue.build());
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    private void addScreenInfo(
-        int index, tc.TcMessage.ScreenInfo.Builder builderForValue) {
-      ensureScreenInfoIsMutable();
-      screenInfo_.add(index, builderForValue.build());
+    private void addMonitorInfo(
+        int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.add(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    private void addAllScreenInfo(
-        java.lang.Iterable<? extends tc.TcMessage.ScreenInfo> values) {
-      ensureScreenInfoIsMutable();
+    private void addAllMonitorInfo(
+        java.lang.Iterable<? extends tc.TcMessage.MonitorInfo> values) {
+      ensureMonitorInfoIsMutable();
       com.google.protobuf.AbstractMessageLite.addAll(
-          values, screenInfo_);
+          values, monitorInfo_);
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    private void clearScreenInfo() {
-      screenInfo_ = emptyProtobufList();
+    private void clearMonitorInfo() {
+      monitorInfo_ = emptyProtobufList();
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
      */
-    private void removeScreenInfo(int index) {
-      ensureScreenInfoIsMutable();
-      screenInfo_.remove(index);
+    private void removeMonitorInfo(int index) {
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.remove(index);
     }
 
     public static final int CURRENT_CAPTURING_INDEX_FIELD_NUMBER = 2;
@@ -2475,102 +3073,102 @@ public final class TcMessage {
 
 
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
       @java.lang.Override
-      public java.util.List<tc.TcMessage.ScreenInfo> getScreenInfoList() {
+      public java.util.List<tc.TcMessage.MonitorInfo> getMonitorInfoList() {
         return java.util.Collections.unmodifiableList(
-            instance.getScreenInfoList());
+            instance.getMonitorInfoList());
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
       @java.lang.Override
-      public int getScreenInfoCount() {
-        return instance.getScreenInfoCount();
+      public int getMonitorInfoCount() {
+        return instance.getMonitorInfoCount();
       }/**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
       @java.lang.Override
-      public tc.TcMessage.ScreenInfo getScreenInfo(int index) {
-        return instance.getScreenInfo(index);
+      public tc.TcMessage.MonitorInfo getMonitorInfo(int index) {
+        return instance.getMonitorInfo(index);
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
-      public Builder setScreenInfo(
-          int index, tc.TcMessage.ScreenInfo value) {
+      public Builder setMonitorInfo(
+          int index, tc.TcMessage.MonitorInfo value) {
         copyOnWrite();
-        instance.setScreenInfo(index, value);
+        instance.setMonitorInfo(index, value);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
-      public Builder setScreenInfo(
-          int index, tc.TcMessage.ScreenInfo.Builder builderForValue) {
+      public Builder setMonitorInfo(
+          int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.setScreenInfo(index, builderForValue);
+        instance.setMonitorInfo(index, builderForValue);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
-      public Builder addScreenInfo(tc.TcMessage.ScreenInfo value) {
+      public Builder addMonitorInfo(tc.TcMessage.MonitorInfo value) {
         copyOnWrite();
-        instance.addScreenInfo(value);
+        instance.addMonitorInfo(value);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
-      public Builder addScreenInfo(
-          int index, tc.TcMessage.ScreenInfo value) {
+      public Builder addMonitorInfo(
+          int index, tc.TcMessage.MonitorInfo value) {
         copyOnWrite();
-        instance.addScreenInfo(index, value);
+        instance.addMonitorInfo(index, value);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
-      public Builder addScreenInfo(
-          tc.TcMessage.ScreenInfo.Builder builderForValue) {
+      public Builder addMonitorInfo(
+          tc.TcMessage.MonitorInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.addScreenInfo(builderForValue);
+        instance.addMonitorInfo(builderForValue);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
-      public Builder addScreenInfo(
-          int index, tc.TcMessage.ScreenInfo.Builder builderForValue) {
+      public Builder addMonitorInfo(
+          int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.addScreenInfo(index, builderForValue);
+        instance.addMonitorInfo(index, builderForValue);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
-      public Builder addAllScreenInfo(
-          java.lang.Iterable<? extends tc.TcMessage.ScreenInfo> values) {
+      public Builder addAllMonitorInfo(
+          java.lang.Iterable<? extends tc.TcMessage.MonitorInfo> values) {
         copyOnWrite();
-        instance.addAllScreenInfo(values);
+        instance.addAllMonitorInfo(values);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
-      public Builder clearScreenInfo() {
+      public Builder clearMonitorInfo() {
         copyOnWrite();
-        instance.clearScreenInfo();
+        instance.clearMonitorInfo();
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
        */
-      public Builder removeScreenInfo(int index) {
+      public Builder removeMonitorInfo(int index) {
         copyOnWrite();
-        instance.removeScreenInfo(index);
+        instance.removeMonitorInfo(index);
         return this;
       }
 
@@ -2614,8 +3212,8 @@ public final class TcMessage {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "screenInfo_",
-              tc.TcMessage.ScreenInfo.class,
+              "monitorInfo_",
+              tc.TcMessage.MonitorInfo.class,
               "currentCapturingIndex_",
             };
             java.lang.String info =
@@ -15478,18 +16076,18 @@ public final class TcMessage {
         getNameBytes();
 
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    java.util.List<tc.TcMessage.ScreenInfo> 
-        getScreenInfoList();
+    java.util.List<tc.TcMessage.MonitorInfo> 
+        getMonitorInfoList();
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    tc.TcMessage.ScreenInfo getScreenInfo(int index);
+    tc.TcMessage.MonitorInfo getMonitorInfo(int index);
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    int getScreenInfoCount();
+    int getMonitorInfoCount();
   }
   /**
    * Protobuf type {@code tc.MonitorSwitched}
@@ -15501,7 +16099,7 @@ public final class TcMessage {
       MonitorSwitchedOrBuilder {
     private MonitorSwitched() {
       name_ = "";
-      screenInfo_ = emptyProtobufList();
+      monitorInfo_ = emptyProtobufList();
     }
     public static final int INDEX_FIELD_NUMBER = 1;
     private int index_;
@@ -15575,127 +16173,127 @@ public final class TcMessage {
       name_ = value.toStringUtf8();
     }
 
-    public static final int SCREEN_INFO_FIELD_NUMBER = 3;
-    private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.ScreenInfo> screenInfo_;
+    public static final int MONITOR_INFO_FIELD_NUMBER = 3;
+    private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.MonitorInfo> monitorInfo_;
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     @java.lang.Override
-    public java.util.List<tc.TcMessage.ScreenInfo> getScreenInfoList() {
-      return screenInfo_;
+    public java.util.List<tc.TcMessage.MonitorInfo> getMonitorInfoList() {
+      return monitorInfo_;
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    public java.util.List<? extends tc.TcMessage.ScreenInfoOrBuilder> 
-        getScreenInfoOrBuilderList() {
-      return screenInfo_;
+    public java.util.List<? extends tc.TcMessage.MonitorInfoOrBuilder> 
+        getMonitorInfoOrBuilderList() {
+      return monitorInfo_;
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
-     */
-    @java.lang.Override
-    public int getScreenInfoCount() {
-      return screenInfo_.size();
-    }
-    /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     @java.lang.Override
-    public tc.TcMessage.ScreenInfo getScreenInfo(int index) {
-      return screenInfo_.get(index);
+    public int getMonitorInfoCount() {
+      return monitorInfo_.size();
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    public tc.TcMessage.ScreenInfoOrBuilder getScreenInfoOrBuilder(
+    @java.lang.Override
+    public tc.TcMessage.MonitorInfo getMonitorInfo(int index) {
+      return monitorInfo_.get(index);
+    }
+    /**
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     */
+    public tc.TcMessage.MonitorInfoOrBuilder getMonitorInfoOrBuilder(
         int index) {
-      return screenInfo_.get(index);
+      return monitorInfo_.get(index);
     }
-    private void ensureScreenInfoIsMutable() {
-      if (!screenInfo_.isModifiable()) {
-        screenInfo_ =
-            com.google.protobuf.GeneratedMessageLite.mutableCopy(screenInfo_);
+    private void ensureMonitorInfoIsMutable() {
+      if (!monitorInfo_.isModifiable()) {
+        monitorInfo_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(monitorInfo_);
        }
     }
 
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    private void setScreenInfo(
-        int index, tc.TcMessage.ScreenInfo value) {
+    private void setMonitorInfo(
+        int index, tc.TcMessage.MonitorInfo value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ensureScreenInfoIsMutable();
-      screenInfo_.set(index, value);
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.set(index, value);
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    private void setScreenInfo(
-        int index, tc.TcMessage.ScreenInfo.Builder builderForValue) {
-      ensureScreenInfoIsMutable();
-      screenInfo_.set(index, builderForValue.build());
+    private void setMonitorInfo(
+        int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.set(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    private void addScreenInfo(tc.TcMessage.ScreenInfo value) {
+    private void addMonitorInfo(tc.TcMessage.MonitorInfo value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ensureScreenInfoIsMutable();
-      screenInfo_.add(value);
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.add(value);
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    private void addScreenInfo(
-        int index, tc.TcMessage.ScreenInfo value) {
+    private void addMonitorInfo(
+        int index, tc.TcMessage.MonitorInfo value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ensureScreenInfoIsMutable();
-      screenInfo_.add(index, value);
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.add(index, value);
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    private void addScreenInfo(
-        tc.TcMessage.ScreenInfo.Builder builderForValue) {
-      ensureScreenInfoIsMutable();
-      screenInfo_.add(builderForValue.build());
+    private void addMonitorInfo(
+        tc.TcMessage.MonitorInfo.Builder builderForValue) {
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.add(builderForValue.build());
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    private void addScreenInfo(
-        int index, tc.TcMessage.ScreenInfo.Builder builderForValue) {
-      ensureScreenInfoIsMutable();
-      screenInfo_.add(index, builderForValue.build());
+    private void addMonitorInfo(
+        int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.add(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    private void addAllScreenInfo(
-        java.lang.Iterable<? extends tc.TcMessage.ScreenInfo> values) {
-      ensureScreenInfoIsMutable();
+    private void addAllMonitorInfo(
+        java.lang.Iterable<? extends tc.TcMessage.MonitorInfo> values) {
+      ensureMonitorInfoIsMutable();
       com.google.protobuf.AbstractMessageLite.addAll(
-          values, screenInfo_);
+          values, monitorInfo_);
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    private void clearScreenInfo() {
-      screenInfo_ = emptyProtobufList();
+    private void clearMonitorInfo() {
+      monitorInfo_ = emptyProtobufList();
     }
     /**
-     * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
-    private void removeScreenInfo(int index) {
-      ensureScreenInfoIsMutable();
-      screenInfo_.remove(index);
+    private void removeMonitorInfo(int index) {
+      ensureMonitorInfoIsMutable();
+      monitorInfo_.remove(index);
     }
 
     public static tc.TcMessage.MonitorSwitched parseFrom(
@@ -15860,102 +16458,102 @@ public final class TcMessage {
       }
 
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       @java.lang.Override
-      public java.util.List<tc.TcMessage.ScreenInfo> getScreenInfoList() {
+      public java.util.List<tc.TcMessage.MonitorInfo> getMonitorInfoList() {
         return java.util.Collections.unmodifiableList(
-            instance.getScreenInfoList());
+            instance.getMonitorInfoList());
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       @java.lang.Override
-      public int getScreenInfoCount() {
-        return instance.getScreenInfoCount();
+      public int getMonitorInfoCount() {
+        return instance.getMonitorInfoCount();
       }/**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       @java.lang.Override
-      public tc.TcMessage.ScreenInfo getScreenInfo(int index) {
-        return instance.getScreenInfo(index);
+      public tc.TcMessage.MonitorInfo getMonitorInfo(int index) {
+        return instance.getMonitorInfo(index);
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
-      public Builder setScreenInfo(
-          int index, tc.TcMessage.ScreenInfo value) {
+      public Builder setMonitorInfo(
+          int index, tc.TcMessage.MonitorInfo value) {
         copyOnWrite();
-        instance.setScreenInfo(index, value);
+        instance.setMonitorInfo(index, value);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
-      public Builder setScreenInfo(
-          int index, tc.TcMessage.ScreenInfo.Builder builderForValue) {
+      public Builder setMonitorInfo(
+          int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.setScreenInfo(index, builderForValue);
+        instance.setMonitorInfo(index, builderForValue);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
-      public Builder addScreenInfo(tc.TcMessage.ScreenInfo value) {
+      public Builder addMonitorInfo(tc.TcMessage.MonitorInfo value) {
         copyOnWrite();
-        instance.addScreenInfo(value);
+        instance.addMonitorInfo(value);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
-      public Builder addScreenInfo(
-          int index, tc.TcMessage.ScreenInfo value) {
+      public Builder addMonitorInfo(
+          int index, tc.TcMessage.MonitorInfo value) {
         copyOnWrite();
-        instance.addScreenInfo(index, value);
+        instance.addMonitorInfo(index, value);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
-      public Builder addScreenInfo(
-          tc.TcMessage.ScreenInfo.Builder builderForValue) {
+      public Builder addMonitorInfo(
+          tc.TcMessage.MonitorInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.addScreenInfo(builderForValue);
+        instance.addMonitorInfo(builderForValue);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
-      public Builder addScreenInfo(
-          int index, tc.TcMessage.ScreenInfo.Builder builderForValue) {
+      public Builder addMonitorInfo(
+          int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.addScreenInfo(index, builderForValue);
+        instance.addMonitorInfo(index, builderForValue);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
-      public Builder addAllScreenInfo(
-          java.lang.Iterable<? extends tc.TcMessage.ScreenInfo> values) {
+      public Builder addAllMonitorInfo(
+          java.lang.Iterable<? extends tc.TcMessage.MonitorInfo> values) {
         copyOnWrite();
-        instance.addAllScreenInfo(values);
+        instance.addAllMonitorInfo(values);
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
-      public Builder clearScreenInfo() {
+      public Builder clearMonitorInfo() {
         copyOnWrite();
-        instance.clearScreenInfo();
+        instance.clearMonitorInfo();
         return this;
       }
       /**
-       * <code>repeated .tc.ScreenInfo screen_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
-      public Builder removeScreenInfo(int index) {
+      public Builder removeMonitorInfo(int index) {
         copyOnWrite();
-        instance.removeScreenInfo(index);
+        instance.removeMonitorInfo(index);
         return this;
       }
 
@@ -15977,8 +16575,8 @@ public final class TcMessage {
             java.lang.Object[] objects = new java.lang.Object[] {
               "index_",
               "name_",
-              "screenInfo_",
-              tc.TcMessage.ScreenInfo.class,
+              "monitorInfo_",
+              tc.TcMessage.MonitorInfo.class,
             };
             java.lang.String info =
                 "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0001\u0000\u0001\u0004\u0002\u0208" +
@@ -16394,6 +16992,736 @@ public final class TcMessage {
     }
   }
 
+  public interface ChangeMonitorResolutionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.ChangeMonitorResolution)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    java.lang.String getMonitorName();
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getMonitorNameBytes();
+
+    /**
+     * <code>int32 target_width = 2;</code>
+     */
+    int getTargetWidth();
+
+    /**
+     * <code>int32 target_height = 3;</code>
+     */
+    int getTargetHeight();
+  }
+  /**
+   * Protobuf type {@code tc.ChangeMonitorResolution}
+   */
+  public  static final class ChangeMonitorResolution extends
+      com.google.protobuf.GeneratedMessageLite<
+          ChangeMonitorResolution, ChangeMonitorResolution.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.ChangeMonitorResolution)
+      ChangeMonitorResolutionOrBuilder {
+    private ChangeMonitorResolution() {
+      monitorName_ = "";
+    }
+    public static final int MONITOR_NAME_FIELD_NUMBER = 1;
+    private java.lang.String monitorName_;
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getMonitorName() {
+      return monitorName_;
+    }
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMonitorNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(monitorName_);
+    }
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    private void setMonitorName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      monitorName_ = value;
+    }
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    private void clearMonitorName() {
+      
+      monitorName_ = getDefaultInstance().getMonitorName();
+    }
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    private void setMonitorNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      monitorName_ = value.toStringUtf8();
+    }
+
+    public static final int TARGET_WIDTH_FIELD_NUMBER = 2;
+    private int targetWidth_;
+    /**
+     * <code>int32 target_width = 2;</code>
+     */
+    @java.lang.Override
+    public int getTargetWidth() {
+      return targetWidth_;
+    }
+    /**
+     * <code>int32 target_width = 2;</code>
+     */
+    private void setTargetWidth(int value) {
+      
+      targetWidth_ = value;
+    }
+    /**
+     * <code>int32 target_width = 2;</code>
+     */
+    private void clearTargetWidth() {
+      
+      targetWidth_ = 0;
+    }
+
+    public static final int TARGET_HEIGHT_FIELD_NUMBER = 3;
+    private int targetHeight_;
+    /**
+     * <code>int32 target_height = 3;</code>
+     */
+    @java.lang.Override
+    public int getTargetHeight() {
+      return targetHeight_;
+    }
+    /**
+     * <code>int32 target_height = 3;</code>
+     */
+    private void setTargetHeight(int value) {
+      
+      targetHeight_ = value;
+    }
+    /**
+     * <code>int32 target_height = 3;</code>
+     */
+    private void clearTargetHeight() {
+      
+      targetHeight_ = 0;
+    }
+
+    public static tc.TcMessage.ChangeMonitorResolution parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcMessage.ChangeMonitorResolution prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.ChangeMonitorResolution}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcMessage.ChangeMonitorResolution, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.ChangeMonitorResolution)
+        tc.TcMessage.ChangeMonitorResolutionOrBuilder {
+      // Construct using tc.TcMessage.ChangeMonitorResolution.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>string monitor_name = 1;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getMonitorName() {
+        return instance.getMonitorName();
+      }
+      /**
+       * <code>string monitor_name = 1;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMonitorNameBytes() {
+        return instance.getMonitorNameBytes();
+      }
+      /**
+       * <code>string monitor_name = 1;</code>
+       */
+      public Builder setMonitorName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setMonitorName(value);
+        return this;
+      }
+      /**
+       * <code>string monitor_name = 1;</code>
+       */
+      public Builder clearMonitorName() {
+        copyOnWrite();
+        instance.clearMonitorName();
+        return this;
+      }
+      /**
+       * <code>string monitor_name = 1;</code>
+       */
+      public Builder setMonitorNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setMonitorNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>int32 target_width = 2;</code>
+       */
+      @java.lang.Override
+      public int getTargetWidth() {
+        return instance.getTargetWidth();
+      }
+      /**
+       * <code>int32 target_width = 2;</code>
+       */
+      public Builder setTargetWidth(int value) {
+        copyOnWrite();
+        instance.setTargetWidth(value);
+        return this;
+      }
+      /**
+       * <code>int32 target_width = 2;</code>
+       */
+      public Builder clearTargetWidth() {
+        copyOnWrite();
+        instance.clearTargetWidth();
+        return this;
+      }
+
+      /**
+       * <code>int32 target_height = 3;</code>
+       */
+      @java.lang.Override
+      public int getTargetHeight() {
+        return instance.getTargetHeight();
+      }
+      /**
+       * <code>int32 target_height = 3;</code>
+       */
+      public Builder setTargetHeight(int value) {
+        copyOnWrite();
+        instance.setTargetHeight(value);
+        return this;
+      }
+      /**
+       * <code>int32 target_height = 3;</code>
+       */
+      public Builder clearTargetHeight() {
+        copyOnWrite();
+        instance.clearTargetHeight();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.ChangeMonitorResolution)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcMessage.ChangeMonitorResolution();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "monitorName_",
+              "targetWidth_",
+              "targetHeight_",
+            };
+            java.lang.String info =
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0208\u0002\u0004" +
+                "\u0003\u0004";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcMessage.ChangeMonitorResolution> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcMessage.ChangeMonitorResolution.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.ChangeMonitorResolution)
+    private static final tc.TcMessage.ChangeMonitorResolution DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new ChangeMonitorResolution();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        ChangeMonitorResolution.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcMessage.ChangeMonitorResolution getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ChangeMonitorResolution> PARSER;
+
+    public static com.google.protobuf.Parser<ChangeMonitorResolution> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface ChangeMonitorResolutionResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.ChangeMonitorResolutionResult)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    java.lang.String getMonitorName();
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getMonitorNameBytes();
+
+    /**
+     * <code>bool result = 2;</code>
+     */
+    boolean getResult();
+  }
+  /**
+   * Protobuf type {@code tc.ChangeMonitorResolutionResult}
+   */
+  public  static final class ChangeMonitorResolutionResult extends
+      com.google.protobuf.GeneratedMessageLite<
+          ChangeMonitorResolutionResult, ChangeMonitorResolutionResult.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.ChangeMonitorResolutionResult)
+      ChangeMonitorResolutionResultOrBuilder {
+    private ChangeMonitorResolutionResult() {
+      monitorName_ = "";
+    }
+    public static final int MONITOR_NAME_FIELD_NUMBER = 1;
+    private java.lang.String monitorName_;
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getMonitorName() {
+      return monitorName_;
+    }
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMonitorNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(monitorName_);
+    }
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    private void setMonitorName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      monitorName_ = value;
+    }
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    private void clearMonitorName() {
+      
+      monitorName_ = getDefaultInstance().getMonitorName();
+    }
+    /**
+     * <code>string monitor_name = 1;</code>
+     */
+    private void setMonitorNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      monitorName_ = value.toStringUtf8();
+    }
+
+    public static final int RESULT_FIELD_NUMBER = 2;
+    private boolean result_;
+    /**
+     * <code>bool result = 2;</code>
+     */
+    @java.lang.Override
+    public boolean getResult() {
+      return result_;
+    }
+    /**
+     * <code>bool result = 2;</code>
+     */
+    private void setResult(boolean value) {
+      
+      result_ = value;
+    }
+    /**
+     * <code>bool result = 2;</code>
+     */
+    private void clearResult() {
+      
+      result_ = false;
+    }
+
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcMessage.ChangeMonitorResolutionResult prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.ChangeMonitorResolutionResult}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcMessage.ChangeMonitorResolutionResult, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.ChangeMonitorResolutionResult)
+        tc.TcMessage.ChangeMonitorResolutionResultOrBuilder {
+      // Construct using tc.TcMessage.ChangeMonitorResolutionResult.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>string monitor_name = 1;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getMonitorName() {
+        return instance.getMonitorName();
+      }
+      /**
+       * <code>string monitor_name = 1;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMonitorNameBytes() {
+        return instance.getMonitorNameBytes();
+      }
+      /**
+       * <code>string monitor_name = 1;</code>
+       */
+      public Builder setMonitorName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setMonitorName(value);
+        return this;
+      }
+      /**
+       * <code>string monitor_name = 1;</code>
+       */
+      public Builder clearMonitorName() {
+        copyOnWrite();
+        instance.clearMonitorName();
+        return this;
+      }
+      /**
+       * <code>string monitor_name = 1;</code>
+       */
+      public Builder setMonitorNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setMonitorNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>bool result = 2;</code>
+       */
+      @java.lang.Override
+      public boolean getResult() {
+        return instance.getResult();
+      }
+      /**
+       * <code>bool result = 2;</code>
+       */
+      public Builder setResult(boolean value) {
+        copyOnWrite();
+        instance.setResult(value);
+        return this;
+      }
+      /**
+       * <code>bool result = 2;</code>
+       */
+      public Builder clearResult() {
+        copyOnWrite();
+        instance.clearResult();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.ChangeMonitorResolutionResult)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcMessage.ChangeMonitorResolutionResult();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "monitorName_",
+              "result_",
+            };
+            java.lang.String info =
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0208\u0002\u0007" +
+                "";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcMessage.ChangeMonitorResolutionResult> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcMessage.ChangeMonitorResolutionResult.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.ChangeMonitorResolutionResult)
+    private static final tc.TcMessage.ChangeMonitorResolutionResult DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new ChangeMonitorResolutionResult();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        ChangeMonitorResolutionResult.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcMessage.ChangeMonitorResolutionResult getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ChangeMonitorResolutionResult> PARSER;
+
+    public static com.google.protobuf.Parser<ChangeMonitorResolutionResult> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface MessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:tc.Message)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -16624,6 +17952,24 @@ public final class TcMessage {
      * <code>.tc.SwitchWorkMode work_mode = 230;</code>
      */
     tc.TcMessage.SwitchWorkMode getWorkMode();
+
+    /**
+     * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+     */
+    boolean hasChangeMonitorResolution();
+    /**
+     * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+     */
+    tc.TcMessage.ChangeMonitorResolution getChangeMonitorResolution();
+
+    /**
+     * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+     */
+    boolean hasChangeMonitorResolutionResult();
+    /**
+     * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+     */
+    tc.TcMessage.ChangeMonitorResolutionResult getChangeMonitorResolutionResult();
   }
   /**
    * Protobuf type {@code tc.Message}
@@ -18091,6 +19437,122 @@ public final class TcMessage {
       
     }
 
+    public static final int CHANGE_MONITOR_RESOLUTION_FIELD_NUMBER = 240;
+    private tc.TcMessage.ChangeMonitorResolution changeMonitorResolution_;
+    /**
+     * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+     */
+    @java.lang.Override
+    public boolean hasChangeMonitorResolution() {
+      return changeMonitorResolution_ != null;
+    }
+    /**
+     * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.ChangeMonitorResolution getChangeMonitorResolution() {
+      return changeMonitorResolution_ == null ? tc.TcMessage.ChangeMonitorResolution.getDefaultInstance() : changeMonitorResolution_;
+    }
+    /**
+     * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+     */
+    private void setChangeMonitorResolution(tc.TcMessage.ChangeMonitorResolution value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      changeMonitorResolution_ = value;
+      
+      }
+    /**
+     * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+     */
+    private void setChangeMonitorResolution(
+        tc.TcMessage.ChangeMonitorResolution.Builder builderForValue) {
+      changeMonitorResolution_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeChangeMonitorResolution(tc.TcMessage.ChangeMonitorResolution value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (changeMonitorResolution_ != null &&
+          changeMonitorResolution_ != tc.TcMessage.ChangeMonitorResolution.getDefaultInstance()) {
+        changeMonitorResolution_ =
+          tc.TcMessage.ChangeMonitorResolution.newBuilder(changeMonitorResolution_).mergeFrom(value).buildPartial();
+      } else {
+        changeMonitorResolution_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+     */
+    private void clearChangeMonitorResolution() {  changeMonitorResolution_ = null;
+      
+    }
+
+    public static final int CHANGE_MONITOR_RESOLUTION_RESULT_FIELD_NUMBER = 250;
+    private tc.TcMessage.ChangeMonitorResolutionResult changeMonitorResolutionResult_;
+    /**
+     * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+     */
+    @java.lang.Override
+    public boolean hasChangeMonitorResolutionResult() {
+      return changeMonitorResolutionResult_ != null;
+    }
+    /**
+     * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.ChangeMonitorResolutionResult getChangeMonitorResolutionResult() {
+      return changeMonitorResolutionResult_ == null ? tc.TcMessage.ChangeMonitorResolutionResult.getDefaultInstance() : changeMonitorResolutionResult_;
+    }
+    /**
+     * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+     */
+    private void setChangeMonitorResolutionResult(tc.TcMessage.ChangeMonitorResolutionResult value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      changeMonitorResolutionResult_ = value;
+      
+      }
+    /**
+     * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+     */
+    private void setChangeMonitorResolutionResult(
+        tc.TcMessage.ChangeMonitorResolutionResult.Builder builderForValue) {
+      changeMonitorResolutionResult_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeChangeMonitorResolutionResult(tc.TcMessage.ChangeMonitorResolutionResult value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (changeMonitorResolutionResult_ != null &&
+          changeMonitorResolutionResult_ != tc.TcMessage.ChangeMonitorResolutionResult.getDefaultInstance()) {
+        changeMonitorResolutionResult_ =
+          tc.TcMessage.ChangeMonitorResolutionResult.newBuilder(changeMonitorResolutionResult_).mergeFrom(value).buildPartial();
+      } else {
+        changeMonitorResolutionResult_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+     */
+    private void clearChangeMonitorResolutionResult() {  changeMonitorResolutionResult_ = null;
+      
+    }
+
     public static tc.TcMessage.Message parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -19378,6 +20840,100 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+       */
+      @java.lang.Override
+      public boolean hasChangeMonitorResolution() {
+        return instance.hasChangeMonitorResolution();
+      }
+      /**
+       * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.ChangeMonitorResolution getChangeMonitorResolution() {
+        return instance.getChangeMonitorResolution();
+      }
+      /**
+       * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+       */
+      public Builder setChangeMonitorResolution(tc.TcMessage.ChangeMonitorResolution value) {
+        copyOnWrite();
+        instance.setChangeMonitorResolution(value);
+        return this;
+        }
+      /**
+       * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+       */
+      public Builder setChangeMonitorResolution(
+          tc.TcMessage.ChangeMonitorResolution.Builder builderForValue) {
+        copyOnWrite();
+        instance.setChangeMonitorResolution(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+       */
+      public Builder mergeChangeMonitorResolution(tc.TcMessage.ChangeMonitorResolution value) {
+        copyOnWrite();
+        instance.mergeChangeMonitorResolution(value);
+        return this;
+      }
+      /**
+       * <code>.tc.ChangeMonitorResolution change_monitor_resolution = 240;</code>
+       */
+      public Builder clearChangeMonitorResolution() {  copyOnWrite();
+        instance.clearChangeMonitorResolution();
+        return this;
+      }
+
+      /**
+       * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+       */
+      @java.lang.Override
+      public boolean hasChangeMonitorResolutionResult() {
+        return instance.hasChangeMonitorResolutionResult();
+      }
+      /**
+       * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.ChangeMonitorResolutionResult getChangeMonitorResolutionResult() {
+        return instance.getChangeMonitorResolutionResult();
+      }
+      /**
+       * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+       */
+      public Builder setChangeMonitorResolutionResult(tc.TcMessage.ChangeMonitorResolutionResult value) {
+        copyOnWrite();
+        instance.setChangeMonitorResolutionResult(value);
+        return this;
+        }
+      /**
+       * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+       */
+      public Builder setChangeMonitorResolutionResult(
+          tc.TcMessage.ChangeMonitorResolutionResult.Builder builderForValue) {
+        copyOnWrite();
+        instance.setChangeMonitorResolutionResult(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+       */
+      public Builder mergeChangeMonitorResolutionResult(tc.TcMessage.ChangeMonitorResolutionResult value) {
+        copyOnWrite();
+        instance.mergeChangeMonitorResolutionResult(value);
+        return this;
+      }
+      /**
+       * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
+       */
+      public Builder clearChangeMonitorResolutionResult() {  copyOnWrite();
+        instance.clearChangeMonitorResolutionResult();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.Message)
     }
     @java.lang.Override
@@ -19420,11 +20976,13 @@ public final class TcMessage {
               "switchMonitor_",
               "monitorSwitched_",
               "workMode_",
+              "changeMonitorResolution_",
+              "changeMonitorResolutionResult_",
             };
             java.lang.String info =
-                "\u0000\u0019\u0000\u0000\n\u00e6\u0019\u0000\u0001\u0000\n\f\u0014\u0003\u001e\u0208" +
+                "\u0000\u001b\u0000\u0000\n\u00fa\u001b\u0000\u0001\u0000\n\f\u0014\u0003\u001e\u0208" +
                 "(\t)\t2\t<\t=\tF\tP\tZ\td\tn\tx\t\u0082\t\u008c\t\u0096\t\u00a0\u001b\u00aa\t\u00b4" +
-                "\t\u00be\t\u00c8\t\u00d2\t\u00dc\t\u00e6\t";
+                "\t\u00be\t\u00c8\t\u00d2\t\u00dc\t\u00e6\t\u00f0\t\u00fa\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

@@ -13,9 +13,9 @@ android {
         applicationId "com.tc.client"
         minSdk 26
         targetSdk 34
-        versionCode 118
+        versionCode 119
         multiDexEnabled true
-        versionName "1.1.8"
+        versionName "1.1.9"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
@@ -30,15 +30,15 @@ android {
     signingConfigs {
         debug {
             storeFile file("./tc_key.jks")
-            storePassword "Shark@3210%!"
-            keyAlias "tc_key_android"
-            keyPassword "Shark@3210%!"
+            storePassword "123456"
+            keyAlias "tc_key"
+            keyPassword "123456"
         }
         release {
             storeFile file("./tc_key.jks")
-            storePassword "Shark@3210%!"
-            keyAlias "tc_key_android"
-            keyPassword "Shark@3210%!"
+            storePassword "123456"
+            keyAlias "tc_key"
+            keyPassword "123456"
         }
     }
 
