@@ -189,6 +189,14 @@ public final class TcMessage {
      * <code>kInsertKeyFrame = 230;</code>
      */
     kInsertKeyFrame(230),
+    /**
+     * <pre>
+     * restart me, server -&gt; host panel
+     * </pre>
+     *
+     * <code>kRestartServer = 240;</code>
+     */
+    kRestartServer(240),
     UNRECOGNIZED(-1),
     ;
 
@@ -368,6 +376,14 @@ public final class TcMessage {
      * <code>kInsertKeyFrame = 230;</code>
      */
     public static final int kInsertKeyFrame_VALUE = 230;
+    /**
+     * <pre>
+     * restart me, server -&gt; host panel
+     * </pre>
+     *
+     * <code>kRestartServer = 240;</code>
+     */
+    public static final int kRestartServer_VALUE = 240;
 
 
     @java.lang.Override
@@ -415,6 +431,7 @@ public final class TcMessage {
         case 210: return kChangeMonitorResolutionResult;
         case 220: return kAvailableResolutions;
         case 230: return kInsertKeyFrame;
+        case 240: return kRestartServer;
         default: return null;
       }
     }
@@ -858,6 +875,102 @@ public final class TcMessage {
     }
 
     // @@protoc_insertion_point(enum_scope:tc.ClientType)
+  }
+
+  /**
+   * Protobuf enum {@code tc.ClientConnType}
+   */
+  public enum ClientConnType
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>kWebsocket = 0;</code>
+     */
+    kWebsocket(0),
+    /**
+     * <code>kUdpKcp = 1;</code>
+     */
+    kUdpKcp(1),
+    /**
+     * <code>kWebRtc = 2;</code>
+     */
+    kWebRtc(2),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>kWebsocket = 0;</code>
+     */
+    public static final int kWebsocket_VALUE = 0;
+    /**
+     * <code>kUdpKcp = 1;</code>
+     */
+    public static final int kUdpKcp_VALUE = 1;
+    /**
+     * <code>kWebRtc = 2;</code>
+     */
+    public static final int kWebRtc_VALUE = 2;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ClientConnType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static ClientConnType forNumber(int value) {
+      switch (value) {
+        case 0: return kWebsocket;
+        case 1: return kUdpKcp;
+        case 2: return kWebRtc;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ClientConnType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ClientConnType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ClientConnType>() {
+            @java.lang.Override
+            public ClientConnType findValueByNumber(int number) {
+              return ClientConnType.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return ClientConnTypeVerifier.INSTANCE;
+    }
+
+    private static final class ClientConnTypeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new ClientConnTypeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return ClientConnType.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private ClientConnType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:tc.ClientConnType)
   }
 
   /**
@@ -17722,6 +17835,289 @@ public final class TcMessage {
     }
   }
 
+  public interface RestartServerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.RestartServer)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>string reason = 1;</code>
+     */
+    java.lang.String getReason();
+    /**
+     * <code>string reason = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getReasonBytes();
+  }
+  /**
+   * Protobuf type {@code tc.RestartServer}
+   */
+  public  static final class RestartServer extends
+      com.google.protobuf.GeneratedMessageLite<
+          RestartServer, RestartServer.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.RestartServer)
+      RestartServerOrBuilder {
+    private RestartServer() {
+      reason_ = "";
+    }
+    public static final int REASON_FIELD_NUMBER = 1;
+    private java.lang.String reason_;
+    /**
+     * <code>string reason = 1;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getReason() {
+      return reason_;
+    }
+    /**
+     * <code>string reason = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getReasonBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(reason_);
+    }
+    /**
+     * <code>string reason = 1;</code>
+     */
+    private void setReason(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      reason_ = value;
+    }
+    /**
+     * <code>string reason = 1;</code>
+     */
+    private void clearReason() {
+      
+      reason_ = getDefaultInstance().getReason();
+    }
+    /**
+     * <code>string reason = 1;</code>
+     */
+    private void setReasonBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      reason_ = value.toStringUtf8();
+    }
+
+    public static tc.TcMessage.RestartServer parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.RestartServer parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.RestartServer parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.RestartServer parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.RestartServer parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.RestartServer parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.RestartServer parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.RestartServer parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.RestartServer parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.RestartServer parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.RestartServer parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.RestartServer parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcMessage.RestartServer prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.RestartServer}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcMessage.RestartServer, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.RestartServer)
+        tc.TcMessage.RestartServerOrBuilder {
+      // Construct using tc.TcMessage.RestartServer.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>string reason = 1;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getReason() {
+        return instance.getReason();
+      }
+      /**
+       * <code>string reason = 1;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getReasonBytes() {
+        return instance.getReasonBytes();
+      }
+      /**
+       * <code>string reason = 1;</code>
+       */
+      public Builder setReason(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setReason(value);
+        return this;
+      }
+      /**
+       * <code>string reason = 1;</code>
+       */
+      public Builder clearReason() {
+        copyOnWrite();
+        instance.clearReason();
+        return this;
+      }
+      /**
+       * <code>string reason = 1;</code>
+       */
+      public Builder setReasonBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setReasonBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.RestartServer)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcMessage.RestartServer();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "reason_",
+            };
+            java.lang.String info =
+                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u0208";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcMessage.RestartServer> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcMessage.RestartServer.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.RestartServer)
+    private static final tc.TcMessage.RestartServer DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new RestartServer();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        RestartServer.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcMessage.RestartServer getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<RestartServer> PARSER;
+
+    public static com.google.protobuf.Parser<RestartServer> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface MessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:tc.Message)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -17970,6 +18366,15 @@ public final class TcMessage {
      * <code>.tc.ChangeMonitorResolutionResult change_monitor_resolution_result = 250;</code>
      */
     tc.TcMessage.ChangeMonitorResolutionResult getChangeMonitorResolutionResult();
+
+    /**
+     * <code>.tc.RestartServer restart_server = 260;</code>
+     */
+    boolean hasRestartServer();
+    /**
+     * <code>.tc.RestartServer restart_server = 260;</code>
+     */
+    tc.TcMessage.RestartServer getRestartServer();
   }
   /**
    * Protobuf type {@code tc.Message}
@@ -19553,6 +19958,64 @@ public final class TcMessage {
       
     }
 
+    public static final int RESTART_SERVER_FIELD_NUMBER = 260;
+    private tc.TcMessage.RestartServer restartServer_;
+    /**
+     * <code>.tc.RestartServer restart_server = 260;</code>
+     */
+    @java.lang.Override
+    public boolean hasRestartServer() {
+      return restartServer_ != null;
+    }
+    /**
+     * <code>.tc.RestartServer restart_server = 260;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.RestartServer getRestartServer() {
+      return restartServer_ == null ? tc.TcMessage.RestartServer.getDefaultInstance() : restartServer_;
+    }
+    /**
+     * <code>.tc.RestartServer restart_server = 260;</code>
+     */
+    private void setRestartServer(tc.TcMessage.RestartServer value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      restartServer_ = value;
+      
+      }
+    /**
+     * <code>.tc.RestartServer restart_server = 260;</code>
+     */
+    private void setRestartServer(
+        tc.TcMessage.RestartServer.Builder builderForValue) {
+      restartServer_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.RestartServer restart_server = 260;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeRestartServer(tc.TcMessage.RestartServer value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (restartServer_ != null &&
+          restartServer_ != tc.TcMessage.RestartServer.getDefaultInstance()) {
+        restartServer_ =
+          tc.TcMessage.RestartServer.newBuilder(restartServer_).mergeFrom(value).buildPartial();
+      } else {
+        restartServer_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.RestartServer restart_server = 260;</code>
+     */
+    private void clearRestartServer() {  restartServer_ = null;
+      
+    }
+
     public static tc.TcMessage.Message parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -20934,6 +21397,53 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <code>.tc.RestartServer restart_server = 260;</code>
+       */
+      @java.lang.Override
+      public boolean hasRestartServer() {
+        return instance.hasRestartServer();
+      }
+      /**
+       * <code>.tc.RestartServer restart_server = 260;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.RestartServer getRestartServer() {
+        return instance.getRestartServer();
+      }
+      /**
+       * <code>.tc.RestartServer restart_server = 260;</code>
+       */
+      public Builder setRestartServer(tc.TcMessage.RestartServer value) {
+        copyOnWrite();
+        instance.setRestartServer(value);
+        return this;
+        }
+      /**
+       * <code>.tc.RestartServer restart_server = 260;</code>
+       */
+      public Builder setRestartServer(
+          tc.TcMessage.RestartServer.Builder builderForValue) {
+        copyOnWrite();
+        instance.setRestartServer(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.RestartServer restart_server = 260;</code>
+       */
+      public Builder mergeRestartServer(tc.TcMessage.RestartServer value) {
+        copyOnWrite();
+        instance.mergeRestartServer(value);
+        return this;
+      }
+      /**
+       * <code>.tc.RestartServer restart_server = 260;</code>
+       */
+      public Builder clearRestartServer() {  copyOnWrite();
+        instance.clearRestartServer();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.Message)
     }
     @java.lang.Override
@@ -20978,11 +21488,12 @@ public final class TcMessage {
               "workMode_",
               "changeMonitorResolution_",
               "changeMonitorResolutionResult_",
+              "restartServer_",
             };
             java.lang.String info =
-                "\u0000\u001b\u0000\u0000\n\u00fa\u001b\u0000\u0001\u0000\n\f\u0014\u0003\u001e\u0208" +
+                "\u0000\u001c\u0000\u0000\n\u0104\u001c\u0000\u0001\u0000\n\f\u0014\u0003\u001e\u0208" +
                 "(\t)\t2\t<\t=\tF\tP\tZ\td\tn\tx\t\u0082\t\u008c\t\u0096\t\u00a0\u001b\u00aa\t\u00b4" +
-                "\t\u00be\t\u00c8\t\u00d2\t\u00dc\t\u00e6\t\u00f0\t\u00fa\t";
+                "\t\u00be\t\u00c8\t\u00d2\t\u00dc\t\u00e6\t\u00f0\t\u00fa\t\u0104\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
