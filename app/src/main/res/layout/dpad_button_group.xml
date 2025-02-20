@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tc.client.DpadButtonGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/id_dpad_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:background="#00000000"/>
+
+    <com.tc.client.widgets.DPadButton
+        android:id="@+id/id_dpad_left"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_left"
+        android:padding="13dp"
+        app:borderColor="@color/button_border"
+        app:circleColor="@color/dpag_button_background"/>
+
+    <com.tc.client.widgets.DPadButton
+        android:id="@+id/id_dpad_up"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_up"
+        android:padding="13dp"
+        app:borderColor="@color/button_border"
+        app:circleColor="@color/dpag_button_background"/>
+
+    <com.tc.client.widgets.DPadButton
+        android:id="@+id/id_dpad_down"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_down"
+        android:padding="13dp"
+        app:borderColor="@color/button_border"
+        app:circleColor="@color/dpag_button_background"/>
+
+    <com.tc.client.widgets.DPadButton
+        android:id="@+id/id_dpad_right"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_right"
+        android:padding="13dp"
+        android:backgroundTint="@color/white"
+        app:borderColor="@color/button_border"
+        app:circleColor="@color/dpag_button_background"/>
+
+</com.tc.client.DpadButtonGroup>

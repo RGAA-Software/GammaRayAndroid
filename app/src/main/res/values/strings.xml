@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">GammaRay</string>
+    <string name="manual_input_server">Manual Input Server</string>
+    <string name="please_input_server_ip">Please input Server IP</string>
+    <string name="no_server">Add server by + button</string>
+    <string name="delete">DELETE</string>
+    <string name="do_you_want_to_delete_this_server">Do you want to delete this server ?</string>
+    <string name="show_virtual_gamepad">Show virtual GamePad (Ignore Hardware)</string>
+    <string name="invert_joystick_y_axis">Invert Joystick Y Axis</string>
+    <string name="show_cursor">Show Cursor</string>
+    <string name="restart_server">Restart Server</string>
+    <string name="do_you_want_to_restart_server">Do you want to restart server ?</string>
+    <string name="open_spectrum_activity">Open Spectrum Activity</string>
+    <string name="do_you_want_to_open_spectrum_activity">Do you want to open spectrum activity?</string>
+    <string name="stop_game">Stop Game</string>
+    <string name="do_you_want_to_stop_game">Do you want to stop game ?</string>
+    <string name="error">Error</string>
+    <string name="server_offline">Server offline!</string>
+    <string name="version">Version</string>
+</resources>

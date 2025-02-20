@@ -1,0 +1,18 @@
+[submodule "app/src/main/cpp/tc_3rdparty"]
+	path = app/src/main/cpp/tc_3rdparty
+	url = git@github.com:RGAA-Software/tc_3rdparty.git
+[submodule "app/src/main/cpp/tc_webrtc_client"]
+	path = app/src/main/cpp/tc_webrtc_client
+	url = git@github.com:RGAA-Software/tc_webrtc_client.git
+[submodule "app/src/main/cpp/tc_client_sdk_new"]
+	path = app/src/main/cpp/tc_client_sdk_new
+	url = git@github.com:RGAA-Software/tc_client_sdk_new.git
+[submodule "app/src/main/cpp/tc_common_new"]
+	path = app/src/main/cpp/tc_common_new
+	url = git@github.com:RGAA-Software/tc_common_new.git
+[submodule "app/src/main/cpp/tc_message_new"]
+	path = app/src/main/cpp/tc_message_new
+	url = git@github.com:RGAA-Software/tc_message_new.git
+[submodule "app/src/main/cpp/tc_opus_codec_new"]
+	path = app/src/main/cpp/tc_opus_codec_new
+	url = git@github.com:RGAA-Software/tc_opus_codec_new.git

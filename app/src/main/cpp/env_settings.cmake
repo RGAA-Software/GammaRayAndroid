@@ -1,0 +1,1 @@
+set(VCPKG_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/tc_3rdparty/vcpkg)

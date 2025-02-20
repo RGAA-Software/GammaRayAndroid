@@ -1,0 +1,374 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.greenrobot.greendao'
+    id 'com.google.protobuf'
+}
+
+android {
+    namespace 'com.tc.client'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.tc.client"
+        minSdk 26
+        targetSdk 34
+        versionCode 119
+        multiDexEnabled true
+        versionName "1.1.9"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags '-std=c++20'
+                arguments "-DANDROID_STL=c++_shared"
+            }
+        }
+        ndkVersion "27.0.11902837"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("./tc_key.jks")
+            storePassword "123456"
+            keyAlias "tc_key"
+            keyPassword "123456"
+        }
+        release {
+            storeFile file("./tc_key.jks")
+            storePassword "123456"
+            keyAlias "tc_key"
+            keyPassword "123456"
+        }
+    }
+
+    buildTypes {
+        debug {
+            ndk {
+                abiFilters "arm64-v8a"
+                //abiFilters "x86_64"
+                //abiFilters "armeabi-v7a"
+                //abiFilters "x86"
+            }
+            signingConfig signingConfigs.release
+        }
+        release {
+            ndk {
+                abiFilters "arm64-v8a", "x86_64", "armeabi-v7a"//, "x86"
+            }
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    externalNativeBuild {
+        cmake {
+            path file('src/main/cpp/CMakeLists.txt')
+            version '3.22.1'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+        compose true
+        prefab true
+        dataBinding true
+        buildConfig = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.3'
+    }
+    packaging {
+        resources {
+//            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "gammaray_" + productFlavors[0].manifestPlaceholders.get("apk_name") + "_" + variant.versionName + ".apk"
+        }
+    }
+
+    sourceSets {
+        official {
+            manifest.srcFile 'main/AndroidManifest.xml'
+            jniLibs.srcDirs = ['libs']
+            java {
+                srcDir 'src/main/java'
+            }
+            proto {
+                srcDir 'src/main/cpp/tc_message_new' //指定.proto文件路径
+            }
+        }
+//        steam {
+//            manifest.srcFile 'main/AndroidManifest.xml'
+//            jniLibs.srcDirs = ['libs']
+//        }
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//        }
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        official {
+            dimension "version"
+            //applicationIdSuffix ".offical"
+            manifestPlaceholders = [
+                    app_icon: "@drawable/ic_launcher",
+                    app_name: "GammaRay",
+                    apk_name: "official"
+            ]
+        }
+//        steam {
+//            dimension "version"
+//            manifestPlaceholders = [
+//                    app_icon: "@drawable/ic_launcher",
+//                    app_name: "Thunder Cloud",
+//                    //src_package: "cn.dolit.vr.demo",
+//                    apk_name: "Steam"
+//            ]
+//        }
+    }
+
+    this.project.afterEvaluate { project ->
+        project.tasks.each { task ->
+            if (task.toString().contains("assemble") && task.toString().contains("Release") && !task.toString().contains("Test")) {
+                task.doLast {
+                    android.applicationVariants.all { variant ->
+                        variant.outputs.all {
+                            println("FLAVOR : ${productFlavors[0].name}")
+                            def currentName = outputFileName
+                            println("==> current output file name : ${currentName}")
+
+                            def workFolder = "${project.getProjectDir().path}/build/outputs/apk/${productFlavors[0].name}/${variant.buildType.name}"
+                            def destFolder = new File("${project.getProjectDir().path}/apk/${variant.buildType.name}")
+
+                            println("==>name: ${currentName}")
+                            println("==>workfolder: ${workFolder}")
+                            println("==>dst: ${destFolder}")
+
+                            try {
+                                if (!destFolder.exists()) {
+                                    destFolder.mkdirs()
+                                }
+                                copy {
+                                    from "${workFolder}/${currentName}"
+                                    into "${destFolder}/"
+//                                    rename {
+//                                        "property_v${versionName}_${versionCode}_${variant.buildType.name}.apk"
+//                                    }
+                                }
+                            } catch (Exception e) {
+                                print e
+                            }
+
+                        }
+                    }
+                }
+            } else if (task.toString().contains("assemble") && task.toString().contains("Debug") && !task.toString().contains("Test")) {
+                task.doLast {
+                    android.applicationVariants.all { variant ->
+                        variant.outputs.all {
+                            println("FLAVOR : ${productFlavors[0].name}")
+                            def currentName = outputFileName
+                            println("==> current output file name : ${currentName}")
+
+                            def workFolder = "${project.getProjectDir().path}/build/outputs/apk/${productFlavors[0].name}/${variant.buildType.name}"
+                            def destFolder = new File("${project.getProjectDir().path}/apk/${variant.buildType.name}")
+
+                            println("==>name: ${currentName}")
+                            println("==>workfolder: ${workFolder}")
+                            println("==>dst: ${destFolder}")
+
+                            try {
+                                if (!destFolder.exists()) {
+                                    destFolder.mkdirs()
+                                }
+                                copy {
+                                    from "${workFolder}/${currentName}"
+                                    into "${destFolder}/"
+//                                    rename {
+//                                        "property_v${versionName}_${versionCode}_${variant.buildType.name}.apk"
+//                                    }
+                                }
+                            } catch (Exception e) {
+                                print e
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// GreenDAO
+greendao {
+    schemaVersion 1
+    daoPackage 'com.tc.client.db'
+    targetGenDir 'src/main/java'
+}
+
+//编译GreenDAO使用，对应错误
+//Gradle detected a problem with the following location
+tasks.whenTaskAdded { task ->
+    if (task.name.matches("compile\\w*Kotlin")) {
+        task.dependsOn('greendao')
+    }
+}
+
+dependencies {
+    implementation files('libs/joml-1.10.5.jar')
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    def accompanist_version = "0.34.0"
+    implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-pager-indicators:$accompanist_version"
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation 'androidx.activity:activity-compose:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation platform('androidx.compose:compose-bom:2023.03.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    implementation 'com.google.oboe:oboe:1.8.1'
+
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+
+    //implementation 'com.google.android.gms:play-services-ads:23.0.0'
+    //implementation 'com.google.android.ump:user-messaging-platform:2.2.0'
+
+    implementation "com.etebarian:meow-bottom-navigation:1.2.0"
+
+    // pull refresh
+    implementation "com.github.SimformSolutionsPvtLtd:SSPullToRefresh:1.5.2"
+
+    // blur
+    //implementation "com.github.mmin18:realtimeblurview:1.2.1"
+
+    // okhttp
+    implementation "com.squareup.okhttp3:okhttp:4.12.0"
+
+    // glide
+    implementation "com.github.bumptech.glide:glide:4.16.0"
+
+    implementation "org.java-websocket:Java-WebSocket:1.5.3"
+    //implementation 'io.crossbar.autobahn:autobahn-android:21.7.1'
+
+    // AndroidX
+    implementation 'com.github.jenly1314:zxing-lite:3.1.0'
+
+    // Lottie
+    implementation 'com.airbnb.android:lottie:6.4.0'
+
+    // GreenDao
+    implementation 'org.greenrobot:greendao:3.3.0' // add library
+
+    // EventBus
+    implementation "org.greenrobot:eventbus:3.3.1"
+
+    //
+    implementation 'com.github.linger1216:labelview:v1.1.2'
+
+    // websocket
+    implementation "org.java-websocket:Java-WebSocket:1.5.3"
+
+    // protobuf
+    implementation 'com.google.protobuf:protobuf-javalite:3.8.0'
+    //implementation 'com.google.protobuf:protobuf-java:3.8.0'
+    implementation 'com.google.protobuf:protoc:3.8.0'
+
+    implementation 'com.crashinvaders.vfx:gdx-vfx-core:0.5.4'
+    implementation 'com.crashinvaders.vfx:gdx-vfx-effects:0.5.4'
+
+    def gdxVersion = '1.12.1'
+    def box2dVersion = '1.12.1'
+    configurations { natives }
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    //implementation 'com.android.support:appcompat-v7:22.1.1'
+    implementation 'com.badoo.mobile:android-weak-handler:1.0'
+    implementation 'com.facebook.rebound:rebound:0.3.6'
+
+    implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+    implementation "com.badlogicgames.gdx:gdx-box2d:$box2dVersion"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:$box2dVersion:natives-arm64-v8a"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:$box2dVersion:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:$box2dVersion:natives-x86_64"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:$box2dVersion:natives-x86"
+    implementation "com.esotericsoftware.spine:spine-libgdx:3.5.51.1"
+    implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+    //api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
+    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
+    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation platform('androidx.compose:compose-bom:2023.03.00')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.8.0'
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option "lite"
+                }
+            }
+        }
+    }
+    generatedFilesBaseDir = "$projectDir/src/generated/proto"
+}
+
+task copyAndroidNatives() {
+    file("libs/arm64-v8a/").mkdirs();
+    //file("libs/armeabi/").mkdirs();
+    file("libs/armeabi-v7a/").mkdirs();
+    file("libs/x86_64/").mkdirs();
+    file("libs/x86/").mkdirs();
+
+    configurations.natives.files.each { jar ->
+        def outputDir = null
+        if(jar.name.endsWith("natives-arm64-v8a.jar")) outputDir = file("libs/arm64-v8a")
+        if(jar.name.endsWith("natives-armeabi-v7a.jar")) outputDir = file("libs/armeabi-v7a")
+        //if(jar.name.endsWith("natives-armeabi.jar")) outputDir = file("libs/armeabi")
+        if(jar.name.endsWith("natives-x86_64.jar")) outputDir = file("libs/x86_64")
+        if(jar.name.endsWith("natives-x86.jar")) outputDir = file("libs/x86")
+        if(outputDir != null) {
+            copy {
+                from zipTree(jar)
+                into outputDir
+                include "*.so"
+            }
+        }
+    }
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="130dp"
+    android:elevation="5dp"
+    android:outlineAmbientShadowColor="#000"
+    android:outlineSpotShadowColor="#ccc"
+    android:translationZ="5dp"
+    app:cardBackgroundColor="#ffffff"
+    app:cardCornerRadius="5dp">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="120dp" />
+
+    <ImageView
+        android:id="@+id/effect_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="#fff" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/id_app_name"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="#cfff"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="Test"
+            android:textColor="#333333"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:visibility="gone"
+            android:id="@+id/id_effect_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:translationZ="10dp"
+            app:cardBackgroundColor="#ffffff"
+            android:elevation="10dp"
+            app:cardCornerRadius="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="65dp">
+
+            <ImageView
+                android:id="@+id/connect_screen"
+                android:layout_width="82dp"
+                android:layout_height="82dp"
+                android:src="@drawable/ic_desktop_mac" />
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

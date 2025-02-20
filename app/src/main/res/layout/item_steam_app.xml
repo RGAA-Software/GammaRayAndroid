@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    app:cardCornerRadius="5dp"
+    app:cardBackgroundColor="#ffffff"
+    android:elevation="5dp"
+    android:translationZ="5dp"
+    android:outlineAmbientShadowColor="#000"
+    android:outlineSpotShadowColor="#ccc" >
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="150dp" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/book_cover"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:contentDescription="book cover"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="#555555"/>-->
+
+    <com.lid.lib.LabelImageView
+        android:id="@+id/game_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:label_backgroundColor="#C2185B"
+        app:label_orientation="LEFT_TOP"
+        app:label_distance="35dp"
+        app:label_height="20dp"
+        app:label_strokeWidth="2dp"
+        app:label_text="CHINA" />
+
+    <RelativeLayout
+        android:id="@+id/id_root_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <ImageView
+            android:id="@+id/id_status_on_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/ic_windows"/>
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<!--        <com.github.mmin18.widget.RealtimeBlurView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="45dp"-->
+<!--            app:realtimeBlurRadius="20dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:realtimeOverlayColor="#5000" />-->
+
+        <TextView
+            android:id="@+id/id_app_name"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="RAZ Full"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:ellipsize="end"
+            android:background="#c000"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/id_running_game_indicator"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            app:cardCornerRadius="9dp"
+            app:cardBackgroundColor="#00ff00"
+            android:elevation="15dp"
+            android:translationZ="15dp"
+            android:outlineAmbientShadowColor="#fff"
+            android:outlineSpotShadowColor="#ccc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            />
+
+        <ImageView
+            android:id="@+id/id_engine"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_unity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:visibility="gone"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

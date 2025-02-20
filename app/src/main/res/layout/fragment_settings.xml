@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:hint="Please input">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Show GamePad -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_height">
+
+                <TextView
+                    android:text="@string/show_virtual_gamepad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/settings_title_font_size"
+                    android:layout_marginLeft="@dimen/settings_margin_border"
+                    android:layout_centerVertical="true"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/id_show_virtual_gamepad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/settings_margin_border"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/settings_margin_border"
+                    android:layout_marginRight="@dimen/settings_margin_border"
+                    android:background="#EEEEEE"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <!-- Invert Joystick Y -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_height">
+
+                <TextView
+                    android:text="@string/invert_joystick_y_axis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/settings_title_font_size"
+                    android:layout_marginLeft="@dimen/settings_margin_border"
+                    android:layout_centerVertical="true"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/id_invert_joystick_y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/settings_margin_border"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/settings_margin_border"
+                    android:layout_marginRight="@dimen/settings_margin_border"
+                    android:background="#EEEEEE"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <!-- Show cursor -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_height">
+
+                <TextView
+                    android:text="@string/show_cursor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/settings_title_font_size"
+                    android:layout_marginLeft="@dimen/settings_margin_border"
+                    android:layout_centerVertical="true"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/id_show_cursor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/settings_margin_border"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/settings_margin_border"
+                    android:layout_marginRight="@dimen/settings_margin_border"
+                    android:background="#EEEEEE"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <!-- Show cursor -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_height">
+
+                <TextView
+                    android:text="Show Fullscreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/settings_title_font_size"
+                    android:layout_marginLeft="@dimen/settings_margin_border"
+                    android:layout_centerVertical="true"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/idFullscreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/settings_margin_border"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/settings_margin_border"
+                    android:layout_marginRight="@dimen/settings_margin_border"
+                    android:background="#EEEEEE"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <!-- Version -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settings_item_height">
+                <TextView
+                    android:text="@string/version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/settings_title_font_size"
+                    android:layout_marginLeft="@dimen/settings_margin_border"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/id_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="15dp"
+                    android:text="V 1.1.0"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

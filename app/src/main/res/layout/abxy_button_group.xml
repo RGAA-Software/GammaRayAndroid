@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tc.client.DpadButtonGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/id_abxy_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:background="#0000"/>
+
+    <com.tc.client.widgets.DPadButton
+        android:id="@+id/id_dpad_x"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        app:borderColor="@color/button_border"
+        app:circleColor="#3177fe"/>
+
+    <com.tc.client.widgets.DPadButton
+        android:id="@+id/id_dpad_y"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        app:circleColor="#ffcc33"
+        app:borderColor="@color/button_border"/>
+
+    <com.tc.client.widgets.DPadButton
+        android:id="@+id/id_dpad_a"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        app:borderColor="@color/button_border"
+        app:circleColor="#99cc33"/>
+
+    <com.tc.client.widgets.DPadButton
+        android:id="@+id/id_dpad_b"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        app:borderColor="@color/button_border"
+        app:circleColor="#E32636"/>
+
+</com.tc.client.DpadButtonGroup>
