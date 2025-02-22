@@ -71,7 +71,7 @@ public class FrameRenderActivity extends Activity {
                          mFrameRenderView.onEventTick();
                      }
                  });
-                SystemClock.sleep(17);
+                SystemClock.sleep(10);
             }
         });
         mTickThread.start();

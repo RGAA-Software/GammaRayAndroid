@@ -297,7 +297,7 @@ namespace tc
 
     void FrameRender::RegisterListeners() {
         bus_listener_ = app_context_->ObtainMessageListener();
-        bus_listener_->Listen<MsgFirstFrameDecoded>([=, this](const auto& msg) {
+        bus_listener_->Listen<MsgFirstVideoFrameDecoded>([=, this](const auto& msg) {
             this->need_init_texture_ = true;
             LOGI("Need to init texture...");
         });

@@ -9,6 +9,119 @@ public final class TcMessage {
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
   /**
+   * Protobuf enum {@code tc.RespCode}
+   */
+  public enum RespCode
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>kRespCodeNone = 0;</code>
+     */
+    kRespCodeNone(0),
+    /**
+     * <code>kRespCodeOk = 1;</code>
+     */
+    kRespCodeOk(1),
+    /**
+     * <code>kRespCodeError = 2;</code>
+     */
+    kRespCodeError(2),
+    /**
+     * <pre>
+     * 超时
+     * </pre>
+     *
+     * <code>kRespCodeTimeout = 3;</code>
+     */
+    kRespCodeTimeout(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>kRespCodeNone = 0;</code>
+     */
+    public static final int kRespCodeNone_VALUE = 0;
+    /**
+     * <code>kRespCodeOk = 1;</code>
+     */
+    public static final int kRespCodeOk_VALUE = 1;
+    /**
+     * <code>kRespCodeError = 2;</code>
+     */
+    public static final int kRespCodeError_VALUE = 2;
+    /**
+     * <pre>
+     * 超时
+     * </pre>
+     *
+     * <code>kRespCodeTimeout = 3;</code>
+     */
+    public static final int kRespCodeTimeout_VALUE = 3;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static RespCode valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static RespCode forNumber(int value) {
+      switch (value) {
+        case 0: return kRespCodeNone;
+        case 1: return kRespCodeOk;
+        case 2: return kRespCodeError;
+        case 3: return kRespCodeTimeout;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<RespCode>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        RespCode> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<RespCode>() {
+            @java.lang.Override
+            public RespCode findValueByNumber(int number) {
+              return RespCode.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return RespCodeVerifier.INSTANCE;
+    }
+
+    private static final class RespCodeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new RespCodeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return RespCode.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private RespCode(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:tc.RespCode)
+  }
+
+  /**
    * Protobuf enum {@code tc.MessageType}
    */
   public enum MessageType
@@ -205,6 +318,66 @@ public final class TcMessage {
      * <code>kSyncPanelInfo = 250;</code>
      */
     kSyncPanelInfo(250),
+    /**
+     * <pre>
+     * file transfer begin
+     * </pre>
+     *
+     * <code>kFileOperateionsEvent = 260;</code>
+     */
+    kFileOperateionsEvent(260),
+    /**
+     * <code>kFileOperateRespRename = 265;</code>
+     */
+    kFileOperateRespRename(265),
+    /**
+     * <code>kFileOperateRespGetFileList = 270;</code>
+     */
+    kFileOperateRespGetFileList(270),
+    /**
+     * <code>kFileOperateRespCreateNewFolder = 280;</code>
+     */
+    kFileOperateRespCreateNewFolder(280),
+    /**
+     * <code>kFileOperateRespExists = 285;</code>
+     */
+    kFileOperateRespExists(285),
+    /**
+     * <code>kFileOperateRespDel = 290;</code>
+     */
+    kFileOperateRespDel(290),
+    /**
+     * <code>kFileOperateRespBatchCreateFolders = 295;</code>
+     */
+    kFileOperateRespBatchCreateFolders(295),
+    /**
+     * <code>kFileTransRespUpload = 300;</code>
+     */
+    kFileTransRespUpload(300),
+    /**
+     * <code>kFileTransRespDownload = 305;</code>
+     */
+    kFileTransRespDownload(305),
+    /**
+     * <code>kFileTransDirectControl = 310;</code>
+     */
+    kFileTransDirectControl(310),
+    /**
+     * <code>kFileTransDataPacket = 311;</code>
+     */
+    kFileTransDataPacket(311),
+    /**
+     * <pre>
+     * file transfer end
+     * </pre>
+     *
+     * <code>kFileTransSaveFileException = 320;</code>
+     */
+    kFileTransSaveFileException(320),
+    /**
+     * <code>kReqCtrlAltDelete = 330;</code>
+     */
+    kReqCtrlAltDelete(330),
     UNRECOGNIZED(-1),
     ;
 
@@ -400,6 +573,66 @@ public final class TcMessage {
      * <code>kSyncPanelInfo = 250;</code>
      */
     public static final int kSyncPanelInfo_VALUE = 250;
+    /**
+     * <pre>
+     * file transfer begin
+     * </pre>
+     *
+     * <code>kFileOperateionsEvent = 260;</code>
+     */
+    public static final int kFileOperateionsEvent_VALUE = 260;
+    /**
+     * <code>kFileOperateRespRename = 265;</code>
+     */
+    public static final int kFileOperateRespRename_VALUE = 265;
+    /**
+     * <code>kFileOperateRespGetFileList = 270;</code>
+     */
+    public static final int kFileOperateRespGetFileList_VALUE = 270;
+    /**
+     * <code>kFileOperateRespCreateNewFolder = 280;</code>
+     */
+    public static final int kFileOperateRespCreateNewFolder_VALUE = 280;
+    /**
+     * <code>kFileOperateRespExists = 285;</code>
+     */
+    public static final int kFileOperateRespExists_VALUE = 285;
+    /**
+     * <code>kFileOperateRespDel = 290;</code>
+     */
+    public static final int kFileOperateRespDel_VALUE = 290;
+    /**
+     * <code>kFileOperateRespBatchCreateFolders = 295;</code>
+     */
+    public static final int kFileOperateRespBatchCreateFolders_VALUE = 295;
+    /**
+     * <code>kFileTransRespUpload = 300;</code>
+     */
+    public static final int kFileTransRespUpload_VALUE = 300;
+    /**
+     * <code>kFileTransRespDownload = 305;</code>
+     */
+    public static final int kFileTransRespDownload_VALUE = 305;
+    /**
+     * <code>kFileTransDirectControl = 310;</code>
+     */
+    public static final int kFileTransDirectControl_VALUE = 310;
+    /**
+     * <code>kFileTransDataPacket = 311;</code>
+     */
+    public static final int kFileTransDataPacket_VALUE = 311;
+    /**
+     * <pre>
+     * file transfer end
+     * </pre>
+     *
+     * <code>kFileTransSaveFileException = 320;</code>
+     */
+    public static final int kFileTransSaveFileException_VALUE = 320;
+    /**
+     * <code>kReqCtrlAltDelete = 330;</code>
+     */
+    public static final int kReqCtrlAltDelete_VALUE = 330;
 
 
     @java.lang.Override
@@ -449,6 +682,19 @@ public final class TcMessage {
         case 230: return kInsertKeyFrame;
         case 240: return kRestartServer;
         case 250: return kSyncPanelInfo;
+        case 260: return kFileOperateionsEvent;
+        case 265: return kFileOperateRespRename;
+        case 270: return kFileOperateRespGetFileList;
+        case 280: return kFileOperateRespCreateNewFolder;
+        case 285: return kFileOperateRespExists;
+        case 290: return kFileOperateRespDel;
+        case 295: return kFileOperateRespBatchCreateFolders;
+        case 300: return kFileTransRespUpload;
+        case 305: return kFileTransRespDownload;
+        case 310: return kFileTransDirectControl;
+        case 311: return kFileTransDataPacket;
+        case 320: return kFileTransSaveFileException;
+        case 330: return kReqCtrlAltDelete;
         default: return null;
       }
     }
@@ -895,9 +1141,9 @@ public final class TcMessage {
   }
 
   /**
-   * Protobuf enum {@code tc.ClientConnType}
+   * Protobuf enum {@code tc.ClientNetworkType}
    */
-  public enum ClientConnType
+  public enum ClientNetworkType
       implements com.google.protobuf.Internal.EnumLite {
     /**
      * <code>kWebsocket = 0;</code>
@@ -941,11 +1187,11 @@ public final class TcMessage {
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static ClientConnType valueOf(int value) {
+    public static ClientNetworkType valueOf(int value) {
       return forNumber(value);
     }
 
-    public static ClientConnType forNumber(int value) {
+    public static ClientNetworkType forNumber(int value) {
       switch (value) {
         case 0: return kWebsocket;
         case 1: return kUdpKcp;
@@ -954,40 +1200,127 @@ public final class TcMessage {
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<ClientConnType>
+    public static com.google.protobuf.Internal.EnumLiteMap<ClientNetworkType>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        ClientConnType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<ClientConnType>() {
+        ClientNetworkType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ClientNetworkType>() {
             @java.lang.Override
-            public ClientConnType findValueByNumber(int number) {
-              return ClientConnType.forNumber(number);
+            public ClientNetworkType findValueByNumber(int number) {
+              return ClientNetworkType.forNumber(number);
             }
           };
 
     public static com.google.protobuf.Internal.EnumVerifier 
         internalGetVerifier() {
-      return ClientConnTypeVerifier.INSTANCE;
+      return ClientNetworkTypeVerifier.INSTANCE;
     }
 
-    private static final class ClientConnTypeVerifier implements 
+    private static final class ClientNetworkTypeVerifier implements 
          com.google.protobuf.Internal.EnumVerifier { 
-            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new ClientConnTypeVerifier();
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new ClientNetworkTypeVerifier();
             @java.lang.Override
             public boolean isInRange(int number) {
-              return ClientConnType.forNumber(number) != null;
+              return ClientNetworkType.forNumber(number) != null;
             }
           };
 
     private final int value;
 
-    private ClientConnType(int value) {
+    private ClientNetworkType(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:tc.ClientConnType)
+    // @@protoc_insertion_point(enum_scope:tc.ClientNetworkType)
+  }
+
+  /**
+   * Protobuf enum {@code tc.ClientConnectType}
+   */
+  public enum ClientConnectType
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>kDirect = 0;</code>
+     */
+    kDirect(0),
+    /**
+     * <code>kSignaling = 1;</code>
+     */
+    kSignaling(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>kDirect = 0;</code>
+     */
+    public static final int kDirect_VALUE = 0;
+    /**
+     * <code>kSignaling = 1;</code>
+     */
+    public static final int kSignaling_VALUE = 1;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ClientConnectType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static ClientConnectType forNumber(int value) {
+      switch (value) {
+        case 0: return kDirect;
+        case 1: return kSignaling;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ClientConnectType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ClientConnectType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ClientConnectType>() {
+            @java.lang.Override
+            public ClientConnectType findValueByNumber(int number) {
+              return ClientConnectType.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return ClientConnectTypeVerifier.INSTANCE;
+    }
+
+    private static final class ClientConnectTypeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new ClientConnectTypeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return ClientConnectType.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private ClientConnectType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:tc.ClientConnectType)
   }
 
   /**
@@ -2353,31 +2686,26 @@ public final class TcMessage {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>int32 index = 1;</code>
-     */
-    int getIndex();
-
-    /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     java.lang.String getName();
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     java.util.List<tc.TcMessage.MonitorResolution> 
         getResolutionsList();
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     tc.TcMessage.MonitorResolution getResolutions(int index);
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     int getResolutionsCount();
   }
@@ -2393,41 +2721,17 @@ public final class TcMessage {
       name_ = "";
       resolutions_ = emptyProtobufList();
     }
-    public static final int INDEX_FIELD_NUMBER = 1;
-    private int index_;
-    /**
-     * <code>int32 index = 1;</code>
-     */
-    @java.lang.Override
-    public int getIndex() {
-      return index_;
-    }
-    /**
-     * <code>int32 index = 1;</code>
-     */
-    private void setIndex(int value) {
-      
-      index_ = value;
-    }
-    /**
-     * <code>int32 index = 1;</code>
-     */
-    private void clearIndex() {
-      
-      index_ = 0;
-    }
-
-    public static final int NAME_FIELD_NUMBER = 2;
+    public static final int NAME_FIELD_NUMBER = 1;
     private java.lang.String name_;
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     @java.lang.Override
     public java.lang.String getName() {
       return name_;
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
@@ -2435,7 +2739,7 @@ public final class TcMessage {
       return com.google.protobuf.ByteString.copyFromUtf8(name_);
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     private void setName(
         java.lang.String value) {
@@ -2446,14 +2750,14 @@ public final class TcMessage {
       name_ = value;
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     private void clearName() {
       
       name_ = getDefaultInstance().getName();
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     private void setNameBytes(
         com.google.protobuf.ByteString value) {
@@ -2465,38 +2769,38 @@ public final class TcMessage {
       name_ = value.toStringUtf8();
     }
 
-    public static final int RESOLUTIONS_FIELD_NUMBER = 3;
+    public static final int RESOLUTIONS_FIELD_NUMBER = 2;
     private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.MonitorResolution> resolutions_;
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     @java.lang.Override
     public java.util.List<tc.TcMessage.MonitorResolution> getResolutionsList() {
       return resolutions_;
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     public java.util.List<? extends tc.TcMessage.MonitorResolutionOrBuilder> 
         getResolutionsOrBuilderList() {
       return resolutions_;
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     @java.lang.Override
     public int getResolutionsCount() {
       return resolutions_.size();
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     @java.lang.Override
     public tc.TcMessage.MonitorResolution getResolutions(int index) {
       return resolutions_.get(index);
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     public tc.TcMessage.MonitorResolutionOrBuilder getResolutionsOrBuilder(
         int index) {
@@ -2510,7 +2814,7 @@ public final class TcMessage {
     }
 
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     private void setResolutions(
         int index, tc.TcMessage.MonitorResolution value) {
@@ -2521,7 +2825,7 @@ public final class TcMessage {
       resolutions_.set(index, value);
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     private void setResolutions(
         int index, tc.TcMessage.MonitorResolution.Builder builderForValue) {
@@ -2529,7 +2833,7 @@ public final class TcMessage {
       resolutions_.set(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     private void addResolutions(tc.TcMessage.MonitorResolution value) {
       if (value == null) {
@@ -2539,7 +2843,7 @@ public final class TcMessage {
       resolutions_.add(value);
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     private void addResolutions(
         int index, tc.TcMessage.MonitorResolution value) {
@@ -2550,7 +2854,7 @@ public final class TcMessage {
       resolutions_.add(index, value);
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     private void addResolutions(
         tc.TcMessage.MonitorResolution.Builder builderForValue) {
@@ -2558,7 +2862,7 @@ public final class TcMessage {
       resolutions_.add(builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     private void addResolutions(
         int index, tc.TcMessage.MonitorResolution.Builder builderForValue) {
@@ -2566,7 +2870,7 @@ public final class TcMessage {
       resolutions_.add(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     private void addAllResolutions(
         java.lang.Iterable<? extends tc.TcMessage.MonitorResolution> values) {
@@ -2575,13 +2879,13 @@ public final class TcMessage {
           values, resolutions_);
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     private void clearResolutions() {
       resolutions_ = emptyProtobufList();
     }
     /**
-     * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+     * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     private void removeResolutions(int index) {
       ensureResolutionsIsMutable();
@@ -2684,38 +2988,14 @@ public final class TcMessage {
 
 
       /**
-       * <code>int32 index = 1;</code>
-       */
-      @java.lang.Override
-      public int getIndex() {
-        return instance.getIndex();
-      }
-      /**
-       * <code>int32 index = 1;</code>
-       */
-      public Builder setIndex(int value) {
-        copyOnWrite();
-        instance.setIndex(value);
-        return this;
-      }
-      /**
-       * <code>int32 index = 1;</code>
-       */
-      public Builder clearIndex() {
-        copyOnWrite();
-        instance.clearIndex();
-        return this;
-      }
-
-      /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       @java.lang.Override
       public java.lang.String getName() {
         return instance.getName();
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
@@ -2723,7 +3003,7 @@ public final class TcMessage {
         return instance.getNameBytes();
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -2732,7 +3012,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder clearName() {
         copyOnWrite();
@@ -2740,7 +3020,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -2750,7 +3030,7 @@ public final class TcMessage {
       }
 
       /**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       @java.lang.Override
       public java.util.List<tc.TcMessage.MonitorResolution> getResolutionsList() {
@@ -2758,20 +3038,20 @@ public final class TcMessage {
             instance.getResolutionsList());
       }
       /**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       @java.lang.Override
       public int getResolutionsCount() {
         return instance.getResolutionsCount();
       }/**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       @java.lang.Override
       public tc.TcMessage.MonitorResolution getResolutions(int index) {
         return instance.getResolutions(index);
       }
       /**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       public Builder setResolutions(
           int index, tc.TcMessage.MonitorResolution value) {
@@ -2780,7 +3060,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       public Builder setResolutions(
           int index, tc.TcMessage.MonitorResolution.Builder builderForValue) {
@@ -2789,7 +3069,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       public Builder addResolutions(tc.TcMessage.MonitorResolution value) {
         copyOnWrite();
@@ -2797,7 +3077,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       public Builder addResolutions(
           int index, tc.TcMessage.MonitorResolution value) {
@@ -2806,7 +3086,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       public Builder addResolutions(
           tc.TcMessage.MonitorResolution.Builder builderForValue) {
@@ -2815,7 +3095,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       public Builder addResolutions(
           int index, tc.TcMessage.MonitorResolution.Builder builderForValue) {
@@ -2824,7 +3104,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       public Builder addAllResolutions(
           java.lang.Iterable<? extends tc.TcMessage.MonitorResolution> values) {
@@ -2833,7 +3113,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       public Builder clearResolutions() {
         copyOnWrite();
@@ -2841,7 +3121,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorResolution resolutions = 3;</code>
+       * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
        */
       public Builder removeResolutions(int index) {
         copyOnWrite();
@@ -2865,14 +3145,13 @@ public final class TcMessage {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "index_",
               "name_",
               "resolutions_",
               tc.TcMessage.MonitorResolution.class,
             };
             java.lang.String info =
-                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0001\u0000\u0001\u0004\u0002\u0208" +
-                "\u0003\u001b";
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u0208\u0002\u001b" +
+                "";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -2945,9 +3224,14 @@ public final class TcMessage {
     int getMonitorInfoCount();
 
     /**
-     * <code>int32 current_capturing_index = 2;</code>
+     * <code>string capturing_monitor_name = 2;</code>
      */
-    int getCurrentCapturingIndex();
+    java.lang.String getCapturingMonitorName();
+    /**
+     * <code>string capturing_monitor_name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getCapturingMonitorNameBytes();
   }
   /**
    * Protobuf type {@code tc.ServerConfiguration}
@@ -2959,6 +3243,7 @@ public final class TcMessage {
       ServerConfigurationOrBuilder {
     private ServerConfiguration() {
       monitorInfo_ = emptyProtobufList();
+      capturingMonitorName_ = "";
     }
     public static final int MONITOR_INFO_FIELD_NUMBER = 1;
     private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.MonitorInfo> monitorInfo_;
@@ -3083,28 +3368,52 @@ public final class TcMessage {
       monitorInfo_.remove(index);
     }
 
-    public static final int CURRENT_CAPTURING_INDEX_FIELD_NUMBER = 2;
-    private int currentCapturingIndex_;
+    public static final int CAPTURING_MONITOR_NAME_FIELD_NUMBER = 2;
+    private java.lang.String capturingMonitorName_;
     /**
-     * <code>int32 current_capturing_index = 2;</code>
+     * <code>string capturing_monitor_name = 2;</code>
      */
     @java.lang.Override
-    public int getCurrentCapturingIndex() {
-      return currentCapturingIndex_;
+    public java.lang.String getCapturingMonitorName() {
+      return capturingMonitorName_;
     }
     /**
-     * <code>int32 current_capturing_index = 2;</code>
+     * <code>string capturing_monitor_name = 2;</code>
      */
-    private void setCurrentCapturingIndex(int value) {
-      
-      currentCapturingIndex_ = value;
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCapturingMonitorNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(capturingMonitorName_);
     }
     /**
-     * <code>int32 current_capturing_index = 2;</code>
+     * <code>string capturing_monitor_name = 2;</code>
      */
-    private void clearCurrentCapturingIndex() {
+    private void setCapturingMonitorName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      capturingMonitorName_ = value;
+    }
+    /**
+     * <code>string capturing_monitor_name = 2;</code>
+     */
+    private void clearCapturingMonitorName() {
       
-      currentCapturingIndex_ = 0;
+      capturingMonitorName_ = getDefaultInstance().getCapturingMonitorName();
+    }
+    /**
+     * <code>string capturing_monitor_name = 2;</code>
+     */
+    private void setCapturingMonitorNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      capturingMonitorName_ = value.toStringUtf8();
     }
 
     public static tc.TcMessage.ServerConfiguration parseFrom(
@@ -3303,26 +3612,44 @@ public final class TcMessage {
       }
 
       /**
-       * <code>int32 current_capturing_index = 2;</code>
+       * <code>string capturing_monitor_name = 2;</code>
        */
       @java.lang.Override
-      public int getCurrentCapturingIndex() {
-        return instance.getCurrentCapturingIndex();
+      public java.lang.String getCapturingMonitorName() {
+        return instance.getCapturingMonitorName();
       }
       /**
-       * <code>int32 current_capturing_index = 2;</code>
+       * <code>string capturing_monitor_name = 2;</code>
        */
-      public Builder setCurrentCapturingIndex(int value) {
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getCapturingMonitorNameBytes() {
+        return instance.getCapturingMonitorNameBytes();
+      }
+      /**
+       * <code>string capturing_monitor_name = 2;</code>
+       */
+      public Builder setCapturingMonitorName(
+          java.lang.String value) {
         copyOnWrite();
-        instance.setCurrentCapturingIndex(value);
+        instance.setCapturingMonitorName(value);
         return this;
       }
       /**
-       * <code>int32 current_capturing_index = 2;</code>
+       * <code>string capturing_monitor_name = 2;</code>
        */
-      public Builder clearCurrentCapturingIndex() {
+      public Builder clearCapturingMonitorName() {
         copyOnWrite();
-        instance.clearCurrentCapturingIndex();
+        instance.clearCapturingMonitorName();
+        return this;
+      }
+      /**
+       * <code>string capturing_monitor_name = 2;</code>
+       */
+      public Builder setCapturingMonitorNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setCapturingMonitorNameBytes(value);
         return this;
       }
 
@@ -3344,10 +3671,10 @@ public final class TcMessage {
             java.lang.Object[] objects = new java.lang.Object[] {
               "monitorInfo_",
               tc.TcMessage.MonitorInfo.class,
-              "currentCapturingIndex_",
+              "capturingMonitorName_",
             };
             java.lang.String info =
-                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u001b\u0002\u0004" +
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u001b\u0002\u0208" +
                 "";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
@@ -4382,11 +4709,6 @@ public final class TcMessage {
         getExtraBytes();
 
     /**
-     * <code>int32 mon_idx = 8;</code>
-     */
-    int getMonIdx();
-
-    /**
      * <code>string mon_name = 9;</code>
      */
     java.lang.String getMonName();
@@ -4639,30 +4961,6 @@ public final class TcMessage {
   checkByteStringIsUtf8(value);
       
       extra_ = value.toStringUtf8();
-    }
-
-    public static final int MON_IDX_FIELD_NUMBER = 8;
-    private int monIdx_;
-    /**
-     * <code>int32 mon_idx = 8;</code>
-     */
-    @java.lang.Override
-    public int getMonIdx() {
-      return monIdx_;
-    }
-    /**
-     * <code>int32 mon_idx = 8;</code>
-     */
-    private void setMonIdx(int value) {
-      
-      monIdx_ = value;
-    }
-    /**
-     * <code>int32 mon_idx = 8;</code>
-     */
-    private void clearMonIdx() {
-      
-      monIdx_ = 0;
     }
 
     public static final int MON_NAME_FIELD_NUMBER = 9;
@@ -5106,30 +5404,6 @@ public final class TcMessage {
       }
 
       /**
-       * <code>int32 mon_idx = 8;</code>
-       */
-      @java.lang.Override
-      public int getMonIdx() {
-        return instance.getMonIdx();
-      }
-      /**
-       * <code>int32 mon_idx = 8;</code>
-       */
-      public Builder setMonIdx(int value) {
-        copyOnWrite();
-        instance.setMonIdx(value);
-        return this;
-      }
-      /**
-       * <code>int32 mon_idx = 8;</code>
-       */
-      public Builder clearMonIdx() {
-        copyOnWrite();
-        instance.clearMonIdx();
-        return this;
-      }
-
-      /**
        * <code>string mon_name = 9;</code>
        */
       @java.lang.Override
@@ -5290,7 +5564,6 @@ public final class TcMessage {
               "frameWidth_",
               "frameHeight_",
               "extra_",
-              "monIdx_",
               "monName_",
               "monLeft_",
               "monTop_",
@@ -5298,9 +5571,9 @@ public final class TcMessage {
               "monBottom_",
             };
             java.lang.String info =
-                "\u0000\r\u0000\u0000\u0001\r\r\u0000\u0000\u0000\u0001\f\u0002\n\u0003\u0003\u0004" +
-                "\u0007\u0005\u0004\u0006\u0004\u0007\u0208\b\u0004\t\u0208\n\u0004\u000b\u0004\f" +
-                "\u0004\r\u0004";
+                "\u0000\f\u0000\u0000\u0001\r\f\u0000\u0000\u0000\u0001\f\u0002\n\u0003\u0003\u0004" +
+                "\u0007\u0005\u0004\u0006\u0004\u0007\u0208\t\u0208\n\u0004\u000b\u0004\f\u0004\r" +
+                "\u0004";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -6615,9 +6888,18 @@ public final class TcMessage {
      * to do
      * </pre>
      *
-     * <code>int32 monitor_index = 1;</code>
+     * <code>string monitor_name = 1;</code>
      */
-    int getMonitorIndex();
+    java.lang.String getMonitorName();
+    /**
+     * <pre>
+     * to do
+     * </pre>
+     *
+     * <code>string monitor_name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getMonitorNameBytes();
 
     /**
      * <code>float x_ratio = 2;</code>
@@ -6681,41 +6963,74 @@ public final class TcMessage {
       // @@protoc_insertion_point(message_implements:tc.MouseEvent)
       MouseEventOrBuilder {
     private MouseEvent() {
+      monitorName_ = "";
     }
-    public static final int MONITOR_INDEX_FIELD_NUMBER = 1;
-    private int monitorIndex_;
+    public static final int MONITOR_NAME_FIELD_NUMBER = 1;
+    private java.lang.String monitorName_;
     /**
      * <pre>
      * to do
      * </pre>
      *
-     * <code>int32 monitor_index = 1;</code>
+     * <code>string monitor_name = 1;</code>
      */
     @java.lang.Override
-    public int getMonitorIndex() {
-      return monitorIndex_;
+    public java.lang.String getMonitorName() {
+      return monitorName_;
     }
     /**
      * <pre>
      * to do
      * </pre>
      *
-     * <code>int32 monitor_index = 1;</code>
+     * <code>string monitor_name = 1;</code>
      */
-    private void setMonitorIndex(int value) {
-      
-      monitorIndex_ = value;
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMonitorNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(monitorName_);
     }
     /**
      * <pre>
      * to do
      * </pre>
      *
-     * <code>int32 monitor_index = 1;</code>
+     * <code>string monitor_name = 1;</code>
      */
-    private void clearMonitorIndex() {
+    private void setMonitorName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      monitorName_ = value;
+    }
+    /**
+     * <pre>
+     * to do
+     * </pre>
+     *
+     * <code>string monitor_name = 1;</code>
+     */
+    private void clearMonitorName() {
       
-      monitorIndex_ = 0;
+      monitorName_ = getDefaultInstance().getMonitorName();
+    }
+    /**
+     * <pre>
+     * to do
+     * </pre>
+     *
+     * <code>string monitor_name = 1;</code>
+     */
+    private void setMonitorNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      monitorName_ = value.toStringUtf8();
     }
 
     public static final int X_RATIO_FIELD_NUMBER = 2;
@@ -7058,22 +7373,35 @@ public final class TcMessage {
        * to do
        * </pre>
        *
-       * <code>int32 monitor_index = 1;</code>
+       * <code>string monitor_name = 1;</code>
        */
       @java.lang.Override
-      public int getMonitorIndex() {
-        return instance.getMonitorIndex();
+      public java.lang.String getMonitorName() {
+        return instance.getMonitorName();
       }
       /**
        * <pre>
        * to do
        * </pre>
        *
-       * <code>int32 monitor_index = 1;</code>
+       * <code>string monitor_name = 1;</code>
        */
-      public Builder setMonitorIndex(int value) {
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMonitorNameBytes() {
+        return instance.getMonitorNameBytes();
+      }
+      /**
+       * <pre>
+       * to do
+       * </pre>
+       *
+       * <code>string monitor_name = 1;</code>
+       */
+      public Builder setMonitorName(
+          java.lang.String value) {
         copyOnWrite();
-        instance.setMonitorIndex(value);
+        instance.setMonitorName(value);
         return this;
       }
       /**
@@ -7081,11 +7409,24 @@ public final class TcMessage {
        * to do
        * </pre>
        *
-       * <code>int32 monitor_index = 1;</code>
+       * <code>string monitor_name = 1;</code>
        */
-      public Builder clearMonitorIndex() {
+      public Builder clearMonitorName() {
         copyOnWrite();
-        instance.clearMonitorIndex();
+        instance.clearMonitorName();
+        return this;
+      }
+      /**
+       * <pre>
+       * to do
+       * </pre>
+       *
+       * <code>string monitor_name = 1;</code>
+       */
+      public Builder setMonitorNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setMonitorNameBytes(value);
         return this;
       }
 
@@ -7345,7 +7686,7 @@ public final class TcMessage {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "monitorIndex_",
+              "monitorName_",
               "xRatio_",
               "yRatio_",
               "button_",
@@ -7357,7 +7698,7 @@ public final class TcMessage {
               "released_",
             };
             java.lang.String info =
-                "\u0000\n\u0000\u0000\u0001\n\n\u0000\u0000\u0000\u0001\u0004\u0002\u0001\u0003\u0001" +
+                "\u0000\n\u0000\u0000\u0001\n\n\u0000\u0000\u0000\u0001\u0208\u0002\u0001\u0003\u0001" +
                 "\u0004\u0004\u0005\u0004\u0006\u0002\u0007\u0004\b\u0004\t\u0007\n\u0007";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
@@ -15853,16 +16194,11 @@ public final class TcMessage {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>int32 index = 1;</code>
-     */
-    int getIndex();
-
-    /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     java.lang.String getName();
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
@@ -15878,41 +16214,17 @@ public final class TcMessage {
     private SwitchMonitor() {
       name_ = "";
     }
-    public static final int INDEX_FIELD_NUMBER = 1;
-    private int index_;
-    /**
-     * <code>int32 index = 1;</code>
-     */
-    @java.lang.Override
-    public int getIndex() {
-      return index_;
-    }
-    /**
-     * <code>int32 index = 1;</code>
-     */
-    private void setIndex(int value) {
-      
-      index_ = value;
-    }
-    /**
-     * <code>int32 index = 1;</code>
-     */
-    private void clearIndex() {
-      
-      index_ = 0;
-    }
-
-    public static final int NAME_FIELD_NUMBER = 2;
+    public static final int NAME_FIELD_NUMBER = 1;
     private java.lang.String name_;
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     @java.lang.Override
     public java.lang.String getName() {
       return name_;
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
@@ -15920,7 +16232,7 @@ public final class TcMessage {
       return com.google.protobuf.ByteString.copyFromUtf8(name_);
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     private void setName(
         java.lang.String value) {
@@ -15931,14 +16243,14 @@ public final class TcMessage {
       name_ = value;
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     private void clearName() {
       
       name_ = getDefaultInstance().getName();
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     private void setNameBytes(
         com.google.protobuf.ByteString value) {
@@ -16046,38 +16358,14 @@ public final class TcMessage {
 
 
       /**
-       * <code>int32 index = 1;</code>
-       */
-      @java.lang.Override
-      public int getIndex() {
-        return instance.getIndex();
-      }
-      /**
-       * <code>int32 index = 1;</code>
-       */
-      public Builder setIndex(int value) {
-        copyOnWrite();
-        instance.setIndex(value);
-        return this;
-      }
-      /**
-       * <code>int32 index = 1;</code>
-       */
-      public Builder clearIndex() {
-        copyOnWrite();
-        instance.clearIndex();
-        return this;
-      }
-
-      /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       @java.lang.Override
       public java.lang.String getName() {
         return instance.getName();
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
@@ -16085,7 +16373,7 @@ public final class TcMessage {
         return instance.getNameBytes();
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -16094,7 +16382,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder clearName() {
         copyOnWrite();
@@ -16102,7 +16390,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -16127,12 +16415,10 @@ public final class TcMessage {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "index_",
               "name_",
             };
             java.lang.String info =
-                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0004\u0002\u0208" +
-                "";
+                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u0208";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -16191,31 +16477,26 @@ public final class TcMessage {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>int32 index = 1;</code>
-     */
-    int getIndex();
-
-    /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     java.lang.String getName();
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     java.util.List<tc.TcMessage.MonitorInfo> 
         getMonitorInfoList();
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     tc.TcMessage.MonitorInfo getMonitorInfo(int index);
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     int getMonitorInfoCount();
   }
@@ -16231,41 +16512,17 @@ public final class TcMessage {
       name_ = "";
       monitorInfo_ = emptyProtobufList();
     }
-    public static final int INDEX_FIELD_NUMBER = 1;
-    private int index_;
-    /**
-     * <code>int32 index = 1;</code>
-     */
-    @java.lang.Override
-    public int getIndex() {
-      return index_;
-    }
-    /**
-     * <code>int32 index = 1;</code>
-     */
-    private void setIndex(int value) {
-      
-      index_ = value;
-    }
-    /**
-     * <code>int32 index = 1;</code>
-     */
-    private void clearIndex() {
-      
-      index_ = 0;
-    }
-
-    public static final int NAME_FIELD_NUMBER = 2;
+    public static final int NAME_FIELD_NUMBER = 1;
     private java.lang.String name_;
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     @java.lang.Override
     public java.lang.String getName() {
       return name_;
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
@@ -16273,7 +16530,7 @@ public final class TcMessage {
       return com.google.protobuf.ByteString.copyFromUtf8(name_);
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     private void setName(
         java.lang.String value) {
@@ -16284,14 +16541,14 @@ public final class TcMessage {
       name_ = value;
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     private void clearName() {
       
       name_ = getDefaultInstance().getName();
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 1;</code>
      */
     private void setNameBytes(
         com.google.protobuf.ByteString value) {
@@ -16303,38 +16560,38 @@ public final class TcMessage {
       name_ = value.toStringUtf8();
     }
 
-    public static final int MONITOR_INFO_FIELD_NUMBER = 3;
+    public static final int MONITOR_INFO_FIELD_NUMBER = 2;
     private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.MonitorInfo> monitorInfo_;
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     @java.lang.Override
     public java.util.List<tc.TcMessage.MonitorInfo> getMonitorInfoList() {
       return monitorInfo_;
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     public java.util.List<? extends tc.TcMessage.MonitorInfoOrBuilder> 
         getMonitorInfoOrBuilderList() {
       return monitorInfo_;
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     @java.lang.Override
     public int getMonitorInfoCount() {
       return monitorInfo_.size();
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     @java.lang.Override
     public tc.TcMessage.MonitorInfo getMonitorInfo(int index) {
       return monitorInfo_.get(index);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     public tc.TcMessage.MonitorInfoOrBuilder getMonitorInfoOrBuilder(
         int index) {
@@ -16348,7 +16605,7 @@ public final class TcMessage {
     }
 
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     private void setMonitorInfo(
         int index, tc.TcMessage.MonitorInfo value) {
@@ -16359,7 +16616,7 @@ public final class TcMessage {
       monitorInfo_.set(index, value);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     private void setMonitorInfo(
         int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16367,7 +16624,7 @@ public final class TcMessage {
       monitorInfo_.set(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     private void addMonitorInfo(tc.TcMessage.MonitorInfo value) {
       if (value == null) {
@@ -16377,7 +16634,7 @@ public final class TcMessage {
       monitorInfo_.add(value);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     private void addMonitorInfo(
         int index, tc.TcMessage.MonitorInfo value) {
@@ -16388,7 +16645,7 @@ public final class TcMessage {
       monitorInfo_.add(index, value);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     private void addMonitorInfo(
         tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16396,7 +16653,7 @@ public final class TcMessage {
       monitorInfo_.add(builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     private void addMonitorInfo(
         int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16404,7 +16661,7 @@ public final class TcMessage {
       monitorInfo_.add(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     private void addAllMonitorInfo(
         java.lang.Iterable<? extends tc.TcMessage.MonitorInfo> values) {
@@ -16413,13 +16670,13 @@ public final class TcMessage {
           values, monitorInfo_);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     private void clearMonitorInfo() {
       monitorInfo_ = emptyProtobufList();
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
      */
     private void removeMonitorInfo(int index) {
       ensureMonitorInfoIsMutable();
@@ -16522,38 +16779,14 @@ public final class TcMessage {
 
 
       /**
-       * <code>int32 index = 1;</code>
-       */
-      @java.lang.Override
-      public int getIndex() {
-        return instance.getIndex();
-      }
-      /**
-       * <code>int32 index = 1;</code>
-       */
-      public Builder setIndex(int value) {
-        copyOnWrite();
-        instance.setIndex(value);
-        return this;
-      }
-      /**
-       * <code>int32 index = 1;</code>
-       */
-      public Builder clearIndex() {
-        copyOnWrite();
-        instance.clearIndex();
-        return this;
-      }
-
-      /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       @java.lang.Override
       public java.lang.String getName() {
         return instance.getName();
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
@@ -16561,7 +16794,7 @@ public final class TcMessage {
         return instance.getNameBytes();
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -16570,7 +16803,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder clearName() {
         copyOnWrite();
@@ -16578,7 +16811,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>string name = 2;</code>
+       * <code>string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -16588,7 +16821,7 @@ public final class TcMessage {
       }
 
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       @java.lang.Override
       public java.util.List<tc.TcMessage.MonitorInfo> getMonitorInfoList() {
@@ -16596,20 +16829,20 @@ public final class TcMessage {
             instance.getMonitorInfoList());
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       @java.lang.Override
       public int getMonitorInfoCount() {
         return instance.getMonitorInfoCount();
       }/**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       @java.lang.Override
       public tc.TcMessage.MonitorInfo getMonitorInfo(int index) {
         return instance.getMonitorInfo(index);
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       public Builder setMonitorInfo(
           int index, tc.TcMessage.MonitorInfo value) {
@@ -16618,7 +16851,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       public Builder setMonitorInfo(
           int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16627,7 +16860,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       public Builder addMonitorInfo(tc.TcMessage.MonitorInfo value) {
         copyOnWrite();
@@ -16635,7 +16868,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       public Builder addMonitorInfo(
           int index, tc.TcMessage.MonitorInfo value) {
@@ -16644,7 +16877,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       public Builder addMonitorInfo(
           tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16653,7 +16886,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       public Builder addMonitorInfo(
           int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16662,7 +16895,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       public Builder addAllMonitorInfo(
           java.lang.Iterable<? extends tc.TcMessage.MonitorInfo> values) {
@@ -16671,7 +16904,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       public Builder clearMonitorInfo() {
         copyOnWrite();
@@ -16679,7 +16912,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
        */
       public Builder removeMonitorInfo(int index) {
         copyOnWrite();
@@ -16703,14 +16936,13 @@ public final class TcMessage {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "index_",
               "name_",
               "monitorInfo_",
               tc.TcMessage.MonitorInfo.class,
             };
             java.lang.String info =
-                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0001\u0000\u0001\u0004\u0002\u0208" +
-                "\u0003\u001b";
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u0208\u0002\u001b" +
+                "";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -18521,6 +18753,185 @@ public final class TcMessage {
     }
   }
 
+  public interface ReqCtrlAltDeleteOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.ReqCtrlAltDelete)
+      com.google.protobuf.MessageLiteOrBuilder {
+  }
+  /**
+   * Protobuf type {@code tc.ReqCtrlAltDelete}
+   */
+  public  static final class ReqCtrlAltDelete extends
+      com.google.protobuf.GeneratedMessageLite<
+          ReqCtrlAltDelete, ReqCtrlAltDelete.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.ReqCtrlAltDelete)
+      ReqCtrlAltDeleteOrBuilder {
+    private ReqCtrlAltDelete() {
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcMessage.ReqCtrlAltDelete prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.ReqCtrlAltDelete}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcMessage.ReqCtrlAltDelete, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.ReqCtrlAltDelete)
+        tc.TcMessage.ReqCtrlAltDeleteOrBuilder {
+      // Construct using tc.TcMessage.ReqCtrlAltDelete.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:tc.ReqCtrlAltDelete)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcMessage.ReqCtrlAltDelete();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = null;java.lang.String info =
+                "\u0000\u0000";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcMessage.ReqCtrlAltDelete> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcMessage.ReqCtrlAltDelete.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.ReqCtrlAltDelete)
+    private static final tc.TcMessage.ReqCtrlAltDelete DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new ReqCtrlAltDelete();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        ReqCtrlAltDelete.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcMessage.ReqCtrlAltDelete getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ReqCtrlAltDelete> PARSER;
+
+    public static com.google.protobuf.Parser<ReqCtrlAltDelete> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface MessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:tc.Message)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -18554,6 +18965,49 @@ public final class TcMessage {
      */
     com.google.protobuf.ByteString
         getStreamIdBytes();
+
+    /**
+     * <pre>
+     * 消息序号
+     * </pre>
+     *
+     * <code>uint64 sequence = 5;</code>
+     */
+    long getSequence();
+
+    /**
+     * <code>uint64 resp_sequence = 6;</code>
+     */
+    long getRespSequence();
+
+    /**
+     * <code>.tc.RespCode resp_code = 7;</code>
+     */
+    int getRespCodeValue();
+    /**
+     * <code>.tc.RespCode resp_code = 7;</code>
+     */
+    tc.TcMessage.RespCode getRespCode();
+
+    /**
+     * <code>string resp_message = 8;</code>
+     */
+    java.lang.String getRespMessage();
+    /**
+     * <code>string resp_message = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getRespMessageBytes();
+
+    /**
+     * <code>string resp_data = 9;</code>
+     */
+    java.lang.String getRespData();
+    /**
+     * <code>string resp_data = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getRespDataBytes();
 
     /**
      * <code>.tc.MessageType type = 10;</code>
@@ -18817,6 +19271,149 @@ public final class TcMessage {
      * <code>.tc.SyncPanelInfo sync_panel_info = 270;</code>
      */
     tc.TcMessage.SyncPanelInfo getSyncPanelInfo();
+
+    /**
+     * <pre>
+     * file transfer begin
+     * </pre>
+     *
+     * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+     */
+    boolean hasFileOperateionsEvent();
+    /**
+     * <pre>
+     * file transfer begin
+     * </pre>
+     *
+     * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+     */
+    tc.TcFileTransfer.FileOperateionsEvent getFileOperateionsEvent();
+
+    /**
+     * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+     */
+    boolean hasFileOperateRespRename();
+    /**
+     * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+     */
+    tc.TcFileTransfer.FileOperateRespRename getFileOperateRespRename();
+
+    /**
+     * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+     */
+    boolean hasFileOperateRespGetFileList();
+    /**
+     * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+     */
+    tc.TcFileTransfer.FileOperateRespGetFileList getFileOperateRespGetFileList();
+
+    /**
+     * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+     */
+    boolean hasFileOperateRespCreateNewFolder();
+    /**
+     * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+     */
+    tc.TcFileTransfer.FileOperateRespCreateNewFolder getFileOperateRespCreateNewFolder();
+
+    /**
+     * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+     */
+    boolean hasFileOperateRespExists();
+    /**
+     * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+     */
+    tc.TcFileTransfer.FileOperateRespExists getFileOperateRespExists();
+
+    /**
+     * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+     */
+    boolean hasFileOperateRespDel();
+    /**
+     * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+     */
+    tc.TcFileTransfer.FileOperateRespDel getFileOperateRespDel();
+
+    /**
+     * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+     */
+    boolean hasFileOperateRespBatchCreateFolders();
+    /**
+     * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+     */
+    tc.TcFileTransfer.FileOperateRespBatchCreateFolders getFileOperateRespBatchCreateFolders();
+
+    /**
+     * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+     */
+    boolean hasFileTransRespUpload();
+    /**
+     * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+     */
+    tc.TcFileTransfer.FileTransRespUpload getFileTransRespUpload();
+
+    /**
+     * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+     */
+    boolean hasFileTransRespDownload();
+    /**
+     * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+     */
+    tc.TcFileTransfer.FileTransRespDownload getFileTransRespDownload();
+
+    /**
+     * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+     */
+    boolean hasFileTransDirectControl();
+    /**
+     * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+     */
+    tc.TcFileTransfer.FileTransDirectControl getFileTransDirectControl();
+
+    /**
+     * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+     */
+    boolean hasFileTransDataPacket();
+    /**
+     * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+     */
+    tc.TcFileTransfer.FileTransDataPacket getFileTransDataPacket();
+
+    /**
+     * <code>string file_conn_token = 327;</code>
+     */
+    java.lang.String getFileConnToken();
+    /**
+     * <code>string file_conn_token = 327;</code>
+     */
+    com.google.protobuf.ByteString
+        getFileConnTokenBytes();
+
+    /**
+     * <pre>
+     * file transfer end
+     * </pre>
+     *
+     * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+     */
+    boolean hasFileTransSaveFileException();
+    /**
+     * <pre>
+     * file transfer end
+     * </pre>
+     *
+     * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+     */
+    tc.TcFileTransfer.FileTransSaveFileException getFileTransSaveFileException();
+
+    /**
+     * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+     */
+    boolean hasReqCtrlAltDelete();
+    /**
+     * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+     */
+    tc.TcMessage.ReqCtrlAltDelete getReqCtrlAltDelete();
   }
   /**
    * Protobuf type {@code tc.Message}
@@ -18830,8 +19427,11 @@ public final class TcMessage {
       clientId_ = "";
       deviceId_ = "";
       streamId_ = "";
+      respMessage_ = "";
+      respData_ = "";
       extra_ = "";
       onlineGames_ = emptyProtobufList();
+      fileConnToken_ = "";
     }
     public static final int CLIENT_ID_FIELD_NUMBER = 2;
     private java.lang.String clientId_;
@@ -18975,6 +19575,203 @@ public final class TcMessage {
   checkByteStringIsUtf8(value);
       
       streamId_ = value.toStringUtf8();
+    }
+
+    public static final int SEQUENCE_FIELD_NUMBER = 5;
+    private long sequence_;
+    /**
+     * <pre>
+     * 消息序号
+     * </pre>
+     *
+     * <code>uint64 sequence = 5;</code>
+     */
+    @java.lang.Override
+    public long getSequence() {
+      return sequence_;
+    }
+    /**
+     * <pre>
+     * 消息序号
+     * </pre>
+     *
+     * <code>uint64 sequence = 5;</code>
+     */
+    private void setSequence(long value) {
+      
+      sequence_ = value;
+    }
+    /**
+     * <pre>
+     * 消息序号
+     * </pre>
+     *
+     * <code>uint64 sequence = 5;</code>
+     */
+    private void clearSequence() {
+      
+      sequence_ = 0L;
+    }
+
+    public static final int RESP_SEQUENCE_FIELD_NUMBER = 6;
+    private long respSequence_;
+    /**
+     * <code>uint64 resp_sequence = 6;</code>
+     */
+    @java.lang.Override
+    public long getRespSequence() {
+      return respSequence_;
+    }
+    /**
+     * <code>uint64 resp_sequence = 6;</code>
+     */
+    private void setRespSequence(long value) {
+      
+      respSequence_ = value;
+    }
+    /**
+     * <code>uint64 resp_sequence = 6;</code>
+     */
+    private void clearRespSequence() {
+      
+      respSequence_ = 0L;
+    }
+
+    public static final int RESP_CODE_FIELD_NUMBER = 7;
+    private int respCode_;
+    /**
+     * <code>.tc.RespCode resp_code = 7;</code>
+     */
+    @java.lang.Override
+    public int getRespCodeValue() {
+      return respCode_;
+    }
+    /**
+     * <code>.tc.RespCode resp_code = 7;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.RespCode getRespCode() {
+      tc.TcMessage.RespCode result = tc.TcMessage.RespCode.forNumber(respCode_);
+      return result == null ? tc.TcMessage.RespCode.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.tc.RespCode resp_code = 7;</code>
+     */
+    private void setRespCodeValue(int value) {
+        respCode_ = value;
+    }
+    /**
+     * <code>.tc.RespCode resp_code = 7;</code>
+     */
+    private void setRespCode(tc.TcMessage.RespCode value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      respCode_ = value.getNumber();
+    }
+    /**
+     * <code>.tc.RespCode resp_code = 7;</code>
+     */
+    private void clearRespCode() {
+      
+      respCode_ = 0;
+    }
+
+    public static final int RESP_MESSAGE_FIELD_NUMBER = 8;
+    private java.lang.String respMessage_;
+    /**
+     * <code>string resp_message = 8;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getRespMessage() {
+      return respMessage_;
+    }
+    /**
+     * <code>string resp_message = 8;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRespMessageBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(respMessage_);
+    }
+    /**
+     * <code>string resp_message = 8;</code>
+     */
+    private void setRespMessage(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      respMessage_ = value;
+    }
+    /**
+     * <code>string resp_message = 8;</code>
+     */
+    private void clearRespMessage() {
+      
+      respMessage_ = getDefaultInstance().getRespMessage();
+    }
+    /**
+     * <code>string resp_message = 8;</code>
+     */
+    private void setRespMessageBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      respMessage_ = value.toStringUtf8();
+    }
+
+    public static final int RESP_DATA_FIELD_NUMBER = 9;
+    private java.lang.String respData_;
+    /**
+     * <code>string resp_data = 9;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getRespData() {
+      return respData_;
+    }
+    /**
+     * <code>string resp_data = 9;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRespDataBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(respData_);
+    }
+    /**
+     * <code>string resp_data = 9;</code>
+     */
+    private void setRespData(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      respData_ = value;
+    }
+    /**
+     * <code>string resp_data = 9;</code>
+     */
+    private void clearRespData() {
+      
+      respData_ = getDefaultInstance().getRespData();
+    }
+    /**
+     * <code>string resp_data = 9;</code>
+     */
+    private void setRespDataBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      respData_ = value.toStringUtf8();
     }
 
     public static final int TYPE_FIELD_NUMBER = 10;
@@ -20663,6 +21460,856 @@ public final class TcMessage {
       
     }
 
+    public static final int FILE_OPERATEIONS_EVENT_FIELD_NUMBER = 280;
+    private tc.TcFileTransfer.FileOperateionsEvent fileOperateionsEvent_;
+    /**
+     * <pre>
+     * file transfer begin
+     * </pre>
+     *
+     * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileOperateionsEvent() {
+      return fileOperateionsEvent_ != null;
+    }
+    /**
+     * <pre>
+     * file transfer begin
+     * </pre>
+     *
+     * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileOperateionsEvent getFileOperateionsEvent() {
+      return fileOperateionsEvent_ == null ? tc.TcFileTransfer.FileOperateionsEvent.getDefaultInstance() : fileOperateionsEvent_;
+    }
+    /**
+     * <pre>
+     * file transfer begin
+     * </pre>
+     *
+     * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+     */
+    private void setFileOperateionsEvent(tc.TcFileTransfer.FileOperateionsEvent value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileOperateionsEvent_ = value;
+      
+      }
+    /**
+     * <pre>
+     * file transfer begin
+     * </pre>
+     *
+     * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+     */
+    private void setFileOperateionsEvent(
+        tc.TcFileTransfer.FileOperateionsEvent.Builder builderForValue) {
+      fileOperateionsEvent_ = builderForValue.build();
+      
+    }
+    /**
+     * <pre>
+     * file transfer begin
+     * </pre>
+     *
+     * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileOperateionsEvent(tc.TcFileTransfer.FileOperateionsEvent value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileOperateionsEvent_ != null &&
+          fileOperateionsEvent_ != tc.TcFileTransfer.FileOperateionsEvent.getDefaultInstance()) {
+        fileOperateionsEvent_ =
+          tc.TcFileTransfer.FileOperateionsEvent.newBuilder(fileOperateionsEvent_).mergeFrom(value).buildPartial();
+      } else {
+        fileOperateionsEvent_ = value;
+      }
+      
+    }
+    /**
+     * <pre>
+     * file transfer begin
+     * </pre>
+     *
+     * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+     */
+    private void clearFileOperateionsEvent() {  fileOperateionsEvent_ = null;
+      
+    }
+
+    public static final int FILE_OPERATE_RESP_RENAME_FIELD_NUMBER = 285;
+    private tc.TcFileTransfer.FileOperateRespRename fileOperateRespRename_;
+    /**
+     * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileOperateRespRename() {
+      return fileOperateRespRename_ != null;
+    }
+    /**
+     * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileOperateRespRename getFileOperateRespRename() {
+      return fileOperateRespRename_ == null ? tc.TcFileTransfer.FileOperateRespRename.getDefaultInstance() : fileOperateRespRename_;
+    }
+    /**
+     * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+     */
+    private void setFileOperateRespRename(tc.TcFileTransfer.FileOperateRespRename value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileOperateRespRename_ = value;
+      
+      }
+    /**
+     * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+     */
+    private void setFileOperateRespRename(
+        tc.TcFileTransfer.FileOperateRespRename.Builder builderForValue) {
+      fileOperateRespRename_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileOperateRespRename(tc.TcFileTransfer.FileOperateRespRename value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileOperateRespRename_ != null &&
+          fileOperateRespRename_ != tc.TcFileTransfer.FileOperateRespRename.getDefaultInstance()) {
+        fileOperateRespRename_ =
+          tc.TcFileTransfer.FileOperateRespRename.newBuilder(fileOperateRespRename_).mergeFrom(value).buildPartial();
+      } else {
+        fileOperateRespRename_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+     */
+    private void clearFileOperateRespRename() {  fileOperateRespRename_ = null;
+      
+    }
+
+    public static final int FILE_OPERATE_RESP_GET_FILE_LIST_FIELD_NUMBER = 290;
+    private tc.TcFileTransfer.FileOperateRespGetFileList fileOperateRespGetFileList_;
+    /**
+     * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileOperateRespGetFileList() {
+      return fileOperateRespGetFileList_ != null;
+    }
+    /**
+     * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileOperateRespGetFileList getFileOperateRespGetFileList() {
+      return fileOperateRespGetFileList_ == null ? tc.TcFileTransfer.FileOperateRespGetFileList.getDefaultInstance() : fileOperateRespGetFileList_;
+    }
+    /**
+     * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+     */
+    private void setFileOperateRespGetFileList(tc.TcFileTransfer.FileOperateRespGetFileList value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileOperateRespGetFileList_ = value;
+      
+      }
+    /**
+     * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+     */
+    private void setFileOperateRespGetFileList(
+        tc.TcFileTransfer.FileOperateRespGetFileList.Builder builderForValue) {
+      fileOperateRespGetFileList_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileOperateRespGetFileList(tc.TcFileTransfer.FileOperateRespGetFileList value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileOperateRespGetFileList_ != null &&
+          fileOperateRespGetFileList_ != tc.TcFileTransfer.FileOperateRespGetFileList.getDefaultInstance()) {
+        fileOperateRespGetFileList_ =
+          tc.TcFileTransfer.FileOperateRespGetFileList.newBuilder(fileOperateRespGetFileList_).mergeFrom(value).buildPartial();
+      } else {
+        fileOperateRespGetFileList_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+     */
+    private void clearFileOperateRespGetFileList() {  fileOperateRespGetFileList_ = null;
+      
+    }
+
+    public static final int FILE_OPERATE_RESP_CREATE_NEW_FOLDER_FIELD_NUMBER = 295;
+    private tc.TcFileTransfer.FileOperateRespCreateNewFolder fileOperateRespCreateNewFolder_;
+    /**
+     * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileOperateRespCreateNewFolder() {
+      return fileOperateRespCreateNewFolder_ != null;
+    }
+    /**
+     * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileOperateRespCreateNewFolder getFileOperateRespCreateNewFolder() {
+      return fileOperateRespCreateNewFolder_ == null ? tc.TcFileTransfer.FileOperateRespCreateNewFolder.getDefaultInstance() : fileOperateRespCreateNewFolder_;
+    }
+    /**
+     * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+     */
+    private void setFileOperateRespCreateNewFolder(tc.TcFileTransfer.FileOperateRespCreateNewFolder value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileOperateRespCreateNewFolder_ = value;
+      
+      }
+    /**
+     * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+     */
+    private void setFileOperateRespCreateNewFolder(
+        tc.TcFileTransfer.FileOperateRespCreateNewFolder.Builder builderForValue) {
+      fileOperateRespCreateNewFolder_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileOperateRespCreateNewFolder(tc.TcFileTransfer.FileOperateRespCreateNewFolder value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileOperateRespCreateNewFolder_ != null &&
+          fileOperateRespCreateNewFolder_ != tc.TcFileTransfer.FileOperateRespCreateNewFolder.getDefaultInstance()) {
+        fileOperateRespCreateNewFolder_ =
+          tc.TcFileTransfer.FileOperateRespCreateNewFolder.newBuilder(fileOperateRespCreateNewFolder_).mergeFrom(value).buildPartial();
+      } else {
+        fileOperateRespCreateNewFolder_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+     */
+    private void clearFileOperateRespCreateNewFolder() {  fileOperateRespCreateNewFolder_ = null;
+      
+    }
+
+    public static final int FILE_OPERATE_RESP_EXISTS_FIELD_NUMBER = 300;
+    private tc.TcFileTransfer.FileOperateRespExists fileOperateRespExists_;
+    /**
+     * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileOperateRespExists() {
+      return fileOperateRespExists_ != null;
+    }
+    /**
+     * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileOperateRespExists getFileOperateRespExists() {
+      return fileOperateRespExists_ == null ? tc.TcFileTransfer.FileOperateRespExists.getDefaultInstance() : fileOperateRespExists_;
+    }
+    /**
+     * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+     */
+    private void setFileOperateRespExists(tc.TcFileTransfer.FileOperateRespExists value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileOperateRespExists_ = value;
+      
+      }
+    /**
+     * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+     */
+    private void setFileOperateRespExists(
+        tc.TcFileTransfer.FileOperateRespExists.Builder builderForValue) {
+      fileOperateRespExists_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileOperateRespExists(tc.TcFileTransfer.FileOperateRespExists value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileOperateRespExists_ != null &&
+          fileOperateRespExists_ != tc.TcFileTransfer.FileOperateRespExists.getDefaultInstance()) {
+        fileOperateRespExists_ =
+          tc.TcFileTransfer.FileOperateRespExists.newBuilder(fileOperateRespExists_).mergeFrom(value).buildPartial();
+      } else {
+        fileOperateRespExists_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+     */
+    private void clearFileOperateRespExists() {  fileOperateRespExists_ = null;
+      
+    }
+
+    public static final int FILE_OPERATE_RESP_DEL_FIELD_NUMBER = 305;
+    private tc.TcFileTransfer.FileOperateRespDel fileOperateRespDel_;
+    /**
+     * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileOperateRespDel() {
+      return fileOperateRespDel_ != null;
+    }
+    /**
+     * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileOperateRespDel getFileOperateRespDel() {
+      return fileOperateRespDel_ == null ? tc.TcFileTransfer.FileOperateRespDel.getDefaultInstance() : fileOperateRespDel_;
+    }
+    /**
+     * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+     */
+    private void setFileOperateRespDel(tc.TcFileTransfer.FileOperateRespDel value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileOperateRespDel_ = value;
+      
+      }
+    /**
+     * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+     */
+    private void setFileOperateRespDel(
+        tc.TcFileTransfer.FileOperateRespDel.Builder builderForValue) {
+      fileOperateRespDel_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileOperateRespDel(tc.TcFileTransfer.FileOperateRespDel value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileOperateRespDel_ != null &&
+          fileOperateRespDel_ != tc.TcFileTransfer.FileOperateRespDel.getDefaultInstance()) {
+        fileOperateRespDel_ =
+          tc.TcFileTransfer.FileOperateRespDel.newBuilder(fileOperateRespDel_).mergeFrom(value).buildPartial();
+      } else {
+        fileOperateRespDel_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+     */
+    private void clearFileOperateRespDel() {  fileOperateRespDel_ = null;
+      
+    }
+
+    public static final int FILE_OPERATE_RESP_BATCH_CREATE_FOLDERS_FIELD_NUMBER = 310;
+    private tc.TcFileTransfer.FileOperateRespBatchCreateFolders fileOperateRespBatchCreateFolders_;
+    /**
+     * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileOperateRespBatchCreateFolders() {
+      return fileOperateRespBatchCreateFolders_ != null;
+    }
+    /**
+     * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileOperateRespBatchCreateFolders getFileOperateRespBatchCreateFolders() {
+      return fileOperateRespBatchCreateFolders_ == null ? tc.TcFileTransfer.FileOperateRespBatchCreateFolders.getDefaultInstance() : fileOperateRespBatchCreateFolders_;
+    }
+    /**
+     * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+     */
+    private void setFileOperateRespBatchCreateFolders(tc.TcFileTransfer.FileOperateRespBatchCreateFolders value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileOperateRespBatchCreateFolders_ = value;
+      
+      }
+    /**
+     * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+     */
+    private void setFileOperateRespBatchCreateFolders(
+        tc.TcFileTransfer.FileOperateRespBatchCreateFolders.Builder builderForValue) {
+      fileOperateRespBatchCreateFolders_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileOperateRespBatchCreateFolders(tc.TcFileTransfer.FileOperateRespBatchCreateFolders value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileOperateRespBatchCreateFolders_ != null &&
+          fileOperateRespBatchCreateFolders_ != tc.TcFileTransfer.FileOperateRespBatchCreateFolders.getDefaultInstance()) {
+        fileOperateRespBatchCreateFolders_ =
+          tc.TcFileTransfer.FileOperateRespBatchCreateFolders.newBuilder(fileOperateRespBatchCreateFolders_).mergeFrom(value).buildPartial();
+      } else {
+        fileOperateRespBatchCreateFolders_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+     */
+    private void clearFileOperateRespBatchCreateFolders() {  fileOperateRespBatchCreateFolders_ = null;
+      
+    }
+
+    public static final int FILE_TRANS_RESP_UPLOAD_FIELD_NUMBER = 315;
+    private tc.TcFileTransfer.FileTransRespUpload fileTransRespUpload_;
+    /**
+     * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileTransRespUpload() {
+      return fileTransRespUpload_ != null;
+    }
+    /**
+     * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileTransRespUpload getFileTransRespUpload() {
+      return fileTransRespUpload_ == null ? tc.TcFileTransfer.FileTransRespUpload.getDefaultInstance() : fileTransRespUpload_;
+    }
+    /**
+     * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+     */
+    private void setFileTransRespUpload(tc.TcFileTransfer.FileTransRespUpload value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileTransRespUpload_ = value;
+      
+      }
+    /**
+     * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+     */
+    private void setFileTransRespUpload(
+        tc.TcFileTransfer.FileTransRespUpload.Builder builderForValue) {
+      fileTransRespUpload_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileTransRespUpload(tc.TcFileTransfer.FileTransRespUpload value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileTransRespUpload_ != null &&
+          fileTransRespUpload_ != tc.TcFileTransfer.FileTransRespUpload.getDefaultInstance()) {
+        fileTransRespUpload_ =
+          tc.TcFileTransfer.FileTransRespUpload.newBuilder(fileTransRespUpload_).mergeFrom(value).buildPartial();
+      } else {
+        fileTransRespUpload_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+     */
+    private void clearFileTransRespUpload() {  fileTransRespUpload_ = null;
+      
+    }
+
+    public static final int FILE_TRANS_RESP_DOWNLOAD_FIELD_NUMBER = 320;
+    private tc.TcFileTransfer.FileTransRespDownload fileTransRespDownload_;
+    /**
+     * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileTransRespDownload() {
+      return fileTransRespDownload_ != null;
+    }
+    /**
+     * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileTransRespDownload getFileTransRespDownload() {
+      return fileTransRespDownload_ == null ? tc.TcFileTransfer.FileTransRespDownload.getDefaultInstance() : fileTransRespDownload_;
+    }
+    /**
+     * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+     */
+    private void setFileTransRespDownload(tc.TcFileTransfer.FileTransRespDownload value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileTransRespDownload_ = value;
+      
+      }
+    /**
+     * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+     */
+    private void setFileTransRespDownload(
+        tc.TcFileTransfer.FileTransRespDownload.Builder builderForValue) {
+      fileTransRespDownload_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileTransRespDownload(tc.TcFileTransfer.FileTransRespDownload value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileTransRespDownload_ != null &&
+          fileTransRespDownload_ != tc.TcFileTransfer.FileTransRespDownload.getDefaultInstance()) {
+        fileTransRespDownload_ =
+          tc.TcFileTransfer.FileTransRespDownload.newBuilder(fileTransRespDownload_).mergeFrom(value).buildPartial();
+      } else {
+        fileTransRespDownload_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+     */
+    private void clearFileTransRespDownload() {  fileTransRespDownload_ = null;
+      
+    }
+
+    public static final int FILE_TRANS_DIRECT_CONTROL_FIELD_NUMBER = 325;
+    private tc.TcFileTransfer.FileTransDirectControl fileTransDirectControl_;
+    /**
+     * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileTransDirectControl() {
+      return fileTransDirectControl_ != null;
+    }
+    /**
+     * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileTransDirectControl getFileTransDirectControl() {
+      return fileTransDirectControl_ == null ? tc.TcFileTransfer.FileTransDirectControl.getDefaultInstance() : fileTransDirectControl_;
+    }
+    /**
+     * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+     */
+    private void setFileTransDirectControl(tc.TcFileTransfer.FileTransDirectControl value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileTransDirectControl_ = value;
+      
+      }
+    /**
+     * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+     */
+    private void setFileTransDirectControl(
+        tc.TcFileTransfer.FileTransDirectControl.Builder builderForValue) {
+      fileTransDirectControl_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileTransDirectControl(tc.TcFileTransfer.FileTransDirectControl value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileTransDirectControl_ != null &&
+          fileTransDirectControl_ != tc.TcFileTransfer.FileTransDirectControl.getDefaultInstance()) {
+        fileTransDirectControl_ =
+          tc.TcFileTransfer.FileTransDirectControl.newBuilder(fileTransDirectControl_).mergeFrom(value).buildPartial();
+      } else {
+        fileTransDirectControl_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+     */
+    private void clearFileTransDirectControl() {  fileTransDirectControl_ = null;
+      
+    }
+
+    public static final int FILE_TRANS_DATA_PACKET_FIELD_NUMBER = 326;
+    private tc.TcFileTransfer.FileTransDataPacket fileTransDataPacket_;
+    /**
+     * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileTransDataPacket() {
+      return fileTransDataPacket_ != null;
+    }
+    /**
+     * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileTransDataPacket getFileTransDataPacket() {
+      return fileTransDataPacket_ == null ? tc.TcFileTransfer.FileTransDataPacket.getDefaultInstance() : fileTransDataPacket_;
+    }
+    /**
+     * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+     */
+    private void setFileTransDataPacket(tc.TcFileTransfer.FileTransDataPacket value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileTransDataPacket_ = value;
+      
+      }
+    /**
+     * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+     */
+    private void setFileTransDataPacket(
+        tc.TcFileTransfer.FileTransDataPacket.Builder builderForValue) {
+      fileTransDataPacket_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileTransDataPacket(tc.TcFileTransfer.FileTransDataPacket value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileTransDataPacket_ != null &&
+          fileTransDataPacket_ != tc.TcFileTransfer.FileTransDataPacket.getDefaultInstance()) {
+        fileTransDataPacket_ =
+          tc.TcFileTransfer.FileTransDataPacket.newBuilder(fileTransDataPacket_).mergeFrom(value).buildPartial();
+      } else {
+        fileTransDataPacket_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+     */
+    private void clearFileTransDataPacket() {  fileTransDataPacket_ = null;
+      
+    }
+
+    public static final int FILE_CONN_TOKEN_FIELD_NUMBER = 327;
+    private java.lang.String fileConnToken_;
+    /**
+     * <code>string file_conn_token = 327;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getFileConnToken() {
+      return fileConnToken_;
+    }
+    /**
+     * <code>string file_conn_token = 327;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFileConnTokenBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(fileConnToken_);
+    }
+    /**
+     * <code>string file_conn_token = 327;</code>
+     */
+    private void setFileConnToken(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      fileConnToken_ = value;
+    }
+    /**
+     * <code>string file_conn_token = 327;</code>
+     */
+    private void clearFileConnToken() {
+      
+      fileConnToken_ = getDefaultInstance().getFileConnToken();
+    }
+    /**
+     * <code>string file_conn_token = 327;</code>
+     */
+    private void setFileConnTokenBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      fileConnToken_ = value.toStringUtf8();
+    }
+
+    public static final int FILE_TRANS_SAVE_FILE_EXCEPTION_FIELD_NUMBER = 330;
+    private tc.TcFileTransfer.FileTransSaveFileException fileTransSaveFileException_;
+    /**
+     * <pre>
+     * file transfer end
+     * </pre>
+     *
+     * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileTransSaveFileException() {
+      return fileTransSaveFileException_ != null;
+    }
+    /**
+     * <pre>
+     * file transfer end
+     * </pre>
+     *
+     * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileTransSaveFileException getFileTransSaveFileException() {
+      return fileTransSaveFileException_ == null ? tc.TcFileTransfer.FileTransSaveFileException.getDefaultInstance() : fileTransSaveFileException_;
+    }
+    /**
+     * <pre>
+     * file transfer end
+     * </pre>
+     *
+     * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+     */
+    private void setFileTransSaveFileException(tc.TcFileTransfer.FileTransSaveFileException value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileTransSaveFileException_ = value;
+      
+      }
+    /**
+     * <pre>
+     * file transfer end
+     * </pre>
+     *
+     * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+     */
+    private void setFileTransSaveFileException(
+        tc.TcFileTransfer.FileTransSaveFileException.Builder builderForValue) {
+      fileTransSaveFileException_ = builderForValue.build();
+      
+    }
+    /**
+     * <pre>
+     * file transfer end
+     * </pre>
+     *
+     * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileTransSaveFileException(tc.TcFileTransfer.FileTransSaveFileException value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileTransSaveFileException_ != null &&
+          fileTransSaveFileException_ != tc.TcFileTransfer.FileTransSaveFileException.getDefaultInstance()) {
+        fileTransSaveFileException_ =
+          tc.TcFileTransfer.FileTransSaveFileException.newBuilder(fileTransSaveFileException_).mergeFrom(value).buildPartial();
+      } else {
+        fileTransSaveFileException_ = value;
+      }
+      
+    }
+    /**
+     * <pre>
+     * file transfer end
+     * </pre>
+     *
+     * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+     */
+    private void clearFileTransSaveFileException() {  fileTransSaveFileException_ = null;
+      
+    }
+
+    public static final int REQ_CTRL_ALT_DELETE_FIELD_NUMBER = 340;
+    private tc.TcMessage.ReqCtrlAltDelete reqCtrlAltDelete_;
+    /**
+     * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+     */
+    @java.lang.Override
+    public boolean hasReqCtrlAltDelete() {
+      return reqCtrlAltDelete_ != null;
+    }
+    /**
+     * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.ReqCtrlAltDelete getReqCtrlAltDelete() {
+      return reqCtrlAltDelete_ == null ? tc.TcMessage.ReqCtrlAltDelete.getDefaultInstance() : reqCtrlAltDelete_;
+    }
+    /**
+     * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+     */
+    private void setReqCtrlAltDelete(tc.TcMessage.ReqCtrlAltDelete value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      reqCtrlAltDelete_ = value;
+      
+      }
+    /**
+     * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+     */
+    private void setReqCtrlAltDelete(
+        tc.TcMessage.ReqCtrlAltDelete.Builder builderForValue) {
+      reqCtrlAltDelete_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeReqCtrlAltDelete(tc.TcMessage.ReqCtrlAltDelete value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (reqCtrlAltDelete_ != null &&
+          reqCtrlAltDelete_ != tc.TcMessage.ReqCtrlAltDelete.getDefaultInstance()) {
+        reqCtrlAltDelete_ =
+          tc.TcMessage.ReqCtrlAltDelete.newBuilder(reqCtrlAltDelete_).mergeFrom(value).buildPartial();
+      } else {
+        reqCtrlAltDelete_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+     */
+    private void clearReqCtrlAltDelete() {  reqCtrlAltDelete_ = null;
+      
+    }
+
     public static tc.TcMessage.Message parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -20881,6 +22528,189 @@ public final class TcMessage {
           com.google.protobuf.ByteString value) {
         copyOnWrite();
         instance.setStreamIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * 消息序号
+       * </pre>
+       *
+       * <code>uint64 sequence = 5;</code>
+       */
+      @java.lang.Override
+      public long getSequence() {
+        return instance.getSequence();
+      }
+      /**
+       * <pre>
+       * 消息序号
+       * </pre>
+       *
+       * <code>uint64 sequence = 5;</code>
+       */
+      public Builder setSequence(long value) {
+        copyOnWrite();
+        instance.setSequence(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * 消息序号
+       * </pre>
+       *
+       * <code>uint64 sequence = 5;</code>
+       */
+      public Builder clearSequence() {
+        copyOnWrite();
+        instance.clearSequence();
+        return this;
+      }
+
+      /**
+       * <code>uint64 resp_sequence = 6;</code>
+       */
+      @java.lang.Override
+      public long getRespSequence() {
+        return instance.getRespSequence();
+      }
+      /**
+       * <code>uint64 resp_sequence = 6;</code>
+       */
+      public Builder setRespSequence(long value) {
+        copyOnWrite();
+        instance.setRespSequence(value);
+        return this;
+      }
+      /**
+       * <code>uint64 resp_sequence = 6;</code>
+       */
+      public Builder clearRespSequence() {
+        copyOnWrite();
+        instance.clearRespSequence();
+        return this;
+      }
+
+      /**
+       * <code>.tc.RespCode resp_code = 7;</code>
+       */
+      @java.lang.Override
+      public int getRespCodeValue() {
+        return instance.getRespCodeValue();
+      }
+      /**
+       * <code>.tc.RespCode resp_code = 7;</code>
+       */
+      public Builder setRespCodeValue(int value) {
+        copyOnWrite();
+        instance.setRespCodeValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.RespCode resp_code = 7;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.RespCode getRespCode() {
+        return instance.getRespCode();
+      }
+      /**
+       * <code>.tc.RespCode resp_code = 7;</code>
+       */
+      public Builder setRespCode(tc.TcMessage.RespCode value) {
+        copyOnWrite();
+        instance.setRespCode(value);
+        return this;
+      }
+      /**
+       * <code>.tc.RespCode resp_code = 7;</code>
+       */
+      public Builder clearRespCode() {
+        copyOnWrite();
+        instance.clearRespCode();
+        return this;
+      }
+
+      /**
+       * <code>string resp_message = 8;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getRespMessage() {
+        return instance.getRespMessage();
+      }
+      /**
+       * <code>string resp_message = 8;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getRespMessageBytes() {
+        return instance.getRespMessageBytes();
+      }
+      /**
+       * <code>string resp_message = 8;</code>
+       */
+      public Builder setRespMessage(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setRespMessage(value);
+        return this;
+      }
+      /**
+       * <code>string resp_message = 8;</code>
+       */
+      public Builder clearRespMessage() {
+        copyOnWrite();
+        instance.clearRespMessage();
+        return this;
+      }
+      /**
+       * <code>string resp_message = 8;</code>
+       */
+      public Builder setRespMessageBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setRespMessageBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string resp_data = 9;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getRespData() {
+        return instance.getRespData();
+      }
+      /**
+       * <code>string resp_data = 9;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getRespDataBytes() {
+        return instance.getRespDataBytes();
+      }
+      /**
+       * <code>string resp_data = 9;</code>
+       */
+      public Builder setRespData(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setRespData(value);
+        return this;
+      }
+      /**
+       * <code>string resp_data = 9;</code>
+       */
+      public Builder clearRespData() {
+        copyOnWrite();
+        instance.clearRespData();
+        return this;
+      }
+      /**
+       * <code>string resp_data = 9;</code>
+       */
+      public Builder setRespDataBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setRespDataBytes(value);
         return this;
       }
 
@@ -22264,6 +24094,707 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <pre>
+       * file transfer begin
+       * </pre>
+       *
+       * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileOperateionsEvent() {
+        return instance.hasFileOperateionsEvent();
+      }
+      /**
+       * <pre>
+       * file transfer begin
+       * </pre>
+       *
+       * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileOperateionsEvent getFileOperateionsEvent() {
+        return instance.getFileOperateionsEvent();
+      }
+      /**
+       * <pre>
+       * file transfer begin
+       * </pre>
+       *
+       * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+       */
+      public Builder setFileOperateionsEvent(tc.TcFileTransfer.FileOperateionsEvent value) {
+        copyOnWrite();
+        instance.setFileOperateionsEvent(value);
+        return this;
+        }
+      /**
+       * <pre>
+       * file transfer begin
+       * </pre>
+       *
+       * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+       */
+      public Builder setFileOperateionsEvent(
+          tc.TcFileTransfer.FileOperateionsEvent.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileOperateionsEvent(builderForValue);
+        return this;
+      }
+      /**
+       * <pre>
+       * file transfer begin
+       * </pre>
+       *
+       * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+       */
+      public Builder mergeFileOperateionsEvent(tc.TcFileTransfer.FileOperateionsEvent value) {
+        copyOnWrite();
+        instance.mergeFileOperateionsEvent(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * file transfer begin
+       * </pre>
+       *
+       * <code>.tc.FileOperateionsEvent file_operateions_event = 280;</code>
+       */
+      public Builder clearFileOperateionsEvent() {  copyOnWrite();
+        instance.clearFileOperateionsEvent();
+        return this;
+      }
+
+      /**
+       * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileOperateRespRename() {
+        return instance.hasFileOperateRespRename();
+      }
+      /**
+       * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileOperateRespRename getFileOperateRespRename() {
+        return instance.getFileOperateRespRename();
+      }
+      /**
+       * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+       */
+      public Builder setFileOperateRespRename(tc.TcFileTransfer.FileOperateRespRename value) {
+        copyOnWrite();
+        instance.setFileOperateRespRename(value);
+        return this;
+        }
+      /**
+       * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+       */
+      public Builder setFileOperateRespRename(
+          tc.TcFileTransfer.FileOperateRespRename.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileOperateRespRename(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+       */
+      public Builder mergeFileOperateRespRename(tc.TcFileTransfer.FileOperateRespRename value) {
+        copyOnWrite();
+        instance.mergeFileOperateRespRename(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespRename file_operate_resp_rename = 285;</code>
+       */
+      public Builder clearFileOperateRespRename() {  copyOnWrite();
+        instance.clearFileOperateRespRename();
+        return this;
+      }
+
+      /**
+       * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileOperateRespGetFileList() {
+        return instance.hasFileOperateRespGetFileList();
+      }
+      /**
+       * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileOperateRespGetFileList getFileOperateRespGetFileList() {
+        return instance.getFileOperateRespGetFileList();
+      }
+      /**
+       * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+       */
+      public Builder setFileOperateRespGetFileList(tc.TcFileTransfer.FileOperateRespGetFileList value) {
+        copyOnWrite();
+        instance.setFileOperateRespGetFileList(value);
+        return this;
+        }
+      /**
+       * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+       */
+      public Builder setFileOperateRespGetFileList(
+          tc.TcFileTransfer.FileOperateRespGetFileList.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileOperateRespGetFileList(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+       */
+      public Builder mergeFileOperateRespGetFileList(tc.TcFileTransfer.FileOperateRespGetFileList value) {
+        copyOnWrite();
+        instance.mergeFileOperateRespGetFileList(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespGetFileList file_operate_resp_get_file_list = 290;</code>
+       */
+      public Builder clearFileOperateRespGetFileList() {  copyOnWrite();
+        instance.clearFileOperateRespGetFileList();
+        return this;
+      }
+
+      /**
+       * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileOperateRespCreateNewFolder() {
+        return instance.hasFileOperateRespCreateNewFolder();
+      }
+      /**
+       * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileOperateRespCreateNewFolder getFileOperateRespCreateNewFolder() {
+        return instance.getFileOperateRespCreateNewFolder();
+      }
+      /**
+       * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+       */
+      public Builder setFileOperateRespCreateNewFolder(tc.TcFileTransfer.FileOperateRespCreateNewFolder value) {
+        copyOnWrite();
+        instance.setFileOperateRespCreateNewFolder(value);
+        return this;
+        }
+      /**
+       * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+       */
+      public Builder setFileOperateRespCreateNewFolder(
+          tc.TcFileTransfer.FileOperateRespCreateNewFolder.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileOperateRespCreateNewFolder(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+       */
+      public Builder mergeFileOperateRespCreateNewFolder(tc.TcFileTransfer.FileOperateRespCreateNewFolder value) {
+        copyOnWrite();
+        instance.mergeFileOperateRespCreateNewFolder(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespCreateNewFolder file_operate_resp_create_new_folder = 295;</code>
+       */
+      public Builder clearFileOperateRespCreateNewFolder() {  copyOnWrite();
+        instance.clearFileOperateRespCreateNewFolder();
+        return this;
+      }
+
+      /**
+       * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileOperateRespExists() {
+        return instance.hasFileOperateRespExists();
+      }
+      /**
+       * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileOperateRespExists getFileOperateRespExists() {
+        return instance.getFileOperateRespExists();
+      }
+      /**
+       * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+       */
+      public Builder setFileOperateRespExists(tc.TcFileTransfer.FileOperateRespExists value) {
+        copyOnWrite();
+        instance.setFileOperateRespExists(value);
+        return this;
+        }
+      /**
+       * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+       */
+      public Builder setFileOperateRespExists(
+          tc.TcFileTransfer.FileOperateRespExists.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileOperateRespExists(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+       */
+      public Builder mergeFileOperateRespExists(tc.TcFileTransfer.FileOperateRespExists value) {
+        copyOnWrite();
+        instance.mergeFileOperateRespExists(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespExists file_operate_resp_exists = 300;</code>
+       */
+      public Builder clearFileOperateRespExists() {  copyOnWrite();
+        instance.clearFileOperateRespExists();
+        return this;
+      }
+
+      /**
+       * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileOperateRespDel() {
+        return instance.hasFileOperateRespDel();
+      }
+      /**
+       * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileOperateRespDel getFileOperateRespDel() {
+        return instance.getFileOperateRespDel();
+      }
+      /**
+       * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+       */
+      public Builder setFileOperateRespDel(tc.TcFileTransfer.FileOperateRespDel value) {
+        copyOnWrite();
+        instance.setFileOperateRespDel(value);
+        return this;
+        }
+      /**
+       * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+       */
+      public Builder setFileOperateRespDel(
+          tc.TcFileTransfer.FileOperateRespDel.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileOperateRespDel(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+       */
+      public Builder mergeFileOperateRespDel(tc.TcFileTransfer.FileOperateRespDel value) {
+        copyOnWrite();
+        instance.mergeFileOperateRespDel(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespDel file_operate_resp_del = 305;</code>
+       */
+      public Builder clearFileOperateRespDel() {  copyOnWrite();
+        instance.clearFileOperateRespDel();
+        return this;
+      }
+
+      /**
+       * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileOperateRespBatchCreateFolders() {
+        return instance.hasFileOperateRespBatchCreateFolders();
+      }
+      /**
+       * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileOperateRespBatchCreateFolders getFileOperateRespBatchCreateFolders() {
+        return instance.getFileOperateRespBatchCreateFolders();
+      }
+      /**
+       * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+       */
+      public Builder setFileOperateRespBatchCreateFolders(tc.TcFileTransfer.FileOperateRespBatchCreateFolders value) {
+        copyOnWrite();
+        instance.setFileOperateRespBatchCreateFolders(value);
+        return this;
+        }
+      /**
+       * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+       */
+      public Builder setFileOperateRespBatchCreateFolders(
+          tc.TcFileTransfer.FileOperateRespBatchCreateFolders.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileOperateRespBatchCreateFolders(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+       */
+      public Builder mergeFileOperateRespBatchCreateFolders(tc.TcFileTransfer.FileOperateRespBatchCreateFolders value) {
+        copyOnWrite();
+        instance.mergeFileOperateRespBatchCreateFolders(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateRespBatchCreateFolders file_operate_resp_batch_create_folders = 310;</code>
+       */
+      public Builder clearFileOperateRespBatchCreateFolders() {  copyOnWrite();
+        instance.clearFileOperateRespBatchCreateFolders();
+        return this;
+      }
+
+      /**
+       * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileTransRespUpload() {
+        return instance.hasFileTransRespUpload();
+      }
+      /**
+       * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileTransRespUpload getFileTransRespUpload() {
+        return instance.getFileTransRespUpload();
+      }
+      /**
+       * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+       */
+      public Builder setFileTransRespUpload(tc.TcFileTransfer.FileTransRespUpload value) {
+        copyOnWrite();
+        instance.setFileTransRespUpload(value);
+        return this;
+        }
+      /**
+       * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+       */
+      public Builder setFileTransRespUpload(
+          tc.TcFileTransfer.FileTransRespUpload.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileTransRespUpload(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+       */
+      public Builder mergeFileTransRespUpload(tc.TcFileTransfer.FileTransRespUpload value) {
+        copyOnWrite();
+        instance.mergeFileTransRespUpload(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransRespUpload file_trans_resp_upload = 315;</code>
+       */
+      public Builder clearFileTransRespUpload() {  copyOnWrite();
+        instance.clearFileTransRespUpload();
+        return this;
+      }
+
+      /**
+       * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileTransRespDownload() {
+        return instance.hasFileTransRespDownload();
+      }
+      /**
+       * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileTransRespDownload getFileTransRespDownload() {
+        return instance.getFileTransRespDownload();
+      }
+      /**
+       * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+       */
+      public Builder setFileTransRespDownload(tc.TcFileTransfer.FileTransRespDownload value) {
+        copyOnWrite();
+        instance.setFileTransRespDownload(value);
+        return this;
+        }
+      /**
+       * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+       */
+      public Builder setFileTransRespDownload(
+          tc.TcFileTransfer.FileTransRespDownload.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileTransRespDownload(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+       */
+      public Builder mergeFileTransRespDownload(tc.TcFileTransfer.FileTransRespDownload value) {
+        copyOnWrite();
+        instance.mergeFileTransRespDownload(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransRespDownload file_trans_resp_download = 320;</code>
+       */
+      public Builder clearFileTransRespDownload() {  copyOnWrite();
+        instance.clearFileTransRespDownload();
+        return this;
+      }
+
+      /**
+       * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileTransDirectControl() {
+        return instance.hasFileTransDirectControl();
+      }
+      /**
+       * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileTransDirectControl getFileTransDirectControl() {
+        return instance.getFileTransDirectControl();
+      }
+      /**
+       * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+       */
+      public Builder setFileTransDirectControl(tc.TcFileTransfer.FileTransDirectControl value) {
+        copyOnWrite();
+        instance.setFileTransDirectControl(value);
+        return this;
+        }
+      /**
+       * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+       */
+      public Builder setFileTransDirectControl(
+          tc.TcFileTransfer.FileTransDirectControl.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileTransDirectControl(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+       */
+      public Builder mergeFileTransDirectControl(tc.TcFileTransfer.FileTransDirectControl value) {
+        copyOnWrite();
+        instance.mergeFileTransDirectControl(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransDirectControl file_trans_direct_control = 325;</code>
+       */
+      public Builder clearFileTransDirectControl() {  copyOnWrite();
+        instance.clearFileTransDirectControl();
+        return this;
+      }
+
+      /**
+       * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileTransDataPacket() {
+        return instance.hasFileTransDataPacket();
+      }
+      /**
+       * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileTransDataPacket getFileTransDataPacket() {
+        return instance.getFileTransDataPacket();
+      }
+      /**
+       * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+       */
+      public Builder setFileTransDataPacket(tc.TcFileTransfer.FileTransDataPacket value) {
+        copyOnWrite();
+        instance.setFileTransDataPacket(value);
+        return this;
+        }
+      /**
+       * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+       */
+      public Builder setFileTransDataPacket(
+          tc.TcFileTransfer.FileTransDataPacket.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileTransDataPacket(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+       */
+      public Builder mergeFileTransDataPacket(tc.TcFileTransfer.FileTransDataPacket value) {
+        copyOnWrite();
+        instance.mergeFileTransDataPacket(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransDataPacket file_trans_data_packet = 326;</code>
+       */
+      public Builder clearFileTransDataPacket() {  copyOnWrite();
+        instance.clearFileTransDataPacket();
+        return this;
+      }
+
+      /**
+       * <code>string file_conn_token = 327;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getFileConnToken() {
+        return instance.getFileConnToken();
+      }
+      /**
+       * <code>string file_conn_token = 327;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getFileConnTokenBytes() {
+        return instance.getFileConnTokenBytes();
+      }
+      /**
+       * <code>string file_conn_token = 327;</code>
+       */
+      public Builder setFileConnToken(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setFileConnToken(value);
+        return this;
+      }
+      /**
+       * <code>string file_conn_token = 327;</code>
+       */
+      public Builder clearFileConnToken() {
+        copyOnWrite();
+        instance.clearFileConnToken();
+        return this;
+      }
+      /**
+       * <code>string file_conn_token = 327;</code>
+       */
+      public Builder setFileConnTokenBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setFileConnTokenBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * file transfer end
+       * </pre>
+       *
+       * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileTransSaveFileException() {
+        return instance.hasFileTransSaveFileException();
+      }
+      /**
+       * <pre>
+       * file transfer end
+       * </pre>
+       *
+       * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileTransSaveFileException getFileTransSaveFileException() {
+        return instance.getFileTransSaveFileException();
+      }
+      /**
+       * <pre>
+       * file transfer end
+       * </pre>
+       *
+       * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+       */
+      public Builder setFileTransSaveFileException(tc.TcFileTransfer.FileTransSaveFileException value) {
+        copyOnWrite();
+        instance.setFileTransSaveFileException(value);
+        return this;
+        }
+      /**
+       * <pre>
+       * file transfer end
+       * </pre>
+       *
+       * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+       */
+      public Builder setFileTransSaveFileException(
+          tc.TcFileTransfer.FileTransSaveFileException.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileTransSaveFileException(builderForValue);
+        return this;
+      }
+      /**
+       * <pre>
+       * file transfer end
+       * </pre>
+       *
+       * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+       */
+      public Builder mergeFileTransSaveFileException(tc.TcFileTransfer.FileTransSaveFileException value) {
+        copyOnWrite();
+        instance.mergeFileTransSaveFileException(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * file transfer end
+       * </pre>
+       *
+       * <code>.tc.FileTransSaveFileException file_trans_save_file_exception = 330;</code>
+       */
+      public Builder clearFileTransSaveFileException() {  copyOnWrite();
+        instance.clearFileTransSaveFileException();
+        return this;
+      }
+
+      /**
+       * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+       */
+      @java.lang.Override
+      public boolean hasReqCtrlAltDelete() {
+        return instance.hasReqCtrlAltDelete();
+      }
+      /**
+       * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.ReqCtrlAltDelete getReqCtrlAltDelete() {
+        return instance.getReqCtrlAltDelete();
+      }
+      /**
+       * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+       */
+      public Builder setReqCtrlAltDelete(tc.TcMessage.ReqCtrlAltDelete value) {
+        copyOnWrite();
+        instance.setReqCtrlAltDelete(value);
+        return this;
+        }
+      /**
+       * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+       */
+      public Builder setReqCtrlAltDelete(
+          tc.TcMessage.ReqCtrlAltDelete.Builder builderForValue) {
+        copyOnWrite();
+        instance.setReqCtrlAltDelete(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+       */
+      public Builder mergeReqCtrlAltDelete(tc.TcMessage.ReqCtrlAltDelete value) {
+        copyOnWrite();
+        instance.mergeReqCtrlAltDelete(value);
+        return this;
+      }
+      /**
+       * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
+       */
+      public Builder clearReqCtrlAltDelete() {  copyOnWrite();
+        instance.clearReqCtrlAltDelete();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.Message)
     }
     @java.lang.Override
@@ -22283,6 +24814,11 @@ public final class TcMessage {
               "clientId_",
               "deviceId_",
               "streamId_",
+              "sequence_",
+              "respSequence_",
+              "respCode_",
+              "respMessage_",
+              "respData_",
               "type_",
               "sendTime_",
               "extra_",
@@ -22313,12 +24849,28 @@ public final class TcMessage {
               "changeMonitorResolutionResult_",
               "restartServer_",
               "syncPanelInfo_",
+              "fileOperateionsEvent_",
+              "fileOperateRespRename_",
+              "fileOperateRespGetFileList_",
+              "fileOperateRespCreateNewFolder_",
+              "fileOperateRespExists_",
+              "fileOperateRespDel_",
+              "fileOperateRespBatchCreateFolders_",
+              "fileTransRespUpload_",
+              "fileTransRespDownload_",
+              "fileTransDirectControl_",
+              "fileTransDataPacket_",
+              "fileConnToken_",
+              "fileTransSaveFileException_",
+              "reqCtrlAltDelete_",
             };
             java.lang.String info =
-                "\u0000 \u0000\u0000\u0002\u010e \u0000\u0001\u0000\u0002\u0208\u0003\u0208\u0004" +
-                "\u0208\n\f\u0014\u0003\u001e\u0208(\t)\t2\t<\t=\tF\tP\tZ\td\tn\tx\t\u0082\t\u008c" +
-                "\t\u0096\t\u00a0\u001b\u00aa\t\u00b4\t\u00be\t\u00c8\t\u00d2\t\u00dc\t\u00e6\t\u00f0" +
-                "\t\u00fa\t\u0104\t\u010e\t";
+                "\u00003\u0000\u0000\u0002\u01543\u0000\u0001\u0000\u0002\u0208\u0003\u0208\u0004" +
+                "\u0208\u0005\u0003\u0006\u0003\u0007\f\b\u0208\t\u0208\n\f\u0014\u0003\u001e\u0208" +
+                "(\t)\t2\t<\t=\tF\tP\tZ\td\tn\tx\t\u0082\t\u008c\t\u0096\t\u00a0\u001b\u00aa\t\u00b4" +
+                "\t\u00be\t\u00c8\t\u00d2\t\u00dc\t\u00e6\t\u00f0\t\u00fa\t\u0104\t\u010e\t\u0118" +
+                "\t\u011d\t\u0122\t\u0127\t\u012c\t\u0131\t\u0136\t\u013b\t\u0140\t\u0145\t\u0146" +
+                "\t\u0147\u0208\u014a\t\u0154\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

@@ -33,6 +33,10 @@ public final class TcServiceMessage {
      * <code>kSrvHeartBeatResp = 4;</code>
      */
     kSrvHeartBeatResp(4),
+    /**
+     * <code>kSrvReqCtrlAltDelete = 5;</code>
+     */
+    kSrvReqCtrlAltDelete(5),
     UNRECOGNIZED(-1),
     ;
 
@@ -56,6 +60,10 @@ public final class TcServiceMessage {
      * <code>kSrvHeartBeatResp = 4;</code>
      */
     public static final int kSrvHeartBeatResp_VALUE = 4;
+    /**
+     * <code>kSrvReqCtrlAltDelete = 5;</code>
+     */
+    public static final int kSrvReqCtrlAltDelete_VALUE = 5;
 
 
     @java.lang.Override
@@ -82,6 +90,7 @@ public final class TcServiceMessage {
         case 2: return kSrvRestartServer;
         case 3: return kSrvHeartBeat;
         case 4: return kSrvHeartBeatResp;
+        case 5: return kSrvReqCtrlAltDelete;
         default: return null;
       }
     }
@@ -2194,6 +2203,392 @@ public final class TcServiceMessage {
     }
   }
 
+  public interface MsgReqCtrlAltDeleteOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.MsgReqCtrlAltDelete)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>string req_client_id = 1;</code>
+     */
+    java.lang.String getReqClientId();
+    /**
+     * <code>string req_client_id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getReqClientIdBytes();
+
+    /**
+     * <code>string req_client_device_id = 2;</code>
+     */
+    java.lang.String getReqClientDeviceId();
+    /**
+     * <code>string req_client_device_id = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getReqClientDeviceIdBytes();
+  }
+  /**
+   * Protobuf type {@code tc.MsgReqCtrlAltDelete}
+   */
+  public  static final class MsgReqCtrlAltDelete extends
+      com.google.protobuf.GeneratedMessageLite<
+          MsgReqCtrlAltDelete, MsgReqCtrlAltDelete.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.MsgReqCtrlAltDelete)
+      MsgReqCtrlAltDeleteOrBuilder {
+    private MsgReqCtrlAltDelete() {
+      reqClientId_ = "";
+      reqClientDeviceId_ = "";
+    }
+    public static final int REQ_CLIENT_ID_FIELD_NUMBER = 1;
+    private java.lang.String reqClientId_;
+    /**
+     * <code>string req_client_id = 1;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getReqClientId() {
+      return reqClientId_;
+    }
+    /**
+     * <code>string req_client_id = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getReqClientIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(reqClientId_);
+    }
+    /**
+     * <code>string req_client_id = 1;</code>
+     */
+    private void setReqClientId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      reqClientId_ = value;
+    }
+    /**
+     * <code>string req_client_id = 1;</code>
+     */
+    private void clearReqClientId() {
+      
+      reqClientId_ = getDefaultInstance().getReqClientId();
+    }
+    /**
+     * <code>string req_client_id = 1;</code>
+     */
+    private void setReqClientIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      reqClientId_ = value.toStringUtf8();
+    }
+
+    public static final int REQ_CLIENT_DEVICE_ID_FIELD_NUMBER = 2;
+    private java.lang.String reqClientDeviceId_;
+    /**
+     * <code>string req_client_device_id = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getReqClientDeviceId() {
+      return reqClientDeviceId_;
+    }
+    /**
+     * <code>string req_client_device_id = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getReqClientDeviceIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(reqClientDeviceId_);
+    }
+    /**
+     * <code>string req_client_device_id = 2;</code>
+     */
+    private void setReqClientDeviceId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      reqClientDeviceId_ = value;
+    }
+    /**
+     * <code>string req_client_device_id = 2;</code>
+     */
+    private void clearReqClientDeviceId() {
+      
+      reqClientDeviceId_ = getDefaultInstance().getReqClientDeviceId();
+    }
+    /**
+     * <code>string req_client_device_id = 2;</code>
+     */
+    private void setReqClientDeviceIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      reqClientDeviceId_ = value.toStringUtf8();
+    }
+
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcServiceMessage.MsgReqCtrlAltDelete prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.MsgReqCtrlAltDelete}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcServiceMessage.MsgReqCtrlAltDelete, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.MsgReqCtrlAltDelete)
+        tc.TcServiceMessage.MsgReqCtrlAltDeleteOrBuilder {
+      // Construct using tc.TcServiceMessage.MsgReqCtrlAltDelete.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>string req_client_id = 1;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getReqClientId() {
+        return instance.getReqClientId();
+      }
+      /**
+       * <code>string req_client_id = 1;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getReqClientIdBytes() {
+        return instance.getReqClientIdBytes();
+      }
+      /**
+       * <code>string req_client_id = 1;</code>
+       */
+      public Builder setReqClientId(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setReqClientId(value);
+        return this;
+      }
+      /**
+       * <code>string req_client_id = 1;</code>
+       */
+      public Builder clearReqClientId() {
+        copyOnWrite();
+        instance.clearReqClientId();
+        return this;
+      }
+      /**
+       * <code>string req_client_id = 1;</code>
+       */
+      public Builder setReqClientIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setReqClientIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string req_client_device_id = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getReqClientDeviceId() {
+        return instance.getReqClientDeviceId();
+      }
+      /**
+       * <code>string req_client_device_id = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getReqClientDeviceIdBytes() {
+        return instance.getReqClientDeviceIdBytes();
+      }
+      /**
+       * <code>string req_client_device_id = 2;</code>
+       */
+      public Builder setReqClientDeviceId(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setReqClientDeviceId(value);
+        return this;
+      }
+      /**
+       * <code>string req_client_device_id = 2;</code>
+       */
+      public Builder clearReqClientDeviceId() {
+        copyOnWrite();
+        instance.clearReqClientDeviceId();
+        return this;
+      }
+      /**
+       * <code>string req_client_device_id = 2;</code>
+       */
+      public Builder setReqClientDeviceIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setReqClientDeviceIdBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.MsgReqCtrlAltDelete)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcServiceMessage.MsgReqCtrlAltDelete();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "reqClientId_",
+              "reqClientDeviceId_",
+            };
+            java.lang.String info =
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+                "";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcServiceMessage.MsgReqCtrlAltDelete> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcServiceMessage.MsgReqCtrlAltDelete.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.MsgReqCtrlAltDelete)
+    private static final tc.TcServiceMessage.MsgReqCtrlAltDelete DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new MsgReqCtrlAltDelete();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        MsgReqCtrlAltDelete.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcServiceMessage.MsgReqCtrlAltDelete getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<MsgReqCtrlAltDelete> PARSER;
+
+    public static com.google.protobuf.Parser<MsgReqCtrlAltDelete> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface ServiceMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:tc.ServiceMessage)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -2251,6 +2646,15 @@ public final class TcServiceMessage {
      * <code>.tc.MsgHeartBeatResp heart_beat_resp = 6;</code>
      */
     tc.TcServiceMessage.MsgHeartBeatResp getHeartBeatResp();
+
+    /**
+     * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+     */
+    boolean hasReqCtrlAltDelete();
+    /**
+     * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+     */
+    tc.TcServiceMessage.MsgReqCtrlAltDelete getReqCtrlAltDelete();
   }
   /**
    * Protobuf type {@code tc.ServiceMessage}
@@ -2590,6 +2994,64 @@ public final class TcServiceMessage {
      * <code>.tc.MsgHeartBeatResp heart_beat_resp = 6;</code>
      */
     private void clearHeartBeatResp() {  heartBeatResp_ = null;
+      
+    }
+
+    public static final int REQ_CTRL_ALT_DELETE_FIELD_NUMBER = 7;
+    private tc.TcServiceMessage.MsgReqCtrlAltDelete reqCtrlAltDelete_;
+    /**
+     * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+     */
+    @java.lang.Override
+    public boolean hasReqCtrlAltDelete() {
+      return reqCtrlAltDelete_ != null;
+    }
+    /**
+     * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+     */
+    @java.lang.Override
+    public tc.TcServiceMessage.MsgReqCtrlAltDelete getReqCtrlAltDelete() {
+      return reqCtrlAltDelete_ == null ? tc.TcServiceMessage.MsgReqCtrlAltDelete.getDefaultInstance() : reqCtrlAltDelete_;
+    }
+    /**
+     * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+     */
+    private void setReqCtrlAltDelete(tc.TcServiceMessage.MsgReqCtrlAltDelete value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      reqCtrlAltDelete_ = value;
+      
+      }
+    /**
+     * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+     */
+    private void setReqCtrlAltDelete(
+        tc.TcServiceMessage.MsgReqCtrlAltDelete.Builder builderForValue) {
+      reqCtrlAltDelete_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeReqCtrlAltDelete(tc.TcServiceMessage.MsgReqCtrlAltDelete value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (reqCtrlAltDelete_ != null &&
+          reqCtrlAltDelete_ != tc.TcServiceMessage.MsgReqCtrlAltDelete.getDefaultInstance()) {
+        reqCtrlAltDelete_ =
+          tc.TcServiceMessage.MsgReqCtrlAltDelete.newBuilder(reqCtrlAltDelete_).mergeFrom(value).buildPartial();
+      } else {
+        reqCtrlAltDelete_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+     */
+    private void clearReqCtrlAltDelete() {  reqCtrlAltDelete_ = null;
       
     }
 
@@ -2962,6 +3424,53 @@ public final class TcServiceMessage {
         return this;
       }
 
+      /**
+       * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+       */
+      @java.lang.Override
+      public boolean hasReqCtrlAltDelete() {
+        return instance.hasReqCtrlAltDelete();
+      }
+      /**
+       * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+       */
+      @java.lang.Override
+      public tc.TcServiceMessage.MsgReqCtrlAltDelete getReqCtrlAltDelete() {
+        return instance.getReqCtrlAltDelete();
+      }
+      /**
+       * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+       */
+      public Builder setReqCtrlAltDelete(tc.TcServiceMessage.MsgReqCtrlAltDelete value) {
+        copyOnWrite();
+        instance.setReqCtrlAltDelete(value);
+        return this;
+        }
+      /**
+       * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+       */
+      public Builder setReqCtrlAltDelete(
+          tc.TcServiceMessage.MsgReqCtrlAltDelete.Builder builderForValue) {
+        copyOnWrite();
+        instance.setReqCtrlAltDelete(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+       */
+      public Builder mergeReqCtrlAltDelete(tc.TcServiceMessage.MsgReqCtrlAltDelete value) {
+        copyOnWrite();
+        instance.mergeReqCtrlAltDelete(value);
+        return this;
+      }
+      /**
+       * <code>.tc.MsgReqCtrlAltDelete req_ctrl_alt_delete = 7;</code>
+       */
+      public Builder clearReqCtrlAltDelete() {  copyOnWrite();
+        instance.clearReqCtrlAltDelete();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.ServiceMessage)
     }
     @java.lang.Override
@@ -2984,10 +3493,11 @@ public final class TcServiceMessage {
               "restartServer_",
               "heartBeat_",
               "heartBeatResp_",
+              "reqCtrlAltDelete_",
             };
             java.lang.String info =
-                "\u0000\u0006\u0000\u0000\u0001\u0006\u0006\u0000\u0000\u0000\u0001\f\u0002\t\u0003" +
-                "\t\u0004\t\u0005\t\u0006\t";
+                "\u0000\u0007\u0000\u0000\u0001\u0007\u0007\u0000\u0000\u0000\u0001\f\u0002\t\u0003" +
+                "\t\u0004\t\u0005\t\u0006\t\u0007\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

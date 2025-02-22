@@ -8,851 +8,4785 @@ public final class TcFileTransfer {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
-  /**
-   * Protobuf enum {@code tc.FtFileType}
-   */
-  public enum FtFileType
-      implements com.google.protobuf.Internal.EnumLite {
-    /**
-     * <code>kFtFile = 0;</code>
-     */
-    kFtFile(0),
-    /**
-     * <code>kFtFolder = 1;</code>
-     */
-    kFtFolder(1),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>kFtFile = 0;</code>
-     */
-    public static final int kFtFile_VALUE = 0;
-    /**
-     * <code>kFtFolder = 1;</code>
-     */
-    public static final int kFtFolder_VALUE = 1;
-
-
-    @java.lang.Override
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static FtFileType valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static FtFileType forNumber(int value) {
-      switch (value) {
-        case 0: return kFtFile;
-        case 1: return kFtFolder;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<FtFileType>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        FtFileType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<FtFileType>() {
-            @java.lang.Override
-            public FtFileType findValueByNumber(int number) {
-              return FtFileType.forNumber(number);
-            }
-          };
-
-    public static com.google.protobuf.Internal.EnumVerifier 
-        internalGetVerifier() {
-      return FtFileTypeVerifier.INSTANCE;
-    }
-
-    private static final class FtFileTypeVerifier implements 
-         com.google.protobuf.Internal.EnumVerifier { 
-            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new FtFileTypeVerifier();
-            @java.lang.Override
-            public boolean isInRange(int number) {
-              return FtFileType.forNumber(number) != null;
-            }
-          };
-
-    private final int value;
-
-    private FtFileType(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:tc.FtFileType)
-  }
-
-  /**
-   * Protobuf enum {@code tc.FtRequestState}
-   */
-  public enum FtRequestState
-      implements com.google.protobuf.Internal.EnumLite {
-    /**
-     * <code>kFtRequestFileTransfer = 0;</code>
-     */
-    kFtRequestFileTransfer(0),
-    /**
-     * <pre>
-     * transferring
-     * </pre>
-     *
-     * <code>kFtTransferring = 1;</code>
-     */
-    kFtTransferring(1),
-    /**
-     * <pre>
-     * transfer over
-     * </pre>
-     *
-     * <code>kFtTransferOver = 2;</code>
-     */
-    kFtTransferOver(2),
-    /**
-     * <pre>
-     * stopped by user
-     * </pre>
-     *
-     * <code>kFtTransferInterrupted = 3;</code>
-     */
-    kFtTransferInterrupted(3),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>kFtRequestFileTransfer = 0;</code>
-     */
-    public static final int kFtRequestFileTransfer_VALUE = 0;
-    /**
-     * <pre>
-     * transferring
-     * </pre>
-     *
-     * <code>kFtTransferring = 1;</code>
-     */
-    public static final int kFtTransferring_VALUE = 1;
-    /**
-     * <pre>
-     * transfer over
-     * </pre>
-     *
-     * <code>kFtTransferOver = 2;</code>
-     */
-    public static final int kFtTransferOver_VALUE = 2;
-    /**
-     * <pre>
-     * stopped by user
-     * </pre>
-     *
-     * <code>kFtTransferInterrupted = 3;</code>
-     */
-    public static final int kFtTransferInterrupted_VALUE = 3;
-
-
-    @java.lang.Override
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static FtRequestState valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static FtRequestState forNumber(int value) {
-      switch (value) {
-        case 0: return kFtRequestFileTransfer;
-        case 1: return kFtTransferring;
-        case 2: return kFtTransferOver;
-        case 3: return kFtTransferInterrupted;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<FtRequestState>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        FtRequestState> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<FtRequestState>() {
-            @java.lang.Override
-            public FtRequestState findValueByNumber(int number) {
-              return FtRequestState.forNumber(number);
-            }
-          };
-
-    public static com.google.protobuf.Internal.EnumVerifier 
-        internalGetVerifier() {
-      return FtRequestStateVerifier.INSTANCE;
-    }
-
-    private static final class FtRequestStateVerifier implements 
-         com.google.protobuf.Internal.EnumVerifier { 
-            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new FtRequestStateVerifier();
-            @java.lang.Override
-            public boolean isInRange(int number) {
-              return FtRequestState.forNumber(number) != null;
-            }
-          };
-
-    private final int value;
-
-    private FtRequestState(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:tc.FtRequestState)
-  }
-
-  /**
-   * Protobuf enum {@code tc.FtResponseState}
-   */
-  public enum FtResponseState
-      implements com.google.protobuf.Internal.EnumLite {
-    /**
-     * <pre>
-     * it's ok
-     * </pre>
-     *
-     * <code>kTransferReady = 0;</code>
-     */
-    kTransferReady(0),
-    /**
-     * <pre>
-     * file already exists.
-     * </pre>
-     *
-     * <code>kFileAlreadyExists = 1;</code>
-     */
-    kFileAlreadyExists(1),
-    /**
-     * <pre>
-     * the file already exists, but can't delete it.
-     * </pre>
-     *
-     * <code>kFileDeleteFailed = 2;</code>
-     */
-    kFileDeleteFailed(2),
-    /**
-     * <pre>
-     * transferring
-     * </pre>
-     *
-     * <code>kTransferring = 3;</code>
-     */
-    kTransferring(3),
-    /**
-     * <pre>
-     * after compare md5
-     * </pre>
-     *
-     * <code>kTransferSuccess = 4;</code>
-     */
-    kTransferSuccess(4),
-    /**
-     * <pre>
-     * failed
-     * </pre>
-     *
-     * <code>kTransferFailed = 5;</code>
-     */
-    kTransferFailed(5),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <pre>
-     * it's ok
-     * </pre>
-     *
-     * <code>kTransferReady = 0;</code>
-     */
-    public static final int kTransferReady_VALUE = 0;
-    /**
-     * <pre>
-     * file already exists.
-     * </pre>
-     *
-     * <code>kFileAlreadyExists = 1;</code>
-     */
-    public static final int kFileAlreadyExists_VALUE = 1;
-    /**
-     * <pre>
-     * the file already exists, but can't delete it.
-     * </pre>
-     *
-     * <code>kFileDeleteFailed = 2;</code>
-     */
-    public static final int kFileDeleteFailed_VALUE = 2;
-    /**
-     * <pre>
-     * transferring
-     * </pre>
-     *
-     * <code>kTransferring = 3;</code>
-     */
-    public static final int kTransferring_VALUE = 3;
-    /**
-     * <pre>
-     * after compare md5
-     * </pre>
-     *
-     * <code>kTransferSuccess = 4;</code>
-     */
-    public static final int kTransferSuccess_VALUE = 4;
-    /**
-     * <pre>
-     * failed
-     * </pre>
-     *
-     * <code>kTransferFailed = 5;</code>
-     */
-    public static final int kTransferFailed_VALUE = 5;
-
-
-    @java.lang.Override
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static FtResponseState valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static FtResponseState forNumber(int value) {
-      switch (value) {
-        case 0: return kTransferReady;
-        case 1: return kFileAlreadyExists;
-        case 2: return kFileDeleteFailed;
-        case 3: return kTransferring;
-        case 4: return kTransferSuccess;
-        case 5: return kTransferFailed;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<FtResponseState>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        FtResponseState> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<FtResponseState>() {
-            @java.lang.Override
-            public FtResponseState findValueByNumber(int number) {
-              return FtResponseState.forNumber(number);
-            }
-          };
-
-    public static com.google.protobuf.Internal.EnumVerifier 
-        internalGetVerifier() {
-      return FtResponseStateVerifier.INSTANCE;
-    }
-
-    private static final class FtResponseStateVerifier implements 
-         com.google.protobuf.Internal.EnumVerifier { 
-            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new FtResponseStateVerifier();
-            @java.lang.Override
-            public boolean isInRange(int number) {
-              return FtResponseState.forNumber(number) != null;
-            }
-          };
-
-    private final int value;
-
-    private FtResponseState(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:tc.FtResponseState)
-  }
-
-  /**
-   * Protobuf enum {@code tc.FtMessageType}
-   */
-  public enum FtMessageType
-      implements com.google.protobuf.Internal.EnumLite {
-    /**
-     * <code>kFtRequest = 0;</code>
-     */
-    kFtRequest(0),
-    /**
-     * <code>kFtResponse = 1;</code>
-     */
-    kFtResponse(1),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>kFtRequest = 0;</code>
-     */
-    public static final int kFtRequest_VALUE = 0;
-    /**
-     * <code>kFtResponse = 1;</code>
-     */
-    public static final int kFtResponse_VALUE = 1;
-
-
-    @java.lang.Override
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static FtMessageType valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static FtMessageType forNumber(int value) {
-      switch (value) {
-        case 0: return kFtRequest;
-        case 1: return kFtResponse;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<FtMessageType>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        FtMessageType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<FtMessageType>() {
-            @java.lang.Override
-            public FtMessageType findValueByNumber(int number) {
-              return FtMessageType.forNumber(number);
-            }
-          };
-
-    public static com.google.protobuf.Internal.EnumVerifier 
-        internalGetVerifier() {
-      return FtMessageTypeVerifier.INSTANCE;
-    }
-
-    private static final class FtMessageTypeVerifier implements 
-         com.google.protobuf.Internal.EnumVerifier { 
-            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new FtMessageTypeVerifier();
-            @java.lang.Override
-            public boolean isInRange(int number) {
-              return FtMessageType.forNumber(number) != null;
-            }
-          };
-
-    private final int value;
-
-    private FtMessageType(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:tc.FtMessageType)
-  }
-
-  public interface FtRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:tc.FtRequest)
+  public interface FileOperateRespRenameOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileOperateRespRename)
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>string id = 1;</code>
+     * <code>bool ret = 1;</code>
      */
-    java.lang.String getId();
+    boolean getRet();
+
     /**
-     * <code>string id = 1;</code>
+     * <code>string path_of_old = 2;</code>
+     */
+    java.lang.String getPathOfOld();
+    /**
+     * <code>string path_of_old = 2;</code>
      */
     com.google.protobuf.ByteString
-        getIdBytes();
+        getPathOfOldBytes();
 
     /**
-     * <code>.tc.FtRequestState state = 10;</code>
+     * <code>string path_of_new = 3;</code>
      */
-    int getStateValue();
+    java.lang.String getPathOfNew();
     /**
-     * <code>.tc.FtRequestState state = 10;</code>
-     */
-    tc.TcFileTransfer.FtRequestState getState();
-
-    /**
-     * <code>.tc.FtFileType file_type = 20;</code>
-     */
-    int getFileTypeValue();
-    /**
-     * <code>.tc.FtFileType file_type = 20;</code>
-     */
-    tc.TcFileTransfer.FtFileType getFileType();
-
-    /**
-     * <code>string relative_path = 30;</code>
-     */
-    java.lang.String getRelativePath();
-    /**
-     * <code>string relative_path = 30;</code>
+     * <code>string path_of_new = 3;</code>
      */
     com.google.protobuf.ByteString
-        getRelativePathBytes();
+        getPathOfNewBytes();
 
     /**
-     * <code>string filename = 40;</code>
+     * <code>string msg_of_error = 4;</code>
      */
-    java.lang.String getFilename();
+    java.lang.String getMsgOfError();
     /**
-     * <code>string filename = 40;</code>
+     * <code>string msg_of_error = 4;</code>
      */
     com.google.protobuf.ByteString
-        getFilenameBytes();
-
-    /**
-     * <code>bytes data = 50;</code>
-     */
-    com.google.protobuf.ByteString getData();
-
-    /**
-     * <code>uint64 filesize = 60;</code>
-     */
-    long getFilesize();
-
-    /**
-     * <code>uint64 transferred_size = 70;</code>
-     */
-    long getTransferredSize();
-
-    /**
-     * <code>string file_md5 = 80;</code>
-     */
-    java.lang.String getFileMd5();
-    /**
-     * <code>string file_md5 = 80;</code>
-     */
-    com.google.protobuf.ByteString
-        getFileMd5Bytes();
-
-    /**
-     * <code>string local_filepath = 90;</code>
-     */
-    java.lang.String getLocalFilepath();
-    /**
-     * <code>string local_filepath = 90;</code>
-     */
-    com.google.protobuf.ByteString
-        getLocalFilepathBytes();
-
-    /**
-     * <code>uint64 timestamp = 100;</code>
-     */
-    long getTimestamp();
-
-    /**
-     * <code>string ref_path = 110;</code>
-     */
-    java.lang.String getRefPath();
-    /**
-     * <code>string ref_path = 110;</code>
-     */
-    com.google.protobuf.ByteString
-        getRefPathBytes();
-
-    /**
-     * <code>string ref_folder = 120;</code>
-     */
-    java.lang.String getRefFolder();
-    /**
-     * <code>string ref_folder = 120;</code>
-     */
-    com.google.protobuf.ByteString
-        getRefFolderBytes();
+        getMsgOfErrorBytes();
   }
   /**
    * <pre>
-   * Peer -&gt; Remote Peer
+   * Return the result of renaming
    * </pre>
    *
-   * Protobuf type {@code tc.FtRequest}
+   * Protobuf type {@code tc.FileOperateRespRename}
    */
-  public  static final class FtRequest extends
+  public  static final class FileOperateRespRename extends
       com.google.protobuf.GeneratedMessageLite<
-          FtRequest, FtRequest.Builder> implements
-      // @@protoc_insertion_point(message_implements:tc.FtRequest)
-      FtRequestOrBuilder {
-    private FtRequest() {
-      id_ = "";
-      relativePath_ = "";
-      filename_ = "";
+          FileOperateRespRename, FileOperateRespRename.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileOperateRespRename)
+      FileOperateRespRenameOrBuilder {
+    private FileOperateRespRename() {
+      pathOfOld_ = "";
+      pathOfNew_ = "";
+      msgOfError_ = "";
+    }
+    public static final int RET_FIELD_NUMBER = 1;
+    private boolean ret_;
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    @java.lang.Override
+    public boolean getRet() {
+      return ret_;
+    }
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    private void setRet(boolean value) {
+      
+      ret_ = value;
+    }
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    private void clearRet() {
+      
+      ret_ = false;
+    }
+
+    public static final int PATH_OF_OLD_FIELD_NUMBER = 2;
+    private java.lang.String pathOfOld_;
+    /**
+     * <code>string path_of_old = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathOfOld() {
+      return pathOfOld_;
+    }
+    /**
+     * <code>string path_of_old = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathOfOldBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(pathOfOld_);
+    }
+    /**
+     * <code>string path_of_old = 2;</code>
+     */
+    private void setPathOfOld(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      pathOfOld_ = value;
+    }
+    /**
+     * <code>string path_of_old = 2;</code>
+     */
+    private void clearPathOfOld() {
+      
+      pathOfOld_ = getDefaultInstance().getPathOfOld();
+    }
+    /**
+     * <code>string path_of_old = 2;</code>
+     */
+    private void setPathOfOldBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      pathOfOld_ = value.toStringUtf8();
+    }
+
+    public static final int PATH_OF_NEW_FIELD_NUMBER = 3;
+    private java.lang.String pathOfNew_;
+    /**
+     * <code>string path_of_new = 3;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathOfNew() {
+      return pathOfNew_;
+    }
+    /**
+     * <code>string path_of_new = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathOfNewBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(pathOfNew_);
+    }
+    /**
+     * <code>string path_of_new = 3;</code>
+     */
+    private void setPathOfNew(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      pathOfNew_ = value;
+    }
+    /**
+     * <code>string path_of_new = 3;</code>
+     */
+    private void clearPathOfNew() {
+      
+      pathOfNew_ = getDefaultInstance().getPathOfNew();
+    }
+    /**
+     * <code>string path_of_new = 3;</code>
+     */
+    private void setPathOfNewBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      pathOfNew_ = value.toStringUtf8();
+    }
+
+    public static final int MSG_OF_ERROR_FIELD_NUMBER = 4;
+    private java.lang.String msgOfError_;
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getMsgOfError() {
+      return msgOfError_;
+    }
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMsgOfErrorBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(msgOfError_);
+    }
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    private void setMsgOfError(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      msgOfError_ = value;
+    }
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    private void clearMsgOfError() {
+      
+      msgOfError_ = getDefaultInstance().getMsgOfError();
+    }
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    private void setMsgOfErrorBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      msgOfError_ = value.toStringUtf8();
+    }
+
+    public static tc.TcFileTransfer.FileOperateRespRename parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcFileTransfer.FileOperateRespRename prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * Return the result of renaming
+     * </pre>
+     *
+     * Protobuf type {@code tc.FileOperateRespRename}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcFileTransfer.FileOperateRespRename, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileOperateRespRename)
+        tc.TcFileTransfer.FileOperateRespRenameOrBuilder {
+      // Construct using tc.TcFileTransfer.FileOperateRespRename.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      @java.lang.Override
+      public boolean getRet() {
+        return instance.getRet();
+      }
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      public Builder setRet(boolean value) {
+        copyOnWrite();
+        instance.setRet(value);
+        return this;
+      }
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      public Builder clearRet() {
+        copyOnWrite();
+        instance.clearRet();
+        return this;
+      }
+
+      /**
+       * <code>string path_of_old = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathOfOld() {
+        return instance.getPathOfOld();
+      }
+      /**
+       * <code>string path_of_old = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathOfOldBytes() {
+        return instance.getPathOfOldBytes();
+      }
+      /**
+       * <code>string path_of_old = 2;</code>
+       */
+      public Builder setPathOfOld(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPathOfOld(value);
+        return this;
+      }
+      /**
+       * <code>string path_of_old = 2;</code>
+       */
+      public Builder clearPathOfOld() {
+        copyOnWrite();
+        instance.clearPathOfOld();
+        return this;
+      }
+      /**
+       * <code>string path_of_old = 2;</code>
+       */
+      public Builder setPathOfOldBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathOfOldBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string path_of_new = 3;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathOfNew() {
+        return instance.getPathOfNew();
+      }
+      /**
+       * <code>string path_of_new = 3;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathOfNewBytes() {
+        return instance.getPathOfNewBytes();
+      }
+      /**
+       * <code>string path_of_new = 3;</code>
+       */
+      public Builder setPathOfNew(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPathOfNew(value);
+        return this;
+      }
+      /**
+       * <code>string path_of_new = 3;</code>
+       */
+      public Builder clearPathOfNew() {
+        copyOnWrite();
+        instance.clearPathOfNew();
+        return this;
+      }
+      /**
+       * <code>string path_of_new = 3;</code>
+       */
+      public Builder setPathOfNewBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathOfNewBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string msg_of_error = 4;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getMsgOfError() {
+        return instance.getMsgOfError();
+      }
+      /**
+       * <code>string msg_of_error = 4;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMsgOfErrorBytes() {
+        return instance.getMsgOfErrorBytes();
+      }
+      /**
+       * <code>string msg_of_error = 4;</code>
+       */
+      public Builder setMsgOfError(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setMsgOfError(value);
+        return this;
+      }
+      /**
+       * <code>string msg_of_error = 4;</code>
+       */
+      public Builder clearMsgOfError() {
+        copyOnWrite();
+        instance.clearMsgOfError();
+        return this;
+      }
+      /**
+       * <code>string msg_of_error = 4;</code>
+       */
+      public Builder setMsgOfErrorBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setMsgOfErrorBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileOperateRespRename)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcFileTransfer.FileOperateRespRename();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "ret_",
+              "pathOfOld_",
+              "pathOfNew_",
+              "msgOfError_",
+            };
+            java.lang.String info =
+                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0007\u0002\u0208" +
+                "\u0003\u0208\u0004\u0208";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileOperateRespRename> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcFileTransfer.FileOperateRespRename.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.FileOperateRespRename)
+    private static final tc.TcFileTransfer.FileOperateRespRename DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new FileOperateRespRename();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FileOperateRespRename.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcFileTransfer.FileOperateRespRename getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FileOperateRespRename> PARSER;
+
+    public static com.google.protobuf.Parser<FileOperateRespRename> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface FileDescInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileDescInfo)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>.tc.FileDescInfo.FileType type = 1;</code>
+     */
+    int getTypeValue();
+    /**
+     * <code>.tc.FileDescInfo.FileType type = 1;</code>
+     */
+    tc.TcFileTransfer.FileDescInfo.FileType getType();
+
+    /**
+     * <code>string name = 2;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>string path = 3;</code>
+     */
+    java.lang.String getPath();
+    /**
+     * <code>string path = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathBytes();
+
+    /**
+     * <code>uint64 size = 4;</code>
+     */
+    long getSize();
+
+    /**
+     * <code>uint64 date = 5;</code>
+     */
+    long getDate();
+  }
+  /**
+   * Protobuf type {@code tc.FileDescInfo}
+   */
+  public  static final class FileDescInfo extends
+      com.google.protobuf.GeneratedMessageLite<
+          FileDescInfo, FileDescInfo.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileDescInfo)
+      FileDescInfoOrBuilder {
+    private FileDescInfo() {
+      name_ = "";
+      path_ = "";
+    }
+    /**
+     * Protobuf enum {@code tc.FileDescInfo.FileType}
+     */
+    public enum FileType
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <code>kDisk = 0;</code>
+       */
+      kDisk(0),
+      /**
+       * <code>kFolder = 1;</code>
+       */
+      kFolder(1),
+      /**
+       * <code>kFile = 2;</code>
+       */
+      kFile(2),
+      /**
+       * <code>kDeskFolder = 3;</code>
+       */
+      kDeskFolder(3),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>kDisk = 0;</code>
+       */
+      public static final int kDisk_VALUE = 0;
+      /**
+       * <code>kFolder = 1;</code>
+       */
+      public static final int kFolder_VALUE = 1;
+      /**
+       * <code>kFile = 2;</code>
+       */
+      public static final int kFile_VALUE = 2;
+      /**
+       * <code>kDeskFolder = 3;</code>
+       */
+      public static final int kDeskFolder_VALUE = 3;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static FileType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static FileType forNumber(int value) {
+        switch (value) {
+          case 0: return kDisk;
+          case 1: return kFolder;
+          case 2: return kFile;
+          case 3: return kDeskFolder;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<FileType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          FileType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<FileType>() {
+              @java.lang.Override
+              public FileType findValueByNumber(int number) {
+                return FileType.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return FileTypeVerifier.INSTANCE;
+      }
+
+      private static final class FileTypeVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new FileTypeVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return FileType.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private FileType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:tc.FileDescInfo.FileType)
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>.tc.FileDescInfo.FileType type = 1;</code>
+     */
+    @java.lang.Override
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.tc.FileDescInfo.FileType type = 1;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileDescInfo.FileType getType() {
+      tc.TcFileTransfer.FileDescInfo.FileType result = tc.TcFileTransfer.FileDescInfo.FileType.forNumber(type_);
+      return result == null ? tc.TcFileTransfer.FileDescInfo.FileType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.tc.FileDescInfo.FileType type = 1;</code>
+     */
+    private void setTypeValue(int value) {
+        type_ = value;
+    }
+    /**
+     * <code>.tc.FileDescInfo.FileType type = 1;</code>
+     */
+    private void setType(tc.TcFileTransfer.FileDescInfo.FileType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      type_ = value.getNumber();
+    }
+    /**
+     * <code>.tc.FileDescInfo.FileType type = 1;</code>
+     */
+    private void clearType() {
+      
+      type_ = 0;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private java.lang.String name_;
+    /**
+     * <code>string name = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getName() {
+      return name_;
+    }
+    /**
+     * <code>string name = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(name_);
+    }
+    /**
+     * <code>string name = 2;</code>
+     */
+    private void setName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      name_ = value;
+    }
+    /**
+     * <code>string name = 2;</code>
+     */
+    private void clearName() {
+      
+      name_ = getDefaultInstance().getName();
+    }
+    /**
+     * <code>string name = 2;</code>
+     */
+    private void setNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      name_ = value.toStringUtf8();
+    }
+
+    public static final int PATH_FIELD_NUMBER = 3;
+    private java.lang.String path_;
+    /**
+     * <code>string path = 3;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPath() {
+      return path_;
+    }
+    /**
+     * <code>string path = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(path_);
+    }
+    /**
+     * <code>string path = 3;</code>
+     */
+    private void setPath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      path_ = value;
+    }
+    /**
+     * <code>string path = 3;</code>
+     */
+    private void clearPath() {
+      
+      path_ = getDefaultInstance().getPath();
+    }
+    /**
+     * <code>string path = 3;</code>
+     */
+    private void setPathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      path_ = value.toStringUtf8();
+    }
+
+    public static final int SIZE_FIELD_NUMBER = 4;
+    private long size_;
+    /**
+     * <code>uint64 size = 4;</code>
+     */
+    @java.lang.Override
+    public long getSize() {
+      return size_;
+    }
+    /**
+     * <code>uint64 size = 4;</code>
+     */
+    private void setSize(long value) {
+      
+      size_ = value;
+    }
+    /**
+     * <code>uint64 size = 4;</code>
+     */
+    private void clearSize() {
+      
+      size_ = 0L;
+    }
+
+    public static final int DATE_FIELD_NUMBER = 5;
+    private long date_;
+    /**
+     * <code>uint64 date = 5;</code>
+     */
+    @java.lang.Override
+    public long getDate() {
+      return date_;
+    }
+    /**
+     * <code>uint64 date = 5;</code>
+     */
+    private void setDate(long value) {
+      
+      date_ = value;
+    }
+    /**
+     * <code>uint64 date = 5;</code>
+     */
+    private void clearDate() {
+      
+      date_ = 0L;
+    }
+
+    public static tc.TcFileTransfer.FileDescInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileDescInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileDescInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileDescInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileDescInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileDescInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileDescInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileDescInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileDescInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileDescInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileDescInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileDescInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcFileTransfer.FileDescInfo prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.FileDescInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcFileTransfer.FileDescInfo, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileDescInfo)
+        tc.TcFileTransfer.FileDescInfoOrBuilder {
+      // Construct using tc.TcFileTransfer.FileDescInfo.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>.tc.FileDescInfo.FileType type = 1;</code>
+       */
+      @java.lang.Override
+      public int getTypeValue() {
+        return instance.getTypeValue();
+      }
+      /**
+       * <code>.tc.FileDescInfo.FileType type = 1;</code>
+       */
+      public Builder setTypeValue(int value) {
+        copyOnWrite();
+        instance.setTypeValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileDescInfo.FileType type = 1;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileDescInfo.FileType getType() {
+        return instance.getType();
+      }
+      /**
+       * <code>.tc.FileDescInfo.FileType type = 1;</code>
+       */
+      public Builder setType(tc.TcFileTransfer.FileDescInfo.FileType value) {
+        copyOnWrite();
+        instance.setType(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileDescInfo.FileType type = 1;</code>
+       */
+      public Builder clearType() {
+        copyOnWrite();
+        instance.clearType();
+        return this;
+      }
+
+      /**
+       * <code>string name = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getName() {
+        return instance.getName();
+      }
+      /**
+       * <code>string name = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        return instance.getNameBytes();
+      }
+      /**
+       * <code>string name = 2;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setName(value);
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       */
+      public Builder clearName() {
+        copyOnWrite();
+        instance.clearName();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string path = 3;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPath() {
+        return instance.getPath();
+      }
+      /**
+       * <code>string path = 3;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathBytes() {
+        return instance.getPathBytes();
+      }
+      /**
+       * <code>string path = 3;</code>
+       */
+      public Builder setPath(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPath(value);
+        return this;
+      }
+      /**
+       * <code>string path = 3;</code>
+       */
+      public Builder clearPath() {
+        copyOnWrite();
+        instance.clearPath();
+        return this;
+      }
+      /**
+       * <code>string path = 3;</code>
+       */
+      public Builder setPathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>uint64 size = 4;</code>
+       */
+      @java.lang.Override
+      public long getSize() {
+        return instance.getSize();
+      }
+      /**
+       * <code>uint64 size = 4;</code>
+       */
+      public Builder setSize(long value) {
+        copyOnWrite();
+        instance.setSize(value);
+        return this;
+      }
+      /**
+       * <code>uint64 size = 4;</code>
+       */
+      public Builder clearSize() {
+        copyOnWrite();
+        instance.clearSize();
+        return this;
+      }
+
+      /**
+       * <code>uint64 date = 5;</code>
+       */
+      @java.lang.Override
+      public long getDate() {
+        return instance.getDate();
+      }
+      /**
+       * <code>uint64 date = 5;</code>
+       */
+      public Builder setDate(long value) {
+        copyOnWrite();
+        instance.setDate(value);
+        return this;
+      }
+      /**
+       * <code>uint64 date = 5;</code>
+       */
+      public Builder clearDate() {
+        copyOnWrite();
+        instance.clearDate();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileDescInfo)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcFileTransfer.FileDescInfo();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "type_",
+              "name_",
+              "path_",
+              "size_",
+              "date_",
+            };
+            java.lang.String info =
+                "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\f\u0002\u0208" +
+                "\u0003\u0208\u0004\u0003\u0005\u0003";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileDescInfo> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcFileTransfer.FileDescInfo.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.FileDescInfo)
+    private static final tc.TcFileTransfer.FileDescInfo DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new FileDescInfo();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FileDescInfo.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcFileTransfer.FileDescInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FileDescInfo> PARSER;
+
+    public static com.google.protobuf.Parser<FileDescInfo> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface FileOperateRespGetFileListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileOperateRespGetFileList)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    boolean getRet();
+
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    java.lang.String getMsgOfError();
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getMsgOfErrorBytes();
+
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    java.util.List<tc.TcFileTransfer.FileDescInfo> 
+        getFileInfosList();
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    tc.TcFileTransfer.FileDescInfo getFileInfos(int index);
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    int getFileInfosCount();
+
+    /**
+     * <code>string path = 4;</code>
+     */
+    java.lang.String getPath();
+    /**
+     * <code>string path = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathBytes();
+
+    /**
+     * <code>string file_permission_path = 5;</code>
+     */
+    java.lang.String getFilePermissionPath();
+    /**
+     * <code>string file_permission_path = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getFilePermissionPathBytes();
+  }
+  /**
+   * <pre>
+   * Return file list
+   * </pre>
+   *
+   * Protobuf type {@code tc.FileOperateRespGetFileList}
+   */
+  public  static final class FileOperateRespGetFileList extends
+      com.google.protobuf.GeneratedMessageLite<
+          FileOperateRespGetFileList, FileOperateRespGetFileList.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileOperateRespGetFileList)
+      FileOperateRespGetFileListOrBuilder {
+    private FileOperateRespGetFileList() {
+      msgOfError_ = "";
+      fileInfos_ = emptyProtobufList();
+      path_ = "";
+      filePermissionPath_ = "";
+    }
+    public static final int RET_FIELD_NUMBER = 1;
+    private boolean ret_;
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    @java.lang.Override
+    public boolean getRet() {
+      return ret_;
+    }
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    private void setRet(boolean value) {
+      
+      ret_ = value;
+    }
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    private void clearRet() {
+      
+      ret_ = false;
+    }
+
+    public static final int MSG_OF_ERROR_FIELD_NUMBER = 2;
+    private java.lang.String msgOfError_;
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getMsgOfError() {
+      return msgOfError_;
+    }
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMsgOfErrorBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(msgOfError_);
+    }
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    private void setMsgOfError(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      msgOfError_ = value;
+    }
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    private void clearMsgOfError() {
+      
+      msgOfError_ = getDefaultInstance().getMsgOfError();
+    }
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    private void setMsgOfErrorBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      msgOfError_ = value.toStringUtf8();
+    }
+
+    public static final int FILE_INFOS_FIELD_NUMBER = 3;
+    private com.google.protobuf.Internal.ProtobufList<tc.TcFileTransfer.FileDescInfo> fileInfos_;
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<tc.TcFileTransfer.FileDescInfo> getFileInfosList() {
+      return fileInfos_;
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    public java.util.List<? extends tc.TcFileTransfer.FileDescInfoOrBuilder> 
+        getFileInfosOrBuilderList() {
+      return fileInfos_;
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    @java.lang.Override
+    public int getFileInfosCount() {
+      return fileInfos_.size();
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileDescInfo getFileInfos(int index) {
+      return fileInfos_.get(index);
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    public tc.TcFileTransfer.FileDescInfoOrBuilder getFileInfosOrBuilder(
+        int index) {
+      return fileInfos_.get(index);
+    }
+    private void ensureFileInfosIsMutable() {
+      if (!fileInfos_.isModifiable()) {
+        fileInfos_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(fileInfos_);
+       }
+    }
+
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    private void setFileInfos(
+        int index, tc.TcFileTransfer.FileDescInfo value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureFileInfosIsMutable();
+      fileInfos_.set(index, value);
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    private void setFileInfos(
+        int index, tc.TcFileTransfer.FileDescInfo.Builder builderForValue) {
+      ensureFileInfosIsMutable();
+      fileInfos_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    private void addFileInfos(tc.TcFileTransfer.FileDescInfo value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureFileInfosIsMutable();
+      fileInfos_.add(value);
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    private void addFileInfos(
+        int index, tc.TcFileTransfer.FileDescInfo value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureFileInfosIsMutable();
+      fileInfos_.add(index, value);
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    private void addFileInfos(
+        tc.TcFileTransfer.FileDescInfo.Builder builderForValue) {
+      ensureFileInfosIsMutable();
+      fileInfos_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    private void addFileInfos(
+        int index, tc.TcFileTransfer.FileDescInfo.Builder builderForValue) {
+      ensureFileInfosIsMutable();
+      fileInfos_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    private void addAllFileInfos(
+        java.lang.Iterable<? extends tc.TcFileTransfer.FileDescInfo> values) {
+      ensureFileInfosIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, fileInfos_);
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    private void clearFileInfos() {
+      fileInfos_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+     */
+    private void removeFileInfos(int index) {
+      ensureFileInfosIsMutable();
+      fileInfos_.remove(index);
+    }
+
+    public static final int PATH_FIELD_NUMBER = 4;
+    private java.lang.String path_;
+    /**
+     * <code>string path = 4;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPath() {
+      return path_;
+    }
+    /**
+     * <code>string path = 4;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(path_);
+    }
+    /**
+     * <code>string path = 4;</code>
+     */
+    private void setPath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      path_ = value;
+    }
+    /**
+     * <code>string path = 4;</code>
+     */
+    private void clearPath() {
+      
+      path_ = getDefaultInstance().getPath();
+    }
+    /**
+     * <code>string path = 4;</code>
+     */
+    private void setPathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      path_ = value.toStringUtf8();
+    }
+
+    public static final int FILE_PERMISSION_PATH_FIELD_NUMBER = 5;
+    private java.lang.String filePermissionPath_;
+    /**
+     * <code>string file_permission_path = 5;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getFilePermissionPath() {
+      return filePermissionPath_;
+    }
+    /**
+     * <code>string file_permission_path = 5;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFilePermissionPathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(filePermissionPath_);
+    }
+    /**
+     * <code>string file_permission_path = 5;</code>
+     */
+    private void setFilePermissionPath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      filePermissionPath_ = value;
+    }
+    /**
+     * <code>string file_permission_path = 5;</code>
+     */
+    private void clearFilePermissionPath() {
+      
+      filePermissionPath_ = getDefaultInstance().getFilePermissionPath();
+    }
+    /**
+     * <code>string file_permission_path = 5;</code>
+     */
+    private void setFilePermissionPathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      filePermissionPath_ = value.toStringUtf8();
+    }
+
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcFileTransfer.FileOperateRespGetFileList prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * Return file list
+     * </pre>
+     *
+     * Protobuf type {@code tc.FileOperateRespGetFileList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcFileTransfer.FileOperateRespGetFileList, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileOperateRespGetFileList)
+        tc.TcFileTransfer.FileOperateRespGetFileListOrBuilder {
+      // Construct using tc.TcFileTransfer.FileOperateRespGetFileList.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      @java.lang.Override
+      public boolean getRet() {
+        return instance.getRet();
+      }
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      public Builder setRet(boolean value) {
+        copyOnWrite();
+        instance.setRet(value);
+        return this;
+      }
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      public Builder clearRet() {
+        copyOnWrite();
+        instance.clearRet();
+        return this;
+      }
+
+      /**
+       * <code>string msg_of_error = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getMsgOfError() {
+        return instance.getMsgOfError();
+      }
+      /**
+       * <code>string msg_of_error = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMsgOfErrorBytes() {
+        return instance.getMsgOfErrorBytes();
+      }
+      /**
+       * <code>string msg_of_error = 2;</code>
+       */
+      public Builder setMsgOfError(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setMsgOfError(value);
+        return this;
+      }
+      /**
+       * <code>string msg_of_error = 2;</code>
+       */
+      public Builder clearMsgOfError() {
+        copyOnWrite();
+        instance.clearMsgOfError();
+        return this;
+      }
+      /**
+       * <code>string msg_of_error = 2;</code>
+       */
+      public Builder setMsgOfErrorBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setMsgOfErrorBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      @java.lang.Override
+      public java.util.List<tc.TcFileTransfer.FileDescInfo> getFileInfosList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getFileInfosList());
+      }
+      /**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      @java.lang.Override
+      public int getFileInfosCount() {
+        return instance.getFileInfosCount();
+      }/**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileDescInfo getFileInfos(int index) {
+        return instance.getFileInfos(index);
+      }
+      /**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      public Builder setFileInfos(
+          int index, tc.TcFileTransfer.FileDescInfo value) {
+        copyOnWrite();
+        instance.setFileInfos(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      public Builder setFileInfos(
+          int index, tc.TcFileTransfer.FileDescInfo.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileInfos(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      public Builder addFileInfos(tc.TcFileTransfer.FileDescInfo value) {
+        copyOnWrite();
+        instance.addFileInfos(value);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      public Builder addFileInfos(
+          int index, tc.TcFileTransfer.FileDescInfo value) {
+        copyOnWrite();
+        instance.addFileInfos(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      public Builder addFileInfos(
+          tc.TcFileTransfer.FileDescInfo.Builder builderForValue) {
+        copyOnWrite();
+        instance.addFileInfos(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      public Builder addFileInfos(
+          int index, tc.TcFileTransfer.FileDescInfo.Builder builderForValue) {
+        copyOnWrite();
+        instance.addFileInfos(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      public Builder addAllFileInfos(
+          java.lang.Iterable<? extends tc.TcFileTransfer.FileDescInfo> values) {
+        copyOnWrite();
+        instance.addAllFileInfos(values);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      public Builder clearFileInfos() {
+        copyOnWrite();
+        instance.clearFileInfos();
+        return this;
+      }
+      /**
+       * <code>repeated .tc.FileDescInfo file_infos = 3;</code>
+       */
+      public Builder removeFileInfos(int index) {
+        copyOnWrite();
+        instance.removeFileInfos(index);
+        return this;
+      }
+
+      /**
+       * <code>string path = 4;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPath() {
+        return instance.getPath();
+      }
+      /**
+       * <code>string path = 4;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathBytes() {
+        return instance.getPathBytes();
+      }
+      /**
+       * <code>string path = 4;</code>
+       */
+      public Builder setPath(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPath(value);
+        return this;
+      }
+      /**
+       * <code>string path = 4;</code>
+       */
+      public Builder clearPath() {
+        copyOnWrite();
+        instance.clearPath();
+        return this;
+      }
+      /**
+       * <code>string path = 4;</code>
+       */
+      public Builder setPathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string file_permission_path = 5;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getFilePermissionPath() {
+        return instance.getFilePermissionPath();
+      }
+      /**
+       * <code>string file_permission_path = 5;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getFilePermissionPathBytes() {
+        return instance.getFilePermissionPathBytes();
+      }
+      /**
+       * <code>string file_permission_path = 5;</code>
+       */
+      public Builder setFilePermissionPath(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setFilePermissionPath(value);
+        return this;
+      }
+      /**
+       * <code>string file_permission_path = 5;</code>
+       */
+      public Builder clearFilePermissionPath() {
+        copyOnWrite();
+        instance.clearFilePermissionPath();
+        return this;
+      }
+      /**
+       * <code>string file_permission_path = 5;</code>
+       */
+      public Builder setFilePermissionPathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setFilePermissionPathBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileOperateRespGetFileList)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcFileTransfer.FileOperateRespGetFileList();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "ret_",
+              "msgOfError_",
+              "fileInfos_",
+              tc.TcFileTransfer.FileDescInfo.class,
+              "path_",
+              "filePermissionPath_",
+            };
+            java.lang.String info =
+                "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0001\u0000\u0001\u0007\u0002\u0208" +
+                "\u0003\u001b\u0004\u0208\u0005\u0208";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileOperateRespGetFileList> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcFileTransfer.FileOperateRespGetFileList.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.FileOperateRespGetFileList)
+    private static final tc.TcFileTransfer.FileOperateRespGetFileList DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new FileOperateRespGetFileList();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FileOperateRespGetFileList.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcFileTransfer.FileOperateRespGetFileList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FileOperateRespGetFileList> PARSER;
+
+    public static com.google.protobuf.Parser<FileOperateRespGetFileList> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface FileOperateRespCreateNewFolderOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileOperateRespCreateNewFolder)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    boolean getRet();
+
+    /**
+     * <code>string path_of_parent = 2;</code>
+     */
+    java.lang.String getPathOfParent();
+    /**
+     * <code>string path_of_parent = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathOfParentBytes();
+
+    /**
+     * <code>string path_of_new_created = 3;</code>
+     */
+    java.lang.String getPathOfNewCreated();
+    /**
+     * <code>string path_of_new_created = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathOfNewCreatedBytes();
+
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    java.lang.String getMsgOfError();
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getMsgOfErrorBytes();
+  }
+  /**
+   * <pre>
+   * Return the result of creating a new folder
+   * </pre>
+   *
+   * Protobuf type {@code tc.FileOperateRespCreateNewFolder}
+   */
+  public  static final class FileOperateRespCreateNewFolder extends
+      com.google.protobuf.GeneratedMessageLite<
+          FileOperateRespCreateNewFolder, FileOperateRespCreateNewFolder.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileOperateRespCreateNewFolder)
+      FileOperateRespCreateNewFolderOrBuilder {
+    private FileOperateRespCreateNewFolder() {
+      pathOfParent_ = "";
+      pathOfNewCreated_ = "";
+      msgOfError_ = "";
+    }
+    public static final int RET_FIELD_NUMBER = 1;
+    private boolean ret_;
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    @java.lang.Override
+    public boolean getRet() {
+      return ret_;
+    }
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    private void setRet(boolean value) {
+      
+      ret_ = value;
+    }
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    private void clearRet() {
+      
+      ret_ = false;
+    }
+
+    public static final int PATH_OF_PARENT_FIELD_NUMBER = 2;
+    private java.lang.String pathOfParent_;
+    /**
+     * <code>string path_of_parent = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathOfParent() {
+      return pathOfParent_;
+    }
+    /**
+     * <code>string path_of_parent = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathOfParentBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(pathOfParent_);
+    }
+    /**
+     * <code>string path_of_parent = 2;</code>
+     */
+    private void setPathOfParent(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      pathOfParent_ = value;
+    }
+    /**
+     * <code>string path_of_parent = 2;</code>
+     */
+    private void clearPathOfParent() {
+      
+      pathOfParent_ = getDefaultInstance().getPathOfParent();
+    }
+    /**
+     * <code>string path_of_parent = 2;</code>
+     */
+    private void setPathOfParentBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      pathOfParent_ = value.toStringUtf8();
+    }
+
+    public static final int PATH_OF_NEW_CREATED_FIELD_NUMBER = 3;
+    private java.lang.String pathOfNewCreated_;
+    /**
+     * <code>string path_of_new_created = 3;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathOfNewCreated() {
+      return pathOfNewCreated_;
+    }
+    /**
+     * <code>string path_of_new_created = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathOfNewCreatedBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(pathOfNewCreated_);
+    }
+    /**
+     * <code>string path_of_new_created = 3;</code>
+     */
+    private void setPathOfNewCreated(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      pathOfNewCreated_ = value;
+    }
+    /**
+     * <code>string path_of_new_created = 3;</code>
+     */
+    private void clearPathOfNewCreated() {
+      
+      pathOfNewCreated_ = getDefaultInstance().getPathOfNewCreated();
+    }
+    /**
+     * <code>string path_of_new_created = 3;</code>
+     */
+    private void setPathOfNewCreatedBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      pathOfNewCreated_ = value.toStringUtf8();
+    }
+
+    public static final int MSG_OF_ERROR_FIELD_NUMBER = 4;
+    private java.lang.String msgOfError_;
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getMsgOfError() {
+      return msgOfError_;
+    }
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMsgOfErrorBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(msgOfError_);
+    }
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    private void setMsgOfError(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      msgOfError_ = value;
+    }
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    private void clearMsgOfError() {
+      
+      msgOfError_ = getDefaultInstance().getMsgOfError();
+    }
+    /**
+     * <code>string msg_of_error = 4;</code>
+     */
+    private void setMsgOfErrorBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      msgOfError_ = value.toStringUtf8();
+    }
+
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcFileTransfer.FileOperateRespCreateNewFolder prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * Return the result of creating a new folder
+     * </pre>
+     *
+     * Protobuf type {@code tc.FileOperateRespCreateNewFolder}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcFileTransfer.FileOperateRespCreateNewFolder, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileOperateRespCreateNewFolder)
+        tc.TcFileTransfer.FileOperateRespCreateNewFolderOrBuilder {
+      // Construct using tc.TcFileTransfer.FileOperateRespCreateNewFolder.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      @java.lang.Override
+      public boolean getRet() {
+        return instance.getRet();
+      }
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      public Builder setRet(boolean value) {
+        copyOnWrite();
+        instance.setRet(value);
+        return this;
+      }
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      public Builder clearRet() {
+        copyOnWrite();
+        instance.clearRet();
+        return this;
+      }
+
+      /**
+       * <code>string path_of_parent = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathOfParent() {
+        return instance.getPathOfParent();
+      }
+      /**
+       * <code>string path_of_parent = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathOfParentBytes() {
+        return instance.getPathOfParentBytes();
+      }
+      /**
+       * <code>string path_of_parent = 2;</code>
+       */
+      public Builder setPathOfParent(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPathOfParent(value);
+        return this;
+      }
+      /**
+       * <code>string path_of_parent = 2;</code>
+       */
+      public Builder clearPathOfParent() {
+        copyOnWrite();
+        instance.clearPathOfParent();
+        return this;
+      }
+      /**
+       * <code>string path_of_parent = 2;</code>
+       */
+      public Builder setPathOfParentBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathOfParentBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string path_of_new_created = 3;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathOfNewCreated() {
+        return instance.getPathOfNewCreated();
+      }
+      /**
+       * <code>string path_of_new_created = 3;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathOfNewCreatedBytes() {
+        return instance.getPathOfNewCreatedBytes();
+      }
+      /**
+       * <code>string path_of_new_created = 3;</code>
+       */
+      public Builder setPathOfNewCreated(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPathOfNewCreated(value);
+        return this;
+      }
+      /**
+       * <code>string path_of_new_created = 3;</code>
+       */
+      public Builder clearPathOfNewCreated() {
+        copyOnWrite();
+        instance.clearPathOfNewCreated();
+        return this;
+      }
+      /**
+       * <code>string path_of_new_created = 3;</code>
+       */
+      public Builder setPathOfNewCreatedBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathOfNewCreatedBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string msg_of_error = 4;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getMsgOfError() {
+        return instance.getMsgOfError();
+      }
+      /**
+       * <code>string msg_of_error = 4;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMsgOfErrorBytes() {
+        return instance.getMsgOfErrorBytes();
+      }
+      /**
+       * <code>string msg_of_error = 4;</code>
+       */
+      public Builder setMsgOfError(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setMsgOfError(value);
+        return this;
+      }
+      /**
+       * <code>string msg_of_error = 4;</code>
+       */
+      public Builder clearMsgOfError() {
+        copyOnWrite();
+        instance.clearMsgOfError();
+        return this;
+      }
+      /**
+       * <code>string msg_of_error = 4;</code>
+       */
+      public Builder setMsgOfErrorBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setMsgOfErrorBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileOperateRespCreateNewFolder)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcFileTransfer.FileOperateRespCreateNewFolder();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "ret_",
+              "pathOfParent_",
+              "pathOfNewCreated_",
+              "msgOfError_",
+            };
+            java.lang.String info =
+                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0007\u0002\u0208" +
+                "\u0003\u0208\u0004\u0208";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileOperateRespCreateNewFolder> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcFileTransfer.FileOperateRespCreateNewFolder.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.FileOperateRespCreateNewFolder)
+    private static final tc.TcFileTransfer.FileOperateRespCreateNewFolder DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new FileOperateRespCreateNewFolder();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FileOperateRespCreateNewFolder.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcFileTransfer.FileOperateRespCreateNewFolder getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FileOperateRespCreateNewFolder> PARSER;
+
+    public static com.google.protobuf.Parser<FileOperateRespCreateNewFolder> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface FileOperateRespExistsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileOperateRespExists)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    boolean getRet();
+
+    /**
+     * <code>string path = 2;</code>
+     */
+    java.lang.String getPath();
+    /**
+     * <code>string path = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathBytes();
+
+    /**
+     * <code>uint64 size = 3;</code>
+     */
+    long getSize();
+
+    /**
+     * <code>uint64 date = 4;</code>
+     */
+    long getDate();
+  }
+  /**
+   * <pre>
+   * Return whether the file exists
+   * </pre>
+   *
+   * Protobuf type {@code tc.FileOperateRespExists}
+   */
+  public  static final class FileOperateRespExists extends
+      com.google.protobuf.GeneratedMessageLite<
+          FileOperateRespExists, FileOperateRespExists.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileOperateRespExists)
+      FileOperateRespExistsOrBuilder {
+    private FileOperateRespExists() {
+      path_ = "";
+    }
+    public static final int RET_FIELD_NUMBER = 1;
+    private boolean ret_;
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    @java.lang.Override
+    public boolean getRet() {
+      return ret_;
+    }
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    private void setRet(boolean value) {
+      
+      ret_ = value;
+    }
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    private void clearRet() {
+      
+      ret_ = false;
+    }
+
+    public static final int PATH_FIELD_NUMBER = 2;
+    private java.lang.String path_;
+    /**
+     * <code>string path = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPath() {
+      return path_;
+    }
+    /**
+     * <code>string path = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(path_);
+    }
+    /**
+     * <code>string path = 2;</code>
+     */
+    private void setPath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      path_ = value;
+    }
+    /**
+     * <code>string path = 2;</code>
+     */
+    private void clearPath() {
+      
+      path_ = getDefaultInstance().getPath();
+    }
+    /**
+     * <code>string path = 2;</code>
+     */
+    private void setPathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      path_ = value.toStringUtf8();
+    }
+
+    public static final int SIZE_FIELD_NUMBER = 3;
+    private long size_;
+    /**
+     * <code>uint64 size = 3;</code>
+     */
+    @java.lang.Override
+    public long getSize() {
+      return size_;
+    }
+    /**
+     * <code>uint64 size = 3;</code>
+     */
+    private void setSize(long value) {
+      
+      size_ = value;
+    }
+    /**
+     * <code>uint64 size = 3;</code>
+     */
+    private void clearSize() {
+      
+      size_ = 0L;
+    }
+
+    public static final int DATE_FIELD_NUMBER = 4;
+    private long date_;
+    /**
+     * <code>uint64 date = 4;</code>
+     */
+    @java.lang.Override
+    public long getDate() {
+      return date_;
+    }
+    /**
+     * <code>uint64 date = 4;</code>
+     */
+    private void setDate(long value) {
+      
+      date_ = value;
+    }
+    /**
+     * <code>uint64 date = 4;</code>
+     */
+    private void clearDate() {
+      
+      date_ = 0L;
+    }
+
+    public static tc.TcFileTransfer.FileOperateRespExists parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcFileTransfer.FileOperateRespExists prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * Return whether the file exists
+     * </pre>
+     *
+     * Protobuf type {@code tc.FileOperateRespExists}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcFileTransfer.FileOperateRespExists, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileOperateRespExists)
+        tc.TcFileTransfer.FileOperateRespExistsOrBuilder {
+      // Construct using tc.TcFileTransfer.FileOperateRespExists.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      @java.lang.Override
+      public boolean getRet() {
+        return instance.getRet();
+      }
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      public Builder setRet(boolean value) {
+        copyOnWrite();
+        instance.setRet(value);
+        return this;
+      }
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      public Builder clearRet() {
+        copyOnWrite();
+        instance.clearRet();
+        return this;
+      }
+
+      /**
+       * <code>string path = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPath() {
+        return instance.getPath();
+      }
+      /**
+       * <code>string path = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathBytes() {
+        return instance.getPathBytes();
+      }
+      /**
+       * <code>string path = 2;</code>
+       */
+      public Builder setPath(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPath(value);
+        return this;
+      }
+      /**
+       * <code>string path = 2;</code>
+       */
+      public Builder clearPath() {
+        copyOnWrite();
+        instance.clearPath();
+        return this;
+      }
+      /**
+       * <code>string path = 2;</code>
+       */
+      public Builder setPathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>uint64 size = 3;</code>
+       */
+      @java.lang.Override
+      public long getSize() {
+        return instance.getSize();
+      }
+      /**
+       * <code>uint64 size = 3;</code>
+       */
+      public Builder setSize(long value) {
+        copyOnWrite();
+        instance.setSize(value);
+        return this;
+      }
+      /**
+       * <code>uint64 size = 3;</code>
+       */
+      public Builder clearSize() {
+        copyOnWrite();
+        instance.clearSize();
+        return this;
+      }
+
+      /**
+       * <code>uint64 date = 4;</code>
+       */
+      @java.lang.Override
+      public long getDate() {
+        return instance.getDate();
+      }
+      /**
+       * <code>uint64 date = 4;</code>
+       */
+      public Builder setDate(long value) {
+        copyOnWrite();
+        instance.setDate(value);
+        return this;
+      }
+      /**
+       * <code>uint64 date = 4;</code>
+       */
+      public Builder clearDate() {
+        copyOnWrite();
+        instance.clearDate();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileOperateRespExists)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcFileTransfer.FileOperateRespExists();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "ret_",
+              "path_",
+              "size_",
+              "date_",
+            };
+            java.lang.String info =
+                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0007\u0002\u0208" +
+                "\u0003\u0003\u0004\u0003";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileOperateRespExists> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcFileTransfer.FileOperateRespExists.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.FileOperateRespExists)
+    private static final tc.TcFileTransfer.FileOperateRespExists DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new FileOperateRespExists();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FileOperateRespExists.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcFileTransfer.FileOperateRespExists getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FileOperateRespExists> PARSER;
+
+    public static com.google.protobuf.Parser<FileOperateRespExists> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface FileOperateRespDelOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileOperateRespDel)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    boolean getRet();
+
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    java.util.List<java.lang.String>
+        getPathsOfNoDelList();
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    int getPathsOfNoDelCount();
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    java.lang.String getPathsOfNoDel(int index);
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathsOfNoDelBytes(int index);
+
+    /**
+     * <code>string msg_of_error = 3;</code>
+     */
+    java.lang.String getMsgOfError();
+    /**
+     * <code>string msg_of_error = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getMsgOfErrorBytes();
+  }
+  /**
+   * <pre>
+   * Return the result of deleting a directory
+   * </pre>
+   *
+   * Protobuf type {@code tc.FileOperateRespDel}
+   */
+  public  static final class FileOperateRespDel extends
+      com.google.protobuf.GeneratedMessageLite<
+          FileOperateRespDel, FileOperateRespDel.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileOperateRespDel)
+      FileOperateRespDelOrBuilder {
+    private FileOperateRespDel() {
+      pathsOfNoDel_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+      msgOfError_ = "";
+    }
+    public static final int RET_FIELD_NUMBER = 1;
+    private boolean ret_;
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    @java.lang.Override
+    public boolean getRet() {
+      return ret_;
+    }
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    private void setRet(boolean value) {
+      
+      ret_ = value;
+    }
+    /**
+     * <code>bool ret = 1;</code>
+     */
+    private void clearRet() {
+      
+      ret_ = false;
+    }
+
+    public static final int PATHS_OF_NO_DEL_FIELD_NUMBER = 2;
+    private com.google.protobuf.Internal.ProtobufList<java.lang.String> pathsOfNoDel_;
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.String> getPathsOfNoDelList() {
+      return pathsOfNoDel_;
+    }
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    @java.lang.Override
+    public int getPathsOfNoDelCount() {
+      return pathsOfNoDel_.size();
+    }
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathsOfNoDel(int index) {
+      return pathsOfNoDel_.get(index);
+    }
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathsOfNoDelBytes(int index) {
+      return com.google.protobuf.ByteString.copyFromUtf8(
+          pathsOfNoDel_.get(index));
+    }
+    private void ensurePathsOfNoDelIsMutable() {
+      if (!pathsOfNoDel_.isModifiable()) {
+        pathsOfNoDel_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(pathsOfNoDel_);
+       }
+    }
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    private void setPathsOfNoDel(
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensurePathsOfNoDelIsMutable();
+      pathsOfNoDel_.set(index, value);
+    }
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    private void addPathsOfNoDel(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensurePathsOfNoDelIsMutable();
+      pathsOfNoDel_.add(value);
+    }
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    private void addAllPathsOfNoDel(
+        java.lang.Iterable<java.lang.String> values) {
+      ensurePathsOfNoDelIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, pathsOfNoDel_);
+    }
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    private void clearPathsOfNoDel() {
+      pathsOfNoDel_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+    }
+    /**
+     * <code>repeated string paths_of_no_del = 2;</code>
+     */
+    private void addPathsOfNoDelBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensurePathsOfNoDelIsMutable();
+      pathsOfNoDel_.add(value.toStringUtf8());
+    }
+
+    public static final int MSG_OF_ERROR_FIELD_NUMBER = 3;
+    private java.lang.String msgOfError_;
+    /**
+     * <code>string msg_of_error = 3;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getMsgOfError() {
+      return msgOfError_;
+    }
+    /**
+     * <code>string msg_of_error = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMsgOfErrorBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(msgOfError_);
+    }
+    /**
+     * <code>string msg_of_error = 3;</code>
+     */
+    private void setMsgOfError(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      msgOfError_ = value;
+    }
+    /**
+     * <code>string msg_of_error = 3;</code>
+     */
+    private void clearMsgOfError() {
+      
+      msgOfError_ = getDefaultInstance().getMsgOfError();
+    }
+    /**
+     * <code>string msg_of_error = 3;</code>
+     */
+    private void setMsgOfErrorBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      msgOfError_ = value.toStringUtf8();
+    }
+
+    public static tc.TcFileTransfer.FileOperateRespDel parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcFileTransfer.FileOperateRespDel prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * Return the result of deleting a directory
+     * </pre>
+     *
+     * Protobuf type {@code tc.FileOperateRespDel}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcFileTransfer.FileOperateRespDel, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileOperateRespDel)
+        tc.TcFileTransfer.FileOperateRespDelOrBuilder {
+      // Construct using tc.TcFileTransfer.FileOperateRespDel.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      @java.lang.Override
+      public boolean getRet() {
+        return instance.getRet();
+      }
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      public Builder setRet(boolean value) {
+        copyOnWrite();
+        instance.setRet(value);
+        return this;
+      }
+      /**
+       * <code>bool ret = 1;</code>
+       */
+      public Builder clearRet() {
+        copyOnWrite();
+        instance.clearRet();
+        return this;
+      }
+
+      /**
+       * <code>repeated string paths_of_no_del = 2;</code>
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.String>
+          getPathsOfNoDelList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getPathsOfNoDelList());
+      }
+      /**
+       * <code>repeated string paths_of_no_del = 2;</code>
+       */
+      @java.lang.Override
+      public int getPathsOfNoDelCount() {
+        return instance.getPathsOfNoDelCount();
+      }
+      /**
+       * <code>repeated string paths_of_no_del = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathsOfNoDel(int index) {
+        return instance.getPathsOfNoDel(index);
+      }
+      /**
+       * <code>repeated string paths_of_no_del = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathsOfNoDelBytes(int index) {
+        return instance.getPathsOfNoDelBytes(index);
+      }
+      /**
+       * <code>repeated string paths_of_no_del = 2;</code>
+       */
+      public Builder setPathsOfNoDel(
+          int index, java.lang.String value) {
+        copyOnWrite();
+        instance.setPathsOfNoDel(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated string paths_of_no_del = 2;</code>
+       */
+      public Builder addPathsOfNoDel(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.addPathsOfNoDel(value);
+        return this;
+      }
+      /**
+       * <code>repeated string paths_of_no_del = 2;</code>
+       */
+      public Builder addAllPathsOfNoDel(
+          java.lang.Iterable<java.lang.String> values) {
+        copyOnWrite();
+        instance.addAllPathsOfNoDel(values);
+        return this;
+      }
+      /**
+       * <code>repeated string paths_of_no_del = 2;</code>
+       */
+      public Builder clearPathsOfNoDel() {
+        copyOnWrite();
+        instance.clearPathsOfNoDel();
+        return this;
+      }
+      /**
+       * <code>repeated string paths_of_no_del = 2;</code>
+       */
+      public Builder addPathsOfNoDelBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.addPathsOfNoDelBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string msg_of_error = 3;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getMsgOfError() {
+        return instance.getMsgOfError();
+      }
+      /**
+       * <code>string msg_of_error = 3;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMsgOfErrorBytes() {
+        return instance.getMsgOfErrorBytes();
+      }
+      /**
+       * <code>string msg_of_error = 3;</code>
+       */
+      public Builder setMsgOfError(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setMsgOfError(value);
+        return this;
+      }
+      /**
+       * <code>string msg_of_error = 3;</code>
+       */
+      public Builder clearMsgOfError() {
+        copyOnWrite();
+        instance.clearMsgOfError();
+        return this;
+      }
+      /**
+       * <code>string msg_of_error = 3;</code>
+       */
+      public Builder setMsgOfErrorBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setMsgOfErrorBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileOperateRespDel)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcFileTransfer.FileOperateRespDel();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "ret_",
+              "pathsOfNoDel_",
+              "msgOfError_",
+            };
+            java.lang.String info =
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0001\u0000\u0001\u0007\u0002\u021a" +
+                "\u0003\u0208";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileOperateRespDel> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcFileTransfer.FileOperateRespDel.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.FileOperateRespDel)
+    private static final tc.TcFileTransfer.FileOperateRespDel DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new FileOperateRespDel();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FileOperateRespDel.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcFileTransfer.FileOperateRespDel getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FileOperateRespDel> PARSER;
+
+    public static com.google.protobuf.Parser<FileOperateRespDel> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface FileOperateRespBatchCreateFoldersOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileOperateRespBatchCreateFolders)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    java.util.List<java.lang.String>
+        getPathsOfNoCreateFolderList();
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    int getPathsOfNoCreateFolderCount();
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    java.lang.String getPathsOfNoCreateFolder(int index);
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathsOfNoCreateFolderBytes(int index);
+
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    java.lang.String getMsgOfError();
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getMsgOfErrorBytes();
+  }
+  /**
+   * <pre>
+   * Return the result of batch creating folders
+   * </pre>
+   *
+   * Protobuf type {@code tc.FileOperateRespBatchCreateFolders}
+   */
+  public  static final class FileOperateRespBatchCreateFolders extends
+      com.google.protobuf.GeneratedMessageLite<
+          FileOperateRespBatchCreateFolders, FileOperateRespBatchCreateFolders.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileOperateRespBatchCreateFolders)
+      FileOperateRespBatchCreateFoldersOrBuilder {
+    private FileOperateRespBatchCreateFolders() {
+      pathsOfNoCreateFolder_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+      msgOfError_ = "";
+    }
+    public static final int PATHS_OF_NO_CREATE_FOLDER_FIELD_NUMBER = 1;
+    private com.google.protobuf.Internal.ProtobufList<java.lang.String> pathsOfNoCreateFolder_;
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.String> getPathsOfNoCreateFolderList() {
+      return pathsOfNoCreateFolder_;
+    }
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    @java.lang.Override
+    public int getPathsOfNoCreateFolderCount() {
+      return pathsOfNoCreateFolder_.size();
+    }
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathsOfNoCreateFolder(int index) {
+      return pathsOfNoCreateFolder_.get(index);
+    }
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathsOfNoCreateFolderBytes(int index) {
+      return com.google.protobuf.ByteString.copyFromUtf8(
+          pathsOfNoCreateFolder_.get(index));
+    }
+    private void ensurePathsOfNoCreateFolderIsMutable() {
+      if (!pathsOfNoCreateFolder_.isModifiable()) {
+        pathsOfNoCreateFolder_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(pathsOfNoCreateFolder_);
+       }
+    }
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    private void setPathsOfNoCreateFolder(
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensurePathsOfNoCreateFolderIsMutable();
+      pathsOfNoCreateFolder_.set(index, value);
+    }
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    private void addPathsOfNoCreateFolder(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensurePathsOfNoCreateFolderIsMutable();
+      pathsOfNoCreateFolder_.add(value);
+    }
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    private void addAllPathsOfNoCreateFolder(
+        java.lang.Iterable<java.lang.String> values) {
+      ensurePathsOfNoCreateFolderIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, pathsOfNoCreateFolder_);
+    }
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    private void clearPathsOfNoCreateFolder() {
+      pathsOfNoCreateFolder_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+    }
+    /**
+     * <pre>
+     * List of directories that were not successfully created
+     * </pre>
+     *
+     * <code>repeated string paths_of_no_create_folder = 1;</code>
+     */
+    private void addPathsOfNoCreateFolderBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensurePathsOfNoCreateFolderIsMutable();
+      pathsOfNoCreateFolder_.add(value.toStringUtf8());
+    }
+
+    public static final int MSG_OF_ERROR_FIELD_NUMBER = 2;
+    private java.lang.String msgOfError_;
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getMsgOfError() {
+      return msgOfError_;
+    }
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMsgOfErrorBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(msgOfError_);
+    }
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    private void setMsgOfError(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      msgOfError_ = value;
+    }
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    private void clearMsgOfError() {
+      
+      msgOfError_ = getDefaultInstance().getMsgOfError();
+    }
+    /**
+     * <code>string msg_of_error = 2;</code>
+     */
+    private void setMsgOfErrorBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      msgOfError_ = value.toStringUtf8();
+    }
+
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcFileTransfer.FileOperateRespBatchCreateFolders prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * Return the result of batch creating folders
+     * </pre>
+     *
+     * Protobuf type {@code tc.FileOperateRespBatchCreateFolders}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcFileTransfer.FileOperateRespBatchCreateFolders, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileOperateRespBatchCreateFolders)
+        tc.TcFileTransfer.FileOperateRespBatchCreateFoldersOrBuilder {
+      // Construct using tc.TcFileTransfer.FileOperateRespBatchCreateFolders.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <pre>
+       * List of directories that were not successfully created
+       * </pre>
+       *
+       * <code>repeated string paths_of_no_create_folder = 1;</code>
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.String>
+          getPathsOfNoCreateFolderList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getPathsOfNoCreateFolderList());
+      }
+      /**
+       * <pre>
+       * List of directories that were not successfully created
+       * </pre>
+       *
+       * <code>repeated string paths_of_no_create_folder = 1;</code>
+       */
+      @java.lang.Override
+      public int getPathsOfNoCreateFolderCount() {
+        return instance.getPathsOfNoCreateFolderCount();
+      }
+      /**
+       * <pre>
+       * List of directories that were not successfully created
+       * </pre>
+       *
+       * <code>repeated string paths_of_no_create_folder = 1;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathsOfNoCreateFolder(int index) {
+        return instance.getPathsOfNoCreateFolder(index);
+      }
+      /**
+       * <pre>
+       * List of directories that were not successfully created
+       * </pre>
+       *
+       * <code>repeated string paths_of_no_create_folder = 1;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathsOfNoCreateFolderBytes(int index) {
+        return instance.getPathsOfNoCreateFolderBytes(index);
+      }
+      /**
+       * <pre>
+       * List of directories that were not successfully created
+       * </pre>
+       *
+       * <code>repeated string paths_of_no_create_folder = 1;</code>
+       */
+      public Builder setPathsOfNoCreateFolder(
+          int index, java.lang.String value) {
+        copyOnWrite();
+        instance.setPathsOfNoCreateFolder(index, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * List of directories that were not successfully created
+       * </pre>
+       *
+       * <code>repeated string paths_of_no_create_folder = 1;</code>
+       */
+      public Builder addPathsOfNoCreateFolder(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.addPathsOfNoCreateFolder(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * List of directories that were not successfully created
+       * </pre>
+       *
+       * <code>repeated string paths_of_no_create_folder = 1;</code>
+       */
+      public Builder addAllPathsOfNoCreateFolder(
+          java.lang.Iterable<java.lang.String> values) {
+        copyOnWrite();
+        instance.addAllPathsOfNoCreateFolder(values);
+        return this;
+      }
+      /**
+       * <pre>
+       * List of directories that were not successfully created
+       * </pre>
+       *
+       * <code>repeated string paths_of_no_create_folder = 1;</code>
+       */
+      public Builder clearPathsOfNoCreateFolder() {
+        copyOnWrite();
+        instance.clearPathsOfNoCreateFolder();
+        return this;
+      }
+      /**
+       * <pre>
+       * List of directories that were not successfully created
+       * </pre>
+       *
+       * <code>repeated string paths_of_no_create_folder = 1;</code>
+       */
+      public Builder addPathsOfNoCreateFolderBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.addPathsOfNoCreateFolderBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string msg_of_error = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getMsgOfError() {
+        return instance.getMsgOfError();
+      }
+      /**
+       * <code>string msg_of_error = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMsgOfErrorBytes() {
+        return instance.getMsgOfErrorBytes();
+      }
+      /**
+       * <code>string msg_of_error = 2;</code>
+       */
+      public Builder setMsgOfError(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setMsgOfError(value);
+        return this;
+      }
+      /**
+       * <code>string msg_of_error = 2;</code>
+       */
+      public Builder clearMsgOfError() {
+        copyOnWrite();
+        instance.clearMsgOfError();
+        return this;
+      }
+      /**
+       * <code>string msg_of_error = 2;</code>
+       */
+      public Builder setMsgOfErrorBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setMsgOfErrorBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileOperateRespBatchCreateFolders)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcFileTransfer.FileOperateRespBatchCreateFolders();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "pathsOfNoCreateFolder_",
+              "msgOfError_",
+            };
+            java.lang.String info =
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u021a\u0002\u0208" +
+                "";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileOperateRespBatchCreateFolders> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcFileTransfer.FileOperateRespBatchCreateFolders.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.FileOperateRespBatchCreateFolders)
+    private static final tc.TcFileTransfer.FileOperateRespBatchCreateFolders DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new FileOperateRespBatchCreateFolders();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FileOperateRespBatchCreateFolders.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcFileTransfer.FileOperateRespBatchCreateFolders getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FileOperateRespBatchCreateFolders> PARSER;
+
+    public static com.google.protobuf.Parser<FileOperateRespBatchCreateFolders> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface FileTransDataPacketOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileTransDataPacket)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
+     */
+    int getTransmitDirectionValue();
+    /**
+     * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
+     */
+    tc.TcFileTransfer.FileTransDataPacket.TransmitDirection getTransmitDirection();
+
+    /**
+     * <code>string src_file_path = 2;</code>
+     */
+    java.lang.String getSrcFilePath();
+    /**
+     * <code>string src_file_path = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getSrcFilePathBytes();
+
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    java.lang.String getTargetFilePath();
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getTargetFilePathBytes();
+
+    /**
+     * <code>uint64 file_size = 4;</code>
+     */
+    long getFileSize();
+
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    java.lang.String getTaskId();
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getTaskIdBytes();
+
+    /**
+     * <pre>
+     * This task packet sequence
+     * </pre>
+     *
+     * <code>uint64 index = 6;</code>
+     */
+    long getIndex();
+
+    /**
+     * <pre>
+     * Is it the last data packet
+     * </pre>
+     *
+     * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
+     */
+    int getTransmitStateValue();
+    /**
+     * <pre>
+     * Is it the last data packet
+     * </pre>
+     *
+     * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
+     */
+    tc.TcFileTransfer.FileTransDataPacket.TransmitState getTransmitState();
+
+    /**
+     * <pre>
+     * file content
+     * </pre>
+     *
+     * <code>bytes data = 8;</code>
+     */
+    com.google.protobuf.ByteString getData();
+  }
+  /**
+   * <pre>
+   * File transfer packet
+   * </pre>
+   *
+   * Protobuf type {@code tc.FileTransDataPacket}
+   */
+  public  static final class FileTransDataPacket extends
+      com.google.protobuf.GeneratedMessageLite<
+          FileTransDataPacket, FileTransDataPacket.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileTransDataPacket)
+      FileTransDataPacketOrBuilder {
+    private FileTransDataPacket() {
+      srcFilePath_ = "";
+      targetFilePath_ = "";
+      taskId_ = "";
       data_ = com.google.protobuf.ByteString.EMPTY;
-      fileMd5_ = "";
-      localFilepath_ = "";
-      refPath_ = "";
-      refFolder_ = "";
-    }
-    public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.String id_;
-    /**
-     * <code>string id = 1;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getId() {
-      return id_;
     }
     /**
-     * <code>string id = 1;</code>
+     * Protobuf enum {@code tc.FileTransDataPacket.TransmitDirection}
      */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getIdBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(id_);
-    }
-    /**
-     * <code>string id = 1;</code>
-     */
-    private void setId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      id_ = value;
-    }
-    /**
-     * <code>string id = 1;</code>
-     */
-    private void clearId() {
-      
-      id_ = getDefaultInstance().getId();
-    }
-    /**
-     * <code>string id = 1;</code>
-     */
-    private void setIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      id_ = value.toStringUtf8();
+    public enum TransmitDirection
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <code>kUpload = 0;</code>
+       */
+      kUpload(0),
+      /**
+       * <code>kDownload = 1;</code>
+       */
+      kDownload(1),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>kUpload = 0;</code>
+       */
+      public static final int kUpload_VALUE = 0;
+      /**
+       * <code>kDownload = 1;</code>
+       */
+      public static final int kDownload_VALUE = 1;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static TransmitDirection valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static TransmitDirection forNumber(int value) {
+        switch (value) {
+          case 0: return kUpload;
+          case 1: return kDownload;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<TransmitDirection>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          TransmitDirection> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<TransmitDirection>() {
+              @java.lang.Override
+              public TransmitDirection findValueByNumber(int number) {
+                return TransmitDirection.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return TransmitDirectionVerifier.INSTANCE;
+      }
+
+      private static final class TransmitDirectionVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new TransmitDirectionVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return TransmitDirection.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private TransmitDirection(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:tc.FileTransDataPacket.TransmitDirection)
     }
 
-    public static final int STATE_FIELD_NUMBER = 10;
-    private int state_;
     /**
-     * <code>.tc.FtRequestState state = 10;</code>
+     * Protobuf enum {@code tc.FileTransDataPacket.TransmitState}
+     */
+    public enum TransmitState
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <pre>
+       * transferring
+       * </pre>
+       *
+       * <code>kTransmitting = 0;</code>
+       */
+      kTransmitting(0),
+      /**
+       * <pre>
+       *  end of transmission
+       * </pre>
+       *
+       * <code>kEnd = 1;</code>
+       */
+      kEnd(1),
+      /**
+       * <pre>
+       *  There is an abnormal situation
+       * </pre>
+       *
+       * <code>kError = 2;</code>
+       */
+      kError(2),
+      /**
+       * <pre>
+       *  User cancellation
+       * </pre>
+       *
+       * <code>kCancel = 3;</code>
+       */
+      kCancel(3),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <pre>
+       * transferring
+       * </pre>
+       *
+       * <code>kTransmitting = 0;</code>
+       */
+      public static final int kTransmitting_VALUE = 0;
+      /**
+       * <pre>
+       *  end of transmission
+       * </pre>
+       *
+       * <code>kEnd = 1;</code>
+       */
+      public static final int kEnd_VALUE = 1;
+      /**
+       * <pre>
+       *  There is an abnormal situation
+       * </pre>
+       *
+       * <code>kError = 2;</code>
+       */
+      public static final int kError_VALUE = 2;
+      /**
+       * <pre>
+       *  User cancellation
+       * </pre>
+       *
+       * <code>kCancel = 3;</code>
+       */
+      public static final int kCancel_VALUE = 3;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static TransmitState valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static TransmitState forNumber(int value) {
+        switch (value) {
+          case 0: return kTransmitting;
+          case 1: return kEnd;
+          case 2: return kError;
+          case 3: return kCancel;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<TransmitState>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          TransmitState> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<TransmitState>() {
+              @java.lang.Override
+              public TransmitState findValueByNumber(int number) {
+                return TransmitState.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return TransmitStateVerifier.INSTANCE;
+      }
+
+      private static final class TransmitStateVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new TransmitStateVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return TransmitState.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private TransmitState(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:tc.FileTransDataPacket.TransmitState)
+    }
+
+    public static final int TRANSMIT_DIRECTION_FIELD_NUMBER = 1;
+    private int transmitDirection_;
+    /**
+     * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
      */
     @java.lang.Override
-    public int getStateValue() {
-      return state_;
+    public int getTransmitDirectionValue() {
+      return transmitDirection_;
     }
     /**
-     * <code>.tc.FtRequestState state = 10;</code>
+     * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
      */
     @java.lang.Override
-    public tc.TcFileTransfer.FtRequestState getState() {
-      tc.TcFileTransfer.FtRequestState result = tc.TcFileTransfer.FtRequestState.forNumber(state_);
-      return result == null ? tc.TcFileTransfer.FtRequestState.UNRECOGNIZED : result;
+    public tc.TcFileTransfer.FileTransDataPacket.TransmitDirection getTransmitDirection() {
+      tc.TcFileTransfer.FileTransDataPacket.TransmitDirection result = tc.TcFileTransfer.FileTransDataPacket.TransmitDirection.forNumber(transmitDirection_);
+      return result == null ? tc.TcFileTransfer.FileTransDataPacket.TransmitDirection.UNRECOGNIZED : result;
     }
     /**
-     * <code>.tc.FtRequestState state = 10;</code>
+     * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
      */
-    private void setStateValue(int value) {
-        state_ = value;
+    private void setTransmitDirectionValue(int value) {
+        transmitDirection_ = value;
     }
     /**
-     * <code>.tc.FtRequestState state = 10;</code>
+     * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
      */
-    private void setState(tc.TcFileTransfer.FtRequestState value) {
+    private void setTransmitDirection(tc.TcFileTransfer.FileTransDataPacket.TransmitDirection value) {
       if (value == null) {
         throw new NullPointerException();
       }
       
-      state_ = value.getNumber();
+      transmitDirection_ = value.getNumber();
     }
     /**
-     * <code>.tc.FtRequestState state = 10;</code>
+     * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
      */
-    private void clearState() {
+    private void clearTransmitDirection() {
       
-      state_ = 0;
+      transmitDirection_ = 0;
     }
 
-    public static final int FILE_TYPE_FIELD_NUMBER = 20;
-    private int fileType_;
+    public static final int SRC_FILE_PATH_FIELD_NUMBER = 2;
+    private java.lang.String srcFilePath_;
     /**
-     * <code>.tc.FtFileType file_type = 20;</code>
+     * <code>string src_file_path = 2;</code>
      */
     @java.lang.Override
-    public int getFileTypeValue() {
-      return fileType_;
+    public java.lang.String getSrcFilePath() {
+      return srcFilePath_;
     }
     /**
-     * <code>.tc.FtFileType file_type = 20;</code>
+     * <code>string src_file_path = 2;</code>
      */
     @java.lang.Override
-    public tc.TcFileTransfer.FtFileType getFileType() {
-      tc.TcFileTransfer.FtFileType result = tc.TcFileTransfer.FtFileType.forNumber(fileType_);
-      return result == null ? tc.TcFileTransfer.FtFileType.UNRECOGNIZED : result;
+    public com.google.protobuf.ByteString
+        getSrcFilePathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(srcFilePath_);
     }
     /**
-     * <code>.tc.FtFileType file_type = 20;</code>
+     * <code>string src_file_path = 2;</code>
      */
-    private void setFileTypeValue(int value) {
-        fileType_ = value;
+    private void setSrcFilePath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      srcFilePath_ = value;
     }
     /**
-     * <code>.tc.FtFileType file_type = 20;</code>
+     * <code>string src_file_path = 2;</code>
      */
-    private void setFileType(tc.TcFileTransfer.FtFileType value) {
+    private void clearSrcFilePath() {
+      
+      srcFilePath_ = getDefaultInstance().getSrcFilePath();
+    }
+    /**
+     * <code>string src_file_path = 2;</code>
+     */
+    private void setSrcFilePathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      srcFilePath_ = value.toStringUtf8();
+    }
+
+    public static final int TARGET_FILE_PATH_FIELD_NUMBER = 3;
+    private java.lang.String targetFilePath_;
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getTargetFilePath() {
+      return targetFilePath_;
+    }
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTargetFilePathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(targetFilePath_);
+    }
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    private void setTargetFilePath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      targetFilePath_ = value;
+    }
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    private void clearTargetFilePath() {
+      
+      targetFilePath_ = getDefaultInstance().getTargetFilePath();
+    }
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    private void setTargetFilePathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      targetFilePath_ = value.toStringUtf8();
+    }
+
+    public static final int FILE_SIZE_FIELD_NUMBER = 4;
+    private long fileSize_;
+    /**
+     * <code>uint64 file_size = 4;</code>
+     */
+    @java.lang.Override
+    public long getFileSize() {
+      return fileSize_;
+    }
+    /**
+     * <code>uint64 file_size = 4;</code>
+     */
+    private void setFileSize(long value) {
+      
+      fileSize_ = value;
+    }
+    /**
+     * <code>uint64 file_size = 4;</code>
+     */
+    private void clearFileSize() {
+      
+      fileSize_ = 0L;
+    }
+
+    public static final int TASK_ID_FIELD_NUMBER = 5;
+    private java.lang.String taskId_;
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getTaskId() {
+      return taskId_;
+    }
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTaskIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(taskId_);
+    }
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    private void setTaskId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      taskId_ = value;
+    }
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    private void clearTaskId() {
+      
+      taskId_ = getDefaultInstance().getTaskId();
+    }
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    private void setTaskIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      taskId_ = value.toStringUtf8();
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 6;
+    private long index_;
+    /**
+     * <pre>
+     * This task packet sequence
+     * </pre>
+     *
+     * <code>uint64 index = 6;</code>
+     */
+    @java.lang.Override
+    public long getIndex() {
+      return index_;
+    }
+    /**
+     * <pre>
+     * This task packet sequence
+     * </pre>
+     *
+     * <code>uint64 index = 6;</code>
+     */
+    private void setIndex(long value) {
+      
+      index_ = value;
+    }
+    /**
+     * <pre>
+     * This task packet sequence
+     * </pre>
+     *
+     * <code>uint64 index = 6;</code>
+     */
+    private void clearIndex() {
+      
+      index_ = 0L;
+    }
+
+    public static final int TRANSMIT_STATE_FIELD_NUMBER = 7;
+    private int transmitState_;
+    /**
+     * <pre>
+     * Is it the last data packet
+     * </pre>
+     *
+     * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
+     */
+    @java.lang.Override
+    public int getTransmitStateValue() {
+      return transmitState_;
+    }
+    /**
+     * <pre>
+     * Is it the last data packet
+     * </pre>
+     *
+     * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileTransDataPacket.TransmitState getTransmitState() {
+      tc.TcFileTransfer.FileTransDataPacket.TransmitState result = tc.TcFileTransfer.FileTransDataPacket.TransmitState.forNumber(transmitState_);
+      return result == null ? tc.TcFileTransfer.FileTransDataPacket.TransmitState.UNRECOGNIZED : result;
+    }
+    /**
+     * <pre>
+     * Is it the last data packet
+     * </pre>
+     *
+     * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
+     */
+    private void setTransmitStateValue(int value) {
+        transmitState_ = value;
+    }
+    /**
+     * <pre>
+     * Is it the last data packet
+     * </pre>
+     *
+     * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
+     */
+    private void setTransmitState(tc.TcFileTransfer.FileTransDataPacket.TransmitState value) {
       if (value == null) {
         throw new NullPointerException();
       }
       
-      fileType_ = value.getNumber();
+      transmitState_ = value.getNumber();
     }
     /**
-     * <code>.tc.FtFileType file_type = 20;</code>
+     * <pre>
+     * Is it the last data packet
+     * </pre>
+     *
+     * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
      */
-    private void clearFileType() {
+    private void clearTransmitState() {
       
-      fileType_ = 0;
+      transmitState_ = 0;
     }
 
-    public static final int RELATIVE_PATH_FIELD_NUMBER = 30;
-    private java.lang.String relativePath_;
-    /**
-     * <code>string relative_path = 30;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getRelativePath() {
-      return relativePath_;
-    }
-    /**
-     * <code>string relative_path = 30;</code>
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getRelativePathBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(relativePath_);
-    }
-    /**
-     * <code>string relative_path = 30;</code>
-     */
-    private void setRelativePath(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      relativePath_ = value;
-    }
-    /**
-     * <code>string relative_path = 30;</code>
-     */
-    private void clearRelativePath() {
-      
-      relativePath_ = getDefaultInstance().getRelativePath();
-    }
-    /**
-     * <code>string relative_path = 30;</code>
-     */
-    private void setRelativePathBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      relativePath_ = value.toStringUtf8();
-    }
-
-    public static final int FILENAME_FIELD_NUMBER = 40;
-    private java.lang.String filename_;
-    /**
-     * <code>string filename = 40;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getFilename() {
-      return filename_;
-    }
-    /**
-     * <code>string filename = 40;</code>
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getFilenameBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(filename_);
-    }
-    /**
-     * <code>string filename = 40;</code>
-     */
-    private void setFilename(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      filename_ = value;
-    }
-    /**
-     * <code>string filename = 40;</code>
-     */
-    private void clearFilename() {
-      
-      filename_ = getDefaultInstance().getFilename();
-    }
-    /**
-     * <code>string filename = 40;</code>
-     */
-    private void setFilenameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      filename_ = value.toStringUtf8();
-    }
-
-    public static final int DATA_FIELD_NUMBER = 50;
+    public static final int DATA_FIELD_NUMBER = 8;
     private com.google.protobuf.ByteString data_;
     /**
-     * <code>bytes data = 50;</code>
+     * <pre>
+     * file content
+     * </pre>
+     *
+     * <code>bytes data = 8;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString getData() {
       return data_;
     }
     /**
-     * <code>bytes data = 50;</code>
+     * <pre>
+     * file content
+     * </pre>
+     *
+     * <code>bytes data = 8;</code>
      */
     private void setData(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -862,344 +4796,84 @@ public final class TcFileTransfer {
       data_ = value;
     }
     /**
-     * <code>bytes data = 50;</code>
+     * <pre>
+     * file content
+     * </pre>
+     *
+     * <code>bytes data = 8;</code>
      */
     private void clearData() {
       
       data_ = getDefaultInstance().getData();
     }
 
-    public static final int FILESIZE_FIELD_NUMBER = 60;
-    private long filesize_;
-    /**
-     * <code>uint64 filesize = 60;</code>
-     */
-    @java.lang.Override
-    public long getFilesize() {
-      return filesize_;
-    }
-    /**
-     * <code>uint64 filesize = 60;</code>
-     */
-    private void setFilesize(long value) {
-      
-      filesize_ = value;
-    }
-    /**
-     * <code>uint64 filesize = 60;</code>
-     */
-    private void clearFilesize() {
-      
-      filesize_ = 0L;
-    }
-
-    public static final int TRANSFERRED_SIZE_FIELD_NUMBER = 70;
-    private long transferredSize_;
-    /**
-     * <code>uint64 transferred_size = 70;</code>
-     */
-    @java.lang.Override
-    public long getTransferredSize() {
-      return transferredSize_;
-    }
-    /**
-     * <code>uint64 transferred_size = 70;</code>
-     */
-    private void setTransferredSize(long value) {
-      
-      transferredSize_ = value;
-    }
-    /**
-     * <code>uint64 transferred_size = 70;</code>
-     */
-    private void clearTransferredSize() {
-      
-      transferredSize_ = 0L;
-    }
-
-    public static final int FILE_MD5_FIELD_NUMBER = 80;
-    private java.lang.String fileMd5_;
-    /**
-     * <code>string file_md5 = 80;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getFileMd5() {
-      return fileMd5_;
-    }
-    /**
-     * <code>string file_md5 = 80;</code>
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getFileMd5Bytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(fileMd5_);
-    }
-    /**
-     * <code>string file_md5 = 80;</code>
-     */
-    private void setFileMd5(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      fileMd5_ = value;
-    }
-    /**
-     * <code>string file_md5 = 80;</code>
-     */
-    private void clearFileMd5() {
-      
-      fileMd5_ = getDefaultInstance().getFileMd5();
-    }
-    /**
-     * <code>string file_md5 = 80;</code>
-     */
-    private void setFileMd5Bytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      fileMd5_ = value.toStringUtf8();
-    }
-
-    public static final int LOCAL_FILEPATH_FIELD_NUMBER = 90;
-    private java.lang.String localFilepath_;
-    /**
-     * <code>string local_filepath = 90;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getLocalFilepath() {
-      return localFilepath_;
-    }
-    /**
-     * <code>string local_filepath = 90;</code>
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getLocalFilepathBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(localFilepath_);
-    }
-    /**
-     * <code>string local_filepath = 90;</code>
-     */
-    private void setLocalFilepath(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      localFilepath_ = value;
-    }
-    /**
-     * <code>string local_filepath = 90;</code>
-     */
-    private void clearLocalFilepath() {
-      
-      localFilepath_ = getDefaultInstance().getLocalFilepath();
-    }
-    /**
-     * <code>string local_filepath = 90;</code>
-     */
-    private void setLocalFilepathBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      localFilepath_ = value.toStringUtf8();
-    }
-
-    public static final int TIMESTAMP_FIELD_NUMBER = 100;
-    private long timestamp_;
-    /**
-     * <code>uint64 timestamp = 100;</code>
-     */
-    @java.lang.Override
-    public long getTimestamp() {
-      return timestamp_;
-    }
-    /**
-     * <code>uint64 timestamp = 100;</code>
-     */
-    private void setTimestamp(long value) {
-      
-      timestamp_ = value;
-    }
-    /**
-     * <code>uint64 timestamp = 100;</code>
-     */
-    private void clearTimestamp() {
-      
-      timestamp_ = 0L;
-    }
-
-    public static final int REF_PATH_FIELD_NUMBER = 110;
-    private java.lang.String refPath_;
-    /**
-     * <code>string ref_path = 110;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getRefPath() {
-      return refPath_;
-    }
-    /**
-     * <code>string ref_path = 110;</code>
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getRefPathBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(refPath_);
-    }
-    /**
-     * <code>string ref_path = 110;</code>
-     */
-    private void setRefPath(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      refPath_ = value;
-    }
-    /**
-     * <code>string ref_path = 110;</code>
-     */
-    private void clearRefPath() {
-      
-      refPath_ = getDefaultInstance().getRefPath();
-    }
-    /**
-     * <code>string ref_path = 110;</code>
-     */
-    private void setRefPathBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      refPath_ = value.toStringUtf8();
-    }
-
-    public static final int REF_FOLDER_FIELD_NUMBER = 120;
-    private java.lang.String refFolder_;
-    /**
-     * <code>string ref_folder = 120;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getRefFolder() {
-      return refFolder_;
-    }
-    /**
-     * <code>string ref_folder = 120;</code>
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getRefFolderBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(refFolder_);
-    }
-    /**
-     * <code>string ref_folder = 120;</code>
-     */
-    private void setRefFolder(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      refFolder_ = value;
-    }
-    /**
-     * <code>string ref_folder = 120;</code>
-     */
-    private void clearRefFolder() {
-      
-      refFolder_ = getDefaultInstance().getRefFolder();
-    }
-    /**
-     * <code>string ref_folder = 120;</code>
-     */
-    private void setRefFolderBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      refFolder_ = value.toStringUtf8();
-    }
-
-    public static tc.TcFileTransfer.FtRequest parseFrom(
+    public static tc.TcFileTransfer.FileTransDataPacket parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcFileTransfer.FtRequest parseFrom(
+    public static tc.TcFileTransfer.FileTransDataPacket parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtRequest parseFrom(
+    public static tc.TcFileTransfer.FileTransDataPacket parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcFileTransfer.FtRequest parseFrom(
+    public static tc.TcFileTransfer.FileTransDataPacket parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtRequest parseFrom(byte[] data)
+    public static tc.TcFileTransfer.FileTransDataPacket parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcFileTransfer.FtRequest parseFrom(
+    public static tc.TcFileTransfer.FileTransDataPacket parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtRequest parseFrom(java.io.InputStream input)
+    public static tc.TcFileTransfer.FileTransDataPacket parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static tc.TcFileTransfer.FtRequest parseFrom(
+    public static tc.TcFileTransfer.FileTransDataPacket parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtRequest parseDelimitedFrom(java.io.InputStream input)
+    public static tc.TcFileTransfer.FileTransDataPacket parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static tc.TcFileTransfer.FtRequest parseDelimitedFrom(
+    public static tc.TcFileTransfer.FileTransDataPacket parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtRequest parseFrom(
+    public static tc.TcFileTransfer.FileTransDataPacket parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static tc.TcFileTransfer.FtRequest parseFrom(
+    public static tc.TcFileTransfer.FileTransDataPacket parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1210,241 +4884,329 @@ public final class TcFileTransfer {
     public static Builder newBuilder() {
       return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
-    public static Builder newBuilder(tc.TcFileTransfer.FtRequest prototype) {
+    public static Builder newBuilder(tc.TcFileTransfer.FileTransDataPacket prototype) {
       return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
     /**
      * <pre>
-     * Peer -&gt; Remote Peer
+     * File transfer packet
      * </pre>
      *
-     * Protobuf type {@code tc.FtRequest}
+     * Protobuf type {@code tc.FileTransDataPacket}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageLite.Builder<
-          tc.TcFileTransfer.FtRequest, Builder> implements
-        // @@protoc_insertion_point(builder_implements:tc.FtRequest)
-        tc.TcFileTransfer.FtRequestOrBuilder {
-      // Construct using tc.TcFileTransfer.FtRequest.newBuilder()
+          tc.TcFileTransfer.FileTransDataPacket, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileTransDataPacket)
+        tc.TcFileTransfer.FileTransDataPacketOrBuilder {
+      // Construct using tc.TcFileTransfer.FileTransDataPacket.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
       }
 
 
       /**
-       * <code>string id = 1;</code>
+       * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
        */
       @java.lang.Override
-      public java.lang.String getId() {
-        return instance.getId();
+      public int getTransmitDirectionValue() {
+        return instance.getTransmitDirectionValue();
       }
       /**
-       * <code>string id = 1;</code>
+       * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
+       */
+      public Builder setTransmitDirectionValue(int value) {
+        copyOnWrite();
+        instance.setTransmitDirectionValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileTransDataPacket.TransmitDirection getTransmitDirection() {
+        return instance.getTransmitDirection();
+      }
+      /**
+       * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
+       */
+      public Builder setTransmitDirection(tc.TcFileTransfer.FileTransDataPacket.TransmitDirection value) {
+        copyOnWrite();
+        instance.setTransmitDirection(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransDataPacket.TransmitDirection transmit_direction = 1;</code>
+       */
+      public Builder clearTransmitDirection() {
+        copyOnWrite();
+        instance.clearTransmitDirection();
+        return this;
+      }
+
+      /**
+       * <code>string src_file_path = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getSrcFilePath() {
+        return instance.getSrcFilePath();
+      }
+      /**
+       * <code>string src_file_path = 2;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getIdBytes() {
-        return instance.getIdBytes();
+          getSrcFilePathBytes() {
+        return instance.getSrcFilePathBytes();
       }
       /**
-       * <code>string id = 1;</code>
+       * <code>string src_file_path = 2;</code>
        */
-      public Builder setId(
+      public Builder setSrcFilePath(
           java.lang.String value) {
         copyOnWrite();
-        instance.setId(value);
+        instance.setSrcFilePath(value);
         return this;
       }
       /**
-       * <code>string id = 1;</code>
+       * <code>string src_file_path = 2;</code>
        */
-      public Builder clearId() {
+      public Builder clearSrcFilePath() {
         copyOnWrite();
-        instance.clearId();
+        instance.clearSrcFilePath();
         return this;
       }
       /**
-       * <code>string id = 1;</code>
+       * <code>string src_file_path = 2;</code>
        */
-      public Builder setIdBytes(
+      public Builder setSrcFilePathBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setIdBytes(value);
+        instance.setSrcFilePathBytes(value);
         return this;
       }
 
       /**
-       * <code>.tc.FtRequestState state = 10;</code>
+       * <code>string target_file_path = 3;</code>
        */
       @java.lang.Override
-      public int getStateValue() {
-        return instance.getStateValue();
+      public java.lang.String getTargetFilePath() {
+        return instance.getTargetFilePath();
       }
       /**
-       * <code>.tc.FtRequestState state = 10;</code>
-       */
-      public Builder setStateValue(int value) {
-        copyOnWrite();
-        instance.setStateValue(value);
-        return this;
-      }
-      /**
-       * <code>.tc.FtRequestState state = 10;</code>
-       */
-      @java.lang.Override
-      public tc.TcFileTransfer.FtRequestState getState() {
-        return instance.getState();
-      }
-      /**
-       * <code>.tc.FtRequestState state = 10;</code>
-       */
-      public Builder setState(tc.TcFileTransfer.FtRequestState value) {
-        copyOnWrite();
-        instance.setState(value);
-        return this;
-      }
-      /**
-       * <code>.tc.FtRequestState state = 10;</code>
-       */
-      public Builder clearState() {
-        copyOnWrite();
-        instance.clearState();
-        return this;
-      }
-
-      /**
-       * <code>.tc.FtFileType file_type = 20;</code>
-       */
-      @java.lang.Override
-      public int getFileTypeValue() {
-        return instance.getFileTypeValue();
-      }
-      /**
-       * <code>.tc.FtFileType file_type = 20;</code>
-       */
-      public Builder setFileTypeValue(int value) {
-        copyOnWrite();
-        instance.setFileTypeValue(value);
-        return this;
-      }
-      /**
-       * <code>.tc.FtFileType file_type = 20;</code>
-       */
-      @java.lang.Override
-      public tc.TcFileTransfer.FtFileType getFileType() {
-        return instance.getFileType();
-      }
-      /**
-       * <code>.tc.FtFileType file_type = 20;</code>
-       */
-      public Builder setFileType(tc.TcFileTransfer.FtFileType value) {
-        copyOnWrite();
-        instance.setFileType(value);
-        return this;
-      }
-      /**
-       * <code>.tc.FtFileType file_type = 20;</code>
-       */
-      public Builder clearFileType() {
-        copyOnWrite();
-        instance.clearFileType();
-        return this;
-      }
-
-      /**
-       * <code>string relative_path = 30;</code>
-       */
-      @java.lang.Override
-      public java.lang.String getRelativePath() {
-        return instance.getRelativePath();
-      }
-      /**
-       * <code>string relative_path = 30;</code>
+       * <code>string target_file_path = 3;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getRelativePathBytes() {
-        return instance.getRelativePathBytes();
+          getTargetFilePathBytes() {
+        return instance.getTargetFilePathBytes();
       }
       /**
-       * <code>string relative_path = 30;</code>
+       * <code>string target_file_path = 3;</code>
        */
-      public Builder setRelativePath(
+      public Builder setTargetFilePath(
           java.lang.String value) {
         copyOnWrite();
-        instance.setRelativePath(value);
+        instance.setTargetFilePath(value);
         return this;
       }
       /**
-       * <code>string relative_path = 30;</code>
+       * <code>string target_file_path = 3;</code>
        */
-      public Builder clearRelativePath() {
+      public Builder clearTargetFilePath() {
         copyOnWrite();
-        instance.clearRelativePath();
+        instance.clearTargetFilePath();
         return this;
       }
       /**
-       * <code>string relative_path = 30;</code>
+       * <code>string target_file_path = 3;</code>
        */
-      public Builder setRelativePathBytes(
+      public Builder setTargetFilePathBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setRelativePathBytes(value);
+        instance.setTargetFilePathBytes(value);
         return this;
       }
 
       /**
-       * <code>string filename = 40;</code>
+       * <code>uint64 file_size = 4;</code>
        */
       @java.lang.Override
-      public java.lang.String getFilename() {
-        return instance.getFilename();
+      public long getFileSize() {
+        return instance.getFileSize();
       }
       /**
-       * <code>string filename = 40;</code>
+       * <code>uint64 file_size = 4;</code>
+       */
+      public Builder setFileSize(long value) {
+        copyOnWrite();
+        instance.setFileSize(value);
+        return this;
+      }
+      /**
+       * <code>uint64 file_size = 4;</code>
+       */
+      public Builder clearFileSize() {
+        copyOnWrite();
+        instance.clearFileSize();
+        return this;
+      }
+
+      /**
+       * <code>string task_id = 5;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getTaskId() {
+        return instance.getTaskId();
+      }
+      /**
+       * <code>string task_id = 5;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getFilenameBytes() {
-        return instance.getFilenameBytes();
+          getTaskIdBytes() {
+        return instance.getTaskIdBytes();
       }
       /**
-       * <code>string filename = 40;</code>
+       * <code>string task_id = 5;</code>
        */
-      public Builder setFilename(
+      public Builder setTaskId(
           java.lang.String value) {
         copyOnWrite();
-        instance.setFilename(value);
+        instance.setTaskId(value);
         return this;
       }
       /**
-       * <code>string filename = 40;</code>
+       * <code>string task_id = 5;</code>
        */
-      public Builder clearFilename() {
+      public Builder clearTaskId() {
         copyOnWrite();
-        instance.clearFilename();
+        instance.clearTaskId();
         return this;
       }
       /**
-       * <code>string filename = 40;</code>
+       * <code>string task_id = 5;</code>
        */
-      public Builder setFilenameBytes(
+      public Builder setTaskIdBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setFilenameBytes(value);
+        instance.setTaskIdBytes(value);
         return this;
       }
 
       /**
-       * <code>bytes data = 50;</code>
+       * <pre>
+       * This task packet sequence
+       * </pre>
+       *
+       * <code>uint64 index = 6;</code>
+       */
+      @java.lang.Override
+      public long getIndex() {
+        return instance.getIndex();
+      }
+      /**
+       * <pre>
+       * This task packet sequence
+       * </pre>
+       *
+       * <code>uint64 index = 6;</code>
+       */
+      public Builder setIndex(long value) {
+        copyOnWrite();
+        instance.setIndex(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * This task packet sequence
+       * </pre>
+       *
+       * <code>uint64 index = 6;</code>
+       */
+      public Builder clearIndex() {
+        copyOnWrite();
+        instance.clearIndex();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Is it the last data packet
+       * </pre>
+       *
+       * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
+       */
+      @java.lang.Override
+      public int getTransmitStateValue() {
+        return instance.getTransmitStateValue();
+      }
+      /**
+       * <pre>
+       * Is it the last data packet
+       * </pre>
+       *
+       * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
+       */
+      public Builder setTransmitStateValue(int value) {
+        copyOnWrite();
+        instance.setTransmitStateValue(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Is it the last data packet
+       * </pre>
+       *
+       * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileTransDataPacket.TransmitState getTransmitState() {
+        return instance.getTransmitState();
+      }
+      /**
+       * <pre>
+       * Is it the last data packet
+       * </pre>
+       *
+       * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
+       */
+      public Builder setTransmitState(tc.TcFileTransfer.FileTransDataPacket.TransmitState value) {
+        copyOnWrite();
+        instance.setTransmitState(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Is it the last data packet
+       * </pre>
+       *
+       * <code>.tc.FileTransDataPacket.TransmitState transmit_state = 7;</code>
+       */
+      public Builder clearTransmitState() {
+        copyOnWrite();
+        instance.clearTransmitState();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * file content
+       * </pre>
+       *
+       * <code>bytes data = 8;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString getData() {
         return instance.getData();
       }
       /**
-       * <code>bytes data = 50;</code>
+       * <pre>
+       * file content
+       * </pre>
+       *
+       * <code>bytes data = 8;</code>
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         copyOnWrite();
@@ -1452,7 +5214,11 @@ public final class TcFileTransfer {
         return this;
       }
       /**
-       * <code>bytes data = 50;</code>
+       * <pre>
+       * file content
+       * </pre>
+       *
+       * <code>bytes data = 8;</code>
        */
       public Builder clearData() {
         copyOnWrite();
@@ -1460,247 +5226,7 @@ public final class TcFileTransfer {
         return this;
       }
 
-      /**
-       * <code>uint64 filesize = 60;</code>
-       */
-      @java.lang.Override
-      public long getFilesize() {
-        return instance.getFilesize();
-      }
-      /**
-       * <code>uint64 filesize = 60;</code>
-       */
-      public Builder setFilesize(long value) {
-        copyOnWrite();
-        instance.setFilesize(value);
-        return this;
-      }
-      /**
-       * <code>uint64 filesize = 60;</code>
-       */
-      public Builder clearFilesize() {
-        copyOnWrite();
-        instance.clearFilesize();
-        return this;
-      }
-
-      /**
-       * <code>uint64 transferred_size = 70;</code>
-       */
-      @java.lang.Override
-      public long getTransferredSize() {
-        return instance.getTransferredSize();
-      }
-      /**
-       * <code>uint64 transferred_size = 70;</code>
-       */
-      public Builder setTransferredSize(long value) {
-        copyOnWrite();
-        instance.setTransferredSize(value);
-        return this;
-      }
-      /**
-       * <code>uint64 transferred_size = 70;</code>
-       */
-      public Builder clearTransferredSize() {
-        copyOnWrite();
-        instance.clearTransferredSize();
-        return this;
-      }
-
-      /**
-       * <code>string file_md5 = 80;</code>
-       */
-      @java.lang.Override
-      public java.lang.String getFileMd5() {
-        return instance.getFileMd5();
-      }
-      /**
-       * <code>string file_md5 = 80;</code>
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getFileMd5Bytes() {
-        return instance.getFileMd5Bytes();
-      }
-      /**
-       * <code>string file_md5 = 80;</code>
-       */
-      public Builder setFileMd5(
-          java.lang.String value) {
-        copyOnWrite();
-        instance.setFileMd5(value);
-        return this;
-      }
-      /**
-       * <code>string file_md5 = 80;</code>
-       */
-      public Builder clearFileMd5() {
-        copyOnWrite();
-        instance.clearFileMd5();
-        return this;
-      }
-      /**
-       * <code>string file_md5 = 80;</code>
-       */
-      public Builder setFileMd5Bytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setFileMd5Bytes(value);
-        return this;
-      }
-
-      /**
-       * <code>string local_filepath = 90;</code>
-       */
-      @java.lang.Override
-      public java.lang.String getLocalFilepath() {
-        return instance.getLocalFilepath();
-      }
-      /**
-       * <code>string local_filepath = 90;</code>
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getLocalFilepathBytes() {
-        return instance.getLocalFilepathBytes();
-      }
-      /**
-       * <code>string local_filepath = 90;</code>
-       */
-      public Builder setLocalFilepath(
-          java.lang.String value) {
-        copyOnWrite();
-        instance.setLocalFilepath(value);
-        return this;
-      }
-      /**
-       * <code>string local_filepath = 90;</code>
-       */
-      public Builder clearLocalFilepath() {
-        copyOnWrite();
-        instance.clearLocalFilepath();
-        return this;
-      }
-      /**
-       * <code>string local_filepath = 90;</code>
-       */
-      public Builder setLocalFilepathBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setLocalFilepathBytes(value);
-        return this;
-      }
-
-      /**
-       * <code>uint64 timestamp = 100;</code>
-       */
-      @java.lang.Override
-      public long getTimestamp() {
-        return instance.getTimestamp();
-      }
-      /**
-       * <code>uint64 timestamp = 100;</code>
-       */
-      public Builder setTimestamp(long value) {
-        copyOnWrite();
-        instance.setTimestamp(value);
-        return this;
-      }
-      /**
-       * <code>uint64 timestamp = 100;</code>
-       */
-      public Builder clearTimestamp() {
-        copyOnWrite();
-        instance.clearTimestamp();
-        return this;
-      }
-
-      /**
-       * <code>string ref_path = 110;</code>
-       */
-      @java.lang.Override
-      public java.lang.String getRefPath() {
-        return instance.getRefPath();
-      }
-      /**
-       * <code>string ref_path = 110;</code>
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getRefPathBytes() {
-        return instance.getRefPathBytes();
-      }
-      /**
-       * <code>string ref_path = 110;</code>
-       */
-      public Builder setRefPath(
-          java.lang.String value) {
-        copyOnWrite();
-        instance.setRefPath(value);
-        return this;
-      }
-      /**
-       * <code>string ref_path = 110;</code>
-       */
-      public Builder clearRefPath() {
-        copyOnWrite();
-        instance.clearRefPath();
-        return this;
-      }
-      /**
-       * <code>string ref_path = 110;</code>
-       */
-      public Builder setRefPathBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setRefPathBytes(value);
-        return this;
-      }
-
-      /**
-       * <code>string ref_folder = 120;</code>
-       */
-      @java.lang.Override
-      public java.lang.String getRefFolder() {
-        return instance.getRefFolder();
-      }
-      /**
-       * <code>string ref_folder = 120;</code>
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getRefFolderBytes() {
-        return instance.getRefFolderBytes();
-      }
-      /**
-       * <code>string ref_folder = 120;</code>
-       */
-      public Builder setRefFolder(
-          java.lang.String value) {
-        copyOnWrite();
-        instance.setRefFolder(value);
-        return this;
-      }
-      /**
-       * <code>string ref_folder = 120;</code>
-       */
-      public Builder clearRefFolder() {
-        copyOnWrite();
-        instance.clearRefFolder();
-        return this;
-      }
-      /**
-       * <code>string ref_folder = 120;</code>
-       */
-      public Builder setRefFolderBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setRefFolderBytes(value);
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:tc.FtRequest)
+      // @@protoc_insertion_point(builder_scope:tc.FileTransDataPacket)
     }
     @java.lang.Override
     @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
@@ -1709,30 +5235,25 @@ public final class TcFileTransfer {
         java.lang.Object arg0, java.lang.Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new tc.TcFileTransfer.FtRequest();
+          return new tc.TcFileTransfer.FileTransDataPacket();
         }
         case NEW_BUILDER: {
           return new Builder();
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "id_",
-              "state_",
-              "fileType_",
-              "relativePath_",
-              "filename_",
+              "transmitDirection_",
+              "srcFilePath_",
+              "targetFilePath_",
+              "fileSize_",
+              "taskId_",
+              "index_",
+              "transmitState_",
               "data_",
-              "filesize_",
-              "transferredSize_",
-              "fileMd5_",
-              "localFilepath_",
-              "timestamp_",
-              "refPath_",
-              "refFolder_",
             };
             java.lang.String info =
-                "\u0000\r\u0000\u0000\u0001x\r\u0000\u0000\u0000\u0001\u0208\n\f\u0014\f\u001e\u0208" +
-                "(\u02082\n<\u0003F\u0003P\u0208Z\u0208d\u0003n\u0208x\u0208";
+                "\u0000\b\u0000\u0000\u0001\b\b\u0000\u0000\u0000\u0001\f\u0002\u0208\u0003\u0208" +
+                "\u0004\u0003\u0005\u0208\u0006\u0003\u0007\f\b\n";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -1740,9 +5261,9 @@ public final class TcFileTransfer {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          com.google.protobuf.Parser<tc.TcFileTransfer.FtRequest> parser = PARSER;
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileTransDataPacket> parser = PARSER;
           if (parser == null) {
-            synchronized (tc.TcFileTransfer.FtRequest.class) {
+            synchronized (tc.TcFileTransfer.FileTransDataPacket.class) {
               parser = PARSER;
               if (parser == null) {
                 parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
@@ -1763,457 +5284,525 @@ public final class TcFileTransfer {
     }
 
 
-    // @@protoc_insertion_point(class_scope:tc.FtRequest)
-    private static final tc.TcFileTransfer.FtRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:tc.FileTransDataPacket)
+    private static final tc.TcFileTransfer.FileTransDataPacket DEFAULT_INSTANCE;
     static {
       // New instances are implicitly immutable so no need to make
       // immutable.
-      DEFAULT_INSTANCE = new FtRequest();
+      DEFAULT_INSTANCE = new FileTransDataPacket();
     }
 
     static {
       com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
-        FtRequest.class, DEFAULT_INSTANCE);
+        FileTransDataPacket.class, DEFAULT_INSTANCE);
     }
-    public static tc.TcFileTransfer.FtRequest getDefaultInstance() {
+    public static tc.TcFileTransfer.FileTransDataPacket getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static volatile com.google.protobuf.Parser<FtRequest> PARSER;
+    private static volatile com.google.protobuf.Parser<FileTransDataPacket> PARSER;
 
-    public static com.google.protobuf.Parser<FtRequest> parser() {
+    public static com.google.protobuf.Parser<FileTransDataPacket> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
 
-  public interface FtResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:tc.FtResponse)
+  public interface FileTransRespUploadOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileTransRespUpload)
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>string id = 1;</code>
+     * <code>bool res = 1;</code>
      */
-    java.lang.String getId();
+    boolean getRes();
+
     /**
-     * <code>string id = 1;</code>
+     * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
+     */
+    int getErrorCauseValue();
+    /**
+     * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
+     */
+    tc.TcFileTransfer.FileTransRespUpload.UploadErrorCause getErrorCause();
+
+    /**
+     * <code>string src_file_path = 3;</code>
+     */
+    java.lang.String getSrcFilePath();
+    /**
+     * <code>string src_file_path = 3;</code>
      */
     com.google.protobuf.ByteString
-        getIdBytes();
+        getSrcFilePathBytes();
 
     /**
-     * <code>.tc.FtResponseState state = 10;</code>
+     * <code>string target_file_path = 4;</code>
      */
-    int getStateValue();
+    java.lang.String getTargetFilePath();
     /**
-     * <code>.tc.FtResponseState state = 10;</code>
-     */
-    tc.TcFileTransfer.FtResponseState getState();
-
-    /**
-     * <code>string filename = 20;</code>
-     */
-    java.lang.String getFilename();
-    /**
-     * <code>string filename = 20;</code>
+     * <code>string target_file_path = 4;</code>
      */
     com.google.protobuf.ByteString
-        getFilenameBytes();
+        getTargetFilePathBytes();
 
     /**
-     * <code>string local_filepath = 30;</code>
+     * <code>string task_id = 5;</code>
      */
-    java.lang.String getLocalFilepath();
+    java.lang.String getTaskId();
     /**
-     * <code>string local_filepath = 30;</code>
+     * <code>string task_id = 5;</code>
      */
     com.google.protobuf.ByteString
-        getLocalFilepathBytes();
-
-    /**
-     * <code>uint64 filesize = 40;</code>
-     */
-    long getFilesize();
-
-    /**
-     * <code>uint64 transferred_size = 50;</code>
-     */
-    long getTransferredSize();
-
-    /**
-     * <code>float progress = 60;</code>
-     */
-    float getProgress();
-
-    /**
-     * <code>uint64 timestamp = 70;</code>
-     */
-    long getTimestamp();
+        getTaskIdBytes();
   }
   /**
    * <pre>
-   * Remote Peer -&gt; Peer
+   * Response to file upload
    * </pre>
    *
-   * Protobuf type {@code tc.FtResponse}
+   * Protobuf type {@code tc.FileTransRespUpload}
    */
-  public  static final class FtResponse extends
+  public  static final class FileTransRespUpload extends
       com.google.protobuf.GeneratedMessageLite<
-          FtResponse, FtResponse.Builder> implements
-      // @@protoc_insertion_point(message_implements:tc.FtResponse)
-      FtResponseOrBuilder {
-    private FtResponse() {
-      id_ = "";
-      filename_ = "";
-      localFilepath_ = "";
-    }
-    public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.String id_;
-    /**
-     * <code>string id = 1;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getId() {
-      return id_;
+          FileTransRespUpload, FileTransRespUpload.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileTransRespUpload)
+      FileTransRespUploadOrBuilder {
+    private FileTransRespUpload() {
+      srcFilePath_ = "";
+      targetFilePath_ = "";
+      taskId_ = "";
     }
     /**
-     * <code>string id = 1;</code>
+     * Protobuf enum {@code tc.FileTransRespUpload.UploadErrorCause}
      */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getIdBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(id_);
-    }
-    /**
-     * <code>string id = 1;</code>
-     */
-    private void setId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      id_ = value;
-    }
-    /**
-     * <code>string id = 1;</code>
-     */
-    private void clearId() {
-      
-      id_ = getDefaultInstance().getId();
-    }
-    /**
-     * <code>string id = 1;</code>
-     */
-    private void setIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      id_ = value.toStringUtf8();
+    public enum UploadErrorCause
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <pre>
+       * The file cannot be opened
+       * </pre>
+       *
+       * <code>kFailedOpen = 0;</code>
+       */
+      kFailedOpen(0),
+      /**
+       * <pre>
+       * verification failed
+       * </pre>
+       *
+       * <code>kFailedVerify = 1;</code>
+       */
+      kFailedVerify(1),
+      /**
+       * <pre>
+       * Exception occurred while writing the file
+       * </pre>
+       *
+       * <code>kFailedWrite = 2;</code>
+       */
+      kFailedWrite(2),
+      /**
+       * <pre>
+       * Unknown reason 
+       * </pre>
+       *
+       * <code>kUnknow = 3;</code>
+       */
+      kUnknow(3),
+      /**
+       * <code>kDirFailedCreate = 4;</code>
+       */
+      kDirFailedCreate(4),
+      /**
+       * <code>kPacketLoss = 5;</code>
+       */
+      kPacketLoss(5),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <pre>
+       * The file cannot be opened
+       * </pre>
+       *
+       * <code>kFailedOpen = 0;</code>
+       */
+      public static final int kFailedOpen_VALUE = 0;
+      /**
+       * <pre>
+       * verification failed
+       * </pre>
+       *
+       * <code>kFailedVerify = 1;</code>
+       */
+      public static final int kFailedVerify_VALUE = 1;
+      /**
+       * <pre>
+       * Exception occurred while writing the file
+       * </pre>
+       *
+       * <code>kFailedWrite = 2;</code>
+       */
+      public static final int kFailedWrite_VALUE = 2;
+      /**
+       * <pre>
+       * Unknown reason 
+       * </pre>
+       *
+       * <code>kUnknow = 3;</code>
+       */
+      public static final int kUnknow_VALUE = 3;
+      /**
+       * <code>kDirFailedCreate = 4;</code>
+       */
+      public static final int kDirFailedCreate_VALUE = 4;
+      /**
+       * <code>kPacketLoss = 5;</code>
+       */
+      public static final int kPacketLoss_VALUE = 5;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static UploadErrorCause valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static UploadErrorCause forNumber(int value) {
+        switch (value) {
+          case 0: return kFailedOpen;
+          case 1: return kFailedVerify;
+          case 2: return kFailedWrite;
+          case 3: return kUnknow;
+          case 4: return kDirFailedCreate;
+          case 5: return kPacketLoss;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<UploadErrorCause>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          UploadErrorCause> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<UploadErrorCause>() {
+              @java.lang.Override
+              public UploadErrorCause findValueByNumber(int number) {
+                return UploadErrorCause.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return UploadErrorCauseVerifier.INSTANCE;
+      }
+
+      private static final class UploadErrorCauseVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new UploadErrorCauseVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return UploadErrorCause.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private UploadErrorCause(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:tc.FileTransRespUpload.UploadErrorCause)
     }
 
-    public static final int STATE_FIELD_NUMBER = 10;
-    private int state_;
+    public static final int RES_FIELD_NUMBER = 1;
+    private boolean res_;
     /**
-     * <code>.tc.FtResponseState state = 10;</code>
+     * <code>bool res = 1;</code>
      */
     @java.lang.Override
-    public int getStateValue() {
-      return state_;
+    public boolean getRes() {
+      return res_;
     }
     /**
-     * <code>.tc.FtResponseState state = 10;</code>
+     * <code>bool res = 1;</code>
+     */
+    private void setRes(boolean value) {
+      
+      res_ = value;
+    }
+    /**
+     * <code>bool res = 1;</code>
+     */
+    private void clearRes() {
+      
+      res_ = false;
+    }
+
+    public static final int ERROR_CAUSE_FIELD_NUMBER = 2;
+    private int errorCause_;
+    /**
+     * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
      */
     @java.lang.Override
-    public tc.TcFileTransfer.FtResponseState getState() {
-      tc.TcFileTransfer.FtResponseState result = tc.TcFileTransfer.FtResponseState.forNumber(state_);
-      return result == null ? tc.TcFileTransfer.FtResponseState.UNRECOGNIZED : result;
+    public int getErrorCauseValue() {
+      return errorCause_;
     }
     /**
-     * <code>.tc.FtResponseState state = 10;</code>
+     * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
      */
-    private void setStateValue(int value) {
-        state_ = value;
+    @java.lang.Override
+    public tc.TcFileTransfer.FileTransRespUpload.UploadErrorCause getErrorCause() {
+      tc.TcFileTransfer.FileTransRespUpload.UploadErrorCause result = tc.TcFileTransfer.FileTransRespUpload.UploadErrorCause.forNumber(errorCause_);
+      return result == null ? tc.TcFileTransfer.FileTransRespUpload.UploadErrorCause.UNRECOGNIZED : result;
     }
     /**
-     * <code>.tc.FtResponseState state = 10;</code>
+     * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
      */
-    private void setState(tc.TcFileTransfer.FtResponseState value) {
+    private void setErrorCauseValue(int value) {
+        errorCause_ = value;
+    }
+    /**
+     * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
+     */
+    private void setErrorCause(tc.TcFileTransfer.FileTransRespUpload.UploadErrorCause value) {
       if (value == null) {
         throw new NullPointerException();
       }
       
-      state_ = value.getNumber();
+      errorCause_ = value.getNumber();
     }
     /**
-     * <code>.tc.FtResponseState state = 10;</code>
+     * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
      */
-    private void clearState() {
+    private void clearErrorCause() {
       
-      state_ = 0;
+      errorCause_ = 0;
     }
 
-    public static final int FILENAME_FIELD_NUMBER = 20;
-    private java.lang.String filename_;
+    public static final int SRC_FILE_PATH_FIELD_NUMBER = 3;
+    private java.lang.String srcFilePath_;
     /**
-     * <code>string filename = 20;</code>
+     * <code>string src_file_path = 3;</code>
      */
     @java.lang.Override
-    public java.lang.String getFilename() {
-      return filename_;
+    public java.lang.String getSrcFilePath() {
+      return srcFilePath_;
     }
     /**
-     * <code>string filename = 20;</code>
+     * <code>string src_file_path = 3;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getFilenameBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(filename_);
+        getSrcFilePathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(srcFilePath_);
     }
     /**
-     * <code>string filename = 20;</code>
+     * <code>string src_file_path = 3;</code>
      */
-    private void setFilename(
+    private void setSrcFilePath(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      filename_ = value;
+      srcFilePath_ = value;
     }
     /**
-     * <code>string filename = 20;</code>
+     * <code>string src_file_path = 3;</code>
      */
-    private void clearFilename() {
+    private void clearSrcFilePath() {
       
-      filename_ = getDefaultInstance().getFilename();
+      srcFilePath_ = getDefaultInstance().getSrcFilePath();
     }
     /**
-     * <code>string filename = 20;</code>
+     * <code>string src_file_path = 3;</code>
      */
-    private void setFilenameBytes(
+    private void setSrcFilePathBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      filename_ = value.toStringUtf8();
+      srcFilePath_ = value.toStringUtf8();
     }
 
-    public static final int LOCAL_FILEPATH_FIELD_NUMBER = 30;
-    private java.lang.String localFilepath_;
+    public static final int TARGET_FILE_PATH_FIELD_NUMBER = 4;
+    private java.lang.String targetFilePath_;
     /**
-     * <code>string local_filepath = 30;</code>
+     * <code>string target_file_path = 4;</code>
      */
     @java.lang.Override
-    public java.lang.String getLocalFilepath() {
-      return localFilepath_;
+    public java.lang.String getTargetFilePath() {
+      return targetFilePath_;
     }
     /**
-     * <code>string local_filepath = 30;</code>
+     * <code>string target_file_path = 4;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getLocalFilepathBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(localFilepath_);
+        getTargetFilePathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(targetFilePath_);
     }
     /**
-     * <code>string local_filepath = 30;</code>
+     * <code>string target_file_path = 4;</code>
      */
-    private void setLocalFilepath(
+    private void setTargetFilePath(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      localFilepath_ = value;
+      targetFilePath_ = value;
     }
     /**
-     * <code>string local_filepath = 30;</code>
+     * <code>string target_file_path = 4;</code>
      */
-    private void clearLocalFilepath() {
+    private void clearTargetFilePath() {
       
-      localFilepath_ = getDefaultInstance().getLocalFilepath();
+      targetFilePath_ = getDefaultInstance().getTargetFilePath();
     }
     /**
-     * <code>string local_filepath = 30;</code>
+     * <code>string target_file_path = 4;</code>
      */
-    private void setLocalFilepathBytes(
+    private void setTargetFilePathBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      localFilepath_ = value.toStringUtf8();
+      targetFilePath_ = value.toStringUtf8();
     }
 
-    public static final int FILESIZE_FIELD_NUMBER = 40;
-    private long filesize_;
+    public static final int TASK_ID_FIELD_NUMBER = 5;
+    private java.lang.String taskId_;
     /**
-     * <code>uint64 filesize = 40;</code>
+     * <code>string task_id = 5;</code>
      */
     @java.lang.Override
-    public long getFilesize() {
-      return filesize_;
+    public java.lang.String getTaskId() {
+      return taskId_;
     }
     /**
-     * <code>uint64 filesize = 40;</code>
-     */
-    private void setFilesize(long value) {
-      
-      filesize_ = value;
-    }
-    /**
-     * <code>uint64 filesize = 40;</code>
-     */
-    private void clearFilesize() {
-      
-      filesize_ = 0L;
-    }
-
-    public static final int TRANSFERRED_SIZE_FIELD_NUMBER = 50;
-    private long transferredSize_;
-    /**
-     * <code>uint64 transferred_size = 50;</code>
+     * <code>string task_id = 5;</code>
      */
     @java.lang.Override
-    public long getTransferredSize() {
-      return transferredSize_;
+    public com.google.protobuf.ByteString
+        getTaskIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(taskId_);
     }
     /**
-     * <code>uint64 transferred_size = 50;</code>
+     * <code>string task_id = 5;</code>
      */
-    private void setTransferredSize(long value) {
-      
-      transferredSize_ = value;
+    private void setTaskId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      taskId_ = value;
     }
     /**
-     * <code>uint64 transferred_size = 50;</code>
+     * <code>string task_id = 5;</code>
      */
-    private void clearTransferredSize() {
+    private void clearTaskId() {
       
-      transferredSize_ = 0L;
+      taskId_ = getDefaultInstance().getTaskId();
+    }
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    private void setTaskIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      taskId_ = value.toStringUtf8();
     }
 
-    public static final int PROGRESS_FIELD_NUMBER = 60;
-    private float progress_;
-    /**
-     * <code>float progress = 60;</code>
-     */
-    @java.lang.Override
-    public float getProgress() {
-      return progress_;
-    }
-    /**
-     * <code>float progress = 60;</code>
-     */
-    private void setProgress(float value) {
-      
-      progress_ = value;
-    }
-    /**
-     * <code>float progress = 60;</code>
-     */
-    private void clearProgress() {
-      
-      progress_ = 0F;
-    }
-
-    public static final int TIMESTAMP_FIELD_NUMBER = 70;
-    private long timestamp_;
-    /**
-     * <code>uint64 timestamp = 70;</code>
-     */
-    @java.lang.Override
-    public long getTimestamp() {
-      return timestamp_;
-    }
-    /**
-     * <code>uint64 timestamp = 70;</code>
-     */
-    private void setTimestamp(long value) {
-      
-      timestamp_ = value;
-    }
-    /**
-     * <code>uint64 timestamp = 70;</code>
-     */
-    private void clearTimestamp() {
-      
-      timestamp_ = 0L;
-    }
-
-    public static tc.TcFileTransfer.FtResponse parseFrom(
+    public static tc.TcFileTransfer.FileTransRespUpload parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcFileTransfer.FtResponse parseFrom(
+    public static tc.TcFileTransfer.FileTransRespUpload parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtResponse parseFrom(
+    public static tc.TcFileTransfer.FileTransRespUpload parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcFileTransfer.FtResponse parseFrom(
+    public static tc.TcFileTransfer.FileTransRespUpload parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtResponse parseFrom(byte[] data)
+    public static tc.TcFileTransfer.FileTransRespUpload parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcFileTransfer.FtResponse parseFrom(
+    public static tc.TcFileTransfer.FileTransRespUpload parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtResponse parseFrom(java.io.InputStream input)
+    public static tc.TcFileTransfer.FileTransRespUpload parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static tc.TcFileTransfer.FtResponse parseFrom(
+    public static tc.TcFileTransfer.FileTransRespUpload parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtResponse parseDelimitedFrom(java.io.InputStream input)
+    public static tc.TcFileTransfer.FileTransRespUpload parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static tc.TcFileTransfer.FtResponse parseDelimitedFrom(
+    public static tc.TcFileTransfer.FileTransRespUpload parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtResponse parseFrom(
+    public static tc.TcFileTransfer.FileTransRespUpload parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static tc.TcFileTransfer.FtResponse parseFrom(
+    public static tc.TcFileTransfer.FileTransRespUpload parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2224,290 +5813,218 @@ public final class TcFileTransfer {
     public static Builder newBuilder() {
       return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
-    public static Builder newBuilder(tc.TcFileTransfer.FtResponse prototype) {
+    public static Builder newBuilder(tc.TcFileTransfer.FileTransRespUpload prototype) {
       return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
     /**
      * <pre>
-     * Remote Peer -&gt; Peer
+     * Response to file upload
      * </pre>
      *
-     * Protobuf type {@code tc.FtResponse}
+     * Protobuf type {@code tc.FileTransRespUpload}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageLite.Builder<
-          tc.TcFileTransfer.FtResponse, Builder> implements
-        // @@protoc_insertion_point(builder_implements:tc.FtResponse)
-        tc.TcFileTransfer.FtResponseOrBuilder {
-      // Construct using tc.TcFileTransfer.FtResponse.newBuilder()
+          tc.TcFileTransfer.FileTransRespUpload, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileTransRespUpload)
+        tc.TcFileTransfer.FileTransRespUploadOrBuilder {
+      // Construct using tc.TcFileTransfer.FileTransRespUpload.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
       }
 
 
       /**
-       * <code>string id = 1;</code>
+       * <code>bool res = 1;</code>
        */
       @java.lang.Override
-      public java.lang.String getId() {
-        return instance.getId();
+      public boolean getRes() {
+        return instance.getRes();
       }
       /**
-       * <code>string id = 1;</code>
+       * <code>bool res = 1;</code>
+       */
+      public Builder setRes(boolean value) {
+        copyOnWrite();
+        instance.setRes(value);
+        return this;
+      }
+      /**
+       * <code>bool res = 1;</code>
+       */
+      public Builder clearRes() {
+        copyOnWrite();
+        instance.clearRes();
+        return this;
+      }
+
+      /**
+       * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
+       */
+      @java.lang.Override
+      public int getErrorCauseValue() {
+        return instance.getErrorCauseValue();
+      }
+      /**
+       * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
+       */
+      public Builder setErrorCauseValue(int value) {
+        copyOnWrite();
+        instance.setErrorCauseValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileTransRespUpload.UploadErrorCause getErrorCause() {
+        return instance.getErrorCause();
+      }
+      /**
+       * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
+       */
+      public Builder setErrorCause(tc.TcFileTransfer.FileTransRespUpload.UploadErrorCause value) {
+        copyOnWrite();
+        instance.setErrorCause(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransRespUpload.UploadErrorCause error_cause = 2;</code>
+       */
+      public Builder clearErrorCause() {
+        copyOnWrite();
+        instance.clearErrorCause();
+        return this;
+      }
+
+      /**
+       * <code>string src_file_path = 3;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getSrcFilePath() {
+        return instance.getSrcFilePath();
+      }
+      /**
+       * <code>string src_file_path = 3;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getIdBytes() {
-        return instance.getIdBytes();
+          getSrcFilePathBytes() {
+        return instance.getSrcFilePathBytes();
       }
       /**
-       * <code>string id = 1;</code>
+       * <code>string src_file_path = 3;</code>
        */
-      public Builder setId(
+      public Builder setSrcFilePath(
           java.lang.String value) {
         copyOnWrite();
-        instance.setId(value);
+        instance.setSrcFilePath(value);
         return this;
       }
       /**
-       * <code>string id = 1;</code>
+       * <code>string src_file_path = 3;</code>
        */
-      public Builder clearId() {
+      public Builder clearSrcFilePath() {
         copyOnWrite();
-        instance.clearId();
+        instance.clearSrcFilePath();
         return this;
       }
       /**
-       * <code>string id = 1;</code>
+       * <code>string src_file_path = 3;</code>
        */
-      public Builder setIdBytes(
+      public Builder setSrcFilePathBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setIdBytes(value);
+        instance.setSrcFilePathBytes(value);
         return this;
       }
 
       /**
-       * <code>.tc.FtResponseState state = 10;</code>
+       * <code>string target_file_path = 4;</code>
        */
       @java.lang.Override
-      public int getStateValue() {
-        return instance.getStateValue();
+      public java.lang.String getTargetFilePath() {
+        return instance.getTargetFilePath();
       }
       /**
-       * <code>.tc.FtResponseState state = 10;</code>
-       */
-      public Builder setStateValue(int value) {
-        copyOnWrite();
-        instance.setStateValue(value);
-        return this;
-      }
-      /**
-       * <code>.tc.FtResponseState state = 10;</code>
-       */
-      @java.lang.Override
-      public tc.TcFileTransfer.FtResponseState getState() {
-        return instance.getState();
-      }
-      /**
-       * <code>.tc.FtResponseState state = 10;</code>
-       */
-      public Builder setState(tc.TcFileTransfer.FtResponseState value) {
-        copyOnWrite();
-        instance.setState(value);
-        return this;
-      }
-      /**
-       * <code>.tc.FtResponseState state = 10;</code>
-       */
-      public Builder clearState() {
-        copyOnWrite();
-        instance.clearState();
-        return this;
-      }
-
-      /**
-       * <code>string filename = 20;</code>
-       */
-      @java.lang.Override
-      public java.lang.String getFilename() {
-        return instance.getFilename();
-      }
-      /**
-       * <code>string filename = 20;</code>
+       * <code>string target_file_path = 4;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getFilenameBytes() {
-        return instance.getFilenameBytes();
+          getTargetFilePathBytes() {
+        return instance.getTargetFilePathBytes();
       }
       /**
-       * <code>string filename = 20;</code>
+       * <code>string target_file_path = 4;</code>
        */
-      public Builder setFilename(
+      public Builder setTargetFilePath(
           java.lang.String value) {
         copyOnWrite();
-        instance.setFilename(value);
+        instance.setTargetFilePath(value);
         return this;
       }
       /**
-       * <code>string filename = 20;</code>
+       * <code>string target_file_path = 4;</code>
        */
-      public Builder clearFilename() {
+      public Builder clearTargetFilePath() {
         copyOnWrite();
-        instance.clearFilename();
+        instance.clearTargetFilePath();
         return this;
       }
       /**
-       * <code>string filename = 20;</code>
+       * <code>string target_file_path = 4;</code>
        */
-      public Builder setFilenameBytes(
+      public Builder setTargetFilePathBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setFilenameBytes(value);
+        instance.setTargetFilePathBytes(value);
         return this;
       }
 
       /**
-       * <code>string local_filepath = 30;</code>
+       * <code>string task_id = 5;</code>
        */
       @java.lang.Override
-      public java.lang.String getLocalFilepath() {
-        return instance.getLocalFilepath();
+      public java.lang.String getTaskId() {
+        return instance.getTaskId();
       }
       /**
-       * <code>string local_filepath = 30;</code>
+       * <code>string task_id = 5;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getLocalFilepathBytes() {
-        return instance.getLocalFilepathBytes();
+          getTaskIdBytes() {
+        return instance.getTaskIdBytes();
       }
       /**
-       * <code>string local_filepath = 30;</code>
+       * <code>string task_id = 5;</code>
        */
-      public Builder setLocalFilepath(
+      public Builder setTaskId(
           java.lang.String value) {
         copyOnWrite();
-        instance.setLocalFilepath(value);
+        instance.setTaskId(value);
         return this;
       }
       /**
-       * <code>string local_filepath = 30;</code>
+       * <code>string task_id = 5;</code>
        */
-      public Builder clearLocalFilepath() {
+      public Builder clearTaskId() {
         copyOnWrite();
-        instance.clearLocalFilepath();
+        instance.clearTaskId();
         return this;
       }
       /**
-       * <code>string local_filepath = 30;</code>
+       * <code>string task_id = 5;</code>
        */
-      public Builder setLocalFilepathBytes(
+      public Builder setTaskIdBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setLocalFilepathBytes(value);
+        instance.setTaskIdBytes(value);
         return this;
       }
 
-      /**
-       * <code>uint64 filesize = 40;</code>
-       */
-      @java.lang.Override
-      public long getFilesize() {
-        return instance.getFilesize();
-      }
-      /**
-       * <code>uint64 filesize = 40;</code>
-       */
-      public Builder setFilesize(long value) {
-        copyOnWrite();
-        instance.setFilesize(value);
-        return this;
-      }
-      /**
-       * <code>uint64 filesize = 40;</code>
-       */
-      public Builder clearFilesize() {
-        copyOnWrite();
-        instance.clearFilesize();
-        return this;
-      }
-
-      /**
-       * <code>uint64 transferred_size = 50;</code>
-       */
-      @java.lang.Override
-      public long getTransferredSize() {
-        return instance.getTransferredSize();
-      }
-      /**
-       * <code>uint64 transferred_size = 50;</code>
-       */
-      public Builder setTransferredSize(long value) {
-        copyOnWrite();
-        instance.setTransferredSize(value);
-        return this;
-      }
-      /**
-       * <code>uint64 transferred_size = 50;</code>
-       */
-      public Builder clearTransferredSize() {
-        copyOnWrite();
-        instance.clearTransferredSize();
-        return this;
-      }
-
-      /**
-       * <code>float progress = 60;</code>
-       */
-      @java.lang.Override
-      public float getProgress() {
-        return instance.getProgress();
-      }
-      /**
-       * <code>float progress = 60;</code>
-       */
-      public Builder setProgress(float value) {
-        copyOnWrite();
-        instance.setProgress(value);
-        return this;
-      }
-      /**
-       * <code>float progress = 60;</code>
-       */
-      public Builder clearProgress() {
-        copyOnWrite();
-        instance.clearProgress();
-        return this;
-      }
-
-      /**
-       * <code>uint64 timestamp = 70;</code>
-       */
-      @java.lang.Override
-      public long getTimestamp() {
-        return instance.getTimestamp();
-      }
-      /**
-       * <code>uint64 timestamp = 70;</code>
-       */
-      public Builder setTimestamp(long value) {
-        copyOnWrite();
-        instance.setTimestamp(value);
-        return this;
-      }
-      /**
-       * <code>uint64 timestamp = 70;</code>
-       */
-      public Builder clearTimestamp() {
-        copyOnWrite();
-        instance.clearTimestamp();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:tc.FtResponse)
+      // @@protoc_insertion_point(builder_scope:tc.FileTransRespUpload)
     }
     @java.lang.Override
     @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
@@ -2516,25 +6033,22 @@ public final class TcFileTransfer {
         java.lang.Object arg0, java.lang.Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new tc.TcFileTransfer.FtResponse();
+          return new tc.TcFileTransfer.FileTransRespUpload();
         }
         case NEW_BUILDER: {
           return new Builder();
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "id_",
-              "state_",
-              "filename_",
-              "localFilepath_",
-              "filesize_",
-              "transferredSize_",
-              "progress_",
-              "timestamp_",
+              "res_",
+              "errorCause_",
+              "srcFilePath_",
+              "targetFilePath_",
+              "taskId_",
             };
             java.lang.String info =
-                "\u0000\b\u0000\u0000\u0001F\b\u0000\u0000\u0000\u0001\u0208\n\f\u0014\u0208\u001e" +
-                "\u0208(\u00032\u0003<\u0001F\u0003";
+                "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0007\u0002\f" +
+                "\u0003\u0208\u0004\u0208\u0005\u0208";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -2542,9 +6056,9 @@ public final class TcFileTransfer {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          com.google.protobuf.Parser<tc.TcFileTransfer.FtResponse> parser = PARSER;
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileTransRespUpload> parser = PARSER;
           if (parser == null) {
-            synchronized (tc.TcFileTransfer.FtResponse.class) {
+            synchronized (tc.TcFileTransfer.FileTransRespUpload.class) {
               parser = PARSER;
               if (parser == null) {
                 parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
@@ -2565,294 +6079,499 @@ public final class TcFileTransfer {
     }
 
 
-    // @@protoc_insertion_point(class_scope:tc.FtResponse)
-    private static final tc.TcFileTransfer.FtResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:tc.FileTransRespUpload)
+    private static final tc.TcFileTransfer.FileTransRespUpload DEFAULT_INSTANCE;
     static {
       // New instances are implicitly immutable so no need to make
       // immutable.
-      DEFAULT_INSTANCE = new FtResponse();
+      DEFAULT_INSTANCE = new FileTransRespUpload();
     }
 
     static {
       com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
-        FtResponse.class, DEFAULT_INSTANCE);
+        FileTransRespUpload.class, DEFAULT_INSTANCE);
     }
-    public static tc.TcFileTransfer.FtResponse getDefaultInstance() {
+    public static tc.TcFileTransfer.FileTransRespUpload getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static volatile com.google.protobuf.Parser<FtResponse> PARSER;
+    private static volatile com.google.protobuf.Parser<FileTransRespUpload> PARSER;
 
-    public static com.google.protobuf.Parser<FtResponse> parser() {
+    public static com.google.protobuf.Parser<FileTransRespUpload> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
 
-  public interface FtMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:tc.FtMessage)
+  public interface FileTransRespDownloadOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileTransRespDownload)
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>.tc.FtMessageType ft_msg_type = 1;</code>
+     * <code>bool res = 1;</code>
      */
-    int getFtMsgTypeValue();
-    /**
-     * <code>.tc.FtMessageType ft_msg_type = 1;</code>
-     */
-    tc.TcFileTransfer.FtMessageType getFtMsgType();
+    boolean getRes();
 
     /**
-     * <code>.tc.FtRequest ft_request = 2;</code>
+     * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
      */
-    boolean hasFtRequest();
+    int getErrorCauseValue();
     /**
-     * <code>.tc.FtRequest ft_request = 2;</code>
+     * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
      */
-    tc.TcFileTransfer.FtRequest getFtRequest();
+    tc.TcFileTransfer.FileTransRespDownload.DownloadErrorCause getErrorCause();
 
     /**
-     * <code>.tc.FtResponse ft_response = 3;</code>
+     * <code>string src_file_path = 3;</code>
      */
-    boolean hasFtResponse();
+    java.lang.String getSrcFilePath();
     /**
-     * <code>.tc.FtResponse ft_response = 3;</code>
+     * <code>string src_file_path = 3;</code>
      */
-    tc.TcFileTransfer.FtResponse getFtResponse();
+    com.google.protobuf.ByteString
+        getSrcFilePathBytes();
+
+    /**
+     * <code>string target_file_path = 4;</code>
+     */
+    java.lang.String getTargetFilePath();
+    /**
+     * <code>string target_file_path = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getTargetFilePathBytes();
+
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    java.lang.String getTaskId();
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getTaskIdBytes();
   }
   /**
-   * Protobuf type {@code tc.FtMessage}
+   * <pre>
+   * Response to file download
+   * </pre>
+   *
+   * Protobuf type {@code tc.FileTransRespDownload}
    */
-  public  static final class FtMessage extends
+  public  static final class FileTransRespDownload extends
       com.google.protobuf.GeneratedMessageLite<
-          FtMessage, FtMessage.Builder> implements
-      // @@protoc_insertion_point(message_implements:tc.FtMessage)
-      FtMessageOrBuilder {
-    private FtMessage() {
-    }
-    public static final int FT_MSG_TYPE_FIELD_NUMBER = 1;
-    private int ftMsgType_;
-    /**
-     * <code>.tc.FtMessageType ft_msg_type = 1;</code>
-     */
-    @java.lang.Override
-    public int getFtMsgTypeValue() {
-      return ftMsgType_;
+          FileTransRespDownload, FileTransRespDownload.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileTransRespDownload)
+      FileTransRespDownloadOrBuilder {
+    private FileTransRespDownload() {
+      srcFilePath_ = "";
+      targetFilePath_ = "";
+      taskId_ = "";
     }
     /**
-     * <code>.tc.FtMessageType ft_msg_type = 1;</code>
+     * Protobuf enum {@code tc.FileTransRespDownload.DownloadErrorCause}
      */
-    @java.lang.Override
-    public tc.TcFileTransfer.FtMessageType getFtMsgType() {
-      tc.TcFileTransfer.FtMessageType result = tc.TcFileTransfer.FtMessageType.forNumber(ftMsgType_);
-      return result == null ? tc.TcFileTransfer.FtMessageType.UNRECOGNIZED : result;
-    }
-    /**
-     * <code>.tc.FtMessageType ft_msg_type = 1;</code>
-     */
-    private void setFtMsgTypeValue(int value) {
-        ftMsgType_ = value;
-    }
-    /**
-     * <code>.tc.FtMessageType ft_msg_type = 1;</code>
-     */
-    private void setFtMsgType(tc.TcFileTransfer.FtMessageType value) {
-      if (value == null) {
-        throw new NullPointerException();
+    public enum DownloadErrorCause
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <pre>
+       * The file cannot be opened
+       * </pre>
+       *
+       * <code>kFailedOpen = 0;</code>
+       */
+      kFailedOpen(0),
+      /**
+       * <pre>
+       * Exception occurred while writing the file
+       * </pre>
+       *
+       * <code>kFailedRead = 1;</code>
+       */
+      kFailedRead(1),
+      /**
+       * <pre>
+       * User cancellation 
+       * </pre>
+       *
+       * <code>kUnknow = 2;</code>
+       */
+      kUnknow(2),
+      /**
+       * <code>kNoExists = 3;</code>
+       */
+      kNoExists(3),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <pre>
+       * The file cannot be opened
+       * </pre>
+       *
+       * <code>kFailedOpen = 0;</code>
+       */
+      public static final int kFailedOpen_VALUE = 0;
+      /**
+       * <pre>
+       * Exception occurred while writing the file
+       * </pre>
+       *
+       * <code>kFailedRead = 1;</code>
+       */
+      public static final int kFailedRead_VALUE = 1;
+      /**
+       * <pre>
+       * User cancellation 
+       * </pre>
+       *
+       * <code>kUnknow = 2;</code>
+       */
+      public static final int kUnknow_VALUE = 2;
+      /**
+       * <code>kNoExists = 3;</code>
+       */
+      public static final int kNoExists_VALUE = 3;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
       }
-      
-      ftMsgType_ = value.getNumber();
-    }
-    /**
-     * <code>.tc.FtMessageType ft_msg_type = 1;</code>
-     */
-    private void clearFtMsgType() {
-      
-      ftMsgType_ = 0;
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static DownloadErrorCause valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static DownloadErrorCause forNumber(int value) {
+        switch (value) {
+          case 0: return kFailedOpen;
+          case 1: return kFailedRead;
+          case 2: return kUnknow;
+          case 3: return kNoExists;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<DownloadErrorCause>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          DownloadErrorCause> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<DownloadErrorCause>() {
+              @java.lang.Override
+              public DownloadErrorCause findValueByNumber(int number) {
+                return DownloadErrorCause.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return DownloadErrorCauseVerifier.INSTANCE;
+      }
+
+      private static final class DownloadErrorCauseVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new DownloadErrorCauseVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return DownloadErrorCause.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private DownloadErrorCause(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:tc.FileTransRespDownload.DownloadErrorCause)
     }
 
-    public static final int FT_REQUEST_FIELD_NUMBER = 2;
-    private tc.TcFileTransfer.FtRequest ftRequest_;
+    public static final int RES_FIELD_NUMBER = 1;
+    private boolean res_;
     /**
-     * <code>.tc.FtRequest ft_request = 2;</code>
+     * <code>bool res = 1;</code>
      */
     @java.lang.Override
-    public boolean hasFtRequest() {
-      return ftRequest_ != null;
+    public boolean getRes() {
+      return res_;
     }
     /**
-     * <code>.tc.FtRequest ft_request = 2;</code>
+     * <code>bool res = 1;</code>
      */
-    @java.lang.Override
-    public tc.TcFileTransfer.FtRequest getFtRequest() {
-      return ftRequest_ == null ? tc.TcFileTransfer.FtRequest.getDefaultInstance() : ftRequest_;
+    private void setRes(boolean value) {
+      
+      res_ = value;
     }
     /**
-     * <code>.tc.FtRequest ft_request = 2;</code>
+     * <code>bool res = 1;</code>
      */
-    private void setFtRequest(tc.TcFileTransfer.FtRequest value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ftRequest_ = value;
+    private void clearRes() {
       
-      }
-    /**
-     * <code>.tc.FtRequest ft_request = 2;</code>
-     */
-    private void setFtRequest(
-        tc.TcFileTransfer.FtRequest.Builder builderForValue) {
-      ftRequest_ = builderForValue.build();
-      
-    }
-    /**
-     * <code>.tc.FtRequest ft_request = 2;</code>
-     */
-    @java.lang.SuppressWarnings({"ReferenceEquality"})
-    private void mergeFtRequest(tc.TcFileTransfer.FtRequest value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (ftRequest_ != null &&
-          ftRequest_ != tc.TcFileTransfer.FtRequest.getDefaultInstance()) {
-        ftRequest_ =
-          tc.TcFileTransfer.FtRequest.newBuilder(ftRequest_).mergeFrom(value).buildPartial();
-      } else {
-        ftRequest_ = value;
-      }
-      
-    }
-    /**
-     * <code>.tc.FtRequest ft_request = 2;</code>
-     */
-    private void clearFtRequest() {  ftRequest_ = null;
-      
+      res_ = false;
     }
 
-    public static final int FT_RESPONSE_FIELD_NUMBER = 3;
-    private tc.TcFileTransfer.FtResponse ftResponse_;
+    public static final int ERROR_CAUSE_FIELD_NUMBER = 2;
+    private int errorCause_;
     /**
-     * <code>.tc.FtResponse ft_response = 3;</code>
+     * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
      */
     @java.lang.Override
-    public boolean hasFtResponse() {
-      return ftResponse_ != null;
+    public int getErrorCauseValue() {
+      return errorCause_;
     }
     /**
-     * <code>.tc.FtResponse ft_response = 3;</code>
+     * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
      */
     @java.lang.Override
-    public tc.TcFileTransfer.FtResponse getFtResponse() {
-      return ftResponse_ == null ? tc.TcFileTransfer.FtResponse.getDefaultInstance() : ftResponse_;
+    public tc.TcFileTransfer.FileTransRespDownload.DownloadErrorCause getErrorCause() {
+      tc.TcFileTransfer.FileTransRespDownload.DownloadErrorCause result = tc.TcFileTransfer.FileTransRespDownload.DownloadErrorCause.forNumber(errorCause_);
+      return result == null ? tc.TcFileTransfer.FileTransRespDownload.DownloadErrorCause.UNRECOGNIZED : result;
     }
     /**
-     * <code>.tc.FtResponse ft_response = 3;</code>
+     * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
      */
-    private void setFtResponse(tc.TcFileTransfer.FtResponse value) {
+    private void setErrorCauseValue(int value) {
+        errorCause_ = value;
+    }
+    /**
+     * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
+     */
+    private void setErrorCause(tc.TcFileTransfer.FileTransRespDownload.DownloadErrorCause value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ftResponse_ = value;
       
-      }
-    /**
-     * <code>.tc.FtResponse ft_response = 3;</code>
-     */
-    private void setFtResponse(
-        tc.TcFileTransfer.FtResponse.Builder builderForValue) {
-      ftResponse_ = builderForValue.build();
-      
+      errorCause_ = value.getNumber();
     }
     /**
-     * <code>.tc.FtResponse ft_response = 3;</code>
+     * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
      */
-    @java.lang.SuppressWarnings({"ReferenceEquality"})
-    private void mergeFtResponse(tc.TcFileTransfer.FtResponse value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (ftResponse_ != null &&
-          ftResponse_ != tc.TcFileTransfer.FtResponse.getDefaultInstance()) {
-        ftResponse_ =
-          tc.TcFileTransfer.FtResponse.newBuilder(ftResponse_).mergeFrom(value).buildPartial();
-      } else {
-        ftResponse_ = value;
-      }
+    private void clearErrorCause() {
       
-    }
-    /**
-     * <code>.tc.FtResponse ft_response = 3;</code>
-     */
-    private void clearFtResponse() {  ftResponse_ = null;
-      
+      errorCause_ = 0;
     }
 
-    public static tc.TcFileTransfer.FtMessage parseFrom(
+    public static final int SRC_FILE_PATH_FIELD_NUMBER = 3;
+    private java.lang.String srcFilePath_;
+    /**
+     * <code>string src_file_path = 3;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getSrcFilePath() {
+      return srcFilePath_;
+    }
+    /**
+     * <code>string src_file_path = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSrcFilePathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(srcFilePath_);
+    }
+    /**
+     * <code>string src_file_path = 3;</code>
+     */
+    private void setSrcFilePath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      srcFilePath_ = value;
+    }
+    /**
+     * <code>string src_file_path = 3;</code>
+     */
+    private void clearSrcFilePath() {
+      
+      srcFilePath_ = getDefaultInstance().getSrcFilePath();
+    }
+    /**
+     * <code>string src_file_path = 3;</code>
+     */
+    private void setSrcFilePathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      srcFilePath_ = value.toStringUtf8();
+    }
+
+    public static final int TARGET_FILE_PATH_FIELD_NUMBER = 4;
+    private java.lang.String targetFilePath_;
+    /**
+     * <code>string target_file_path = 4;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getTargetFilePath() {
+      return targetFilePath_;
+    }
+    /**
+     * <code>string target_file_path = 4;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTargetFilePathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(targetFilePath_);
+    }
+    /**
+     * <code>string target_file_path = 4;</code>
+     */
+    private void setTargetFilePath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      targetFilePath_ = value;
+    }
+    /**
+     * <code>string target_file_path = 4;</code>
+     */
+    private void clearTargetFilePath() {
+      
+      targetFilePath_ = getDefaultInstance().getTargetFilePath();
+    }
+    /**
+     * <code>string target_file_path = 4;</code>
+     */
+    private void setTargetFilePathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      targetFilePath_ = value.toStringUtf8();
+    }
+
+    public static final int TASK_ID_FIELD_NUMBER = 5;
+    private java.lang.String taskId_;
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getTaskId() {
+      return taskId_;
+    }
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTaskIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(taskId_);
+    }
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    private void setTaskId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      taskId_ = value;
+    }
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    private void clearTaskId() {
+      
+      taskId_ = getDefaultInstance().getTaskId();
+    }
+    /**
+     * <code>string task_id = 5;</code>
+     */
+    private void setTaskIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      taskId_ = value.toStringUtf8();
+    }
+
+    public static tc.TcFileTransfer.FileTransRespDownload parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcFileTransfer.FtMessage parseFrom(
+    public static tc.TcFileTransfer.FileTransRespDownload parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtMessage parseFrom(
+    public static tc.TcFileTransfer.FileTransRespDownload parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcFileTransfer.FtMessage parseFrom(
+    public static tc.TcFileTransfer.FileTransRespDownload parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtMessage parseFrom(byte[] data)
+    public static tc.TcFileTransfer.FileTransRespDownload parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static tc.TcFileTransfer.FtMessage parseFrom(
+    public static tc.TcFileTransfer.FileTransRespDownload parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtMessage parseFrom(java.io.InputStream input)
+    public static tc.TcFileTransfer.FileTransRespDownload parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static tc.TcFileTransfer.FtMessage parseFrom(
+    public static tc.TcFileTransfer.FileTransRespDownload parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtMessage parseDelimitedFrom(java.io.InputStream input)
+    public static tc.TcFileTransfer.FileTransRespDownload parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static tc.TcFileTransfer.FtMessage parseDelimitedFrom(
+    public static tc.TcFileTransfer.FileTransRespDownload parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static tc.TcFileTransfer.FtMessage parseFrom(
+    public static tc.TcFileTransfer.FileTransRespDownload parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static tc.TcFileTransfer.FtMessage parseFrom(
+    public static tc.TcFileTransfer.FileTransRespDownload parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2863,158 +6582,218 @@ public final class TcFileTransfer {
     public static Builder newBuilder() {
       return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
-    public static Builder newBuilder(tc.TcFileTransfer.FtMessage prototype) {
+    public static Builder newBuilder(tc.TcFileTransfer.FileTransRespDownload prototype) {
       return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
     /**
-     * Protobuf type {@code tc.FtMessage}
+     * <pre>
+     * Response to file download
+     * </pre>
+     *
+     * Protobuf type {@code tc.FileTransRespDownload}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageLite.Builder<
-          tc.TcFileTransfer.FtMessage, Builder> implements
-        // @@protoc_insertion_point(builder_implements:tc.FtMessage)
-        tc.TcFileTransfer.FtMessageOrBuilder {
-      // Construct using tc.TcFileTransfer.FtMessage.newBuilder()
+          tc.TcFileTransfer.FileTransRespDownload, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileTransRespDownload)
+        tc.TcFileTransfer.FileTransRespDownloadOrBuilder {
+      // Construct using tc.TcFileTransfer.FileTransRespDownload.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
       }
 
 
       /**
-       * <code>.tc.FtMessageType ft_msg_type = 1;</code>
+       * <code>bool res = 1;</code>
        */
       @java.lang.Override
-      public int getFtMsgTypeValue() {
-        return instance.getFtMsgTypeValue();
+      public boolean getRes() {
+        return instance.getRes();
       }
       /**
-       * <code>.tc.FtMessageType ft_msg_type = 1;</code>
+       * <code>bool res = 1;</code>
        */
-      public Builder setFtMsgTypeValue(int value) {
+      public Builder setRes(boolean value) {
         copyOnWrite();
-        instance.setFtMsgTypeValue(value);
+        instance.setRes(value);
         return this;
       }
       /**
-       * <code>.tc.FtMessageType ft_msg_type = 1;</code>
+       * <code>bool res = 1;</code>
        */
-      @java.lang.Override
-      public tc.TcFileTransfer.FtMessageType getFtMsgType() {
-        return instance.getFtMsgType();
-      }
-      /**
-       * <code>.tc.FtMessageType ft_msg_type = 1;</code>
-       */
-      public Builder setFtMsgType(tc.TcFileTransfer.FtMessageType value) {
+      public Builder clearRes() {
         copyOnWrite();
-        instance.setFtMsgType(value);
-        return this;
-      }
-      /**
-       * <code>.tc.FtMessageType ft_msg_type = 1;</code>
-       */
-      public Builder clearFtMsgType() {
-        copyOnWrite();
-        instance.clearFtMsgType();
+        instance.clearRes();
         return this;
       }
 
       /**
-       * <code>.tc.FtRequest ft_request = 2;</code>
+       * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
        */
       @java.lang.Override
-      public boolean hasFtRequest() {
-        return instance.hasFtRequest();
+      public int getErrorCauseValue() {
+        return instance.getErrorCauseValue();
       }
       /**
-       * <code>.tc.FtRequest ft_request = 2;</code>
+       * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
+       */
+      public Builder setErrorCauseValue(int value) {
+        copyOnWrite();
+        instance.setErrorCauseValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
        */
       @java.lang.Override
-      public tc.TcFileTransfer.FtRequest getFtRequest() {
-        return instance.getFtRequest();
+      public tc.TcFileTransfer.FileTransRespDownload.DownloadErrorCause getErrorCause() {
+        return instance.getErrorCause();
       }
       /**
-       * <code>.tc.FtRequest ft_request = 2;</code>
+       * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
        */
-      public Builder setFtRequest(tc.TcFileTransfer.FtRequest value) {
+      public Builder setErrorCause(tc.TcFileTransfer.FileTransRespDownload.DownloadErrorCause value) {
         copyOnWrite();
-        instance.setFtRequest(value);
-        return this;
-        }
-      /**
-       * <code>.tc.FtRequest ft_request = 2;</code>
-       */
-      public Builder setFtRequest(
-          tc.TcFileTransfer.FtRequest.Builder builderForValue) {
-        copyOnWrite();
-        instance.setFtRequest(builderForValue);
+        instance.setErrorCause(value);
         return this;
       }
       /**
-       * <code>.tc.FtRequest ft_request = 2;</code>
+       * <code>.tc.FileTransRespDownload.DownloadErrorCause error_cause = 2;</code>
        */
-      public Builder mergeFtRequest(tc.TcFileTransfer.FtRequest value) {
+      public Builder clearErrorCause() {
         copyOnWrite();
-        instance.mergeFtRequest(value);
-        return this;
-      }
-      /**
-       * <code>.tc.FtRequest ft_request = 2;</code>
-       */
-      public Builder clearFtRequest() {  copyOnWrite();
-        instance.clearFtRequest();
+        instance.clearErrorCause();
         return this;
       }
 
       /**
-       * <code>.tc.FtResponse ft_response = 3;</code>
+       * <code>string src_file_path = 3;</code>
        */
       @java.lang.Override
-      public boolean hasFtResponse() {
-        return instance.hasFtResponse();
+      public java.lang.String getSrcFilePath() {
+        return instance.getSrcFilePath();
       }
       /**
-       * <code>.tc.FtResponse ft_response = 3;</code>
+       * <code>string src_file_path = 3;</code>
        */
       @java.lang.Override
-      public tc.TcFileTransfer.FtResponse getFtResponse() {
-        return instance.getFtResponse();
+      public com.google.protobuf.ByteString
+          getSrcFilePathBytes() {
+        return instance.getSrcFilePathBytes();
       }
       /**
-       * <code>.tc.FtResponse ft_response = 3;</code>
+       * <code>string src_file_path = 3;</code>
        */
-      public Builder setFtResponse(tc.TcFileTransfer.FtResponse value) {
+      public Builder setSrcFilePath(
+          java.lang.String value) {
         copyOnWrite();
-        instance.setFtResponse(value);
-        return this;
-        }
-      /**
-       * <code>.tc.FtResponse ft_response = 3;</code>
-       */
-      public Builder setFtResponse(
-          tc.TcFileTransfer.FtResponse.Builder builderForValue) {
-        copyOnWrite();
-        instance.setFtResponse(builderForValue);
+        instance.setSrcFilePath(value);
         return this;
       }
       /**
-       * <code>.tc.FtResponse ft_response = 3;</code>
+       * <code>string src_file_path = 3;</code>
        */
-      public Builder mergeFtResponse(tc.TcFileTransfer.FtResponse value) {
+      public Builder clearSrcFilePath() {
         copyOnWrite();
-        instance.mergeFtResponse(value);
+        instance.clearSrcFilePath();
         return this;
       }
       /**
-       * <code>.tc.FtResponse ft_response = 3;</code>
+       * <code>string src_file_path = 3;</code>
        */
-      public Builder clearFtResponse() {  copyOnWrite();
-        instance.clearFtResponse();
+      public Builder setSrcFilePathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSrcFilePathBytes(value);
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:tc.FtMessage)
+      /**
+       * <code>string target_file_path = 4;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getTargetFilePath() {
+        return instance.getTargetFilePath();
+      }
+      /**
+       * <code>string target_file_path = 4;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTargetFilePathBytes() {
+        return instance.getTargetFilePathBytes();
+      }
+      /**
+       * <code>string target_file_path = 4;</code>
+       */
+      public Builder setTargetFilePath(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setTargetFilePath(value);
+        return this;
+      }
+      /**
+       * <code>string target_file_path = 4;</code>
+       */
+      public Builder clearTargetFilePath() {
+        copyOnWrite();
+        instance.clearTargetFilePath();
+        return this;
+      }
+      /**
+       * <code>string target_file_path = 4;</code>
+       */
+      public Builder setTargetFilePathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setTargetFilePathBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string task_id = 5;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getTaskId() {
+        return instance.getTaskId();
+      }
+      /**
+       * <code>string task_id = 5;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTaskIdBytes() {
+        return instance.getTaskIdBytes();
+      }
+      /**
+       * <code>string task_id = 5;</code>
+       */
+      public Builder setTaskId(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setTaskId(value);
+        return this;
+      }
+      /**
+       * <code>string task_id = 5;</code>
+       */
+      public Builder clearTaskId() {
+        copyOnWrite();
+        instance.clearTaskId();
+        return this;
+      }
+      /**
+       * <code>string task_id = 5;</code>
+       */
+      public Builder setTaskIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setTaskIdBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileTransRespDownload)
     }
     @java.lang.Override
     @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
@@ -3023,20 +6802,22 @@ public final class TcFileTransfer {
         java.lang.Object arg0, java.lang.Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new tc.TcFileTransfer.FtMessage();
+          return new tc.TcFileTransfer.FileTransRespDownload();
         }
         case NEW_BUILDER: {
           return new Builder();
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "ftMsgType_",
-              "ftRequest_",
-              "ftResponse_",
+              "res_",
+              "errorCause_",
+              "srcFilePath_",
+              "targetFilePath_",
+              "taskId_",
             };
             java.lang.String info =
-                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\f\u0002\t\u0003" +
-                "\t";
+                "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0007\u0002\f" +
+                "\u0003\u0208\u0004\u0208\u0005\u0208";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -3044,9 +6825,9 @@ public final class TcFileTransfer {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          com.google.protobuf.Parser<tc.TcFileTransfer.FtMessage> parser = PARSER;
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileTransRespDownload> parser = PARSER;
           if (parser == null) {
-            synchronized (tc.TcFileTransfer.FtMessage.class) {
+            synchronized (tc.TcFileTransfer.FileTransRespDownload.class) {
               parser = PARSER;
               if (parser == null) {
                 parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
@@ -3067,25 +6848,3128 @@ public final class TcFileTransfer {
     }
 
 
-    // @@protoc_insertion_point(class_scope:tc.FtMessage)
-    private static final tc.TcFileTransfer.FtMessage DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:tc.FileTransRespDownload)
+    private static final tc.TcFileTransfer.FileTransRespDownload DEFAULT_INSTANCE;
     static {
       // New instances are implicitly immutable so no need to make
       // immutable.
-      DEFAULT_INSTANCE = new FtMessage();
+      DEFAULT_INSTANCE = new FileTransRespDownload();
     }
 
     static {
       com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
-        FtMessage.class, DEFAULT_INSTANCE);
+        FileTransRespDownload.class, DEFAULT_INSTANCE);
     }
-    public static tc.TcFileTransfer.FtMessage getDefaultInstance() {
+    public static tc.TcFileTransfer.FileTransRespDownload getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static volatile com.google.protobuf.Parser<FtMessage> PARSER;
+    private static volatile com.google.protobuf.Parser<FileTransRespDownload> PARSER;
 
-    public static com.google.protobuf.Parser<FtMessage> parser() {
+    public static com.google.protobuf.Parser<FileTransRespDownload> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface FileTransDirectControlOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileTransDirectControl)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>int32 mode = 1;</code>
+     */
+    int getMode();
+  }
+  /**
+   * <pre>
+   * File transfer direction control, there are four options that can be set, [0 indicates disabled file transfer. 1 indicates one-way file transfer, control end to controlled end file transfer. 2 indicates one-way file transfer, controlled end to control end file transfer. 3 indicates bi-directional file transfer]
+   * Disabled Transfer Controlled end one-way transfer control end Control end one-way transfer controlled end Bi-directional
+   * </pre>
+   *
+   * Protobuf type {@code tc.FileTransDirectControl}
+   */
+  public  static final class FileTransDirectControl extends
+      com.google.protobuf.GeneratedMessageLite<
+          FileTransDirectControl, FileTransDirectControl.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileTransDirectControl)
+      FileTransDirectControlOrBuilder {
+    private FileTransDirectControl() {
+    }
+    public static final int MODE_FIELD_NUMBER = 1;
+    private int mode_;
+    /**
+     * <code>int32 mode = 1;</code>
+     */
+    @java.lang.Override
+    public int getMode() {
+      return mode_;
+    }
+    /**
+     * <code>int32 mode = 1;</code>
+     */
+    private void setMode(int value) {
+      
+      mode_ = value;
+    }
+    /**
+     * <code>int32 mode = 1;</code>
+     */
+    private void clearMode() {
+      
+      mode_ = 0;
+    }
+
+    public static tc.TcFileTransfer.FileTransDirectControl parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcFileTransfer.FileTransDirectControl prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * File transfer direction control, there are four options that can be set, [0 indicates disabled file transfer. 1 indicates one-way file transfer, control end to controlled end file transfer. 2 indicates one-way file transfer, controlled end to control end file transfer. 3 indicates bi-directional file transfer]
+     * Disabled Transfer Controlled end one-way transfer control end Control end one-way transfer controlled end Bi-directional
+     * </pre>
+     *
+     * Protobuf type {@code tc.FileTransDirectControl}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcFileTransfer.FileTransDirectControl, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileTransDirectControl)
+        tc.TcFileTransfer.FileTransDirectControlOrBuilder {
+      // Construct using tc.TcFileTransfer.FileTransDirectControl.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>int32 mode = 1;</code>
+       */
+      @java.lang.Override
+      public int getMode() {
+        return instance.getMode();
+      }
+      /**
+       * <code>int32 mode = 1;</code>
+       */
+      public Builder setMode(int value) {
+        copyOnWrite();
+        instance.setMode(value);
+        return this;
+      }
+      /**
+       * <code>int32 mode = 1;</code>
+       */
+      public Builder clearMode() {
+        copyOnWrite();
+        instance.clearMode();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileTransDirectControl)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcFileTransfer.FileTransDirectControl();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "mode_",
+            };
+            java.lang.String info =
+                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u0004";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileTransDirectControl> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcFileTransfer.FileTransDirectControl.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.FileTransDirectControl)
+    private static final tc.TcFileTransfer.FileTransDirectControl DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new FileTransDirectControl();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FileTransDirectControl.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcFileTransfer.FileTransDirectControl getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FileTransDirectControl> PARSER;
+
+    public static com.google.protobuf.Parser<FileTransDirectControl> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface FileOperateionsEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileOperateionsEvent)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+     */
+    int getOperateTypeValue();
+    /**
+     * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+     */
+    tc.TcFileTransfer.FileOperateionsEvent.OperateType getOperateType();
+
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    java.util.List<java.lang.String>
+        getPathsOfDelList();
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    int getPathsOfDelCount();
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    java.lang.String getPathsOfDel(int index);
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathsOfDelBytes(int index);
+
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    java.util.List<java.lang.String>
+        getPathsOfCreateFolderList();
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    int getPathsOfCreateFolderCount();
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    java.lang.String getPathsOfCreateFolder(int index);
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathsOfCreateFolderBytes(int index);
+
+    /**
+     * <pre>
+     * Create a new folder in this directory
+     * </pre>
+     *
+     * <code>string path_of_create_new_folder = 4;</code>
+     */
+    java.lang.String getPathOfCreateNewFolder();
+    /**
+     * <pre>
+     * Create a new folder in this directory
+     * </pre>
+     *
+     * <code>string path_of_create_new_folder = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathOfCreateNewFolderBytes();
+
+    /**
+     * <pre>
+     * Determine if this file exists
+     * </pre>
+     *
+     * <code>string path_of_judge_exists = 5;</code>
+     */
+    java.lang.String getPathOfJudgeExists();
+    /**
+     * <pre>
+     * Determine if this file exists
+     * </pre>
+     *
+     * <code>string path_of_judge_exists = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathOfJudgeExistsBytes();
+
+    /**
+     * <pre>
+     * rename
+     * </pre>
+     *
+     * <code>string path_of_rename = 6;</code>
+     */
+    java.lang.String getPathOfRename();
+    /**
+     * <pre>
+     * rename
+     * </pre>
+     *
+     * <code>string path_of_rename = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathOfRenameBytes();
+
+    /**
+     * <code>string name_of_rename = 7;</code>
+     */
+    java.lang.String getNameOfRename();
+    /**
+     * <code>string name_of_rename = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameOfRenameBytes();
+
+    /**
+     * <pre>
+     * Retrieve the list of files and folders in this directory
+     * </pre>
+     *
+     * <code>string path_of_filelist = 8;</code>
+     */
+    java.lang.String getPathOfFilelist();
+    /**
+     * <pre>
+     * Retrieve the list of files and folders in this directory
+     * </pre>
+     *
+     * <code>string path_of_filelist = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathOfFilelistBytes();
+
+    /**
+     * <pre>
+     * task id
+     * </pre>
+     *
+     * <code>string task_id = 9;</code>
+     */
+    java.lang.String getTaskId();
+    /**
+     * <pre>
+     * task id
+     * </pre>
+     *
+     * <code>string task_id = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getTaskIdBytes();
+
+    /**
+     * <pre>
+     * The file to be downloaded
+     * </pre>
+     *
+     * <code>string path_of_download = 10;</code>
+     */
+    java.lang.String getPathOfDownload();
+    /**
+     * <pre>
+     * The file to be downloaded
+     * </pre>
+     *
+     * <code>string path_of_download = 10;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathOfDownloadBytes();
+
+    /**
+     * <pre>
+     * The file path to be saved 
+     * </pre>
+     *
+     * <code>string path_of_save = 11;</code>
+     */
+    java.lang.String getPathOfSave();
+    /**
+     * <pre>
+     * The file path to be saved 
+     * </pre>
+     *
+     * <code>string path_of_save = 11;</code>
+     */
+    com.google.protobuf.ByteString
+        getPathOfSaveBytes();
+  }
+  /**
+   * Protobuf type {@code tc.FileOperateionsEvent}
+   */
+  public  static final class FileOperateionsEvent extends
+      com.google.protobuf.GeneratedMessageLite<
+          FileOperateionsEvent, FileOperateionsEvent.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileOperateionsEvent)
+      FileOperateionsEventOrBuilder {
+    private FileOperateionsEvent() {
+      pathsOfDel_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+      pathsOfCreateFolder_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+      pathOfCreateNewFolder_ = "";
+      pathOfJudgeExists_ = "";
+      pathOfRename_ = "";
+      nameOfRename_ = "";
+      pathOfFilelist_ = "";
+      taskId_ = "";
+      pathOfDownload_ = "";
+      pathOfSave_ = "";
+    }
+    /**
+     * <pre>
+     * File operation related
+     * </pre>
+     *
+     * Protobuf enum {@code tc.FileOperateionsEvent.OperateType}
+     */
+    public enum OperateType
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <code>kDel = 0;</code>
+       */
+      kDel(0),
+      /**
+       * <code>kBatchCreateFolders = 1;</code>
+       */
+      kBatchCreateFolders(1),
+      /**
+       * <code>kCreateNewFolder = 2;</code>
+       */
+      kCreateNewFolder(2),
+      /**
+       * <code>kIsExists = 3;</code>
+       */
+      kIsExists(3),
+      /**
+       * <code>kRename = 4;</code>
+       */
+      kRename(4),
+      /**
+       * <code>kGetFilesList = 5;</code>
+       */
+      kGetFilesList(5),
+      /**
+       * <code>kCancelDownload = 6;</code>
+       */
+      kCancelDownload(6),
+      /**
+       * <code>kCancelUpload = 7;</code>
+       */
+      kCancelUpload(7),
+      /**
+       * <code>kDownload = 8;</code>
+       */
+      kDownload(8),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>kDel = 0;</code>
+       */
+      public static final int kDel_VALUE = 0;
+      /**
+       * <code>kBatchCreateFolders = 1;</code>
+       */
+      public static final int kBatchCreateFolders_VALUE = 1;
+      /**
+       * <code>kCreateNewFolder = 2;</code>
+       */
+      public static final int kCreateNewFolder_VALUE = 2;
+      /**
+       * <code>kIsExists = 3;</code>
+       */
+      public static final int kIsExists_VALUE = 3;
+      /**
+       * <code>kRename = 4;</code>
+       */
+      public static final int kRename_VALUE = 4;
+      /**
+       * <code>kGetFilesList = 5;</code>
+       */
+      public static final int kGetFilesList_VALUE = 5;
+      /**
+       * <code>kCancelDownload = 6;</code>
+       */
+      public static final int kCancelDownload_VALUE = 6;
+      /**
+       * <code>kCancelUpload = 7;</code>
+       */
+      public static final int kCancelUpload_VALUE = 7;
+      /**
+       * <code>kDownload = 8;</code>
+       */
+      public static final int kDownload_VALUE = 8;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static OperateType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static OperateType forNumber(int value) {
+        switch (value) {
+          case 0: return kDel;
+          case 1: return kBatchCreateFolders;
+          case 2: return kCreateNewFolder;
+          case 3: return kIsExists;
+          case 4: return kRename;
+          case 5: return kGetFilesList;
+          case 6: return kCancelDownload;
+          case 7: return kCancelUpload;
+          case 8: return kDownload;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<OperateType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          OperateType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<OperateType>() {
+              @java.lang.Override
+              public OperateType findValueByNumber(int number) {
+                return OperateType.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return OperateTypeVerifier.INSTANCE;
+      }
+
+      private static final class OperateTypeVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new OperateTypeVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return OperateType.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private OperateType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:tc.FileOperateionsEvent.OperateType)
+    }
+
+    public static final int OPERATE_TYPE_FIELD_NUMBER = 1;
+    private int operateType_;
+    /**
+     * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+     */
+    @java.lang.Override
+    public int getOperateTypeValue() {
+      return operateType_;
+    }
+    /**
+     * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileOperateionsEvent.OperateType getOperateType() {
+      tc.TcFileTransfer.FileOperateionsEvent.OperateType result = tc.TcFileTransfer.FileOperateionsEvent.OperateType.forNumber(operateType_);
+      return result == null ? tc.TcFileTransfer.FileOperateionsEvent.OperateType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+     */
+    private void setOperateTypeValue(int value) {
+        operateType_ = value;
+    }
+    /**
+     * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+     */
+    private void setOperateType(tc.TcFileTransfer.FileOperateionsEvent.OperateType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      operateType_ = value.getNumber();
+    }
+    /**
+     * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+     */
+    private void clearOperateType() {
+      
+      operateType_ = 0;
+    }
+
+    public static final int PATHS_OF_DEL_FIELD_NUMBER = 2;
+    private com.google.protobuf.Internal.ProtobufList<java.lang.String> pathsOfDel_;
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.String> getPathsOfDelList() {
+      return pathsOfDel_;
+    }
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    @java.lang.Override
+    public int getPathsOfDelCount() {
+      return pathsOfDel_.size();
+    }
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathsOfDel(int index) {
+      return pathsOfDel_.get(index);
+    }
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathsOfDelBytes(int index) {
+      return com.google.protobuf.ByteString.copyFromUtf8(
+          pathsOfDel_.get(index));
+    }
+    private void ensurePathsOfDelIsMutable() {
+      if (!pathsOfDel_.isModifiable()) {
+        pathsOfDel_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(pathsOfDel_);
+       }
+    }
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    private void setPathsOfDel(
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensurePathsOfDelIsMutable();
+      pathsOfDel_.set(index, value);
+    }
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    private void addPathsOfDel(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensurePathsOfDelIsMutable();
+      pathsOfDel_.add(value);
+    }
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    private void addAllPathsOfDel(
+        java.lang.Iterable<java.lang.String> values) {
+      ensurePathsOfDelIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, pathsOfDel_);
+    }
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    private void clearPathsOfDel() {
+      pathsOfDel_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+    }
+    /**
+     * <pre>
+     * List of files to be deleted
+     * </pre>
+     *
+     * <code>repeated string paths_of_del = 2;</code>
+     */
+    private void addPathsOfDelBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensurePathsOfDelIsMutable();
+      pathsOfDel_.add(value.toStringUtf8());
+    }
+
+    public static final int PATHS_OF_CREATE_FOLDER_FIELD_NUMBER = 3;
+    private com.google.protobuf.Internal.ProtobufList<java.lang.String> pathsOfCreateFolder_;
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.String> getPathsOfCreateFolderList() {
+      return pathsOfCreateFolder_;
+    }
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    @java.lang.Override
+    public int getPathsOfCreateFolderCount() {
+      return pathsOfCreateFolder_.size();
+    }
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathsOfCreateFolder(int index) {
+      return pathsOfCreateFolder_.get(index);
+    }
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathsOfCreateFolderBytes(int index) {
+      return com.google.protobuf.ByteString.copyFromUtf8(
+          pathsOfCreateFolder_.get(index));
+    }
+    private void ensurePathsOfCreateFolderIsMutable() {
+      if (!pathsOfCreateFolder_.isModifiable()) {
+        pathsOfCreateFolder_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(pathsOfCreateFolder_);
+       }
+    }
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    private void setPathsOfCreateFolder(
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensurePathsOfCreateFolderIsMutable();
+      pathsOfCreateFolder_.set(index, value);
+    }
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    private void addPathsOfCreateFolder(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensurePathsOfCreateFolderIsMutable();
+      pathsOfCreateFolder_.add(value);
+    }
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    private void addAllPathsOfCreateFolder(
+        java.lang.Iterable<java.lang.String> values) {
+      ensurePathsOfCreateFolderIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, pathsOfCreateFolder_);
+    }
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    private void clearPathsOfCreateFolder() {
+      pathsOfCreateFolder_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+    }
+    /**
+     * <pre>
+     * Folder to be created in bulk
+     * </pre>
+     *
+     * <code>repeated string paths_of_create_folder = 3;</code>
+     */
+    private void addPathsOfCreateFolderBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensurePathsOfCreateFolderIsMutable();
+      pathsOfCreateFolder_.add(value.toStringUtf8());
+    }
+
+    public static final int PATH_OF_CREATE_NEW_FOLDER_FIELD_NUMBER = 4;
+    private java.lang.String pathOfCreateNewFolder_;
+    /**
+     * <pre>
+     * Create a new folder in this directory
+     * </pre>
+     *
+     * <code>string path_of_create_new_folder = 4;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathOfCreateNewFolder() {
+      return pathOfCreateNewFolder_;
+    }
+    /**
+     * <pre>
+     * Create a new folder in this directory
+     * </pre>
+     *
+     * <code>string path_of_create_new_folder = 4;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathOfCreateNewFolderBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(pathOfCreateNewFolder_);
+    }
+    /**
+     * <pre>
+     * Create a new folder in this directory
+     * </pre>
+     *
+     * <code>string path_of_create_new_folder = 4;</code>
+     */
+    private void setPathOfCreateNewFolder(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      pathOfCreateNewFolder_ = value;
+    }
+    /**
+     * <pre>
+     * Create a new folder in this directory
+     * </pre>
+     *
+     * <code>string path_of_create_new_folder = 4;</code>
+     */
+    private void clearPathOfCreateNewFolder() {
+      
+      pathOfCreateNewFolder_ = getDefaultInstance().getPathOfCreateNewFolder();
+    }
+    /**
+     * <pre>
+     * Create a new folder in this directory
+     * </pre>
+     *
+     * <code>string path_of_create_new_folder = 4;</code>
+     */
+    private void setPathOfCreateNewFolderBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      pathOfCreateNewFolder_ = value.toStringUtf8();
+    }
+
+    public static final int PATH_OF_JUDGE_EXISTS_FIELD_NUMBER = 5;
+    private java.lang.String pathOfJudgeExists_;
+    /**
+     * <pre>
+     * Determine if this file exists
+     * </pre>
+     *
+     * <code>string path_of_judge_exists = 5;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathOfJudgeExists() {
+      return pathOfJudgeExists_;
+    }
+    /**
+     * <pre>
+     * Determine if this file exists
+     * </pre>
+     *
+     * <code>string path_of_judge_exists = 5;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathOfJudgeExistsBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(pathOfJudgeExists_);
+    }
+    /**
+     * <pre>
+     * Determine if this file exists
+     * </pre>
+     *
+     * <code>string path_of_judge_exists = 5;</code>
+     */
+    private void setPathOfJudgeExists(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      pathOfJudgeExists_ = value;
+    }
+    /**
+     * <pre>
+     * Determine if this file exists
+     * </pre>
+     *
+     * <code>string path_of_judge_exists = 5;</code>
+     */
+    private void clearPathOfJudgeExists() {
+      
+      pathOfJudgeExists_ = getDefaultInstance().getPathOfJudgeExists();
+    }
+    /**
+     * <pre>
+     * Determine if this file exists
+     * </pre>
+     *
+     * <code>string path_of_judge_exists = 5;</code>
+     */
+    private void setPathOfJudgeExistsBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      pathOfJudgeExists_ = value.toStringUtf8();
+    }
+
+    public static final int PATH_OF_RENAME_FIELD_NUMBER = 6;
+    private java.lang.String pathOfRename_;
+    /**
+     * <pre>
+     * rename
+     * </pre>
+     *
+     * <code>string path_of_rename = 6;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathOfRename() {
+      return pathOfRename_;
+    }
+    /**
+     * <pre>
+     * rename
+     * </pre>
+     *
+     * <code>string path_of_rename = 6;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathOfRenameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(pathOfRename_);
+    }
+    /**
+     * <pre>
+     * rename
+     * </pre>
+     *
+     * <code>string path_of_rename = 6;</code>
+     */
+    private void setPathOfRename(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      pathOfRename_ = value;
+    }
+    /**
+     * <pre>
+     * rename
+     * </pre>
+     *
+     * <code>string path_of_rename = 6;</code>
+     */
+    private void clearPathOfRename() {
+      
+      pathOfRename_ = getDefaultInstance().getPathOfRename();
+    }
+    /**
+     * <pre>
+     * rename
+     * </pre>
+     *
+     * <code>string path_of_rename = 6;</code>
+     */
+    private void setPathOfRenameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      pathOfRename_ = value.toStringUtf8();
+    }
+
+    public static final int NAME_OF_RENAME_FIELD_NUMBER = 7;
+    private java.lang.String nameOfRename_;
+    /**
+     * <code>string name_of_rename = 7;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getNameOfRename() {
+      return nameOfRename_;
+    }
+    /**
+     * <code>string name_of_rename = 7;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameOfRenameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(nameOfRename_);
+    }
+    /**
+     * <code>string name_of_rename = 7;</code>
+     */
+    private void setNameOfRename(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      nameOfRename_ = value;
+    }
+    /**
+     * <code>string name_of_rename = 7;</code>
+     */
+    private void clearNameOfRename() {
+      
+      nameOfRename_ = getDefaultInstance().getNameOfRename();
+    }
+    /**
+     * <code>string name_of_rename = 7;</code>
+     */
+    private void setNameOfRenameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      nameOfRename_ = value.toStringUtf8();
+    }
+
+    public static final int PATH_OF_FILELIST_FIELD_NUMBER = 8;
+    private java.lang.String pathOfFilelist_;
+    /**
+     * <pre>
+     * Retrieve the list of files and folders in this directory
+     * </pre>
+     *
+     * <code>string path_of_filelist = 8;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathOfFilelist() {
+      return pathOfFilelist_;
+    }
+    /**
+     * <pre>
+     * Retrieve the list of files and folders in this directory
+     * </pre>
+     *
+     * <code>string path_of_filelist = 8;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathOfFilelistBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(pathOfFilelist_);
+    }
+    /**
+     * <pre>
+     * Retrieve the list of files and folders in this directory
+     * </pre>
+     *
+     * <code>string path_of_filelist = 8;</code>
+     */
+    private void setPathOfFilelist(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      pathOfFilelist_ = value;
+    }
+    /**
+     * <pre>
+     * Retrieve the list of files and folders in this directory
+     * </pre>
+     *
+     * <code>string path_of_filelist = 8;</code>
+     */
+    private void clearPathOfFilelist() {
+      
+      pathOfFilelist_ = getDefaultInstance().getPathOfFilelist();
+    }
+    /**
+     * <pre>
+     * Retrieve the list of files and folders in this directory
+     * </pre>
+     *
+     * <code>string path_of_filelist = 8;</code>
+     */
+    private void setPathOfFilelistBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      pathOfFilelist_ = value.toStringUtf8();
+    }
+
+    public static final int TASK_ID_FIELD_NUMBER = 9;
+    private java.lang.String taskId_;
+    /**
+     * <pre>
+     * task id
+     * </pre>
+     *
+     * <code>string task_id = 9;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getTaskId() {
+      return taskId_;
+    }
+    /**
+     * <pre>
+     * task id
+     * </pre>
+     *
+     * <code>string task_id = 9;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTaskIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(taskId_);
+    }
+    /**
+     * <pre>
+     * task id
+     * </pre>
+     *
+     * <code>string task_id = 9;</code>
+     */
+    private void setTaskId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      taskId_ = value;
+    }
+    /**
+     * <pre>
+     * task id
+     * </pre>
+     *
+     * <code>string task_id = 9;</code>
+     */
+    private void clearTaskId() {
+      
+      taskId_ = getDefaultInstance().getTaskId();
+    }
+    /**
+     * <pre>
+     * task id
+     * </pre>
+     *
+     * <code>string task_id = 9;</code>
+     */
+    private void setTaskIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      taskId_ = value.toStringUtf8();
+    }
+
+    public static final int PATH_OF_DOWNLOAD_FIELD_NUMBER = 10;
+    private java.lang.String pathOfDownload_;
+    /**
+     * <pre>
+     * The file to be downloaded
+     * </pre>
+     *
+     * <code>string path_of_download = 10;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathOfDownload() {
+      return pathOfDownload_;
+    }
+    /**
+     * <pre>
+     * The file to be downloaded
+     * </pre>
+     *
+     * <code>string path_of_download = 10;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathOfDownloadBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(pathOfDownload_);
+    }
+    /**
+     * <pre>
+     * The file to be downloaded
+     * </pre>
+     *
+     * <code>string path_of_download = 10;</code>
+     */
+    private void setPathOfDownload(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      pathOfDownload_ = value;
+    }
+    /**
+     * <pre>
+     * The file to be downloaded
+     * </pre>
+     *
+     * <code>string path_of_download = 10;</code>
+     */
+    private void clearPathOfDownload() {
+      
+      pathOfDownload_ = getDefaultInstance().getPathOfDownload();
+    }
+    /**
+     * <pre>
+     * The file to be downloaded
+     * </pre>
+     *
+     * <code>string path_of_download = 10;</code>
+     */
+    private void setPathOfDownloadBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      pathOfDownload_ = value.toStringUtf8();
+    }
+
+    public static final int PATH_OF_SAVE_FIELD_NUMBER = 11;
+    private java.lang.String pathOfSave_;
+    /**
+     * <pre>
+     * The file path to be saved 
+     * </pre>
+     *
+     * <code>string path_of_save = 11;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getPathOfSave() {
+      return pathOfSave_;
+    }
+    /**
+     * <pre>
+     * The file path to be saved 
+     * </pre>
+     *
+     * <code>string path_of_save = 11;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathOfSaveBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(pathOfSave_);
+    }
+    /**
+     * <pre>
+     * The file path to be saved 
+     * </pre>
+     *
+     * <code>string path_of_save = 11;</code>
+     */
+    private void setPathOfSave(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      pathOfSave_ = value;
+    }
+    /**
+     * <pre>
+     * The file path to be saved 
+     * </pre>
+     *
+     * <code>string path_of_save = 11;</code>
+     */
+    private void clearPathOfSave() {
+      
+      pathOfSave_ = getDefaultInstance().getPathOfSave();
+    }
+    /**
+     * <pre>
+     * The file path to be saved 
+     * </pre>
+     *
+     * <code>string path_of_save = 11;</code>
+     */
+    private void setPathOfSaveBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      pathOfSave_ = value.toStringUtf8();
+    }
+
+    public static tc.TcFileTransfer.FileOperateionsEvent parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcFileTransfer.FileOperateionsEvent prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.FileOperateionsEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcFileTransfer.FileOperateionsEvent, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileOperateionsEvent)
+        tc.TcFileTransfer.FileOperateionsEventOrBuilder {
+      // Construct using tc.TcFileTransfer.FileOperateionsEvent.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+       */
+      @java.lang.Override
+      public int getOperateTypeValue() {
+        return instance.getOperateTypeValue();
+      }
+      /**
+       * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+       */
+      public Builder setOperateTypeValue(int value) {
+        copyOnWrite();
+        instance.setOperateTypeValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileOperateionsEvent.OperateType getOperateType() {
+        return instance.getOperateType();
+      }
+      /**
+       * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+       */
+      public Builder setOperateType(tc.TcFileTransfer.FileOperateionsEvent.OperateType value) {
+        copyOnWrite();
+        instance.setOperateType(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileOperateionsEvent.OperateType operate_type = 1;</code>
+       */
+      public Builder clearOperateType() {
+        copyOnWrite();
+        instance.clearOperateType();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * List of files to be deleted
+       * </pre>
+       *
+       * <code>repeated string paths_of_del = 2;</code>
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.String>
+          getPathsOfDelList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getPathsOfDelList());
+      }
+      /**
+       * <pre>
+       * List of files to be deleted
+       * </pre>
+       *
+       * <code>repeated string paths_of_del = 2;</code>
+       */
+      @java.lang.Override
+      public int getPathsOfDelCount() {
+        return instance.getPathsOfDelCount();
+      }
+      /**
+       * <pre>
+       * List of files to be deleted
+       * </pre>
+       *
+       * <code>repeated string paths_of_del = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathsOfDel(int index) {
+        return instance.getPathsOfDel(index);
+      }
+      /**
+       * <pre>
+       * List of files to be deleted
+       * </pre>
+       *
+       * <code>repeated string paths_of_del = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathsOfDelBytes(int index) {
+        return instance.getPathsOfDelBytes(index);
+      }
+      /**
+       * <pre>
+       * List of files to be deleted
+       * </pre>
+       *
+       * <code>repeated string paths_of_del = 2;</code>
+       */
+      public Builder setPathsOfDel(
+          int index, java.lang.String value) {
+        copyOnWrite();
+        instance.setPathsOfDel(index, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * List of files to be deleted
+       * </pre>
+       *
+       * <code>repeated string paths_of_del = 2;</code>
+       */
+      public Builder addPathsOfDel(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.addPathsOfDel(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * List of files to be deleted
+       * </pre>
+       *
+       * <code>repeated string paths_of_del = 2;</code>
+       */
+      public Builder addAllPathsOfDel(
+          java.lang.Iterable<java.lang.String> values) {
+        copyOnWrite();
+        instance.addAllPathsOfDel(values);
+        return this;
+      }
+      /**
+       * <pre>
+       * List of files to be deleted
+       * </pre>
+       *
+       * <code>repeated string paths_of_del = 2;</code>
+       */
+      public Builder clearPathsOfDel() {
+        copyOnWrite();
+        instance.clearPathsOfDel();
+        return this;
+      }
+      /**
+       * <pre>
+       * List of files to be deleted
+       * </pre>
+       *
+       * <code>repeated string paths_of_del = 2;</code>
+       */
+      public Builder addPathsOfDelBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.addPathsOfDelBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Folder to be created in bulk
+       * </pre>
+       *
+       * <code>repeated string paths_of_create_folder = 3;</code>
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.String>
+          getPathsOfCreateFolderList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getPathsOfCreateFolderList());
+      }
+      /**
+       * <pre>
+       * Folder to be created in bulk
+       * </pre>
+       *
+       * <code>repeated string paths_of_create_folder = 3;</code>
+       */
+      @java.lang.Override
+      public int getPathsOfCreateFolderCount() {
+        return instance.getPathsOfCreateFolderCount();
+      }
+      /**
+       * <pre>
+       * Folder to be created in bulk
+       * </pre>
+       *
+       * <code>repeated string paths_of_create_folder = 3;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathsOfCreateFolder(int index) {
+        return instance.getPathsOfCreateFolder(index);
+      }
+      /**
+       * <pre>
+       * Folder to be created in bulk
+       * </pre>
+       *
+       * <code>repeated string paths_of_create_folder = 3;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathsOfCreateFolderBytes(int index) {
+        return instance.getPathsOfCreateFolderBytes(index);
+      }
+      /**
+       * <pre>
+       * Folder to be created in bulk
+       * </pre>
+       *
+       * <code>repeated string paths_of_create_folder = 3;</code>
+       */
+      public Builder setPathsOfCreateFolder(
+          int index, java.lang.String value) {
+        copyOnWrite();
+        instance.setPathsOfCreateFolder(index, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Folder to be created in bulk
+       * </pre>
+       *
+       * <code>repeated string paths_of_create_folder = 3;</code>
+       */
+      public Builder addPathsOfCreateFolder(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.addPathsOfCreateFolder(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Folder to be created in bulk
+       * </pre>
+       *
+       * <code>repeated string paths_of_create_folder = 3;</code>
+       */
+      public Builder addAllPathsOfCreateFolder(
+          java.lang.Iterable<java.lang.String> values) {
+        copyOnWrite();
+        instance.addAllPathsOfCreateFolder(values);
+        return this;
+      }
+      /**
+       * <pre>
+       * Folder to be created in bulk
+       * </pre>
+       *
+       * <code>repeated string paths_of_create_folder = 3;</code>
+       */
+      public Builder clearPathsOfCreateFolder() {
+        copyOnWrite();
+        instance.clearPathsOfCreateFolder();
+        return this;
+      }
+      /**
+       * <pre>
+       * Folder to be created in bulk
+       * </pre>
+       *
+       * <code>repeated string paths_of_create_folder = 3;</code>
+       */
+      public Builder addPathsOfCreateFolderBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.addPathsOfCreateFolderBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Create a new folder in this directory
+       * </pre>
+       *
+       * <code>string path_of_create_new_folder = 4;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathOfCreateNewFolder() {
+        return instance.getPathOfCreateNewFolder();
+      }
+      /**
+       * <pre>
+       * Create a new folder in this directory
+       * </pre>
+       *
+       * <code>string path_of_create_new_folder = 4;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathOfCreateNewFolderBytes() {
+        return instance.getPathOfCreateNewFolderBytes();
+      }
+      /**
+       * <pre>
+       * Create a new folder in this directory
+       * </pre>
+       *
+       * <code>string path_of_create_new_folder = 4;</code>
+       */
+      public Builder setPathOfCreateNewFolder(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPathOfCreateNewFolder(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Create a new folder in this directory
+       * </pre>
+       *
+       * <code>string path_of_create_new_folder = 4;</code>
+       */
+      public Builder clearPathOfCreateNewFolder() {
+        copyOnWrite();
+        instance.clearPathOfCreateNewFolder();
+        return this;
+      }
+      /**
+       * <pre>
+       * Create a new folder in this directory
+       * </pre>
+       *
+       * <code>string path_of_create_new_folder = 4;</code>
+       */
+      public Builder setPathOfCreateNewFolderBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathOfCreateNewFolderBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Determine if this file exists
+       * </pre>
+       *
+       * <code>string path_of_judge_exists = 5;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathOfJudgeExists() {
+        return instance.getPathOfJudgeExists();
+      }
+      /**
+       * <pre>
+       * Determine if this file exists
+       * </pre>
+       *
+       * <code>string path_of_judge_exists = 5;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathOfJudgeExistsBytes() {
+        return instance.getPathOfJudgeExistsBytes();
+      }
+      /**
+       * <pre>
+       * Determine if this file exists
+       * </pre>
+       *
+       * <code>string path_of_judge_exists = 5;</code>
+       */
+      public Builder setPathOfJudgeExists(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPathOfJudgeExists(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Determine if this file exists
+       * </pre>
+       *
+       * <code>string path_of_judge_exists = 5;</code>
+       */
+      public Builder clearPathOfJudgeExists() {
+        copyOnWrite();
+        instance.clearPathOfJudgeExists();
+        return this;
+      }
+      /**
+       * <pre>
+       * Determine if this file exists
+       * </pre>
+       *
+       * <code>string path_of_judge_exists = 5;</code>
+       */
+      public Builder setPathOfJudgeExistsBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathOfJudgeExistsBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * rename
+       * </pre>
+       *
+       * <code>string path_of_rename = 6;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathOfRename() {
+        return instance.getPathOfRename();
+      }
+      /**
+       * <pre>
+       * rename
+       * </pre>
+       *
+       * <code>string path_of_rename = 6;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathOfRenameBytes() {
+        return instance.getPathOfRenameBytes();
+      }
+      /**
+       * <pre>
+       * rename
+       * </pre>
+       *
+       * <code>string path_of_rename = 6;</code>
+       */
+      public Builder setPathOfRename(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPathOfRename(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * rename
+       * </pre>
+       *
+       * <code>string path_of_rename = 6;</code>
+       */
+      public Builder clearPathOfRename() {
+        copyOnWrite();
+        instance.clearPathOfRename();
+        return this;
+      }
+      /**
+       * <pre>
+       * rename
+       * </pre>
+       *
+       * <code>string path_of_rename = 6;</code>
+       */
+      public Builder setPathOfRenameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathOfRenameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string name_of_rename = 7;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getNameOfRename() {
+        return instance.getNameOfRename();
+      }
+      /**
+       * <code>string name_of_rename = 7;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getNameOfRenameBytes() {
+        return instance.getNameOfRenameBytes();
+      }
+      /**
+       * <code>string name_of_rename = 7;</code>
+       */
+      public Builder setNameOfRename(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setNameOfRename(value);
+        return this;
+      }
+      /**
+       * <code>string name_of_rename = 7;</code>
+       */
+      public Builder clearNameOfRename() {
+        copyOnWrite();
+        instance.clearNameOfRename();
+        return this;
+      }
+      /**
+       * <code>string name_of_rename = 7;</code>
+       */
+      public Builder setNameOfRenameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setNameOfRenameBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Retrieve the list of files and folders in this directory
+       * </pre>
+       *
+       * <code>string path_of_filelist = 8;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathOfFilelist() {
+        return instance.getPathOfFilelist();
+      }
+      /**
+       * <pre>
+       * Retrieve the list of files and folders in this directory
+       * </pre>
+       *
+       * <code>string path_of_filelist = 8;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathOfFilelistBytes() {
+        return instance.getPathOfFilelistBytes();
+      }
+      /**
+       * <pre>
+       * Retrieve the list of files and folders in this directory
+       * </pre>
+       *
+       * <code>string path_of_filelist = 8;</code>
+       */
+      public Builder setPathOfFilelist(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPathOfFilelist(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Retrieve the list of files and folders in this directory
+       * </pre>
+       *
+       * <code>string path_of_filelist = 8;</code>
+       */
+      public Builder clearPathOfFilelist() {
+        copyOnWrite();
+        instance.clearPathOfFilelist();
+        return this;
+      }
+      /**
+       * <pre>
+       * Retrieve the list of files and folders in this directory
+       * </pre>
+       *
+       * <code>string path_of_filelist = 8;</code>
+       */
+      public Builder setPathOfFilelistBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathOfFilelistBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * task id
+       * </pre>
+       *
+       * <code>string task_id = 9;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getTaskId() {
+        return instance.getTaskId();
+      }
+      /**
+       * <pre>
+       * task id
+       * </pre>
+       *
+       * <code>string task_id = 9;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTaskIdBytes() {
+        return instance.getTaskIdBytes();
+      }
+      /**
+       * <pre>
+       * task id
+       * </pre>
+       *
+       * <code>string task_id = 9;</code>
+       */
+      public Builder setTaskId(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setTaskId(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * task id
+       * </pre>
+       *
+       * <code>string task_id = 9;</code>
+       */
+      public Builder clearTaskId() {
+        copyOnWrite();
+        instance.clearTaskId();
+        return this;
+      }
+      /**
+       * <pre>
+       * task id
+       * </pre>
+       *
+       * <code>string task_id = 9;</code>
+       */
+      public Builder setTaskIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setTaskIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The file to be downloaded
+       * </pre>
+       *
+       * <code>string path_of_download = 10;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathOfDownload() {
+        return instance.getPathOfDownload();
+      }
+      /**
+       * <pre>
+       * The file to be downloaded
+       * </pre>
+       *
+       * <code>string path_of_download = 10;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathOfDownloadBytes() {
+        return instance.getPathOfDownloadBytes();
+      }
+      /**
+       * <pre>
+       * The file to be downloaded
+       * </pre>
+       *
+       * <code>string path_of_download = 10;</code>
+       */
+      public Builder setPathOfDownload(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPathOfDownload(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The file to be downloaded
+       * </pre>
+       *
+       * <code>string path_of_download = 10;</code>
+       */
+      public Builder clearPathOfDownload() {
+        copyOnWrite();
+        instance.clearPathOfDownload();
+        return this;
+      }
+      /**
+       * <pre>
+       * The file to be downloaded
+       * </pre>
+       *
+       * <code>string path_of_download = 10;</code>
+       */
+      public Builder setPathOfDownloadBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathOfDownloadBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The file path to be saved 
+       * </pre>
+       *
+       * <code>string path_of_save = 11;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getPathOfSave() {
+        return instance.getPathOfSave();
+      }
+      /**
+       * <pre>
+       * The file path to be saved 
+       * </pre>
+       *
+       * <code>string path_of_save = 11;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathOfSaveBytes() {
+        return instance.getPathOfSaveBytes();
+      }
+      /**
+       * <pre>
+       * The file path to be saved 
+       * </pre>
+       *
+       * <code>string path_of_save = 11;</code>
+       */
+      public Builder setPathOfSave(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPathOfSave(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The file path to be saved 
+       * </pre>
+       *
+       * <code>string path_of_save = 11;</code>
+       */
+      public Builder clearPathOfSave() {
+        copyOnWrite();
+        instance.clearPathOfSave();
+        return this;
+      }
+      /**
+       * <pre>
+       * The file path to be saved 
+       * </pre>
+       *
+       * <code>string path_of_save = 11;</code>
+       */
+      public Builder setPathOfSaveBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathOfSaveBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileOperateionsEvent)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcFileTransfer.FileOperateionsEvent();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "operateType_",
+              "pathsOfDel_",
+              "pathsOfCreateFolder_",
+              "pathOfCreateNewFolder_",
+              "pathOfJudgeExists_",
+              "pathOfRename_",
+              "nameOfRename_",
+              "pathOfFilelist_",
+              "taskId_",
+              "pathOfDownload_",
+              "pathOfSave_",
+            };
+            java.lang.String info =
+                "\u0000\u000b\u0000\u0000\u0001\u000b\u000b\u0000\u0002\u0000\u0001\f\u0002\u021a" +
+                "\u0003\u021a\u0004\u0208\u0005\u0208\u0006\u0208\u0007\u0208\b\u0208\t\u0208\n\u0208" +
+                "\u000b\u0208";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileOperateionsEvent> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcFileTransfer.FileOperateionsEvent.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.FileOperateionsEvent)
+    private static final tc.TcFileTransfer.FileOperateionsEvent DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new FileOperateionsEvent();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FileOperateionsEvent.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcFileTransfer.FileOperateionsEvent getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FileOperateionsEvent> PARSER;
+
+    public static com.google.protobuf.Parser<FileOperateionsEvent> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface FileTransSaveFileExceptionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileTransSaveFileException)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+     */
+    int getErrorCauseValue();
+    /**
+     * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+     */
+    tc.TcFileTransfer.FileTransSaveFileException.SaveFileExceptionCause getErrorCause();
+
+    /**
+     * <code>string src_file_path = 2;</code>
+     */
+    java.lang.String getSrcFilePath();
+    /**
+     * <code>string src_file_path = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getSrcFilePathBytes();
+
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    java.lang.String getTargetFilePath();
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getTargetFilePathBytes();
+
+    /**
+     * <code>string task_id = 4;</code>
+     */
+    java.lang.String getTaskId();
+    /**
+     * <code>string task_id = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getTaskIdBytes();
+  }
+  /**
+   * <pre>
+   * Exception or user cancellation during file writing process
+   * </pre>
+   *
+   * Protobuf type {@code tc.FileTransSaveFileException}
+   */
+  public  static final class FileTransSaveFileException extends
+      com.google.protobuf.GeneratedMessageLite<
+          FileTransSaveFileException, FileTransSaveFileException.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileTransSaveFileException)
+      FileTransSaveFileExceptionOrBuilder {
+    private FileTransSaveFileException() {
+      srcFilePath_ = "";
+      targetFilePath_ = "";
+      taskId_ = "";
+    }
+    /**
+     * Protobuf enum {@code tc.FileTransSaveFileException.SaveFileExceptionCause}
+     */
+    public enum SaveFileExceptionCause
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <pre>
+       * The file cannot be opened
+       * </pre>
+       *
+       * <code>kFailedOpen = 0;</code>
+       */
+      kFailedOpen(0),
+      /**
+       * <pre>
+       * Exception occurred while writing the file
+       * </pre>
+       *
+       * <code>kFailedWrite = 1;</code>
+       */
+      kFailedWrite(1),
+      /**
+       * <pre>
+       * User cancellation
+       * </pre>
+       *
+       * <code>kCancel = 2;</code>
+       */
+      kCancel(2),
+      /**
+       * <code>kDirFailedCreate = 3;</code>
+       */
+      kDirFailedCreate(3),
+      /**
+       * <code>kPacketLoss = 4;</code>
+       */
+      kPacketLoss(4),
+      /**
+       * <code>kUnknow = 5;</code>
+       */
+      kUnknow(5),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <pre>
+       * The file cannot be opened
+       * </pre>
+       *
+       * <code>kFailedOpen = 0;</code>
+       */
+      public static final int kFailedOpen_VALUE = 0;
+      /**
+       * <pre>
+       * Exception occurred while writing the file
+       * </pre>
+       *
+       * <code>kFailedWrite = 1;</code>
+       */
+      public static final int kFailedWrite_VALUE = 1;
+      /**
+       * <pre>
+       * User cancellation
+       * </pre>
+       *
+       * <code>kCancel = 2;</code>
+       */
+      public static final int kCancel_VALUE = 2;
+      /**
+       * <code>kDirFailedCreate = 3;</code>
+       */
+      public static final int kDirFailedCreate_VALUE = 3;
+      /**
+       * <code>kPacketLoss = 4;</code>
+       */
+      public static final int kPacketLoss_VALUE = 4;
+      /**
+       * <code>kUnknow = 5;</code>
+       */
+      public static final int kUnknow_VALUE = 5;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static SaveFileExceptionCause valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static SaveFileExceptionCause forNumber(int value) {
+        switch (value) {
+          case 0: return kFailedOpen;
+          case 1: return kFailedWrite;
+          case 2: return kCancel;
+          case 3: return kDirFailedCreate;
+          case 4: return kPacketLoss;
+          case 5: return kUnknow;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<SaveFileExceptionCause>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          SaveFileExceptionCause> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<SaveFileExceptionCause>() {
+              @java.lang.Override
+              public SaveFileExceptionCause findValueByNumber(int number) {
+                return SaveFileExceptionCause.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return SaveFileExceptionCauseVerifier.INSTANCE;
+      }
+
+      private static final class SaveFileExceptionCauseVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new SaveFileExceptionCauseVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return SaveFileExceptionCause.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private SaveFileExceptionCause(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:tc.FileTransSaveFileException.SaveFileExceptionCause)
+    }
+
+    public static final int ERROR_CAUSE_FIELD_NUMBER = 1;
+    private int errorCause_;
+    /**
+     * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+     */
+    @java.lang.Override
+    public int getErrorCauseValue() {
+      return errorCause_;
+    }
+    /**
+     * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileTransSaveFileException.SaveFileExceptionCause getErrorCause() {
+      tc.TcFileTransfer.FileTransSaveFileException.SaveFileExceptionCause result = tc.TcFileTransfer.FileTransSaveFileException.SaveFileExceptionCause.forNumber(errorCause_);
+      return result == null ? tc.TcFileTransfer.FileTransSaveFileException.SaveFileExceptionCause.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+     */
+    private void setErrorCauseValue(int value) {
+        errorCause_ = value;
+    }
+    /**
+     * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+     */
+    private void setErrorCause(tc.TcFileTransfer.FileTransSaveFileException.SaveFileExceptionCause value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      errorCause_ = value.getNumber();
+    }
+    /**
+     * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+     */
+    private void clearErrorCause() {
+      
+      errorCause_ = 0;
+    }
+
+    public static final int SRC_FILE_PATH_FIELD_NUMBER = 2;
+    private java.lang.String srcFilePath_;
+    /**
+     * <code>string src_file_path = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getSrcFilePath() {
+      return srcFilePath_;
+    }
+    /**
+     * <code>string src_file_path = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSrcFilePathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(srcFilePath_);
+    }
+    /**
+     * <code>string src_file_path = 2;</code>
+     */
+    private void setSrcFilePath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      srcFilePath_ = value;
+    }
+    /**
+     * <code>string src_file_path = 2;</code>
+     */
+    private void clearSrcFilePath() {
+      
+      srcFilePath_ = getDefaultInstance().getSrcFilePath();
+    }
+    /**
+     * <code>string src_file_path = 2;</code>
+     */
+    private void setSrcFilePathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      srcFilePath_ = value.toStringUtf8();
+    }
+
+    public static final int TARGET_FILE_PATH_FIELD_NUMBER = 3;
+    private java.lang.String targetFilePath_;
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getTargetFilePath() {
+      return targetFilePath_;
+    }
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTargetFilePathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(targetFilePath_);
+    }
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    private void setTargetFilePath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      targetFilePath_ = value;
+    }
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    private void clearTargetFilePath() {
+      
+      targetFilePath_ = getDefaultInstance().getTargetFilePath();
+    }
+    /**
+     * <code>string target_file_path = 3;</code>
+     */
+    private void setTargetFilePathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      targetFilePath_ = value.toStringUtf8();
+    }
+
+    public static final int TASK_ID_FIELD_NUMBER = 4;
+    private java.lang.String taskId_;
+    /**
+     * <code>string task_id = 4;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getTaskId() {
+      return taskId_;
+    }
+    /**
+     * <code>string task_id = 4;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTaskIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(taskId_);
+    }
+    /**
+     * <code>string task_id = 4;</code>
+     */
+    private void setTaskId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      taskId_ = value;
+    }
+    /**
+     * <code>string task_id = 4;</code>
+     */
+    private void clearTaskId() {
+      
+      taskId_ = getDefaultInstance().getTaskId();
+    }
+    /**
+     * <code>string task_id = 4;</code>
+     */
+    private void setTaskIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      taskId_ = value.toStringUtf8();
+    }
+
+    public static tc.TcFileTransfer.FileTransSaveFileException parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcFileTransfer.FileTransSaveFileException prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * Exception or user cancellation during file writing process
+     * </pre>
+     *
+     * Protobuf type {@code tc.FileTransSaveFileException}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcFileTransfer.FileTransSaveFileException, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileTransSaveFileException)
+        tc.TcFileTransfer.FileTransSaveFileExceptionOrBuilder {
+      // Construct using tc.TcFileTransfer.FileTransSaveFileException.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+       */
+      @java.lang.Override
+      public int getErrorCauseValue() {
+        return instance.getErrorCauseValue();
+      }
+      /**
+       * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+       */
+      public Builder setErrorCauseValue(int value) {
+        copyOnWrite();
+        instance.setErrorCauseValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileTransSaveFileException.SaveFileExceptionCause getErrorCause() {
+        return instance.getErrorCause();
+      }
+      /**
+       * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+       */
+      public Builder setErrorCause(tc.TcFileTransfer.FileTransSaveFileException.SaveFileExceptionCause value) {
+        copyOnWrite();
+        instance.setErrorCause(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransSaveFileException.SaveFileExceptionCause error_cause = 1;</code>
+       */
+      public Builder clearErrorCause() {
+        copyOnWrite();
+        instance.clearErrorCause();
+        return this;
+      }
+
+      /**
+       * <code>string src_file_path = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getSrcFilePath() {
+        return instance.getSrcFilePath();
+      }
+      /**
+       * <code>string src_file_path = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getSrcFilePathBytes() {
+        return instance.getSrcFilePathBytes();
+      }
+      /**
+       * <code>string src_file_path = 2;</code>
+       */
+      public Builder setSrcFilePath(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setSrcFilePath(value);
+        return this;
+      }
+      /**
+       * <code>string src_file_path = 2;</code>
+       */
+      public Builder clearSrcFilePath() {
+        copyOnWrite();
+        instance.clearSrcFilePath();
+        return this;
+      }
+      /**
+       * <code>string src_file_path = 2;</code>
+       */
+      public Builder setSrcFilePathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSrcFilePathBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string target_file_path = 3;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getTargetFilePath() {
+        return instance.getTargetFilePath();
+      }
+      /**
+       * <code>string target_file_path = 3;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTargetFilePathBytes() {
+        return instance.getTargetFilePathBytes();
+      }
+      /**
+       * <code>string target_file_path = 3;</code>
+       */
+      public Builder setTargetFilePath(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setTargetFilePath(value);
+        return this;
+      }
+      /**
+       * <code>string target_file_path = 3;</code>
+       */
+      public Builder clearTargetFilePath() {
+        copyOnWrite();
+        instance.clearTargetFilePath();
+        return this;
+      }
+      /**
+       * <code>string target_file_path = 3;</code>
+       */
+      public Builder setTargetFilePathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setTargetFilePathBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string task_id = 4;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getTaskId() {
+        return instance.getTaskId();
+      }
+      /**
+       * <code>string task_id = 4;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTaskIdBytes() {
+        return instance.getTaskIdBytes();
+      }
+      /**
+       * <code>string task_id = 4;</code>
+       */
+      public Builder setTaskId(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setTaskId(value);
+        return this;
+      }
+      /**
+       * <code>string task_id = 4;</code>
+       */
+      public Builder clearTaskId() {
+        copyOnWrite();
+        instance.clearTaskId();
+        return this;
+      }
+      /**
+       * <code>string task_id = 4;</code>
+       */
+      public Builder setTaskIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setTaskIdBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileTransSaveFileException)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcFileTransfer.FileTransSaveFileException();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "errorCause_",
+              "srcFilePath_",
+              "targetFilePath_",
+              "taskId_",
+            };
+            java.lang.String info =
+                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\f\u0002\u0208" +
+                "\u0003\u0208\u0004\u0208";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileTransSaveFileException> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcFileTransfer.FileTransSaveFileException.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.FileTransSaveFileException)
+    private static final tc.TcFileTransfer.FileTransSaveFileException DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new FileTransSaveFileException();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FileTransSaveFileException.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcFileTransfer.FileTransSaveFileException getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FileTransSaveFileException> PARSER;
+
+    public static com.google.protobuf.Parser<FileTransSaveFileException> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
