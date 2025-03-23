@@ -5307,6 +5307,380 @@ public final class TcFileTransfer {
     }
   }
 
+  public interface FileTransDataPacketResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.FileTransDataPacketResponse)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>string task_id = 1;</code>
+     */
+    java.lang.String getTaskId();
+    /**
+     * <code>string task_id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getTaskIdBytes();
+
+    /**
+     * <pre>
+     * This task packet sequence
+     * </pre>
+     *
+     * <code>uint64 index = 2;</code>
+     */
+    long getIndex();
+  }
+  /**
+   * <pre>
+   * File transfer packet response
+   * </pre>
+   *
+   * Protobuf type {@code tc.FileTransDataPacketResponse}
+   */
+  public  static final class FileTransDataPacketResponse extends
+      com.google.protobuf.GeneratedMessageLite<
+          FileTransDataPacketResponse, FileTransDataPacketResponse.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.FileTransDataPacketResponse)
+      FileTransDataPacketResponseOrBuilder {
+    private FileTransDataPacketResponse() {
+      taskId_ = "";
+    }
+    public static final int TASK_ID_FIELD_NUMBER = 1;
+    private java.lang.String taskId_;
+    /**
+     * <code>string task_id = 1;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getTaskId() {
+      return taskId_;
+    }
+    /**
+     * <code>string task_id = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTaskIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(taskId_);
+    }
+    /**
+     * <code>string task_id = 1;</code>
+     */
+    private void setTaskId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      taskId_ = value;
+    }
+    /**
+     * <code>string task_id = 1;</code>
+     */
+    private void clearTaskId() {
+      
+      taskId_ = getDefaultInstance().getTaskId();
+    }
+    /**
+     * <code>string task_id = 1;</code>
+     */
+    private void setTaskIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      taskId_ = value.toStringUtf8();
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 2;
+    private long index_;
+    /**
+     * <pre>
+     * This task packet sequence
+     * </pre>
+     *
+     * <code>uint64 index = 2;</code>
+     */
+    @java.lang.Override
+    public long getIndex() {
+      return index_;
+    }
+    /**
+     * <pre>
+     * This task packet sequence
+     * </pre>
+     *
+     * <code>uint64 index = 2;</code>
+     */
+    private void setIndex(long value) {
+      
+      index_ = value;
+    }
+    /**
+     * <pre>
+     * This task packet sequence
+     * </pre>
+     *
+     * <code>uint64 index = 2;</code>
+     */
+    private void clearIndex() {
+      
+      index_ = 0L;
+    }
+
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcFileTransfer.FileTransDataPacketResponse prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * File transfer packet response
+     * </pre>
+     *
+     * Protobuf type {@code tc.FileTransDataPacketResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcFileTransfer.FileTransDataPacketResponse, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.FileTransDataPacketResponse)
+        tc.TcFileTransfer.FileTransDataPacketResponseOrBuilder {
+      // Construct using tc.TcFileTransfer.FileTransDataPacketResponse.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>string task_id = 1;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getTaskId() {
+        return instance.getTaskId();
+      }
+      /**
+       * <code>string task_id = 1;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTaskIdBytes() {
+        return instance.getTaskIdBytes();
+      }
+      /**
+       * <code>string task_id = 1;</code>
+       */
+      public Builder setTaskId(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setTaskId(value);
+        return this;
+      }
+      /**
+       * <code>string task_id = 1;</code>
+       */
+      public Builder clearTaskId() {
+        copyOnWrite();
+        instance.clearTaskId();
+        return this;
+      }
+      /**
+       * <code>string task_id = 1;</code>
+       */
+      public Builder setTaskIdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setTaskIdBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * This task packet sequence
+       * </pre>
+       *
+       * <code>uint64 index = 2;</code>
+       */
+      @java.lang.Override
+      public long getIndex() {
+        return instance.getIndex();
+      }
+      /**
+       * <pre>
+       * This task packet sequence
+       * </pre>
+       *
+       * <code>uint64 index = 2;</code>
+       */
+      public Builder setIndex(long value) {
+        copyOnWrite();
+        instance.setIndex(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * This task packet sequence
+       * </pre>
+       *
+       * <code>uint64 index = 2;</code>
+       */
+      public Builder clearIndex() {
+        copyOnWrite();
+        instance.clearIndex();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.FileTransDataPacketResponse)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcFileTransfer.FileTransDataPacketResponse();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "taskId_",
+              "index_",
+            };
+            java.lang.String info =
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0208\u0002\u0003" +
+                "";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcFileTransfer.FileTransDataPacketResponse> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcFileTransfer.FileTransDataPacketResponse.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.FileTransDataPacketResponse)
+    private static final tc.TcFileTransfer.FileTransDataPacketResponse DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new FileTransDataPacketResponse();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        FileTransDataPacketResponse.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcFileTransfer.FileTransDataPacketResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<FileTransDataPacketResponse> PARSER;
+
+    public static com.google.protobuf.Parser<FileTransDataPacketResponse> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface FileTransRespUploadOrBuilder extends
       // @@protoc_insertion_point(interface_extends:tc.FileTransRespUpload)
       com.google.protobuf.MessageLiteOrBuilder {

@@ -52,7 +52,7 @@ namespace tc
 
         thunder_sdk_ = ThunderSdk::Make(app_context_->GetMessageNotifier());
         thunder_sdk_->Init(params, (use_oes && frame_render_) ? frame_render_->GetNativeWindow() : nullptr, drt);
-        thunder_sdk_->SetOnVideoFrameDecodedCallback([=, this](const std::shared_ptr<RawImage>& image, const CaptureMonitorInfo& cap_mon_info) {
+        thunder_sdk_->SetOnVideoFrameDecodedCallback([=, this](const std::shared_ptr<RawImage>& image, const SdkCaptureMonitorInfo& cap_mon_info) {
             if (drt != DecoderRenderType::kMediaCodecSurface && image->img_buf && frame_render_) {
                 frame_render_->UpdateYUVImage(image);
             }
@@ -168,7 +168,7 @@ namespace tc
         }
     }
 
-    const CaptureMonitorInfo& Application::GetCapMonitorInfo() const {
+    const SdkCaptureMonitorInfo& Application::GetCapMonitorInfo() const {
         return cap_mon_info_;
     }
 

@@ -2208,24 +2208,24 @@ public final class TcServiceMessage {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>string req_client_id = 1;</code>
+     * <code>string req_device_id = 1;</code>
      */
-    java.lang.String getReqClientId();
+    java.lang.String getReqDeviceId();
     /**
-     * <code>string req_client_id = 1;</code>
+     * <code>string req_device_id = 1;</code>
      */
     com.google.protobuf.ByteString
-        getReqClientIdBytes();
+        getReqDeviceIdBytes();
 
     /**
-     * <code>string req_client_device_id = 2;</code>
+     * <code>string req_stream_id = 2;</code>
      */
-    java.lang.String getReqClientDeviceId();
+    java.lang.String getReqStreamId();
     /**
-     * <code>string req_client_device_id = 2;</code>
+     * <code>string req_stream_id = 2;</code>
      */
     com.google.protobuf.ByteString
-        getReqClientDeviceIdBytes();
+        getReqStreamIdBytes();
   }
   /**
    * Protobuf type {@code tc.MsgReqCtrlAltDelete}
@@ -2236,103 +2236,103 @@ public final class TcServiceMessage {
       // @@protoc_insertion_point(message_implements:tc.MsgReqCtrlAltDelete)
       MsgReqCtrlAltDeleteOrBuilder {
     private MsgReqCtrlAltDelete() {
-      reqClientId_ = "";
-      reqClientDeviceId_ = "";
+      reqDeviceId_ = "";
+      reqStreamId_ = "";
     }
-    public static final int REQ_CLIENT_ID_FIELD_NUMBER = 1;
-    private java.lang.String reqClientId_;
+    public static final int REQ_DEVICE_ID_FIELD_NUMBER = 1;
+    private java.lang.String reqDeviceId_;
     /**
-     * <code>string req_client_id = 1;</code>
+     * <code>string req_device_id = 1;</code>
      */
     @java.lang.Override
-    public java.lang.String getReqClientId() {
-      return reqClientId_;
+    public java.lang.String getReqDeviceId() {
+      return reqDeviceId_;
     }
     /**
-     * <code>string req_client_id = 1;</code>
+     * <code>string req_device_id = 1;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getReqClientIdBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(reqClientId_);
+        getReqDeviceIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(reqDeviceId_);
     }
     /**
-     * <code>string req_client_id = 1;</code>
+     * <code>string req_device_id = 1;</code>
      */
-    private void setReqClientId(
+    private void setReqDeviceId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      reqClientId_ = value;
+      reqDeviceId_ = value;
     }
     /**
-     * <code>string req_client_id = 1;</code>
+     * <code>string req_device_id = 1;</code>
      */
-    private void clearReqClientId() {
+    private void clearReqDeviceId() {
       
-      reqClientId_ = getDefaultInstance().getReqClientId();
+      reqDeviceId_ = getDefaultInstance().getReqDeviceId();
     }
     /**
-     * <code>string req_client_id = 1;</code>
+     * <code>string req_device_id = 1;</code>
      */
-    private void setReqClientIdBytes(
+    private void setReqDeviceIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      reqClientId_ = value.toStringUtf8();
+      reqDeviceId_ = value.toStringUtf8();
     }
 
-    public static final int REQ_CLIENT_DEVICE_ID_FIELD_NUMBER = 2;
-    private java.lang.String reqClientDeviceId_;
+    public static final int REQ_STREAM_ID_FIELD_NUMBER = 2;
+    private java.lang.String reqStreamId_;
     /**
-     * <code>string req_client_device_id = 2;</code>
+     * <code>string req_stream_id = 2;</code>
      */
     @java.lang.Override
-    public java.lang.String getReqClientDeviceId() {
-      return reqClientDeviceId_;
+    public java.lang.String getReqStreamId() {
+      return reqStreamId_;
     }
     /**
-     * <code>string req_client_device_id = 2;</code>
+     * <code>string req_stream_id = 2;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getReqClientDeviceIdBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(reqClientDeviceId_);
+        getReqStreamIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(reqStreamId_);
     }
     /**
-     * <code>string req_client_device_id = 2;</code>
+     * <code>string req_stream_id = 2;</code>
      */
-    private void setReqClientDeviceId(
+    private void setReqStreamId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      reqClientDeviceId_ = value;
+      reqStreamId_ = value;
     }
     /**
-     * <code>string req_client_device_id = 2;</code>
+     * <code>string req_stream_id = 2;</code>
      */
-    private void clearReqClientDeviceId() {
+    private void clearReqStreamId() {
       
-      reqClientDeviceId_ = getDefaultInstance().getReqClientDeviceId();
+      reqStreamId_ = getDefaultInstance().getReqStreamId();
     }
     /**
-     * <code>string req_client_device_id = 2;</code>
+     * <code>string req_stream_id = 2;</code>
      */
-    private void setReqClientDeviceIdBytes(
+    private void setReqStreamIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      reqClientDeviceId_ = value.toStringUtf8();
+      reqStreamId_ = value.toStringUtf8();
     }
 
     public static tc.TcServiceMessage.MsgReqCtrlAltDelete parseFrom(
@@ -2431,86 +2431,86 @@ public final class TcServiceMessage {
 
 
       /**
-       * <code>string req_client_id = 1;</code>
+       * <code>string req_device_id = 1;</code>
        */
       @java.lang.Override
-      public java.lang.String getReqClientId() {
-        return instance.getReqClientId();
+      public java.lang.String getReqDeviceId() {
+        return instance.getReqDeviceId();
       }
       /**
-       * <code>string req_client_id = 1;</code>
+       * <code>string req_device_id = 1;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getReqClientIdBytes() {
-        return instance.getReqClientIdBytes();
+          getReqDeviceIdBytes() {
+        return instance.getReqDeviceIdBytes();
       }
       /**
-       * <code>string req_client_id = 1;</code>
+       * <code>string req_device_id = 1;</code>
        */
-      public Builder setReqClientId(
+      public Builder setReqDeviceId(
           java.lang.String value) {
         copyOnWrite();
-        instance.setReqClientId(value);
+        instance.setReqDeviceId(value);
         return this;
       }
       /**
-       * <code>string req_client_id = 1;</code>
+       * <code>string req_device_id = 1;</code>
        */
-      public Builder clearReqClientId() {
+      public Builder clearReqDeviceId() {
         copyOnWrite();
-        instance.clearReqClientId();
+        instance.clearReqDeviceId();
         return this;
       }
       /**
-       * <code>string req_client_id = 1;</code>
+       * <code>string req_device_id = 1;</code>
        */
-      public Builder setReqClientIdBytes(
+      public Builder setReqDeviceIdBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setReqClientIdBytes(value);
+        instance.setReqDeviceIdBytes(value);
         return this;
       }
 
       /**
-       * <code>string req_client_device_id = 2;</code>
+       * <code>string req_stream_id = 2;</code>
        */
       @java.lang.Override
-      public java.lang.String getReqClientDeviceId() {
-        return instance.getReqClientDeviceId();
+      public java.lang.String getReqStreamId() {
+        return instance.getReqStreamId();
       }
       /**
-       * <code>string req_client_device_id = 2;</code>
+       * <code>string req_stream_id = 2;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getReqClientDeviceIdBytes() {
-        return instance.getReqClientDeviceIdBytes();
+          getReqStreamIdBytes() {
+        return instance.getReqStreamIdBytes();
       }
       /**
-       * <code>string req_client_device_id = 2;</code>
+       * <code>string req_stream_id = 2;</code>
        */
-      public Builder setReqClientDeviceId(
+      public Builder setReqStreamId(
           java.lang.String value) {
         copyOnWrite();
-        instance.setReqClientDeviceId(value);
+        instance.setReqStreamId(value);
         return this;
       }
       /**
-       * <code>string req_client_device_id = 2;</code>
+       * <code>string req_stream_id = 2;</code>
        */
-      public Builder clearReqClientDeviceId() {
+      public Builder clearReqStreamId() {
         copyOnWrite();
-        instance.clearReqClientDeviceId();
+        instance.clearReqStreamId();
         return this;
       }
       /**
-       * <code>string req_client_device_id = 2;</code>
+       * <code>string req_stream_id = 2;</code>
        */
-      public Builder setReqClientDeviceIdBytes(
+      public Builder setReqStreamIdBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setReqClientDeviceIdBytes(value);
+        instance.setReqStreamIdBytes(value);
         return this;
       }
 
@@ -2530,8 +2530,8 @@ public final class TcServiceMessage {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "reqClientId_",
-              "reqClientDeviceId_",
+              "reqDeviceId_",
+              "reqStreamId_",
             };
             java.lang.String info =
                 "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +

@@ -367,6 +367,10 @@ public final class TcMessage {
      */
     kFileTransDataPacket(311),
     /**
+     * <code>kFileTransDataPacketResponse = 312;</code>
+     */
+    kFileTransDataPacketResponse(312),
+    /**
      * <pre>
      * file transfer end
      * </pre>
@@ -622,6 +626,10 @@ public final class TcMessage {
      */
     public static final int kFileTransDataPacket_VALUE = 311;
     /**
+     * <code>kFileTransDataPacketResponse = 312;</code>
+     */
+    public static final int kFileTransDataPacketResponse_VALUE = 312;
+    /**
      * <pre>
      * file transfer end
      * </pre>
@@ -693,6 +701,7 @@ public final class TcMessage {
         case 305: return kFileTransRespDownload;
         case 310: return kFileTransDirectControl;
         case 311: return kFileTransDataPacket;
+        case 312: return kFileTransDataPacketResponse;
         case 320: return kFileTransSaveFileException;
         case 330: return kReqCtrlAltDelete;
         default: return null;
@@ -1157,6 +1166,10 @@ public final class TcMessage {
      * <code>kWebRtc = 2;</code>
      */
     kWebRtc(2),
+    /**
+     * <code>kRelay = 3;</code>
+     */
+    kRelay(3),
     UNRECOGNIZED(-1),
     ;
 
@@ -1172,6 +1185,10 @@ public final class TcMessage {
      * <code>kWebRtc = 2;</code>
      */
     public static final int kWebRtc_VALUE = 2;
+    /**
+     * <code>kRelay = 3;</code>
+     */
+    public static final int kRelay_VALUE = 3;
 
 
     @java.lang.Override
@@ -1196,6 +1213,7 @@ public final class TcMessage {
         case 0: return kWebsocket;
         case 1: return kUdpKcp;
         case 2: return kWebRtc;
+        case 3: return kRelay;
         default: return null;
       }
     }
@@ -18372,24 +18390,74 @@ public final class TcMessage {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>string client_id = 1;</code>
+     * <code>string device_id = 1;</code>
      */
-    java.lang.String getClientId();
+    java.lang.String getDeviceId();
     /**
-     * <code>string client_id = 1;</code>
+     * <code>string device_id = 1;</code>
      */
     com.google.protobuf.ByteString
-        getClientIdBytes();
+        getDeviceIdBytes();
 
     /**
-     * <code>string client_random_pwd = 2;</code>
+     * <code>string device_random_pwd = 2;</code>
      */
-    java.lang.String getClientRandomPwd();
+    java.lang.String getDeviceRandomPwd();
     /**
-     * <code>string client_random_pwd = 2;</code>
+     * <code>string device_random_pwd = 2;</code>
      */
     com.google.protobuf.ByteString
-        getClientRandomPwdBytes();
+        getDeviceRandomPwdBytes();
+
+    /**
+     * <code>string device_safety_pwd = 3;</code>
+     */
+    java.lang.String getDeviceSafetyPwd();
+    /**
+     * <code>string device_safety_pwd = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getDeviceSafetyPwdBytes();
+
+    /**
+     * <code>string relay_host = 4;</code>
+     */
+    java.lang.String getRelayHost();
+    /**
+     * <code>string relay_host = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getRelayHostBytes();
+
+    /**
+     * <code>string relay_port = 5;</code>
+     */
+    java.lang.String getRelayPort();
+    /**
+     * <code>string relay_port = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getRelayPortBytes();
+
+    /**
+     * <code>string spvr_host = 6;</code>
+     */
+    java.lang.String getSpvrHost();
+    /**
+     * <code>string spvr_host = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getSpvrHostBytes();
+
+    /**
+     * <code>string spvr_port = 7;</code>
+     */
+    java.lang.String getSpvrPort();
+    /**
+     * <code>string spvr_port = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getSpvrPortBytes();
   }
   /**
    * Protobuf type {@code tc.SyncPanelInfo}
@@ -18400,103 +18468,348 @@ public final class TcMessage {
       // @@protoc_insertion_point(message_implements:tc.SyncPanelInfo)
       SyncPanelInfoOrBuilder {
     private SyncPanelInfo() {
-      clientId_ = "";
-      clientRandomPwd_ = "";
+      deviceId_ = "";
+      deviceRandomPwd_ = "";
+      deviceSafetyPwd_ = "";
+      relayHost_ = "";
+      relayPort_ = "";
+      spvrHost_ = "";
+      spvrPort_ = "";
     }
-    public static final int CLIENT_ID_FIELD_NUMBER = 1;
-    private java.lang.String clientId_;
+    public static final int DEVICE_ID_FIELD_NUMBER = 1;
+    private java.lang.String deviceId_;
     /**
-     * <code>string client_id = 1;</code>
+     * <code>string device_id = 1;</code>
      */
     @java.lang.Override
-    public java.lang.String getClientId() {
-      return clientId_;
+    public java.lang.String getDeviceId() {
+      return deviceId_;
     }
     /**
-     * <code>string client_id = 1;</code>
+     * <code>string device_id = 1;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getClientIdBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(clientId_);
+        getDeviceIdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(deviceId_);
     }
     /**
-     * <code>string client_id = 1;</code>
+     * <code>string device_id = 1;</code>
      */
-    private void setClientId(
+    private void setDeviceId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      clientId_ = value;
+      deviceId_ = value;
     }
     /**
-     * <code>string client_id = 1;</code>
+     * <code>string device_id = 1;</code>
      */
-    private void clearClientId() {
+    private void clearDeviceId() {
       
-      clientId_ = getDefaultInstance().getClientId();
+      deviceId_ = getDefaultInstance().getDeviceId();
     }
     /**
-     * <code>string client_id = 1;</code>
+     * <code>string device_id = 1;</code>
      */
-    private void setClientIdBytes(
+    private void setDeviceIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      clientId_ = value.toStringUtf8();
+      deviceId_ = value.toStringUtf8();
     }
 
-    public static final int CLIENT_RANDOM_PWD_FIELD_NUMBER = 2;
-    private java.lang.String clientRandomPwd_;
+    public static final int DEVICE_RANDOM_PWD_FIELD_NUMBER = 2;
+    private java.lang.String deviceRandomPwd_;
     /**
-     * <code>string client_random_pwd = 2;</code>
+     * <code>string device_random_pwd = 2;</code>
      */
     @java.lang.Override
-    public java.lang.String getClientRandomPwd() {
-      return clientRandomPwd_;
+    public java.lang.String getDeviceRandomPwd() {
+      return deviceRandomPwd_;
     }
     /**
-     * <code>string client_random_pwd = 2;</code>
+     * <code>string device_random_pwd = 2;</code>
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getClientRandomPwdBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(clientRandomPwd_);
+        getDeviceRandomPwdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(deviceRandomPwd_);
     }
     /**
-     * <code>string client_random_pwd = 2;</code>
+     * <code>string device_random_pwd = 2;</code>
      */
-    private void setClientRandomPwd(
+    private void setDeviceRandomPwd(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      clientRandomPwd_ = value;
+      deviceRandomPwd_ = value;
     }
     /**
-     * <code>string client_random_pwd = 2;</code>
+     * <code>string device_random_pwd = 2;</code>
      */
-    private void clearClientRandomPwd() {
+    private void clearDeviceRandomPwd() {
       
-      clientRandomPwd_ = getDefaultInstance().getClientRandomPwd();
+      deviceRandomPwd_ = getDefaultInstance().getDeviceRandomPwd();
     }
     /**
-     * <code>string client_random_pwd = 2;</code>
+     * <code>string device_random_pwd = 2;</code>
      */
-    private void setClientRandomPwdBytes(
+    private void setDeviceRandomPwdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      clientRandomPwd_ = value.toStringUtf8();
+      deviceRandomPwd_ = value.toStringUtf8();
+    }
+
+    public static final int DEVICE_SAFETY_PWD_FIELD_NUMBER = 3;
+    private java.lang.String deviceSafetyPwd_;
+    /**
+     * <code>string device_safety_pwd = 3;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getDeviceSafetyPwd() {
+      return deviceSafetyPwd_;
+    }
+    /**
+     * <code>string device_safety_pwd = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDeviceSafetyPwdBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(deviceSafetyPwd_);
+    }
+    /**
+     * <code>string device_safety_pwd = 3;</code>
+     */
+    private void setDeviceSafetyPwd(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      deviceSafetyPwd_ = value;
+    }
+    /**
+     * <code>string device_safety_pwd = 3;</code>
+     */
+    private void clearDeviceSafetyPwd() {
+      
+      deviceSafetyPwd_ = getDefaultInstance().getDeviceSafetyPwd();
+    }
+    /**
+     * <code>string device_safety_pwd = 3;</code>
+     */
+    private void setDeviceSafetyPwdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      deviceSafetyPwd_ = value.toStringUtf8();
+    }
+
+    public static final int RELAY_HOST_FIELD_NUMBER = 4;
+    private java.lang.String relayHost_;
+    /**
+     * <code>string relay_host = 4;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getRelayHost() {
+      return relayHost_;
+    }
+    /**
+     * <code>string relay_host = 4;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRelayHostBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(relayHost_);
+    }
+    /**
+     * <code>string relay_host = 4;</code>
+     */
+    private void setRelayHost(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      relayHost_ = value;
+    }
+    /**
+     * <code>string relay_host = 4;</code>
+     */
+    private void clearRelayHost() {
+      
+      relayHost_ = getDefaultInstance().getRelayHost();
+    }
+    /**
+     * <code>string relay_host = 4;</code>
+     */
+    private void setRelayHostBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      relayHost_ = value.toStringUtf8();
+    }
+
+    public static final int RELAY_PORT_FIELD_NUMBER = 5;
+    private java.lang.String relayPort_;
+    /**
+     * <code>string relay_port = 5;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getRelayPort() {
+      return relayPort_;
+    }
+    /**
+     * <code>string relay_port = 5;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRelayPortBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(relayPort_);
+    }
+    /**
+     * <code>string relay_port = 5;</code>
+     */
+    private void setRelayPort(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      relayPort_ = value;
+    }
+    /**
+     * <code>string relay_port = 5;</code>
+     */
+    private void clearRelayPort() {
+      
+      relayPort_ = getDefaultInstance().getRelayPort();
+    }
+    /**
+     * <code>string relay_port = 5;</code>
+     */
+    private void setRelayPortBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      relayPort_ = value.toStringUtf8();
+    }
+
+    public static final int SPVR_HOST_FIELD_NUMBER = 6;
+    private java.lang.String spvrHost_;
+    /**
+     * <code>string spvr_host = 6;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getSpvrHost() {
+      return spvrHost_;
+    }
+    /**
+     * <code>string spvr_host = 6;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSpvrHostBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(spvrHost_);
+    }
+    /**
+     * <code>string spvr_host = 6;</code>
+     */
+    private void setSpvrHost(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      spvrHost_ = value;
+    }
+    /**
+     * <code>string spvr_host = 6;</code>
+     */
+    private void clearSpvrHost() {
+      
+      spvrHost_ = getDefaultInstance().getSpvrHost();
+    }
+    /**
+     * <code>string spvr_host = 6;</code>
+     */
+    private void setSpvrHostBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      spvrHost_ = value.toStringUtf8();
+    }
+
+    public static final int SPVR_PORT_FIELD_NUMBER = 7;
+    private java.lang.String spvrPort_;
+    /**
+     * <code>string spvr_port = 7;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getSpvrPort() {
+      return spvrPort_;
+    }
+    /**
+     * <code>string spvr_port = 7;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSpvrPortBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(spvrPort_);
+    }
+    /**
+     * <code>string spvr_port = 7;</code>
+     */
+    private void setSpvrPort(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      spvrPort_ = value;
+    }
+    /**
+     * <code>string spvr_port = 7;</code>
+     */
+    private void clearSpvrPort() {
+      
+      spvrPort_ = getDefaultInstance().getSpvrPort();
+    }
+    /**
+     * <code>string spvr_port = 7;</code>
+     */
+    private void setSpvrPortBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      spvrPort_ = value.toStringUtf8();
     }
 
     public static tc.TcMessage.SyncPanelInfo parseFrom(
@@ -18595,86 +18908,296 @@ public final class TcMessage {
 
 
       /**
-       * <code>string client_id = 1;</code>
+       * <code>string device_id = 1;</code>
        */
       @java.lang.Override
-      public java.lang.String getClientId() {
-        return instance.getClientId();
+      public java.lang.String getDeviceId() {
+        return instance.getDeviceId();
       }
       /**
-       * <code>string client_id = 1;</code>
+       * <code>string device_id = 1;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getClientIdBytes() {
-        return instance.getClientIdBytes();
+          getDeviceIdBytes() {
+        return instance.getDeviceIdBytes();
       }
       /**
-       * <code>string client_id = 1;</code>
+       * <code>string device_id = 1;</code>
        */
-      public Builder setClientId(
+      public Builder setDeviceId(
           java.lang.String value) {
         copyOnWrite();
-        instance.setClientId(value);
+        instance.setDeviceId(value);
         return this;
       }
       /**
-       * <code>string client_id = 1;</code>
+       * <code>string device_id = 1;</code>
        */
-      public Builder clearClientId() {
+      public Builder clearDeviceId() {
         copyOnWrite();
-        instance.clearClientId();
+        instance.clearDeviceId();
         return this;
       }
       /**
-       * <code>string client_id = 1;</code>
+       * <code>string device_id = 1;</code>
        */
-      public Builder setClientIdBytes(
+      public Builder setDeviceIdBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setClientIdBytes(value);
+        instance.setDeviceIdBytes(value);
         return this;
       }
 
       /**
-       * <code>string client_random_pwd = 2;</code>
+       * <code>string device_random_pwd = 2;</code>
        */
       @java.lang.Override
-      public java.lang.String getClientRandomPwd() {
-        return instance.getClientRandomPwd();
+      public java.lang.String getDeviceRandomPwd() {
+        return instance.getDeviceRandomPwd();
       }
       /**
-       * <code>string client_random_pwd = 2;</code>
+       * <code>string device_random_pwd = 2;</code>
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getClientRandomPwdBytes() {
-        return instance.getClientRandomPwdBytes();
+          getDeviceRandomPwdBytes() {
+        return instance.getDeviceRandomPwdBytes();
       }
       /**
-       * <code>string client_random_pwd = 2;</code>
+       * <code>string device_random_pwd = 2;</code>
        */
-      public Builder setClientRandomPwd(
+      public Builder setDeviceRandomPwd(
           java.lang.String value) {
         copyOnWrite();
-        instance.setClientRandomPwd(value);
+        instance.setDeviceRandomPwd(value);
         return this;
       }
       /**
-       * <code>string client_random_pwd = 2;</code>
+       * <code>string device_random_pwd = 2;</code>
        */
-      public Builder clearClientRandomPwd() {
+      public Builder clearDeviceRandomPwd() {
         copyOnWrite();
-        instance.clearClientRandomPwd();
+        instance.clearDeviceRandomPwd();
         return this;
       }
       /**
-       * <code>string client_random_pwd = 2;</code>
+       * <code>string device_random_pwd = 2;</code>
        */
-      public Builder setClientRandomPwdBytes(
+      public Builder setDeviceRandomPwdBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setClientRandomPwdBytes(value);
+        instance.setDeviceRandomPwdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string device_safety_pwd = 3;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getDeviceSafetyPwd() {
+        return instance.getDeviceSafetyPwd();
+      }
+      /**
+       * <code>string device_safety_pwd = 3;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getDeviceSafetyPwdBytes() {
+        return instance.getDeviceSafetyPwdBytes();
+      }
+      /**
+       * <code>string device_safety_pwd = 3;</code>
+       */
+      public Builder setDeviceSafetyPwd(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setDeviceSafetyPwd(value);
+        return this;
+      }
+      /**
+       * <code>string device_safety_pwd = 3;</code>
+       */
+      public Builder clearDeviceSafetyPwd() {
+        copyOnWrite();
+        instance.clearDeviceSafetyPwd();
+        return this;
+      }
+      /**
+       * <code>string device_safety_pwd = 3;</code>
+       */
+      public Builder setDeviceSafetyPwdBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setDeviceSafetyPwdBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string relay_host = 4;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getRelayHost() {
+        return instance.getRelayHost();
+      }
+      /**
+       * <code>string relay_host = 4;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getRelayHostBytes() {
+        return instance.getRelayHostBytes();
+      }
+      /**
+       * <code>string relay_host = 4;</code>
+       */
+      public Builder setRelayHost(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setRelayHost(value);
+        return this;
+      }
+      /**
+       * <code>string relay_host = 4;</code>
+       */
+      public Builder clearRelayHost() {
+        copyOnWrite();
+        instance.clearRelayHost();
+        return this;
+      }
+      /**
+       * <code>string relay_host = 4;</code>
+       */
+      public Builder setRelayHostBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setRelayHostBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string relay_port = 5;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getRelayPort() {
+        return instance.getRelayPort();
+      }
+      /**
+       * <code>string relay_port = 5;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getRelayPortBytes() {
+        return instance.getRelayPortBytes();
+      }
+      /**
+       * <code>string relay_port = 5;</code>
+       */
+      public Builder setRelayPort(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setRelayPort(value);
+        return this;
+      }
+      /**
+       * <code>string relay_port = 5;</code>
+       */
+      public Builder clearRelayPort() {
+        copyOnWrite();
+        instance.clearRelayPort();
+        return this;
+      }
+      /**
+       * <code>string relay_port = 5;</code>
+       */
+      public Builder setRelayPortBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setRelayPortBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string spvr_host = 6;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getSpvrHost() {
+        return instance.getSpvrHost();
+      }
+      /**
+       * <code>string spvr_host = 6;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getSpvrHostBytes() {
+        return instance.getSpvrHostBytes();
+      }
+      /**
+       * <code>string spvr_host = 6;</code>
+       */
+      public Builder setSpvrHost(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setSpvrHost(value);
+        return this;
+      }
+      /**
+       * <code>string spvr_host = 6;</code>
+       */
+      public Builder clearSpvrHost() {
+        copyOnWrite();
+        instance.clearSpvrHost();
+        return this;
+      }
+      /**
+       * <code>string spvr_host = 6;</code>
+       */
+      public Builder setSpvrHostBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSpvrHostBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string spvr_port = 7;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getSpvrPort() {
+        return instance.getSpvrPort();
+      }
+      /**
+       * <code>string spvr_port = 7;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getSpvrPortBytes() {
+        return instance.getSpvrPortBytes();
+      }
+      /**
+       * <code>string spvr_port = 7;</code>
+       */
+      public Builder setSpvrPort(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setSpvrPort(value);
+        return this;
+      }
+      /**
+       * <code>string spvr_port = 7;</code>
+       */
+      public Builder clearSpvrPort() {
+        copyOnWrite();
+        instance.clearSpvrPort();
+        return this;
+      }
+      /**
+       * <code>string spvr_port = 7;</code>
+       */
+      public Builder setSpvrPortBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSpvrPortBytes(value);
         return this;
       }
 
@@ -18694,12 +19217,17 @@ public final class TcMessage {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "clientId_",
-              "clientRandomPwd_",
+              "deviceId_",
+              "deviceRandomPwd_",
+              "deviceSafetyPwd_",
+              "relayHost_",
+              "relayPort_",
+              "spvrHost_",
+              "spvrPort_",
             };
             java.lang.String info =
-                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
-                "";
+                "\u0000\u0007\u0000\u0000\u0001\u0007\u0007\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+                "\u0003\u0208\u0004\u0208\u0005\u0208\u0006\u0208\u0007\u0208";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -18935,16 +19463,6 @@ public final class TcMessage {
   public interface MessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:tc.Message)
       com.google.protobuf.MessageLiteOrBuilder {
-
-    /**
-     * <code>string client_id = 2;</code>
-     */
-    java.lang.String getClientId();
-    /**
-     * <code>string client_id = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getClientIdBytes();
 
     /**
      * <code>string device_id = 3;</code>
@@ -19390,6 +19908,15 @@ public final class TcMessage {
         getFileConnTokenBytes();
 
     /**
+     * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+     */
+    boolean hasFileTransDataPacketResponse();
+    /**
+     * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+     */
+    tc.TcFileTransfer.FileTransDataPacketResponse getFileTransDataPacketResponse();
+
+    /**
      * <pre>
      * file transfer end
      * </pre>
@@ -19424,7 +19951,6 @@ public final class TcMessage {
       // @@protoc_insertion_point(message_implements:tc.Message)
       MessageOrBuilder {
     private Message() {
-      clientId_ = "";
       deviceId_ = "";
       streamId_ = "";
       respMessage_ = "";
@@ -19433,54 +19959,6 @@ public final class TcMessage {
       onlineGames_ = emptyProtobufList();
       fileConnToken_ = "";
     }
-    public static final int CLIENT_ID_FIELD_NUMBER = 2;
-    private java.lang.String clientId_;
-    /**
-     * <code>string client_id = 2;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getClientId() {
-      return clientId_;
-    }
-    /**
-     * <code>string client_id = 2;</code>
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getClientIdBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(clientId_);
-    }
-    /**
-     * <code>string client_id = 2;</code>
-     */
-    private void setClientId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      clientId_ = value;
-    }
-    /**
-     * <code>string client_id = 2;</code>
-     */
-    private void clearClientId() {
-      
-      clientId_ = getDefaultInstance().getClientId();
-    }
-    /**
-     * <code>string client_id = 2;</code>
-     */
-    private void setClientIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      clientId_ = value.toStringUtf8();
-    }
-
     public static final int DEVICE_ID_FIELD_NUMBER = 3;
     private java.lang.String deviceId_;
     /**
@@ -22170,6 +22648,64 @@ public final class TcMessage {
       fileConnToken_ = value.toStringUtf8();
     }
 
+    public static final int FILE_TRANS_DATA_PACKET_RESPONSE_FIELD_NUMBER = 328;
+    private tc.TcFileTransfer.FileTransDataPacketResponse fileTransDataPacketResponse_;
+    /**
+     * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+     */
+    @java.lang.Override
+    public boolean hasFileTransDataPacketResponse() {
+      return fileTransDataPacketResponse_ != null;
+    }
+    /**
+     * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+     */
+    @java.lang.Override
+    public tc.TcFileTransfer.FileTransDataPacketResponse getFileTransDataPacketResponse() {
+      return fileTransDataPacketResponse_ == null ? tc.TcFileTransfer.FileTransDataPacketResponse.getDefaultInstance() : fileTransDataPacketResponse_;
+    }
+    /**
+     * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+     */
+    private void setFileTransDataPacketResponse(tc.TcFileTransfer.FileTransDataPacketResponse value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      fileTransDataPacketResponse_ = value;
+      
+      }
+    /**
+     * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+     */
+    private void setFileTransDataPacketResponse(
+        tc.TcFileTransfer.FileTransDataPacketResponse.Builder builderForValue) {
+      fileTransDataPacketResponse_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFileTransDataPacketResponse(tc.TcFileTransfer.FileTransDataPacketResponse value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (fileTransDataPacketResponse_ != null &&
+          fileTransDataPacketResponse_ != tc.TcFileTransfer.FileTransDataPacketResponse.getDefaultInstance()) {
+        fileTransDataPacketResponse_ =
+          tc.TcFileTransfer.FileTransDataPacketResponse.newBuilder(fileTransDataPacketResponse_).mergeFrom(value).buildPartial();
+      } else {
+        fileTransDataPacketResponse_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+     */
+    private void clearFileTransDataPacketResponse() {  fileTransDataPacketResponse_ = null;
+      
+    }
+
     public static final int FILE_TRANS_SAVE_FILE_EXCEPTION_FIELD_NUMBER = 330;
     private tc.TcFileTransfer.FileTransSaveFileException fileTransSaveFileException_;
     /**
@@ -22404,48 +22940,6 @@ public final class TcMessage {
         super(DEFAULT_INSTANCE);
       }
 
-
-      /**
-       * <code>string client_id = 2;</code>
-       */
-      @java.lang.Override
-      public java.lang.String getClientId() {
-        return instance.getClientId();
-      }
-      /**
-       * <code>string client_id = 2;</code>
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getClientIdBytes() {
-        return instance.getClientIdBytes();
-      }
-      /**
-       * <code>string client_id = 2;</code>
-       */
-      public Builder setClientId(
-          java.lang.String value) {
-        copyOnWrite();
-        instance.setClientId(value);
-        return this;
-      }
-      /**
-       * <code>string client_id = 2;</code>
-       */
-      public Builder clearClientId() {
-        copyOnWrite();
-        instance.clearClientId();
-        return this;
-      }
-      /**
-       * <code>string client_id = 2;</code>
-       */
-      public Builder setClientIdBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setClientIdBytes(value);
-        return this;
-      }
 
       /**
        * <code>string device_id = 3;</code>
@@ -24678,6 +25172,53 @@ public final class TcMessage {
       }
 
       /**
+       * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+       */
+      @java.lang.Override
+      public boolean hasFileTransDataPacketResponse() {
+        return instance.hasFileTransDataPacketResponse();
+      }
+      /**
+       * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+       */
+      @java.lang.Override
+      public tc.TcFileTransfer.FileTransDataPacketResponse getFileTransDataPacketResponse() {
+        return instance.getFileTransDataPacketResponse();
+      }
+      /**
+       * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+       */
+      public Builder setFileTransDataPacketResponse(tc.TcFileTransfer.FileTransDataPacketResponse value) {
+        copyOnWrite();
+        instance.setFileTransDataPacketResponse(value);
+        return this;
+        }
+      /**
+       * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+       */
+      public Builder setFileTransDataPacketResponse(
+          tc.TcFileTransfer.FileTransDataPacketResponse.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFileTransDataPacketResponse(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+       */
+      public Builder mergeFileTransDataPacketResponse(tc.TcFileTransfer.FileTransDataPacketResponse value) {
+        copyOnWrite();
+        instance.mergeFileTransDataPacketResponse(value);
+        return this;
+      }
+      /**
+       * <code>.tc.FileTransDataPacketResponse file_trans_data_packet_response = 328;</code>
+       */
+      public Builder clearFileTransDataPacketResponse() {  copyOnWrite();
+        instance.clearFileTransDataPacketResponse();
+        return this;
+      }
+
+      /**
        * <pre>
        * file transfer end
        * </pre>
@@ -24811,7 +25352,6 @@ public final class TcMessage {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "clientId_",
               "deviceId_",
               "streamId_",
               "sequence_",
@@ -24861,16 +25401,17 @@ public final class TcMessage {
               "fileTransDirectControl_",
               "fileTransDataPacket_",
               "fileConnToken_",
+              "fileTransDataPacketResponse_",
               "fileTransSaveFileException_",
               "reqCtrlAltDelete_",
             };
             java.lang.String info =
-                "\u00003\u0000\u0000\u0002\u01543\u0000\u0001\u0000\u0002\u0208\u0003\u0208\u0004" +
-                "\u0208\u0005\u0003\u0006\u0003\u0007\f\b\u0208\t\u0208\n\f\u0014\u0003\u001e\u0208" +
-                "(\t)\t2\t<\t=\tF\tP\tZ\td\tn\tx\t\u0082\t\u008c\t\u0096\t\u00a0\u001b\u00aa\t\u00b4" +
-                "\t\u00be\t\u00c8\t\u00d2\t\u00dc\t\u00e6\t\u00f0\t\u00fa\t\u0104\t\u010e\t\u0118" +
-                "\t\u011d\t\u0122\t\u0127\t\u012c\t\u0131\t\u0136\t\u013b\t\u0140\t\u0145\t\u0146" +
-                "\t\u0147\u0208\u014a\t\u0154\t";
+                "\u00003\u0000\u0000\u0003\u01543\u0000\u0001\u0000\u0003\u0208\u0004\u0208\u0005" +
+                "\u0003\u0006\u0003\u0007\f\b\u0208\t\u0208\n\f\u0014\u0003\u001e\u0208(\t)\t2\t<" +
+                "\t=\tF\tP\tZ\td\tn\tx\t\u0082\t\u008c\t\u0096\t\u00a0\u001b\u00aa\t\u00b4\t\u00be" +
+                "\t\u00c8\t\u00d2\t\u00dc\t\u00e6\t\u00f0\t\u00fa\t\u0104\t\u010e\t\u0118\t\u011d" +
+                "\t\u0122\t\u0127\t\u012c\t\u0131\t\u0136\t\u013b\t\u0140\t\u0145\t\u0146\t\u0147" +
+                "\u0208\u0148\t\u014a\t\u0154\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

@@ -16,3 +16,6 @@
 [submodule "app/src/main/cpp/tc_opus_codec_new"]
 	path = app/src/main/cpp/tc_opus_codec_new
 	url = git@github.com:RGAA-Software/tc_opus_codec_new.git
+[submodule "app/src/main/cpp/tc_relay_client"]
+	path = app/src/main/cpp/tc_relay_client
+	url = git@github.com:RGAA-Software/tc_relay_client.git

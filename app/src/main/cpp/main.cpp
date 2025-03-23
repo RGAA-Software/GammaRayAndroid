@@ -53,7 +53,7 @@ Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl,
             return;
         }
 
-        const CaptureMonitorInfo& cap_mon_info = g_app->GetCapMonitorInfo();
+        const SdkCaptureMonitorInfo& cap_mon_info = g_app->GetCapMonitorInfo();
         if (cap_mon_info.frame_width_ <= 0 || cap_mon_info.frame_height_ <= 0) {
             return;
         }
