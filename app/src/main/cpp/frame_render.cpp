@@ -6,7 +6,7 @@
 
 #include "tc_common_new/log.h"
 #include "tc_common_new/message_notifier.h"
-#include "tc_common_new/time_ext.h"
+#include "tc_common_new/time_util.h"
 #include "tc_client_sdk_new/gl/raw_image.h"
 #include "app_context.h"
 #include "sdk_messages.h"
@@ -241,7 +241,7 @@ namespace tc
             auto y = current_raw_image_->Data();
             auto u = y + width * height;
             auto v = u + width * height / 4;
-            auto beg = TimeExt::GetCurrentTimestamp();
+            auto beg = TimeUtil::GetCurrentTimestamp();
             glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_2D, img_textures_[0]);
             if (need_init_texture_) {
@@ -274,7 +274,7 @@ namespace tc
                                 GL_UNSIGNED_BYTE, v);
             }
 
-            auto end = TimeExt::GetCurrentTimestamp();
+            auto end = TimeUtil::GetCurrentTimestamp();
             LOGI("upload to gpu used: {}ms", (end-beg));
         }
         else if (decoder_render_type_ == DecoderRenderType::kMediaCodecSurface) {
