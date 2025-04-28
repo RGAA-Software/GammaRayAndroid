@@ -77,17 +77,17 @@ Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl,
         env->CallVoidMethod(g_java_app, g_cbk_cursor_methodID, x, y, hotspot_x, hotspot_y, width, height, visible, cursorArray);
     });
 
-    g_app->Init(ThunderSdkParams {
+    // todo: Params
+    g_app->Init(std::make_shared<ThunderSdkParams>(ThunderSdkParams{
             .ssl_ = (bool)ssl,
             .enable_audio_ = (bool) enable_audio,
             .enable_video_ = (bool) enable_video,
             .enable_controller_ = (bool)enable_controller,
             .ip_ = ip_str,
             .port_ = port,
-            .req_path_ = path_str,
             .device_id_ = device_id_str,
             .stream_id_ = stream_id_str,
-    }, env, surface, (bool)hw_codec, (bool)use_oes, oes_tex_id);
+    }), env, surface, (bool)hw_codec, (bool)use_oes, oes_tex_id);
 
     env->ReleaseStringUTFChars(ip, ip_str);
     env->ReleaseStringUTFChars(path, path_str);

@@ -29,7 +29,7 @@ namespace tc
         Application(const JavaVM* vm);
         std::shared_ptr<EnvWrapper> ObtainEnvWrapper();
 
-        void Init(const ThunderSdkParams& params, JNIEnv* env, jobject surface, bool hw_codec, bool use_oes, int oes_tex_id);
+        void Init(const std::shared_ptr<ThunderSdkParams>& params, JNIEnv* env, jobject surface, bool hw_codec, bool use_oes, int oes_tex_id);
         void Start();
         void Exit();
 
@@ -66,7 +66,7 @@ namespace tc
         SdkCaptureMonitorInfo cap_mon_info_;
 
         Statistics* statistics_ = nullptr;
-        ThunderSdkParams sdk_params_;
+        std::shared_ptr<ThunderSdkParams> sdk_params_ = nullptr;
 
     };
 

@@ -27,7 +27,7 @@ namespace tc
         return EnvWrapper::Make(vm_);
     }
 
-    void Application::Init(const ThunderSdkParams& params, JNIEnv* env, jobject surface, bool hw_codec, bool use_oes, int oes_tex_id) {
+    void Application::Init(const std::shared_ptr<ThunderSdkParams>& params, JNIEnv* env, jobject surface, bool hw_codec, bool use_oes, int oes_tex_id) {
         sdk_params_ = params;
         app_context_ = AppContext::Make();
         statistics_ = Statistics::Instance();
@@ -45,7 +45,7 @@ namespace tc
             }
         }();
 
-        if (params.enable_video_) {
+        if (sdk_params_->enable_video_) {
             frame_render_ = FrameRender::Make(app_context_);
             frame_render_->Init(env, surface, drt, oes_tex_id);
         }
@@ -156,15 +156,15 @@ namespace tc
                                        int32_t thumb_lx, int32_t thumb_ly, int32_t thumb_rx, int32_t thumb_ry) {
         if (thunder_sdk_) {
             auto msg = ProtoMessageMaker::MakeGamepadState(buttons, left_trigger, right_trigger, thumb_lx,
-                                                           thumb_ly, thumb_rx, thumb_ry, sdk_params_.device_id_, sdk_params_.stream_id_);
-            thunder_sdk_->PostBinaryMessage(msg);
+                                                           thumb_ly, thumb_rx, thumb_ry, sdk_params_->device_id_, sdk_params_->stream_id_);
+            thunder_sdk_->PostMediaMessage(msg);
         }
     }
 
     void Application::SendMouseEvent(int32_t event, float x_ratio, float y_ratio) {
         if (thunder_sdk_) {
-            auto msg = ProtoMessageMaker::MakeMouseEventFromTouch(event, cap_mon_info_.mon_name_, x_ratio, y_ratio, sdk_params_.device_id_, sdk_params_.stream_id_);
-            thunder_sdk_->PostBinaryMessage(msg);
+            auto msg = ProtoMessageMaker::MakeMouseEventFromTouch(event, cap_mon_info_.mon_name_, x_ratio, y_ratio, sdk_params_->device_id_, sdk_params_->stream_id_);
+            thunder_sdk_->PostMediaMessage(msg);
         }
     }
 

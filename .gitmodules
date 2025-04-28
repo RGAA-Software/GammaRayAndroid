@@ -19,3 +19,6 @@
 [submodule "app/src/main/cpp/tc_relay_client"]
 	path = app/src/main/cpp/tc_relay_client
 	url = git@github.com:RGAA-Software/tc_relay_client.git
+[submodule "app/src/main/cpp/tc_server_protocol"]
+	path = app/src/main/cpp/tc_server_protocol
+	url = git@github.com:RGAA-Software/tc_protocol.git
