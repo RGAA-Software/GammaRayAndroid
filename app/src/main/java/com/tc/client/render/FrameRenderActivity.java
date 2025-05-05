@@ -33,6 +33,7 @@ public class FrameRenderActivity extends Activity {
     private String mIp;
     private int mPort;
     private String mStreamId;
+    private String mRemoteDeviceId;
     private AppContext appContext;
     private PowerManager.WakeLock mWakeLock;
 
@@ -47,10 +48,11 @@ public class FrameRenderActivity extends Activity {
         mIp = getIntent().getStringExtra("ip");
         mPort = getIntent().getIntExtra("port", 20371);
         mStreamId = getIntent().getStringExtra("streamId");
+        mRemoteDeviceId = getIntent().getStringExtra("remoteDeviceId");
 
         appContext = ((App)getApplication()).getAppContext();
 
-        mThunderApp = new ThunderApp(mIp, mPort, true, true, true, mStreamId);
+        mThunderApp = new ThunderApp(mIp, mPort, true, true, true, mStreamId, mRemoteDeviceId);
 
         mFrameRenderView = findViewById(R.id.id_frame_render_view);
         mFrameRenderView.init(mThunderApp);
@@ -127,7 +129,9 @@ public class FrameRenderActivity extends Activity {
             screenWidth += ViewUtil.getNavigationBarHeight(this);
         }
 
-        float scale = screenHeight*1.0f / height;
+        float xScale = screenHeight*1.0f / height;
+        float yScale = screenWidth*1.0f / width;
+        float scale = Math.min(xScale, yScale);
         int targetWidth = (int) (scale * width);
         int offsetX = (int) ((screenWidth - targetWidth)/2);
         mFrameRenderView.getLayoutParams().width = (int) targetWidth;

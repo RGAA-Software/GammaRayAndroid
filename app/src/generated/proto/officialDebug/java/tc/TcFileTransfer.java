@@ -7774,6 +7774,10 @@ public final class TcFileTransfer {
        * <code>kDownload = 8;</code>
        */
       kDownload(8),
+      /**
+       * <code>kRecursiveGetFilesList = 9;</code>
+       */
+      kRecursiveGetFilesList(9),
       UNRECOGNIZED(-1),
       ;
 
@@ -7813,6 +7817,10 @@ public final class TcFileTransfer {
        * <code>kDownload = 8;</code>
        */
       public static final int kDownload_VALUE = 8;
+      /**
+       * <code>kRecursiveGetFilesList = 9;</code>
+       */
+      public static final int kRecursiveGetFilesList_VALUE = 9;
 
 
       @java.lang.Override
@@ -7843,6 +7851,7 @@ public final class TcFileTransfer {
           case 6: return kCancelDownload;
           case 7: return kCancelUpload;
           case 8: return kDownload;
+          case 9: return kRecursiveGetFilesList;
           default: return null;
         }
       }

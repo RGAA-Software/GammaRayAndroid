@@ -21,7 +21,7 @@ public class ScanInfo {
 
     var wsServerPort: Int = 0
 
-    var udpServerPort: Int = 0
+    //var udpServerPort: Int = 0
 
     var streamWsPort: Int = 0
 
@@ -31,7 +31,7 @@ public class ScanInfo {
     var targetIpType: String = ""
 
     fun valid(): Boolean {
-        return sysUniqueId.isNotEmpty() && httpServerPort > 0 && wsServerPort > 0 && udpServerPort > 0;
+        return sysUniqueId.isNotEmpty() && httpServerPort > 0 && wsServerPort > 0
     }
 
     fun canConnect(): Boolean {
@@ -47,7 +47,6 @@ public class ScanInfo {
         s.serverVersion = ""
         s.httpServerPort = this.httpServerPort
         s.wsServerPort = this.wsServerPort
-        s.udpCastServerPort = this.udpServerPort
         s.streamWsPort = this.streamWsPort
         s.coverUrl = ""
         return s;
@@ -63,7 +62,7 @@ public class ScanInfo {
     }
 
     override fun toString(): String {
-        return "ScanInfo(sysUniqueId='$sysUniqueId', httpServerPort=$httpServerPort, wsServerPort=$wsServerPort, udpServerPort=$udpServerPort, ipInfo=$ipInfo)"
+        return "ScanInfo(sysUniqueId='$sysUniqueId', httpServerPort=$httpServerPort, wsServerPort=$wsServerPort, ipInfo=$ipInfo)"
     }
 
 }

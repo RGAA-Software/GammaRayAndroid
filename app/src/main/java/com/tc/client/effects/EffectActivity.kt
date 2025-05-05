@@ -28,6 +28,7 @@ class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks
     private lateinit var srvIp: String
     private var srvPort: Int = 0
     private lateinit var streamId: String
+    private lateinit var remoteDeviceId: String
     private lateinit var appContext: AppContext
     private lateinit var thunderApp: ThunderApp
     private var renderTimer: Timer = Timer()
@@ -51,12 +52,13 @@ class EffectActivity : FragmentActivity(),  AndroidFragmentApplication.Callbacks
         srvIp = intent.getStringExtra("ip")!!
         srvPort = intent.getIntExtra("port", 20371)
         streamId = intent.getStringExtra("streamId")!!
+        remoteDeviceId = intent.getStringExtra("remoteDeviceId")!!
         val effectIdx = intent.getIntExtra("idx", 1)
 
         appContext = (application as App).appContext
 
-        thunderApp = ThunderApp(srvIp, srvPort, true, false, false, streamId)
-        thunderApp.init(false, null, false, false, 0, Settings.getInstance().deviceId, streamId);
+        thunderApp = ThunderApp(srvIp, srvPort, true, false, false, streamId, remoteDeviceId)
+        thunderApp.init(false, null, false, false, 0, Settings.getInstance().deviceId, streamId)
         thunderApp.start()
 
         effectFragment = EffectFragment(thunderApp, effectIdx)

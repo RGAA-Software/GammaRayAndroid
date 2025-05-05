@@ -382,6 +382,40 @@ public final class TcMessage {
      * <code>kReqCtrlAltDelete = 330;</code>
      */
     kReqCtrlAltDelete(330),
+    /**
+     * <pre>
+     * client -&gt; render update desktop
+     * </pre>
+     *
+     * <code>kUpdateDesktop = 340;</code>
+     */
+    kUpdateDesktop(340),
+    /**
+     * <pre>
+     * </pre>
+     *
+     * <code>kClipboardReqBuffer = 350;</code>
+     */
+    kClipboardReqBuffer(350),
+    /**
+     * <code>kClipboardRespBuffer = 360;</code>
+     */
+    kClipboardRespBuffer(360),
+    /**
+     * <pre>
+     * </pre>
+     *
+     * <code>kSigOfferSdpMessage = 370;</code>
+     */
+    kSigOfferSdpMessage(370),
+    /**
+     * <code>kSigAnswerSdpMessage = 380;</code>
+     */
+    kSigAnswerSdpMessage(380),
+    /**
+     * <code>kSigIceMessage = 390;</code>
+     */
+    kSigIceMessage(390),
     UNRECOGNIZED(-1),
     ;
 
@@ -641,6 +675,40 @@ public final class TcMessage {
      * <code>kReqCtrlAltDelete = 330;</code>
      */
     public static final int kReqCtrlAltDelete_VALUE = 330;
+    /**
+     * <pre>
+     * client -&gt; render update desktop
+     * </pre>
+     *
+     * <code>kUpdateDesktop = 340;</code>
+     */
+    public static final int kUpdateDesktop_VALUE = 340;
+    /**
+     * <pre>
+     * </pre>
+     *
+     * <code>kClipboardReqBuffer = 350;</code>
+     */
+    public static final int kClipboardReqBuffer_VALUE = 350;
+    /**
+     * <code>kClipboardRespBuffer = 360;</code>
+     */
+    public static final int kClipboardRespBuffer_VALUE = 360;
+    /**
+     * <pre>
+     * </pre>
+     *
+     * <code>kSigOfferSdpMessage = 370;</code>
+     */
+    public static final int kSigOfferSdpMessage_VALUE = 370;
+    /**
+     * <code>kSigAnswerSdpMessage = 380;</code>
+     */
+    public static final int kSigAnswerSdpMessage_VALUE = 380;
+    /**
+     * <code>kSigIceMessage = 390;</code>
+     */
+    public static final int kSigIceMessage_VALUE = 390;
 
 
     @java.lang.Override
@@ -704,6 +772,12 @@ public final class TcMessage {
         case 312: return kFileTransDataPacketResponse;
         case 320: return kFileTransSaveFileException;
         case 330: return kReqCtrlAltDelete;
+        case 340: return kUpdateDesktop;
+        case 350: return kClipboardReqBuffer;
+        case 360: return kClipboardRespBuffer;
+        case 370: return kSigOfferSdpMessage;
+        case 380: return kSigAnswerSdpMessage;
+        case 390: return kSigIceMessage;
         default: return null;
       }
     }
@@ -1647,6 +1721,111 @@ public final class TcMessage {
     }
 
     // @@protoc_insertion_point(enum_scope:tc.GamepadButton)
+  }
+
+  /**
+   * Protobuf enum {@code tc.ClipboardType}
+   */
+  public enum ClipboardType
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>kClipboardText = 0;</code>
+     */
+    kClipboardText(0),
+    /**
+     * <code>kClipboardImage = 1;</code>
+     */
+    kClipboardImage(1),
+    /**
+     * <code>kClipboardPixmap = 2;</code>
+     */
+    kClipboardPixmap(2),
+    /**
+     * <code>kClipboardFiles = 3;</code>
+     */
+    kClipboardFiles(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>kClipboardText = 0;</code>
+     */
+    public static final int kClipboardText_VALUE = 0;
+    /**
+     * <code>kClipboardImage = 1;</code>
+     */
+    public static final int kClipboardImage_VALUE = 1;
+    /**
+     * <code>kClipboardPixmap = 2;</code>
+     */
+    public static final int kClipboardPixmap_VALUE = 2;
+    /**
+     * <code>kClipboardFiles = 3;</code>
+     */
+    public static final int kClipboardFiles_VALUE = 3;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ClipboardType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static ClipboardType forNumber(int value) {
+      switch (value) {
+        case 0: return kClipboardText;
+        case 1: return kClipboardImage;
+        case 2: return kClipboardPixmap;
+        case 3: return kClipboardFiles;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ClipboardType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ClipboardType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ClipboardType>() {
+            @java.lang.Override
+            public ClipboardType findValueByNumber(int number) {
+              return ClipboardType.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return ClipboardTypeVerifier.INSTANCE;
+    }
+
+    private static final class ClipboardTypeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new ClipboardTypeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return ClipboardType.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private ClipboardType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:tc.ClipboardType)
   }
 
   public interface AckOrBuilder extends
@@ -2726,6 +2905,15 @@ public final class TcMessage {
      * <code>repeated .tc.MonitorResolution resolutions = 2;</code>
      */
     int getResolutionsCount();
+
+    /**
+     * <pre>
+     * primary monitor   //to do:尚未生效
+     * </pre>
+     *
+     * <code>bool primary = 3;</code>
+     */
+    boolean getPrimary();
   }
   /**
    * Protobuf type {@code tc.MonitorInfo}
@@ -2908,6 +3096,42 @@ public final class TcMessage {
     private void removeResolutions(int index) {
       ensureResolutionsIsMutable();
       resolutions_.remove(index);
+    }
+
+    public static final int PRIMARY_FIELD_NUMBER = 3;
+    private boolean primary_;
+    /**
+     * <pre>
+     * primary monitor   //to do:尚未生效
+     * </pre>
+     *
+     * <code>bool primary = 3;</code>
+     */
+    @java.lang.Override
+    public boolean getPrimary() {
+      return primary_;
+    }
+    /**
+     * <pre>
+     * primary monitor   //to do:尚未生效
+     * </pre>
+     *
+     * <code>bool primary = 3;</code>
+     */
+    private void setPrimary(boolean value) {
+      
+      primary_ = value;
+    }
+    /**
+     * <pre>
+     * primary monitor   //to do:尚未生效
+     * </pre>
+     *
+     * <code>bool primary = 3;</code>
+     */
+    private void clearPrimary() {
+      
+      primary_ = false;
     }
 
     public static tc.TcMessage.MonitorInfo parseFrom(
@@ -3147,6 +3371,42 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <pre>
+       * primary monitor   //to do:尚未生效
+       * </pre>
+       *
+       * <code>bool primary = 3;</code>
+       */
+      @java.lang.Override
+      public boolean getPrimary() {
+        return instance.getPrimary();
+      }
+      /**
+       * <pre>
+       * primary monitor   //to do:尚未生效
+       * </pre>
+       *
+       * <code>bool primary = 3;</code>
+       */
+      public Builder setPrimary(boolean value) {
+        copyOnWrite();
+        instance.setPrimary(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * primary monitor   //to do:尚未生效
+       * </pre>
+       *
+       * <code>bool primary = 3;</code>
+       */
+      public Builder clearPrimary() {
+        copyOnWrite();
+        instance.clearPrimary();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.MonitorInfo)
     }
     @java.lang.Override
@@ -3166,10 +3426,11 @@ public final class TcMessage {
               "name_",
               "resolutions_",
               tc.TcMessage.MonitorResolution.class,
+              "primary_",
             };
             java.lang.String info =
-                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u0208\u0002\u001b" +
-                "";
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0001\u0000\u0001\u0208\u0002\u001b" +
+                "\u0003\u0007";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -3228,18 +3489,18 @@ public final class TcMessage {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
     java.util.List<tc.TcMessage.MonitorInfo> 
-        getMonitorInfoList();
+        getMonitorsInfoList();
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    tc.TcMessage.MonitorInfo getMonitorInfo(int index);
+    tc.TcMessage.MonitorInfo getMonitorsInfo(int index);
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    int getMonitorInfoCount();
+    int getMonitorsInfoCount();
 
     /**
      * <code>string capturing_monitor_name = 2;</code>
@@ -3260,130 +3521,130 @@ public final class TcMessage {
       // @@protoc_insertion_point(message_implements:tc.ServerConfiguration)
       ServerConfigurationOrBuilder {
     private ServerConfiguration() {
-      monitorInfo_ = emptyProtobufList();
+      monitorsInfo_ = emptyProtobufList();
       capturingMonitorName_ = "";
     }
-    public static final int MONITOR_INFO_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.MonitorInfo> monitorInfo_;
+    public static final int MONITORS_INFO_FIELD_NUMBER = 1;
+    private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.MonitorInfo> monitorsInfo_;
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<tc.TcMessage.MonitorInfo> getMonitorInfoList() {
-      return monitorInfo_;
+    public java.util.List<tc.TcMessage.MonitorInfo> getMonitorsInfoList() {
+      return monitorsInfo_;
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
     public java.util.List<? extends tc.TcMessage.MonitorInfoOrBuilder> 
-        getMonitorInfoOrBuilderList() {
-      return monitorInfo_;
+        getMonitorsInfoOrBuilderList() {
+      return monitorsInfo_;
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
     @java.lang.Override
-    public int getMonitorInfoCount() {
-      return monitorInfo_.size();
+    public int getMonitorsInfoCount() {
+      return monitorsInfo_.size();
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
     @java.lang.Override
-    public tc.TcMessage.MonitorInfo getMonitorInfo(int index) {
-      return monitorInfo_.get(index);
+    public tc.TcMessage.MonitorInfo getMonitorsInfo(int index) {
+      return monitorsInfo_.get(index);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    public tc.TcMessage.MonitorInfoOrBuilder getMonitorInfoOrBuilder(
+    public tc.TcMessage.MonitorInfoOrBuilder getMonitorsInfoOrBuilder(
         int index) {
-      return monitorInfo_.get(index);
+      return monitorsInfo_.get(index);
     }
-    private void ensureMonitorInfoIsMutable() {
-      if (!monitorInfo_.isModifiable()) {
-        monitorInfo_ =
-            com.google.protobuf.GeneratedMessageLite.mutableCopy(monitorInfo_);
+    private void ensureMonitorsInfoIsMutable() {
+      if (!monitorsInfo_.isModifiable()) {
+        monitorsInfo_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(monitorsInfo_);
        }
     }
 
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    private void setMonitorInfo(
+    private void setMonitorsInfo(
         int index, tc.TcMessage.MonitorInfo value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ensureMonitorInfoIsMutable();
-      monitorInfo_.set(index, value);
+      ensureMonitorsInfoIsMutable();
+      monitorsInfo_.set(index, value);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    private void setMonitorInfo(
+    private void setMonitorsInfo(
         int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
-      ensureMonitorInfoIsMutable();
-      monitorInfo_.set(index, builderForValue.build());
+      ensureMonitorsInfoIsMutable();
+      monitorsInfo_.set(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    private void addMonitorInfo(tc.TcMessage.MonitorInfo value) {
+    private void addMonitorsInfo(tc.TcMessage.MonitorInfo value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ensureMonitorInfoIsMutable();
-      monitorInfo_.add(value);
+      ensureMonitorsInfoIsMutable();
+      monitorsInfo_.add(value);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    private void addMonitorInfo(
+    private void addMonitorsInfo(
         int index, tc.TcMessage.MonitorInfo value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ensureMonitorInfoIsMutable();
-      monitorInfo_.add(index, value);
+      ensureMonitorsInfoIsMutable();
+      monitorsInfo_.add(index, value);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    private void addMonitorInfo(
+    private void addMonitorsInfo(
         tc.TcMessage.MonitorInfo.Builder builderForValue) {
-      ensureMonitorInfoIsMutable();
-      monitorInfo_.add(builderForValue.build());
+      ensureMonitorsInfoIsMutable();
+      monitorsInfo_.add(builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    private void addMonitorInfo(
+    private void addMonitorsInfo(
         int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
-      ensureMonitorInfoIsMutable();
-      monitorInfo_.add(index, builderForValue.build());
+      ensureMonitorsInfoIsMutable();
+      monitorsInfo_.add(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    private void addAllMonitorInfo(
+    private void addAllMonitorsInfo(
         java.lang.Iterable<? extends tc.TcMessage.MonitorInfo> values) {
-      ensureMonitorInfoIsMutable();
+      ensureMonitorsInfoIsMutable();
       com.google.protobuf.AbstractMessageLite.addAll(
-          values, monitorInfo_);
+          values, monitorsInfo_);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    private void clearMonitorInfo() {
-      monitorInfo_ = emptyProtobufList();
+    private void clearMonitorsInfo() {
+      monitorsInfo_ = emptyProtobufList();
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+     * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
      */
-    private void removeMonitorInfo(int index) {
-      ensureMonitorInfoIsMutable();
-      monitorInfo_.remove(index);
+    private void removeMonitorsInfo(int index) {
+      ensureMonitorsInfoIsMutable();
+      monitorsInfo_.remove(index);
     }
 
     public static final int CAPTURING_MONITOR_NAME_FIELD_NUMBER = 2;
@@ -3530,102 +3791,102 @@ public final class TcMessage {
 
 
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
       @java.lang.Override
-      public java.util.List<tc.TcMessage.MonitorInfo> getMonitorInfoList() {
+      public java.util.List<tc.TcMessage.MonitorInfo> getMonitorsInfoList() {
         return java.util.Collections.unmodifiableList(
-            instance.getMonitorInfoList());
+            instance.getMonitorsInfoList());
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
       @java.lang.Override
-      public int getMonitorInfoCount() {
-        return instance.getMonitorInfoCount();
+      public int getMonitorsInfoCount() {
+        return instance.getMonitorsInfoCount();
       }/**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
       @java.lang.Override
-      public tc.TcMessage.MonitorInfo getMonitorInfo(int index) {
-        return instance.getMonitorInfo(index);
+      public tc.TcMessage.MonitorInfo getMonitorsInfo(int index) {
+        return instance.getMonitorsInfo(index);
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
-      public Builder setMonitorInfo(
+      public Builder setMonitorsInfo(
           int index, tc.TcMessage.MonitorInfo value) {
         copyOnWrite();
-        instance.setMonitorInfo(index, value);
+        instance.setMonitorsInfo(index, value);
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
-      public Builder setMonitorInfo(
+      public Builder setMonitorsInfo(
           int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.setMonitorInfo(index, builderForValue);
+        instance.setMonitorsInfo(index, builderForValue);
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
-      public Builder addMonitorInfo(tc.TcMessage.MonitorInfo value) {
+      public Builder addMonitorsInfo(tc.TcMessage.MonitorInfo value) {
         copyOnWrite();
-        instance.addMonitorInfo(value);
+        instance.addMonitorsInfo(value);
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
-      public Builder addMonitorInfo(
+      public Builder addMonitorsInfo(
           int index, tc.TcMessage.MonitorInfo value) {
         copyOnWrite();
-        instance.addMonitorInfo(index, value);
+        instance.addMonitorsInfo(index, value);
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
-      public Builder addMonitorInfo(
+      public Builder addMonitorsInfo(
           tc.TcMessage.MonitorInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.addMonitorInfo(builderForValue);
+        instance.addMonitorsInfo(builderForValue);
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
-      public Builder addMonitorInfo(
+      public Builder addMonitorsInfo(
           int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.addMonitorInfo(index, builderForValue);
+        instance.addMonitorsInfo(index, builderForValue);
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
-      public Builder addAllMonitorInfo(
+      public Builder addAllMonitorsInfo(
           java.lang.Iterable<? extends tc.TcMessage.MonitorInfo> values) {
         copyOnWrite();
-        instance.addAllMonitorInfo(values);
+        instance.addAllMonitorsInfo(values);
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
-      public Builder clearMonitorInfo() {
+      public Builder clearMonitorsInfo() {
         copyOnWrite();
-        instance.clearMonitorInfo();
+        instance.clearMonitorsInfo();
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 1;</code>
+       * <code>repeated .tc.MonitorInfo monitors_info = 1;</code>
        */
-      public Builder removeMonitorInfo(int index) {
+      public Builder removeMonitorsInfo(int index) {
         copyOnWrite();
-        instance.removeMonitorInfo(index);
+        instance.removeMonitorsInfo(index);
         return this;
       }
 
@@ -3687,7 +3948,7 @@ public final class TcMessage {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "monitorInfo_",
+              "monitorsInfo_",
               tc.TcMessage.MonitorInfo.class,
               "capturingMonitorName_",
             };
@@ -4755,6 +5016,11 @@ public final class TcMessage {
      * <code>int32 mon_bottom = 13;</code>
      */
     int getMonBottom();
+
+    /**
+     * <code>int32 mon_index = 14;</code>
+     */
+    int getMonIndex();
   }
   /**
    * Protobuf type {@code tc.VideoFrame}
@@ -5123,6 +5389,30 @@ public final class TcMessage {
     private void clearMonBottom() {
       
       monBottom_ = 0;
+    }
+
+    public static final int MON_INDEX_FIELD_NUMBER = 14;
+    private int monIndex_;
+    /**
+     * <code>int32 mon_index = 14;</code>
+     */
+    @java.lang.Override
+    public int getMonIndex() {
+      return monIndex_;
+    }
+    /**
+     * <code>int32 mon_index = 14;</code>
+     */
+    private void setMonIndex(int value) {
+      
+      monIndex_ = value;
+    }
+    /**
+     * <code>int32 mon_index = 14;</code>
+     */
+    private void clearMonIndex() {
+      
+      monIndex_ = 0;
     }
 
     public static tc.TcMessage.VideoFrame parseFrom(
@@ -5559,6 +5849,30 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <code>int32 mon_index = 14;</code>
+       */
+      @java.lang.Override
+      public int getMonIndex() {
+        return instance.getMonIndex();
+      }
+      /**
+       * <code>int32 mon_index = 14;</code>
+       */
+      public Builder setMonIndex(int value) {
+        copyOnWrite();
+        instance.setMonIndex(value);
+        return this;
+      }
+      /**
+       * <code>int32 mon_index = 14;</code>
+       */
+      public Builder clearMonIndex() {
+        copyOnWrite();
+        instance.clearMonIndex();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.VideoFrame)
     }
     @java.lang.Override
@@ -5587,11 +5901,12 @@ public final class TcMessage {
               "monTop_",
               "monRight_",
               "monBottom_",
+              "monIndex_",
             };
             java.lang.String info =
-                "\u0000\f\u0000\u0000\u0001\r\f\u0000\u0000\u0000\u0001\f\u0002\n\u0003\u0003\u0004" +
-                "\u0007\u0005\u0004\u0006\u0004\u0007\u0208\t\u0208\n\u0004\u000b\u0004\f\u0004\r" +
-                "\u0004";
+                "\u0000\r\u0000\u0000\u0001\u000e\r\u0000\u0000\u0000\u0001\f\u0002\n\u0003\u0003" +
+                "\u0004\u0007\u0005\u0004\u0006\u0004\u0007\u0208\t\u0208\n\u0004\u000b\u0004\f\u0004" +
+                "\r\u0004\u000e\u0004";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -9456,6 +9771,1282 @@ public final class TcMessage {
     }
   }
 
+  public interface PtMsgWorkingCaptureInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.PtMsgWorkingCaptureInfo)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <pre>
+     * monitor name or hook info
+     * </pre>
+     *
+     * <code>string target_name = 1;</code>
+     */
+    java.lang.String getTargetName();
+    /**
+     * <pre>
+     * monitor name or hook info
+     * </pre>
+     *
+     * <code>string target_name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getTargetNameBytes();
+
+    /**
+     * <code>int32 capturing_fps = 2;</code>
+     */
+    int getCapturingFps();
+
+    /**
+     * <pre>
+     * dxgi/gdi/hook
+     * </pre>
+     *
+     * <code>string capture_type = 3;</code>
+     */
+    java.lang.String getCaptureType();
+    /**
+     * <pre>
+     * dxgi/gdi/hook
+     * </pre>
+     *
+     * <code>string capture_type = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getCaptureTypeBytes();
+
+    /**
+     * <code>int32 capture_frame_width = 40;</code>
+     */
+    int getCaptureFrameWidth();
+
+    /**
+     * <code>int32 capture_frame_height = 50;</code>
+     */
+    int getCaptureFrameHeight();
+
+    /**
+     * <code>repeated int32 video_capture_gaps = 51;</code>
+     */
+    java.util.List<java.lang.Integer> getVideoCaptureGapsList();
+    /**
+     * <code>repeated int32 video_capture_gaps = 51;</code>
+     */
+    int getVideoCaptureGapsCount();
+    /**
+     * <code>repeated int32 video_capture_gaps = 51;</code>
+     */
+    int getVideoCaptureGaps(int index);
+
+    /**
+     * <pre>
+     * NVENC / AMF / SOFTWARE
+     * </pre>
+     *
+     * <code>string encoder_name = 60;</code>
+     */
+    java.lang.String getEncoderName();
+    /**
+     * <pre>
+     * NVENC / AMF / SOFTWARE
+     * </pre>
+     *
+     * <code>string encoder_name = 60;</code>
+     */
+    com.google.protobuf.ByteString
+        getEncoderNameBytes();
+
+    /**
+     * <code>int32 encoding_fps = 70;</code>
+     */
+    int getEncodingFps();
+
+    /**
+     * <pre>
+     * YUV420 YUV444
+     * </pre>
+     *
+     * <code>string encode_format = 80;</code>
+     */
+    java.lang.String getEncodeFormat();
+    /**
+     * <pre>
+     * YUV420 YUV444
+     * </pre>
+     *
+     * <code>string encode_format = 80;</code>
+     */
+    com.google.protobuf.ByteString
+        getEncodeFormatBytes();
+
+    /**
+     * <code>repeated int32 encode_durations = 90;</code>
+     */
+    java.util.List<java.lang.Integer> getEncodeDurationsList();
+    /**
+     * <code>repeated int32 encode_durations = 90;</code>
+     */
+    int getEncodeDurationsCount();
+    /**
+     * <code>repeated int32 encode_durations = 90;</code>
+     */
+    int getEncodeDurations(int index);
+  }
+  /**
+   * <pre>
+   * working capture information
+   * </pre>
+   *
+   * Protobuf type {@code tc.PtMsgWorkingCaptureInfo}
+   */
+  public  static final class PtMsgWorkingCaptureInfo extends
+      com.google.protobuf.GeneratedMessageLite<
+          PtMsgWorkingCaptureInfo, PtMsgWorkingCaptureInfo.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.PtMsgWorkingCaptureInfo)
+      PtMsgWorkingCaptureInfoOrBuilder {
+    private PtMsgWorkingCaptureInfo() {
+      targetName_ = "";
+      captureType_ = "";
+      videoCaptureGaps_ = emptyIntList();
+      encoderName_ = "";
+      encodeFormat_ = "";
+      encodeDurations_ = emptyIntList();
+    }
+    public static final int TARGET_NAME_FIELD_NUMBER = 1;
+    private java.lang.String targetName_;
+    /**
+     * <pre>
+     * monitor name or hook info
+     * </pre>
+     *
+     * <code>string target_name = 1;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getTargetName() {
+      return targetName_;
+    }
+    /**
+     * <pre>
+     * monitor name or hook info
+     * </pre>
+     *
+     * <code>string target_name = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTargetNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(targetName_);
+    }
+    /**
+     * <pre>
+     * monitor name or hook info
+     * </pre>
+     *
+     * <code>string target_name = 1;</code>
+     */
+    private void setTargetName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      targetName_ = value;
+    }
+    /**
+     * <pre>
+     * monitor name or hook info
+     * </pre>
+     *
+     * <code>string target_name = 1;</code>
+     */
+    private void clearTargetName() {
+      
+      targetName_ = getDefaultInstance().getTargetName();
+    }
+    /**
+     * <pre>
+     * monitor name or hook info
+     * </pre>
+     *
+     * <code>string target_name = 1;</code>
+     */
+    private void setTargetNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      targetName_ = value.toStringUtf8();
+    }
+
+    public static final int CAPTURING_FPS_FIELD_NUMBER = 2;
+    private int capturingFps_;
+    /**
+     * <code>int32 capturing_fps = 2;</code>
+     */
+    @java.lang.Override
+    public int getCapturingFps() {
+      return capturingFps_;
+    }
+    /**
+     * <code>int32 capturing_fps = 2;</code>
+     */
+    private void setCapturingFps(int value) {
+      
+      capturingFps_ = value;
+    }
+    /**
+     * <code>int32 capturing_fps = 2;</code>
+     */
+    private void clearCapturingFps() {
+      
+      capturingFps_ = 0;
+    }
+
+    public static final int CAPTURE_TYPE_FIELD_NUMBER = 3;
+    private java.lang.String captureType_;
+    /**
+     * <pre>
+     * dxgi/gdi/hook
+     * </pre>
+     *
+     * <code>string capture_type = 3;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getCaptureType() {
+      return captureType_;
+    }
+    /**
+     * <pre>
+     * dxgi/gdi/hook
+     * </pre>
+     *
+     * <code>string capture_type = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCaptureTypeBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(captureType_);
+    }
+    /**
+     * <pre>
+     * dxgi/gdi/hook
+     * </pre>
+     *
+     * <code>string capture_type = 3;</code>
+     */
+    private void setCaptureType(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      captureType_ = value;
+    }
+    /**
+     * <pre>
+     * dxgi/gdi/hook
+     * </pre>
+     *
+     * <code>string capture_type = 3;</code>
+     */
+    private void clearCaptureType() {
+      
+      captureType_ = getDefaultInstance().getCaptureType();
+    }
+    /**
+     * <pre>
+     * dxgi/gdi/hook
+     * </pre>
+     *
+     * <code>string capture_type = 3;</code>
+     */
+    private void setCaptureTypeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      captureType_ = value.toStringUtf8();
+    }
+
+    public static final int CAPTURE_FRAME_WIDTH_FIELD_NUMBER = 40;
+    private int captureFrameWidth_;
+    /**
+     * <code>int32 capture_frame_width = 40;</code>
+     */
+    @java.lang.Override
+    public int getCaptureFrameWidth() {
+      return captureFrameWidth_;
+    }
+    /**
+     * <code>int32 capture_frame_width = 40;</code>
+     */
+    private void setCaptureFrameWidth(int value) {
+      
+      captureFrameWidth_ = value;
+    }
+    /**
+     * <code>int32 capture_frame_width = 40;</code>
+     */
+    private void clearCaptureFrameWidth() {
+      
+      captureFrameWidth_ = 0;
+    }
+
+    public static final int CAPTURE_FRAME_HEIGHT_FIELD_NUMBER = 50;
+    private int captureFrameHeight_;
+    /**
+     * <code>int32 capture_frame_height = 50;</code>
+     */
+    @java.lang.Override
+    public int getCaptureFrameHeight() {
+      return captureFrameHeight_;
+    }
+    /**
+     * <code>int32 capture_frame_height = 50;</code>
+     */
+    private void setCaptureFrameHeight(int value) {
+      
+      captureFrameHeight_ = value;
+    }
+    /**
+     * <code>int32 capture_frame_height = 50;</code>
+     */
+    private void clearCaptureFrameHeight() {
+      
+      captureFrameHeight_ = 0;
+    }
+
+    public static final int VIDEO_CAPTURE_GAPS_FIELD_NUMBER = 51;
+    private com.google.protobuf.Internal.IntList videoCaptureGaps_;
+    /**
+     * <code>repeated int32 video_capture_gaps = 51;</code>
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getVideoCaptureGapsList() {
+      return videoCaptureGaps_;
+    }
+    /**
+     * <code>repeated int32 video_capture_gaps = 51;</code>
+     */
+    @java.lang.Override
+    public int getVideoCaptureGapsCount() {
+      return videoCaptureGaps_.size();
+    }
+    /**
+     * <code>repeated int32 video_capture_gaps = 51;</code>
+     */
+    @java.lang.Override
+    public int getVideoCaptureGaps(int index) {
+      return videoCaptureGaps_.getInt(index);
+    }
+    private int videoCaptureGapsMemoizedSerializedSize = -1;
+    private void ensureVideoCaptureGapsIsMutable() {
+      if (!videoCaptureGaps_.isModifiable()) {
+        videoCaptureGaps_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(videoCaptureGaps_);
+       }
+    }
+    /**
+     * <code>repeated int32 video_capture_gaps = 51;</code>
+     */
+    private void setVideoCaptureGaps(
+        int index, int value) {
+      ensureVideoCaptureGapsIsMutable();
+      videoCaptureGaps_.setInt(index, value);
+    }
+    /**
+     * <code>repeated int32 video_capture_gaps = 51;</code>
+     */
+    private void addVideoCaptureGaps(int value) {
+      ensureVideoCaptureGapsIsMutable();
+      videoCaptureGaps_.addInt(value);
+    }
+    /**
+     * <code>repeated int32 video_capture_gaps = 51;</code>
+     */
+    private void addAllVideoCaptureGaps(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensureVideoCaptureGapsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, videoCaptureGaps_);
+    }
+    /**
+     * <code>repeated int32 video_capture_gaps = 51;</code>
+     */
+    private void clearVideoCaptureGaps() {
+      videoCaptureGaps_ = emptyIntList();
+    }
+
+    public static final int ENCODER_NAME_FIELD_NUMBER = 60;
+    private java.lang.String encoderName_;
+    /**
+     * <pre>
+     * NVENC / AMF / SOFTWARE
+     * </pre>
+     *
+     * <code>string encoder_name = 60;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getEncoderName() {
+      return encoderName_;
+    }
+    /**
+     * <pre>
+     * NVENC / AMF / SOFTWARE
+     * </pre>
+     *
+     * <code>string encoder_name = 60;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEncoderNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(encoderName_);
+    }
+    /**
+     * <pre>
+     * NVENC / AMF / SOFTWARE
+     * </pre>
+     *
+     * <code>string encoder_name = 60;</code>
+     */
+    private void setEncoderName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      encoderName_ = value;
+    }
+    /**
+     * <pre>
+     * NVENC / AMF / SOFTWARE
+     * </pre>
+     *
+     * <code>string encoder_name = 60;</code>
+     */
+    private void clearEncoderName() {
+      
+      encoderName_ = getDefaultInstance().getEncoderName();
+    }
+    /**
+     * <pre>
+     * NVENC / AMF / SOFTWARE
+     * </pre>
+     *
+     * <code>string encoder_name = 60;</code>
+     */
+    private void setEncoderNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      encoderName_ = value.toStringUtf8();
+    }
+
+    public static final int ENCODING_FPS_FIELD_NUMBER = 70;
+    private int encodingFps_;
+    /**
+     * <code>int32 encoding_fps = 70;</code>
+     */
+    @java.lang.Override
+    public int getEncodingFps() {
+      return encodingFps_;
+    }
+    /**
+     * <code>int32 encoding_fps = 70;</code>
+     */
+    private void setEncodingFps(int value) {
+      
+      encodingFps_ = value;
+    }
+    /**
+     * <code>int32 encoding_fps = 70;</code>
+     */
+    private void clearEncodingFps() {
+      
+      encodingFps_ = 0;
+    }
+
+    public static final int ENCODE_FORMAT_FIELD_NUMBER = 80;
+    private java.lang.String encodeFormat_;
+    /**
+     * <pre>
+     * YUV420 YUV444
+     * </pre>
+     *
+     * <code>string encode_format = 80;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getEncodeFormat() {
+      return encodeFormat_;
+    }
+    /**
+     * <pre>
+     * YUV420 YUV444
+     * </pre>
+     *
+     * <code>string encode_format = 80;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEncodeFormatBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(encodeFormat_);
+    }
+    /**
+     * <pre>
+     * YUV420 YUV444
+     * </pre>
+     *
+     * <code>string encode_format = 80;</code>
+     */
+    private void setEncodeFormat(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      encodeFormat_ = value;
+    }
+    /**
+     * <pre>
+     * YUV420 YUV444
+     * </pre>
+     *
+     * <code>string encode_format = 80;</code>
+     */
+    private void clearEncodeFormat() {
+      
+      encodeFormat_ = getDefaultInstance().getEncodeFormat();
+    }
+    /**
+     * <pre>
+     * YUV420 YUV444
+     * </pre>
+     *
+     * <code>string encode_format = 80;</code>
+     */
+    private void setEncodeFormatBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      encodeFormat_ = value.toStringUtf8();
+    }
+
+    public static final int ENCODE_DURATIONS_FIELD_NUMBER = 90;
+    private com.google.protobuf.Internal.IntList encodeDurations_;
+    /**
+     * <code>repeated int32 encode_durations = 90;</code>
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getEncodeDurationsList() {
+      return encodeDurations_;
+    }
+    /**
+     * <code>repeated int32 encode_durations = 90;</code>
+     */
+    @java.lang.Override
+    public int getEncodeDurationsCount() {
+      return encodeDurations_.size();
+    }
+    /**
+     * <code>repeated int32 encode_durations = 90;</code>
+     */
+    @java.lang.Override
+    public int getEncodeDurations(int index) {
+      return encodeDurations_.getInt(index);
+    }
+    private int encodeDurationsMemoizedSerializedSize = -1;
+    private void ensureEncodeDurationsIsMutable() {
+      if (!encodeDurations_.isModifiable()) {
+        encodeDurations_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(encodeDurations_);
+       }
+    }
+    /**
+     * <code>repeated int32 encode_durations = 90;</code>
+     */
+    private void setEncodeDurations(
+        int index, int value) {
+      ensureEncodeDurationsIsMutable();
+      encodeDurations_.setInt(index, value);
+    }
+    /**
+     * <code>repeated int32 encode_durations = 90;</code>
+     */
+    private void addEncodeDurations(int value) {
+      ensureEncodeDurationsIsMutable();
+      encodeDurations_.addInt(value);
+    }
+    /**
+     * <code>repeated int32 encode_durations = 90;</code>
+     */
+    private void addAllEncodeDurations(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensureEncodeDurationsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, encodeDurations_);
+    }
+    /**
+     * <code>repeated int32 encode_durations = 90;</code>
+     */
+    private void clearEncodeDurations() {
+      encodeDurations_ = emptyIntList();
+    }
+
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcMessage.PtMsgWorkingCaptureInfo prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * <pre>
+     * working capture information
+     * </pre>
+     *
+     * Protobuf type {@code tc.PtMsgWorkingCaptureInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcMessage.PtMsgWorkingCaptureInfo, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.PtMsgWorkingCaptureInfo)
+        tc.TcMessage.PtMsgWorkingCaptureInfoOrBuilder {
+      // Construct using tc.TcMessage.PtMsgWorkingCaptureInfo.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <pre>
+       * monitor name or hook info
+       * </pre>
+       *
+       * <code>string target_name = 1;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getTargetName() {
+        return instance.getTargetName();
+      }
+      /**
+       * <pre>
+       * monitor name or hook info
+       * </pre>
+       *
+       * <code>string target_name = 1;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTargetNameBytes() {
+        return instance.getTargetNameBytes();
+      }
+      /**
+       * <pre>
+       * monitor name or hook info
+       * </pre>
+       *
+       * <code>string target_name = 1;</code>
+       */
+      public Builder setTargetName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setTargetName(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * monitor name or hook info
+       * </pre>
+       *
+       * <code>string target_name = 1;</code>
+       */
+      public Builder clearTargetName() {
+        copyOnWrite();
+        instance.clearTargetName();
+        return this;
+      }
+      /**
+       * <pre>
+       * monitor name or hook info
+       * </pre>
+       *
+       * <code>string target_name = 1;</code>
+       */
+      public Builder setTargetNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setTargetNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>int32 capturing_fps = 2;</code>
+       */
+      @java.lang.Override
+      public int getCapturingFps() {
+        return instance.getCapturingFps();
+      }
+      /**
+       * <code>int32 capturing_fps = 2;</code>
+       */
+      public Builder setCapturingFps(int value) {
+        copyOnWrite();
+        instance.setCapturingFps(value);
+        return this;
+      }
+      /**
+       * <code>int32 capturing_fps = 2;</code>
+       */
+      public Builder clearCapturingFps() {
+        copyOnWrite();
+        instance.clearCapturingFps();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * dxgi/gdi/hook
+       * </pre>
+       *
+       * <code>string capture_type = 3;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getCaptureType() {
+        return instance.getCaptureType();
+      }
+      /**
+       * <pre>
+       * dxgi/gdi/hook
+       * </pre>
+       *
+       * <code>string capture_type = 3;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getCaptureTypeBytes() {
+        return instance.getCaptureTypeBytes();
+      }
+      /**
+       * <pre>
+       * dxgi/gdi/hook
+       * </pre>
+       *
+       * <code>string capture_type = 3;</code>
+       */
+      public Builder setCaptureType(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setCaptureType(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * dxgi/gdi/hook
+       * </pre>
+       *
+       * <code>string capture_type = 3;</code>
+       */
+      public Builder clearCaptureType() {
+        copyOnWrite();
+        instance.clearCaptureType();
+        return this;
+      }
+      /**
+       * <pre>
+       * dxgi/gdi/hook
+       * </pre>
+       *
+       * <code>string capture_type = 3;</code>
+       */
+      public Builder setCaptureTypeBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setCaptureTypeBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>int32 capture_frame_width = 40;</code>
+       */
+      @java.lang.Override
+      public int getCaptureFrameWidth() {
+        return instance.getCaptureFrameWidth();
+      }
+      /**
+       * <code>int32 capture_frame_width = 40;</code>
+       */
+      public Builder setCaptureFrameWidth(int value) {
+        copyOnWrite();
+        instance.setCaptureFrameWidth(value);
+        return this;
+      }
+      /**
+       * <code>int32 capture_frame_width = 40;</code>
+       */
+      public Builder clearCaptureFrameWidth() {
+        copyOnWrite();
+        instance.clearCaptureFrameWidth();
+        return this;
+      }
+
+      /**
+       * <code>int32 capture_frame_height = 50;</code>
+       */
+      @java.lang.Override
+      public int getCaptureFrameHeight() {
+        return instance.getCaptureFrameHeight();
+      }
+      /**
+       * <code>int32 capture_frame_height = 50;</code>
+       */
+      public Builder setCaptureFrameHeight(int value) {
+        copyOnWrite();
+        instance.setCaptureFrameHeight(value);
+        return this;
+      }
+      /**
+       * <code>int32 capture_frame_height = 50;</code>
+       */
+      public Builder clearCaptureFrameHeight() {
+        copyOnWrite();
+        instance.clearCaptureFrameHeight();
+        return this;
+      }
+
+      /**
+       * <code>repeated int32 video_capture_gaps = 51;</code>
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.Integer>
+          getVideoCaptureGapsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getVideoCaptureGapsList());
+      }
+      /**
+       * <code>repeated int32 video_capture_gaps = 51;</code>
+       */
+      @java.lang.Override
+      public int getVideoCaptureGapsCount() {
+        return instance.getVideoCaptureGapsCount();
+      }
+      /**
+       * <code>repeated int32 video_capture_gaps = 51;</code>
+       */
+      @java.lang.Override
+      public int getVideoCaptureGaps(int index) {
+        return instance.getVideoCaptureGaps(index);
+      }
+      /**
+       * <code>repeated int32 video_capture_gaps = 51;</code>
+       */
+      public Builder setVideoCaptureGaps(
+          int index, int value) {
+        copyOnWrite();
+        instance.setVideoCaptureGaps(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated int32 video_capture_gaps = 51;</code>
+       */
+      public Builder addVideoCaptureGaps(int value) {
+        copyOnWrite();
+        instance.addVideoCaptureGaps(value);
+        return this;
+      }
+      /**
+       * <code>repeated int32 video_capture_gaps = 51;</code>
+       */
+      public Builder addAllVideoCaptureGaps(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        copyOnWrite();
+        instance.addAllVideoCaptureGaps(values);
+        return this;
+      }
+      /**
+       * <code>repeated int32 video_capture_gaps = 51;</code>
+       */
+      public Builder clearVideoCaptureGaps() {
+        copyOnWrite();
+        instance.clearVideoCaptureGaps();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * NVENC / AMF / SOFTWARE
+       * </pre>
+       *
+       * <code>string encoder_name = 60;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getEncoderName() {
+        return instance.getEncoderName();
+      }
+      /**
+       * <pre>
+       * NVENC / AMF / SOFTWARE
+       * </pre>
+       *
+       * <code>string encoder_name = 60;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getEncoderNameBytes() {
+        return instance.getEncoderNameBytes();
+      }
+      /**
+       * <pre>
+       * NVENC / AMF / SOFTWARE
+       * </pre>
+       *
+       * <code>string encoder_name = 60;</code>
+       */
+      public Builder setEncoderName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setEncoderName(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * NVENC / AMF / SOFTWARE
+       * </pre>
+       *
+       * <code>string encoder_name = 60;</code>
+       */
+      public Builder clearEncoderName() {
+        copyOnWrite();
+        instance.clearEncoderName();
+        return this;
+      }
+      /**
+       * <pre>
+       * NVENC / AMF / SOFTWARE
+       * </pre>
+       *
+       * <code>string encoder_name = 60;</code>
+       */
+      public Builder setEncoderNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setEncoderNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>int32 encoding_fps = 70;</code>
+       */
+      @java.lang.Override
+      public int getEncodingFps() {
+        return instance.getEncodingFps();
+      }
+      /**
+       * <code>int32 encoding_fps = 70;</code>
+       */
+      public Builder setEncodingFps(int value) {
+        copyOnWrite();
+        instance.setEncodingFps(value);
+        return this;
+      }
+      /**
+       * <code>int32 encoding_fps = 70;</code>
+       */
+      public Builder clearEncodingFps() {
+        copyOnWrite();
+        instance.clearEncodingFps();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * YUV420 YUV444
+       * </pre>
+       *
+       * <code>string encode_format = 80;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getEncodeFormat() {
+        return instance.getEncodeFormat();
+      }
+      /**
+       * <pre>
+       * YUV420 YUV444
+       * </pre>
+       *
+       * <code>string encode_format = 80;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getEncodeFormatBytes() {
+        return instance.getEncodeFormatBytes();
+      }
+      /**
+       * <pre>
+       * YUV420 YUV444
+       * </pre>
+       *
+       * <code>string encode_format = 80;</code>
+       */
+      public Builder setEncodeFormat(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setEncodeFormat(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * YUV420 YUV444
+       * </pre>
+       *
+       * <code>string encode_format = 80;</code>
+       */
+      public Builder clearEncodeFormat() {
+        copyOnWrite();
+        instance.clearEncodeFormat();
+        return this;
+      }
+      /**
+       * <pre>
+       * YUV420 YUV444
+       * </pre>
+       *
+       * <code>string encode_format = 80;</code>
+       */
+      public Builder setEncodeFormatBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setEncodeFormatBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>repeated int32 encode_durations = 90;</code>
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.Integer>
+          getEncodeDurationsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getEncodeDurationsList());
+      }
+      /**
+       * <code>repeated int32 encode_durations = 90;</code>
+       */
+      @java.lang.Override
+      public int getEncodeDurationsCount() {
+        return instance.getEncodeDurationsCount();
+      }
+      /**
+       * <code>repeated int32 encode_durations = 90;</code>
+       */
+      @java.lang.Override
+      public int getEncodeDurations(int index) {
+        return instance.getEncodeDurations(index);
+      }
+      /**
+       * <code>repeated int32 encode_durations = 90;</code>
+       */
+      public Builder setEncodeDurations(
+          int index, int value) {
+        copyOnWrite();
+        instance.setEncodeDurations(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated int32 encode_durations = 90;</code>
+       */
+      public Builder addEncodeDurations(int value) {
+        copyOnWrite();
+        instance.addEncodeDurations(value);
+        return this;
+      }
+      /**
+       * <code>repeated int32 encode_durations = 90;</code>
+       */
+      public Builder addAllEncodeDurations(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        copyOnWrite();
+        instance.addAllEncodeDurations(values);
+        return this;
+      }
+      /**
+       * <code>repeated int32 encode_durations = 90;</code>
+       */
+      public Builder clearEncodeDurations() {
+        copyOnWrite();
+        instance.clearEncodeDurations();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.PtMsgWorkingCaptureInfo)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcMessage.PtMsgWorkingCaptureInfo();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "targetName_",
+              "capturingFps_",
+              "captureType_",
+              "captureFrameWidth_",
+              "captureFrameHeight_",
+              "videoCaptureGaps_",
+              "encoderName_",
+              "encodingFps_",
+              "encodeFormat_",
+              "encodeDurations_",
+            };
+            java.lang.String info =
+                "\u0000\n\u0000\u0000\u0001Z\n\u0000\u0002\u0000\u0001\u0208\u0002\u0004\u0003\u0208" +
+                "(\u00042\u00043\'<\u0208F\u0004P\u0208Z\'";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcMessage.PtMsgWorkingCaptureInfo> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcMessage.PtMsgWorkingCaptureInfo.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.PtMsgWorkingCaptureInfo)
+    private static final tc.TcMessage.PtMsgWorkingCaptureInfo DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new PtMsgWorkingCaptureInfo();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        PtMsgWorkingCaptureInfo.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcMessage.PtMsgWorkingCaptureInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<PtMsgWorkingCaptureInfo> PARSER;
+
+    public static com.google.protobuf.Parser<PtMsgWorkingCaptureInfo> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface CaptureStatisticsOrBuilder extends
       // @@protoc_insertion_point(interface_extends:tc.CaptureStatistics)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -9488,30 +11079,7 @@ public final class TcMessage {
     /**
      * <pre>
      * from inner server
-     * </pre>
-     *
-     * <code>repeated uint32 encode_durations = 2;</code>
-     */
-    java.util.List<java.lang.Integer> getEncodeDurationsList();
-    /**
-     * <pre>
-     * from inner server
-     * </pre>
-     *
-     * <code>repeated uint32 encode_durations = 2;</code>
-     */
-    int getEncodeDurationsCount();
-    /**
-     * <pre>
-     * from inner server
-     * </pre>
-     *
-     * <code>repeated uint32 encode_durations = 2;</code>
-     */
-    int getEncodeDurations(int index);
-
-    /**
-     * <pre>
+     *repeated uint32 encode_durations = 2;
      * from inner server
      * </pre>
      *
@@ -9521,6 +11089,8 @@ public final class TcMessage {
     /**
      * <pre>
      * from inner server
+     *repeated uint32 encode_durations = 2;
+     * from inner server
      * </pre>
      *
      * <code>repeated uint32 audio_frame_gaps = 3;</code>
@@ -9529,88 +11099,13 @@ public final class TcMessage {
     /**
      * <pre>
      * from inner server
+     *repeated uint32 encode_durations = 2;
+     * from inner server
      * </pre>
      *
      * <code>repeated uint32 audio_frame_gaps = 3;</code>
      */
     int getAudioFrameGaps(int index);
-
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 decode_durations = 4;</code>
-     */
-    java.util.List<java.lang.Integer> getDecodeDurationsList();
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 decode_durations = 4;</code>
-     */
-    int getDecodeDurationsCount();
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 decode_durations = 4;</code>
-     */
-    int getDecodeDurations(int index);
-
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-     */
-    java.util.List<java.lang.Integer> getClientVideoRecvGapsList();
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-     */
-    int getClientVideoRecvGapsCount();
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-     */
-    int getClientVideoRecvGaps(int index);
-
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>uint32 client_fps_video_recv = 6;</code>
-     */
-    int getClientFpsVideoRecv();
-
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>uint32 client_fps_render = 7;</code>
-     */
-    int getClientFpsRender();
-
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>int64 client_recv_media_data = 8;</code>
-     */
-    long getClientRecvMediaData();
 
     /**
      * <pre>
@@ -9642,38 +11137,96 @@ public final class TcMessage {
     /**
      * <pre>
      * from client
-     * </pre>
-     *
-     * <code>int32 render_width = 12;</code>
-     */
-    int getRenderWidth();
-
-    /**
-     * <pre>
+     *int32 render_width = 12;
      * from client
+     *int32 render_height = 13;
+     * from inner server
+     *int32 capture_width = 14;
+     * from inner server
+     *int32 capture_height = 15;
+     * from inner server
      * </pre>
      *
-     * <code>int32 render_height = 13;</code>
+     * <code>int32 connected_clients = 16;</code>
      */
-    int getRenderHeight();
+    int getConnectedClients();
 
     /**
      * <pre>
      * from inner server
      * </pre>
      *
-     * <code>int32 capture_width = 14;</code>
+     * <code>string video_capture_target = 17;</code>
      */
-    int getCaptureWidth();
+    java.lang.String getVideoCaptureTarget();
+    /**
+     * <pre>
+     * from inner server
+     * </pre>
+     *
+     * <code>string video_capture_target = 17;</code>
+     */
+    com.google.protobuf.ByteString
+        getVideoCaptureTargetBytes();
 
     /**
      * <pre>
      * from inner server
      * </pre>
      *
-     * <code>int32 capture_height = 15;</code>
+     * <code>string video_capture_fps = 18;</code>
      */
-    int getCaptureHeight();
+    java.lang.String getVideoCaptureFps();
+    /**
+     * <pre>
+     * from inner server
+     * </pre>
+     *
+     * <code>string video_capture_fps = 18;</code>
+     */
+    com.google.protobuf.ByteString
+        getVideoCaptureFpsBytes();
+
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    java.util.List<tc.TcMessage.PtMsgWorkingCaptureInfo> 
+        getWorkingCapturesInfoList();
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    tc.TcMessage.PtMsgWorkingCaptureInfo getWorkingCapturesInfo(int index);
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    int getWorkingCapturesInfoCount();
+
+    /**
+     * <code>bool relay_connected = 20;</code>
+     */
+    boolean getRelayConnected();
+
+    /**
+     * <code>string audio_capture_type = 21;</code>
+     */
+    java.lang.String getAudioCaptureType();
+    /**
+     * <code>string audio_capture_type = 21;</code>
+     */
+    com.google.protobuf.ByteString
+        getAudioCaptureTypeBytes();
   }
   /**
    * Protobuf type {@code tc.CaptureStatistics}
@@ -9685,10 +11238,11 @@ public final class TcMessage {
       CaptureStatisticsOrBuilder {
     private CaptureStatistics() {
       videoFrameGaps_ = emptyIntList();
-      encodeDurations_ = emptyIntList();
       audioFrameGaps_ = emptyIntList();
-      decodeDurations_ = emptyIntList();
-      clientVideoRecvGaps_ = emptyIntList();
+      videoCaptureTarget_ = "";
+      videoCaptureFps_ = "";
+      workingCapturesInfo_ = emptyProtobufList();
+      audioCaptureType_ = "";
     }
     public static final int VIDEO_FRAME_GAPS_FIELD_NUMBER = 1;
     private com.google.protobuf.Internal.IntList videoFrameGaps_;
@@ -9780,100 +11334,12 @@ public final class TcMessage {
       videoFrameGaps_ = emptyIntList();
     }
 
-    public static final int ENCODE_DURATIONS_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.IntList encodeDurations_;
-    /**
-     * <pre>
-     * from inner server
-     * </pre>
-     *
-     * <code>repeated uint32 encode_durations = 2;</code>
-     */
-    @java.lang.Override
-    public java.util.List<java.lang.Integer>
-        getEncodeDurationsList() {
-      return encodeDurations_;
-    }
-    /**
-     * <pre>
-     * from inner server
-     * </pre>
-     *
-     * <code>repeated uint32 encode_durations = 2;</code>
-     */
-    @java.lang.Override
-    public int getEncodeDurationsCount() {
-      return encodeDurations_.size();
-    }
-    /**
-     * <pre>
-     * from inner server
-     * </pre>
-     *
-     * <code>repeated uint32 encode_durations = 2;</code>
-     */
-    @java.lang.Override
-    public int getEncodeDurations(int index) {
-      return encodeDurations_.getInt(index);
-    }
-    private int encodeDurationsMemoizedSerializedSize = -1;
-    private void ensureEncodeDurationsIsMutable() {
-      if (!encodeDurations_.isModifiable()) {
-        encodeDurations_ =
-            com.google.protobuf.GeneratedMessageLite.mutableCopy(encodeDurations_);
-       }
-    }
-    /**
-     * <pre>
-     * from inner server
-     * </pre>
-     *
-     * <code>repeated uint32 encode_durations = 2;</code>
-     */
-    private void setEncodeDurations(
-        int index, int value) {
-      ensureEncodeDurationsIsMutable();
-      encodeDurations_.setInt(index, value);
-    }
-    /**
-     * <pre>
-     * from inner server
-     * </pre>
-     *
-     * <code>repeated uint32 encode_durations = 2;</code>
-     */
-    private void addEncodeDurations(int value) {
-      ensureEncodeDurationsIsMutable();
-      encodeDurations_.addInt(value);
-    }
-    /**
-     * <pre>
-     * from inner server
-     * </pre>
-     *
-     * <code>repeated uint32 encode_durations = 2;</code>
-     */
-    private void addAllEncodeDurations(
-        java.lang.Iterable<? extends java.lang.Integer> values) {
-      ensureEncodeDurationsIsMutable();
-      com.google.protobuf.AbstractMessageLite.addAll(
-          values, encodeDurations_);
-    }
-    /**
-     * <pre>
-     * from inner server
-     * </pre>
-     *
-     * <code>repeated uint32 encode_durations = 2;</code>
-     */
-    private void clearEncodeDurations() {
-      encodeDurations_ = emptyIntList();
-    }
-
     public static final int AUDIO_FRAME_GAPS_FIELD_NUMBER = 3;
     private com.google.protobuf.Internal.IntList audioFrameGaps_;
     /**
      * <pre>
+     * from inner server
+     *repeated uint32 encode_durations = 2;
      * from inner server
      * </pre>
      *
@@ -9887,6 +11353,8 @@ public final class TcMessage {
     /**
      * <pre>
      * from inner server
+     *repeated uint32 encode_durations = 2;
+     * from inner server
      * </pre>
      *
      * <code>repeated uint32 audio_frame_gaps = 3;</code>
@@ -9897,6 +11365,8 @@ public final class TcMessage {
     }
     /**
      * <pre>
+     * from inner server
+     *repeated uint32 encode_durations = 2;
      * from inner server
      * </pre>
      *
@@ -9916,6 +11386,8 @@ public final class TcMessage {
     /**
      * <pre>
      * from inner server
+     *repeated uint32 encode_durations = 2;
+     * from inner server
      * </pre>
      *
      * <code>repeated uint32 audio_frame_gaps = 3;</code>
@@ -9928,6 +11400,8 @@ public final class TcMessage {
     /**
      * <pre>
      * from inner server
+     *repeated uint32 encode_durations = 2;
+     * from inner server
      * </pre>
      *
      * <code>repeated uint32 audio_frame_gaps = 3;</code>
@@ -9938,6 +11412,8 @@ public final class TcMessage {
     }
     /**
      * <pre>
+     * from inner server
+     *repeated uint32 encode_durations = 2;
      * from inner server
      * </pre>
      *
@@ -9952,300 +11428,14 @@ public final class TcMessage {
     /**
      * <pre>
      * from inner server
+     *repeated uint32 encode_durations = 2;
+     * from inner server
      * </pre>
      *
      * <code>repeated uint32 audio_frame_gaps = 3;</code>
      */
     private void clearAudioFrameGaps() {
       audioFrameGaps_ = emptyIntList();
-    }
-
-    public static final int DECODE_DURATIONS_FIELD_NUMBER = 4;
-    private com.google.protobuf.Internal.IntList decodeDurations_;
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 decode_durations = 4;</code>
-     */
-    @java.lang.Override
-    public java.util.List<java.lang.Integer>
-        getDecodeDurationsList() {
-      return decodeDurations_;
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 decode_durations = 4;</code>
-     */
-    @java.lang.Override
-    public int getDecodeDurationsCount() {
-      return decodeDurations_.size();
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 decode_durations = 4;</code>
-     */
-    @java.lang.Override
-    public int getDecodeDurations(int index) {
-      return decodeDurations_.getInt(index);
-    }
-    private int decodeDurationsMemoizedSerializedSize = -1;
-    private void ensureDecodeDurationsIsMutable() {
-      if (!decodeDurations_.isModifiable()) {
-        decodeDurations_ =
-            com.google.protobuf.GeneratedMessageLite.mutableCopy(decodeDurations_);
-       }
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 decode_durations = 4;</code>
-     */
-    private void setDecodeDurations(
-        int index, int value) {
-      ensureDecodeDurationsIsMutable();
-      decodeDurations_.setInt(index, value);
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 decode_durations = 4;</code>
-     */
-    private void addDecodeDurations(int value) {
-      ensureDecodeDurationsIsMutable();
-      decodeDurations_.addInt(value);
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 decode_durations = 4;</code>
-     */
-    private void addAllDecodeDurations(
-        java.lang.Iterable<? extends java.lang.Integer> values) {
-      ensureDecodeDurationsIsMutable();
-      com.google.protobuf.AbstractMessageLite.addAll(
-          values, decodeDurations_);
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 decode_durations = 4;</code>
-     */
-    private void clearDecodeDurations() {
-      decodeDurations_ = emptyIntList();
-    }
-
-    public static final int CLIENT_VIDEO_RECV_GAPS_FIELD_NUMBER = 5;
-    private com.google.protobuf.Internal.IntList clientVideoRecvGaps_;
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-     */
-    @java.lang.Override
-    public java.util.List<java.lang.Integer>
-        getClientVideoRecvGapsList() {
-      return clientVideoRecvGaps_;
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-     */
-    @java.lang.Override
-    public int getClientVideoRecvGapsCount() {
-      return clientVideoRecvGaps_.size();
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-     */
-    @java.lang.Override
-    public int getClientVideoRecvGaps(int index) {
-      return clientVideoRecvGaps_.getInt(index);
-    }
-    private int clientVideoRecvGapsMemoizedSerializedSize = -1;
-    private void ensureClientVideoRecvGapsIsMutable() {
-      if (!clientVideoRecvGaps_.isModifiable()) {
-        clientVideoRecvGaps_ =
-            com.google.protobuf.GeneratedMessageLite.mutableCopy(clientVideoRecvGaps_);
-       }
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-     */
-    private void setClientVideoRecvGaps(
-        int index, int value) {
-      ensureClientVideoRecvGapsIsMutable();
-      clientVideoRecvGaps_.setInt(index, value);
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-     */
-    private void addClientVideoRecvGaps(int value) {
-      ensureClientVideoRecvGapsIsMutable();
-      clientVideoRecvGaps_.addInt(value);
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-     */
-    private void addAllClientVideoRecvGaps(
-        java.lang.Iterable<? extends java.lang.Integer> values) {
-      ensureClientVideoRecvGapsIsMutable();
-      com.google.protobuf.AbstractMessageLite.addAll(
-          values, clientVideoRecvGaps_);
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-     */
-    private void clearClientVideoRecvGaps() {
-      clientVideoRecvGaps_ = emptyIntList();
-    }
-
-    public static final int CLIENT_FPS_VIDEO_RECV_FIELD_NUMBER = 6;
-    private int clientFpsVideoRecv_;
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>uint32 client_fps_video_recv = 6;</code>
-     */
-    @java.lang.Override
-    public int getClientFpsVideoRecv() {
-      return clientFpsVideoRecv_;
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>uint32 client_fps_video_recv = 6;</code>
-     */
-    private void setClientFpsVideoRecv(int value) {
-      
-      clientFpsVideoRecv_ = value;
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>uint32 client_fps_video_recv = 6;</code>
-     */
-    private void clearClientFpsVideoRecv() {
-      
-      clientFpsVideoRecv_ = 0;
-    }
-
-    public static final int CLIENT_FPS_RENDER_FIELD_NUMBER = 7;
-    private int clientFpsRender_;
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>uint32 client_fps_render = 7;</code>
-     */
-    @java.lang.Override
-    public int getClientFpsRender() {
-      return clientFpsRender_;
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>uint32 client_fps_render = 7;</code>
-     */
-    private void setClientFpsRender(int value) {
-      
-      clientFpsRender_ = value;
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>uint32 client_fps_render = 7;</code>
-     */
-    private void clearClientFpsRender() {
-      
-      clientFpsRender_ = 0;
-    }
-
-    public static final int CLIENT_RECV_MEDIA_DATA_FIELD_NUMBER = 8;
-    private long clientRecvMediaData_;
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>int64 client_recv_media_data = 8;</code>
-     */
-    @java.lang.Override
-    public long getClientRecvMediaData() {
-      return clientRecvMediaData_;
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>int64 client_recv_media_data = 8;</code>
-     */
-    private void setClientRecvMediaData(long value) {
-      
-      clientRecvMediaData_ = value;
-    }
-    /**
-     * <pre>
-     * from client
-     * </pre>
-     *
-     * <code>int64 client_recv_media_data = 8;</code>
-     */
-    private void clearClientRecvMediaData() {
-      
-      clientRecvMediaData_ = 0L;
     }
 
     public static final int FPS_VIDEO_ENCODE_FIELD_NUMBER = 9;
@@ -10356,148 +11546,451 @@ public final class TcMessage {
       serverSendMediaData_ = 0L;
     }
 
-    public static final int RENDER_WIDTH_FIELD_NUMBER = 12;
-    private int renderWidth_;
+    public static final int CONNECTED_CLIENTS_FIELD_NUMBER = 16;
+    private int connectedClients_;
     /**
      * <pre>
      * from client
+     *int32 render_width = 12;
+     * from client
+     *int32 render_height = 13;
+     * from inner server
+     *int32 capture_width = 14;
+     * from inner server
+     *int32 capture_height = 15;
+     * from inner server
      * </pre>
      *
-     * <code>int32 render_width = 12;</code>
+     * <code>int32 connected_clients = 16;</code>
      */
     @java.lang.Override
-    public int getRenderWidth() {
-      return renderWidth_;
+    public int getConnectedClients() {
+      return connectedClients_;
     }
     /**
      * <pre>
      * from client
+     *int32 render_width = 12;
+     * from client
+     *int32 render_height = 13;
+     * from inner server
+     *int32 capture_width = 14;
+     * from inner server
+     *int32 capture_height = 15;
+     * from inner server
      * </pre>
      *
-     * <code>int32 render_width = 12;</code>
+     * <code>int32 connected_clients = 16;</code>
      */
-    private void setRenderWidth(int value) {
+    private void setConnectedClients(int value) {
       
-      renderWidth_ = value;
+      connectedClients_ = value;
     }
     /**
      * <pre>
      * from client
+     *int32 render_width = 12;
+     * from client
+     *int32 render_height = 13;
+     * from inner server
+     *int32 capture_width = 14;
+     * from inner server
+     *int32 capture_height = 15;
+     * from inner server
      * </pre>
      *
-     * <code>int32 render_width = 12;</code>
+     * <code>int32 connected_clients = 16;</code>
      */
-    private void clearRenderWidth() {
+    private void clearConnectedClients() {
       
-      renderWidth_ = 0;
+      connectedClients_ = 0;
     }
 
-    public static final int RENDER_HEIGHT_FIELD_NUMBER = 13;
-    private int renderHeight_;
+    public static final int VIDEO_CAPTURE_TARGET_FIELD_NUMBER = 17;
+    private java.lang.String videoCaptureTarget_;
     /**
      * <pre>
-     * from client
+     * from inner server
      * </pre>
      *
-     * <code>int32 render_height = 13;</code>
+     * <code>string video_capture_target = 17;</code>
      */
     @java.lang.Override
-    public int getRenderHeight() {
-      return renderHeight_;
+    public java.lang.String getVideoCaptureTarget() {
+      return videoCaptureTarget_;
     }
     /**
      * <pre>
-     * from client
+     * from inner server
      * </pre>
      *
-     * <code>int32 render_height = 13;</code>
+     * <code>string video_capture_target = 17;</code>
      */
-    private void setRenderHeight(int value) {
-      
-      renderHeight_ = value;
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getVideoCaptureTargetBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(videoCaptureTarget_);
     }
     /**
      * <pre>
-     * from client
+     * from inner server
      * </pre>
      *
-     * <code>int32 render_height = 13;</code>
+     * <code>string video_capture_target = 17;</code>
      */
-    private void clearRenderHeight() {
+    private void setVideoCaptureTarget(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      videoCaptureTarget_ = value;
+    }
+    /**
+     * <pre>
+     * from inner server
+     * </pre>
+     *
+     * <code>string video_capture_target = 17;</code>
+     */
+    private void clearVideoCaptureTarget() {
       
-      renderHeight_ = 0;
+      videoCaptureTarget_ = getDefaultInstance().getVideoCaptureTarget();
+    }
+    /**
+     * <pre>
+     * from inner server
+     * </pre>
+     *
+     * <code>string video_capture_target = 17;</code>
+     */
+    private void setVideoCaptureTargetBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      videoCaptureTarget_ = value.toStringUtf8();
     }
 
-    public static final int CAPTURE_WIDTH_FIELD_NUMBER = 14;
-    private int captureWidth_;
+    public static final int VIDEO_CAPTURE_FPS_FIELD_NUMBER = 18;
+    private java.lang.String videoCaptureFps_;
     /**
      * <pre>
      * from inner server
      * </pre>
      *
-     * <code>int32 capture_width = 14;</code>
+     * <code>string video_capture_fps = 18;</code>
      */
     @java.lang.Override
-    public int getCaptureWidth() {
-      return captureWidth_;
+    public java.lang.String getVideoCaptureFps() {
+      return videoCaptureFps_;
     }
     /**
      * <pre>
      * from inner server
      * </pre>
      *
-     * <code>int32 capture_width = 14;</code>
+     * <code>string video_capture_fps = 18;</code>
      */
-    private void setCaptureWidth(int value) {
-      
-      captureWidth_ = value;
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getVideoCaptureFpsBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(videoCaptureFps_);
     }
     /**
      * <pre>
      * from inner server
      * </pre>
      *
-     * <code>int32 capture_width = 14;</code>
+     * <code>string video_capture_fps = 18;</code>
      */
-    private void clearCaptureWidth() {
+    private void setVideoCaptureFps(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      videoCaptureFps_ = value;
+    }
+    /**
+     * <pre>
+     * from inner server
+     * </pre>
+     *
+     * <code>string video_capture_fps = 18;</code>
+     */
+    private void clearVideoCaptureFps() {
       
-      captureWidth_ = 0;
+      videoCaptureFps_ = getDefaultInstance().getVideoCaptureFps();
+    }
+    /**
+     * <pre>
+     * from inner server
+     * </pre>
+     *
+     * <code>string video_capture_fps = 18;</code>
+     */
+    private void setVideoCaptureFpsBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      videoCaptureFps_ = value.toStringUtf8();
     }
 
-    public static final int CAPTURE_HEIGHT_FIELD_NUMBER = 15;
-    private int captureHeight_;
+    public static final int WORKING_CAPTURES_INFO_FIELD_NUMBER = 19;
+    private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.PtMsgWorkingCaptureInfo> workingCapturesInfo_;
     /**
      * <pre>
-     * from inner server
+     * from renderer,
      * </pre>
      *
-     * <code>int32 capture_height = 15;</code>
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
      */
     @java.lang.Override
-    public int getCaptureHeight() {
-      return captureHeight_;
+    public java.util.List<tc.TcMessage.PtMsgWorkingCaptureInfo> getWorkingCapturesInfoList() {
+      return workingCapturesInfo_;
     }
     /**
      * <pre>
-     * from inner server
+     * from renderer,
      * </pre>
      *
-     * <code>int32 capture_height = 15;</code>
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
      */
-    private void setCaptureHeight(int value) {
-      
-      captureHeight_ = value;
+    public java.util.List<? extends tc.TcMessage.PtMsgWorkingCaptureInfoOrBuilder> 
+        getWorkingCapturesInfoOrBuilderList() {
+      return workingCapturesInfo_;
     }
     /**
      * <pre>
-     * from inner server
+     * from renderer,
      * </pre>
      *
-     * <code>int32 capture_height = 15;</code>
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
      */
-    private void clearCaptureHeight() {
+    @java.lang.Override
+    public int getWorkingCapturesInfoCount() {
+      return workingCapturesInfo_.size();
+    }
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.PtMsgWorkingCaptureInfo getWorkingCapturesInfo(int index) {
+      return workingCapturesInfo_.get(index);
+    }
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    public tc.TcMessage.PtMsgWorkingCaptureInfoOrBuilder getWorkingCapturesInfoOrBuilder(
+        int index) {
+      return workingCapturesInfo_.get(index);
+    }
+    private void ensureWorkingCapturesInfoIsMutable() {
+      if (!workingCapturesInfo_.isModifiable()) {
+        workingCapturesInfo_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(workingCapturesInfo_);
+       }
+    }
+
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    private void setWorkingCapturesInfo(
+        int index, tc.TcMessage.PtMsgWorkingCaptureInfo value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureWorkingCapturesInfoIsMutable();
+      workingCapturesInfo_.set(index, value);
+    }
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    private void setWorkingCapturesInfo(
+        int index, tc.TcMessage.PtMsgWorkingCaptureInfo.Builder builderForValue) {
+      ensureWorkingCapturesInfoIsMutable();
+      workingCapturesInfo_.set(index, builderForValue.build());
+    }
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    private void addWorkingCapturesInfo(tc.TcMessage.PtMsgWorkingCaptureInfo value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureWorkingCapturesInfoIsMutable();
+      workingCapturesInfo_.add(value);
+    }
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    private void addWorkingCapturesInfo(
+        int index, tc.TcMessage.PtMsgWorkingCaptureInfo value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureWorkingCapturesInfoIsMutable();
+      workingCapturesInfo_.add(index, value);
+    }
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    private void addWorkingCapturesInfo(
+        tc.TcMessage.PtMsgWorkingCaptureInfo.Builder builderForValue) {
+      ensureWorkingCapturesInfoIsMutable();
+      workingCapturesInfo_.add(builderForValue.build());
+    }
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    private void addWorkingCapturesInfo(
+        int index, tc.TcMessage.PtMsgWorkingCaptureInfo.Builder builderForValue) {
+      ensureWorkingCapturesInfoIsMutable();
+      workingCapturesInfo_.add(index, builderForValue.build());
+    }
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    private void addAllWorkingCapturesInfo(
+        java.lang.Iterable<? extends tc.TcMessage.PtMsgWorkingCaptureInfo> values) {
+      ensureWorkingCapturesInfoIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, workingCapturesInfo_);
+    }
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    private void clearWorkingCapturesInfo() {
+      workingCapturesInfo_ = emptyProtobufList();
+    }
+    /**
+     * <pre>
+     * from renderer,
+     * </pre>
+     *
+     * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+     */
+    private void removeWorkingCapturesInfo(int index) {
+      ensureWorkingCapturesInfoIsMutable();
+      workingCapturesInfo_.remove(index);
+    }
+
+    public static final int RELAY_CONNECTED_FIELD_NUMBER = 20;
+    private boolean relayConnected_;
+    /**
+     * <code>bool relay_connected = 20;</code>
+     */
+    @java.lang.Override
+    public boolean getRelayConnected() {
+      return relayConnected_;
+    }
+    /**
+     * <code>bool relay_connected = 20;</code>
+     */
+    private void setRelayConnected(boolean value) {
       
-      captureHeight_ = 0;
+      relayConnected_ = value;
+    }
+    /**
+     * <code>bool relay_connected = 20;</code>
+     */
+    private void clearRelayConnected() {
+      
+      relayConnected_ = false;
+    }
+
+    public static final int AUDIO_CAPTURE_TYPE_FIELD_NUMBER = 21;
+    private java.lang.String audioCaptureType_;
+    /**
+     * <code>string audio_capture_type = 21;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getAudioCaptureType() {
+      return audioCaptureType_;
+    }
+    /**
+     * <code>string audio_capture_type = 21;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAudioCaptureTypeBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(audioCaptureType_);
+    }
+    /**
+     * <code>string audio_capture_type = 21;</code>
+     */
+    private void setAudioCaptureType(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      audioCaptureType_ = value;
+    }
+    /**
+     * <code>string audio_capture_type = 21;</code>
+     */
+    private void clearAudioCaptureType() {
+      
+      audioCaptureType_ = getDefaultInstance().getAudioCaptureType();
+    }
+    /**
+     * <code>string audio_capture_type = 21;</code>
+     */
+    private void setAudioCaptureTypeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      audioCaptureType_ = value.toStringUtf8();
     }
 
     public static tc.TcMessage.CaptureStatistics parseFrom(
@@ -10684,91 +12177,7 @@ public final class TcMessage {
       /**
        * <pre>
        * from inner server
-       * </pre>
-       *
-       * <code>repeated uint32 encode_durations = 2;</code>
-       */
-      @java.lang.Override
-      public java.util.List<java.lang.Integer>
-          getEncodeDurationsList() {
-        return java.util.Collections.unmodifiableList(
-            instance.getEncodeDurationsList());
-      }
-      /**
-       * <pre>
-       * from inner server
-       * </pre>
-       *
-       * <code>repeated uint32 encode_durations = 2;</code>
-       */
-      @java.lang.Override
-      public int getEncodeDurationsCount() {
-        return instance.getEncodeDurationsCount();
-      }
-      /**
-       * <pre>
-       * from inner server
-       * </pre>
-       *
-       * <code>repeated uint32 encode_durations = 2;</code>
-       */
-      @java.lang.Override
-      public int getEncodeDurations(int index) {
-        return instance.getEncodeDurations(index);
-      }
-      /**
-       * <pre>
-       * from inner server
-       * </pre>
-       *
-       * <code>repeated uint32 encode_durations = 2;</code>
-       */
-      public Builder setEncodeDurations(
-          int index, int value) {
-        copyOnWrite();
-        instance.setEncodeDurations(index, value);
-        return this;
-      }
-      /**
-       * <pre>
-       * from inner server
-       * </pre>
-       *
-       * <code>repeated uint32 encode_durations = 2;</code>
-       */
-      public Builder addEncodeDurations(int value) {
-        copyOnWrite();
-        instance.addEncodeDurations(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * from inner server
-       * </pre>
-       *
-       * <code>repeated uint32 encode_durations = 2;</code>
-       */
-      public Builder addAllEncodeDurations(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        copyOnWrite();
-        instance.addAllEncodeDurations(values);
-        return this;
-      }
-      /**
-       * <pre>
-       * from inner server
-       * </pre>
-       *
-       * <code>repeated uint32 encode_durations = 2;</code>
-       */
-      public Builder clearEncodeDurations() {
-        copyOnWrite();
-        instance.clearEncodeDurations();
-        return this;
-      }
-
-      /**
-       * <pre>
+       *repeated uint32 encode_durations = 2;
        * from inner server
        * </pre>
        *
@@ -10783,6 +12192,8 @@ public final class TcMessage {
       /**
        * <pre>
        * from inner server
+       *repeated uint32 encode_durations = 2;
+       * from inner server
        * </pre>
        *
        * <code>repeated uint32 audio_frame_gaps = 3;</code>
@@ -10794,6 +12205,8 @@ public final class TcMessage {
       /**
        * <pre>
        * from inner server
+       *repeated uint32 encode_durations = 2;
+       * from inner server
        * </pre>
        *
        * <code>repeated uint32 audio_frame_gaps = 3;</code>
@@ -10804,6 +12217,8 @@ public final class TcMessage {
       }
       /**
        * <pre>
+       * from inner server
+       *repeated uint32 encode_durations = 2;
        * from inner server
        * </pre>
        *
@@ -10818,6 +12233,8 @@ public final class TcMessage {
       /**
        * <pre>
        * from inner server
+       *repeated uint32 encode_durations = 2;
+       * from inner server
        * </pre>
        *
        * <code>repeated uint32 audio_frame_gaps = 3;</code>
@@ -10829,6 +12246,8 @@ public final class TcMessage {
       }
       /**
        * <pre>
+       * from inner server
+       *repeated uint32 encode_durations = 2;
        * from inner server
        * </pre>
        *
@@ -10843,6 +12262,8 @@ public final class TcMessage {
       /**
        * <pre>
        * from inner server
+       *repeated uint32 encode_durations = 2;
+       * from inner server
        * </pre>
        *
        * <code>repeated uint32 audio_frame_gaps = 3;</code>
@@ -10850,286 +12271,6 @@ public final class TcMessage {
       public Builder clearAudioFrameGaps() {
         copyOnWrite();
         instance.clearAudioFrameGaps();
-        return this;
-      }
-
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 decode_durations = 4;</code>
-       */
-      @java.lang.Override
-      public java.util.List<java.lang.Integer>
-          getDecodeDurationsList() {
-        return java.util.Collections.unmodifiableList(
-            instance.getDecodeDurationsList());
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 decode_durations = 4;</code>
-       */
-      @java.lang.Override
-      public int getDecodeDurationsCount() {
-        return instance.getDecodeDurationsCount();
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 decode_durations = 4;</code>
-       */
-      @java.lang.Override
-      public int getDecodeDurations(int index) {
-        return instance.getDecodeDurations(index);
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 decode_durations = 4;</code>
-       */
-      public Builder setDecodeDurations(
-          int index, int value) {
-        copyOnWrite();
-        instance.setDecodeDurations(index, value);
-        return this;
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 decode_durations = 4;</code>
-       */
-      public Builder addDecodeDurations(int value) {
-        copyOnWrite();
-        instance.addDecodeDurations(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 decode_durations = 4;</code>
-       */
-      public Builder addAllDecodeDurations(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        copyOnWrite();
-        instance.addAllDecodeDurations(values);
-        return this;
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 decode_durations = 4;</code>
-       */
-      public Builder clearDecodeDurations() {
-        copyOnWrite();
-        instance.clearDecodeDurations();
-        return this;
-      }
-
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-       */
-      @java.lang.Override
-      public java.util.List<java.lang.Integer>
-          getClientVideoRecvGapsList() {
-        return java.util.Collections.unmodifiableList(
-            instance.getClientVideoRecvGapsList());
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-       */
-      @java.lang.Override
-      public int getClientVideoRecvGapsCount() {
-        return instance.getClientVideoRecvGapsCount();
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-       */
-      @java.lang.Override
-      public int getClientVideoRecvGaps(int index) {
-        return instance.getClientVideoRecvGaps(index);
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-       */
-      public Builder setClientVideoRecvGaps(
-          int index, int value) {
-        copyOnWrite();
-        instance.setClientVideoRecvGaps(index, value);
-        return this;
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-       */
-      public Builder addClientVideoRecvGaps(int value) {
-        copyOnWrite();
-        instance.addClientVideoRecvGaps(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-       */
-      public Builder addAllClientVideoRecvGaps(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        copyOnWrite();
-        instance.addAllClientVideoRecvGaps(values);
-        return this;
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>repeated uint32 client_video_recv_gaps = 5;</code>
-       */
-      public Builder clearClientVideoRecvGaps() {
-        copyOnWrite();
-        instance.clearClientVideoRecvGaps();
-        return this;
-      }
-
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>uint32 client_fps_video_recv = 6;</code>
-       */
-      @java.lang.Override
-      public int getClientFpsVideoRecv() {
-        return instance.getClientFpsVideoRecv();
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>uint32 client_fps_video_recv = 6;</code>
-       */
-      public Builder setClientFpsVideoRecv(int value) {
-        copyOnWrite();
-        instance.setClientFpsVideoRecv(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>uint32 client_fps_video_recv = 6;</code>
-       */
-      public Builder clearClientFpsVideoRecv() {
-        copyOnWrite();
-        instance.clearClientFpsVideoRecv();
-        return this;
-      }
-
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>uint32 client_fps_render = 7;</code>
-       */
-      @java.lang.Override
-      public int getClientFpsRender() {
-        return instance.getClientFpsRender();
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>uint32 client_fps_render = 7;</code>
-       */
-      public Builder setClientFpsRender(int value) {
-        copyOnWrite();
-        instance.setClientFpsRender(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>uint32 client_fps_render = 7;</code>
-       */
-      public Builder clearClientFpsRender() {
-        copyOnWrite();
-        instance.clearClientFpsRender();
-        return this;
-      }
-
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>int64 client_recv_media_data = 8;</code>
-       */
-      @java.lang.Override
-      public long getClientRecvMediaData() {
-        return instance.getClientRecvMediaData();
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>int64 client_recv_media_data = 8;</code>
-       */
-      public Builder setClientRecvMediaData(long value) {
-        copyOnWrite();
-        instance.setClientRecvMediaData(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>int64 client_recv_media_data = 8;</code>
-       */
-      public Builder clearClientRecvMediaData() {
-        copyOnWrite();
-        instance.clearClientRecvMediaData();
         return this;
       }
 
@@ -11244,72 +12385,60 @@ public final class TcMessage {
       /**
        * <pre>
        * from client
+       *int32 render_width = 12;
+       * from client
+       *int32 render_height = 13;
+       * from inner server
+       *int32 capture_width = 14;
+       * from inner server
+       *int32 capture_height = 15;
+       * from inner server
        * </pre>
        *
-       * <code>int32 render_width = 12;</code>
+       * <code>int32 connected_clients = 16;</code>
        */
       @java.lang.Override
-      public int getRenderWidth() {
-        return instance.getRenderWidth();
+      public int getConnectedClients() {
+        return instance.getConnectedClients();
       }
       /**
        * <pre>
        * from client
+       *int32 render_width = 12;
+       * from client
+       *int32 render_height = 13;
+       * from inner server
+       *int32 capture_width = 14;
+       * from inner server
+       *int32 capture_height = 15;
+       * from inner server
        * </pre>
        *
-       * <code>int32 render_width = 12;</code>
+       * <code>int32 connected_clients = 16;</code>
        */
-      public Builder setRenderWidth(int value) {
+      public Builder setConnectedClients(int value) {
         copyOnWrite();
-        instance.setRenderWidth(value);
+        instance.setConnectedClients(value);
         return this;
       }
       /**
        * <pre>
        * from client
-       * </pre>
-       *
-       * <code>int32 render_width = 12;</code>
-       */
-      public Builder clearRenderWidth() {
-        copyOnWrite();
-        instance.clearRenderWidth();
-        return this;
-      }
-
-      /**
-       * <pre>
+       *int32 render_width = 12;
        * from client
+       *int32 render_height = 13;
+       * from inner server
+       *int32 capture_width = 14;
+       * from inner server
+       *int32 capture_height = 15;
+       * from inner server
        * </pre>
        *
-       * <code>int32 render_height = 13;</code>
+       * <code>int32 connected_clients = 16;</code>
        */
-      @java.lang.Override
-      public int getRenderHeight() {
-        return instance.getRenderHeight();
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>int32 render_height = 13;</code>
-       */
-      public Builder setRenderHeight(int value) {
+      public Builder clearConnectedClients() {
         copyOnWrite();
-        instance.setRenderHeight(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * from client
-       * </pre>
-       *
-       * <code>int32 render_height = 13;</code>
-       */
-      public Builder clearRenderHeight() {
-        copyOnWrite();
-        instance.clearRenderHeight();
+        instance.clearConnectedClients();
         return this;
       }
 
@@ -11318,22 +12447,35 @@ public final class TcMessage {
        * from inner server
        * </pre>
        *
-       * <code>int32 capture_width = 14;</code>
+       * <code>string video_capture_target = 17;</code>
        */
       @java.lang.Override
-      public int getCaptureWidth() {
-        return instance.getCaptureWidth();
+      public java.lang.String getVideoCaptureTarget() {
+        return instance.getVideoCaptureTarget();
       }
       /**
        * <pre>
        * from inner server
        * </pre>
        *
-       * <code>int32 capture_width = 14;</code>
+       * <code>string video_capture_target = 17;</code>
        */
-      public Builder setCaptureWidth(int value) {
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getVideoCaptureTargetBytes() {
+        return instance.getVideoCaptureTargetBytes();
+      }
+      /**
+       * <pre>
+       * from inner server
+       * </pre>
+       *
+       * <code>string video_capture_target = 17;</code>
+       */
+      public Builder setVideoCaptureTarget(
+          java.lang.String value) {
         copyOnWrite();
-        instance.setCaptureWidth(value);
+        instance.setVideoCaptureTarget(value);
         return this;
       }
       /**
@@ -11341,11 +12483,24 @@ public final class TcMessage {
        * from inner server
        * </pre>
        *
-       * <code>int32 capture_width = 14;</code>
+       * <code>string video_capture_target = 17;</code>
        */
-      public Builder clearCaptureWidth() {
+      public Builder clearVideoCaptureTarget() {
         copyOnWrite();
-        instance.clearCaptureWidth();
+        instance.clearVideoCaptureTarget();
+        return this;
+      }
+      /**
+       * <pre>
+       * from inner server
+       * </pre>
+       *
+       * <code>string video_capture_target = 17;</code>
+       */
+      public Builder setVideoCaptureTargetBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setVideoCaptureTargetBytes(value);
         return this;
       }
 
@@ -11354,22 +12509,35 @@ public final class TcMessage {
        * from inner server
        * </pre>
        *
-       * <code>int32 capture_height = 15;</code>
+       * <code>string video_capture_fps = 18;</code>
        */
       @java.lang.Override
-      public int getCaptureHeight() {
-        return instance.getCaptureHeight();
+      public java.lang.String getVideoCaptureFps() {
+        return instance.getVideoCaptureFps();
       }
       /**
        * <pre>
        * from inner server
        * </pre>
        *
-       * <code>int32 capture_height = 15;</code>
+       * <code>string video_capture_fps = 18;</code>
        */
-      public Builder setCaptureHeight(int value) {
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getVideoCaptureFpsBytes() {
+        return instance.getVideoCaptureFpsBytes();
+      }
+      /**
+       * <pre>
+       * from inner server
+       * </pre>
+       *
+       * <code>string video_capture_fps = 18;</code>
+       */
+      public Builder setVideoCaptureFps(
+          java.lang.String value) {
         copyOnWrite();
-        instance.setCaptureHeight(value);
+        instance.setVideoCaptureFps(value);
         return this;
       }
       /**
@@ -11377,11 +12545,238 @@ public final class TcMessage {
        * from inner server
        * </pre>
        *
-       * <code>int32 capture_height = 15;</code>
+       * <code>string video_capture_fps = 18;</code>
        */
-      public Builder clearCaptureHeight() {
+      public Builder clearVideoCaptureFps() {
         copyOnWrite();
-        instance.clearCaptureHeight();
+        instance.clearVideoCaptureFps();
+        return this;
+      }
+      /**
+       * <pre>
+       * from inner server
+       * </pre>
+       *
+       * <code>string video_capture_fps = 18;</code>
+       */
+      public Builder setVideoCaptureFpsBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setVideoCaptureFpsBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      @java.lang.Override
+      public java.util.List<tc.TcMessage.PtMsgWorkingCaptureInfo> getWorkingCapturesInfoList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getWorkingCapturesInfoList());
+      }
+      /**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      @java.lang.Override
+      public int getWorkingCapturesInfoCount() {
+        return instance.getWorkingCapturesInfoCount();
+      }/**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.PtMsgWorkingCaptureInfo getWorkingCapturesInfo(int index) {
+        return instance.getWorkingCapturesInfo(index);
+      }
+      /**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      public Builder setWorkingCapturesInfo(
+          int index, tc.TcMessage.PtMsgWorkingCaptureInfo value) {
+        copyOnWrite();
+        instance.setWorkingCapturesInfo(index, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      public Builder setWorkingCapturesInfo(
+          int index, tc.TcMessage.PtMsgWorkingCaptureInfo.Builder builderForValue) {
+        copyOnWrite();
+        instance.setWorkingCapturesInfo(index, builderForValue);
+        return this;
+      }
+      /**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      public Builder addWorkingCapturesInfo(tc.TcMessage.PtMsgWorkingCaptureInfo value) {
+        copyOnWrite();
+        instance.addWorkingCapturesInfo(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      public Builder addWorkingCapturesInfo(
+          int index, tc.TcMessage.PtMsgWorkingCaptureInfo value) {
+        copyOnWrite();
+        instance.addWorkingCapturesInfo(index, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      public Builder addWorkingCapturesInfo(
+          tc.TcMessage.PtMsgWorkingCaptureInfo.Builder builderForValue) {
+        copyOnWrite();
+        instance.addWorkingCapturesInfo(builderForValue);
+        return this;
+      }
+      /**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      public Builder addWorkingCapturesInfo(
+          int index, tc.TcMessage.PtMsgWorkingCaptureInfo.Builder builderForValue) {
+        copyOnWrite();
+        instance.addWorkingCapturesInfo(index, builderForValue);
+        return this;
+      }
+      /**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      public Builder addAllWorkingCapturesInfo(
+          java.lang.Iterable<? extends tc.TcMessage.PtMsgWorkingCaptureInfo> values) {
+        copyOnWrite();
+        instance.addAllWorkingCapturesInfo(values);
+        return this;
+      }
+      /**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      public Builder clearWorkingCapturesInfo() {
+        copyOnWrite();
+        instance.clearWorkingCapturesInfo();
+        return this;
+      }
+      /**
+       * <pre>
+       * from renderer,
+       * </pre>
+       *
+       * <code>repeated .tc.PtMsgWorkingCaptureInfo working_captures_info = 19;</code>
+       */
+      public Builder removeWorkingCapturesInfo(int index) {
+        copyOnWrite();
+        instance.removeWorkingCapturesInfo(index);
+        return this;
+      }
+
+      /**
+       * <code>bool relay_connected = 20;</code>
+       */
+      @java.lang.Override
+      public boolean getRelayConnected() {
+        return instance.getRelayConnected();
+      }
+      /**
+       * <code>bool relay_connected = 20;</code>
+       */
+      public Builder setRelayConnected(boolean value) {
+        copyOnWrite();
+        instance.setRelayConnected(value);
+        return this;
+      }
+      /**
+       * <code>bool relay_connected = 20;</code>
+       */
+      public Builder clearRelayConnected() {
+        copyOnWrite();
+        instance.clearRelayConnected();
+        return this;
+      }
+
+      /**
+       * <code>string audio_capture_type = 21;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getAudioCaptureType() {
+        return instance.getAudioCaptureType();
+      }
+      /**
+       * <code>string audio_capture_type = 21;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getAudioCaptureTypeBytes() {
+        return instance.getAudioCaptureTypeBytes();
+      }
+      /**
+       * <code>string audio_capture_type = 21;</code>
+       */
+      public Builder setAudioCaptureType(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setAudioCaptureType(value);
+        return this;
+      }
+      /**
+       * <code>string audio_capture_type = 21;</code>
+       */
+      public Builder clearAudioCaptureType() {
+        copyOnWrite();
+        instance.clearAudioCaptureType();
+        return this;
+      }
+      /**
+       * <code>string audio_capture_type = 21;</code>
+       */
+      public Builder setAudioCaptureTypeBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setAudioCaptureTypeBytes(value);
         return this;
       }
 
@@ -11402,25 +12797,22 @@ public final class TcMessage {
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
               "videoFrameGaps_",
-              "encodeDurations_",
               "audioFrameGaps_",
-              "decodeDurations_",
-              "clientVideoRecvGaps_",
-              "clientFpsVideoRecv_",
-              "clientFpsRender_",
-              "clientRecvMediaData_",
               "fpsVideoEncode_",
               "appRunningTime_",
               "serverSendMediaData_",
-              "renderWidth_",
-              "renderHeight_",
-              "captureWidth_",
-              "captureHeight_",
+              "connectedClients_",
+              "videoCaptureTarget_",
+              "videoCaptureFps_",
+              "workingCapturesInfo_",
+              tc.TcMessage.PtMsgWorkingCaptureInfo.class,
+              "relayConnected_",
+              "audioCaptureType_",
             };
             java.lang.String info =
-                "\u0000\u000f\u0000\u0000\u0001\u000f\u000f\u0000\u0005\u0000\u0001+\u0002+\u0003" +
-                "+\u0004+\u0005+\u0006\u000b\u0007\u000b\b\u0002\t\u0004\n\u0004\u000b\u0002\f\u0004" +
-                "\r\u0004\u000e\u0004\u000f\u0004";
+                "\u0000\u000b\u0000\u0000\u0001\u0015\u000b\u0000\u0003\u0000\u0001+\u0003+\t\u0004" +
+                "\n\u0004\u000b\u0002\u0010\u0004\u0011\u0208\u0012\u0208\u0013\u001b\u0014\u0007" +
+                "\u0015\u0208";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -15924,19 +17316,589 @@ public final class TcMessage {
     }
   }
 
+  public interface ClipboardFileOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.ClipboardFile)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>string file_name = 1;</code>
+     */
+    java.lang.String getFileName();
+    /**
+     * <code>string file_name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getFileNameBytes();
+
+    /**
+     * <code>string full_path = 2;</code>
+     */
+    java.lang.String getFullPath();
+    /**
+     * <code>string full_path = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getFullPathBytes();
+
+    /**
+     * <code>int32 total_size = 3;</code>
+     */
+    int getTotalSize();
+
+    /**
+     * <code>string ref_path = 4;</code>
+     */
+    java.lang.String getRefPath();
+    /**
+     * <code>string ref_path = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getRefPathBytes();
+  }
+  /**
+   * Protobuf type {@code tc.ClipboardFile}
+   */
+  public  static final class ClipboardFile extends
+      com.google.protobuf.GeneratedMessageLite<
+          ClipboardFile, ClipboardFile.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.ClipboardFile)
+      ClipboardFileOrBuilder {
+    private ClipboardFile() {
+      fileName_ = "";
+      fullPath_ = "";
+      refPath_ = "";
+    }
+    public static final int FILE_NAME_FIELD_NUMBER = 1;
+    private java.lang.String fileName_;
+    /**
+     * <code>string file_name = 1;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getFileName() {
+      return fileName_;
+    }
+    /**
+     * <code>string file_name = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFileNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(fileName_);
+    }
+    /**
+     * <code>string file_name = 1;</code>
+     */
+    private void setFileName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      fileName_ = value;
+    }
+    /**
+     * <code>string file_name = 1;</code>
+     */
+    private void clearFileName() {
+      
+      fileName_ = getDefaultInstance().getFileName();
+    }
+    /**
+     * <code>string file_name = 1;</code>
+     */
+    private void setFileNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      fileName_ = value.toStringUtf8();
+    }
+
+    public static final int FULL_PATH_FIELD_NUMBER = 2;
+    private java.lang.String fullPath_;
+    /**
+     * <code>string full_path = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getFullPath() {
+      return fullPath_;
+    }
+    /**
+     * <code>string full_path = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFullPathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(fullPath_);
+    }
+    /**
+     * <code>string full_path = 2;</code>
+     */
+    private void setFullPath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      fullPath_ = value;
+    }
+    /**
+     * <code>string full_path = 2;</code>
+     */
+    private void clearFullPath() {
+      
+      fullPath_ = getDefaultInstance().getFullPath();
+    }
+    /**
+     * <code>string full_path = 2;</code>
+     */
+    private void setFullPathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      fullPath_ = value.toStringUtf8();
+    }
+
+    public static final int TOTAL_SIZE_FIELD_NUMBER = 3;
+    private int totalSize_;
+    /**
+     * <code>int32 total_size = 3;</code>
+     */
+    @java.lang.Override
+    public int getTotalSize() {
+      return totalSize_;
+    }
+    /**
+     * <code>int32 total_size = 3;</code>
+     */
+    private void setTotalSize(int value) {
+      
+      totalSize_ = value;
+    }
+    /**
+     * <code>int32 total_size = 3;</code>
+     */
+    private void clearTotalSize() {
+      
+      totalSize_ = 0;
+    }
+
+    public static final int REF_PATH_FIELD_NUMBER = 4;
+    private java.lang.String refPath_;
+    /**
+     * <code>string ref_path = 4;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getRefPath() {
+      return refPath_;
+    }
+    /**
+     * <code>string ref_path = 4;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRefPathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(refPath_);
+    }
+    /**
+     * <code>string ref_path = 4;</code>
+     */
+    private void setRefPath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      refPath_ = value;
+    }
+    /**
+     * <code>string ref_path = 4;</code>
+     */
+    private void clearRefPath() {
+      
+      refPath_ = getDefaultInstance().getRefPath();
+    }
+    /**
+     * <code>string ref_path = 4;</code>
+     */
+    private void setRefPathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      refPath_ = value.toStringUtf8();
+    }
+
+    public static tc.TcMessage.ClipboardFile parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ClipboardFile parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardFile parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ClipboardFile parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardFile parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ClipboardFile parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardFile parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ClipboardFile parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardFile parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ClipboardFile parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardFile parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ClipboardFile parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcMessage.ClipboardFile prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.ClipboardFile}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcMessage.ClipboardFile, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.ClipboardFile)
+        tc.TcMessage.ClipboardFileOrBuilder {
+      // Construct using tc.TcMessage.ClipboardFile.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>string file_name = 1;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getFileName() {
+        return instance.getFileName();
+      }
+      /**
+       * <code>string file_name = 1;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getFileNameBytes() {
+        return instance.getFileNameBytes();
+      }
+      /**
+       * <code>string file_name = 1;</code>
+       */
+      public Builder setFileName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setFileName(value);
+        return this;
+      }
+      /**
+       * <code>string file_name = 1;</code>
+       */
+      public Builder clearFileName() {
+        copyOnWrite();
+        instance.clearFileName();
+        return this;
+      }
+      /**
+       * <code>string file_name = 1;</code>
+       */
+      public Builder setFileNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setFileNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string full_path = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getFullPath() {
+        return instance.getFullPath();
+      }
+      /**
+       * <code>string full_path = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getFullPathBytes() {
+        return instance.getFullPathBytes();
+      }
+      /**
+       * <code>string full_path = 2;</code>
+       */
+      public Builder setFullPath(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setFullPath(value);
+        return this;
+      }
+      /**
+       * <code>string full_path = 2;</code>
+       */
+      public Builder clearFullPath() {
+        copyOnWrite();
+        instance.clearFullPath();
+        return this;
+      }
+      /**
+       * <code>string full_path = 2;</code>
+       */
+      public Builder setFullPathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setFullPathBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>int32 total_size = 3;</code>
+       */
+      @java.lang.Override
+      public int getTotalSize() {
+        return instance.getTotalSize();
+      }
+      /**
+       * <code>int32 total_size = 3;</code>
+       */
+      public Builder setTotalSize(int value) {
+        copyOnWrite();
+        instance.setTotalSize(value);
+        return this;
+      }
+      /**
+       * <code>int32 total_size = 3;</code>
+       */
+      public Builder clearTotalSize() {
+        copyOnWrite();
+        instance.clearTotalSize();
+        return this;
+      }
+
+      /**
+       * <code>string ref_path = 4;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getRefPath() {
+        return instance.getRefPath();
+      }
+      /**
+       * <code>string ref_path = 4;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getRefPathBytes() {
+        return instance.getRefPathBytes();
+      }
+      /**
+       * <code>string ref_path = 4;</code>
+       */
+      public Builder setRefPath(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setRefPath(value);
+        return this;
+      }
+      /**
+       * <code>string ref_path = 4;</code>
+       */
+      public Builder clearRefPath() {
+        copyOnWrite();
+        instance.clearRefPath();
+        return this;
+      }
+      /**
+       * <code>string ref_path = 4;</code>
+       */
+      public Builder setRefPathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setRefPathBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.ClipboardFile)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcMessage.ClipboardFile();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "fileName_",
+              "fullPath_",
+              "totalSize_",
+              "refPath_",
+            };
+            java.lang.String info =
+                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+                "\u0003\u0004\u0004\u0208";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcMessage.ClipboardFile> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcMessage.ClipboardFile.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.ClipboardFile)
+    private static final tc.TcMessage.ClipboardFile DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new ClipboardFile();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        ClipboardFile.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcMessage.ClipboardFile getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ClipboardFile> PARSER;
+
+    public static com.google.protobuf.Parser<ClipboardFile> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface ClipboardInfoOrBuilder extends
       // @@protoc_insertion_point(interface_extends:tc.ClipboardInfo)
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>string msg = 1;</code>
+     * <code>.tc.ClipboardType type = 1;</code>
      */
-    java.lang.String getMsg();
+    int getTypeValue();
     /**
-     * <code>string msg = 1;</code>
+     * <code>.tc.ClipboardType type = 1;</code>
+     */
+    tc.TcMessage.ClipboardType getType();
+
+    /**
+     * <code>bytes msg = 2;</code>
+     */
+    com.google.protobuf.ByteString getMsg();
+
+    /**
+     * <code>string file_md5 = 3;</code>
+     */
+    java.lang.String getFileMd5();
+    /**
+     * <code>string file_md5 = 3;</code>
      */
     com.google.protobuf.ByteString
-        getMsgBytes();
+        getFileMd5Bytes();
+
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    java.util.List<tc.TcMessage.ClipboardFile> 
+        getFilesList();
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    tc.TcMessage.ClipboardFile getFiles(int index);
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    int getFilesCount();
   }
   /**
    * Protobuf type {@code tc.ClipboardInfo}
@@ -15947,30 +17909,64 @@ public final class TcMessage {
       // @@protoc_insertion_point(message_implements:tc.ClipboardInfo)
       ClipboardInfoOrBuilder {
     private ClipboardInfo() {
-      msg_ = "";
+      msg_ = com.google.protobuf.ByteString.EMPTY;
+      fileMd5_ = "";
+      files_ = emptyProtobufList();
     }
-    public static final int MSG_FIELD_NUMBER = 1;
-    private java.lang.String msg_;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
     /**
-     * <code>string msg = 1;</code>
+     * <code>.tc.ClipboardType type = 1;</code>
      */
     @java.lang.Override
-    public java.lang.String getMsg() {
+    public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.tc.ClipboardType type = 1;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.ClipboardType getType() {
+      tc.TcMessage.ClipboardType result = tc.TcMessage.ClipboardType.forNumber(type_);
+      return result == null ? tc.TcMessage.ClipboardType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.tc.ClipboardType type = 1;</code>
+     */
+    private void setTypeValue(int value) {
+        type_ = value;
+    }
+    /**
+     * <code>.tc.ClipboardType type = 1;</code>
+     */
+    private void setType(tc.TcMessage.ClipboardType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      type_ = value.getNumber();
+    }
+    /**
+     * <code>.tc.ClipboardType type = 1;</code>
+     */
+    private void clearType() {
+      
+      type_ = 0;
+    }
+
+    public static final int MSG_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString msg_;
+    /**
+     * <code>bytes msg = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getMsg() {
       return msg_;
     }
     /**
-     * <code>string msg = 1;</code>
+     * <code>bytes msg = 2;</code>
      */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getMsgBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(msg_);
-    }
-    /**
-     * <code>string msg = 1;</code>
-     */
-    private void setMsg(
-        java.lang.String value) {
+    private void setMsg(com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
@@ -15978,23 +17974,182 @@ public final class TcMessage {
       msg_ = value;
     }
     /**
-     * <code>string msg = 1;</code>
+     * <code>bytes msg = 2;</code>
      */
     private void clearMsg() {
       
       msg_ = getDefaultInstance().getMsg();
     }
+
+    public static final int FILE_MD5_FIELD_NUMBER = 3;
+    private java.lang.String fileMd5_;
     /**
-     * <code>string msg = 1;</code>
+     * <code>string file_md5 = 3;</code>
      */
-    private void setMsgBytes(
+    @java.lang.Override
+    public java.lang.String getFileMd5() {
+      return fileMd5_;
+    }
+    /**
+     * <code>string file_md5 = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFileMd5Bytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(fileMd5_);
+    }
+    /**
+     * <code>string file_md5 = 3;</code>
+     */
+    private void setFileMd5(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      fileMd5_ = value;
+    }
+    /**
+     * <code>string file_md5 = 3;</code>
+     */
+    private void clearFileMd5() {
+      
+      fileMd5_ = getDefaultInstance().getFileMd5();
+    }
+    /**
+     * <code>string file_md5 = 3;</code>
+     */
+    private void setFileMd5Bytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      msg_ = value.toStringUtf8();
+      fileMd5_ = value.toStringUtf8();
+    }
+
+    public static final int FILES_FIELD_NUMBER = 4;
+    private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.ClipboardFile> files_;
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    @java.lang.Override
+    public java.util.List<tc.TcMessage.ClipboardFile> getFilesList() {
+      return files_;
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    public java.util.List<? extends tc.TcMessage.ClipboardFileOrBuilder> 
+        getFilesOrBuilderList() {
+      return files_;
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    @java.lang.Override
+    public int getFilesCount() {
+      return files_.size();
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.ClipboardFile getFiles(int index) {
+      return files_.get(index);
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    public tc.TcMessage.ClipboardFileOrBuilder getFilesOrBuilder(
+        int index) {
+      return files_.get(index);
+    }
+    private void ensureFilesIsMutable() {
+      if (!files_.isModifiable()) {
+        files_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(files_);
+       }
+    }
+
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    private void setFiles(
+        int index, tc.TcMessage.ClipboardFile value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureFilesIsMutable();
+      files_.set(index, value);
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    private void setFiles(
+        int index, tc.TcMessage.ClipboardFile.Builder builderForValue) {
+      ensureFilesIsMutable();
+      files_.set(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    private void addFiles(tc.TcMessage.ClipboardFile value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureFilesIsMutable();
+      files_.add(value);
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    private void addFiles(
+        int index, tc.TcMessage.ClipboardFile value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureFilesIsMutable();
+      files_.add(index, value);
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    private void addFiles(
+        tc.TcMessage.ClipboardFile.Builder builderForValue) {
+      ensureFilesIsMutable();
+      files_.add(builderForValue.build());
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    private void addFiles(
+        int index, tc.TcMessage.ClipboardFile.Builder builderForValue) {
+      ensureFilesIsMutable();
+      files_.add(index, builderForValue.build());
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    private void addAllFiles(
+        java.lang.Iterable<? extends tc.TcMessage.ClipboardFile> values) {
+      ensureFilesIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, files_);
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    private void clearFiles() {
+      files_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .tc.ClipboardFile files = 4;</code>
+     */
+    private void removeFiles(int index) {
+      ensureFilesIsMutable();
+      files_.remove(index);
     }
 
     public static tc.TcMessage.ClipboardInfo parseFrom(
@@ -16093,44 +18248,207 @@ public final class TcMessage {
 
 
       /**
-       * <code>string msg = 1;</code>
+       * <code>.tc.ClipboardType type = 1;</code>
        */
       @java.lang.Override
-      public java.lang.String getMsg() {
+      public int getTypeValue() {
+        return instance.getTypeValue();
+      }
+      /**
+       * <code>.tc.ClipboardType type = 1;</code>
+       */
+      public Builder setTypeValue(int value) {
+        copyOnWrite();
+        instance.setTypeValue(value);
+        return this;
+      }
+      /**
+       * <code>.tc.ClipboardType type = 1;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.ClipboardType getType() {
+        return instance.getType();
+      }
+      /**
+       * <code>.tc.ClipboardType type = 1;</code>
+       */
+      public Builder setType(tc.TcMessage.ClipboardType value) {
+        copyOnWrite();
+        instance.setType(value);
+        return this;
+      }
+      /**
+       * <code>.tc.ClipboardType type = 1;</code>
+       */
+      public Builder clearType() {
+        copyOnWrite();
+        instance.clearType();
+        return this;
+      }
+
+      /**
+       * <code>bytes msg = 2;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getMsg() {
         return instance.getMsg();
       }
       /**
-       * <code>string msg = 1;</code>
+       * <code>bytes msg = 2;</code>
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getMsgBytes() {
-        return instance.getMsgBytes();
-      }
-      /**
-       * <code>string msg = 1;</code>
-       */
-      public Builder setMsg(
-          java.lang.String value) {
+      public Builder setMsg(com.google.protobuf.ByteString value) {
         copyOnWrite();
         instance.setMsg(value);
         return this;
       }
       /**
-       * <code>string msg = 1;</code>
+       * <code>bytes msg = 2;</code>
        */
       public Builder clearMsg() {
         copyOnWrite();
         instance.clearMsg();
         return this;
       }
+
       /**
-       * <code>string msg = 1;</code>
+       * <code>string file_md5 = 3;</code>
        */
-      public Builder setMsgBytes(
+      @java.lang.Override
+      public java.lang.String getFileMd5() {
+        return instance.getFileMd5();
+      }
+      /**
+       * <code>string file_md5 = 3;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getFileMd5Bytes() {
+        return instance.getFileMd5Bytes();
+      }
+      /**
+       * <code>string file_md5 = 3;</code>
+       */
+      public Builder setFileMd5(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setFileMd5(value);
+        return this;
+      }
+      /**
+       * <code>string file_md5 = 3;</code>
+       */
+      public Builder clearFileMd5() {
+        copyOnWrite();
+        instance.clearFileMd5();
+        return this;
+      }
+      /**
+       * <code>string file_md5 = 3;</code>
+       */
+      public Builder setFileMd5Bytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setMsgBytes(value);
+        instance.setFileMd5Bytes(value);
+        return this;
+      }
+
+      /**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      @java.lang.Override
+      public java.util.List<tc.TcMessage.ClipboardFile> getFilesList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getFilesList());
+      }
+      /**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      @java.lang.Override
+      public int getFilesCount() {
+        return instance.getFilesCount();
+      }/**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.ClipboardFile getFiles(int index) {
+        return instance.getFiles(index);
+      }
+      /**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      public Builder setFiles(
+          int index, tc.TcMessage.ClipboardFile value) {
+        copyOnWrite();
+        instance.setFiles(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      public Builder setFiles(
+          int index, tc.TcMessage.ClipboardFile.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFiles(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      public Builder addFiles(tc.TcMessage.ClipboardFile value) {
+        copyOnWrite();
+        instance.addFiles(value);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      public Builder addFiles(
+          int index, tc.TcMessage.ClipboardFile value) {
+        copyOnWrite();
+        instance.addFiles(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      public Builder addFiles(
+          tc.TcMessage.ClipboardFile.Builder builderForValue) {
+        copyOnWrite();
+        instance.addFiles(builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      public Builder addFiles(
+          int index, tc.TcMessage.ClipboardFile.Builder builderForValue) {
+        copyOnWrite();
+        instance.addFiles(index, builderForValue);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      public Builder addAllFiles(
+          java.lang.Iterable<? extends tc.TcMessage.ClipboardFile> values) {
+        copyOnWrite();
+        instance.addAllFiles(values);
+        return this;
+      }
+      /**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      public Builder clearFiles() {
+        copyOnWrite();
+        instance.clearFiles();
+        return this;
+      }
+      /**
+       * <code>repeated .tc.ClipboardFile files = 4;</code>
+       */
+      public Builder removeFiles(int index) {
+        copyOnWrite();
+        instance.removeFiles(index);
         return this;
       }
 
@@ -16150,10 +18468,15 @@ public final class TcMessage {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
+              "type_",
               "msg_",
+              "fileMd5_",
+              "files_",
+              tc.TcMessage.ClipboardFile.class,
             };
             java.lang.String info =
-                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u0208";
+                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0001\u0000\u0001\f\u0002\n\u0003" +
+                "\u0208\u0004\u001b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -16203,6 +18526,1010 @@ public final class TcMessage {
     private static volatile com.google.protobuf.Parser<ClipboardInfo> PARSER;
 
     public static com.google.protobuf.Parser<ClipboardInfo> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface ClipboardReqBufferOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.ClipboardReqBuffer)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    java.lang.String getFullName();
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getFullNameBytes();
+
+    /**
+     * <code>int64 req_size = 2;</code>
+     */
+    long getReqSize();
+
+    /**
+     * <code>int64 req_start = 3;</code>
+     */
+    long getReqStart();
+
+    /**
+     * <code>int64 req_index = 4;</code>
+     */
+    long getReqIndex();
+  }
+  /**
+   * Protobuf type {@code tc.ClipboardReqBuffer}
+   */
+  public  static final class ClipboardReqBuffer extends
+      com.google.protobuf.GeneratedMessageLite<
+          ClipboardReqBuffer, ClipboardReqBuffer.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.ClipboardReqBuffer)
+      ClipboardReqBufferOrBuilder {
+    private ClipboardReqBuffer() {
+      fullName_ = "";
+    }
+    public static final int FULL_NAME_FIELD_NUMBER = 1;
+    private java.lang.String fullName_;
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getFullName() {
+      return fullName_;
+    }
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFullNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(fullName_);
+    }
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    private void setFullName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      fullName_ = value;
+    }
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    private void clearFullName() {
+      
+      fullName_ = getDefaultInstance().getFullName();
+    }
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    private void setFullNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      fullName_ = value.toStringUtf8();
+    }
+
+    public static final int REQ_SIZE_FIELD_NUMBER = 2;
+    private long reqSize_;
+    /**
+     * <code>int64 req_size = 2;</code>
+     */
+    @java.lang.Override
+    public long getReqSize() {
+      return reqSize_;
+    }
+    /**
+     * <code>int64 req_size = 2;</code>
+     */
+    private void setReqSize(long value) {
+      
+      reqSize_ = value;
+    }
+    /**
+     * <code>int64 req_size = 2;</code>
+     */
+    private void clearReqSize() {
+      
+      reqSize_ = 0L;
+    }
+
+    public static final int REQ_START_FIELD_NUMBER = 3;
+    private long reqStart_;
+    /**
+     * <code>int64 req_start = 3;</code>
+     */
+    @java.lang.Override
+    public long getReqStart() {
+      return reqStart_;
+    }
+    /**
+     * <code>int64 req_start = 3;</code>
+     */
+    private void setReqStart(long value) {
+      
+      reqStart_ = value;
+    }
+    /**
+     * <code>int64 req_start = 3;</code>
+     */
+    private void clearReqStart() {
+      
+      reqStart_ = 0L;
+    }
+
+    public static final int REQ_INDEX_FIELD_NUMBER = 4;
+    private long reqIndex_;
+    /**
+     * <code>int64 req_index = 4;</code>
+     */
+    @java.lang.Override
+    public long getReqIndex() {
+      return reqIndex_;
+    }
+    /**
+     * <code>int64 req_index = 4;</code>
+     */
+    private void setReqIndex(long value) {
+      
+      reqIndex_ = value;
+    }
+    /**
+     * <code>int64 req_index = 4;</code>
+     */
+    private void clearReqIndex() {
+      
+      reqIndex_ = 0L;
+    }
+
+    public static tc.TcMessage.ClipboardReqBuffer parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcMessage.ClipboardReqBuffer prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.ClipboardReqBuffer}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcMessage.ClipboardReqBuffer, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.ClipboardReqBuffer)
+        tc.TcMessage.ClipboardReqBufferOrBuilder {
+      // Construct using tc.TcMessage.ClipboardReqBuffer.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>string full_name = 1;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getFullName() {
+        return instance.getFullName();
+      }
+      /**
+       * <code>string full_name = 1;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getFullNameBytes() {
+        return instance.getFullNameBytes();
+      }
+      /**
+       * <code>string full_name = 1;</code>
+       */
+      public Builder setFullName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setFullName(value);
+        return this;
+      }
+      /**
+       * <code>string full_name = 1;</code>
+       */
+      public Builder clearFullName() {
+        copyOnWrite();
+        instance.clearFullName();
+        return this;
+      }
+      /**
+       * <code>string full_name = 1;</code>
+       */
+      public Builder setFullNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setFullNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>int64 req_size = 2;</code>
+       */
+      @java.lang.Override
+      public long getReqSize() {
+        return instance.getReqSize();
+      }
+      /**
+       * <code>int64 req_size = 2;</code>
+       */
+      public Builder setReqSize(long value) {
+        copyOnWrite();
+        instance.setReqSize(value);
+        return this;
+      }
+      /**
+       * <code>int64 req_size = 2;</code>
+       */
+      public Builder clearReqSize() {
+        copyOnWrite();
+        instance.clearReqSize();
+        return this;
+      }
+
+      /**
+       * <code>int64 req_start = 3;</code>
+       */
+      @java.lang.Override
+      public long getReqStart() {
+        return instance.getReqStart();
+      }
+      /**
+       * <code>int64 req_start = 3;</code>
+       */
+      public Builder setReqStart(long value) {
+        copyOnWrite();
+        instance.setReqStart(value);
+        return this;
+      }
+      /**
+       * <code>int64 req_start = 3;</code>
+       */
+      public Builder clearReqStart() {
+        copyOnWrite();
+        instance.clearReqStart();
+        return this;
+      }
+
+      /**
+       * <code>int64 req_index = 4;</code>
+       */
+      @java.lang.Override
+      public long getReqIndex() {
+        return instance.getReqIndex();
+      }
+      /**
+       * <code>int64 req_index = 4;</code>
+       */
+      public Builder setReqIndex(long value) {
+        copyOnWrite();
+        instance.setReqIndex(value);
+        return this;
+      }
+      /**
+       * <code>int64 req_index = 4;</code>
+       */
+      public Builder clearReqIndex() {
+        copyOnWrite();
+        instance.clearReqIndex();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.ClipboardReqBuffer)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcMessage.ClipboardReqBuffer();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "fullName_",
+              "reqSize_",
+              "reqStart_",
+              "reqIndex_",
+            };
+            java.lang.String info =
+                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002\u0002" +
+                "\u0003\u0002\u0004\u0002";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcMessage.ClipboardReqBuffer> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcMessage.ClipboardReqBuffer.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.ClipboardReqBuffer)
+    private static final tc.TcMessage.ClipboardReqBuffer DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new ClipboardReqBuffer();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        ClipboardReqBuffer.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcMessage.ClipboardReqBuffer getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ClipboardReqBuffer> PARSER;
+
+    public static com.google.protobuf.Parser<ClipboardReqBuffer> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface ClipboardRespBufferOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:tc.ClipboardRespBuffer)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    java.lang.String getFullName();
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getFullNameBytes();
+
+    /**
+     * <code>int64 req_size = 2;</code>
+     */
+    long getReqSize();
+
+    /**
+     * <code>int64 req_start = 3;</code>
+     */
+    long getReqStart();
+
+    /**
+     * <code>int64 req_index = 4;</code>
+     */
+    long getReqIndex();
+
+    /**
+     * <code>int64 read_size = 5;</code>
+     */
+    long getReadSize();
+
+    /**
+     * <code>bytes buffer = 6;</code>
+     */
+    com.google.protobuf.ByteString getBuffer();
+  }
+  /**
+   * Protobuf type {@code tc.ClipboardRespBuffer}
+   */
+  public  static final class ClipboardRespBuffer extends
+      com.google.protobuf.GeneratedMessageLite<
+          ClipboardRespBuffer, ClipboardRespBuffer.Builder> implements
+      // @@protoc_insertion_point(message_implements:tc.ClipboardRespBuffer)
+      ClipboardRespBufferOrBuilder {
+    private ClipboardRespBuffer() {
+      fullName_ = "";
+      buffer_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    public static final int FULL_NAME_FIELD_NUMBER = 1;
+    private java.lang.String fullName_;
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getFullName() {
+      return fullName_;
+    }
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFullNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(fullName_);
+    }
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    private void setFullName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      fullName_ = value;
+    }
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    private void clearFullName() {
+      
+      fullName_ = getDefaultInstance().getFullName();
+    }
+    /**
+     * <code>string full_name = 1;</code>
+     */
+    private void setFullNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      fullName_ = value.toStringUtf8();
+    }
+
+    public static final int REQ_SIZE_FIELD_NUMBER = 2;
+    private long reqSize_;
+    /**
+     * <code>int64 req_size = 2;</code>
+     */
+    @java.lang.Override
+    public long getReqSize() {
+      return reqSize_;
+    }
+    /**
+     * <code>int64 req_size = 2;</code>
+     */
+    private void setReqSize(long value) {
+      
+      reqSize_ = value;
+    }
+    /**
+     * <code>int64 req_size = 2;</code>
+     */
+    private void clearReqSize() {
+      
+      reqSize_ = 0L;
+    }
+
+    public static final int REQ_START_FIELD_NUMBER = 3;
+    private long reqStart_;
+    /**
+     * <code>int64 req_start = 3;</code>
+     */
+    @java.lang.Override
+    public long getReqStart() {
+      return reqStart_;
+    }
+    /**
+     * <code>int64 req_start = 3;</code>
+     */
+    private void setReqStart(long value) {
+      
+      reqStart_ = value;
+    }
+    /**
+     * <code>int64 req_start = 3;</code>
+     */
+    private void clearReqStart() {
+      
+      reqStart_ = 0L;
+    }
+
+    public static final int REQ_INDEX_FIELD_NUMBER = 4;
+    private long reqIndex_;
+    /**
+     * <code>int64 req_index = 4;</code>
+     */
+    @java.lang.Override
+    public long getReqIndex() {
+      return reqIndex_;
+    }
+    /**
+     * <code>int64 req_index = 4;</code>
+     */
+    private void setReqIndex(long value) {
+      
+      reqIndex_ = value;
+    }
+    /**
+     * <code>int64 req_index = 4;</code>
+     */
+    private void clearReqIndex() {
+      
+      reqIndex_ = 0L;
+    }
+
+    public static final int READ_SIZE_FIELD_NUMBER = 5;
+    private long readSize_;
+    /**
+     * <code>int64 read_size = 5;</code>
+     */
+    @java.lang.Override
+    public long getReadSize() {
+      return readSize_;
+    }
+    /**
+     * <code>int64 read_size = 5;</code>
+     */
+    private void setReadSize(long value) {
+      
+      readSize_ = value;
+    }
+    /**
+     * <code>int64 read_size = 5;</code>
+     */
+    private void clearReadSize() {
+      
+      readSize_ = 0L;
+    }
+
+    public static final int BUFFER_FIELD_NUMBER = 6;
+    private com.google.protobuf.ByteString buffer_;
+    /**
+     * <code>bytes buffer = 6;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getBuffer() {
+      return buffer_;
+    }
+    /**
+     * <code>bytes buffer = 6;</code>
+     */
+    private void setBuffer(com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      buffer_ = value;
+    }
+    /**
+     * <code>bytes buffer = 6;</code>
+     */
+    private void clearBuffer() {
+      
+      buffer_ = getDefaultInstance().getBuffer();
+    }
+
+    public static tc.TcMessage.ClipboardRespBuffer parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(tc.TcMessage.ClipboardRespBuffer prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code tc.ClipboardRespBuffer}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          tc.TcMessage.ClipboardRespBuffer, Builder> implements
+        // @@protoc_insertion_point(builder_implements:tc.ClipboardRespBuffer)
+        tc.TcMessage.ClipboardRespBufferOrBuilder {
+      // Construct using tc.TcMessage.ClipboardRespBuffer.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>string full_name = 1;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getFullName() {
+        return instance.getFullName();
+      }
+      /**
+       * <code>string full_name = 1;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getFullNameBytes() {
+        return instance.getFullNameBytes();
+      }
+      /**
+       * <code>string full_name = 1;</code>
+       */
+      public Builder setFullName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setFullName(value);
+        return this;
+      }
+      /**
+       * <code>string full_name = 1;</code>
+       */
+      public Builder clearFullName() {
+        copyOnWrite();
+        instance.clearFullName();
+        return this;
+      }
+      /**
+       * <code>string full_name = 1;</code>
+       */
+      public Builder setFullNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setFullNameBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>int64 req_size = 2;</code>
+       */
+      @java.lang.Override
+      public long getReqSize() {
+        return instance.getReqSize();
+      }
+      /**
+       * <code>int64 req_size = 2;</code>
+       */
+      public Builder setReqSize(long value) {
+        copyOnWrite();
+        instance.setReqSize(value);
+        return this;
+      }
+      /**
+       * <code>int64 req_size = 2;</code>
+       */
+      public Builder clearReqSize() {
+        copyOnWrite();
+        instance.clearReqSize();
+        return this;
+      }
+
+      /**
+       * <code>int64 req_start = 3;</code>
+       */
+      @java.lang.Override
+      public long getReqStart() {
+        return instance.getReqStart();
+      }
+      /**
+       * <code>int64 req_start = 3;</code>
+       */
+      public Builder setReqStart(long value) {
+        copyOnWrite();
+        instance.setReqStart(value);
+        return this;
+      }
+      /**
+       * <code>int64 req_start = 3;</code>
+       */
+      public Builder clearReqStart() {
+        copyOnWrite();
+        instance.clearReqStart();
+        return this;
+      }
+
+      /**
+       * <code>int64 req_index = 4;</code>
+       */
+      @java.lang.Override
+      public long getReqIndex() {
+        return instance.getReqIndex();
+      }
+      /**
+       * <code>int64 req_index = 4;</code>
+       */
+      public Builder setReqIndex(long value) {
+        copyOnWrite();
+        instance.setReqIndex(value);
+        return this;
+      }
+      /**
+       * <code>int64 req_index = 4;</code>
+       */
+      public Builder clearReqIndex() {
+        copyOnWrite();
+        instance.clearReqIndex();
+        return this;
+      }
+
+      /**
+       * <code>int64 read_size = 5;</code>
+       */
+      @java.lang.Override
+      public long getReadSize() {
+        return instance.getReadSize();
+      }
+      /**
+       * <code>int64 read_size = 5;</code>
+       */
+      public Builder setReadSize(long value) {
+        copyOnWrite();
+        instance.setReadSize(value);
+        return this;
+      }
+      /**
+       * <code>int64 read_size = 5;</code>
+       */
+      public Builder clearReadSize() {
+        copyOnWrite();
+        instance.clearReadSize();
+        return this;
+      }
+
+      /**
+       * <code>bytes buffer = 6;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getBuffer() {
+        return instance.getBuffer();
+      }
+      /**
+       * <code>bytes buffer = 6;</code>
+       */
+      public Builder setBuffer(com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setBuffer(value);
+        return this;
+      }
+      /**
+       * <code>bytes buffer = 6;</code>
+       */
+      public Builder clearBuffer() {
+        copyOnWrite();
+        instance.clearBuffer();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:tc.ClipboardRespBuffer)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new tc.TcMessage.ClipboardRespBuffer();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "fullName_",
+              "reqSize_",
+              "reqStart_",
+              "reqIndex_",
+              "readSize_",
+              "buffer_",
+            };
+            java.lang.String info =
+                "\u0000\u0006\u0000\u0000\u0001\u0006\u0006\u0000\u0000\u0000\u0001\u0208\u0002\u0002" +
+                "\u0003\u0002\u0004\u0002\u0005\u0002\u0006\n";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<tc.TcMessage.ClipboardRespBuffer> parser = PARSER;
+          if (parser == null) {
+            synchronized (tc.TcMessage.ClipboardRespBuffer.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:tc.ClipboardRespBuffer)
+    private static final tc.TcMessage.ClipboardRespBuffer DEFAULT_INSTANCE;
+    static {
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = new ClipboardRespBuffer();
+    }
+
+    static {
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        ClipboardRespBuffer.class, DEFAULT_INSTANCE);
+    }
+    public static tc.TcMessage.ClipboardRespBuffer getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ClipboardRespBuffer> PARSER;
+
+    public static com.google.protobuf.Parser<ClipboardRespBuffer> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }
@@ -16505,16 +19832,21 @@ public final class TcMessage {
         getNameBytes();
 
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>int32 index = 2;</code>
+     */
+    int getIndex();
+
+    /**
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     java.util.List<tc.TcMessage.MonitorInfo> 
         getMonitorInfoList();
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     tc.TcMessage.MonitorInfo getMonitorInfo(int index);
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     int getMonitorInfoCount();
   }
@@ -16578,38 +19910,62 @@ public final class TcMessage {
       name_ = value.toStringUtf8();
     }
 
-    public static final int MONITOR_INFO_FIELD_NUMBER = 2;
+    public static final int INDEX_FIELD_NUMBER = 2;
+    private int index_;
+    /**
+     * <code>int32 index = 2;</code>
+     */
+    @java.lang.Override
+    public int getIndex() {
+      return index_;
+    }
+    /**
+     * <code>int32 index = 2;</code>
+     */
+    private void setIndex(int value) {
+      
+      index_ = value;
+    }
+    /**
+     * <code>int32 index = 2;</code>
+     */
+    private void clearIndex() {
+      
+      index_ = 0;
+    }
+
+    public static final int MONITOR_INFO_FIELD_NUMBER = 3;
     private com.google.protobuf.Internal.ProtobufList<tc.TcMessage.MonitorInfo> monitorInfo_;
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     @java.lang.Override
     public java.util.List<tc.TcMessage.MonitorInfo> getMonitorInfoList() {
       return monitorInfo_;
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     public java.util.List<? extends tc.TcMessage.MonitorInfoOrBuilder> 
         getMonitorInfoOrBuilderList() {
       return monitorInfo_;
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     @java.lang.Override
     public int getMonitorInfoCount() {
       return monitorInfo_.size();
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     @java.lang.Override
     public tc.TcMessage.MonitorInfo getMonitorInfo(int index) {
       return monitorInfo_.get(index);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     public tc.TcMessage.MonitorInfoOrBuilder getMonitorInfoOrBuilder(
         int index) {
@@ -16623,7 +19979,7 @@ public final class TcMessage {
     }
 
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     private void setMonitorInfo(
         int index, tc.TcMessage.MonitorInfo value) {
@@ -16634,7 +19990,7 @@ public final class TcMessage {
       monitorInfo_.set(index, value);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     private void setMonitorInfo(
         int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16642,7 +19998,7 @@ public final class TcMessage {
       monitorInfo_.set(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     private void addMonitorInfo(tc.TcMessage.MonitorInfo value) {
       if (value == null) {
@@ -16652,7 +20008,7 @@ public final class TcMessage {
       monitorInfo_.add(value);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     private void addMonitorInfo(
         int index, tc.TcMessage.MonitorInfo value) {
@@ -16663,7 +20019,7 @@ public final class TcMessage {
       monitorInfo_.add(index, value);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     private void addMonitorInfo(
         tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16671,7 +20027,7 @@ public final class TcMessage {
       monitorInfo_.add(builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     private void addMonitorInfo(
         int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16679,7 +20035,7 @@ public final class TcMessage {
       monitorInfo_.add(index, builderForValue.build());
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     private void addAllMonitorInfo(
         java.lang.Iterable<? extends tc.TcMessage.MonitorInfo> values) {
@@ -16688,13 +20044,13 @@ public final class TcMessage {
           values, monitorInfo_);
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     private void clearMonitorInfo() {
       monitorInfo_ = emptyProtobufList();
     }
     /**
-     * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+     * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
      */
     private void removeMonitorInfo(int index) {
       ensureMonitorInfoIsMutable();
@@ -16839,7 +20195,31 @@ public final class TcMessage {
       }
 
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>int32 index = 2;</code>
+       */
+      @java.lang.Override
+      public int getIndex() {
+        return instance.getIndex();
+      }
+      /**
+       * <code>int32 index = 2;</code>
+       */
+      public Builder setIndex(int value) {
+        copyOnWrite();
+        instance.setIndex(value);
+        return this;
+      }
+      /**
+       * <code>int32 index = 2;</code>
+       */
+      public Builder clearIndex() {
+        copyOnWrite();
+        instance.clearIndex();
+        return this;
+      }
+
+      /**
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       @java.lang.Override
       public java.util.List<tc.TcMessage.MonitorInfo> getMonitorInfoList() {
@@ -16847,20 +20227,20 @@ public final class TcMessage {
             instance.getMonitorInfoList());
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       @java.lang.Override
       public int getMonitorInfoCount() {
         return instance.getMonitorInfoCount();
       }/**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       @java.lang.Override
       public tc.TcMessage.MonitorInfo getMonitorInfo(int index) {
         return instance.getMonitorInfo(index);
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       public Builder setMonitorInfo(
           int index, tc.TcMessage.MonitorInfo value) {
@@ -16869,7 +20249,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       public Builder setMonitorInfo(
           int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16878,7 +20258,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       public Builder addMonitorInfo(tc.TcMessage.MonitorInfo value) {
         copyOnWrite();
@@ -16886,7 +20266,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       public Builder addMonitorInfo(
           int index, tc.TcMessage.MonitorInfo value) {
@@ -16895,7 +20275,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       public Builder addMonitorInfo(
           tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16904,7 +20284,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       public Builder addMonitorInfo(
           int index, tc.TcMessage.MonitorInfo.Builder builderForValue) {
@@ -16913,7 +20293,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       public Builder addAllMonitorInfo(
           java.lang.Iterable<? extends tc.TcMessage.MonitorInfo> values) {
@@ -16922,7 +20302,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       public Builder clearMonitorInfo() {
         copyOnWrite();
@@ -16930,7 +20310,7 @@ public final class TcMessage {
         return this;
       }
       /**
-       * <code>repeated .tc.MonitorInfo monitor_info = 2;</code>
+       * <code>repeated .tc.MonitorInfo monitor_info = 3;</code>
        */
       public Builder removeMonitorInfo(int index) {
         copyOnWrite();
@@ -16955,12 +20335,13 @@ public final class TcMessage {
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
               "name_",
+              "index_",
               "monitorInfo_",
               tc.TcMessage.MonitorInfo.class,
             };
             java.lang.String info =
-                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u0208\u0002\u001b" +
-                "";
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0001\u0000\u0001\u0208\u0002\u0004" +
+                "\u0003\u001b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -19941,6 +23322,67 @@ public final class TcMessage {
      * <code>.tc.ReqCtrlAltDelete req_ctrl_alt_delete = 340;</code>
      */
     tc.TcMessage.ReqCtrlAltDelete getReqCtrlAltDelete();
+
+    /**
+     * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+     */
+    boolean hasCpReqBuffer();
+    /**
+     * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+     */
+    tc.TcMessage.ClipboardReqBuffer getCpReqBuffer();
+
+    /**
+     * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+     */
+    boolean hasCpRespBuffer();
+    /**
+     * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+     */
+    tc.TcMessage.ClipboardRespBuffer getCpRespBuffer();
+
+    /**
+     * <pre>
+     * signaling begin
+     * </pre>
+     *
+     * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+     */
+    boolean hasSigOfferSdp();
+    /**
+     * <pre>
+     * signaling begin
+     * </pre>
+     *
+     * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+     */
+    tc.TcSignalingMessage.SigOfferSdpMessage getSigOfferSdp();
+
+    /**
+     * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+     */
+    boolean hasSigAnswerSdp();
+    /**
+     * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+     */
+    tc.TcSignalingMessage.SigAnswerSdpMessage getSigAnswerSdp();
+
+    /**
+     * <pre>
+     * signaling end
+     * </pre>
+     *
+     * <code>.tc.SigIceMessage sig_ice = 450;</code>
+     */
+    boolean hasSigIce();
+    /**
+     * <pre>
+     * signaling end
+     * </pre>
+     *
+     * <code>.tc.SigIceMessage sig_ice = 450;</code>
+     */
+    tc.TcSignalingMessage.SigIceMessage getSigIce();
   }
   /**
    * Protobuf type {@code tc.Message}
@@ -22846,6 +26288,344 @@ public final class TcMessage {
       
     }
 
+    public static final int CP_REQ_BUFFER_FIELD_NUMBER = 350;
+    private tc.TcMessage.ClipboardReqBuffer cpReqBuffer_;
+    /**
+     * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+     */
+    @java.lang.Override
+    public boolean hasCpReqBuffer() {
+      return cpReqBuffer_ != null;
+    }
+    /**
+     * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.ClipboardReqBuffer getCpReqBuffer() {
+      return cpReqBuffer_ == null ? tc.TcMessage.ClipboardReqBuffer.getDefaultInstance() : cpReqBuffer_;
+    }
+    /**
+     * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+     */
+    private void setCpReqBuffer(tc.TcMessage.ClipboardReqBuffer value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      cpReqBuffer_ = value;
+      
+      }
+    /**
+     * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+     */
+    private void setCpReqBuffer(
+        tc.TcMessage.ClipboardReqBuffer.Builder builderForValue) {
+      cpReqBuffer_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeCpReqBuffer(tc.TcMessage.ClipboardReqBuffer value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (cpReqBuffer_ != null &&
+          cpReqBuffer_ != tc.TcMessage.ClipboardReqBuffer.getDefaultInstance()) {
+        cpReqBuffer_ =
+          tc.TcMessage.ClipboardReqBuffer.newBuilder(cpReqBuffer_).mergeFrom(value).buildPartial();
+      } else {
+        cpReqBuffer_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+     */
+    private void clearCpReqBuffer() {  cpReqBuffer_ = null;
+      
+    }
+
+    public static final int CP_RESP_BUFFER_FIELD_NUMBER = 360;
+    private tc.TcMessage.ClipboardRespBuffer cpRespBuffer_;
+    /**
+     * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+     */
+    @java.lang.Override
+    public boolean hasCpRespBuffer() {
+      return cpRespBuffer_ != null;
+    }
+    /**
+     * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+     */
+    @java.lang.Override
+    public tc.TcMessage.ClipboardRespBuffer getCpRespBuffer() {
+      return cpRespBuffer_ == null ? tc.TcMessage.ClipboardRespBuffer.getDefaultInstance() : cpRespBuffer_;
+    }
+    /**
+     * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+     */
+    private void setCpRespBuffer(tc.TcMessage.ClipboardRespBuffer value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      cpRespBuffer_ = value;
+      
+      }
+    /**
+     * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+     */
+    private void setCpRespBuffer(
+        tc.TcMessage.ClipboardRespBuffer.Builder builderForValue) {
+      cpRespBuffer_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeCpRespBuffer(tc.TcMessage.ClipboardRespBuffer value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (cpRespBuffer_ != null &&
+          cpRespBuffer_ != tc.TcMessage.ClipboardRespBuffer.getDefaultInstance()) {
+        cpRespBuffer_ =
+          tc.TcMessage.ClipboardRespBuffer.newBuilder(cpRespBuffer_).mergeFrom(value).buildPartial();
+      } else {
+        cpRespBuffer_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+     */
+    private void clearCpRespBuffer() {  cpRespBuffer_ = null;
+      
+    }
+
+    public static final int SIG_OFFER_SDP_FIELD_NUMBER = 370;
+    private tc.TcSignalingMessage.SigOfferSdpMessage sigOfferSdp_;
+    /**
+     * <pre>
+     * signaling begin
+     * </pre>
+     *
+     * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+     */
+    @java.lang.Override
+    public boolean hasSigOfferSdp() {
+      return sigOfferSdp_ != null;
+    }
+    /**
+     * <pre>
+     * signaling begin
+     * </pre>
+     *
+     * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+     */
+    @java.lang.Override
+    public tc.TcSignalingMessage.SigOfferSdpMessage getSigOfferSdp() {
+      return sigOfferSdp_ == null ? tc.TcSignalingMessage.SigOfferSdpMessage.getDefaultInstance() : sigOfferSdp_;
+    }
+    /**
+     * <pre>
+     * signaling begin
+     * </pre>
+     *
+     * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+     */
+    private void setSigOfferSdp(tc.TcSignalingMessage.SigOfferSdpMessage value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      sigOfferSdp_ = value;
+      
+      }
+    /**
+     * <pre>
+     * signaling begin
+     * </pre>
+     *
+     * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+     */
+    private void setSigOfferSdp(
+        tc.TcSignalingMessage.SigOfferSdpMessage.Builder builderForValue) {
+      sigOfferSdp_ = builderForValue.build();
+      
+    }
+    /**
+     * <pre>
+     * signaling begin
+     * </pre>
+     *
+     * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeSigOfferSdp(tc.TcSignalingMessage.SigOfferSdpMessage value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (sigOfferSdp_ != null &&
+          sigOfferSdp_ != tc.TcSignalingMessage.SigOfferSdpMessage.getDefaultInstance()) {
+        sigOfferSdp_ =
+          tc.TcSignalingMessage.SigOfferSdpMessage.newBuilder(sigOfferSdp_).mergeFrom(value).buildPartial();
+      } else {
+        sigOfferSdp_ = value;
+      }
+      
+    }
+    /**
+     * <pre>
+     * signaling begin
+     * </pre>
+     *
+     * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+     */
+    private void clearSigOfferSdp() {  sigOfferSdp_ = null;
+      
+    }
+
+    public static final int SIG_ANSWER_SDP_FIELD_NUMBER = 380;
+    private tc.TcSignalingMessage.SigAnswerSdpMessage sigAnswerSdp_;
+    /**
+     * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+     */
+    @java.lang.Override
+    public boolean hasSigAnswerSdp() {
+      return sigAnswerSdp_ != null;
+    }
+    /**
+     * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+     */
+    @java.lang.Override
+    public tc.TcSignalingMessage.SigAnswerSdpMessage getSigAnswerSdp() {
+      return sigAnswerSdp_ == null ? tc.TcSignalingMessage.SigAnswerSdpMessage.getDefaultInstance() : sigAnswerSdp_;
+    }
+    /**
+     * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+     */
+    private void setSigAnswerSdp(tc.TcSignalingMessage.SigAnswerSdpMessage value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      sigAnswerSdp_ = value;
+      
+      }
+    /**
+     * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+     */
+    private void setSigAnswerSdp(
+        tc.TcSignalingMessage.SigAnswerSdpMessage.Builder builderForValue) {
+      sigAnswerSdp_ = builderForValue.build();
+      
+    }
+    /**
+     * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeSigAnswerSdp(tc.TcSignalingMessage.SigAnswerSdpMessage value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (sigAnswerSdp_ != null &&
+          sigAnswerSdp_ != tc.TcSignalingMessage.SigAnswerSdpMessage.getDefaultInstance()) {
+        sigAnswerSdp_ =
+          tc.TcSignalingMessage.SigAnswerSdpMessage.newBuilder(sigAnswerSdp_).mergeFrom(value).buildPartial();
+      } else {
+        sigAnswerSdp_ = value;
+      }
+      
+    }
+    /**
+     * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+     */
+    private void clearSigAnswerSdp() {  sigAnswerSdp_ = null;
+      
+    }
+
+    public static final int SIG_ICE_FIELD_NUMBER = 450;
+    private tc.TcSignalingMessage.SigIceMessage sigIce_;
+    /**
+     * <pre>
+     * signaling end
+     * </pre>
+     *
+     * <code>.tc.SigIceMessage sig_ice = 450;</code>
+     */
+    @java.lang.Override
+    public boolean hasSigIce() {
+      return sigIce_ != null;
+    }
+    /**
+     * <pre>
+     * signaling end
+     * </pre>
+     *
+     * <code>.tc.SigIceMessage sig_ice = 450;</code>
+     */
+    @java.lang.Override
+    public tc.TcSignalingMessage.SigIceMessage getSigIce() {
+      return sigIce_ == null ? tc.TcSignalingMessage.SigIceMessage.getDefaultInstance() : sigIce_;
+    }
+    /**
+     * <pre>
+     * signaling end
+     * </pre>
+     *
+     * <code>.tc.SigIceMessage sig_ice = 450;</code>
+     */
+    private void setSigIce(tc.TcSignalingMessage.SigIceMessage value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      sigIce_ = value;
+      
+      }
+    /**
+     * <pre>
+     * signaling end
+     * </pre>
+     *
+     * <code>.tc.SigIceMessage sig_ice = 450;</code>
+     */
+    private void setSigIce(
+        tc.TcSignalingMessage.SigIceMessage.Builder builderForValue) {
+      sigIce_ = builderForValue.build();
+      
+    }
+    /**
+     * <pre>
+     * signaling end
+     * </pre>
+     *
+     * <code>.tc.SigIceMessage sig_ice = 450;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeSigIce(tc.TcSignalingMessage.SigIceMessage value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      if (sigIce_ != null &&
+          sigIce_ != tc.TcSignalingMessage.SigIceMessage.getDefaultInstance()) {
+        sigIce_ =
+          tc.TcSignalingMessage.SigIceMessage.newBuilder(sigIce_).mergeFrom(value).buildPartial();
+      } else {
+        sigIce_ = value;
+      }
+      
+    }
+    /**
+     * <pre>
+     * signaling end
+     * </pre>
+     *
+     * <code>.tc.SigIceMessage sig_ice = 450;</code>
+     */
+    private void clearSigIce() {  sigIce_ = null;
+      
+    }
+
     public static tc.TcMessage.Message parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -25336,6 +29116,289 @@ public final class TcMessage {
         return this;
       }
 
+      /**
+       * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+       */
+      @java.lang.Override
+      public boolean hasCpReqBuffer() {
+        return instance.hasCpReqBuffer();
+      }
+      /**
+       * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.ClipboardReqBuffer getCpReqBuffer() {
+        return instance.getCpReqBuffer();
+      }
+      /**
+       * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+       */
+      public Builder setCpReqBuffer(tc.TcMessage.ClipboardReqBuffer value) {
+        copyOnWrite();
+        instance.setCpReqBuffer(value);
+        return this;
+        }
+      /**
+       * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+       */
+      public Builder setCpReqBuffer(
+          tc.TcMessage.ClipboardReqBuffer.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCpReqBuffer(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+       */
+      public Builder mergeCpReqBuffer(tc.TcMessage.ClipboardReqBuffer value) {
+        copyOnWrite();
+        instance.mergeCpReqBuffer(value);
+        return this;
+      }
+      /**
+       * <code>.tc.ClipboardReqBuffer cp_req_buffer = 350;</code>
+       */
+      public Builder clearCpReqBuffer() {  copyOnWrite();
+        instance.clearCpReqBuffer();
+        return this;
+      }
+
+      /**
+       * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+       */
+      @java.lang.Override
+      public boolean hasCpRespBuffer() {
+        return instance.hasCpRespBuffer();
+      }
+      /**
+       * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+       */
+      @java.lang.Override
+      public tc.TcMessage.ClipboardRespBuffer getCpRespBuffer() {
+        return instance.getCpRespBuffer();
+      }
+      /**
+       * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+       */
+      public Builder setCpRespBuffer(tc.TcMessage.ClipboardRespBuffer value) {
+        copyOnWrite();
+        instance.setCpRespBuffer(value);
+        return this;
+        }
+      /**
+       * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+       */
+      public Builder setCpRespBuffer(
+          tc.TcMessage.ClipboardRespBuffer.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCpRespBuffer(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+       */
+      public Builder mergeCpRespBuffer(tc.TcMessage.ClipboardRespBuffer value) {
+        copyOnWrite();
+        instance.mergeCpRespBuffer(value);
+        return this;
+      }
+      /**
+       * <code>.tc.ClipboardRespBuffer cp_resp_buffer = 360;</code>
+       */
+      public Builder clearCpRespBuffer() {  copyOnWrite();
+        instance.clearCpRespBuffer();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * signaling begin
+       * </pre>
+       *
+       * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+       */
+      @java.lang.Override
+      public boolean hasSigOfferSdp() {
+        return instance.hasSigOfferSdp();
+      }
+      /**
+       * <pre>
+       * signaling begin
+       * </pre>
+       *
+       * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+       */
+      @java.lang.Override
+      public tc.TcSignalingMessage.SigOfferSdpMessage getSigOfferSdp() {
+        return instance.getSigOfferSdp();
+      }
+      /**
+       * <pre>
+       * signaling begin
+       * </pre>
+       *
+       * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+       */
+      public Builder setSigOfferSdp(tc.TcSignalingMessage.SigOfferSdpMessage value) {
+        copyOnWrite();
+        instance.setSigOfferSdp(value);
+        return this;
+        }
+      /**
+       * <pre>
+       * signaling begin
+       * </pre>
+       *
+       * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+       */
+      public Builder setSigOfferSdp(
+          tc.TcSignalingMessage.SigOfferSdpMessage.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSigOfferSdp(builderForValue);
+        return this;
+      }
+      /**
+       * <pre>
+       * signaling begin
+       * </pre>
+       *
+       * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+       */
+      public Builder mergeSigOfferSdp(tc.TcSignalingMessage.SigOfferSdpMessage value) {
+        copyOnWrite();
+        instance.mergeSigOfferSdp(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * signaling begin
+       * </pre>
+       *
+       * <code>.tc.SigOfferSdpMessage sig_offer_sdp = 370;</code>
+       */
+      public Builder clearSigOfferSdp() {  copyOnWrite();
+        instance.clearSigOfferSdp();
+        return this;
+      }
+
+      /**
+       * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+       */
+      @java.lang.Override
+      public boolean hasSigAnswerSdp() {
+        return instance.hasSigAnswerSdp();
+      }
+      /**
+       * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+       */
+      @java.lang.Override
+      public tc.TcSignalingMessage.SigAnswerSdpMessage getSigAnswerSdp() {
+        return instance.getSigAnswerSdp();
+      }
+      /**
+       * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+       */
+      public Builder setSigAnswerSdp(tc.TcSignalingMessage.SigAnswerSdpMessage value) {
+        copyOnWrite();
+        instance.setSigAnswerSdp(value);
+        return this;
+        }
+      /**
+       * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+       */
+      public Builder setSigAnswerSdp(
+          tc.TcSignalingMessage.SigAnswerSdpMessage.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSigAnswerSdp(builderForValue);
+        return this;
+      }
+      /**
+       * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+       */
+      public Builder mergeSigAnswerSdp(tc.TcSignalingMessage.SigAnswerSdpMessage value) {
+        copyOnWrite();
+        instance.mergeSigAnswerSdp(value);
+        return this;
+      }
+      /**
+       * <code>.tc.SigAnswerSdpMessage sig_answer_sdp = 380;</code>
+       */
+      public Builder clearSigAnswerSdp() {  copyOnWrite();
+        instance.clearSigAnswerSdp();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * signaling end
+       * </pre>
+       *
+       * <code>.tc.SigIceMessage sig_ice = 450;</code>
+       */
+      @java.lang.Override
+      public boolean hasSigIce() {
+        return instance.hasSigIce();
+      }
+      /**
+       * <pre>
+       * signaling end
+       * </pre>
+       *
+       * <code>.tc.SigIceMessage sig_ice = 450;</code>
+       */
+      @java.lang.Override
+      public tc.TcSignalingMessage.SigIceMessage getSigIce() {
+        return instance.getSigIce();
+      }
+      /**
+       * <pre>
+       * signaling end
+       * </pre>
+       *
+       * <code>.tc.SigIceMessage sig_ice = 450;</code>
+       */
+      public Builder setSigIce(tc.TcSignalingMessage.SigIceMessage value) {
+        copyOnWrite();
+        instance.setSigIce(value);
+        return this;
+        }
+      /**
+       * <pre>
+       * signaling end
+       * </pre>
+       *
+       * <code>.tc.SigIceMessage sig_ice = 450;</code>
+       */
+      public Builder setSigIce(
+          tc.TcSignalingMessage.SigIceMessage.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSigIce(builderForValue);
+        return this;
+      }
+      /**
+       * <pre>
+       * signaling end
+       * </pre>
+       *
+       * <code>.tc.SigIceMessage sig_ice = 450;</code>
+       */
+      public Builder mergeSigIce(tc.TcSignalingMessage.SigIceMessage value) {
+        copyOnWrite();
+        instance.mergeSigIce(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * signaling end
+       * </pre>
+       *
+       * <code>.tc.SigIceMessage sig_ice = 450;</code>
+       */
+      public Builder clearSigIce() {  copyOnWrite();
+        instance.clearSigIce();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:tc.Message)
     }
     @java.lang.Override
@@ -25404,14 +29467,19 @@ public final class TcMessage {
               "fileTransDataPacketResponse_",
               "fileTransSaveFileException_",
               "reqCtrlAltDelete_",
+              "cpReqBuffer_",
+              "cpRespBuffer_",
+              "sigOfferSdp_",
+              "sigAnswerSdp_",
+              "sigIce_",
             };
             java.lang.String info =
-                "\u00003\u0000\u0000\u0003\u01543\u0000\u0001\u0000\u0003\u0208\u0004\u0208\u0005" +
+                "\u00008\u0000\u0000\u0003\u01c28\u0000\u0001\u0000\u0003\u0208\u0004\u0208\u0005" +
                 "\u0003\u0006\u0003\u0007\f\b\u0208\t\u0208\n\f\u0014\u0003\u001e\u0208(\t)\t2\t<" +
                 "\t=\tF\tP\tZ\td\tn\tx\t\u0082\t\u008c\t\u0096\t\u00a0\u001b\u00aa\t\u00b4\t\u00be" +
                 "\t\u00c8\t\u00d2\t\u00dc\t\u00e6\t\u00f0\t\u00fa\t\u0104\t\u010e\t\u0118\t\u011d" +
                 "\t\u0122\t\u0127\t\u012c\t\u0131\t\u0136\t\u013b\t\u0140\t\u0145\t\u0146\t\u0147" +
-                "\u0208\u0148\t\u014a\t\u0154\t";
+                "\u0208\u0148\t\u014a\t\u0154\t\u015e\t\u0168\t\u0172\t\u017c\t\u01c2\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

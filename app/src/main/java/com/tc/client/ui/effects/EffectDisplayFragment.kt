@@ -96,6 +96,7 @@ class EffectDisplayFragment() : BaseFragment() {
         intent.putExtra("port", server.streamWsPort);
         intent.putExtra("idx", value.idx)
         intent.putExtra("streamId", server.streamId)
+        intent.putExtra("remoteDeviceId", if (server.serverId == null) {""} else {server.serverId})
         context?.startActivity(intent)
     }
 

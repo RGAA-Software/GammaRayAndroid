@@ -29,21 +29,23 @@ public class ThunderApp {
     private final List<Double> mRightSpectrum = new ArrayList<>();
     private long mAudioSpectrumCount = 0;
     private String mStreamId;
+    private String mRemoteDeviceId;
 
-    public ThunderApp(String ip, int port, boolean enableAudio, boolean enableVideo, boolean enableController, String streamId) {
+    public ThunderApp(String ip, int port, boolean enableAudio, boolean enableVideo, boolean enableController, String streamId, String remoteDeviceId) {
         mIp = ip;
         mPort = port;
         mEnableAudio = enableAudio;
         mEnableVideo = enableVideo;
         mEnableController = enableController;
         mStreamId = streamId;
+        mRemoteDeviceId = remoteDeviceId;
     }
     public void init(boolean ssl, Surface surface, boolean hwCodec, boolean useOES, int oesTexId, String deviceId, String streamId) {
         String targetPath = "/media?device_id=" + deviceId + "&stream_id=" + streamId;
-        this.init(ssl, mEnableAudio, mEnableVideo, mEnableController, mIp, mPort, targetPath, surface, hwCodec, useOES, oesTexId, deviceId, streamId);
+        this.init(ssl, mEnableAudio, mEnableVideo, mEnableController, mIp, mPort, targetPath, surface, hwCodec, useOES, oesTexId, deviceId, streamId, mRemoteDeviceId);
     }
     public native int init(boolean ssl, boolean enableAudio, boolean enableVideo, boolean enableController, String ip, int port,
-                           String path, Surface surface, boolean hwCodec, boolean useOES, int oesTexId, String deviceId, String streamId);
+                           String path, Surface surface, boolean hwCodec, boolean useOES, int oesTexId, String deviceId, String streamId, String remoteDeviceId);
     public native int start();
     public native int stop();
     public native void sendGamepadState(int buttons, int leftTrigger, int rightTrigger, int thumbLX, int thumbLY, int thumbRX, int thumbRY);
@@ -68,6 +70,10 @@ public class ThunderApp {
 
     public String getStreamId() {
         return mStreamId;
+    }
+
+    public String getRemoteDeviceId() {
+        return mRemoteDeviceId;
     }
 
     // callbacks

@@ -5,6 +5,7 @@
 #include "application.h"
 #include "frame_render.h"
 #include "tc_common_new/log.h"
+#include "tc_common_new/md5.h"
 #include "env_wrapper.h"
 
 using namespace tc;
@@ -22,11 +23,13 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved) {
 
 extern "C" JNIEXPORT jint JNICALL
 Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl, jboolean enable_audio, jboolean enable_video, jboolean enable_controller, jstring ip,
-                                        jint port, jstring path, jobject surface, jboolean hw_codec, jboolean use_oes, jint oes_tex_id, jstring device_id, jstring stream_id) {
+                                        jint port, jstring path, jobject surface, jboolean hw_codec, jboolean use_oes, jint oes_tex_id, jstring jdevice_id, jstring jstream_id,
+                                        jstring jremote_device_id) {
     const char* ip_str = env->GetStringUTFChars(ip, nullptr);
     const char* path_str = env->GetStringUTFChars(path, nullptr);
-    const char* device_id_str = env->GetStringUTFChars(device_id, nullptr);
-    const char* stream_id_str = env->GetStringUTFChars(stream_id, nullptr);
+    const char* device_id_str = env->GetStringUTFChars(jdevice_id, nullptr);
+    const char* remote_device_id_str = env->GetStringUTFChars(jremote_device_id, nullptr);
+    const char* stream_id_str = env->GetStringUTFChars(jstream_id, nullptr);
 
     g_java_app = env->NewGlobalRef(thiz);
     g_java_class = env->GetObjectClass(thiz);
@@ -78,6 +81,14 @@ Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl,
     });
 
     // todo: Params
+    auto media_path = std::format("/media?only_audio={}&device_id={}&stream_id={}",
+                                  enable_video ? 0 : 1, device_id_str, stream_id_str);
+    auto ft_path = std::format("/file/transfer?device_id={}&stream_id={}",
+                               device_id_str, stream_id_str);
+    auto device_id = std::format("client_{}_{}", device_id_str, MD5::Hex(remote_device_id_str));
+    auto remote_device_id = std::format("server_{}", remote_device_id_str);
+    auto ft_device_id = "ft_" + device_id;
+    auto ft_remote_device_id = "ft_" + remote_device_id;
     g_app->Init(std::make_shared<ThunderSdkParams>(ThunderSdkParams{
             .ssl_ = (bool)ssl,
             .enable_audio_ = (bool) enable_audio,
@@ -85,14 +96,28 @@ Java_com_tc_client_impl_ThunderApp_init(JNIEnv *env, jobject thiz, jboolean ssl,
             .enable_controller_ = (bool)enable_controller,
             .ip_ = ip_str,
             .port_ = port,
-            .device_id_ = device_id_str,
-            .stream_id_ = stream_id_str,
+            .media_path_ = media_path,
+            .ft_path_ = ft_path,
+            .client_type_ = ClientType::kAndroid,
+            .nt_type_ = ClientNetworkType::kWebsocket,
+            .bare_device_id_ = device_id_str,
+            .bare_remote_device_id_ = remote_device_id_str,
+            .device_id_ = device_id,
+            .remote_device_id_ = remote_device_id,
+            .ft_device_id_ = ft_device_id,
+            .ft_remote_device_id_ = ft_remote_device_id,
+            .stream_id_ = remote_device_id,
+            .stream_name_ = "Stream Name",
+            .enable_p2p_ = false,
+            .display_name_ = "Display Name",
+            .display_remote_name_ = "Display Remote Name"
     }), env, surface, (bool)hw_codec, (bool)use_oes, oes_tex_id);
 
     env->ReleaseStringUTFChars(ip, ip_str);
     env->ReleaseStringUTFChars(path, path_str);
-    env->ReleaseStringUTFChars(device_id, device_id_str);
-    env->ReleaseStringUTFChars(stream_id, stream_id_str);
+    env->ReleaseStringUTFChars(jdevice_id, device_id_str);
+    env->ReleaseStringUTFChars(jstream_id, stream_id_str);
+    env->ReleaseStringUTFChars(jremote_device_id, remote_device_id_str);
     return 0;
 }
 

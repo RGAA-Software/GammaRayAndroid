@@ -320,6 +320,7 @@ class SteamAppFragment() : BaseFragment() {
         intent.putExtra("ip", server.serverIp)
         intent.putExtra("port", server.streamWsPort)
         intent.putExtra("streamId", server.streamId)
+        intent.putExtra("remoteDeviceId", if (server.serverId == null) {""} else {server.serverId})
         context?.startActivity(intent)
     }
 
