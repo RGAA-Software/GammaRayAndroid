@@ -12,7 +12,7 @@
 #include <jni.h>
 
 #include "tc_client_sdk_new/gl/raw_image.h"
-#include "tc_client_sdk_new/decoder_render_type.h"
+#include "tc_client_sdk_new/sdk_decoder_render_type.h"
 #include "gl/shader_program.h"
 
 namespace tc

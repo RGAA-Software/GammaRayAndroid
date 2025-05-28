@@ -65,7 +65,7 @@ namespace tc
         int frame_height_ = 0;
         SdkCaptureMonitorInfo cap_mon_info_;
 
-        Statistics* statistics_ = nullptr;
+        SdkStatistics* statistics_ = nullptr;
         std::shared_ptr<ThunderSdkParams> sdk_params_ = nullptr;
 
     };

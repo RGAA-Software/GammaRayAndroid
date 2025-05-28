@@ -23,6 +23,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if (ANDROID)
     add_compile_options(-Wno-error=deprecated-declarations)
+    add_compile_definitions(ASIO2_ENABLE_SSL)
 endif ()
 include_directories(${CMAKE_SOURCE_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/tc_3rdparty)
@@ -41,6 +42,12 @@ include_directories(${VCPKG_ROOT}/installed/arm64-android/include)
 include_directories(${CMAKE_BINARY_DIR}/tc_message_new)
 include_directories(${CMAKE_BINARY_DIR}/tc_server_protocol)
 message("===  ==> ${CMAKE_BINARY_DIR}/tc_message_new")
+
+set(ANDROID_OPENSSL_LIBS
+    ${CMAKE_SOURCE_DIR}/tc_3rdparty/asio2/3rd/openssl/prebuilt/android/${ANDROID_ABI}/libcrypto.a
+    ${CMAKE_SOURCE_DIR}/tc_3rdparty/asio2/3rd/openssl/prebuilt/android/${ANDROID_ABI}/libssl.a
+)
+message("===> ${ANDROID_OPENSSL_LIBS}")
 
 add_subdirectory(tc_3rdparty)
 add_subdirectory(tc_common_new)

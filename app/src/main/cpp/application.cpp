@@ -7,8 +7,8 @@
 #include "frame_render.h"
 #include "app_context.h"
 #include "audio_player.h"
-#include "tc_client_sdk_new/video_decoder_factory.h"
-#include "tc_client_sdk_new/statistics.h"
+#include "tc_client_sdk_new/sdk_video_decoder_factory.h"
+#include "tc_client_sdk_new/sdk_statistics.h"
 #include "tc_message_new/proto_message_maker.h"
 #include "native_msg_maker.h"
 
@@ -30,7 +30,7 @@ namespace tc
     void Application::Init(const std::shared_ptr<ThunderSdkParams>& params, JNIEnv* env, jobject surface, bool hw_codec, bool use_oes, int oes_tex_id) {
         sdk_params_ = params;
         app_context_ = AppContext::Make();
-        statistics_ = Statistics::Instance();
+        statistics_ = SdkStatistics::Instance();
         auto drt = [&]() -> DecoderRenderType {
             if (!hw_codec) {
                 return DecoderRenderType::kFFmpegI420;
@@ -121,7 +121,7 @@ namespace tc
             frame_render_->TickRefresh(env);
         }
         if (statistics_) {
-            statistics_->fps_render_->Tick();
+            statistics_->TickFrameRenderFps(cap_mon_info_.mon_name_);
         }
     }
 
